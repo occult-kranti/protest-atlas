@@ -1,0 +1,643 @@
+[
+  {
+    "event_id": "ca-postal-strike-2024",
+    "episode_scope": "November–December 2024 national postal stoppage; excludes later strikes.",
+    "cities": [
+      {
+        "name": "Mississauga",
+        "source_ids": [
+          "ca-postal-strike-2024-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "December 17 was the ordered return date; December 18 employer update confirms employees welcomed back and mail delivery restarted. Full bargaining resolution is not implied.",
+      "source_ids": [
+        "ca-postal-strike-2024-s2",
+        "ca-postal-strike-2024-s3"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-12-16",
+        "summary": "Board ordered resumption; employer announced agreed interim 5% retroactive pay rise.",
+        "favours": [
+          {
+            "actor": "Canadian Union of Postal Workers",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "Pay improved while the order removed strike leverage; bargaining remained unresolved."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ca-postal-strike-2024-s2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Reuters and Canadian Press are separate reporting organizations; CBC hosts the Canadian Press account. Employer statements confirm restart and interim pay; no full bargaining settlement implied."
+  },
+  {
+    "event_id": "br-federal-education-strike-2024",
+    "episode_scope": "2024 federal education strike and June 27 agreement.",
+    "cities": [],
+    "status_basis": {
+      "text": "Union described strike's 74th day and explicitly said the agreement did not end mobilization; no cessation date established.",
+      "source_ids": [
+        "br-federal-education-strike-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-06-27",
+        "summary": "Union reported better pay terms and revocation of Portaria 983/20.",
+        "favours": [
+          {
+            "actor": "ANDES-SN, Sinasefe and Fasubra",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Union called these material gains but insufficient against full demands."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "br-federal-education-strike-2024-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Primary union source has bargaining incentives; implementation not independently evaluated."
+  },
+  {
+    "event_id": "mx-judges-strike-2024",
+    "episode_scope": "August–October 2024 federal judiciary stoppage and return-to-work dispute; judges and other employees took different positions.",
+    "cities": [],
+    "status_basis": {
+      "text": "JURIST describes cessation October 12, while Excélsior reports planned October 16 resumption and La Jornada documents workers refusing it. No confirmed unified end retained.",
+      "source_ids": [
+        "mx-judges-strike-2024-s1",
+        "mx-judges-strike-2024-s2",
+        "mx-judges-strike-2024-s3"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-09-16",
+        "summary": "Opposed judicial reform entered into force.",
+        "favours": [
+          {
+            "actor": "Judicial reform opponents",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "The immediate demand to prevent implementation failed; later challenges are separate."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "mx-judges-strike-2024-s2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Conflicting dates and different workforce groups prevent assigning ended status."
+  },
+  {
+    "event_id": "pa-banana-strike-2025",
+    "episode_scope": "Late-April to June 2025 banana-sector strike; excludes wider teachers' actions.",
+    "cities": [
+      {
+        "name": "Changuinola",
+        "source_ids": [
+          "pa-banana-strike-2025-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Agreement promised roadblock lifting; actual lifting and precise cessation date were not independently established.",
+      "source_ids": [
+        "pa-banana-strike-2025-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-06-11",
+        "summary": "Agreement promised legislation restoring pension protections; company closure had left over 7,000 without jobs.",
+        "favours": [
+          {
+            "actor": "SITRAIBANA banana workers",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "Pension commitments addressed demands, but enactment and job restoration were unverified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "pa-banana-strike-2025-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Labour-rights advocacy source; commitments are not represented as enacted benefits."
+  },
+  {
+    "event_id": "ec-diesel-subsidy-strike-2025",
+    "episode_scope": "CONAIE September–October 2025 strike; excludes continued resistance after blockades ended.",
+    "cities": [
+      {
+        "name": "Quito",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      },
+      {
+        "name": "Otavalo",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      },
+      {
+        "name": "Cotacachi",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "AP reports October 22 announcement ending highway protests to protect lives; wider resistance continued.",
+      "source_ids": [
+        "ec-diesel-subsidy-strike-2025-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-10-22",
+        "summary": "CONAIE withdrew blockades under military threat; subsidy restoration was not reported.",
+        "favours": [
+          {
+            "actor": "Confederation of Indigenous Nationalities of Ecuador",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Immediate action ended without a reported subsidy concession."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. AP ending report plus HRW investigation, which has rights-monitoring incentives."
+  },
+  {
+    "event_id": "gy-teachers-pay-strikes-2024",
+    "episode_scope": "Two 2024 strike segments and bargaining follow-up; precise onset unestablished.",
+    "cities": [],
+    "status_basis": {
+      "text": "June 21 agreement ended the strike and required return within two working days; date denotes agreed suspension, not universal reopening.",
+      "source_ids": [
+        "gy-teachers-pay-strikes-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-08-21",
+        "summary": "Deal set salary increases of 10%, 8% and 9% for 2024, 2025 and 2026 plus benefits.",
+        "favours": [
+          {
+            "actor": "Guyana Teachers’ Union",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Signed deal improved compensation; no settlement back to 2019 claimed."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "gy-teachers-pay-strikes-2024-s2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Stabroek reproduces union statement and presidential figures; implementation unaudited."
+  },
+  {
+    "event_id": "us-port-strike-2024",
+    "episode_scope": "October 2024 port stoppage.",
+    "cities": [
+      {
+        "name": "Portsmouth",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Reuters confirms October 3 termination and October 4 reopening.",
+      "source_ids": [
+        "us-port-strike-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-10-03",
+        "summary": "Tentative offer: roughly 62% raises over six years, Reuters sources said.",
+        "favours": [
+          {
+            "actor": "International Longshoremen’s Association",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Pay improved; automation remained unresolved."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Tentative terms, not final ratified settlement; numerical membership is not rally turnout."
+  },
+  {
+    "event_id": "cu-santiago-shortages-protests-2024",
+    "episode_scope": "March 17 Santiago episode, excluding other island protests.",
+    "cities": [
+      {
+        "name": "Santiago de Cuba",
+        "source_ids": [
+          "cu-santiago-shortages-protests-2024-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "cu-santiago-shortages-protests-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-03-17",
+        "summary": "A resident told AFP electricity was restored and rice delivered later that day.",
+        "favours": [
+          {
+            "actor": "Santiago demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Immediate supplies benefited residents; durability and protest causation were unproven."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "cu-santiago-shortages-protests-2024-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. BBC cites AFP resident account for relief; no causal or lasting concession inferred."
+  },
+  {
+    "event_id": "ve-election-protests-2024",
+    "episode_scope": "July 29–30 Caracas protest episode; not a single record of all later opposition mobilization.",
+    "cities": [
+      {
+        "name": "Caracas",
+        "source_ids": [
+          "ve-election-protests-2024-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "ve-election-protests-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Attorney general reported 32 detentions on allegations of election-material destruction or violence.",
+        "favours": [
+          {
+            "actor": "Election-result demonstrators",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Detentions constrained demonstrators; allegations are attributed, not adjudicated findings."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ve-election-protests-2024-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Election fraud is the opposition's claim; detentions' exact dates are unspecified."
+  },
+  {
+    "event_id": "pe-lima-transport-security-strike-2024",
+    "episode_scope": "October 23 Lima stoppage; excludes earlier and later staggered strikes.",
+    "cities": [
+      {
+        "name": "Lima",
+        "source_ids": [
+          "pe-lima-transport-security-strike-2024-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "pe-lima-transport-security-strike-2024-s1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted, no human sign-off. President promised arrests, but no implemented security improvement established."
+  },
+  {
+    "event_id": "ar-labor-reform-protests-2026",
+    "episode_scope": "February 2026 reform opposition, including February 27 rally; full onset unestablished.",
+    "cities": [
+      {
+        "name": "Buenos Aires",
+        "source_ids": [
+          "ar-labor-reform-protests-2026-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "ar-labor-reform-protests-2026-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-02-27",
+        "summary": "Senate approved the opposed labour reform.",
+        "favours": [
+          {
+            "actor": "Union and opposition demonstrators",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Approval defeated the immediate demand to stop the bill."
+          },
+          {
+            "actor": "Milei government",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "AP describes passage as a legislative victory."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "ar-labor-reform-protests-2026-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Legislative passage does not establish protest cessation."
+  },
+  {
+    "event_id": "co-labor-referendum-strike-2025",
+    "episode_scope": "May 28 union strike and legislative follow-up; excludes all Petro-support mobilizations.",
+    "cities": [
+      {
+        "name": "Bogotá",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s1"
+        ]
+      },
+      {
+        "name": "Cali",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A 48-hour duration was announced, but actual cessation not independently reported.",
+      "source_ids": [
+        "co-labor-referendum-strike-2025-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-06-20",
+        "summary": "Congress approved a text extending labour protections, pending presidential signature.",
+        "favours": [
+          {
+            "actor": "Pro-reform labour unions and the Petro government",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Passage advanced their legislative aim; protest causation and implementation remain unproved."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Senate source describes its own legislative work; no claim that a referendum actually occurred."
+  },
+  {
+    "event_id": "do-romero-mine-protests-2026",
+    "episode_scope": "May 3 Romero-project protest and May 4 suspension; excludes other mining disputes.",
+    "cities": [],
+    "status_basis": {
+      "text": "Project suspension is documented; protest cessation is not.",
+      "source_ids": [
+        "do-romero-mine-protests-2026-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-05-04",
+        "summary": "President ordered all Romero-project activity suspended.",
+        "favours": [
+          {
+            "actor": "San Juan water-protection movement",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Suspension addressed demonstrators' immediate demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "do-romero-mine-protests-2026-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Suspension is neither permanent cancellation nor proof protests ended."
+  },
+  {
+    "event_id": "gl-self-determination-rally-2026",
+    "episode_scope": "January 17 Nuuk rally; excludes Copenhagen demonstrations and later Greenland actions.",
+    "cities": [
+      {
+        "name": "Nuuk",
+        "source_ids": [
+          "gl-self-determination-rally-2026-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "gl-self-determination-rally-2026-s1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted, no human sign-off. No policy concession or broader movement ending established; Copenhagen crowd estimates are not applied to Nuuk."
+  },
+  {
+    "event_id": "sx-palestine-protest-rights-2025",
+    "episode_scope": "January 10 2025 demonstration and its administrative objection; excludes 2023 banned event.",
+    "cities": [],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "sx-palestine-protest-rights-2025-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Justice minister upheld objections and withdrew contested restrictions.",
+        "favours": [
+          {
+            "actor": "SXM in Solidarity with Palestine",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Withdrawal vindicated organizers' objections and assembly rights."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "sx-palestine-protest-rights-2025-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. PILP represented organizers and has litigation incentives; exact withdrawal date and protest city were not supplied."
+  },
+  {
+    "event_id": "sv-public-sector-budget-march-2024",
+    "episode_scope": "October 19 march and reported retaliation; excludes October 31 and November 23 actions.",
+    "cities": [],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "sv-public-sector-budget-march-2024-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "CISPES reported over 60 post-march dismissals; causes were not independently established and some workers had not participated.",
+        "favours": [
+          {
+            "actor": "Teachers, healthcare and public-sector unions",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Job losses harmed unionized workers; retaliation is attributed and disputed in scope."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "sv-public-sector-budget-march-2024-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. CISPES is a solidarity advocate relying partly on union testimony; individual layoff causes and full count not independently verified."
+  },
+  {
+    "event_id": "ht-textile-minimum-wage-protests-2026",
+    "episode_scope": "April–May textile wage mobilizations; location-specific actions distinguished, not a national stoppage claim.",
+    "cities": [
+      {
+        "name": "Port-au-Prince",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s1"
+        ]
+      },
+      {
+        "name": "Ouanaminthe",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s2"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Haitian Times reported continued CODEVI strike May 8; present activity and exact eventual end remain unknown.",
+      "source_ids": [
+        "ht-textile-minimum-wage-protests-2026-s2"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-05-04",
+        "summary": "Government announced daily minimum of 1,000 gourdes; CODEVI workers sought 3,000 and rejected it.",
+        "favours": [
+          {
+            "actor": "Haitian textile workers and UTRACO",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "Nominal pay rose but remained below the collective demand; full resolution not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. AP copy at PBS is one source, not two. Haitian Times separately reports CODEVI workers; exact joint campaign onset unestablished."
+  },
+  {
+    "event_id": "py-youth-accountability-protests-2025",
+    "episode_scope": "September 28 Asunción protest; excludes earlier democracy rallies.",
+    "cities": [
+      {
+        "name": "Asunción",
+        "source_ids": [
+          "py-youth-accountability-protests-2025-s1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed reports do not establish an end or suspension; historical age is not evidence of cessation.",
+      "source_ids": [
+        "py-youth-accountability-protests-2025-s1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "National torture-prevention mechanism and Chamber of Deputies condemned detention and police conduct.",
+        "favours": [
+          {
+            "actor": "Generation Z youth activists",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Institutional criticism supported protesters' rights concerns; no remedy or policy change proven."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "py-youth-accountability-protests-2025-s1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. IDEA is an intergovernmental democracy monitor summarizing other records; condemnation dates and underlying documents not independently fetched."
+  }
+]

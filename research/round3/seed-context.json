@@ -1,0 +1,49 @@
+[
+  {
+    "event_id": "fr-schools-20261002",
+    "episode_scope": "France's school-conditions and education-funding protest episode observed on 2 October 2026; this record does not count individual school blockades or establish the movement's exact onset.",
+    "cities": [
+      {"name": "Paris", "source_ids": ["fr-schools-reuters-marketscreener"]},
+      {"name": "Pantin", "source_ids": ["fr-schools-reuters-marketscreener"]},
+      {"name": "Strasbourg", "source_ids": ["fr-schools-reuters-marketscreener"]},
+      {"name": "Marseille", "source_ids": ["fr-schools-reuters-marketscreener"]},
+      {"name": "Rennes", "source_ids": ["fr-schools-reuters-marketscreener"]}
+    ],
+    "status_basis": {"text": "Reuters reports protests on 2 October and a later planned teachers' strike. It establishes neither a conclusion nor present-moment activity at the time of viewing.", "source_ids": ["fr-schools-reuters-marketscreener"]},
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted, no human sign-off. A complete updated Reuters wire was accessed via MarketScreener after direct Reuters access failed. These URLs are one reporting chain. The report's proposed below-inflation budget increase is not an established enacted concession or victory."
+  },
+  {
+    "event_id": "in-electoral-20261002",
+    "episode_scope": "The 2 October 2026 electoral-roll and election-commissioner protest episode in Mumbai and New Delhi. Excludes the movement's earlier education/examination campaign and its July outcome.",
+    "cities": [
+      {"name": "Mumbai", "source_ids": ["in-electoral-ap-seattle"]},
+      {"name": "New Delhi", "source_ids": ["in-ap", "in-electoral-ap-seattle"]}
+    ],
+    "status_basis": {"text": "AP describes renewed demonstrations and intended further mobilization, without an established end or suspension of this electoral episode. Current activity is unknown.", "source_ids": ["in-electoral-ap-seattle"]},
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted, no human sign-off. Direct AP extraction supplied dated captions/video; full text was read through an identified AP syndication. Both are one reporting chain. Allegations of electoral bias are disputed and do not establish an outcome favouring a party."
+  },
+  {
+    "event_id": "es-housing-20261002",
+    "episode_scope": "Madrid housing-affordability and tenant-protection demonstrations reported around the 2 October 2026 parliamentary housing-decree votes; excludes any inference about all Spanish housing protests ending.",
+    "cities": [{"name": "Madrid", "source_ids": ["es-aj"]}],
+    "status_basis": {"text": "The source reports demonstrations and describes an encampment, but gives no conclusion or suspension date. Parliamentary rejection does not establish protest end.", "source_ids": ["es-aj"]},
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-10-02",
+        "summary": "Parliament rejected both proposed government housing decrees; the proposed measures did not gain ratification in those votes.",
+        "favours": [
+          {"actor": "Spanish coalition government", "effect": "setback", "basis": "explicit", "note": "Its proposed housing measures were defeated in parliament; this is a legislative result, not a verdict on the entire housing movement."},
+          {"actor": "Junts, Popular Party and Vox lawmakers who opposed the decrees", "effect": "benefit", "basis": "inference", "note": "The vote matched their stated opposition to these particular measures. This does not establish a benefit to all landlords or an improvement in housing affordability."}
+        ],
+        "causality": "not-established",
+        "source_ids": ["es-aj"]
+      }
+    ],
+    "research_note": "AI-assisted, no human sign-off. Al Jazeera credits AP and Reuters; this is a linked evidence chain, not three independent reports. The article's preliminary agreement for one evicted resident is not treated as a completed return or nationwide victory."
+  }
+]

@@ -1,0 +1,213 @@
+{
+  "reviewed_at": "2026-10-02T21:28:24Z",
+  "decision": "correct-before-publication",
+  "corrections": [
+    {
+      "severity": "blocking",
+      "event_id": "ir-economic-unrest-2025-2026",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Anti-government demonstrators",
+      "target": "Economic conditions and Iran’s leadership",
+      "evidence": "Economic grievances broadened into slogans against authorities.",
+      "source_ids": [
+        "ir-economic-unrest-2025-2026-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "tl-lawmaker-pensions-protests-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Student demonstrators",
+      "target": "Lawmakers’ lifetime allowances",
+      "evidence": "Demanded cancellation of lifetime allowances.",
+      "source_ids": [
+        "tl-lawmaker-pensions-protests-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "np-gen-z-protests-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Youth anti-corruption demonstrators",
+      "target": "Corruption and social media restrictions",
+      "evidence": "Opposed corruption and the ban.",
+      "source_ids": [
+        "np-gen-z-protests-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "id-lawmakers-perks-protests-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Student groups and other demonstrators",
+      "target": "Lawmakers’ perks and policing",
+      "evidence": "Opposed allowances and sought police reform.",
+      "source_ids": [
+        "id-lawmakers-perks-protests-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "my-turun-anwar-rally-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Opposition rally participants",
+      "target": "Anwar’s premiership",
+      "evidence": "Demanded resignation over costs and reforms.",
+      "source_ids": [
+        "my-turun-anwar-rally-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "mn-anti-corruption-protests-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Anti-corruption demonstrators",
+      "target": "Alleged corruption involving the prime minister’s family",
+      "evidence": "Questioned alleged corruption and demanded the prime minister’s resignation.",
+      "source_ids": [
+        "mn-anti-corruption-protests-2025-reuters",
+        "mn-anti-corruption-protests-2025-bbc"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "kr-yoon-removal-protests-2024-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Anti-Yoon demonstrators",
+      "target": "Yoon’s presidency",
+      "evidence": "Called for Yoon’s ouster.",
+      "source_ids": [
+        "kr-yoon-removal-protests-2024-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "tr-imamoglu-detention-protests-2025",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "CHP-led demonstrators",
+      "target": "İmamoğlu’s detention",
+      "evidence": "Sought release and an early election.",
+      "source_ids": [
+        "tr-imamoglu-detention-protests-2025-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "pk-khan-islamabad-sitin-2024",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Pakistan Tehreek-e-Insaf supporters",
+      "target": "Imran Khan’s detention",
+      "evidence": "Demanded Khan’s release.",
+      "source_ids": [
+        "pk-khan-islamabad-sitin-2024-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "bd-quota-uprising-2024",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Students Against Discrimination",
+      "target": "Job quotas and Hasina’s government",
+      "evidence": "Sought quota reform, then Hasina’s resignation.",
+      "source_ids": [
+        "bd-quota-uprising-2024-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "am-border-policy-protests-2024",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Anti-government demonstrators",
+      "target": "Pashinyan’s border policies and premiership",
+      "evidence": "Demanded his resignation.",
+      "source_ids": [
+        "am-border-policy-protests-2024-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "ge-foreign-influence-law-protests-2024",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Opponents of the foreign influence bill",
+      "target": "Foreign influence legislation",
+      "evidence": "Opposed the bill as a threat to dissent.",
+      "source_ids": [
+        "ge-foreign-influence-law-protests-2024-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "blocking",
+      "event_id": "jo-israel-treaty-rallies-2024",
+      "file": "public/events.json",
+      "path": "positions[0].stance",
+      "observed": "support",
+      "expected": "oppose",
+      "actor": "Pro-Palestinian demonstrators",
+      "target": "Jordan’s peace treaty and Israel’s embassy",
+      "evidence": "Demanded treaty termination and embassy closure.",
+      "source_ids": [
+        "jo-israel-treaty-rallies-2024-reuters"
+      ],
+      "reason": "The stance contradicts its own attributed claim and reverses the actor’s stated position. Change stance relative to the existing target; do not change the sourced claim."
+    },
+    {
+      "severity": "required-provenance",
+      "event_id": "tz-drivers-20260929",
+      "file": "public/event-context.json",
+      "path": "status_basis.source_ids",
+      "expected": [
+        "tz-drivers-20260929-source-1",
+        "tz-drivers-20260929-source-2"
+      ],
+      "reason": "The status basis invokes both reports and October 1 resumed transport, while its reference list currently names only source 1. Source 1 supports September 30 suspension but describes expected return, so cite the already-published second report for the additional resumption statement."
+    }
+  ]
+}

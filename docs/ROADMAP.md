@@ -1,12 +1,12 @@
 # Protest Atlas roadmap and delivery tracker
 
-Updated for release 2, 2 October 2026. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
+Updated for release 3, 2 October 2026. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
 
 ## Product decision
 
 Build an accessible static website on GitHub Pages, backed by a versioned event ledger and automated discovery. Give a reader a short, attributable answer to: where, when, what issue, who supports/opposes what, what occurred, how the state responded, and how recently this was observed. Make the source trail and missing evidence immediately available.
 
-Worldwide discovery is an ambition. Release 2 remains a bounded reporting pilot: three English-source checks for France, India and Spain, with 246 directory entries not reviewed. Coverage must expand with language competence and review capacity. Three published countries out of 249 directory entries is a count of publication scope, not a percentage of worldwide protests captured. The delivered map and editor tools do not add source checks or human editorial approval.
+Worldwide recall remains unestablished. Release 3 has 84 sourced episodes in 81 countries/territories and initial searches logged for all 249 directory entries, covering 2024-01-01 through 2026-10-02. There are 118 sourced city references, 18 ended/suspended episodes and 57 episodes with documented outcomes. The remaining 168 countries have no published episode; no country is certified exhaustive. Source checks remain predominantly English and AI-assisted. Published-country counts measure this dataset, not the proportion of worldwide protests captured. See HISTORICAL_RESEARCH.md for the audit and next priorities.
 
 ## Expert panel decisions
 
@@ -25,8 +25,8 @@ The panel consists of AI agents playing research, UX, engineering, and advisor/s
 
 | Area | Initial implementation | Next increment and acceptance criterion |
 | --- | --- | --- |
-| Event browsing | Responsive list and linked map/panel; text, country, status, issue and region filters; last-observed 7/30-day presets; shareable filter URL | Broader date intervals and movement/episode navigation; reloaded URLs must preserve filter results |
-| Country coverage | 249-entry country-language ledger; three limited English-source checks, 246 not reviewed; actual check times and source references | Document staffed local-language reviews, attempted searches and source gaps without inventing dates; no empty-country zero claims |
+| Event browsing | Responsive list and linked map/panel; text, country, status, issue and region filters; last-observed 7/30-day presets; shareable filter URL | City, reported-year and documented-outcome filters delivered in release 3; next: arbitrary date intervals and movement/episode navigation |
+| Country coverage | 249-entry initial-search ledger plus separate source-language checks in 81 countries; actual query/access times and source references | Document staffed local-language reviews, attempted searches and source gaps without inventing dates; no empty-country zero claims |
 | Position | Actor + support/oppose/mixed/unclear + explicit target + source refs | Separate organized counter-demonstration links and policy positions; no invented false balance |
 | Timeframe | Observed date separate from source publication/check date; unknown start/end | Movement/episode hierarchy and precision intervals; historical article cannot enter current window |
 | Intensity | Sourced descriptive turnout/disruption/violence dimensions | Structured attributed ranges with denominator/window and source refs per dimension; never aggregate into a severity number |
@@ -61,9 +61,21 @@ Exit: source-backed claims, no unsupported “live global” wording, no secrets
 
 Acceptance: map and index use the same filtered records; colors describe publication coverage only; every directory entry remains accessible; dates age against source observation; synthetic examples stay labeled and excluded from reported export; reload reproduces shared filters; imported leads cannot become public events through the review desk. Root release checks and deployment evidence remain in `RELEASE_EVIDENCE.md`.
 
+### Release 3 — history, city references and outcomes
+
+- [x] Initial historical search logged for every directory entry, including retained failed attempts and retries.
+- [x] 84 sourced episodes across 81 countries; 118 city references, 101 coarse mapped points and 17 explicitly unmapped names.
+- [x] Reported-year, city and outcome filters shared by map, index, URL and CSV.
+- [x] Black-shadow treatment for 18 sourced ended/suspended episodes; unknown endings remain unknown.
+- [x] Results for 57 episodes, with named actor effects, inference labels, source references and causal limitations.
+- [x] Five regional research agents and a separate skeptical advisor; semantic stance corrections applied before publication.
+- [x] Strict context/search/geography validators and reproducible merge from regional inputs.
+
+Acceptance: no search-only candidate is presented as a sourced episode; historical reports cannot imply current activity; city markers represent generalized city references; every outcome and ending has local source references. Deployment and browser evidence: RELEASE_EVIDENCE.md.
+
 ### P1 — maintainable human-reviewed pilot (estimated weeks 1–2)
 
-- [ ] Appoint an editorial owner and backup; establish capacity before adding countries. Start with 5–10 countries across several regions and languages selected by actual reviewer availability.
+- [ ] Appoint an editorial owner and backup; establish capacity before adding countries. Start the independently reviewed track with 5–10 countries across several regions and languages selected by actual reviewer availability; the wider AI-assisted snapshot does not constitute that track.
 - [ ] Expand the delivered `coverage.json` ledger with actual staffed language/source review windows, documented search attempts and gap reasons. A failed search does not establish absence of protests.
 - [ ] Extend the delivered local review desk with episode grouping and source dependency review; wire copies must not become independent corroboration. URL deduplication alone does not establish event uniqueness.
 - [ ] Establish reviewer identity/role and independent sign-off for the human-reviewed track. The draft disposition “ready for editor” is not that sign-off.
@@ -74,7 +86,7 @@ Exit: sampled claims independently checked; every ongoing record has activity ev
 
 ### P2 — geographic and temporal understanding (estimated weeks 3–4)
 
-The country overview is delivered in release 2 using D3 Equal Earth and local Natural Earth/world-atlas assets; it replaces the earlier Leaflet proposal. The directory remains a complete alternative to the simplified geometry. Keep boundaries and disputed-area conventions explicit. Remaining work: movement-to-episode relations, broader date-range filters beyond the delivered observation presets, timeline diffs, source-language labels and original-versus-translated text provenance. Maintain keyboard equivalence and 200% zoom.
+The country overview is delivered in release 2 using D3 Equal Earth and local Natural Earth/world-atlas assets; it replaces the earlier Leaflet proposal. The directory remains a complete alternative to the simplified geometry. Keep boundaries and disputed-area conventions explicit. Release 3 adds coarse city references and reported-year filters. Remaining work: movement-to-episode relations, arbitrary date-range filters, timeline diffs, per-source language display and original-versus-translated text provenance. Maintain keyboard equivalence and 200% zoom.
 
 Exit: map and list counts agree; no-data areas remain visibly unknown; subdirectory deployment and stale-state rendering remain correct; map resources work without a paid API key.
 

@@ -1,8 +1,138 @@
 {
-  "schema_version": 1,
-  "checked_at": "2026-10-02T20:02:59.751499Z",
+  "schema_version": 2,
+  "checked_at": "2026-10-02T21:31:50Z",
   "human_editorial_review": false,
-  "coverage_note": "Ledger assembled from the three seed source checks and the 249-entry country/territory catalog. The ledger audit time is not a fresh event review. English-source checks do not establish local-language coverage. Not reviewed means a coverage gap, never no protests. No human editorial review is claimed.",
+  "coverage_note": "Selected source checks, not exhaustive country coverage. Source languages describe text actually read; null means not recorded. A search alone does not mark a country reviewed.",
+  "source_languages": {
+    "in-ap": "English",
+    "in-electoral-ap-seattle": "English",
+    "fr-reuters": "English",
+    "fr-schools-reuters-marketscreener": "English",
+    "es-aj": "English",
+    "tz-drivers-20260929-source-1": "English",
+    "tz-drivers-20260929-source-2": "English",
+    "au-victorian-hospital-strike-20261001-abc": "English",
+    "as-noaa-seabed-mining-protest-20260902-talanei": "English",
+    "al-flamingo-rallies-2026-bbc": "English",
+    "al-flamingo-rallies-2026-ata": "English",
+    "ht-textile-minimum-wage-protests-2026-s1": "English",
+    "ht-textile-minimum-wage-protests-2026-s2": "English",
+    "do-romero-mine-protests-2026-s1": "English",
+    "ar-labor-reform-protests-2026-s1": "English",
+    "fj-yaqara-pastoral-strike-20260216-village": "English",
+    "fj-yaqara-pastoral-strike-20260216-times": "English",
+    "fj-yaqara-pastoral-strike-20260216-sun": "English",
+    "eg-jadetextile-20260208-source-1": "English",
+    "gl-self-determination-rally-2026-s1": "English",
+    "dk-greenland-solidarity-2026-reuters": "English",
+    "ir-economic-unrest-2025-2026-reuters": "English",
+    "vu-teachers-resumed-strike-20240810-court": "English",
+    "vu-teachers-resumed-strike-20240810-rnz": "English",
+    "vu-teachers-resumed-strike-20240810-post": "English",
+    "pt-labour-reform-strike-2025-bbc": "English",
+    "bg-budget-protests-2025-bbc": "English",
+    "ug-traders-20251104-source-1": "English",
+    "ec-diesel-subsidy-strike-2025-s1": "English",
+    "ec-diesel-subsidy-strike-2025-s2": "English",
+    "tn-gabes-20251021-source-1": "English",
+    "ma-genz212-20250927-source-1": "English",
+    "ma-genz212-20250927-source-2": "English",
+    "ma-genz212-20250927-source-3": "English",
+    "mg-genz-20250925-source-1": "English",
+    "mg-genz-20250925-source-2": "English",
+    "ng-pengassan-20250928-source-1": "English",
+    "ng-pengassan-20250928-source-2": "English",
+    "gh-tewu-20251001-source-1": "English",
+    "py-youth-accountability-protests-2025-s1": "English",
+    "tl-lawmaker-pensions-protests-2025-reuters": "English",
+    "tl-lawmaker-pensions-protests-2025-afp-abc": "English",
+    "et-healthworkers-20250513-source-1": "English",
+    "et-healthworkers-20250513-source-2": "English",
+    "cy-cola-strike-2025-source": "English",
+    "np-gen-z-protests-2025-reuters": "English",
+    "np-gen-z-protests-2025-abc": "English",
+    "id-lawmakers-perks-protests-2025-reuters": "English",
+    "ua-anti-graft-independence-2025-bbc": "English",
+    "ua-anti-graft-independence-2025-reuters": "English",
+    "ao-fuel-20250728-source-1": "English",
+    "my-turun-anwar-rally-2025-reuters": "English",
+    "tg-governance-20250626-source-1": "English",
+    "co-labor-referendum-strike-2025-s1": "English",
+    "co-labor-referendum-strike-2025-s2": "Spanish",
+    "pa-banana-strike-2025-s1": "English",
+    "mn-anti-corruption-protests-2025-reuters": "English",
+    "mn-anti-corruption-protests-2025-bbc": "English",
+    "nz-wellington-treaty-hikoi-20241119-rnz": "English",
+    "nz-wellington-treaty-hikoi-20241119-justice": "English",
+    "hu-pride-ban-protests-2025-ap": "English",
+    "es-housing-demonstrations-2025-reuters": "English",
+    "es-housing-demonstrations-2025-guardian": "English",
+    "ad-housing-rally-2025-civicus": "English",
+    "kr-yoon-removal-protests-2024-2025-reuters": "English",
+    "kr-yoon-removal-protests-2024-2025-december-reuters": "English",
+    "tr-imamoglu-detention-protests-2025-reuters": "English",
+    "sb-guadalcanal-health-sitin-202501-sibc": "English",
+    "sb-guadalcanal-health-sitin-202501-star": "English",
+    "sx-palestine-protest-rights-2025-s1": "English",
+    "gr-tempe-accountability-2025-ap": "English",
+    "ck-china-partnership-rallies-20250218-abc": "English",
+    "ck-china-partnership-rallies-20250218-rnz": "English",
+    "ck-china-partnership-rallies-20250218-cin": "English",
+    "dz-teachers-20250211-source-1": "English",
+    "ba-flood-accountability-2025-reuters": "English",
+    "rs-station-accountability-2024-2025-rferl": "English",
+    "mz-election-20241021-source-1": "English",
+    "ca-postal-strike-2024-s1": "English",
+    "ca-postal-strike-2024-s2": "English",
+    "ca-postal-strike-2024-s3": "English",
+    "ca-postal-strike-2024-s4": "English",
+    "pk-khan-islamabad-sitin-2024-reuters": "English",
+    "sv-public-sector-budget-march-2024-s1": "English",
+    "tw-bluebird-legislative-protests-20240528-taipeitimes": "English",
+    "tw-bluebird-legislative-protests-20240528-court": "English",
+    "sg-workers-placard-action-2024-source": "English",
+    "pe-lima-transport-security-strike-2024-s1": "English",
+    "mx-judges-strike-2024-s1": "English",
+    "mx-judges-strike-2024-s2": "Spanish",
+    "mx-judges-strike-2024-s3": "Spanish",
+    "za-decentwork-20241007-source-1": "English",
+    "us-port-strike-2024-s1": "English",
+    "gb-england-doctor-strikes-2024-bma": "English",
+    "gb-england-doctor-strikes-2024-government": "English",
+    "gb-england-doctor-strikes-2024-bbc-start": "English",
+    "il-histadrut-hostage-strike-2024-reuters": "English",
+    "gy-teachers-pay-strikes-2024-s1": "English",
+    "gy-teachers-pay-strikes-2024-s2": "English",
+    "bd-quota-uprising-2024-reuters": "English",
+    "bd-quota-uprising-2024-ohchr": "English",
+    "bd-quota-uprising-2024-quota-reuters": "English",
+    "ve-election-protests-2024-s1": "English",
+    "br-federal-education-strike-2024-s1": "Portuguese",
+    "ke-financebill-202406-source-1": "English",
+    "nc-electoral-reform-unrest-2024-abc": "English",
+    "nc-electoral-reform-unrest-2024-rnz": "English",
+    "am-border-policy-protests-2024-reuters": "English",
+    "fo-workers-wage-strike-2024-localfo-end": "English",
+    "fo-workers-wage-strike-2024-localfo-start": "English",
+    "ge-foreign-influence-law-protests-2024-reuters": "English",
+    "bj-livingcosts-20240427-source-1": "English",
+    "pl-ukraine-border-farm-blockades-2024-reuters": "English",
+    "jo-israel-treaty-rallies-2024-reuters": "English",
+    "cu-santiago-shortages-protests-2024-s1": "English",
+    "sn-electiondelay-202402-source-1": "English",
+    "sn-electiondelay-202402-source-2": "English",
+    "sn-electiondelay-202402-source-3": "English",
+    "gn-generalstrike-20240226-source-1": "English",
+    "in-farmers-march-2024-reuters": "English",
+    "fr-farmers-blockades-2024-rfi": "English",
+    "fi-labour-reform-strikes-2024-reuters": "English",
+    "ee-teachers-strike-2024-err": "English",
+    "ee-teachers-strike-2024-ministry": "Estonian",
+    "pg-port-moresby-payroll-protest-20240110-abc": "English",
+    "pg-port-moresby-payroll-protest-20240110-national": "English",
+    "de-farm-subsidy-protests-2024-reuters-protest": "English",
+    "de-farm-subsidy-protests-2024-reuters-policy": "English"
+  },
   "countries": [
     {
       "code": "AF",
@@ -11,7 +141,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AX",
@@ -20,52 +150,88 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AL",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:57.603Z",
+      "review_window": {
+        "start": "2026-07-04",
+        "end": "2026-07-28"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "al-flamingo-rallies-2026-bbc",
+        "al-flamingo-rallies-2026-ata"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "DZ",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:40.941Z",
+      "review_window": {
+        "start": "2025-02-12",
+        "end": "2025-02-12"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "dz-teachers-20250211-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AS",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2026-09-03",
+        "end": "2026-09-03"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "as-noaa-seabed-mining-protest-20260902-talanei"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AD",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2025-04-23",
+        "end": "2025-04-23"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ad-housing-rally-2025-civicus"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AO",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:40.941Z",
+      "review_window": {
+        "start": "2025-07-30",
+        "end": "2025-07-30"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ao-fuel-20250728-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AI",
@@ -74,7 +240,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AQ",
@@ -83,7 +249,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AG",
@@ -92,25 +258,39 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2026-02-27",
+        "end": "2026-02-27"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ar-labor-reform-protests-2026-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AM",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:26.155Z",
+      "review_window": {
+        "start": "2024-06-12",
+        "end": "2024-06-12"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "am-border-policy-protests-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AW",
@@ -119,16 +299,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AU",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:18.222Z",
+      "review_window": {
+        "start": "2026-10-01",
+        "end": "2026-10-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "au-victorian-hospital-strike-20261001-abc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AT",
@@ -137,7 +324,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "AZ",
@@ -146,7 +333,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BS",
@@ -155,7 +342,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BH",
@@ -164,16 +351,25 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BD",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:56.615Z",
+      "review_window": {
+        "start": "2024-07-23",
+        "end": "2024-08-07"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "bd-quota-uprising-2024-reuters",
+        "bd-quota-uprising-2024-ohchr",
+        "bd-quota-uprising-2024-quota-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "BB",
@@ -182,7 +378,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BY",
@@ -191,7 +387,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BE",
@@ -200,7 +396,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BZ",
@@ -209,16 +405,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BJ",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:43.695Z",
+      "review_window": {
+        "start": "2024-05-10",
+        "end": "2024-05-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "bj-livingcosts-20240427-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "BM",
@@ -227,7 +430,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BT",
@@ -236,7 +439,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BO",
@@ -245,7 +448,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BQ",
@@ -254,16 +457,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2025-02-10",
+        "end": "2025-02-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ba-flood-accountability-2025-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "BW",
@@ -272,7 +482,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BV",
@@ -281,16 +491,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:01.603Z",
+      "review_window": {
+        "start": "2024-06-27",
+        "end": "2024-06-27"
+      },
+      "languages": [
+        "Portuguese"
+      ],
+      "source_ids": [
+        "br-federal-education-strike-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "IO",
@@ -299,7 +516,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BN",
@@ -308,16 +525,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2025-12-02",
+        "end": "2025-12-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "bg-budget-protests-2025-bbc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "BF",
@@ -326,7 +550,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BI",
@@ -335,7 +559,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CV",
@@ -344,7 +568,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KH",
@@ -353,7 +577,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CM",
@@ -362,16 +586,26 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:23:44.808Z",
+      "review_window": {
+        "start": "2024-12-15",
+        "end": "2024-12-18"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ca-postal-strike-2024-s1",
+        "ca-postal-strike-2024-s2",
+        "ca-postal-strike-2024-s3",
+        "ca-postal-strike-2024-s4"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "KY",
@@ -380,7 +614,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CF",
@@ -389,7 +623,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TD",
@@ -398,7 +632,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CL",
@@ -407,7 +641,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CN",
@@ -416,7 +650,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CX",
@@ -425,7 +659,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CC",
@@ -434,16 +668,25 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CO",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2025-05-28",
+        "end": "2025-06-20"
+      },
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "source_ids": [
+        "co-labor-referendum-strike-2025-s1",
+        "co-labor-referendum-strike-2025-s2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "KM",
@@ -452,7 +695,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CG",
@@ -461,7 +704,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CD",
@@ -470,16 +713,25 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CK",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:18.222Z",
+      "review_window": {
+        "start": "2025-02-19",
+        "end": "2025-02-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ck-china-partnership-rallies-20250218-abc",
+        "ck-china-partnership-rallies-20250218-rnz",
+        "ck-china-partnership-rallies-20250218-cin"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "CR",
@@ -488,7 +740,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CI",
@@ -497,7 +749,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "HR",
@@ -506,16 +758,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CU",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2024-03-18",
+        "end": "2024-03-18"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "cu-santiago-shortages-protests-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "CW",
@@ -524,16 +783,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CY",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:18:54.825Z",
+      "review_window": {
+        "start": "2025-09-11",
+        "end": "2025-09-11"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "cy-cola-strike-2025-source"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "CZ",
@@ -542,16 +808,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "DK",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:54.861Z",
+      "review_window": {
+        "start": "2026-01-17",
+        "end": "2026-01-17"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "dk-greenland-solidarity-2026-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "DJ",
@@ -560,7 +833,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "DM",
@@ -569,43 +842,72 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "DO",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2026-05-05",
+        "end": "2026-05-05"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "do-romero-mine-protests-2026-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "EC",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:01.603Z",
+      "review_window": {
+        "start": "2025-10-21",
+        "end": "2025-10-22"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ec-diesel-subsidy-strike-2025-s1",
+        "ec-diesel-subsidy-strike-2025-s2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "EG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:46.430Z",
+      "review_window": {
+        "start": "2026-02-10",
+        "end": "2026-02-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "eg-jadetextile-20260208-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SV",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2024-11-01",
+        "end": "2024-11-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "sv-public-sector-budget-march-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GQ",
@@ -614,7 +916,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ER",
@@ -623,16 +925,25 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "EE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:15.166Z",
+      "review_window": {
+        "start": "2024-01-30",
+        "end": "2024-01-30"
+      },
+      "languages": [
+        "English",
+        "Estonian"
+      ],
+      "source_ids": [
+        "ee-teachers-strike-2024-err",
+        "ee-teachers-strike-2024-ministry"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SZ",
@@ -641,16 +952,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ET",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:49.097Z",
+      "review_window": {
+        "start": "2025-06-26",
+        "end": "2025-09-12"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "et-healthworkers-20250513-source-1",
+        "et-healthworkers-20250513-source-2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "FK",
@@ -659,50 +978,76 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "FO",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2024-05-14",
+        "end": "2024-06-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "fo-workers-wage-strike-2024-localfo-end",
+        "fo-workers-wage-strike-2024-localfo-start"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "FJ",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:18.222Z",
+      "review_window": {
+        "start": "2026-02-17",
+        "end": "2026-02-21"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "fj-yaqara-pastoral-strike-20260216-village",
+        "fj-yaqara-pastoral-strike-20260216-times",
+        "fj-yaqara-pastoral-strike-20260216-sun"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "FI",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:54.861Z",
+      "review_window": {
+        "start": "2024-02-01",
+        "end": "2024-02-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "fi-labour-reform-strikes-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "FR",
       "status": "limited-source-check",
-      "last_checked": "2026-10-02T19:15:18Z",
+      "last_checked": "2026-10-02T21:14:53.028Z",
       "review_window": {
-        "start": "2026-10-02",
+        "start": "2024-02-01",
         "end": "2026-10-02"
       },
       "languages": [
         "English"
       ],
       "source_ids": [
-        "fr-reuters"
+        "fr-reuters",
+        "fr-schools-reuters-marketscreener",
+        "fr-farmers-blockades-2024-rfi"
       ],
-      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GF",
@@ -711,7 +1056,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PF",
@@ -720,7 +1065,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TF",
@@ -729,7 +1074,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GA",
@@ -738,7 +1083,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GM",
@@ -747,34 +1092,56 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:27.629Z",
+      "review_window": {
+        "start": "2024-06-03",
+        "end": "2024-06-03"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ge-foreign-influence-law-protests-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "DE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:53.028Z",
+      "review_window": {
+        "start": "2024-01-04",
+        "end": "2024-01-08"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "de-farm-subsidy-protests-2024-reuters-protest",
+        "de-farm-subsidy-protests-2024-reuters-policy"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GH",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:49.097Z",
+      "review_window": {
+        "start": "2025-10-01",
+        "end": "2025-10-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gh-tewu-20251001-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GI",
@@ -783,25 +1150,39 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2025-02-28",
+        "end": "2025-02-28"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gr-tempe-accountability-2025-ap"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GL",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2026-01-17",
+        "end": "2026-01-17"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gl-self-determination-rally-2026-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GD",
@@ -810,7 +1191,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GP",
@@ -819,7 +1200,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GU",
@@ -828,7 +1209,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GT",
@@ -837,7 +1218,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GG",
@@ -846,16 +1227,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GN",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:12:43.695Z",
+      "review_window": {
+        "start": "2024-02-29",
+        "end": "2024-02-29"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gn-generalstrike-20240226-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GW",
@@ -864,25 +1252,41 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GY",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:01.603Z",
+      "review_window": {
+        "start": "2024-06-21",
+        "end": "2024-08-21"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gy-teachers-pay-strikes-2024-s1",
+        "gy-teachers-pay-strikes-2024-s2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "HT",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2026-04-13",
+        "end": "2026-05-08"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ht-textile-minimum-wage-protests-2026-s1",
+        "ht-textile-minimum-wage-protests-2026-s2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "HM",
@@ -891,7 +1295,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "VA",
@@ -900,7 +1304,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "HN",
@@ -909,7 +1313,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "HK",
@@ -918,16 +1322,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "HU",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:22:16.463761Z",
+      "review_window": {
+        "start": "2025-04-08",
+        "end": "2025-04-08"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "hu-pride-ban-protests-2025-ap"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "IS",
@@ -936,41 +1347,57 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "IN",
       "status": "limited-source-check",
-      "last_checked": "2026-10-02T19:15:18Z",
+      "last_checked": "2026-10-02T21:14:23.514Z",
       "review_window": {
-        "start": "2026-10-02",
+        "start": "2024-02-21",
         "end": "2026-10-02"
       },
       "languages": [
         "English"
       ],
       "source_ids": [
-        "in-ap"
+        "in-ap",
+        "in-electoral-ap-seattle",
+        "in-farmers-march-2024-reuters"
       ],
-      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "ID",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:51.351Z",
+      "review_window": {
+        "start": "2025-09-02",
+        "end": "2025-09-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "id-lawmakers-perks-protests-2025-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "IR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:15.819Z",
+      "review_window": {
+        "start": "2026-01-09",
+        "end": "2026-01-09"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ir-economic-unrest-2025-2026-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "IQ",
@@ -979,7 +1406,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "IE",
@@ -988,7 +1415,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "IM",
@@ -997,16 +1424,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "IL",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:20.581Z",
+      "review_window": {
+        "start": "2024-09-02",
+        "end": "2024-09-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "il-histadrut-hostage-strike-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "IT",
@@ -1015,7 +1449,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "JM",
@@ -1024,7 +1458,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "JP",
@@ -1033,7 +1467,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "JE",
@@ -1042,16 +1476,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "JO",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:19.194Z",
+      "review_window": {
+        "start": "2024-03-29",
+        "end": "2024-03-29"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "jo-israel-treaty-rallies-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "KZ",
@@ -1060,16 +1501,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:01.478Z",
+      "review_window": {
+        "start": "2024-06-26",
+        "end": "2024-06-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ke-financebill-202406-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "KI",
@@ -1078,7 +1526,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KP",
@@ -1087,16 +1535,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:20:19.364Z",
+      "review_window": {
+        "start": "2024-12-21",
+        "end": "2025-04-04"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "kr-yoon-removal-protests-2024-2025-reuters",
+        "kr-yoon-removal-protests-2024-2025-december-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "KW",
@@ -1105,7 +1561,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KG",
@@ -1114,7 +1570,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LA",
@@ -1123,7 +1579,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LV",
@@ -1132,7 +1588,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LB",
@@ -1141,7 +1597,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LS",
@@ -1150,7 +1606,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LR",
@@ -1159,7 +1615,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LY",
@@ -1168,7 +1624,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LI",
@@ -1177,7 +1633,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LT",
@@ -1186,7 +1642,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LU",
@@ -1195,7 +1651,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MO",
@@ -1204,16 +1660,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:43.327Z",
+      "review_window": {
+        "start": "2025-10-01",
+        "end": "2025-10-14"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "mg-genz-20250925-source-1",
+        "mg-genz-20250925-source-2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "MW",
@@ -1222,16 +1686,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MY",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:21:34.758Z",
+      "review_window": {
+        "start": "2025-07-26",
+        "end": "2025-07-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "my-turun-anwar-rally-2025-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "MV",
@@ -1240,7 +1711,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ML",
@@ -1249,7 +1720,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MT",
@@ -1258,7 +1729,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MH",
@@ -1267,7 +1738,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MQ",
@@ -1276,7 +1747,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MR",
@@ -1285,7 +1756,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MU",
@@ -1294,7 +1765,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "YT",
@@ -1303,16 +1774,26 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MX",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:21:14.198Z",
+      "review_window": {
+        "start": "2024-10-13",
+        "end": "2024-10-16"
+      },
+      "languages": [
+        "English",
+        "Spanish"
+      ],
+      "source_ids": [
+        "mx-judges-strike-2024-s1",
+        "mx-judges-strike-2024-s2",
+        "mx-judges-strike-2024-s3"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "FM",
@@ -1321,7 +1802,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MD",
@@ -1330,7 +1811,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MC",
@@ -1339,16 +1820,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MN",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:33.391Z",
+      "review_window": {
+        "start": "2025-06-03",
+        "end": "2025-06-03"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "mn-anti-corruption-protests-2025-reuters",
+        "mn-anti-corruption-protests-2025-bbc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "ME",
@@ -1357,7 +1846,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MS",
@@ -1366,25 +1855,38 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:18:11.880Z",
+      "review_window": {
+        "start": "2025-09-29",
+        "end": "2025-10-16"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ma-genz212-20250927-source-1",
+        "ma-genz212-20250927-source-2",
+        "ma-genz212-20250927-source-3"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "MZ",
-      "status": "not-reviewed",
-      "last_checked": null,
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:06.859Z",
       "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "mz-election-20241021-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "MM",
@@ -1393,7 +1895,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NA",
@@ -1402,7 +1904,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NR",
@@ -1411,16 +1913,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NP",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:20:04.244Z",
+      "review_window": {
+        "start": "2025-09-09",
+        "end": "2025-09-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "np-gen-z-protests-2025-reuters",
+        "np-gen-z-protests-2025-abc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "NL",
@@ -1429,25 +1939,41 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NC",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2024-06-12",
+        "end": "2024-06-13"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "nc-electoral-reform-unrest-2024-abc",
+        "nc-electoral-reform-unrest-2024-rnz"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "NZ",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2024-11-20",
+        "end": "2024-11-20"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "nz-wellington-treaty-hikoi-20241119-rnz",
+        "nz-wellington-treaty-hikoi-20241119-justice"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "NI",
@@ -1456,7 +1982,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NE",
@@ -1465,16 +1991,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:46.023Z",
+      "review_window": {
+        "start": "2025-10-01",
+        "end": "2025-10-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ng-pengassan-20250928-source-1",
+        "ng-pengassan-20250928-source-2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "NU",
@@ -1483,7 +2017,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NF",
@@ -1492,7 +2026,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MK",
@@ -1501,7 +2035,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MP",
@@ -1510,7 +2044,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "NO",
@@ -1519,7 +2053,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "OM",
@@ -1528,16 +2062,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PK",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:24.780Z",
+      "review_window": {
+        "start": "2024-11-27",
+        "end": "2024-11-27"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pk-khan-islamabad-sitin-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PW",
@@ -1546,7 +2087,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PS",
@@ -1555,43 +2096,69 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:01.603Z",
+      "review_window": {
+        "start": "2025-06-12",
+        "end": "2025-06-12"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pa-banana-strike-2025-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:18.222Z",
+      "review_window": {
+        "start": "2024-01-10",
+        "end": "2024-01-16"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pg-port-moresby-payroll-protest-20240110-abc",
+        "pg-port-moresby-payroll-protest-20240110-national"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PY",
-      "status": "not-reviewed",
-      "last_checked": null,
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
       "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "py-youth-accountability-protests-2025-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2024-10-23",
+        "end": "2024-10-23"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pe-lima-transport-security-strike-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PH",
@@ -1600,7 +2167,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PN",
@@ -1609,25 +2176,39 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PL",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:36.559Z",
+      "review_window": {
+        "start": "2024-04-29",
+        "end": "2024-04-29"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pl-ukraine-border-farm-blockades-2024-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PT",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:26.116Z",
+      "review_window": {
+        "start": "2025-12-11",
+        "end": "2025-12-11"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "pt-labour-reform-strike-2025-bbc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "PR",
@@ -1636,7 +2217,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "QA",
@@ -1645,7 +2226,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "RE",
@@ -1654,7 +2235,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "RO",
@@ -1663,7 +2244,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "RU",
@@ -1672,7 +2253,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "RW",
@@ -1681,7 +2262,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "BL",
@@ -1690,7 +2271,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SH",
@@ -1699,7 +2280,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "KN",
@@ -1708,7 +2289,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "LC",
@@ -1717,7 +2298,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "MF",
@@ -1726,7 +2307,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "PM",
@@ -1735,7 +2316,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "VC",
@@ -1744,7 +2325,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "WS",
@@ -1753,7 +2334,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SM",
@@ -1762,7 +2343,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ST",
@@ -1771,7 +2352,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SA",
@@ -1780,25 +2361,41 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SN",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:14:40.507Z",
+      "review_window": {
+        "start": "2024-02-10",
+        "end": "2024-03-06"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "sn-electiondelay-202402-source-1",
+        "sn-electiondelay-202402-source-2",
+        "sn-electiondelay-202402-source-3"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "RS",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:37.245Z",
+      "review_window": {
+        "start": "2025-01-28",
+        "end": "2025-01-28"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "rs-station-accountability-2024-2025-rferl"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SC",
@@ -1807,7 +2404,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SL",
@@ -1816,25 +2413,39 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:18:54.825Z",
+      "review_window": {
+        "start": "2024-10-26",
+        "end": "2024-10-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "sg-workers-placard-action-2024-source"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SX",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2025-03-14",
+        "end": "2025-03-14"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "sx-palestine-protest-rights-2025-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SK",
@@ -1843,7 +2454,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SI",
@@ -1852,16 +2463,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SB",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2025-01-31",
+        "end": "2025-03-21"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "sb-guadalcanal-health-sitin-202501-sibc",
+        "sb-guadalcanal-health-sitin-202501-star"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "SO",
@@ -1870,16 +2489,23 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ZA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:06.859Z",
+      "review_window": {
+        "start": "2024-10-07",
+        "end": "2024-10-07"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "za-decentwork-20241007-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "GS",
@@ -1888,7 +2514,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SS",
@@ -1897,23 +2523,25 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ES",
       "status": "limited-source-check",
-      "last_checked": "2026-10-02T19:15:18Z",
+      "last_checked": "2026-10-02T21:16:56.862Z",
       "review_window": {
-        "start": "2026-10-02",
+        "start": "2025-04-05",
         "end": "2026-10-02"
       },
       "languages": [
         "English"
       ],
       "source_ids": [
-        "es-aj"
+        "es-aj",
+        "es-housing-demonstrations-2025-reuters",
+        "es-housing-demonstrations-2025-guardian"
       ],
-      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "LK",
@@ -1922,7 +2550,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SD",
@@ -1931,7 +2559,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SR",
@@ -1940,7 +2568,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SJ",
@@ -1949,7 +2577,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SE",
@@ -1958,7 +2586,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "CH",
@@ -1967,7 +2595,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "SY",
@@ -1976,16 +2604,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TW",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2024-05-29",
+        "end": "2024-05-29"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tw-bluebird-legislative-protests-20240528-taipeitimes",
+        "tw-bluebird-legislative-protests-20240528-court"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TJ",
@@ -1994,16 +2630,24 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TZ",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:01.479Z",
+      "review_window": {
+        "start": "2026-09-30",
+        "end": "2026-10-01"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tz-drivers-20260929-source-1",
+        "tz-drivers-20260929-source-2"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TH",
@@ -2012,25 +2656,40 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TL",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:20:02.295Z",
+      "review_window": {
+        "start": "2025-09-17",
+        "end": "2025-09-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tl-lawmaker-pensions-protests-2025-reuters",
+        "tl-lawmaker-pensions-protests-2025-afp-abc"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:04.200Z",
+      "review_window": {
+        "start": "2025-06-26",
+        "end": "2025-06-26"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tg-governance-20250626-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TK",
@@ -2039,7 +2698,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TO",
@@ -2048,7 +2707,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TT",
@@ -2057,25 +2716,39 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TN",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:04.200Z",
+      "review_window": {
+        "start": "2025-10-21",
+        "end": "2025-10-21"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tn-gabes-20251021-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TR",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:15:56.535Z",
+      "review_window": {
+        "start": "2025-03-29",
+        "end": "2025-03-29"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "tr-imamoglu-detention-protests-2025-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "TM",
@@ -2084,7 +2757,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TC",
@@ -2093,7 +2766,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "TV",
@@ -2102,25 +2775,40 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "UG",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:13:12.280Z",
+      "review_window": {
+        "start": "2025-11-10",
+        "end": "2025-11-10"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ug-traders-20251104-source-1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "UA",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:15.166Z",
+      "review_window": {
+        "start": "2025-07-31",
+        "end": "2025-07-31"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ua-anti-graft-independence-2025-bbc",
+        "ua-anti-graft-independence-2025-reuters"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "AE",
@@ -2129,25 +2817,41 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "GB",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:16:26.116Z",
+      "review_window": {
+        "start": "2024-01-03",
+        "end": "2024-09-16"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "gb-england-doctor-strikes-2024-bma",
+        "gb-england-doctor-strikes-2024-government",
+        "gb-england-doctor-strikes-2024-bbc-start"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "US",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2024-10-04",
+        "end": "2024-10-04"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "us-port-strike-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "UM",
@@ -2156,7 +2860,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "UY",
@@ -2165,7 +2869,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "UZ",
@@ -2174,25 +2878,41 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "VU",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:17:35.356Z",
+      "review_window": {
+        "start": "2025-02-14",
+        "end": "2025-12-23"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "vu-teachers-resumed-strike-20240810-court",
+        "vu-teachers-resumed-strike-20240810-rnz",
+        "vu-teachers-resumed-strike-20240810-post"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "VE",
-      "status": "not-reviewed",
-      "last_checked": null,
-      "review_window": null,
-      "languages": [],
-      "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T21:19:49.914Z",
+      "review_window": {
+        "start": "2024-07-30",
+        "end": "2024-07-30"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "ve-election-protests-2024-s1"
+      ],
+      "note": "Selected article-level AI-assisted checks only; no independent human editorial sign-off. The source date span is not a continuous review period. Search attempts are documented separately."
     },
     {
       "code": "VN",
@@ -2201,7 +2921,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "VG",
@@ -2210,7 +2930,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "VI",
@@ -2219,7 +2939,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "WF",
@@ -2228,7 +2948,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "EH",
@@ -2237,7 +2957,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "YE",
@@ -2246,7 +2966,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ZM",
@@ -2255,7 +2975,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     },
     {
       "code": "ZW",
@@ -2264,7 +2984,7 @@
       "review_window": null,
       "languages": [],
       "source_ids": [],
-      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+      "note": "No episode established by an article-level check in this snapshot. See the separate initial-screen ledger; this is not evidence that no protest occurred."
     }
   ]
 }

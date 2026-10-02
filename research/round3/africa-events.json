@@ -1,0 +1,1532 @@
+[
+  {
+    "id": "dz-teachers-20250211",
+    "title": "Teachers' pay and working conditions strike",
+    "country": "DZ",
+    "country_name": "Algeria",
+    "region": "Africa",
+    "location": {
+      "label": "Algeria",
+      "precision": "country"
+    },
+    "issues": [
+      "Labor",
+      "Education"
+    ],
+    "start_date": "2025-02-11",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-02-12",
+    "summary": "Teachers staged a two-day nationwide strike over pay and working conditions.",
+    "positions": [
+      {
+        "actor": "Teachers' unions",
+        "stance": "support",
+        "target": "Higher pay and better working conditions",
+        "claim": "Unions said starting pay was inadequate.",
+        "source_ids": [
+          "dz-teachers-20250211-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Classrooms closed.",
+      "violence": "unknown",
+      "source_ids": [
+        "dz-teachers-20250211-source-1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "dz-teachers-20250211-source-1",
+        "url": "https://apnews.com/article/algeria-teacher-strikes-293e93799469c3ec2072dcb6449b43de",
+        "title": "Teachers across Algeria go on strike to protest low salaries and poor conditions | AP News",
+        "publisher": "Associated Press",
+        "published_at": "2025-02-12",
+        "accessed_at": "2026-10-02T21:12:40.941Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Exa returned a truncated body; the underlying AP article was read with web open/find. No protest city was established; Algiers is a dateline."
+    },
+    "timeline": [
+      {
+        "date": "2025-02-11",
+        "text": "Teachers began a two-day strike.",
+        "source_ids": [
+          "dz-teachers-20250211-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ao-fuel-20250728",
+    "title": "Fuel-price and taxi-fare protests",
+    "country": "AO",
+    "country_name": "Angola",
+    "region": "Africa",
+    "location": {
+      "label": "Luanda and other provinces",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Cost of living",
+      "Transport"
+    ],
+    "start_date": "2025-07-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-07-30",
+    "summary": "A taxi strike against higher fuel costs expanded into unrest in Luanda and other provinces.",
+    "positions": [
+      {
+        "actor": "Taxi unions",
+        "stance": "oppose",
+        "target": "Diesel-price increase",
+        "claim": "The unions called a three-day strike and rejected looting.",
+        "source_ids": [
+          "ao-fuel-20250728-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Shops closed and transport disrupted.",
+      "violence": "Deaths, injuries and property destruction reported.",
+      "source_ids": [
+        "ao-fuel-20250728-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Mass arrests and security deployments",
+        "attribution": "Police and interior minister, reported by BBC",
+        "source_ids": [
+          "ao-fuel-20250728-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ao-fuel-20250728-source-1",
+        "url": "https://www.bbc.com/news/articles/clyvjeexn85o",
+        "title": "Angola's petrol protest death toll rises to 22 as medics overwhelmed",
+        "publisher": "BBC",
+        "published_at": "2025-07-30",
+        "accessed_at": "2026-10-02T21:12:40.941Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-07-28",
+        "text": "Taxi strike began.",
+        "source_ids": [
+          "ao-fuel-20250728-source-1"
+        ]
+      },
+      {
+        "date": "2025-07-30",
+        "text": "Interior minister reported deaths and arrests.",
+        "source_ids": [
+          "ao-fuel-20250728-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bj-livingcosts-20240427",
+    "title": "Union demonstrations over living costs",
+    "country": "BJ",
+    "country_name": "Benin",
+    "region": "Africa",
+    "location": {
+      "label": "Cotonou",
+      "precision": "city"
+    },
+    "issues": [
+      "Cost of living",
+      "Labor rights"
+    ],
+    "start_date": "2024-04-27",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2024-05-10",
+    "summary": "Unions protested rising living costs; authorities dispersed and banned demonstrations.",
+    "positions": [
+      {
+        "actor": "Beninese trade unions",
+        "stance": "support",
+        "target": "Purchasing power and dialogue",
+        "claim": "Unions sought relief from high living costs and guarantees for union rights.",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "unknown",
+      "source_ids": []
+    },
+    "state_response": [
+      {
+        "action": "Tear gas, arrests and bans",
+        "attribution": "AFP reporting",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "bj-livingcosts-20240427-source-1",
+        "url": "https://www.france24.com/en/live-news/20240510-in-benin-tensions-soar-over-cost-of-living",
+        "title": "In Benin, tensions soar over cost of living",
+        "publisher": "AFP via France 24",
+        "published_at": "2024-05-10",
+        "accessed_at": "2026-10-02T21:12:43.695Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2024-04-27",
+        "text": "Police dispersed the union demonstration.",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      },
+      {
+        "date": "2024-05-01",
+        "text": "Authorities banned another demonstration.",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gn-generalstrike-20240226",
+    "title": "General strike for wages, rights and detainee release",
+    "country": "GN",
+    "country_name": "Guinea",
+    "region": "Africa",
+    "location": {
+      "label": "Conakry and mining sector",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labor",
+      "Civil liberties"
+    ],
+    "start_date": "2024-02-26",
+    "start_date_precision": "day",
+    "end_date": "2024-02-28",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2024-02-28",
+    "summary": "Unions suspended a nationwide strike after a detained union leader was freed.",
+    "positions": [
+      {
+        "actor": "Guinean Trade Union Movement",
+        "stance": "support",
+        "target": "Detainee release and wage commitments",
+        "claim": "The release was a key demand; other grievances remained.",
+        "source_ids": [
+          "gn-generalstrike-20240226-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Businesses and mining operations disrupted.",
+      "violence": "unknown",
+      "source_ids": [
+        "gn-generalstrike-20240226-source-1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "gn-generalstrike-20240226-source-1",
+        "url": "https://www.reuters.com/world/africa/guinea-trade-unions-suspend-nationwide-strike-2024-02-28/",
+        "title": "Guinea trade unions suspend nationwide strike | Reuters",
+        "publisher": "Reuters",
+        "published_at": "2024-02-29",
+        "accessed_at": "2026-10-02T21:12:43.695Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Article body read with web open/find after Exa truncation."
+    },
+    "timeline": [
+      {
+        "date": "2024-02-26",
+        "text": "Nationwide strike began.",
+        "source_ids": [
+          "gn-generalstrike-20240226-source-1"
+        ]
+      },
+      {
+        "date": "2024-02-28",
+        "text": "Unions announced suspension after the release.",
+        "source_ids": [
+          "gn-generalstrike-20240226-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "eg-jadetextile-20260208",
+    "title": "Jade Textile wage strike and bargaining agreement",
+    "country": "EG",
+    "country_name": "Egypt",
+    "region": "Africa",
+    "location": {
+      "label": "10th of Ramadan City and Ismailia",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labor",
+      "Wages"
+    ],
+    "start_date": "2026-02-08",
+    "start_date_precision": "day",
+    "end_date": "2026-02-10",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2026-02-10",
+    "summary": "Textile workers returned after a wage-restructuring agreement, while some questioned its terms and representation.",
+    "positions": [
+      {
+        "actor": "Jade Textile workers",
+        "stance": "support",
+        "target": "Higher wages",
+        "claim": "Workers said the annual raise did not match living costs.",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Factories experienced a two-day walkout.",
+      "violence": "unknown",
+      "source_ids": [
+        "eg-jadetextile-20260208-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Labor minister attended bargaining",
+        "attribution": "Al Manassa reporting and ministry statement",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "eg-jadetextile-20260208-source-1",
+        "url": "https://manassa.news/en/news/30248",
+        "title": "Jade Textile Egypt workers end strike after wage restructure deal | Al Manassa",
+        "publisher": "Al Manassa",
+        "published_at": "2026-02-10",
+        "accessed_at": "2026-10-02T21:12:46.430Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2026-02-08",
+        "text": "Workers began striking.",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      },
+      {
+        "date": "2026-02-10",
+        "text": "Workers ended the strike after bargaining.",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "et-healthworkers-20250513",
+    "title": "Public health workers' pay and conditions strike",
+    "country": "ET",
+    "country_name": "Ethiopia",
+    "region": "Africa",
+    "location": {
+      "label": "Ethiopia, including Addis Ababa",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labor",
+      "Healthcare"
+    ],
+    "start_date": "2025-05-13",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-09-12",
+    "summary": "Health professionals halted non-emergency care over pay and conditions, facing arrests and association suspension.",
+    "positions": [
+      {
+        "actor": "Ethiopian Health Professionals Movement",
+        "stance": "support",
+        "target": "Pay and working conditions",
+        "claim": "Workers sought salaries, insurance, housing and transport support.",
+        "source_ids": [
+          "et-healthworkers-20250513-source-2"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Non-emergency services halted.",
+      "violence": "unknown",
+      "source_ids": [
+        "et-healthworkers-20250513-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Workers detained and supporting association suspended",
+        "attribution": "Human Rights Watch investigation",
+        "source_ids": [
+          "et-healthworkers-20250513-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "et-healthworkers-20250513-source-1",
+        "url": "https://www.hrw.org/news/2025/06/25/ethiopia-crackdown-on-health-workers-protests",
+        "title": "Ethiopia: Crackdown on Health Workers’ Protests | Human Rights Watch",
+        "publisher": "Human Rights Watch",
+        "published_at": "2025-06-26",
+        "accessed_at": "2026-10-02T21:12:49.097Z"
+      },
+      {
+        "id": "et-healthworkers-20250513-source-2",
+        "url": "https://www.hrw.org/news/2025/09/12/ethiopian-health-professionals-to-resume-striking",
+        "title": "Ethiopian Health Professionals to Resume Striking | Human Rights Watch",
+        "publisher": "Human Rights Watch",
+        "published_at": "2025-09-12",
+        "accessed_at": "2026-10-02T21:12:49.097Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-05-13",
+        "text": "Health workers halted non-emergency services.",
+        "source_ids": [
+          "et-healthworkers-20250513-source-1"
+        ]
+      },
+      {
+        "date": "2025-09-12",
+        "text": "HRW reported unresolved grievances and plans for another strike.",
+        "source_ids": [
+          "et-healthworkers-20250513-source-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gh-tewu-20251001",
+    "title": "Educational workers suspend conditions-of-service strike",
+    "country": "GH",
+    "country_name": "Ghana",
+    "region": "Africa",
+    "location": {
+      "label": "Ghana",
+      "precision": "country"
+    },
+    "issues": [
+      "Labor",
+      "Education"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": "2025-10-01",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-10-01",
+    "summary": "TEWU suspended a nationwide strike after the wage commission committed to renewed conditions-of-service negotiations.",
+    "positions": [
+      {
+        "actor": "TEWU",
+        "stance": "support",
+        "target": "Conditions-of-service negotiations",
+        "claim": "The union sought progress on delayed conditions of service.",
+        "source_ids": [
+          "gh-tewu-20251001-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Educational institutions experienced disruption.",
+      "violence": "unknown",
+      "source_ids": [
+        "gh-tewu-20251001-source-1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "gh-tewu-20251001-source-1",
+        "url": "https://3news.com/news/tewu-suspends-nationwide-strike-after-agreement-with-fair-wages-and-salaries-commission",
+        "title": "TEWU suspends nationwide strike after agreement with Fair Wages and Salaries Commission | 3News",
+        "publisher": "3News",
+        "published_at": "2025-10-01",
+        "accessed_at": "2026-10-02T21:12:49.097Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-10-01",
+        "text": "TEWU announced immediate provisional suspension.",
+        "source_ids": [
+          "gh-tewu-20251001-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ke-financebill-202406",
+    "title": "Finance Bill tax protests and withdrawal",
+    "country": "KE",
+    "country_name": "Kenya",
+    "region": "Africa",
+    "location": {
+      "label": "Nairobi, Eldoret and other locations",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Taxation",
+      "Cost of living"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2024-06-26",
+    "summary": "Youth-led tax protests escalated; President Ruto announced he would not sign the Finance Bill.",
+    "positions": [
+      {
+        "actor": "Youth-led demonstrators",
+        "stance": "oppose",
+        "target": "Finance Bill 2024 tax increases",
+        "claim": "Demonstrators demanded withdrawal of the entire bill.",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Demonstrators entered parliament's compound.",
+      "violence": "Police gunfire and deaths reported.",
+      "source_ids": [
+        "ke-financebill-202406-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Ruto announced refusal to sign and withdrawal of the bill",
+        "attribution": "Reuters reporting",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ke-financebill-202406-source-1",
+        "url": "https://www.cbc.ca/news/world/kenya-protests-1.7246939",
+        "title": "Kenyan president withdraws tax hikes after nationwide protests kill 23 | CBC News",
+        "publisher": "Reuters via CBC",
+        "published_at": "2024-06-26",
+        "accessed_at": "2026-10-02T21:13:01.478Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2024-06-25",
+        "text": "Protesters entered parliament's compound after lawmakers approved tax measures.",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      },
+      {
+        "date": "2024-06-26",
+        "text": "Ruto announced the bill would be withdrawn.",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tz-drivers-20260929",
+    "title": "Bus and truck drivers' licensing-system strike",
+    "country": "TZ",
+    "country_name": "Tanzania, United Republic of",
+    "region": "Africa",
+    "location": {
+      "label": "Dar es Salaam and other cities",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labor",
+      "Transport"
+    ],
+    "start_date": "2026-09-29",
+    "start_date_precision": "day",
+    "end_date": "2026-09-30",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2026-10-01",
+    "summary": "Drivers suspended a two-day nationwide stoppage after government talks and suspension of a contested licence-points system.",
+    "positions": [
+      {
+        "actor": "Bus and truck drivers",
+        "stance": "oppose",
+        "target": "15-point licence system",
+        "claim": "Drivers challenged liability and enforcement rules that threatened their livelihoods.",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Passenger and freight transport halted, leaving travelers stranded.",
+      "violence": "unknown",
+      "source_ids": [
+        "tz-drivers-20260929-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government suspended points system and opened a review",
+        "attribution": "The Chanzo's reporting",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "tz-drivers-20260929-source-1",
+        "url": "https://dailynews.co.tz/leaders-of-bus-truck-drivers-call-off-the-two-day-strike-after-talks-with-pm-nchemba/",
+        "title": "Leaders of bus, truck drivers call off the two-day strike after talks with PM Nchemba - Daily News",
+        "publisher": "Daily News",
+        "published_at": "2026-09-30",
+        "accessed_at": "2026-10-02T21:13:01.479Z"
+      },
+      {
+        "id": "tz-drivers-20260929-source-2",
+        "url": "https://thechanzo.com/2026/10/02/tanzania-bus-strike-ends-but-drivers-fight-is-far-from-over/",
+        "title": "Tanzania Bus Strike Ends, but Drivers’ Fight Is Far From Over - The Chanzo",
+        "publisher": "The Chanzo",
+        "published_at": "2026-10-01",
+        "accessed_at": "2026-10-02T21:13:01.479Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2026-09-29",
+        "text": "Drivers began the stoppage.",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "date": "2026-09-30",
+        "text": "Driver leaders agreed to resume services after talks.",
+        "source_ids": [
+          "tz-drivers-20260929-source-1"
+        ]
+      },
+      {
+        "date": "2026-10-01",
+        "text": "Review began and the nationwide stoppage was reported over.",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tg-governance-20250626",
+    "title": "Protests against Gnassingbé's tenure and governance",
+    "country": "TG",
+    "country_name": "Togo",
+    "region": "Africa",
+    "location": {
+      "label": "Lomé",
+      "precision": "city"
+    },
+    "issues": [
+      "Governance",
+      "Cost of living"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-06-26",
+    "summary": "Activists protested Gnassingbé's continued rule; soldiers dispersed demonstrators.",
+    "positions": [
+      {
+        "actor": "Bloggers and activist demonstrators",
+        "stance": "oppose",
+        "target": "Gnassingbé's continued rule",
+        "claim": "Participants called for his resignation.",
+        "source_ids": [
+          "tg-governance-20250626-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Road blockages and shop closures.",
+      "violence": "Barricades burned; soldiers used tear gas and batons.",
+      "source_ids": [
+        "tg-governance-20250626-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Soldiers dispersed protesters",
+        "attribution": "Reuters eyewitness reporting",
+        "source_ids": [
+          "tg-governance-20250626-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "tg-governance-20250626-source-1",
+        "url": "https://www.reuters.com/world/africa/togo-soldiers-break-up-protests-against-longtime-leader-2025-06-26/",
+        "title": "Togo soldiers break up protests against longtime leader",
+        "publisher": "Reuters",
+        "published_at": "2025-06-26",
+        "accessed_at": "2026-10-02T21:13:04.200Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Reuters body read with web open after Exa truncation; onset and end not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-06-26",
+        "text": "Demonstrators blocked roads and soldiers dispersed them.",
+        "source_ids": [
+          "tg-governance-20250626-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tn-gabes-20251021",
+    "title": "Gabès pollution protests and general strike",
+    "country": "TN",
+    "country_name": "Tunisia",
+    "region": "Africa",
+    "location": {
+      "label": "Gabès",
+      "precision": "city"
+    },
+    "issues": [
+      "Environment",
+      "Healthcare"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-10-21",
+    "summary": "UGTT called a general strike demanding closure of a polluting chemical plant.",
+    "positions": [
+      {
+        "actor": "UGTT and Gabès demonstrators",
+        "stance": "support",
+        "target": "Closure of polluting units",
+        "claim": "Protesters demanded the chemical complex be dismantled.",
+        "source_ids": [
+          "tn-gabes-20251021-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Shops, schools and markets closed.",
+      "violence": "unknown",
+      "source_ids": [
+        "tn-gabes-20251021-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Health minister announced a cancer-hospital plan without a timetable",
+        "attribution": "Reuters reporting",
+        "source_ids": [
+          "tn-gabes-20251021-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "tn-gabes-20251021-source-1",
+        "url": "https://www.reuters.com/sustainability/climate-energy/general-strike-protests-paralyse-tunisias-gabes-over-pollution-crisis-2025-10-21/",
+        "title": "General strike, protests paralyse Tunisia's Gabes over pollution crisis | Reuters",
+        "publisher": "Reuters",
+        "published_at": "2025-10-21",
+        "accessed_at": "2026-10-02T21:13:04.200Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Reuters body read with web open/find; no completed hospital or plant closure inferred."
+    },
+    "timeline": [
+      {
+        "date": "2025-10-21",
+        "text": "General strike and demonstrations halted city activity.",
+        "source_ids": [
+          "tn-gabes-20251021-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mz-election-20241021",
+    "title": "Post-election protests and security crackdown",
+    "country": "MZ",
+    "country_name": "Mozambique",
+    "region": "Africa",
+    "location": {
+      "label": "Maputo and other locations",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Elections",
+      "Governance"
+    ],
+    "start_date": "2024-10-21",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-01-25",
+    "summary": "Protesters disputed the election outcome; Amnesty documented a prolonged security crackdown.",
+    "positions": [
+      {
+        "actor": "Venancio Mondlane supporters",
+        "stance": "oppose",
+        "target": "Declared election result",
+        "claim": "Demonstrations supported the opposition challenger and disputed the result.",
+        "source_ids": [
+          "mz-election-20241021-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "Amnesty reported security forces using deadly and less-lethal force; casualty totals were disputed.",
+      "source_ids": [
+        "mz-election-20241021-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Deadly force, arrests and internet restrictions alleged",
+        "attribution": "Amnesty investigation described by AP",
+        "source_ids": [
+          "mz-election-20241021-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "mz-election-20241021-source-1",
+        "url": "https://apnews.com/article/mozambique-protests-election-violence-amnesty-international-97a4d3553394ce87fd99ad5382106e62",
+        "title": "Mozambique carried out a brutal crackdown on post-election protests, Amnesty says | AP News",
+        "publisher": "Associated Press",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:13:06.859Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. AP body read with web open/find after Exa truncation; no exact publication timestamp available from the fetched page."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-21",
+        "text": "Beginning of Amnesty's documented crackdown period.",
+        "source_ids": [
+          "mz-election-20241021-source-1"
+        ]
+      },
+      {
+        "date": "2025-01-25",
+        "text": "Latest date covered by the documented security-force response.",
+        "source_ids": [
+          "mz-election-20241021-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "za-decentwork-20241007",
+    "title": "Decent-work strike against unemployment and austerity",
+    "country": "ZA",
+    "country_name": "South Africa",
+    "region": "Africa",
+    "location": {
+      "label": "Cape Town and Johannesburg",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labor",
+      "Cost of living"
+    ],
+    "start_date": "2024-10-07",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2024-10-07",
+    "summary": "Unions marched over unemployment, austerity, prices and working conditions.",
+    "positions": [
+      {
+        "actor": "Cosatu and Fedusa",
+        "stance": "support",
+        "target": "Jobs, lower prices and working conditions",
+        "claim": "Union members called for government intervention and protection of jobs.",
+        "source_ids": [
+          "za-decentwork-20241007-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Teachers missed work and some schools asked learners to stay home; roads closed.",
+      "violence": "unknown",
+      "source_ids": [
+        "za-decentwork-20241007-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Police announced monitoring of a protected strike",
+        "attribution": "Daily Maverick reporting",
+        "source_ids": [
+          "za-decentwork-20241007-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "za-decentwork-20241007-source-1",
+        "url": "https://www.dailymaverick.co.za/article/2024-10-07-workers-take-to-sa-city-streets-to-call-for-rethink-on-austerity-measures-job-cuts-and-price-hikes/",
+        "title": "Marchers protest over unemployment and austerity measures in day of solidarity with workers",
+        "publisher": "Daily Maverick",
+        "published_at": "2024-10-07",
+        "accessed_at": "2026-10-02T21:13:06.859Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-07",
+        "text": "Unions marched and handed over demands.",
+        "source_ids": [
+          "za-decentwork-20241007-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sn-electiondelay-202402",
+    "title": "Protests against presidential-election postponement",
+    "country": "SN",
+    "country_name": "Senegal",
+    "region": "Africa",
+    "location": {
+      "label": "Dakar, Touba, Thiès, Richard Toll and Kolda",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Elections",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2024-03-06",
+    "summary": "Protests opposed an election delay; the court overturned it and government later set March 24.",
+    "positions": [
+      {
+        "actor": "Anti-postponement demonstrators",
+        "stance": "oppose",
+        "target": "Delayed presidential election",
+        "claim": "Demonstrators opposed the extension of Sall's mandate.",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "Police and demonstrators clashed.",
+      "source_ids": [
+        "sn-electiondelay-202402-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Tear gas and stun grenades used",
+        "attribution": "Reuters eyewitness reporting",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "sn-electiondelay-202402-source-1",
+        "url": "https://www.reuters.com/world/africa/senegal-election-delay-was-legal-despite-backlash-says-minister-2024-02-09/",
+        "title": "Senegal battles first major wave of unrest over vote delay | Reuters",
+        "publisher": "Reuters",
+        "published_at": "2024-02-10",
+        "accessed_at": "2026-10-02T21:13:09.573Z"
+      },
+      {
+        "id": "sn-electiondelay-202402-source-2",
+        "url": "https://www.reuters.com/world/africa/senegal-constitutional-council-election-delay-was-unlawful-2024-02-15/",
+        "title": "Senegal constitutional council finds election delay was unlawful",
+        "publisher": "Reuters",
+        "published_at": "2024-02-15",
+        "accessed_at": "2026-10-02T21:14:40.507Z"
+      },
+      {
+        "id": "sn-electiondelay-202402-source-3",
+        "url": "https://www.dw.com/en/senegal-announces-new-date-for-delayed-presidential-election/a-68458491",
+        "title": "Senegal announces new date for delayed presidential election",
+        "publisher": "Deutsche Welle",
+        "published_at": "2024-03-06",
+        "accessed_at": "2026-10-02T21:14:40.507Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Reuters bodies read with web open. DW attributes its account to AP and Reuters; not treated as independent corroboration."
+    },
+    "timeline": [
+      {
+        "date": "2024-02-09",
+        "text": "Widespread clashes occurred.",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      },
+      {
+        "date": "2024-02-15",
+        "text": "Constitutional Council overturned postponement.",
+        "source_ids": [
+          "sn-electiondelay-202402-source-2"
+        ]
+      },
+      {
+        "date": "2024-03-06",
+        "text": "Government announced a March 24 vote.",
+        "source_ids": [
+          "sn-electiondelay-202402-source-3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ng-pengassan-20250928",
+    "title": "Oil workers' union-rights strike and redeployment deal",
+    "country": "NG",
+    "country_name": "Nigeria",
+    "region": "Africa",
+    "location": {
+      "label": "Nigeria's oil and gas sector",
+      "precision": "country"
+    },
+    "issues": [
+      "Labor",
+      "Union rights"
+    ],
+    "start_date": "2025-09-28",
+    "start_date_precision": "day",
+    "end_date": "2025-10-01",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-10-01",
+    "summary": "PENGASSAN suspended a strike after government-brokered terms to redeploy dismissed staff without lost pay.",
+    "positions": [
+      {
+        "actor": "PENGASSAN",
+        "stance": "support",
+        "target": "Union rights and reinstatement",
+        "claim": "The union alleged anti-union dismissal.",
+        "source_ids": [
+          "ng-pengassan-20250928-source-2"
+        ]
+      },
+      {
+        "actor": "Dangote management",
+        "stance": "support",
+        "target": "Company reorganisation",
+        "claim": "Management attributed dismissals to restructuring.",
+        "source_ids": [
+          "ng-pengassan-20250928-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "Oil and gas operations disrupted; gas shortages reduced grid generation.",
+      "violence": "unknown",
+      "source_ids": [
+        "ng-pengassan-20250928-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government mediated a redeployment agreement",
+        "attribution": "THISDAY reporting",
+        "source_ids": [
+          "ng-pengassan-20250928-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ng-pengassan-20250928-source-1",
+        "url": "https://www.thisdaylive.com/2025/10/01/dangote-pengassan-reach-truce-strike-to-be-called-off-sacked-workers-to-be-recalled/",
+        "title": "Dangote, PENGASSAN Reach Truce, Strike to Be Called Off, Sacked Workers to be Recalled – THISDAYLIVE",
+        "publisher": "THISDAY",
+        "published_at": "2025-10-01",
+        "accessed_at": "2026-10-02T21:13:09.573Z"
+      },
+      {
+        "id": "ng-pengassan-20250928-source-2",
+        "url": "https://punchng.com/breaking-dangote-refinery-dispute-pengassan-suspends-strike-after-fg-intervention/",
+        "title": "PENGASSAN suspends Dangote Refinery strike after FG talks",
+        "publisher": "PUNCH",
+        "published_at": "2025-10-01",
+        "accessed_at": "2026-10-02T21:14:46.023Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-28",
+        "text": "Union action began.",
+        "source_ids": [
+          "ng-pengassan-20250928-source-2"
+        ]
+      },
+      {
+        "date": "2025-10-01",
+        "text": "Union announced temporary suspension after negotiations.",
+        "source_ids": [
+          "ng-pengassan-20250928-source-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ug-traders-20251104",
+    "title": "Kampala traders' tax and flood-compensation strike",
+    "country": "UG",
+    "country_name": "Uganda",
+    "region": "Africa",
+    "location": {
+      "label": "Kampala",
+      "precision": "city"
+    },
+    "issues": [
+      "Taxation",
+      "Labor",
+      "Disaster relief"
+    ],
+    "start_date": "2025-11-04",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-11-10",
+    "summary": "Traders suspended a sit-down strike after promised meetings; tax and flood-loss grievances remained unresolved.",
+    "positions": [
+      {
+        "actor": "Kampala City Traders Association",
+        "stance": "support",
+        "target": "Tax changes and flood compensation",
+        "claim": "Traders challenged VAT enforcement and demanded compensation.",
+        "source_ids": [
+          "ug-traders-20251104-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ug-traders-20251104-source-1",
+        "url": "https://www.monitor.co.ug/uganda/news/national/traders-suspend-strike-as-museveni-pledges-talks-5259466",
+        "title": "Traders suspend strike as Museveni pledges talks | Monitor",
+        "publisher": "Daily Monitor",
+        "published_at": "2025-11-10",
+        "accessed_at": "2026-10-02T21:13:12.280Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-11-04",
+        "text": "The reported sit-down strike began.",
+        "source_ids": [
+          "ug-traders-20251104-source-1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mg-genz-20250925",
+    "title": "Youth-led public-services protests and transfer of power",
+    "country": "MG",
+    "country_name": "Madagascar",
+    "region": "Africa",
+    "location": {
+      "label": "Antananarivo, Antsiranana and Toliara",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Public services",
+      "Governance"
+    ],
+    "start_date": "2025-09-25",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-10-14",
+    "summary": "Youth protests over water, electricity and governance preceded cabinet dismissal and a contested military takeover.",
+    "positions": [
+      {
+        "actor": "Gen Z protest movement",
+        "stance": "support",
+        "target": "Government change and public services",
+        "claim": "Protesters demanded Rajoelina's resignation after cabinet dismissal.",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "UN reported deaths and injuries; government disputed the figures.",
+      "source_ids": [
+        "mg-genz-20250925-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Tear gas and cabinet dismissal",
+        "attribution": "France 24 with AFP reporting",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "mg-genz-20250925-source-1",
+        "url": "https://www.france24.com/en/africa/20251001-youth-protests-madagascar-president",
+        "title": "Mass protests and strikes grip Madagascar amid calls for president to resign - France 24",
+        "publisher": "France 24 with AFP",
+        "published_at": "2025-10-01",
+        "accessed_at": "2026-10-02T21:13:12.280Z"
+      },
+      {
+        "id": "mg-genz-20250925-source-2",
+        "url": "https://www.bbc.com/news/articles/cn8xjjdgl8vo",
+        "title": "Military says it has seized power in Madagascar after president moves to 'safe place'",
+        "publisher": "BBC",
+        "published_at": "2025-10-14",
+        "accessed_at": "2026-10-02T21:14:43.327Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-25",
+        "text": "Youth-led protests began.",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      },
+      {
+        "date": "2025-09-29",
+        "text": "Rajoelina dismissed the government.",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      },
+      {
+        "date": "2025-10-14",
+        "text": "CAPSAT claimed power; lawmakers impeached Rajoelina.",
+        "source_ids": [
+          "mg-genz-20250925-source-2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ma-genz212-20250927",
+    "title": "GenZ 212 protests for healthcare and education",
+    "country": "MA",
+    "country_name": "Morocco",
+    "region": "Africa",
+    "location": {
+      "label": "Casablanca, Rabat, Marrakesh and Agadir",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Healthcare",
+      "Education",
+      "Governance"
+    ],
+    "start_date": "2025-09-27",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:43.316Z",
+    "last_observed_at": "2025-10-16",
+    "summary": "Young protesters sought better public services; the finance minister pledged budget reprioritisation.",
+    "positions": [
+      {
+        "actor": "GenZ 212 demonstrators",
+        "stance": "support",
+        "target": "Health, education and social justice",
+        "claim": "Protesters criticized stadium spending alongside neglected services.",
+        "source_ids": [
+          "ma-genz212-20250927-source-2"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No reliable event-wide count established."
+      },
+      "disruption": "unknown",
+      "violence": "Arrests, property damage and deaths reported.",
+      "source_ids": [
+        "ma-genz212-20250927-source-1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Police made arrests; prime minister offered dialogue",
+        "attribution": "BBC reporting",
+        "source_ids": [
+          "ma-genz212-20250927-source-1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ma-genz212-20250927-source-1",
+        "url": "https://www.bbc.co.uk/news/articles/c8rv2l3me40o",
+        "title": "Morocco's Gen Z protesters: 'We need hospitals more than football stadiums' - BBC News",
+        "publisher": "BBC",
+        "published_at": "2025-10-04",
+        "accessed_at": "2026-10-02T21:15:08.623Z"
+      },
+      {
+        "id": "ma-genz212-20250927-source-2",
+        "url": "https://www.aljazeera.com/news/2025/9/29/gen-z-protesters-rally-across-morocco-demanding-health-education-reforms",
+        "title": "Gen Z protesters rally across Morocco demanding health, education reforms | Protests News | Al Jazeera",
+        "publisher": "Al Jazeera with AFP",
+        "published_at": "2025-09-29",
+        "accessed_at": "2026-10-02T21:15:08.623Z"
+      },
+      {
+        "id": "ma-genz212-20250927-source-3",
+        "url": "https://www.reuters.com/world/africa/morocco-will-prioritize-health-education-spending-2026-budget-finance-minister-2025-10-16/",
+        "title": "Morocco will prioritize health, education spending in 2026 budget, finance minister says | Reuters",
+        "publisher": "Reuters",
+        "published_at": "2025-10-16",
+        "accessed_at": "2026-10-02T21:18:11.880Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source check; no independent human editorial sign-off. Historical evidence does not establish present activity."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-27",
+        "text": "Nationwide youth-led protests began.",
+        "source_ids": [
+          "ma-genz212-20250927-source-1"
+        ]
+      },
+      {
+        "date": "2025-10-02",
+        "text": "Prime minister said he was open to dialogue.",
+        "source_ids": [
+          "ma-genz212-20250927-source-1"
+        ]
+      }
+    ]
+  }
+]

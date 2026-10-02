@@ -1,0 +1,1273 @@
+[
+  {
+    "code": "AL",
+    "query": "News reporting on protests demonstrations or strikes in Albania during 2024, 2025 and 2026 through October 2, identifying dates, cities and government responses.",
+    "attempted_at": "2026-10-02T21:08:16.510Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://eualive.net/protesters-shout-no-eu-with-rama-as-von-der-leyen-comes-to-back-albanias-eu-bid/",
+      "https://www.bbc.com/news/articles/c8925jnl0z3o",
+      "https://www.reuters.com/world/graft-allegations-spark-clashes-albania-between-police-protesters-2026-02-20/",
+      "https://en.ata.gov.al/2026/07/28/protests-against-controversial-zvernec-investment-enter-their-59th-consecutive-day/",
+      "https://apnews.com/article/resort-prime-minister-rama-kushner-flamingos-resort-9e2cbb682d9445f2e2d946c44ea2fecd"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.com/news/articles/c8925jnl0z3o",
+      "https://en.ata.gov.al/2026/07/28/protests-against-controversial-zvernec-investment-enter-their-59th-consecutive-day/"
+    ],
+    "note": "Initial English-language screen covering explicit 2024, 2025 and 2026 through October 2; not exhaustive. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "BY",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Belarus during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://infonews.ca/news/137631/belarusian-authorities-crank-up-pressure-on-opposition/",
+      "https://infonews.ca/news/265461/thousands-in-belarus-decry-presidents-reelection-as-rigged/",
+      "https://britpanorama.co.uk/world/belarus-stages-security-drills-to-prepare-for-protests-in-workplaces/",
+      "https://www.theguardian.com/world/2025/oct/04/people-are-really-dying-belarusians-warn-lukashenkos-crackdown-is-far-from-over",
+      "https://www.winnipegfreepress.com/world/2025/10/01/belarus-opposition-leader-vanishes-after-refusing-deportation-in-a-us-brokered-prisoner-release"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Search returned reposts whose publication metadata may not establish event dates. No locally dated episode admitted."
+  },
+  {
+    "code": "AX",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Åland Islands (Finnish autonomous Åland archipelago) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.alandstidningen.ax/nyheter/814-protesterar-mot-nytt-upplagg-pa-norra-linjen/1000115",
+      "https://alandsradio.ax/nyheter/800-namn-mot-trafikplanen-pa-norra-linjen-listan-togs-emot-av-regeringen-i-dag",
+      "https://www.nyan.ax/nyheter/en-valdigt-valdigt-stark-yttring-over-100-skargardsbor-samlades-for-protest/",
+      "https://www.nyan.ax/nyheter/solidaritetsmarschenengagerade-manga/",
+      "https://www.nyan.ax/nyheter/vill-se-hojda-avgifter-i-skargardstrafiken/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "HR",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Croatia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://glashrvatske.hrt.hr/en/domestic/thousands-of-protests-call-for-higher-wages-and-pensions-12676740",
+      "https://www.euractiv.com/news/thousands-of-croatians-protest-seeking-higher-wages-pensions/",
+      "https://www.france24.com/en/live-news/20251201-thousands-march-in-zagreb-against-far-right",
+      "https://balkaninsight.com/2025/08/04/croatia-protesters-demand-recognition-of-operation-storm-war-crimes/btj/",
+      "https://balkaninsight.com/2026/09/21/across-croatia-protesters-demand-tougher-response-to-violence-against-women/bi/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "BE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Belgium during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/belgium-general-strike-grounds-airlines-disrupts-brussels-public-transport-2025-10-14/",
+      "https://www.bbc.com/news/articles/c62e3pny6p7o",
+      "https://www.aa.com.tr/en/europe/dozens-detained-in-belgium-as-student-protests-continue-across-country/4076275",
+      "https://www.vrt.be/vrtnws/en/2026/03/12/80-000-people-in-national-trade-union-demonstration-in-brussels/",
+      "https://apnews.com/article/belgium-protest-strike-brussels-austerity-measures-3cf5d7f65db2fd25793935432e239e31"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "AT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Austria during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/thousands-march-vienna-against-far-right-before-coalition-talks-2024-10-03/",
+      "https://vorarlberg.orf.at/stories/3373685/",
+      "https://www.meinbezirk.at/innere-stadt/c-lokales/kopftuchverbot-demo-in-der-inneren-stadt-sorgt-fuer-staus_a8924709",
+      "https://www.vol.at/stable-for-the-climate-more-than-5000-participants-at-climate-demonstration-in-vienna/9729479",
+      "https://www.ots.at/presseaussendung/OTS_20251004_OTS0031/lieben-von-anfang-an-fuer-ein-oesterreich-ohne-abtreibung-3000-beim-marsch-fuers-leben-in-wien"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "DK",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Denmark during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/protesters-denmark-support-greenland-after-trumps-takeover-threat-2026-01-17/",
+      "https://www.thelocal.dk/20260901/why-are-there-so-many-tractors-in-central-copenhagen-on-tuesday",
+      "https://www.thelocal.dk/20250225/danish-police-arrest-20-at-protest-against-maersk-shipments-to-israel",
+      "https://www.thelocal.dk/20251015/copenhagen-hospital-porter-strike-continues-as-hospital-promises-plan",
+      "https://www.nordiskpost.com/2026/05/13/maersk-protest-in-copenhagen-ends-with-20-arrests/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/protesters-denmark-support-greenland-after-trumps-takeover-threat-2026-01-17/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "BG",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Bulgaria during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.novinite.com/articles/239295/Thousands+Rally+in+Sofia+as+First+Anti-Government+Protest+Targets+PM+Rumen+Radev",
+      "https://www.reuters.com/world/thousands-rally-bulgaria-against-2026-budget-clash-with-police-2025-12-01/",
+      "https://bntnews.bg/news/new-protest-against-2026-state-budget-draft-in-sofia%E2%80%99s-triangle-of-power-photos-1367722news.html",
+      "https://www.bbc.com/news/articles/cjezwzw088jo",
+      "https://www.reuters.com/world/thousands-rally-again-bulgaria-demand-governments-resignation-2025-12-10/"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.com/news/articles/cjezwzw088jo"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "BA",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Bosnia and Herzegovina during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/bosnian-students-protest-government-inaction-after-deadly-floods-2025-02-10/",
+      "https://apnews.com/article/balkans-eu-rules-truckers-strike-4c31d19e2c0a519fc6136ee43c8b0669",
+      "https://n1info.ba/english/news/citizens-rally-again-after-deadly-sarajevo-tram-accident/",
+      "https://srpske.rs/en/news/svet/2026/09/19/bih-miners-protest-zenica-sarajevo-unpaid-wages",
+      "https://srpske.rs/en/news/svet/2026/09/20/kakanj-miners-end-strike-breza-bila-protest"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/bosnian-students-protest-government-inaction-after-deadly-floods-2025-02-10/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "CZ",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Czechia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/czechs-rally-countrys-largest-anti-government-protest-since-2019-2026-03-21/",
+      "https://apnews.com/article/czech-public-media-financing-protest-babis-0d1dd85555f19aa4003544154d808f5c",
+      "https://www.dw.com/en/czechia-thousands-march-in-support-of-public-media-funding/a-77650608",
+      "https://aroundprague.cz/en/news/prague-hosts-million-moments-rally-against-pm-babi-ahead-of-senate-vote",
+      "https://aroundprague.cz/en/news/thousands-protest-against-babi-government-on-prague-s-old-town-square"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "AD",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Andorra during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:08:47.858Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.altaveu.com/actualitat/politica-social/andorra-descongela-surt-carrer-defensar-habitatge_76162_102.html",
+      "https://elperiodic.ad/politica/unes-1-500-persones-carreguen-contra-el-govern-pels-carrers-dandorra-la-vella-espot-tururu-a-la-seu-ten-vas-tu/",
+      "https://monitor.civicus.org/explore/andorra-labor-relations-act-amended-to-increase-union-representation/",
+      "https://monitor.civicus.org/explore/protest-for-decent-housing/",
+      "https://radiovalira.ad/2026/04/29/els-xiulets-per-lhabitatge-digne-ofeguen-el-discurs-despot-ha-de-saber-com-demprenyat-esta-el-poble/"
+    ],
+    "reviewed_urls": [
+      "https://monitor.civicus.org/explore/protest-for-decent-housing/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "JE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Jersey (Channel Island, not New Jersey) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "IT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Italy during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "GI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Gibraltar (British territory) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "VA",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Holy See (Vatican City) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "GG",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Guernsey (Channel Island) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "IE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Ireland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "FO",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Faroe Islands (Danish North Atlantic territory) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "FI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Finland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.helsinkitimes.fi/finland/finland-news/domestic/26900-thousands-protest-in-helsinki-against-government-austerity-cuts.html",
+      "https://www.reuters.com/world/europe/finnish-workers-begin-strikes-against-labour-reforms-welfare-cuts-2024-02-01/",
+      "https://www.dailynorthern.com/28327/workers-continue-walkout-at-helsinki-post-centre/",
+      "https://www.helsinkitimes.fi/finland/finland-news/domestic/27090-traffic-blocked-as-elokapina-protests-begin-in-helsinki.html",
+      "https://yle.fi/a/74-20197645"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/finnish-workers-begin-strikes-against-labour-reforms-welfare-cuts-2024-02-01/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "EE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Estonia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://news.err.ee/1609860741/trade-unions-protest-legalizing-variable-hour-employment-contracts",
+      "https://news.err.ee/1610140282/teachers-to-hold-nationwide-warning-strike-september-22",
+      "https://news.postimees.ee/8406264/rebellion-on-the-home-front-bolt-faces-wave-of-driver-strikes-across-estonia",
+      "https://news.err.ee/1610146864/gallery-students-gather-in-tartu-to-demand-a-more-effective-support-system",
+      "https://news.err.ee/1610065043/tartu-protesters-rally-against-swedish-trash-in-estonian-jails"
+    ],
+    "reviewed_urls": [
+      "https://news.err.ee/1609237755/union-ends-teachers-strike",
+      "https://www.hm.ee/opetajate-streik"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "DE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Germany during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bbc.com/news/articles/cxnvlnve52qdo",
+      "https://apnews.com/article/germany-gaza-protest-israel-palestinians-925e584ecea7812d937281b7824971c7",
+      "https://www.reuters.com/business/world-at-work/tens-thousands-transport-workers-walk-off-job-germany-2026-02-02/",
+      "https://www.reuters.com/world/uk/tens-thousands-protest-berlin-against-proposed-german-immigration-crackdown-2025-02-02/",
+      "https://www.dw.com/en/german-high-school-students-protest-against-military-service/a-76236452"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/german-farmers-block-roads-highway-ramps-protest-subsidy-cuts-2024-01-08/",
+      "https://www.reuters.com/markets/europe/german-coalition-dilutes-2024-subsidy-cuts-after-farmer-backlash-2024-01-04/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "IS",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Iceland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.ruv.is/english/2026-10-02-that-was-the-deal-all-along-488611",
+      "https://www.ruv.is/english/2026-09-17-wolt-couriers-stop-work-say-they-lose-money-making-deliveries-487300",
+      "https://grapevine.is/news/2024/09/10/labour-unions-organise-mass-protest/",
+      "https://www.icelandreview.com/in-focus/icelandair-mechanics-strike-what-they-want/",
+      "https://www.icelandreview.com/news/50th-anniversary-womens-strike-planned-across-iceland/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "FR",
+    "query": "Reliable news reporting on protests demonstrations or strikes in France during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/france-faces-more-protests-against-looming-budget-cuts-2025-10-02/",
+      "https://apnews.com/article/france-protests-strike-austerity-6e229da30e2dbe51bdb00b1416cb4a91",
+      "https://www.theguardian.com/world/2026/oct/01/france-school-protests-escalate-pm-crisis-cabinet-meeting",
+      "https://www.aljazeera.com/news/2026/10/2/protests-shutter-hundreds-of-french-schools-as-violence-flares",
+      "https://www.france24.com/en/france/20261002-hundreds-of-french-schools-remain-closed-as-student-protests-turn-violent"
+    ],
+    "reviewed_urls": [
+      "https://www.rfi.fr/en/france/20240201-french-farmers-call-off-tractor-protest-after-pm-unveils-raft-of-concessions"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "HU",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Hungary during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/hungary-orban-magyar-rallies-4b1eeb4211506ad595ab104419645e34",
+      "https://www.reuters.com/world/europe/thousands-protest-budapest-against-law-banning-pride-2025-03-25/",
+      "https://www.reuters.com/world/europe/thousands-protest-hungary-demanding-end-state-media-propaganda-2024-10-05/",
+      "https://www.reuters.com/world/europe/hungarian-judges-court-staff-rally-judicial-independence-2025-02-22/",
+      "https://apnews.com/article/hungary-protests-against-lgbtq-pride-ban-3ea6e7b74008ff472780468319dbe49a"
+    ],
+    "reviewed_urls": [
+      "https://apnews.com/article/hungary-protests-against-lgbtq-pride-ban-3ea6e7b74008ff472780468319dbe49a"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "GR",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Greece during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.703Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/greece-strike-labor-f28353c37af65a9e0667f995c40ad061",
+      "https://www.reuters.com/sustainability/sustainable-finance-reporting/ferries-trains-halted-greece-strikes-over-working-hours-2025-10-01/",
+      "https://apnews.com/article/greece-tempe-rail-disaster-strike-d9996948371c5ec703d27006ae23db9b",
+      "https://www.theguardian.com/world/2025/oct/01/general-strike-against-13-hour-day-brings-greece-to-a-halt",
+      "https://apnews.com/article/greece-farmers-protests-europe-mercosur-2c15d088553c652ffa94bcc9fb2b6dbf"
+    ],
+    "reviewed_urls": [
+      "https://apnews.com/article/greece-tempe-rail-disaster-strike-d9996948371c5ec703d27006ae23db9b"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "IM",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Isle of Man (British Crown dependency) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:14.704Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.iomtoday.co.im/news/protest-held-outside-island-bank-branch-over-alleged-financial-links-to-arms-firms-844276",
+      "https://www.bbc.co.uk/news/articles/cg405zrgnr0o",
+      "https://www.bbc.co.uk/news/articles/c937yplqg85o",
+      "https://www.bbc.co.uk/news/articles/ce824001ny7o",
+      "https://www.three.fm/news/isle-of-man-news/uk-demonstration-plans-isle-of-man-gathering/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "LU",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Luxembourg during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "SJ",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Svalbard and Jan Mayen (Norwegian Arctic territories) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "MD",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Moldova, Republic of (Moldova, eastern European country) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "RU",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Russian Federation (Russia) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "UA",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Ukraine during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "SI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Slovenia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "SK",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Slovakia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "ME",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Montenegro during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "SE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Sweden during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "RS",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Serbia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "CH",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Switzerland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "LT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Lithuania during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "ES",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Spain during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Exa returned HTTP 429 per-user rate limit; failed attempt, not evidence of no protest."
+  },
+  {
+    "code": "NL",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Netherlands, Kingdom of the (the Netherlands) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/middle-east/hundreds-thousands-protest-amsterdam-against-gaza-war-2025-10-05/",
+      "https://nos.nl/artikel/2632764-paar-duizend-demonstranten-bij-protest-stop-de-oorlogskoorts",
+      "https://ground.news/article/150-abn-amro-employees-will-also-go-on-strike-on-tuesday-according-to-the-fnv",
+      "https://www.reuters.com/world/middle-east/tens-thousands-protest-netherlands-over-israels-actions-gaza-2025-06-15/",
+      "https://www.reuters.com/world/israels-pm-aware-very-violent-incident-against-israelis-amsterdam-his-office-2024-11-08/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "MT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Malta during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.independent.com.mt/articles/2025-10-04/local-news/Protest-against-planning-bills-taking-place-in-Valletta-6736273673",
+      "https://timesofmalta.com/article/teachers-strike-goes-ahead-97-educators-participating.1069803",
+      "https://timesofmalta.com/article/you-kant-trusted-crowd-protests-magisterial-inquiries-reform-valletta.1105273",
+      "https://timesofmalta.com/article/protesters-return-to-parliament-square-to-demand-resignations.753130",
+      "https://themalteseherald.com/2025/10/28/environmental-activists-warn-planning-reforms-will-destroy-our-country-during-mass-protest/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "LV",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Latvia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://eng.lsm.lv/article/politics/politics/02.10.2025-hundreds-protest-against-looming-latvian-u-turn-on-istanbul-convention.a616772/",
+      "https://eng.lsm.lv/article/society/society/07.11.2025-istanbul-convention-support-demos-passed-peacefully-in-latvia.a621534/",
+      "https://eng.lsm.lv/article/economy/transport/17.09.2025-bus-driver-strike-impacted-around-5000-passengers-in-latvia.a614671/",
+      "https://bnn-news.com/mass-protest-in-latvia-in-defence-of-the-istanbul-convention-273662",
+      "https://apnews.com/article/latvia-riga-protest-women-rights-domestic-violence-5edf932e14611145be9a324c461d4731"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "PT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Portugal during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.euronews.com/2026/10/02/schools-closed-services-slowed-and-flights-cancelled-strikes-hit-portugal",
+      "https://www.bbc.com/news/articles/cdxwrvl1734o",
+      "https://www.reuters.com/business/world-at-work/tens-thousands-rally-lisbon-against-planned-labour-reforms-2026-04-17/",
+      "https://apnews.com/article/portugal-protest-labor-law-bf544586c63ffc8e6d84d9c5b04c4180",
+      "https://apnews.com/article/portugal-strike-unions-government-employment-law-7ab975372784b5ff81075569efac8e33"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.com/news/articles/cdxwrvl1734o"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "MK",
+    "query": "Reliable news reporting on protests demonstrations or strikes in North Macedonia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.slobodenpecat.mk/en/majkata-na-zaginato-dete-vo-puls-najavi-protesti-ako-deko-ne-dobie-pritvor/",
+      "https://www.reuters.com/world/thousands-protest-skopje-ahead-trial-over-deadly-night-club-fire-2025-11-15/",
+      "https://apnews.com/article/north-macedonia-protests-nightclub-fire-103b8f609979c855e2e809601d4b34d6",
+      "https://koha.mk/en/rritja-e-pages-minimale-per-1667-denare-lsm-braktis-seancen-e-keshillit-socio-ekonomik/",
+      "https://apnews.com/article/pulse-fire-kocani-skopje-north-macedonia-protest-a57e63e201f735abe94d364ca93bf851"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "SM",
+    "query": "Reliable news reporting on protests demonstrations or strikes in San Marino during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.sanmarinortv.sm/news/politica-c2/igr-nuovo-sciopero-generale-chiamata-alla-piazza-il-7-ottobre-a281115",
+      "https://giornalesm.com/tantissimi-in-piazza-della-liberta-il-secondo-sciopero-generale-contro-la-riforma-igr-travolge-san-marino/",
+      "https://insider.sm/en/usl-fifth-congress-igr-reform-anniversary/",
+      "https://giornalesm.com/san-marino-riforma-igr-i-sindacati-denunciano-dati-vergognosi-e-profondamente-iniqui-nuove-simulazioni-sugli-effetti-della-manovra-riaccendono-la-protesta/",
+      "https://giornalesm.com/san-marino-riforma-igr-sindacati-migliaia-ancora-in-piazza-secondo-sciopero-generale-dalleffetto-dirompente/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "PL",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Poland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.aa.com.tr/en/europe/protests-take-place-across-poland-in-support-of-gaza-humanitarian-aid-flotilla/3706020",
+      "https://www.polskieradio.pl/395/7789/artykul/3587785,update-protests-planned-across-poland-in-support-of-gaza-flotilla",
+      "https://www.reuters.com/world/polish-train-drivers-go-slow-safety-protest-causes-travel-chaos-2026-09-11/",
+      "https://www.afp.com/en/protest-polands-highest-court-rule-law-crisis",
+      "https://notesfrompoland.com/2025/10/11/polish-opposition-hold-protest-against-eu-migration-and-trade-policies/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/polish-protesters-lift-months-long-blockade-ukraine-border-2024-04-29/"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "LI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Liechtenstein during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://landesspiegel.li/2026/06/feministinnen-streiken-fuer-fristenloesung-und-besseren-gewaltschutz/",
+      "https://brudiland.li/wir-bleiben-laut-am-start/",
+      "https://landesspiegel.li/2026/05/lanv-feiert-den-1-mai-mit-blick-auf-massenentlassungen/",
+      "https://data.humdata.org/dataset/liechtenstein-acled-conflict-data",
+      "https://lie24.li/articles/377502-1-mai-feier-des-lanv-massenentlassungen-im-fokus"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "NO",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Norway during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.nrk.no/vestland/har-streiket-i-170-dager-_-hundrevis-motte-opp-i-stotte-1.18042740",
+      "https://www.adressa.no/nyheter/innenriks/i/vlmKkV/natur-og-ungdom-aksjonerer-i-sunnfjord",
+      "https://www.nrk.no/vestland/aksjonistar-fra-natur-og-ungdom-lenkar-seg-fast-ved-nordic-mining-i-vevring-1.18043154",
+      "https://www.nrk.no/nyheter/skole-demonstranter-avbrot-bystyret-i-stavanger-_-kommunen-vil-anmelde-1.17619636",
+      "https://www.bt.no/hendelser/i/1oP3kW/laererstreiken-i-bergen-hundrevis-moette-opp-for-aa-vise-stoette"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "MC",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Monaco during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://news.mc/2025/12/12/hundreds-take-to-monacos-streets-as-unions-warn-over-pensions-and-purchasing-power/",
+      "https://news.mc/2026/04/10/monaco-workers-march-over-wages-and-pensions-as-union-pressure-builds/",
+      "https://news.mc/2026/09/18/monaco-unions-call-for-major-demonstration/",
+      "https://monacolife.net/monaco-government-responds-to-fontvieille-shopping-centre-strike/",
+      "https://news.mc/2024/09/26/state-of-the-unions-rally-in-monaco/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "RO",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Romania during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bloomberg.com/news/articles/2026-07-28/romanian-health-workers-strike-builds-pressure-over-pay-reforms",
+      "https://www.reuters.com/world/thousands-romanians-protest-against-judicial-abuses-2025-12-15/",
+      "https://cpj.org/2026/09/journalists-attacked-while-covering-violent-farmers-protest-in-romania/",
+      "https://www.romaniajournal.ro/society-people/social/shepherds-protest-turns-violent-in-bucharest-several-injured/",
+      "https://apnews.com/article/romania-protest-austerity-europe-union-budget-deficit-b7a5add23f39b3e101c933813669606e"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review."
+  },
+  {
+    "code": "GB",
+    "query": "Reliable news reporting on protests demonstrations or strikes in United Kingdom of Great Britain and Northern Ireland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:09:37.905Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/uk/london-police-intervene-palestine-action-protesters-gather-despite-synagogue-2025-10-04/",
+      "https://www.reuters.com/world/uk/british-police-boost-presence-after-night-rioting-sunderland-2024-08-03/",
+      "https://www.bbc.com/news/articles/c1wgx5v90vyo",
+      "https://www.bbc.co.uk/news/articles/ckgy8kvvkp3o",
+      "https://www.theguardian.com/world/2025/oct/04/palestine-action-protest-police-arrests-london-demo"
+    ],
+    "reviewed_urls": [
+      "https://www.bma.org.uk/our-campaigns/resident-doctor-campaigns/pay-in-england/2024-pay-deal-for-resident-doctors-working-in-england",
+      "https://www.gov.uk/government/news/junior-doctors-accept-government-pay-deal",
+      "https://www.bbc.co.uk/news/articles/c06yd17m6jko"
+    ],
+    "note": "Initial English-language screen; not exhaustive; returned dates and geography require article review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "JE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Jersey (Channel Island, not New Jersey) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:04.023Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.channel103.com/news/jersey/shame-on-you-havre-des-pas-lido-protesters-take-to-the-royal-square/",
+      "https://jerseyeveningpost.com/news/2025/10/16/further-demonstration-planned-over-lido-following-breakdown-of-talks/",
+      "https://www.channel103.com/news/jersey/netballers-protests-about-lack-of-facilities/",
+      "https://www.bbc.co.uk/news/articles/c727044prdpo",
+      "https://www.bbc.co.uk/news/articles/cd7nl8j0y5vo"
+    ],
+    "reviewed_urls": [],
+    "note": "Retried initial English-language screen after rate limit; not exhaustive."
+  },
+  {
+    "code": "VA",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Holy See (Vatican City) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:04.023Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.theguardian.com/world/2024/oct/03/pro-choice-catholics-stage-protest-after-abortion-left-off-summit-agenda",
+      "https://religionnews.com/2024/10/09/advocates-for-women-deacons-in-it-for-the-long-run-despite-vatican-pushback/",
+      "https://cruxnow.com/vatican/2024/10/womens-group-announces-protests-over-catastrophic-approach-in-synod",
+      "https://www.telegraph.co.uk/world-news/2024/08/07/animal-rights-activists-disrupt-pope-vatican-audience/",
+      "https://thecatholicherald.com/article/vatican-museums-in-dispute-with-workers-and-local-residents-complaining-about-troublesome-visitors-and-noisy-pilgrims"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Vatican-related stories may concern protests in Rome or Italy rather than inside Vatican City; no episode admitted without local attribution."
+  },
+  {
+    "code": "GG",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Guernsey (Channel Island) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:04.023Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://guernseypress.com/news/2026/09/30/protesters-make-their-voices-heard-ahead-of-tax-debate",
+      "https://www.islandfm.com/news/guernsey/islanders-protest-against-guernsey-electricity-price-rises/",
+      "https://guernseypress.com/news/2026/10/01/pandr-failed-to-listen-carefully-to-the-public-vermeulen",
+      "https://guernseypress.com/news/2026/06/27/anti-gst-protests-planned-ahead-of-debate",
+      "https://guernseypress.com/news/2026/07/15/hundreds-join-protest-as-debate-begins-on-tax-reform"
+    ],
+    "reviewed_urls": [],
+    "note": "Retried initial English-language screen after rate limit; not exhaustive."
+  },
+  {
+    "code": "IT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Italy during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:04.023Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/italians-take-streets-gaza-flotilla-general-strike-2025-10-03/",
+      "https://www.bbc.com/news/articles/cy8rdd5dzvro",
+      "https://www.reuters.com/world/europe/strike-called-italy-protests-flare-over-interception-gaza-aid-ships-2025-10-01/",
+      "https://www.aa.com.tr/en/europe/hundreds-protest-controversial-antisemitism-bill-in-italy/4075611",
+      "https://www.euronews.com/2025/10/03/italy-paralysed-by-nationwide-strike-in-solidarity-with-intercepted-gaza-aid-flotilla"
+    ],
+    "reviewed_urls": [],
+    "note": "Retried initial English-language screen after rate limit; not exhaustive."
+  },
+  {
+    "code": "GI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Gibraltar (British territory) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:04.023Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.chronicle.gi/demonstrators-march-to-no-6-over-treaty-concerns/",
+      "https://www.theolivepress.es/spain-news/2026/03/06/first-protests-erupt-in-gibraltar-over-post-brexit-treaty/",
+      "https://www.theolivepress.es/spain-news/2026/03/10/gibraltar-treaty-protest-has-strong-support-but-saw-low-turnout-due-to-fear-of-retribution-organisers-claim/",
+      "https://www.chronicle.gi/unite-postpones-strike-and-will-ballot-members-after-agreement-with-govt/",
+      "https://www.chronicle.gi/strikers-bring-traffic-chaos-to-campo/"
+    ],
+    "reviewed_urls": [],
+    "note": "Retried initial English-language screen after rate limit; not exhaustive."
+  },
+  {
+    "code": "FO",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Faroe Islands (Danish North Atlantic territory) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:24.117Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.dailynorthern.com/21143/icelandic-seafarers-union-strike-ends-after-agreement-with-faroe-ship/",
+      "https://www.dailynorthern.com/20609/strike-halts-faroe-islands-bound-cargo-ships/",
+      "https://local.fo/workers-strike-ends-in-agreement-on-wage-hike/",
+      "https://local.fo/workers-strike-hits-faroe-islands-with-potentially-serious-implications/",
+      "https://www.dailynorthern.com/29039/healthcare-unions-reject-emergency-preparedness-agreement-with-ministry/"
+    ],
+    "reviewed_urls": [
+      "https://local.fo/workers-strike-ends-in-agreement-on-wage-hike/",
+      "https://local.fo/workers-strike-hits-faroe-islands-with-potentially-serious-implications/"
+    ],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "IE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Ireland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:24.116Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.rte.ie/news/2026/1001/1593672-students-protest-education-funding/",
+      "https://www.irishtimes.com/ireland/education/2026/10/02/teachers-union-of-ireland-latest-group-to-overwhelmingly-back-industrial-action/",
+      "https://www.bbc.co.uk/news/articles/cqevwrmevv21o",
+      "https://www.irishtimes.com/your-money/2026/10/01/college-student-protest-uses-90s-hits-to-draw-politicians-into-listening/",
+      "https://www.trinitynews.ie/2025/10/save-the-flotilla-protestors-block-dublin-port-in-emergency-demonstration/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "LU",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Luxembourg during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:50.452Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://today.rtl.lu/news/luxembourg/ogbl-and-lcgb-demonstrate-on-a3-over-minimum-wage-demand-1619247288",
+      "https://www.luxtimes.lu/luxembourg/a-call-for-action-for-womens-safety-in-the-capital/161663430.html",
+      "https://today.rtl.lu/news/luxembourg/more-than-100-gather-for-spontaneous-protest-outside-labour-ministry-121298707",
+      "https://today.rtl.lu/news/luxembourg/ogbl-protests-against-planned-tk-elevator-acquisition-366067606",
+      "https://today.rtl.lu/news/luxembourg/government-open-to-dialogue-and-compromise-on-pensions-pm-frieden-2316809"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "SJ",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Svalbard and Jan Mayen (Norwegian Arctic territories) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:10:50.452Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.newsinenglish.no/2025/05/02/zuckerbergs-yacht-meets-protests/",
+      "https://www.svalbardposten.no/barentsburg-gruvearbeidere-miljovern/folkemote-i-barentsburg-na-er-dere-de-eneste-gruvearbeiderne-pa-svalbard/597661",
+      "https://www.svalbardposten.no/demonstrasjon-gaza-longyearbyen/brukte-gryter-mot-krigen/583923",
+      "https://www.svalbardposten.no/greenpeace-jan-koum-klimaendringer/ber-folk-protestere/582579",
+      "https://frifagbevegelse.no/arbeidsmanden/ny-lonn-for-gruvearbeiderne-pa-svalbard-6.158.1218261.cfdcf2f6ab"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen of Norwegian Arctic territories; returned Svalbard-specific candidates, but bodies not reviewed; Jan Mayen has no established local episode."
+  },
+  {
+    "code": "MD",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Moldova, Republic of (Moldova, eastern European country) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:11:15.077Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://ipn.md/en/platform-dignity-and-truth-protesters-are-intimidated/",
+      "https://ipn.md/en/premier-growing-protest-spirits-and-atmosphere-must-be-eased-off/",
+      "https://ipn.md/en/farmers-continue-the-protests-and-announce-movements-towards-several-border-points/",
+      "https://www.reuters.com/world/europe/moldovan-police-say-people-trained-russia-moldovan-protests-2024-10-17/",
+      "https://ipn.md/en/farmers-move-with-tractors-along-stefan-cel-mare-blvd-disrupt-traffic/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "RU",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Russian Federation (Russia) during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:11:15.077Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://meduza.io/en/news/2026/09/25/russia-s-first-post-election-protest-over-alleged-fraud-in-the-state-duma-vote-goes-ahead-in-the-northern-city-of-syktyvkar-about-100-people-showed-up",
+      "https://www.independent.co.uk/news/world/europe/putin-protest-st-petersburg-russia-songs-swan-lake-b2847091.html",
+      "https://ekstrategies.org/articles/protest-dynamics-in-russia-local-triggers-systemic-processes",
+      "https://apnews.com/article/russia-crackown-journalists-navalny-trial-df7e06de5c8e76634ece67c2139af6ff",
+      "https://metro.co.uk/2025/10/15/hundreds-chant-you-f-ing-monsters-rare-st-petersburg-protest-overthrow-putin-24437946/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "UA",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Ukraine during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:11:40.857Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/business/aerospace-defense/thousands-rally-kyiv-demanding-ousted-defence-ministers-reinstatement-2026-07-31/",
+      "https://www.cbc.ca/news/world/ukraine-protests-2025-1.7591867",
+      "https://www.aljazeera.com/news/2026/7/16/hundreds-protest-in-kyiv-over-zelenskyys-dismissal-of-defence-minister",
+      "https://apnews.com/article/ukraine-corruption-law-european-union-f1ab949db19e079a52291c020ec3d24e",
+      "https://apnews.com/article/russia-ukraine-war-defense-minister-reshuffle-fedorov-88083e4381b1690f5048088d75954d3a"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.com/news/articles/cpv0n0ky4xro",
+      "https://www.reuters.com/world/zelenskiy-moving-defuse-crisis-restores-power-anti-graft-agencies-2025-07-31/"
+    ],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "SI",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Slovenia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:11:40.857Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.intellinews.com/thousands-rally-in-slovenia-s-novo-mesto-demanding-action-after-fatal-attack-408528/",
+      "https://www.rtvslo.si/slovenija/v-ljubljani-potekal-protest-proti-noveli-zakona-o-tujcih/793980",
+      "https://www.aljazeera.com/news/2026/9/10/thousands-protest-in-ljubljana-as-slovenia-opens-israels-first-embassy",
+      "https://nova24tv.si/20-vseslovenski-shod-proti-vladi-upokojenci-znova-na-ulice/",
+      "https://cordmagazine.com/news/anti-government-protest-held-in-ljubljana/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "ME",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Montenegro during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:01.814Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/montenegrin-protesters-slam-police-handling-mass-shooting-2025-01-03/",
+      "https://etv.me/english/botun-residents-to-spajic-mujovic-and-nisavic-come-and-talk-to-us-or-montenegro-will-be-paralyzed",
+      "https://balkaninsight.com/2025/10/29/anti-turkish-protesters-rally-in-montenegro-after-stabbing-incident/bi/",
+      "https://apnews.com/article/montenegro-protests-shooting-resignations-security-officials-3650b3ef647241ffd8c49f394923fdaa",
+      "https://en.vijesti.me/news-b/society/785947/Pejovic%3A-No-measures-have-been-taken-to-institutionally-resolve-the-situation-and-end-the-blockades-in-Cetinje."
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "SK",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Slovakia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:01.814Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://spectator.sme.sk/politics-and-society/c/thousands-protest-slovakia-culture-minister-in-bratislava",
+      "https://apnews.com/article/slovakia-antigovernment-protests-fico-russia-ukraine-5362e2c325bf37af9d0f54e5f5f8be64",
+      "https://apnews.com/article/slovakia-antigovernment-protests-fico-russia-ukraine-95420501f1ed6a0c53924610bfcf24e2",
+      "https://apnews.com/article/slovakia-protest-fico-770a977c9c9f9dcfad32e5b23409038a",
+      "https://www.vaticannews.va/en/church/news/2026-09/slovakia-bratislava-march-for-life-bishops-conference.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "RS",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Serbia during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:21.834Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/police-protesters-clash-serbia-crowds-demand-presidents-exit-2026-05-23/",
+      "https://www.reuters.com/world/thousands-rally-serbias-north-demand-early-elections-2026-06-20/",
+      "https://www.aljazeera.com/news/2026/9/27/serbian-president-aleksandar-vucic-resigns-amid-prolonged-protests",
+      "https://apnews.com/article/serbia-students-protest-vucic-belgrade-37dbb3ba886bbce0fb91f1ce6da61317",
+      "https://apnews.com/article/serbia-protest-belgrade-students-d130989de248aa4a768cde2509d8b017"
+    ],
+    "reviewed_urls": [
+      "https://www.rferl.org/a/serbian-pm-resigns-angry-protests-train-tragedy-/33291676.html"
+    ],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "SE",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Sweden during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:21.834Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://periskopi.com/sv/2026/10/poliskoron-justitieministeriet-demonstranter-jagar-pyrotekniska-fordon",
+      "https://www.france24.com/en/europe/20260823-thousands-rally-in-sweden-to-protest-climate-policies-ahead-of-general-election",
+      "https://www.thelocal.se/20260107/deportations-fuel-pushback-against-swedish-migration-reforms",
+      "https://www.etc.se/inrikes/oroligt-utanfoer-ud-vid-palestinademonstration-flera-gripna",
+      "https://www.svt.se/nyheter/lokalt/jamtland/manifestation-i-stockholm-for-jamtlandsfjallen-stoppa-gruvan"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "LT",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Lithuania during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:40.898Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.lrt.lt/en/news-in-english/19/3068292/two-opposing-migration-protests-to-take-place-50-metres-apart-in-vilnius",
+      "https://www.lrt.lt/en/news-in-english/19/2702216/lithuania-s-arts-community-protest-decision-to-hand-culture-ministry-to-populist-party",
+      "https://www.omnesmag.com/en/news/familias-marcha-vida-vilna/",
+      "https://www.lrt.lt/en/news-in-english/19/2770183/thousands-rally-in-vilnius-against-threat-to-media-freedom",
+      "https://www.reuters.com/world/europe/thousands-protest-vilnius-against-government-party-whose-leader-is-trial-2024-11-14/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "CH",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Switzerland during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:12:40.898Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.swissinfo.ch/eng/various/start-of-student-rallies-in-switzerland/90099411",
+      "https://www.swissinfo.ch/fre/environ-600-manifestants-contre-le-projet-de-budget-%C3%A0-gen%C3%A8ve/92153125",
+      "https://www.swissinfo.ch/eng/climate-adaptation/geneva-and-lausanne-residents-protest-against-inaction-on-climate-change/92088301",
+      "https://www.swissinfo.ch/eng/workplace/construction-workers-strike-7000-workers-in-french-speaking-switzerland-cross-their-arms/90270123",
+      "https://www.laliberte.ch/articles/environ-600-manifestants-contre-le-projet-de-budget-a-geneve-1456677"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive."
+  },
+  {
+    "code": "ES",
+    "query": "Reliable news reporting on protests demonstrations or strikes in Spain during 2024, 2025 and 2026 through October 2, identifying dates, cities and responses.",
+    "attempted_at": "2026-10-02T21:14:26.207Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://thehill.com/homenews/ap/ap-international/ap-spanish-protesters-march-on-parliament-as-emergency-housing-decrees-are-set-to-be-rejected/",
+      "https://www.thelocal.es/20261002/watch-spaniards-bang-pots-and-pans-in-fresh-housing-protest",
+      "https://www.euronews.com/2026/10/02/sanchez-begins-reflection-on-early-election-as-protesters-call-for-general-strike",
+      "https://apnews.com/article/europe-gaza-war-israel-protests-spain-italy-fdf6f3358912326c6255ae6b68145a0b",
+      "https://www.elconstitucional.es/en/municipalities/madrid-city/sol-maintains-the-encampment-and-demands-general-strike-after-the-housing-veto-we-are-not-going-to-back-down_8466_102.html"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/protesters-rally-across-spain-against-housing-crisis-tourist-flats-2025-04-05/",
+      "https://www.theguardian.com/world/2025/apr/05/spain-protest-march-housing-crisis"
+    ],
+    "note": "Initial English-language screen, retry after shared rate limit; not exhaustive. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "PL",
+    "query": "Polish farmers 2024 protests Ukrainian grain Warsaw March April agreement suspended blockade Reuters",
+    "attempted_at": "2026-10-02T21:14:48.987Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/polish-protesters-lift-months-long-blockade-ukraine-border-2024-04-29/",
+      "https://www.reuters.com/world/europe/poland-ukraine-close-agreement-grain-says-polish-lawmaker-2024-03-27/",
+      "https://www.reuters.com/world/europe/poland-says-breakthrough-ukrainian-grain-unlikely-warsaw-talks-2024-03-28/",
+      "https://www.reuters.com/world/europe/polish-government-pledges-grain-surplus-cut-farmers-press-with-protests-2024-03-09/",
+      "https://www.reuters.com/world/europe/polish-farmers-let-trucks-one-ukraine-border-crossing-pass-pap-reports-2024-03-13/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/polish-protesters-lift-months-long-blockade-ukraine-border-2024-04-29/"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "RS",
+    "query": "Serbia protests Novi Sad station collapse November 2024 January 2025 prime minister resign Reuters",
+    "attempted_at": "2026-10-02T21:15:03.831Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/serbias-pm-resign-popular-protests-persist-tanjug-news-agency-2025-01-28/",
+      "https://www.ap.org/news-highlights/spotlights/2025/serbias-prime-minister-resigns-as-anti-corruption-protests-sparked-by-deadly-collapse-swell/",
+      "https://www.theguardian.com/world/2025/jan/28/serbia-prime-minister-milos-vucevic-resigns-amid-anti-corruption-protests",
+      "https://apnews.com/article/serbia-protests-vucevic-resigns-b71e3a0aacf5d0368b2bd1f4500170f5",
+      "https://www.rferl.org/a/serbian-pm-resigns-angry-protests-train-tragedy-/33291676.html"
+    ],
+    "reviewed_urls": [
+      "https://www.rferl.org/a/serbian-pm-resigns-angry-protests-train-tragedy-/33291676.html"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "GB",
+    "query": "BMA resident doctors England accept pay deal September 2024 end dispute strike official",
+    "attempted_at": "2026-10-02T21:15:03.831Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bma.org.uk/our-campaigns/resident-doctor-campaigns/pay-in-england/2024-pay-deal-for-resident-doctors-working-in-england",
+      "https://www.gov.uk/government/news/junior-doctors-accept-government-pay-deal",
+      "https://thedoctor.bma.org.uk/articles/pay-contracts/junior-doctors-endorse-pay-deal/",
+      "https://www.reuters.com/world/uk/junior-doctors-england-vote-accept-government-pay-offer-2024-09-16/",
+      "https://www.bmj.com/content/386/bmj.q2038"
+    ],
+    "reviewed_urls": [
+      "https://www.bma.org.uk/our-campaigns/resident-doctor-campaigns/pay-in-england/2024-pay-deal-for-resident-doctors-working-in-england",
+      "https://www.gov.uk/government/news/junior-doctors-accept-government-pay-deal",
+      "https://www.bbc.co.uk/news/articles/c06yd17m6jko"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "GB",
+    "query": "BMA junior doctors six day strike 3 January 2024 England",
+    "attempted_at": "2026-10-02T21:16:09.805Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bbc.co.uk/news/articles/c06yd17m6jko",
+      "https://www.reuters.com/world/uk/record-breaking-doctors-strike-pile-pressure-health-service-england-2024-01-03/",
+      "https://www.theguardian.com/society/2024/jan/03/why-are-junior-doctors-striking-in-england-and-how-bad-will-it-be",
+      "https://www.theguardian.com/society/2024/jan/03/tens-of-thousands-face-nhs-cancellations-six-day-junior-doctors-strike-england",
+      "https://www.bbc.co.uk/news/health-67867273"
+    ],
+    "reviewed_urls": [
+      "https://www.bma.org.uk/our-campaigns/resident-doctor-campaigns/pay-in-england/2024-pay-deal-for-resident-doctors-working-in-england",
+      "https://www.gov.uk/government/news/junior-doctors-accept-government-pay-deal",
+      "https://www.bbc.co.uk/news/articles/c06yd17m6jko"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "EE",
+    "query": "Estonia teachers strike January 2024 ended February agreement pay ERR",
+    "attempted_at": "2026-10-02T21:15:50.671Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://news.err.ee/1609237755/union-ends-teachers-strike",
+      "https://news.err.ee/1609237601/government-reaches-agreement-on-5-7-million-for-teachers-pay-rise",
+      "https://www.hm.ee/opetajate-streik",
+      "https://www.err.ee/1609237716/opetajate-streik-lopeb",
+      "https://news.err.ee/1609237287/estonian-education-minister-makes-new-offer-to-try-to-end-teachers-strike"
+    ],
+    "reviewed_urls": [
+      "https://news.err.ee/1609237755/union-ends-teachers-strike",
+      "https://www.hm.ee/opetajate-streik"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "UA",
+    "query": "Ukraine July 2025 anti corruption protests Zelensky restores independence July 31 law Reuters",
+    "attempted_at": "2026-10-02T21:15:50.671Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/zelenskiy-moving-defuse-crisis-restores-power-anti-graft-agencies-2025-07-31/",
+      "https://www.reuters.com/world/ukrainian-parliament-approves-restoring-independence-anti-corruption-agencies-2025-07-31/",
+      "https://apnews.com/article/russian-ukraine-war-corruption-law-graft-watchdogs-2abf1e53a71ed0fff726c256c55aefb8",
+      "https://www.nytimes.com/2025/07/31/world/europe/ukraine-corruption-agencies-parliament.html",
+      "https://www.bbc.com/news/articles/cpv0n0ky4xro"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.com/news/articles/cpv0n0ky4xro",
+      "https://www.reuters.com/world/zelenskiy-moving-defuse-crisis-restores-power-anti-graft-agencies-2025-07-31/"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  },
+  {
+    "code": "ES",
+    "query": "Reuters Spain housing protests April 5 2025 Madrid Barcelona affordable rent protests",
+    "attempted_at": "2026-10-02T21:16:09.804Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/europe/protesters-rally-across-spain-against-housing-crisis-tourist-flats-2025-04-05/",
+      "https://apnews.com/article/housing-cost-protest-spain-9a4bc15ae2a0d1460950848ad2596d1b",
+      "https://www.theguardian.com/world/2025/apr/05/spain-protest-march-housing-crisis",
+      "https://www.reuters.com/es/mundo/S3AK6CFHR5MFRPLE2AMPNU2TBM-2025-04-05/",
+      "https://www.reutersconnect.com/item/protest-to-demand-lower-housing-rental-prices-and-better-living-conditions-in-madrid/dGFnOnJldXRlcnMuY29tLDIwMjU6bmV3c21sX1JDMk5SREEySE4zWA"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/protesters-rally-across-spain-against-housing-crisis-tourist-flats-2025-04-05/",
+      "https://www.theguardian.com/world/2025/apr/05/spain-protest-march-housing-crisis"
+    ],
+    "note": "Targeted historical follow-up; search discovery requires article-body review. Reviewed URLs include substantive historical follow-up reads; repeated rows record search attempts, not independent country reviews."
+  }
+]

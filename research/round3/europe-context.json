@@ -1,0 +1,617 @@
+[
+  {
+    "event_id": "fo-workers-wage-strike-2024",
+    "episode_scope": "The May 14–June 9, 2024 union wage strike; excludes later Faroese or Icelandic seafarer disputes.",
+    "cities": [
+      {
+        "name": "Tórshavn",
+        "source_ids": [
+          "fo-workers-wage-strike-2024-localfo-end"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Local.fo explicitly reports the June 9 agreement immediately ended the strike.",
+      "source_ids": [
+        "fo-workers-wage-strike-2024-localfo-end"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-06-09",
+        "summary": "Five unions and employers signed a two-year contract with a total hourly wage increase of DKK 16.80 over two years.",
+        "favours": [
+          {
+            "actor": "Workers covered by the five unions",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The higher contractual wage benefits covered workers; purchasing power and employment effects were not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "fo-workers-wage-strike-2024-localfo-end"
+        ]
+      }
+    ],
+    "research_note": "Two reports from one local publisher; do not treat them as independent corroboration. End article page says June 10 although search metadata says June 9. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "bg-budget-protests-2025",
+    "episode_scope": "Late-November and December 1, 2025 mobilisation against the draft 2026 budget and immediate withdrawal response; not the entire anti-government movement.",
+    "cities": [
+      {
+        "name": "Sofia",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      },
+      {
+        "name": "Plovdiv",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      },
+      {
+        "name": "Varna",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      },
+      {
+        "name": "Burgas",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      },
+      {
+        "name": "Blagoevgrad",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Budget withdrawal does not prove demonstrations ended; the source reports continuing resignation demands.",
+      "source_ids": []
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-12-02",
+        "summary": "Government announced it would withdraw the draft 2026 budget and begin a new budget procedure.",
+        "favours": [
+          {
+            "actor": "Opponents of the draft budget",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Withdrawal meets their immediate budget demand; eventual fiscal policy and broader resignation demands were unresolved."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      }
+    ],
+    "research_note": "BBC article includes wire material and named official statements. No later outcome or protest cessation inferred. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ad-housing-rally-2025",
+    "episode_scope": "The April 5, 2025 housing demonstration; excludes mobilisation beginning in 2023.",
+    "cities": [
+      {
+        "name": "Andorra la Vella",
+        "source_ids": [
+          "ad-housing-rally-2025-civicus"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The dated demonstration is documented, but no source reviewed establishes formal end of this episode or later mobilisation.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Rights-monitoring synthesis has a civic-space advocacy perspective and links local reporting; police and organiser turnout estimates differ, so no numerical estimate is adopted. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ba-flood-accountability-2025",
+    "episode_scope": "The Sarajevo student mobilisation reported February 10, 2025; excludes the floods themselves and Serbian demonstrations.",
+    "cities": [
+      {
+        "name": "Sarajevo",
+        "source_ids": [
+          "ba-flood-accountability-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "One dated report does not establish cessation or current activity.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Reuters body reviewed using web fallback after Exa extraction truncated. No subsequent concession established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "gr-tempe-accountability-2025",
+    "episode_scope": "February 28, 2025 anniversary mobilisation; excludes earlier or later rail campaigns.",
+    "cities": [
+      {
+        "name": "Athens",
+        "source_ids": [
+          "gr-tempe-accountability-2025-ap"
+        ]
+      },
+      {
+        "name": "Thessaloniki",
+        "source_ids": [
+          "gr-tempe-accountability-2025-ap"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "No cessation established.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AP article body read via fallback. No durable outcome established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "hu-pride-ban-protests-2025",
+    "episode_scope": "March–April 2025 anti-ban rallies; excludes later Pride events.",
+    "cities": [
+      {
+        "name": "Budapest",
+        "source_ids": [
+          "hu-pride-ban-protests-2025-ap"
+        ]
+      },
+      {
+        "name": "Miskolc",
+        "source_ids": [
+          "hu-pride-ban-protests-2025-ap"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Weekly protests are documented, but later status is unverified.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AP body read via fallback. No repeal established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "fr-farmers-blockades-2024",
+    "episode_scope": "The January 2024 roadblock mobilisation of FNSEA and Young Farmers through their February 1 suspension; excludes continued action by other unions and later farmer campaigns.",
+    "cities": [
+      {
+        "name": "Paris",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      },
+      {
+        "name": "Lyon",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "RFI explicitly reports the two major unions suspended protests on February 1. This describes their suspension, not the end of all French farmer activism.",
+      "source_ids": [
+        "fr-farmers-blockades-2024-rfi"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-02-01",
+        "summary": "Government announced annual €150 million livestock support and a pause in the national pesticide reduction plan, among other concessions.",
+        "favours": [
+          {
+            "actor": "Farmers seeking immediate financial and regulatory relief",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The announcements meet some immediate union demands; implementation and longer-term income effects were not verified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      }
+    ],
+    "research_note": "RFI article credits AFP; it is one reporting stream. Its February 2 update documents the suspension while noting other-union mobilisation. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "de-farm-subsidy-protests-2024",
+    "episode_scope": "The January 2024 phase of the farm-tax protest, including partial policy retreat; preceding December 2023 action is background.",
+    "cities": [
+      {
+        "name": "Berlin",
+        "source_ids": [
+          "de-farm-subsidy-protests-2024-reuters-protest"
+        ]
+      },
+      {
+        "name": "Dresden",
+        "source_ids": [
+          "de-farm-subsidy-protests-2024-reuters-protest"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Protests continued after concessions; no cessation established.",
+      "source_ids": []
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-01-04",
+        "summary": "Government retained vehicle-tax relief and changed immediate diesel-relief abolition to a phased reduction.",
+        "favours": [
+          {
+            "actor": "Agricultural and forestry businesses",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "They kept one tax benefit and gained time on another, but the planned diesel phase-out remained."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "de-farm-subsidy-protests-2024-reuters-policy"
+        ]
+      }
+    ],
+    "research_note": "Two Reuters bodies reviewed via fallback; one publisher. The policy retreat preceded January 8's nationwide action and responded to earlier backlash. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "pl-ukraine-border-farm-blockades-2024",
+    "episode_scope": "The border-blockade phase continuing into 2024, suspended April 29; excludes subsequent Warsaw rallies and the full farmers' movement.",
+    "cities": [],
+    "status_basis": {
+      "text": "Reuters explicitly reports suspension and all crossings reopened; further mobilisation was possible.",
+      "source_ids": [
+        "pl-ukraine-border-farm-blockades-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-04-29",
+        "summary": "All border-crossing directions reopened to trucks.",
+        "favours": [
+          {
+            "actor": "Cross-border freight operators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Reopening restored access; economic losses and broader policy gains were unverified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "pl-ukraine-border-farm-blockades-2024-reuters"
+        ]
+      },
+      {
+        "date": null,
+        "summary": "In April 2024, Poland decided to provide 2.1 billion zlotys in subsidies to compensate farmers for low grain prices; the exact decision date and payment were not established.",
+        "favours": [
+          {
+            "actor": "Polish farmers eligible for compensation",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Allocated compensation addresses low grain prices, but actual receipt and net financial recovery were not verified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "pl-ukraine-border-farm-blockades-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "Reuters body reviewed via fallback. Onset preceded 2024; precise farmer-joining date unverified. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "gb-england-doctor-strikes-2024",
+    "episode_scope": "The documented 2024 strike rounds from January 3 through September acceptance, within a dispute that began in 2022; excludes later resident-doctor disputes.",
+    "cities": [],
+    "status_basis": {
+      "text": "BMA says acceptance ended the pay dispute; the government announced the accepted agreement on September 16.",
+      "source_ids": [
+        "gb-england-doctor-strikes-2024-bma",
+        "gb-england-doctor-strikes-2024-government",
+        "gb-england-doctor-strikes-2024-bbc-start"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-09-16",
+        "summary": "Doctors accepted an agreement providing additional backdated pay uplifts and a 2024–25 increase of 6% plus £1,000.",
+        "favours": [
+          {
+            "actor": "Resident doctors covered by the England agreement",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Contractual pay rises benefit covered doctors; full restoration of historical purchasing power remained a wider BMA goal."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "gb-england-doctor-strikes-2024-bma",
+          "gb-england-doctor-strikes-2024-government",
+          "gb-england-doctor-strikes-2024-bbc-start"
+        ]
+      }
+    ],
+    "research_note": "Union and government are primary negotiating parties with incentives to present the deal positively; BBC independently documents the January strike. Government publication date is September 16 despite Exa's previous-day metadata. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "rs-station-accountability-2024-2025",
+    "episode_scope": "Late-2024 through January 2025 station-collapse accountability mobilisation; excludes subsequent 2025–26 campaigns.",
+    "cities": [
+      {
+        "name": "Belgrade",
+        "source_ids": [
+          "rs-station-accountability-2024-2025-rferl"
+        ]
+      },
+      {
+        "name": "Novi Sad",
+        "source_ids": [
+          "rs-station-accountability-2024-2025-rferl"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Students said demands were unmet and called further action; resignations do not establish cessation.",
+      "source_ids": []
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-01-28",
+        "summary": "Prime Minister Milos Vucevic and Novi Sad Mayor Milan Djuric announced resignations in response to the crisis.",
+        "favours": [
+          {
+            "actor": "Officeholders Vucevic and Djuric",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "They relinquished office politically; students' substantive accountability demands remained unmet, so no overall protest victory is inferred."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "rs-station-accountability-2024-2025-rferl"
+        ]
+      }
+    ],
+    "research_note": "RFE/RL body reviewed. Date is resignation announcement, not assumed legal completion of the transition; precise protest onset unknown. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ee-teachers-strike-2024",
+    "episode_scope": "The January 22–30, 2024 general-education teachers' strike and related solidarity mobilisation; excludes later education disputes.",
+    "cities": [
+      {
+        "name": "Tartu",
+        "source_ids": [
+          "ee-teachers-strike-2024-err"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The union and ministry explicitly state the strike ended January 30; regular teaching resumed January 31.",
+      "source_ids": [
+        "ee-teachers-strike-2024-err",
+        "ee-teachers-strike-2024-ministry"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-01-30",
+        "summary": "Union accepted €5.7 million additional pay funding, raising the minimum salary to €1,820, with further collective bargaining planned.",
+        "favours": [
+          {
+            "actor": "Teachers covered by the agreement",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "They gained pay funding but accepted less than their initial demand; longer-term targets were commitments, not verified achievements."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ee-teachers-strike-2024-err",
+          "ee-teachers-strike-2024-ministry"
+        ]
+      }
+    ],
+    "research_note": "ERR reporting and ministry's Estonian-language primary record corroborate onset and ending; parties had incentives to emphasize settlement. Tartu rally is identified in ERR's caption. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ua-anti-graft-independence-2025",
+    "episode_scope": "Late-July 2025 mobilisation against reduced NABU and SAPO independence and immediate legislative reversal; excludes later defence-minister protests.",
+    "cities": [
+      {
+        "name": "Kyiv",
+        "source_ids": [
+          "ua-anti-graft-independence-2025-bbc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A legislative reversal is established, but sources do not explicitly establish formal protest cessation.",
+      "source_ids": []
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-07-31",
+        "summary": "A replacement law restored independence of NABU and SAPO.",
+        "favours": [
+          {
+            "actor": "NABU, SAPO and demonstrators seeking independence",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Restored legal autonomy meets the immediate demand; future enforcement and insulation from pressure were not guaranteed."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ua-anti-graft-independence-2025-bbc",
+          "ua-anti-graft-independence-2025-reuters"
+        ]
+      }
+    ],
+    "research_note": "BBC and Reuters bodies independently reviewed; Reuters explicitly reports signature and notes pressure from both protesters and European officials, so sole protest causation is not asserted. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "dk-greenland-solidarity-2026",
+    "episode_scope": "Denmark's January 17, 2026 rallies; excludes the separately located Nuuk demonstration.",
+    "cities": [
+      {
+        "name": "Copenhagen",
+        "source_ids": [
+          "dk-greenland-solidarity-2026-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "No cessation established.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Reuters body reviewed via fallback; no policy outcome established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "fi-labour-reform-strikes-2024",
+    "episode_scope": "February 1, 2024 strike escalation and rally; excludes later political-strike rounds.",
+    "cities": [
+      {
+        "name": "Helsinki",
+        "source_ids": [
+          "fi-labour-reform-strikes-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The planned duration does not verify the actual end.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Reuters body reviewed via fallback. No subsequent concession established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "es-housing-demonstrations-2025",
+    "episode_scope": "April 5, 2025 coordinated housing rallies; excludes separate later Madrid encampments.",
+    "cities": [
+      {
+        "name": "Madrid",
+        "source_ids": [
+          "es-housing-demonstrations-2025-reuters"
+        ]
+      },
+      {
+        "name": "Palma de Mallorca",
+        "source_ids": [
+          "es-housing-demonstrations-2025-reuters"
+        ]
+      },
+      {
+        "name": "Barcelona",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Málaga",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Vigo",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Seville",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Valencia",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Santiago de Compostela",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "Burgos",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      },
+      {
+        "name": "San Sebastián",
+        "source_ids": [
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "No cessation established.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Both article bodies reviewed; crowd estimates vary, so none adopted. No policy change linked to this day's mobilisation established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "al-flamingo-rallies-2026",
+    "episode_scope": "June–July 2026 nightly rallies around the Zvërnec resort project and expanded civic demands; excludes the separate February opposition protest.",
+    "cities": [
+      {
+        "name": "Tirana",
+        "source_ids": [
+          "al-flamingo-rallies-2026-bbc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Both dated sources document repeated mobilisation; later activity and a formal end are not verified.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "BBC original interviews and state news agency reporting support episode identity. ATA has institutional incentives and is not treated as neutral on government performance. Exact onset is not inferred from consecutive-day counts. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "pt-labour-reform-strike-2025",
+    "episode_scope": "December 11, 2025 general strike; excludes separate later labour-reform rallies.",
+    "cities": [],
+    "status_basis": {
+      "text": "One day's reporting does not establish formal end or later status.",
+      "source_ids": []
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "BBC original reporting from Lisbon reviewed; policy passage or concession and beneficiary outcome were not established. AI-assisted; no human sign-off."
+  }
+]

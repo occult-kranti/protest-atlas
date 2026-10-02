@@ -6,16 +6,18 @@ import tempfile
 
 from validate_data import ROOT, ValidationError, validate_repository
 from validate_coverage import validate_repository_coverage
+from validate_history import validate_history_repository
 
 PUBLIC_FILES = (
     'index.html', 'styles.css', 'app.js', 'atlas.css', 'explore.js', 'map.js',
-    'review.html', 'review.css', 'review.js',
+    'review.html', 'review.css', 'review.js', 'history.js', 'history.css',
+    'public/event-context.json', 'public/research-ledger.json', 'public/cities.json',
     'public/events.json', 'public/countries.json', 'public/examples.json',
     'public/coverage.json', 'public/discovery-status.json',
     'public/world-countries.geo.json', 'public/world-110m.topo.json',
     'public/world-map-metadata.json',
     'vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js',
-    'vendor/D3_LICENSE', 'vendor/TOPOJSON_CLIENT_LICENSE', 'vendor/WORLD_ATLAS_LICENSE',
+    'vendor/NATURAL_EARTH_LICENSE.md', 'vendor/D3_LICENSE', 'vendor/TOPOJSON_CLIENT_LICENSE', 'vendor/WORLD_ATLAS_LICENSE',
 )
 PUBLIC_COPIES = {name: name for name in PUBLIC_FILES} | {'tests/layout-preview.html': 'checks.html'}
 
@@ -30,6 +32,7 @@ def build(root=ROOT):
             raise ValidationError(f'{name}: missing file or symlink at publication boundary')
     validate_repository(root)
     validate_repository_coverage(root)
+    validate_history_repository(root)
     destination = root / '_site'
     if destination.is_symlink():
         raise ValidationError('_site: symlink output forbidden')

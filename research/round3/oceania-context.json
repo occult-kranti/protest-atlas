@@ -1,0 +1,407 @@
+[
+  {
+    "event_id": "au-victorian-hospital-strike-20261001",
+    "episode_scope": "October 1, 2026 hospital work stoppages only; excludes earlier bargaining and other strike dates.",
+    "cities": [
+      {
+        "name": "Mildura",
+        "source_ids": [
+          "au-victorian-hospital-strike-20261001-abc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed report establishes historical action but does not establish its end or current activity.",
+      "source_ids": [
+        "au-victorian-hospital-strike-20261001-abc"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "ABC article body read. Shift times differ between discovery highlights and fetched body; exact times omitted. No deal or actual cessation established. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "pg-port-moresby-payroll-protest-20240110",
+    "episode_scope": "January 10 payroll protest in Port Moresby and directly associated unrest, with reimbursement follow-up; excludes unrelated later violence.",
+    "cities": [
+      {
+        "name": "Port Moresby",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-abc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Reports establish the initial action and later reimbursement assurances, but no exact end of this protest episode.",
+      "source_ids": [
+        "pg-port-moresby-payroll-protest-20240110-abc",
+        "pg-port-moresby-payroll-protest-20240110-national"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-01-10",
+        "summary": "Government promised to correct payroll deductions; reviewed evidence does not confirm payment delivery.",
+        "favours": [
+          {
+            "actor": "Affected public servants",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "A reimbursement commitment addresses their wage grievance; implementation remains unverified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-abc"
+        ]
+      }
+    ],
+    "research_note": "Original ABC reporting and a subsequent local newspaper report read. Amount/configuration descriptions differ; precise refund amount omitted. No nationwide opinion claim. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "ck-china-partnership-rallies-20250218",
+    "episode_scope": "February 18 and 24 opposition rallies and related February 25 no-confidence vote; excludes earlier passport opposition as a separate episode.",
+    "cities": [
+      {
+        "name": "Avarua",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-abc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The reviewed report establishes historical action but does not establish its end or current activity.",
+      "source_ids": [
+        "ck-china-partnership-rallies-20250218-abc",
+        "ck-china-partnership-rallies-20250218-rnz",
+        "ck-china-partnership-rallies-20250218-cin"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-02-25",
+        "summary": "Brown and Cabinet survived the no-confidence vote by 13 votes to nine.",
+        "favours": [
+          {
+            "actor": "Mark Brown and Cabinet",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The vote preserved their tenure."
+          },
+          {
+            "actor": "Protesters seeking replacement leadership",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "The requested leadership change was not achieved in this vote."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-rnz",
+          "ck-china-partnership-rallies-20250218-cin"
+        ]
+      }
+    ],
+    "research_note": "ABC with wires is not independent of all underlying wire material. RNZ follow-up explicitly syndicated Cook Islands News. Local outcome page supplied headline and repeated introductory paragraph only; no claim of reading a paywalled full article. Dates use Cook Islands local calendar. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "fj-yaqara-pastoral-strike-20260216",
+    "episode_scope": "February 16–19, 2026 Yaqara Pastoral workplace strike only; excludes other Fiji union disputes.",
+    "cities": [
+      {
+        "name": "Tavua",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-village"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Fiji Times explicitly identifies strike dates February 16–19; Fiji Sun reports an agreement Thursday evening and workers resuming duties.",
+      "source_ids": [
+        "fj-yaqara-pastoral-strike-20260216-times",
+        "fj-yaqara-pastoral-strike-20260216-sun"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-02-19",
+        "summary": "Agreement secured backdated wage increases, COLA and outstanding benefits, including strike-period pay.",
+        "favours": [
+          {
+            "actor": "Yaqara union members",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Union called the agreement a major win for members."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-times",
+          "fj-yaqara-pastoral-strike-20260216-sun"
+        ]
+      }
+    ],
+    "research_note": "Three publishers read, but accounts draw on shared ministry and union statements rather than three independent investigations. Fijivillage places premises at Yaqara, Tavua; an earlier Fiji Times onset report used Rakiraki, so precise geography remains qualified. Fiji Times publication retains retrieved UTC timestamp; strike end date explicitly stated. Payment commitments are not independently audited. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "sb-guadalcanal-health-sitin-202501",
+    "episode_scope": "January 2025 Guadalcanal health-worker sit-in and related March negotiations; excludes the original 2018 claims as a protest episode.",
+    "cities": [],
+    "status_basis": {
+      "text": "SIBC explicitly reports return to work, but gives no exact return date. End-date schema cannot represent an interval; status remains unknown rather than substituting publication date.",
+      "source_ids": [
+        "sb-guadalcanal-health-sitin-202501-sibc"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Workers returned after talks; by the March report, an agreement awaited provincial executive approval and signing.",
+        "favours": [
+          {
+            "actor": "Guadalcanal health workers",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Negotiations moved wage claims toward an agreement, but approval and payment were not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "sb-guadalcanal-health-sitin-202501-sibc",
+          "sb-guadalcanal-health-sitin-202501-star"
+        ]
+      }
+    ],
+    "research_note": "Two local publishers read; no specific protest city established. January 27 derived from 'Monday' in dated January 31 report. Exact cessation and payment delivery unavailable. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "vu-teachers-resumed-strike-20240810",
+    "episode_scope": "Resumed industrial action from August 10, 2024 through December 22, 2025; excludes separate June 7–17, 2024 action documented in the judgment.",
+    "cities": [],
+    "status_basis": {
+      "text": "December 23 Daily Post report explicitly says the union called off the nationwide strike 'yesterday' after signing the CBA.",
+      "source_ids": [
+        "vu-teachers-resumed-strike-20240810-post"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-02-14",
+        "summary": "Appeal court declined leave to challenge interim stays of teacher suspensions.",
+        "favours": [
+          {
+            "actor": "Affected striking teachers",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Interim protection against suspensions remained in place; not a final merits ruling."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-court"
+        ]
+      },
+      {
+        "date": "2025-12-22",
+        "summary": "Collective agreement addressed payroll, unpaid entitlements and working conditions; government committed to a multi-year settlement.",
+        "favours": [
+          {
+            "actor": "Vanuatu Teachers Union members",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Agreement addresses their claims; full eventual payment is not verified."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-post"
+        ]
+      }
+    ],
+    "research_note": "Primary February appeal judgment and regional/local reporting read. RNZ cites Daily Post and contains inconsistent June 6/7 onset descriptions; August 10 resumed bout taken directly from the court. No city inferred from publisher mailing address. No private teacher names retained. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "as-noaa-seabed-mining-protest-20260902",
+    "episode_scope": "September 2, 2026 confrontation with NOAA research ship in Pago Pago; excludes July demonstration and the wider anti-mining campaign.",
+    "cities": [
+      {
+        "name": "Pago Pago",
+        "source_ids": [
+          "as-noaa-seabed-mining-protest-20260902-talanei"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Report establishes a dated action but does not explicitly establish when it concluded; current campaign status unknown.",
+      "source_ids": [
+        "as-noaa-seabed-mining-protest-20260902-talanei"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Full Talanei account read, including ship reply. It relies substantially on activist statements and quoted radio communication; no independent verification of alleged mining purpose or future lease outcome. Date derived from Wednesday in September 3 report. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "nz-wellington-treaty-hikoi-20241119",
+    "episode_scope": "The final Wellington day of the November 2024 hīkoi, plus later disposition of the opposed bill; excludes the earlier national march and wider Māori-rights activism.",
+    "cities": [
+      {
+        "name": "Wellington",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-rnz"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "RNZ explicitly reports that the hīkoi ended, Parliament proceedings wrapped up, and participants returned for an evening concert. End applies only to this bounded final-day episode.",
+      "source_ids": [
+        "nz-wellington-treaty-hikoi-20241119-rnz"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-04-10",
+        "summary": "Treaty Principles Bill was rejected 112–11 at second reading.",
+        "favours": [
+          {
+            "actor": "Opponents of the Treaty Principles Bill",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Bill rejection matches their stated demand."
+          },
+          {
+            "actor": "ACT Party proponents",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Their proposal did not progress."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-rnz",
+          "nz-wellington-treaty-hikoi-20241119-justice"
+        ]
+      }
+    ],
+    "research_note": "RNZ first-hand reporting and Ministry of Justice bill history read. Coalition partners already opposed later passage; no causal claim that the hīkoi alone defeated the bill. Page date is November 20 NZ local; action November 19 explicitly established. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "nc-electoral-reform-unrest-2024",
+    "episode_scope": "May–June 2024 opposition to electorate expansion and associated unrest; excludes subsequent separate constitutional agreements or labour disputes.",
+    "cities": [
+      {
+        "name": "Nouméa",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Suspension of the bill did not establish the end of collective action: roadblocks remained in reviewed June reports. Exact onset and cessation are not established.",
+      "source_ids": [
+        "nc-electoral-reform-unrest-2024-abc",
+        "nc-electoral-reform-unrest-2024-rnz"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-06-12",
+        "summary": "France suspended the electorate amendment while leaving potential future reconsideration open.",
+        "favours": [
+          {
+            "actor": "Opponents of electorate expansion",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Suspension delayed the change they opposed but did not grant permanent withdrawal."
+          },
+          {
+            "actor": "Supporters of immediate electorate expansion",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Immediate implementation was postponed."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc",
+          "nc-electoral-reform-unrest-2024-rnz"
+        ]
+      }
+    ],
+    "research_note": "ABC uses wires; RNZ offers original regional reporting and labelled procedural analysis. Suspension followed both unrest and dissolution of France's National Assembly; exclusive protest causation not claimed. AI-assisted, no human sign-off."
+  },
+  {
+    "event_id": "tw-bluebird-legislative-protests-20240528",
+    "episode_scope": "May 28, 2024 Bluebird protest mobilisation and subsequent constitutional review of the same amendments; excludes unrelated later recall or budget protests.",
+    "cities": [
+      {
+        "name": "Taipei",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-taipeitimes"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Court decision is a legal outcome, not evidence that the broader Bluebird collective action ended. Exact cessation/current activity unknown.",
+      "source_ids": [
+        "tw-bluebird-legislative-protests-20240528-taipeitimes",
+        "tw-bluebird-legislative-protests-20240528-court"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-05-28",
+        "summary": "Legislative majority passed the disputed amendments despite protests.",
+        "favours": [
+          {
+            "actor": "Kuomintang and Taiwan People's Party proponents",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Their amendments passed."
+          },
+          {
+            "actor": "Bluebird demonstrators opposing passage",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Immediate rejection demand was not achieved."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-taipeitimes"
+        ]
+      },
+      {
+        "date": "2024-10-25",
+        "summary": "Court struck multiple expanded legislative powers and criminal contempt provisions while upholding aspects of the reforms.",
+        "favours": [
+          {
+            "actor": "Opponents of the challenged legislative powers",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Invalidation met part of their opposition, but was not wholesale rejection."
+          },
+          {
+            "actor": "Proponents of the invalidated powers",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Some proposed powers ceased to be effective."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-court"
+        ]
+      }
+    ],
+    "research_note": "Taipei Times mixes staff and agency reporting; official court English case news is explanatory and not itself the binding judgment. It explicitly upholds legislative procedure despite disorder; no blanket claim that every reform was unconstitutional. Taiwan region corrected to Asia with root approval. AI-assisted, no human sign-off."
+  }
+]

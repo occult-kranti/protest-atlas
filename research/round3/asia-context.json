@@ -1,0 +1,604 @@
+[
+  {
+    "event_id": "bd-quota-uprising-2024",
+    "episode_scope": "June–August 2024 quota protests and escalation to resignation demands; excludes later disputes over the interim administration.",
+    "cities": [
+      {
+        "name": "Dhaka",
+        "source_ids": [
+          "bd-quota-uprising-2024-quota-reuters"
+        ]
+      },
+      {
+        "name": "Chittagong",
+        "source_ids": [
+          "bd-quota-uprising-2024-quota-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A concession or dated observation does not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "bd-quota-uprising-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-07-23",
+        "summary": "Government formally accepted the Supreme Court’s quota reduction.",
+        "favours": [
+          {
+            "actor": "Students seeking quota reform",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Reuters described this as meeting a key student demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "bd-quota-uprising-2024-quota-reuters"
+        ]
+      },
+      {
+        "date": "2024-08-05",
+        "summary": "Hasina resigned and fled Bangladesh.",
+        "favours": [
+          {
+            "actor": "Students Against Discrimination",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Resignation met the movement’s stated demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "bd-quota-uprising-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "Two Reuters bodies and the substantive introduction of OHCHR’s official English report summary reviewed; full fact-finding report not read. OHCHR inquiry invited by interim government. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "kr-yoon-removal-protests-2024-2025",
+    "episode_scope": "Rival public rallies following December 2024 martial law through the April 2025 removal ruling; excludes subsequent election campaigns.",
+    "cities": [
+      {
+        "name": "Seoul",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A concession or dated observation does not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "kr-yoon-removal-protests-2024-2025-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-04-04",
+        "summary": "The Constitutional Court upheld impeachment and removed Yoon.",
+        "favours": [
+          {
+            "actor": "Anti-Yoon demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Removal matched their demand; court action is not attributed solely to rallies."
+          },
+          {
+            "actor": "Pro-Yoon demonstrators",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Removal opposed their stated demand for restored presidential powers."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-reuters"
+        ]
+      }
+    ],
+    "research_note": "Two underlying Reuters articles reviewed across December 2024 and April 2025; same newsroom, not independent corroboration. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "in-farmers-march-2024",
+    "episode_scope": "February 2024 renewed march from Punjab towards Delhi; excludes the 2020–2021 farm-law campaign.",
+    "cities": [
+      {
+        "name": "Shambhu",
+        "source_ids": [
+          "in-farmers-march-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A concession or dated observation does not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "in-farmers-march-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-02-21",
+        "summary": "Government offered renewed talks; farmers announced a two-day pause.",
+        "favours": [
+          {
+            "actor": "Protesting farmers’ unions",
+            "effect": "unclear",
+            "basis": "inference",
+            "note": "A talks offer does not establish price guarantees."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "in-farmers-march-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "pk-khan-islamabad-sitin-2024",
+    "episode_scope": "November 24–27 Islamabad sit-in and clearance; excludes PTI’s wider recurring campaign.",
+    "cities": [
+      {
+        "name": "Islamabad",
+        "source_ids": [
+          "pk-khan-islamabad-sitin-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Sit-in clearance is documented, but PTI leaders contradicted one another about cessation; episode status remains unknown.",
+      "source_ids": [
+        "pk-khan-islamabad-sitin-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-11-27",
+        "summary": "Authorities cleared the sit-in and reported 954 arrests.",
+        "favours": [
+          {
+            "actor": "PTI sit-in participants",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Clearance disrupted the sit-in without securing Khan’s release."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "pk-khan-islamabad-sitin-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "am-border-policy-protests-2024",
+    "episode_scope": "Spring–June 2024 demonstrations over border concessions to Azerbaijan and demands for resignation.",
+    "cities": [
+      {
+        "name": "Yerevan",
+        "source_ids": [
+          "am-border-policy-protests-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A concession or dated observation does not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "am-border-policy-protests-2024-reuters"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ge-foreign-influence-law-protests-2024",
+    "episode_scope": "Spring 2024 demonstrations against the foreign influence bill; excludes the later election and EU-accession protest episodes.",
+    "cities": [
+      {
+        "name": "Tbilisi",
+        "source_ids": [
+          "ge-foreign-influence-law-protests-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A concession or dated observation does not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "ge-foreign-influence-law-protests-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-06-03",
+        "summary": "The speaker signed the foreign influence bill into law.",
+        "favours": [
+          {
+            "actor": "Opponents of the bill",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "Enactment opposed their objective of stopping the bill."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "ge-foreign-influence-law-protests-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "id-lawmakers-perks-protests-2025",
+    "episode_scope": "August–September 2025 protests over parliamentary perks and police conduct; excludes earlier 2025 budget-cut rallies.",
+    "cities": [
+      {
+        "name": "Jakarta",
+        "source_ids": [
+          "id-lawmakers-perks-protests-2025-reuters"
+        ]
+      },
+      {
+        "name": "Bandung",
+        "source_ids": [
+          "id-lawmakers-perks-protests-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "id-lawmakers-perks-protests-2025-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-08-31",
+        "summary": "Prabowo announced cuts to perks and a foreign-travel moratorium.",
+        "favours": [
+          {
+            "actor": "Opponents of parliamentary perks",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The announcements partly addressed their demands; implementation is not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "id-lawmakers-perks-protests-2025-reuters"
+        ]
+      }
+    ],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "mn-anti-corruption-protests-2025",
+    "episode_scope": "May–June 2025 protests over alleged corruption involving Oyun-Erdene’s family and ensuing confidence vote.",
+    "cities": [
+      {
+        "name": "Ulaanbaatar",
+        "source_ids": [
+          "mn-anti-corruption-protests-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "mn-anti-corruption-protests-2025-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-06-03",
+        "summary": "Oyun-Erdene resigned after failing the parliamentary confidence ballot.",
+        "favours": [
+          {
+            "actor": "Anti-corruption demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Resignation met the protesters’ stated demand; corruption resolution is not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "mn-anti-corruption-protests-2025-reuters"
+        ]
+      }
+    ],
+    "research_note": "Underlying Reuters article and complete BBC text reviewed; both report resignation following protests. Allegations remain denied. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "np-gen-z-protests-2025",
+    "episode_scope": "September 2025 youth protests over corruption and the social media ban; excludes earlier monarchist rallies.",
+    "cities": [
+      {
+        "name": "Kathmandu",
+        "source_ids": [
+          "np-gen-z-protests-2025-reuters"
+        ]
+      },
+      {
+        "name": "Itahari",
+        "source_ids": [
+          "np-gen-z-protests-2025-abc"
+        ]
+      },
+      {
+        "name": "Biratnagar",
+        "source_ids": [
+          "np-gen-z-protests-2025-abc"
+        ]
+      },
+      {
+        "name": "Bharatpur",
+        "source_ids": [
+          "np-gen-z-protests-2025-abc"
+        ]
+      },
+      {
+        "name": "Pokhara",
+        "source_ids": [
+          "np-gen-z-protests-2025-abc"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "np-gen-z-protests-2025-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-09-09",
+        "summary": "Oli resigned after the social media ban had been lifted.",
+        "favours": [
+          {
+            "actor": "Youth anti-corruption demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Leadership and policy changed; durable anti-corruption gains are not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "np-gen-z-protests-2025-reuters"
+        ]
+      }
+    ],
+    "research_note": "Reuters body and ABC explainer reviewed. ABC mixes correspondent observations with Reuters and other wires, so all claims are not independent corroboration. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "tr-imamoglu-detention-protests-2025",
+    "episode_scope": "March 2025 protests against İmamoğlu’s detention and imprisonment; excludes later recurring rallies.",
+    "cities": [
+      {
+        "name": "Istanbul",
+        "source_ids": [
+          "tr-imamoglu-detention-protests-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "tr-imamoglu-detention-protests-2025-reuters"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "my-turun-anwar-rally-2025",
+    "episode_scope": "July 26, 2025 Turun Anwar rally; excludes other opposition and cost-of-living campaigns.",
+    "cities": [
+      {
+        "name": "Kuala Lumpur",
+        "source_ids": [
+          "my-turun-anwar-rally-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "my-turun-anwar-rally-2025-reuters"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "ir-economic-unrest-2025-2026",
+    "episode_scope": "December 2025–January 2026 economic protest escalation; excludes the 2022 Woman, Life, Freedom movement.",
+    "cities": [
+      {
+        "name": "Tehran",
+        "source_ids": [
+          "ir-economic-unrest-2025-2026-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "ir-economic-unrest-2025-2026-reuters"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "tl-lawmaker-pensions-protests-2025",
+    "episode_scope": "September 2025 student protests over lawmakers’ vehicles and lifetime pensions, including the September 17 agreement and September 26 legislative vote.",
+    "cities": [
+      {
+        "name": "Dili",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Parties reported cessation on September 17, but the September 26 report describes demonstrators awaiting a vote and MPs asking them to stop; final cessation is not established.",
+      "source_ids": [
+        "tl-lawmaker-pensions-protests-2025-reuters",
+        "tl-lawmaker-pensions-protests-2025-afp-abc"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-09-17",
+        "summary": "Parliamentary parties agreed to abolish the lifetime pension plan.",
+        "favours": [
+          {
+            "actor": "Student demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Agreement met their stated demand; enacted implementation needs separate evidence."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-reuters"
+        ]
+      },
+      {
+        "date": "2025-09-26",
+        "summary": "MPs passed a law scrapping lifetime pensions, still awaiting the president’s signature.",
+        "favours": [
+          {
+            "actor": "Student demonstrators",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "A student welcomed the vote as fulfilling their objective; enactment was pending."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-afp-abc"
+        ]
+      }
+    ],
+    "research_note": "Reuters September 17 agreement and AFP September 26 reporting via ABC reviewed as separate wire reports. Later evidence limits cessation claim and distinguishes voting from enactment. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "jo-israel-treaty-rallies-2024",
+    "episode_scope": "Late-March 2024 Amman embassy-area rallies; excludes wider regional solidarity actions.",
+    "cities": [
+      {
+        "name": "Amman",
+        "source_ids": [
+          "jo-israel-treaty-rallies-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Dated outcomes and observations do not establish cessation; later activity has not been verified.",
+      "source_ids": [
+        "jo-israel-treaty-rallies-2024-reuters"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "il-histadrut-hostage-strike-2024",
+    "episode_scope": "September 2, 2024 Histadrut general strike only; excludes the continuing hostage-family street campaign.",
+    "cities": [
+      {
+        "name": "Haifa",
+        "source_ids": [
+          "il-histadrut-hostage-strike-2024-reuters"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The scope is the September 2 general strike: Histadrut accepted the court order and explicitly called it off. Wider rallies continued.",
+      "source_ids": [
+        "il-histadrut-hostage-strike-2024-reuters"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-09-02",
+        "summary": "Labour Court ordered cessation; Histadrut called off the strike.",
+        "favours": [
+          {
+            "actor": "Histadrut",
+            "effect": "setback",
+            "basis": "inference",
+            "note": "The order halted union pressure without establishing a hostage deal."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "il-histadrut-hostage-strike-2024-reuters"
+        ]
+      }
+    ],
+    "research_note": "One Reuters article reviewed beyond snippets; Exa extraction truncated, generic web used to read body. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "cy-cola-strike-2025",
+    "episode_scope": "September 11, 2025 general strike, documented through the Limassol rally; excludes earlier and later pay negotiations.",
+    "cities": [
+      {
+        "name": "Limassol",
+        "source_ids": [
+          "cy-cola-strike-2025-source"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A dated action is established, but cessation and later activity have not been verified.",
+      "source_ids": [
+        "cy-cola-strike-2025-source"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Original local reporting reviewed. The union estimated turnout while police offered no count; no policy concession established. AI-assisted; no human sign-off."
+  },
+  {
+    "event_id": "sg-workers-placard-action-2024",
+    "episode_scope": "October 24, 2024 Geylang placard action only; excludes the separate October 2022 wage dispute mentioned in the source.",
+    "cities": [
+      {
+        "name": "Singapore",
+        "source_ids": [
+          "sg-workers-placard-action-2024-source"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A dated action is established, but cessation and later activity have not been verified.",
+      "source_ids": [
+        "sg-workers-placard-action-2024-source"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "Local reporting reviewed, including a social media image and ministry/police responses. Placards establish action but salary arrears are disputed. AI-assisted; no human sign-off."
+  }
+]

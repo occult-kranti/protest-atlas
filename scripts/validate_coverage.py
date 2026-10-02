@@ -6,8 +6,10 @@ from validate_data import ROOT, array, https_url, load_json, moment, obj, requir
 
 def validate_coverage(data, countries, events, now=None):
     now = now or datetime.now(timezone.utc)
-    obj(data, ('schema_version', 'checked_at', 'human_editorial_review', 'coverage_note', 'countries'), 'coverage')
-    require(type(data['schema_version']) is int and data['schema_version'] == 1, 'coverage', 'unsupported schema')
+    fields=('schema_version', 'checked_at', 'human_editorial_review', 'coverage_note', 'countries')
+    if data.get('schema_version')==2:fields+=('source_languages',)
+    obj(data, fields, 'coverage')
+    require(type(data['schema_version']) is int and data['schema_version'] in (1,2), 'coverage', 'unsupported schema')
     checked = moment(data['checked_at'], 'coverage.checked_at', now)
     require(data['human_editorial_review'] is False, 'coverage', 'this limited-source ledger cannot claim human review')
     text(data['coverage_note'], 'coverage.coverage_note')
@@ -16,6 +18,10 @@ def validate_coverage(data, countries, events, now=None):
         for source in event['sources']:
             require(source['id'] not in source_map, 'coverage', 'source IDs must be globally unique for ledger references')
             source_map[source['id']] = (event['country'], source)
+    if data['schema_version']==2:
+        require(isinstance(data['source_languages'],dict) and set(data['source_languages'])==set(source_map),'coverage','language provenance must account for every checked source')
+        for language in data['source_languages'].values():
+            if language is not None:text(language,'coverage.source_languages',80)
     seen, seen_sources = set(), set()
     for i, row in enumerate(array(data['countries'], 'coverage.countries')):
         p = f'coverage.countries[{i}]'
@@ -31,7 +37,8 @@ def validate_coverage(data, countries, events, now=None):
             require(row['last_checked'] is None and row['review_window'] is None and not row['languages'] and not row['source_ids'], p, 'unreviewed country cannot imply a check, language or search window')
         else:
             require(row['status'] == 'limited-source-check' and bool(row['source_ids']), p, 'limited checks need existing evidence')
-            require(row['languages'] == ['English'], p, 'seed checks support English-source coverage only')
+            expected_languages=['English'] if data['schema_version']==1 else sorted({data['source_languages'].get(s) for s in row['source_ids'] if data['source_languages'].get(s)})
+            require(row['languages']==expected_languages,p,'languages must match recorded source-language provenance')
             sources = []
             for source_id in row['source_ids']:
                 require(source_id in source_map and source_map[source_id][0] == row['code'], p, 'unknown or foreign source')
@@ -40,10 +47,13 @@ def validate_coverage(data, countries, events, now=None):
             last_checked = moment(row['last_checked'], p + '.last_checked', now)
             require(last_checked == max(moment(s['accessed_at'], p, now) for s in sources), p, 'last check must retain actual source access timestamp')
             require(last_checked <= checked, p, 'source check after ledger audit')
-            obj(row['review_window'], ('start', 'end'), p + '.review_window')
-            # The seed's window is only the dated reporting reviewed, never a census/search period.
+            # Source publication span, never a census/search period; unknown dates stay null.
             days = [s['published_at'][:10] for s in sources if s['published_at']]
-            require(bool(days) and row['review_window'] == {'start': min(days), 'end': max(days)}, p, 'window must match dated source reporting')
+            if days:
+                obj(row['review_window'], ('start', 'end'), p + '.review_window')
+                require(row['review_window'] == {'start': min(days), 'end': max(days)}, p, 'window must match dated source reporting')
+            else:
+                require(data['schema_version']==2 and row['review_window'] is None,p,'unknown source dates cannot imply a dated review span')
     require(seen == set(countries), 'coverage', 'ledger must contain every catalog country exactly once')
     require(seen_sources == set(source_map), 'coverage', 'ledger must disclose every documented seed source check')
     return data

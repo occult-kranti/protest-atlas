@@ -1,0 +1,570 @@
+[
+  {
+    "code": "AS",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in American Samoa during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.samoanews.com/local-news/shipyard-employees-and-ceo-call-continued-tax-exemption-struggling-semi-autonomous-agency",
+      "https://www.samoanews.com/local-news/stand-moana-demonstration-calls-feds-listen-samoan-voices",
+      "https://www.samoanews.com/local-news/local-no-kings-demonstration-not-about-numbers-its-about-raising-awareness",
+      "https://samoanews.com/local-news/manua-tele-says-no-deep-sea-mining",
+      "https://www.greenpeace.org/usa/dont-mine-the-moana-american-samoa-rejects-deep-sea-mining-push/"
+    ],
+    "reviewed_urls": [
+      "https://www.talanei.com/2026/09/03/protestors-deliver-message-to-noaa-research-ship/",
+      "https://www.samoanews.com/local-news/stand-moana-demonstration-calls-feds-listen-samoan-voices"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Candidate discovery included local deep-sea-mining action; September 2026 Talanei confrontation was fetched and proposed. Other July pages read but ambiguous event dating excluded from selected episode."
+  },
+  {
+    "code": "AQ",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Antarctica during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://cruiseindustrynews.com/cruise-news/2026/05/ushuaia-port-workers-threaten-indefinite-blockades-allege-safety-violations/",
+      "https://www.travel2globe.com/news/article/concerns-over-2026-27-antarctic-cruise-season-as-ushuaia-port-workers-raise-alarm/",
+      "https://www.mpnews.com.au/2026/07/09/protesters-call-for-krill-oil-removal/",
+      "https://bobbrown.org.au/protests-around-australia-call-for-swisse-and-chemist-warehouse-to-stop-selling-antarctic-destroying-krill-oil/",
+      "https://www.nationthailand.com/news/tourism/40069311"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Initial historical screen returned Ushuaia (Argentina) port disputes and protests in Australia, not locally occurring Antarctic action; no Antarctic event proposed. Empty relevant discovery does not establish absence."
+  },
+  {
+    "code": "AU",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Australia during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718",
+      "https://www.abc.net.au/news/2024-09-24/nsw-sydney-wollongong-nurses-midwives-strike-pay-rise-rally/104388394",
+      "https://www.bordermail.com.au/story/9361081/north-east-doctors-join-statewide-public-hospital-strike-over-pay/",
+      "https://www.theguardian.com/australia-news/2025/oct/30/strike-nsw-prisons-lockdown",
+      "https://www.abc.net.au/news/2026-09-29/collie-coal-workers-strike-after-rejecting-pay-deal/107207290"
+    ],
+    "reviewed_urls": [
+      "https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Screen returned dated 2024\u20132026 labour actions; October 1, 2026 hospital strike body read and proposed. Other actions remain discovery candidates."
+  },
+  {
+    "code": "CX",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Christmas Island during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.infrastructure.gov.au/sites/default/files/documents/d24-2024-community-bulletin-ci-industrial-action.pdf",
+      "https://www.infrastructure.gov.au/sites/default/files/documents/d01-2025-community-bulletin-ci-industrial-action.pdf",
+      "https://grokipedia.com/page/union_of_christmas_island_workers",
+      "https://en.wikipedia.org/wiki/Union_of_Christmas_Island_Workers",
+      "https://atui.org.au/2023/08/01/the-1979-strike-of-the-union-of-christmas-island-workers/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen returned 2024/2025 Australian department industrial-action PDFs. Not fetched in this pass; possible Christmas Island labour episodes remain a research gap."
+  },
+  {
+    "code": "CC",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Cocos (Keeling) Islands during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.abc.net.au/news/2026-04-11/long-term-retreat-cocos-keeling-islands-rising-sea-level/106545672",
+      "https://www.abc.net.au/news/2025-02-10/cocos-keeling-islands-locals-blast-plan-for-long-term-retreat/104905322",
+      "https://www.abc.net.au/news/2024-10-04/cocos-keeling-islands-cooperative-administration/104426764",
+      "https://www.abc.net.au/news/2024-11-11/supplies-cocos-keeling-islands-cocos-co-op-administration/104581484",
+      "https://insolvencyadvisoryaccountants.com.au/news/cocos-islands-co-operative-society-voluntary-administration/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen found relocation-policy backlash and co-op administration reporting; no fetched qualifying collective-action episode. Policy disagreement alone is not treated as demonstration evidence."
+  },
+  {
+    "code": "CK",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Cook Islands during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.abc.net.au/news/2025-02-19/hundreds-protest-in-cook-islands-after-pm-signs-deal-with-china/104952958",
+      "https://www.cookislandsnews.com/internal/national/local/parliament/cook-islanders-rally-to-protect-nz-citizenship-protest-government-decisions/",
+      "https://www.cookislandsnews.com/internal/national/local/peaceful-protest-to-parliament-house-cook-islanders-voicing-their-concerns-and-advocating-for-change/",
+      "https://www.rnz.co.nz/news/pacific/543035/protesters-rally-for-new-cook-islands-leadership-amid-no-confidence-vote-delay",
+      "https://www.rnz.co.nz/news/pacific/542209/watch-cook-islanders-march-in-avarua-against-mark-brown-government"
+    ],
+    "reviewed_urls": [
+      "https://www.abc.net.au/news/2025-02-19/hundreds-protest-in-cook-islands-after-pm-signs-deal-with-china/104952958",
+      "https://www.rnz.co.nz/news/pacific/543035/protesters-rally-for-new-cook-islands-leadership-amid-no-confidence-vote-delay",
+      "https://www.cookislandsnews.com/internal/national/parliament/pm-brown-and-cabinet-survive-vote-of-no-confidence/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. February 2025 rallies and related no-confidence vote reviewed. Cook Islands local dates distinguished from NZ/UTC publication dates; syndicated RNZ/Cook Islands News counted as one reporting lineage. Cook Islands News vote-result page supplied its headline and introductory paragraph only; no claim of full paywalled-article review."
+  },
+  {
+    "code": "FJ",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in Fiji during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.fijitimes.com.fj/yaqara-pastoral-strike-resolved-after-agreement/",
+      "https://www.fijitimes.com.fj/yaqara-pastoral-company-workers-go-on-strike-over-pay-concerns/",
+      "https://www.fijitimes.com.fj/secret-ballot-for-strike-action-underway-at-nanuku-resort-fiji/",
+      "https://www.fijivillage.com/indepth/USP-Unions-commence-strike-action--5fx48r/",
+      "https://monitor.civicus.org/explore/fiji-police-continue-to-block-march-on-palestine-while-university-unions-hold-strike-despite-threats-of-pay-dock/"
+    ],
+    "reviewed_urls": [
+      "https://www.fijivillage.com/news/yaqara-workers-on-strike-agree-in-principle-to-meet-employer-after-ministry-steps-in-7cdd35/",
+      "https://www.fijitimes.com.fj/union-hails-big-win-after-yaqara-pastoral-dispute-resolved/",
+      "https://fijisun.com.fj/news/nation/four-day-yaqara-pastoral-workers-strike-ends-with-wage-breakthrough",
+      "https://www.fijitimes.com.fj/yaqara-pastoral-strike-resolved-after-agreement/",
+      "https://www.fijitimes.com.fj/yaqara-pastoral-company-workers-go-on-strike-over-pay-concerns/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. February 2026 Yaqara strike and resolution read across local publishers. Shared union/ministry statement inputs noted; city locator discrepancy retained."
+  },
+  {
+    "code": "PF",
+    "query": "News reports of locally occurring collective protests demonstrations or worker strikes in French Polynesia during 2024, 2025 and 2026 through October 2, with specific dates locations demands and outcomes",
+    "attempted_at": "2026-10-02T21:09:19.566Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.radio1.pf/greve-des-fonctionnaires-detat-il-faut-quil-y-ait-du-changement/",
+      "https://la1ere.franceinfo.fr/polynesie/tahiti/polynesie-francaise/greve-de-la-flottille-les-marins-occupent-l-assemblee-maupiti-prend-les-devants-1619849.html",
+      "https://www.tntvnews.pf/polynesie/societe/les-grevistes-de-la-flottille-administrative-frappent-a-la-porte-du-gouvernement/",
+      "https://www.tntvnews.pf/polynesie/societe/la-greve-est-finie-a-te-fare-tauhiti-nui/",
+      "https://www.rnz.co.nz/news/pacific/572401/thousands-take-to-the-streets-against-methamphetamines-in-french-polynesia"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen returned dated 2025/2026 strikes and anti-methamphetamine march. Not fetched in this pass; promising episodes remain coverage gaps."
+  },
+  {
+    "code": "GU",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Guam in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.guampdn.com/news/hundreds-of-medical-appointments-will-be-canceled-on-monday-as-doctors-protest-bill-82-38/article_5e784f5e-d2e3-49b4-86f8-e3d8fc2e0e2e.html",
+      "https://kanditnews.com/angry-mob-threatens-legislators-assaults-senator/",
+      "https://www.guampdn.com/news/uog-students-protest-backpedaling-of-4m-for-mawar-repairs-improvements/article_80720bea-95d1-11ef-97e2-afe3f196dd27.html",
+      "https://kanditnews.com/calvo-wont-press-charges-video-shows-taitague-calming-crowd-prutehi-guahan-disagrees-with-angry-mob-label/",
+      "https://www.postguam.com/news/local/union-dangerous-conditions-at-schools-because-of-understaffing/article_07065614-8c42-11ef-bc34-b79d1fa8154f.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen found local 2024 student protest and 2025 medical/workplace actions. Not fetched; no Guam public episode proposed."
+  },
+  {
+    "code": "HM",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Heard Island and McDonald Islands in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://data.humdata.org/dataset/heard-island-and-mcdonald-islands-acled-conflict-data",
+      "https://www.wionews.com/trending/penguin-memes-flood-internet-after-trump-tariffs-hit-uninhabited-antarctic-islands-8926344",
+      "https://tasmaniantimes.com/2024/10/missed-opportunity-on-heard-mcdonald-islands-reserve-expansion/",
+      "https://www.scientificamerican.com/article/the-uninhabited-heard-and-mcdonald-islands-targeted-by-tariffs-are-a/",
+      "https://www.linkedin.com/posts/xavierblais_the-heard-and-mcdonald-islands-in-antarctica-activity-7317509745127415809-TM71"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Results included tariff memes, uninhabited-island commentary and dataset listing. No reliable physically occurring collective action established; no fictional penguin protest proposed."
+  },
+  {
+    "code": "KI",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Kiribati in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.ilo.org/resource/news/kiribati-moves-ahead-key-employment-and-labour-initiatives-supported-ilo",
+      "https://www.ilo.org/resource/news/kiribati-trade-unions-strengthen-their-role-shaping-decent-work-and",
+      "https://www.ilo.org/sites/default/files/2025-12/KNEP%20Final%20Version_5.12.25.pdf",
+      "https://bpa.org.ki/mehr-worker-retention-remains-major-challenge-in-kiribati/",
+      "https://pina.com.fj/2024/10/02/kiribati-boycott-planned-after-presidential-vote-becomes-a-one-horse-race/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. ILO labour-policy and union-capacity pages plus planned 2024 boycott found. No actual local action independently established; plan is not occurrence."
+  },
+  {
+    "code": "MH",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Marshall Islands in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://marshallislandsjournal.com/kwaj-workers-strike-sparks-action/",
+      "https://marshallislandsjournal.com/kbe-people-protest-money-use/",
+      "https://www.rnz.co.nz/news/pacific_marshall-islands/592663/marshall-islands-government-shuts-down-at-3pm-amid-fuel-crisis",
+      "https://islandtimes.org/marshall-islands-government-slashes-income-tax-as-living-costs-skyrocket/",
+      "https://islandtimes.org/majuro-reels-from-huge-power-rate-increase-as-government-steps-up-cash-programmes/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. November 2024 Kwajalein workers strike discovered in Marshall Islands Journal. Not fetched; remains a promising coverage gap."
+  },
+  {
+    "code": "FM",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Micronesia, Federated States of in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.islapublic.org/news/2026-02-27/protesters-demand-transparency-in-cnmi-talks-on-potential-seabed-mining",
+      "https://www.islapublic.org/news/2025-09-08/student-led-protest-demands-full-funding-for-cnmi-public-schools",
+      "https://www.guampdn.com/news/stop-the-shaming-guam-peace-rally-calls-for-end-to-racial-discrimination/article_cd0ad5c0-6696-4950-9de0-d263e8b22fd1.html",
+      "https://kanditnews.com/calvo-wont-press-charges-video-shows-taitague-calming-crowd-prutehi-guahan-disagrees-with-angry-mob-label/",
+      "https://www.muscatdaily.com/2025/03/02/micronesia-activists-push-for-chuuk-islands-independence/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Most results concern Guam/CNMI and were rejected as outside Federated States of Micronesia. Chuuk independence activism candidate not fetched; no episode proposed."
+  },
+  {
+    "code": "NR",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in Nauru in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.476Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.theguardian.com/australia-news/2026/jun/04/nauru-issues-rare-statement-after-whistleblower-alleges-violent-threats-against-non-citizens-ntwnfb",
+      "https://www.abc.net.au/news/2026-06-04/nauru-whistleblower-threats-violence-nzyq-refugees/106757682",
+      "https://www.abc.net.au/news/2026-07-19/nauru-changes-policing-powers-amid-legal-challenges-from-nzyq/106927922",
+      "https://www.theguardian.com/australia-news/2025/oct/03/refugees-and-asylum-seekers-on-nauru-going-hungry-despite-government-spending-15m-a-year-for-each-person",
+      "https://www.nauru.gov.nr/government-information-office/media-release/police-maintains-order-during-peaceful-demonstrations-by-refugees-and-asylum-seekers.aspx"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Human-rights complaints and an undated government demonstration release found. Release not fetched/datetime validated; no 2024\u20132026 episode proposed."
+  },
+  {
+    "code": "NC",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in New Caledonia in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.477Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.lnc.nc/article/social/on-ne-veut-plus-de-promesses-on-veut-des-actes-l-usoenc-appelle-a-la-mobilisation",
+      "https://outremers360.com/bassin-pacifique-appli/nickel-caledonien-le-centre-minier-de-la-sln-a-kouaoua-a-larret-et-120-salaries-en-conges-forces-suite-a-un-blocage",
+      "https://ladepeche.nc/2026/01/29/greve-du-3-fevrier-syndicats-contre-elus-le-bras-de-fer-est-lance",
+      "https://www.lnc.nc/article/nouvelle-caledonie/mines/nickel/economie/sans-aide-la-societe-disparait-dans-dix-jours-les-salaries-de-la-nmc-se-mobilisent-pour-interpeller-l-etat",
+      "https://aerosouthpacific.com/blogs/news/ile-de-pins-aurport-blockade-end"
+    ],
+    "reviewed_urls": [
+      "https://www.abc.net.au/news/2024-06-12/voting-changes-that-sparked-new-caledonia-riots-suspended/103970940",
+      "https://www.rnz.co.nz/news/pacific/519431/macron-new-caledonia-changes-suspended-not-withdrawn"
+    ],
+    "note": "Initial English-language screen; not exhaustive. May\u2013June 2024 reform opposition and suspension deep-read. Initial search also found later labour blockades; those remain gaps. Bill suspension does not establish collective-action end."
+  },
+  {
+    "code": "NZ",
+    "query": "Local news reporting collective demonstrations protests or labour strikes in New Zealand in 2024, 2025 and 2026 through October 2, with dates demands and policy outcomes",
+    "attempted_at": "2026-10-02T21:09:43.477Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.rnz.co.nz/news/education/1687429/university-and-polytech-staff-vote-to-strike-together-for-first-time",
+      "https://www.rnz.co.nz/news/education/576754/thousands-march-through-streets-as-part-of-nationwide-strike-action",
+      "https://www.odt.co.nz/canterbury/christchurch/protesters-gather-outside-aerospace-summit-in-christchurch-i68b2kon",
+      "https://www.rnz.co.nz/news/business/575965/hundreds-protest-to-get-resene-workers-living-wage",
+      "https://www.1news.co.nz/2025/10/23/mega-strike-tens-of-thousands-walk-off-job-rally-in-marches/"
+    ],
+    "reviewed_urls": [
+      "https://www.rnz.co.nz/news/te-ao-maori/534238/what-s-good-for-maori-is-good-for-everyone-hikoi-ends-with-peaceful-protest",
+      "https://www.justice.govt.nz/justice-sector-policy/key-initiatives/a-treaty-principles-bill/",
+      "https://apnews.com/article/maori-protest-hikoi-treaty-waitangi-principles-54d5a5345815bed2c2a12687d4f6b625",
+      "https://apnews.com/article/treaty-waitangi-principles-bill-zealand-maori-haka-41454ca84aef1a52feb3f2f0d03aa856",
+      "https://www.reuters.com/world/asia-pacific/nz-maori-protest-march-reaches-wellington-rally-against-indigenous-bill-2024-11-18/",
+      "https://www.theguardian.com/world/2025/apr/10/treaty-principles-bill-voted-down-in-new-zealand-parliament-maori",
+      "https://www.rnz.co.nz/news/te-ao-maori/534140/42-000-join-as-treaty-principles-bill-hikoi-reaches-parliament"
+    ],
+    "note": "Initial English-language screen; not exhaustive. November 19, 2024 final-day h\u012bkoi and later bill rejection deep-read. Other 2025\u20132026 strikes remain discovery candidates; no claim of annual completeness. AP pages, Reuters and Guardian supplied limited extracts only; these accesses are not counted as full-body reviews. RNZ final-day report and Ministry of Justice page supplied usable bodies."
+  },
+  {
+    "code": "NU",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Niue during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://pmn.co.nz/read/pacific-region/hikoi-m-te-tiriti-cook-islands-niue-in-powerful-show-of-solidarity",
+      "https://www.state.gov/wp-content/uploads/2025/07/624521_NIUE-2024-HUMAN-RIGHTS-REPORT.pdf",
+      "https://theadvocatepost.org/blog/2025/09/03/niue-prime-minister-rules-out-cost-of-living-adjustment-amid-rising-shipping-costs/",
+      "https://web.archive.org/web/20260502020823/https:/pmn.co.nz/read/pacific-region/cost-of-living-crisis-shapes-niue-election-as-voters-seek-relief-at-the-polls",
+      "https://pmn.co.nz/read/language-and-culture/constitution-day-the-lead-up-to-niue-s-big-bash"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Solidarity of Niueans in New Zealand is not a protest on Niue. Other results general politics/cost of living; no local episode established."
+  },
+  {
+    "code": "NF",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Norfolk Island during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.rnz.co.nz/news/pacific/534301/norfolk-island-official-resigns-in-protest-at-canberra-governance-decision",
+      "https://www.nipeoplefordemocracy.com/post/norfolk-island-restoration-of-democracy-grievances-and-objections-in-relation-to-the-process-outc",
+      "https://citynews.com.au/2025/why-wont-labor-fix-democracy-on-norfolk-island/",
+      "https://thenightly.com.au/politics/australia/hms-bounty-mutineers-descendants-fighting-federal-government-for-self-rule-on-norfolk-island-c-17529881",
+      "https://www.rnz.co.nz/news/pacific/542376/from-from-a-place-of-equals-norfolk-island-s-ongoing-quest-for-a-return-of-self-government"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Governance advocacy and individual official resignation discovered. No fetched bounded collective-action occurrence established; resignation alone not used as a mass protest."
+  },
+  {
+    "code": "MP",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Northern Mariana Islands during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.mvariety.com/news/local/local-news-no-kings-rally-on-saipan-decries-dictatorship-and-executive-overreach-my7131a4/article_f0805704-a9be-4051-a69f-3a370bb5d1a3.html",
+      "https://www.islapublic.org/news/2025-09-08/student-led-protest-demands-full-funding-for-cnmi-public-schools",
+      "https://www.pacificislandtimes.com/post/diplomacy-and-peace-are-the-way-forward-not-more-bombs-activists-protest-military-buildup-in-the",
+      "https://www.rnz.co.nz/news/pacific/558852/northern-mariana-islands-residents-hold-anti-trump-rally",
+      "https://www.guampdn.com/news/deep-sea-mining-comment-period-closes-with-protest-federal-officials-coming-next-month/article_cf162182-b994-4bd6-99a4-fddcfdfa026b.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Local 2025 school-funding, anti-military and No Kings demonstrations discovered. Not fetched; distinct territory preserved, no FSM/US minor-island misattribution."
+  },
+  {
+    "code": "PW",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Palau during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://islandtimes.org/palau-faces-ongoing-labor-challenges-amid-foreign-worker-abandonment-cases/",
+      "https://islandtimes.org/government-pay-hour-cut-triggers-outcry-senate-pushes-back-on-premature-memo/",
+      "https://islandtimes.org/palauans-of-all-ages-push-back-on-proposal-to-raise-retirement-age-to-65/",
+      "https://islandtimes.org/palaus-wage-hike-may-spur-short-term-price-rises-economic-advisory-report-warns/",
+      "https://islandtimes.org/budget-bill-stalled-as-house-leaders-travel-abroad-shutdown-looms/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Retirement-age opposition and public-pay outcry discovered; not fetched, and organised collective action not yet validated."
+  },
+  {
+    "code": "PG",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Papua New Guinea during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.thenational.com.pg/nurses-stand-firm-on-deadline/",
+      "https://www.nbc.com.pg/post/33814/pngna-adamant-on-sit-in-protest",
+      "https://www.abc.net.au/news/2024-01-10/port-moresby-revolt-over-public-service-payroll-error/103306972",
+      "https://www.straitstimes.com/asia/australianz/papua-new-guinea-moves-to-quell-soldiers-protest",
+      "https://www.postcourier.com.pg/black-wednesday-twelve-months-on/"
+    ],
+    "reviewed_urls": [
+      "https://www.abc.net.au/news/2024-01-10/port-moresby-revolt-over-public-service-payroll-error/103306972",
+      "https://www.thenational.com.pg/civil-servants-assured-all-deductions-will-be-repaid/",
+      "https://www.abc.net.au/news/2024-01-11/png-violence-explain/103309670"
+    ],
+    "note": "Initial English-language screen; not exhaustive. January 2024 Port Moresby payroll protest, associated unrest and repayment commitment reviewed. Original peaceful protesters not collectively identified with looters; actual refund implementation unverified."
+  },
+  {
+    "code": "PN",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Pitcairn during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.the-express.com/news/world-news/197968/inside-sick-incestuous-pedophile-island-where-breaking-young-girls-became-normalized",
+      "https://www.1news.co.nz/2026/05/09/newsmakers-island-on-trial-the-scandal-that-shocked-the-world/",
+      "https://www.dagens.com/news/dark-past-leaves-britains-most-isolated-overseas-territory-facing-an-uncertain-future",
+      "https://www.heraldscotland.com/sport/uk-sport/25648379.commonwealth-games-aspirations-island-population-less-40/",
+      "https://nypost.com/2026/01/17/world-news/trailer-park-at-the-end-of-the-world-south-pacific-island-offers-free-land-to-adventurous-souls/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen primarily returned old abuse-case retrospectives and population/tourism stories. No local 2024\u20132026 collective-action episode established."
+  },
+  {
+    "code": "WS",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Samoa during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.scoop.co.nz/stories/WO2510/S00191/miscommunication-over-overtime-pay-leaves-hundreds-of-patients-at-samoas-main-hospital-without-meals.htm",
+      "https://samoaglobalnews.com/motootua-hospital-kitchen-staff-on-unpaid-overtime-resolved-staff-have-returned-to-work/",
+      "https://talamua.com/?p=53161",
+      "https://www.abc.net.au/pacific/israel-palestine-pacific-islands/103307090",
+      "https://monitor.civicus.org/explore/samoa-separate-protests-held-in-support-of-palestine-and-israel/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. October 2025 hospital kitchen walkout and 2024 solidarity protests discovered. Not fetched; American Samoa entries are kept separate."
+  },
+  {
+    "code": "SB",
+    "query": "News reports about collective protests demonstrations rallies labour strikes occurring in Solomon Islands during 2024, 2025 and 2026 through October 2; local demands dates and responses",
+    "attempted_at": "2026-10-02T21:10:09.775Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.solomonstarnews.com/ports-employees-defer-strike-for-14-days/",
+      "https://theislandsun.com.sb/honiara-bus-services-resume-after-fare-protest/",
+      "https://theislandsun.com.sb/nurses-strike-notice-withdrawn-after-agreement-reached-with-government/",
+      "https://www.sibconline.com.sb/guadalcanal-health-workers-end-sit-in-protest-after-government-commits-to-resolving-2018-demands/",
+      "https://www.solomonstarnews.com/mpg-meets-with-provincial-workers-who-threatened-to-strike/"
+    ],
+    "reviewed_urls": [
+      "https://www.sibconline.com.sb/guadalcanal-health-workers-end-sit-in-protest-after-government-commits-to-resolving-2018-demands/",
+      "https://www.solomonstarnews.com/workers-claims-finalised/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. January 2025 Guadalcanal sit-in and March bargaining follow-up read. Reported return to work lacks exact date, so no fabricated publication-day end date."
+  },
+  {
+    "code": "TW",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Taiwan, Province of China during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.447Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://news.tvbs.com.tw/local/4030541",
+      "https://www.rti.org.tw/news?pid=228709&uid=3",
+      "https://migrantimes.com/labour-policy/18-06-2026/taiwan-labour-groups-push-for-greater-protection-of-migrant-caregivers",
+      "https://www.knews.com.tw/news/05D07E7D06B54102DBC039B030540567",
+      "https://www.setn.com/news/1916378"
+    ],
+    "reviewed_urls": [
+      "https://www.taipeitimes.com/News/front/archives/2024/05/29/2003818549",
+      "https://cons.judicial.gov.tw/en/docdata.aspx?fid=5506&id=354216",
+      "https://www.reuters.com/world/asia-pacific/taiwan-court-rules-parts-parliament-reforms-unconstitutional-setback-opposition-2024-10-25/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Initial query covered all requested years and returned 2026 strikes. Separate 2024 Bluebird/action and official constitutional review were deep-read. Catalog's anomalous Antarctic label was referred to root for correction to Asia. Reuters supplied a limited extract only; Taipei Times and the official court English case-news page supplied usable bodies."
+  },
+  {
+    "code": "TK",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Tokelau during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://pacific.scoop.co.nz/2025/03/tokelau-sets-sights-on-a-potential-third-referendum/",
+      "https://e-tangata.co.nz/reflections/after-100-years-its-time-for-tokelau-to-take-stock/",
+      "https://pina.com.fj/2026/06/11/new-zealand-closes-down-tokelau-self-governance/",
+      "https://pmn.co.nz/read/pacific-region/tokelau-fisheries-row-nz-rejects-claims-of-increased-control",
+      "https://pina.com.fj/2026/07/17/tokelau-and-the-parties-to-the-nauru-agreement-react-to-new-zealand-fisheries-action/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Sovereignty/fisheries disagreements and political commentary found. No demonstrated local collective-action episode established; interstate disagreement is not automatically protest."
+  },
+  {
+    "code": "TO",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Tonga during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://kanivatonga.co.nz/2025/05/vaiola-hospital-loses-45-of-nurses-since-covid-19-amid-overseas-exodus-and-strike-tensions/?amp=",
+      "https://kanivatonga.co.nz/2026/10/traffic-chaos-on-rural-roads-after-police-shut-major-route-for-kings-nemo-opening/",
+      "https://kanivatonga.co.nz/2023/12/government-shows-double-standard-when-it-addresses-nurses-pay-rise-proposal-strike/",
+      "https://talanoaotonga.to/tongas-political-turmoil-reflects-deep-fault-lines/",
+      "https://tongachronicle.to/3-is-not-enough-the-pay-rise-that-left-tonga-behind/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Search found 2025 nursing-strike tensions and older 2023 strike material; no qualifying current occurrence deep-read. Older event not imported."
+  },
+  {
+    "code": "TV",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Tuvalu during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://monitor.civicus.org/explore/continued-call-for-climate-efforts-and-fairer-climate-finance-system/",
+      "https://www.state.gov/wp-content/uploads/2025/07/624521_TUVALU-2024-HUMAN-RIGHTS-REPORT.pdf",
+      "https://pina.com.fj/2025/10/03/climate-change-remains-our-greatest-security-threat-tuvalu-pm-teo/",
+      "https://www.abc.net.au/news/2024-10-01/tuvalu-independence-day-island-nation-faces-uncertain-future/104339306",
+      "https://www.reuters.com/investigations/sinking-tuvalu-fights-keep-maritime-boundaries-sea-levels-rise-2024-09-24/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Climate advocacy often occurred overseas; no local collective-action occurrence deep-read. Not an absence claim."
+  },
+  {
+    "code": "UM",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in United States Minor Outlying Islands during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://stthomassource.com/content/2026/01/26/labor-unions-protest-outside-of-state-of-the-territory/",
+      "https://marshallislandsjournal.com/kwaj-workers-strike-sparks-action/",
+      "https://www.virginislandsdailynews.com/news/no-kings-protesters-recall-decades-long-fight-for-civil-liberties-voting-rights/article_b85d6059-3c69-4031-9299-f62d9c3e1bb5.html",
+      "https://www.islapublic.org/news/2026-02-27/protesters-demand-transparency-in-cnmi-talks-on-potential-seabed-mining",
+      "https://newsfeed.wtjx.org/podcast/wtjx-newsfeed/2026-02-14/usw-union-demands-fair-contracts-with-silent-protest-during-gov-bryans-speech-at-st-croix-ag-fair"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Results were Virgin Islands, Marshall Islands and CNMI actions, rejected as different jurisdictions. No local minor-outlying-island episode established."
+  },
+  {
+    "code": "VU",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Vanuatu during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://vbtc.vu/progress-in-teachers-strike-issues-as-joint-taskforce-begins-verification/",
+      "https://www.dailypost.vu/news/activists-protest-rising-cost-of-living-outside-parliament/article_d21491c2-afc8-5808-90ed-b6e0ee02cfb2.html",
+      "https://www.dailypost.vu/news/teachers-strike-remains-lawful-suspensions-quashed/article_ea3ae06c-e1d3-5825-96bb-d84550fc4e4c.html",
+      "https://www.dailypost.vu/news/teachers-day-celebration-marks-turning-point/article_f6e4ed8f-7ec3-5bfe-8660-e4fa244d04a0.html",
+      "https://www.dailypost.vu/news/teachers-strike-ends-with-cba/article_d560c43b-b9c8-5544-a751-bc900e72f6ea.html"
+    ],
+    "reviewed_urls": [
+      "https://courts.gov.vu/court-activity/judgments/660695-teaching-service-commission-v-vanuatu-teachers-union-2",
+      "https://www.rnz.co.nz/news/pacific/562928/teacher-suspensions-quashed-by-vanuatu-supreme-court",
+      "https://www.dailypost.vu/news/teachers-strike-ends-with-cba/article_d560c43b-b9c8-5544-a751-bc900e72f6ea.html"
+    ],
+    "note": "Initial English-language screen; not exhaustive. August 2024 resumed teacher strike, court proceedings and December 2025 call-off reviewed; June bout excluded from selected scope. Payment promises not treated as verified delivery."
+  },
+  {
+    "code": "WF",
+    "query": "Local reporting of collective protest demonstrations rallies or labour strikes in Wallis and Futuna during 2024, 2025 and 2026 through October 2 with dates locations demands outcomes",
+    "attempted_at": "2026-10-02T21:10:32.448Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://la1ere.franceinfo.fr/wallisfutuna/alofi/futuna-la-greve-a-l-hopital-de-kaleveleve-prend-fin-apres-30-jours-de-mobilisation-1736354.html",
+      "https://la1ere.franceinfo.fr/wallisfutuna/alofi/vie-chere-l-utfo-wf-reclame-des-mesures-sur-les-prix-et-l-approvisionnement-1734509.html",
+      "https://la1ere.franceinfo.fr/wallisfutuna/greve-a-l-agence-de-sante-de-wallis-et-futuna-vers-un-protocole-de-fin-de-conflit-1522415.html",
+      "https://la1ere.franceinfo.fr/wallisfutuna/futuna/nous-voulons-notre-nouvel-hopital-a-futuna-la-patience-a-ses-limites-1732967.html",
+      "https://infooutremer.fr/futuna-debrayage-a-lhopital-de-kaleveleve-apres-une-agression-verbale-liee-a-l-emploi-foncier/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Screen found dated 2024 health-agency strike and 2026 hospital mobilisation with apparent end. Not fetched; promising French-language gap retained."
+  }
+]

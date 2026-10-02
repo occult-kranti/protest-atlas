@@ -1,0 +1,961 @@
+[
+  {
+    "id": "au-victorian-hospital-strike-20261001",
+    "title": "Victorian hospital workers strike over pay and fatigue",
+    "country": "AU",
+    "country_name": "Australia",
+    "region": "Oceania",
+    "location": {
+      "label": "Victoria, including Mildura",
+      "precision": "region"
+    },
+    "issues": [
+      "Labour",
+      "Health services"
+    ],
+    "start_date": "2026-10-01",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:18.222Z",
+    "last_observed_at": "2026-10-01",
+    "summary": "Doctors and allied health professionals stopped work over stalled pay and conditions negotiations, with emergency-care exemptions.",
+    "positions": [
+      {
+        "actor": "AMA Victoria and Victorian Allied Health Professionals Association",
+        "stance": "support",
+        "target": "Improved pay, staffing and working conditions",
+        "claim": "Unions called for safer hours and better retention.",
+        "source_ids": [
+          "au-victorian-hospital-strike-20261001-abc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Work stoppages at public hospitals; emergency-care exemptions reported.",
+      "violence": "No violence described in the reviewed report.",
+      "source_ids": [
+        "au-victorian-hospital-strike-20261001-abc"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Negotiations continuing",
+        "attribution": "Victorian health minister quoted by ABC.",
+        "source_ids": [
+          "au-victorian-hospital-strike-20261001-abc"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "au-victorian-hospital-strike-20261001-abc",
+        "url": "https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718",
+        "title": "Victorian doctors and allied health professionals strike amid ongoing pay disputes",
+        "publisher": "ABC News",
+        "published_at": "2026-10-01",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2026-10-01",
+        "text": "Public hospital workers staged work stoppages; talks remained unresolved.",
+        "source_ids": [
+          "au-victorian-hospital-strike-20261001-abc"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pg-port-moresby-payroll-protest-20240110",
+    "title": "Public-service payroll protest and associated unrest",
+    "country": "PG",
+    "country_name": "Papua New Guinea",
+    "region": "Oceania",
+    "location": {
+      "label": "Port Moresby",
+      "precision": "city"
+    },
+    "issues": [
+      "Labour",
+      "Pay",
+      "Public order"
+    ],
+    "start_date": "2024-01-10",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:18.222Z",
+    "last_observed_at": "2024-01-16",
+    "summary": "Police, defence personnel and public servants protested unexplained pay deductions. Separate looting and fires followed during reduced police coverage.",
+    "positions": [
+      {
+        "actor": "Protesting public servants",
+        "stance": "oppose",
+        "target": "Unexplained payroll deductions",
+        "claim": "Protest concerned reduced pay; officials denied a new tax.",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-abc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Police withdrew from duty; shops were looted and burned.",
+      "violence": "Shootings, fires and injuries reported; original peaceful protesters are not equated with all perpetrators.",
+      "source_ids": [
+        "pg-port-moresby-payroll-protest-20240110-abc"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Defence personnel authorized to assist police",
+        "attribution": "Prime minister statement reported by ABC.",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-abc"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "pg-port-moresby-payroll-protest-20240110-abc",
+        "url": "https://www.abc.net.au/news/2024-01-10/port-moresby-revolt-over-public-service-payroll-error/103306972",
+        "title": "Shopping centre torched and shops looted after payroll glitch",
+        "publisher": "ABC News",
+        "published_at": "2024-01-10",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      },
+      {
+        "id": "pg-port-moresby-payroll-protest-20240110-national",
+        "url": "https://www.thenational.com.pg/civil-servants-assured-all-deductions-will-be-repaid/",
+        "title": "Civil servants assured all deductions will be repaid",
+        "publisher": "The National",
+        "published_at": "2024-01-16",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-01-10",
+        "text": "Pay protest and subsequent city unrest; government promised correction.",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-abc"
+        ]
+      },
+      {
+        "date": "2024-01-16",
+        "text": "Prime minister repeated a commitment to reimburse deductions in the next pay run.",
+        "source_ids": [
+          "pg-port-moresby-payroll-protest-20240110-national"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ck-china-partnership-rallies-20250218",
+    "title": "Rallies over China partnership and political accountability",
+    "country": "CK",
+    "country_name": "Cook Islands",
+    "region": "Oceania",
+    "location": {
+      "label": "Avarua",
+      "precision": "city"
+    },
+    "issues": [
+      "Governance",
+      "Foreign policy"
+    ],
+    "start_date": "2025-02-18",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:18.222Z",
+    "last_observed_at": "2025-02-25",
+    "summary": "Demonstrators opposed opaque decision-making around a China partnership and passport proposals; follow-up protesters sought new leadership.",
+    "positions": [
+      {
+        "actor": "Opposition-led demonstrators",
+        "stance": "oppose",
+        "target": "Government decision-making on China partnership",
+        "claim": "Demonstrators criticized lack of consultation and transparency.",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-abc",
+          "ck-china-partnership-rallies-20250218-rnz"
+        ]
+      },
+      {
+        "actor": "Mark Brown government",
+        "stance": "support",
+        "target": "Diversified international partnerships",
+        "claim": "Prime minister defended the partnership as offering development opportunities.",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-abc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Peaceful demonstration reported.",
+      "violence": "Initial rally described as peaceful.",
+      "source_ids": [
+        "ck-china-partnership-rallies-20250218-abc"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ck-china-partnership-rallies-20250218-abc",
+        "url": "https://www.abc.net.au/news/2025-02-19/hundreds-protest-in-cook-islands-after-pm-signs-deal-with-china/104952958",
+        "title": "Cook Islands Prime Minister to face no confidence vote amid protests",
+        "publisher": "ABC News with wires",
+        "published_at": "2025-02-19",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      },
+      {
+        "id": "ck-china-partnership-rallies-20250218-rnz",
+        "url": "https://www.rnz.co.nz/news/pacific/543035/protesters-rally-for-new-cook-islands-leadership-amid-no-confidence-vote-delay",
+        "title": "Protesters rally for new Cook Islands leadership",
+        "publisher": "Cook Islands News via RNZ",
+        "published_at": "2025-02-25",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      },
+      {
+        "id": "ck-china-partnership-rallies-20250218-cin",
+        "url": "https://www.cookislandsnews.com/internal/national/parliament/pm-brown-and-cabinet-survive-vote-of-no-confidence/",
+        "title": "PM Brown and Cabinet survive vote of no confidence",
+        "publisher": "Cook Islands News",
+        "published_at": "2025-02-26",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-02-18",
+        "text": "Hundreds rallied in Avarua.",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-abc"
+        ]
+      },
+      {
+        "date": "2025-02-24",
+        "text": "A smaller group gathered again seeking new leadership.",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-rnz"
+        ]
+      },
+      {
+        "date": "2025-02-25",
+        "text": "Cabinet defeated a no-confidence motion 13 to nine.",
+        "source_ids": [
+          "ck-china-partnership-rallies-20250218-cin"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fj-yaqara-pastoral-strike-20260216",
+    "title": "Yaqara Pastoral workers strike for unpaid entitlements",
+    "country": "FJ",
+    "country_name": "Fiji",
+    "region": "Oceania",
+    "location": {
+      "label": "Yaqara, Tavua",
+      "precision": "region"
+    },
+    "issues": [
+      "Labour",
+      "Pay"
+    ],
+    "start_date": "2026-02-16",
+    "start_date_precision": "day",
+    "end_date": "2026-02-19",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:15:18.222Z",
+    "last_observed_at": "2026-02-19",
+    "summary": "National Union of Workers members struck over unpaid cost-of-living adjustments and employment entitlements; a negotiated agreement ended the dispute.",
+    "positions": [
+      {
+        "actor": "National Union of Workers members at Yaqara",
+        "stance": "support",
+        "target": "Outstanding wage adjustments and employment entitlements",
+        "claim": "Workers sought compliance with agreed conditions.",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-village"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Four days of industrial action.",
+      "violence": "Violence not reported in the reviewed accounts.",
+      "source_ids": [
+        "fj-yaqara-pastoral-strike-20260216-times",
+        "fj-yaqara-pastoral-strike-20260216-sun"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government-brokered negotiations",
+        "attribution": "Employment ministry statements carried by Fijivillage and Fiji Sun.",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-village",
+          "fj-yaqara-pastoral-strike-20260216-sun"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "fj-yaqara-pastoral-strike-20260216-village",
+        "url": "https://www.fijivillage.com/news/yaqara-workers-on-strike-agree-in-principle-to-meet-employer-after-ministry-steps-in-7cdd35/",
+        "title": "Yaqara workers on strike agree in principle to meet employer",
+        "publisher": "Fijivillage",
+        "published_at": "2026-02-17",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      },
+      {
+        "id": "fj-yaqara-pastoral-strike-20260216-times",
+        "url": "https://www.fijitimes.com.fj/union-hails-big-win-after-yaqara-pastoral-dispute-resolved/",
+        "title": "Union hails big win after Yaqara Pastoral dispute resolved",
+        "publisher": "The Fiji Times",
+        "published_at": "2026-02-19T19:05:43Z",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      },
+      {
+        "id": "fj-yaqara-pastoral-strike-20260216-sun",
+        "url": "https://fijisun.com.fj/news/nation/four-day-yaqara-pastoral-workers-strike-ends-with-wage-breakthrough",
+        "title": "Four-day Yaqara Pastoral workers strike ends with wage breakthrough",
+        "publisher": "Fiji Sun",
+        "published_at": "2026-02-21",
+        "accessed_at": "2026-10-02T21:15:18.222Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2026-02-16",
+        "text": "Workers began a strike.",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-village"
+        ]
+      },
+      {
+        "date": "2026-02-19",
+        "text": "Agreement ended four days of industrial action.",
+        "source_ids": [
+          "fj-yaqara-pastoral-strike-20260216-times",
+          "fj-yaqara-pastoral-strike-20260216-sun"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sb-guadalcanal-health-sitin-202501",
+    "title": "Guadalcanal health workers sit in over unresolved wage claims",
+    "country": "SB",
+    "country_name": "Solomon Islands",
+    "region": "Oceania",
+    "location": {
+      "label": "Guadalcanal Province",
+      "precision": "region"
+    },
+    "issues": [
+      "Labour",
+      "Health services",
+      "Pay"
+    ],
+    "start_date": "2025-01-27",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2025-03-21",
+    "summary": "Health workers held a sit-in over claims lodged in 2018. They returned to work while negotiations continued; a later agreement still awaited formal approval.",
+    "positions": [
+      {
+        "actor": "Guadalcanal health workers and Workers Union of Solomon Islands",
+        "stance": "support",
+        "target": "Resolution of outstanding employment claims",
+        "claim": "Workers sought action on long-standing claims, primarily wage issues.",
+        "source_ids": [
+          "sb-guadalcanal-health-sitin-202501-sibc",
+          "sb-guadalcanal-health-sitin-202501-star"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [
+      {
+        "action": "Met union and workers while calling sit-in illegal",
+        "attribution": "Guadalcanal premier quoted by SIBC.",
+        "source_ids": [
+          "sb-guadalcanal-health-sitin-202501-sibc"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "sb-guadalcanal-health-sitin-202501-sibc",
+        "url": "https://www.sibconline.com.sb/guadalcanal-health-workers-end-sit-in-protest-after-government-commits-to-resolving-2018-demands/",
+        "title": "Guadalcanal health workers end sit-in protest",
+        "publisher": "Solomon Islands Broadcasting Corporation",
+        "published_at": "2025-01-31",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "sb-guadalcanal-health-sitin-202501-star",
+        "url": "https://www.solomonstarnews.com/workers-claims-finalised/",
+        "title": "Workers claims finalised",
+        "publisher": "Solomon Star",
+        "published_at": "2025-03-21",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-01-27",
+        "text": "A Monday sit-in was reported in the January 31 account.",
+        "source_ids": [
+          "sb-guadalcanal-health-sitin-202501-sibc"
+        ]
+      },
+      {
+        "date": "2025-03-21",
+        "text": "Negotiations were reported concluded, with provincial approval still pending.",
+        "source_ids": [
+          "sb-guadalcanal-health-sitin-202501-star"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "vu-teachers-resumed-strike-20240810",
+    "title": "Teachers resume industrial action over unpaid entitlements",
+    "country": "VU",
+    "country_name": "Vanuatu",
+    "region": "Oceania",
+    "location": {
+      "label": "Vanuatu, nationwide",
+      "precision": "country"
+    },
+    "issues": [
+      "Labour",
+      "Education",
+      "Pay"
+    ],
+    "start_date": "2024-08-10",
+    "start_date_precision": "day",
+    "end_date": "2025-12-22",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2025-12-22",
+    "summary": "Teachers resumed a strike over unpaid salary and allowances. Suspensions were challenged in court; a collective agreement led the union to call off the strike.",
+    "positions": [
+      {
+        "actor": "Vanuatu Teachers Union",
+        "stance": "support",
+        "target": "Payment of teacher entitlements and payroll reforms",
+        "claim": "Union disputed unpaid salary and allowances.",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-court",
+          "vu-teachers-resumed-strike-20240810-rnz"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Prolonged withdrawal from classrooms; over 1,000 union members reported in end-of-strike account.",
+      "violence": "Violence not described in reviewed reports.",
+      "source_ids": [
+        "vu-teachers-resumed-strike-20240810-post"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Teaching Service Commission suspended striking teachers; suspensions challenged",
+        "attribution": "Court record and RNZ reporting.",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-court",
+          "vu-teachers-resumed-strike-20240810-rnz"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "vu-teachers-resumed-strike-20240810-court",
+        "url": "https://courts.gov.vu/court-activity/judgments/660695-teaching-service-commission-v-vanuatu-teachers-union-2",
+        "title": "Teaching Service Commission v Vanuatu Teachers Union, Civil Appeal 63 of 2025",
+        "publisher": "Judiciary of Vanuatu",
+        "published_at": "2025-02-14",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "vu-teachers-resumed-strike-20240810-rnz",
+        "url": "https://www.rnz.co.nz/news/pacific/562928/teacher-suspensions-quashed-by-vanuatu-supreme-court",
+        "title": "Teacher suspensions quashed by Vanuatu Supreme Court",
+        "publisher": "RNZ",
+        "published_at": "2025-06-03",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "vu-teachers-resumed-strike-20240810-post",
+        "url": "https://www.dailypost.vu/news/teachers-strike-ends-with-cba/article_d560c43b-b9c8-5544-a751-bc900e72f6ea.html",
+        "title": "Teachers strike ends with CBA",
+        "publisher": "Vanuatu Daily Post",
+        "published_at": "2025-12-23",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-08-10",
+        "text": "Teachers resumed industrial action.",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-court"
+        ]
+      },
+      {
+        "date": "2025-02-14",
+        "text": "Court of Appeal refused leave to challenge interim orders staying teacher suspensions.",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-court"
+        ]
+      },
+      {
+        "date": "2025-12-22",
+        "text": "Union called off nationwide strike after collective agreement signing.",
+        "source_ids": [
+          "vu-teachers-resumed-strike-20240810-post"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "as-noaa-seabed-mining-protest-20260902",
+    "title": "Community protest against seabed-mining research concerns",
+    "country": "AS",
+    "country_name": "American Samoa",
+    "region": "Oceania",
+    "location": {
+      "label": "Pago Pago",
+      "precision": "city"
+    },
+    "issues": [
+      "Environment",
+      "Indigenous rights"
+    ],
+    "start_date": "2026-09-02",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2026-09-02",
+    "summary": "Community leaders and Greenpeace USA activists peacefully confronted a NOAA research ship, fearing mineral-mapping work would assist proposed deep-sea mining.",
+    "positions": [
+      {
+        "actor": "Finafinau and Greenpeace USA activists",
+        "stance": "oppose",
+        "target": "Research potentially facilitating commercial seabed mining",
+        "claim": "Activists linked mineral exploration with extraction risks.",
+        "source_ids": [
+          "as-noaa-seabed-mining-protest-20260902-talanei"
+        ]
+      },
+      {
+        "actor": "NOAA research ship representatives",
+        "stance": "support",
+        "target": "Ocean-science research mission",
+        "claim": "Ship response described its mission as research and decisions as belonging to politicians and the public.",
+        "source_ids": [
+          "as-noaa-seabed-mining-protest-20260902-talanei"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Peaceful confrontation and radio exchange; operational disruption not established.",
+      "violence": "Described as peaceful.",
+      "source_ids": [
+        "as-noaa-seabed-mining-protest-20260902-talanei"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Research ship replied to protest message",
+        "attribution": "Radio response quoted by Talanei.",
+        "source_ids": [
+          "as-noaa-seabed-mining-protest-20260902-talanei"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "as-noaa-seabed-mining-protest-20260902-talanei",
+        "url": "https://www.talanei.com/2026/09/03/protestors-deliver-message-to-noaa-research-ship/",
+        "title": "Protestors deliver message to NOAA research ship",
+        "publisher": "Talanei",
+        "published_at": "2026-09-03",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2026-09-02",
+        "text": "Activists displayed banners and delivered a radio protest message; ship personnel responded.",
+        "source_ids": [
+          "as-noaa-seabed-mining-protest-20260902-talanei"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nz-wellington-treaty-hikoi-20241119",
+    "title": "Wellington hīkoi against Treaty Principles Bill",
+    "country": "NZ",
+    "country_name": "New Zealand",
+    "region": "Oceania",
+    "location": {
+      "label": "Wellington",
+      "precision": "city"
+    },
+    "issues": [
+      "Indigenous rights",
+      "Governance"
+    ],
+    "start_date": "2024-11-19",
+    "start_date_precision": "day",
+    "end_date": "2024-11-19",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2025-04-10",
+    "summary": "The hīkoi culminated in a peaceful mass protest against the Treaty Principles Bill, then concluded with a concert. Parliament later rejected the bill.",
+    "positions": [
+      {
+        "actor": "Hīkoi mō te Tiriti supporters",
+        "stance": "oppose",
+        "target": "Treaty Principles Bill",
+        "claim": "Supporters demanded the bill be abandoned.",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-rnz"
+        ]
+      },
+      {
+        "actor": "ACT Party",
+        "stance": "support",
+        "target": "Treaty Principles Bill",
+        "claim": "ACT defended the bill as a debate about Treaty principles.",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-rnz"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "RNZ reported more than 42,000 participants; exact comparable bounds not adopted."
+      },
+      "disruption": "Street traffic stopped during the march; business disruption reported.",
+      "violence": "RNZ described peaceful protest.",
+      "source_ids": [
+        "nz-wellington-treaty-hikoi-20241119-rnz"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "nz-wellington-treaty-hikoi-20241119-rnz",
+        "url": "https://www.rnz.co.nz/news/te-ao-maori/534238/what-s-good-for-maori-is-good-for-everyone-hikoi-ends-with-peaceful-protest",
+        "title": "Hikoi ends with peaceful protest",
+        "publisher": "RNZ",
+        "published_at": "2024-11-20",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "nz-wellington-treaty-hikoi-20241119-justice",
+        "url": "https://www.justice.govt.nz/justice-sector-policy/key-initiatives/a-treaty-principles-bill/",
+        "title": "A Treaty Principles Bill",
+        "publisher": "New Zealand Ministry of Justice",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-11-19",
+        "text": "Wellington march reached Parliament and later returned for a concert.",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-rnz"
+        ]
+      },
+      {
+        "date": "2025-04-10",
+        "text": "Parliament rejected the bill at second reading 112 votes to 11.",
+        "source_ids": [
+          "nz-wellington-treaty-hikoi-20241119-justice"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "nc-electoral-reform-unrest-2024",
+    "title": "Opposition to electoral reform and associated unrest",
+    "country": "NC",
+    "country_name": "New Caledonia",
+    "region": "Oceania",
+    "location": {
+      "label": "New Caledonia, including Nouméa",
+      "precision": "region"
+    },
+    "issues": [
+      "Indigenous rights",
+      "Voting rights",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2024-06-12",
+    "summary": "Pro-independence opponents resisted expansion of the provincial electorate, fearing dilution of the Kanak vote. Protests were associated with deadly unrest; France suspended the proposed reform.",
+    "positions": [
+      {
+        "actor": "Kanak and pro-independence opponents",
+        "stance": "oppose",
+        "target": "Expansion of provincial electoral eligibility",
+        "claim": "Opponents feared dilution of Indigenous voting influence.",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc"
+        ]
+      },
+      {
+        "actor": "French government",
+        "stance": "support",
+        "target": "Electoral reform followed by negotiated settlement",
+        "claim": "Macron suspended rather than withdrew the reform and sought dialogue.",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-rnz"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Roadblocks, closed airport and destruction of businesses reported.",
+      "violence": "Fatalities and injuries reported during unrest; participants are not collectively assigned responsibility.",
+      "source_ids": [
+        "nc-electoral-reform-unrest-2024-abc",
+        "nc-electoral-reform-unrest-2024-rnz"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Emergency measures, security reinforcements, curfew and TikTok ban",
+        "attribution": "ABC reporting on French government measures.",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "nc-electoral-reform-unrest-2024-abc",
+        "url": "https://www.abc.net.au/news/2024-06-12/voting-changes-that-sparked-new-caledonia-riots-suspended/103970940",
+        "title": "Voting changes proposed for New Caledonia suspended",
+        "publisher": "ABC News with wires",
+        "published_at": "2024-06-12",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "nc-electoral-reform-unrest-2024-rnz",
+        "url": "https://www.rnz.co.nz/news/pacific/519431/macron-new-caledonia-changes-suspended-not-withdrawn",
+        "title": "Macron: New Caledonia changes suspended, not withdrawn",
+        "publisher": "RNZ",
+        "published_at": "2024-06-13",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-05-23",
+        "text": "Macron said the reform would not be forced through in the current context.",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc",
+          "nc-electoral-reform-unrest-2024-rnz"
+        ]
+      },
+      {
+        "date": "2024-06-12",
+        "text": "Macron announced suspension of the electoral reform.",
+        "source_ids": [
+          "nc-electoral-reform-unrest-2024-abc",
+          "nc-electoral-reform-unrest-2024-rnz"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tw-bluebird-legislative-protests-20240528",
+    "title": "Bluebird demonstrators oppose expanded legislative powers",
+    "country": "TW",
+    "country_name": "Taiwan, Province of China",
+    "region": "Asia",
+    "location": {
+      "label": "Taipei and other reported cities",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Governance",
+      "Civil liberties"
+    ],
+    "start_date": "2024-05-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:17:35.356Z",
+    "last_observed_at": "2024-10-25",
+    "summary": "Bluebird demonstrators rallied while opposition parties passed expanded legislative powers. Taiwan's Constitutional Court later invalidated multiple provisions while upholding others.",
+    "positions": [
+      {
+        "actor": "Bluebird demonstrators and Economic Democracy Union",
+        "stance": "oppose",
+        "target": "Expanded legislative investigative and punishment powers",
+        "claim": "Demonstrators sought rejection or review of the amendments.",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-taipeitimes"
+        ]
+      },
+      {
+        "actor": "Kuomintang and Taiwan People's Party legislators",
+        "stance": "support",
+        "target": "Expanded legislative oversight",
+        "claim": "Supporters presented the changes as accountability and anti-corruption measures.",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-taipeitimes"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Reliable comparable count not established."
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "tw-bluebird-legislative-protests-20240528-taipeitimes",
+        "url": "https://www.taipeitimes.com/News/front/archives/2024/05/29/2003818549",
+        "title": "KMT, TPP pass controversial measures",
+        "publisher": "Taipei Times, staff with agencies",
+        "published_at": "2024-05-29",
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      },
+      {
+        "id": "tw-bluebird-legislative-protests-20240528-court",
+        "url": "https://cons.judicial.gov.tw/en/docdata.aspx?fid=5506&id=354216",
+        "title": "Case News on TCC Judgment 113-Hsien-Pan-9 (2024)",
+        "publisher": "Taiwan Constitutional Court",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:17:35.356Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted source reading; no human editorial sign-off. This is a bounded historical episode; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-05-28",
+        "text": "Legislature passed amendments while demonstrators gathered outside.",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-taipeitimes"
+        ]
+      },
+      {
+        "date": "2024-10-25",
+        "text": "Constitutional Court invalidated multiple provisions, including criminal contempt of legislature.",
+        "source_ids": [
+          "tw-bluebird-legislative-protests-20240528-court"
+        ]
+      }
+    ]
+  }
+]

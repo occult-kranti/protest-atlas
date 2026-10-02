@@ -1,0 +1,1241 @@
+[
+  {
+    "code": "DZ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Algeria during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:07:55.668Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/algeria-teacher-strikes-293e93799469c3ec2072dcb6449b43de",
+      "https://apanews.net/surprise-fuel-hikes-trigger-nationwide-strikes-in-algeria/",
+      "https://apanews.net/gen-z-algeria-brace-for-fresh-season-of-demos/",
+      "https://www.euronews.com/2026/07/22/outcry-in-algeria-after-two-doctors-die-after-gruelling-on-call-shifts",
+      "https://www.theafricareport.com/394145/algeria-is-protest-a-hirak-revival-or-moroccan-gen-z-spillover/"
+    ],
+    "reviewed_urls": [
+      "https://apnews.com/article/algeria-teacher-strikes-293e93799469c3ec2072dcb6449b43de"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "AO",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Angola during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/business/energy/angola-fuel-hike-protests-turn-violent-local-media-report-2025-07-28/",
+      "https://africa.rtp.pt/noticias-africa/greve-geral-dos-professores-do-ensino-publico-em-angola/",
+      "https://www.bbc.com/news/articles/clyvjeexn85o",
+      "https://www.bbc.com/news/articles/c5y20dxkykro",
+      "https://www.bbc.com/news/articles/c8ex6k88yy9o"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/business/energy/angola-fuel-hike-protests-turn-violent-local-media-report-2025-07-28/",
+      "https://www.bbc.com/news/articles/clyvjeexn85o"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Reuters July 28 fetch was truncated; only the BBC article received an article-body review and supports the proposed event."
+  },
+  {
+    "code": "BJ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Benin during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/police-fire-tear-gas-disperse-benin-wage-protest-2024-04-27/",
+      "https://peoplesdispatch.org/2025/05/08/trade-unions-in-benin-condemn-police-crackdown-on-labor-movement/",
+      "https://www.france24.com/en/live-news/20240510-in-benin-tensions-soar-over-cost-of-living",
+      "https://monitor.civicus.org/explore/benin-protests-against-high-cost-of-living-banned-dispersed/",
+      "https://beninwebtv.bj/en/attempted-coup-in-benin-trade-union-confederations-condemn-a-serious-violation-of-the-constitutional-order/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/africa/police-fire-tear-gas-disperse-benin-wage-protest-2024-04-27/",
+      "https://www.france24.com/en/live-news/20240510-in-benin-tensions-soar-over-cost-of-living"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Reuters April 27 fetch was truncated; the complete AFP article supports the proposed event."
+  },
+  {
+    "code": "BW",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Botswana during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.mmegi.bw/news/students-revolt-against-udc-govt/news",
+      "https://www.sundaystandard.info/railways-workers-strike-over-deductions/",
+      "https://apanews.net/botswana-unions-protest-poor-work-conditions-pay-freeze/",
+      "https://www.mmegi.bw/news/strike-looms-at-botash-after-wage-deadlock/news",
+      "https://beta.mmegi.bw/news/labour-unions-turn-up-the-heat-on-udc-govt/news"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "IO",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in British Indian Ocean Territory during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.aljazeera.com/news/2026/10/2/uk-mauritius-chagos-sovereignty-deal-stalls-amid-fears-of-further-delays",
+      "https://www.bbc.co.uk/news/articles/c5y2x49228lo",
+      "https://www.bbc.com/news/articles/c1jk5p0ewx0o",
+      "https://apnews.com/article/chagos-britain-mauritius-american-base-diego-garcia-c5816d6b5cf79dedf4fc6b37376298f8",
+      "https://www.bbc.co.uk/news/articles/cy78ejg71exo"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Some returned candidates concern other territories, Nigeria's Niger state, diaspora or camps outside the territory; local relevance requires separate verification."
+  },
+  {
+    "code": "BF",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Burkina Faso during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/burkina-faso-protest-ibrahim-traore-coup-attempt-langley-9c2b167d2516c1fcbe5a3acd558bcc9f",
+      "https://infonews.ca/news/140289/protesters-attack-french-embassy-in-burkina-faso-after-coup/",
+      "https://www.pulse.ng/story/thousands-of-burkina-faso-civil-servants-protest-bonus-tax-2024081621123519978",
+      "https://www.france24.com/en/africa/20240503-hundreds-in-burkina-protest-at-us-response-to-human-rights-watch-massacre-report",
+      "https://www.pulse.com.gh/story/burkina-medics-seek-better-work-conditions-threaten-strike-2024080702373472750"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "BI",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Burundi during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.sosmediasburundi.org/en/2026/05/03/burundi-social-unrest-over-the-high-cost-of-living-tensions-between-workers-and-the-government-amid-economic-constraints/",
+      "https://www.sosmediasburundi.org/en/2026/04/26/burundi-indefinite-strike-at-the-kamenge-neuropsychiatric-center-staff-denounce-violations-of-agreements/",
+      "https://www.sosmediasburundi.org/en/2025/07/30/burundi-the-public-transportation-crisis-spreads-passengers-and-businesses-on-their-knees/",
+      "https://breakingburundi.com/public-workers-discontent-casts-shadow-over-burundis-labor-day-celebrations/",
+      "https://breakingburundi.com/burundi-trade-unions-cosybu-csb-economic-crisis-fuel-shortage-market-fires/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "CV",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Cabo Verde during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www2.lusa.pt/lusanews/article/2026-10-02/47875461/cabo-verde-opposition-wants-government-to-reinstate-fuel-price-cap",
+      "https://www.governo.cv/a-desobediencia-a-requisicao-civil-por-parte-dos-pilotos-da-tacv-cabo-verde-airlines/",
+      "https://observador.pt/2025/10/11/centenas-nas-ruas-de-cabo-verde-pela-cidadania-e-melhor-qualidade-de-vida/",
+      "https://wwwss.rtc.cv/tcv/video-details/manifestacao-marcada-pelos-funcionarios-da-dgre-adiada-depois-de-promessa-de-acordo-do-ministro-das-financas-53838",
+      "https://expressodasilhas.cv/pais/2025/10/11/movimento-di-povo-pa-povo-saiu-as-ruas/99388"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "CM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Cameroon during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.france24.com/en/video/20261001-cameroon-govt-announces-payments-as-teachers-strike-continues",
+      "https://www.channelafrica.co.za/channelafrica/news/cameroon-public-universities-shut-down-as-academic-staff-launch-indefinite-strike/",
+      "https://www.channelafrica.co.za/channelafrica/news/cameroon-lecturers-continue-indefinite-strike/",
+      "https://www.reuters.com/world/africa/cameroon-opposition-leader-rejects-biya-win-vows-resistance-2025-10-29/",
+      "https://www.reuters.com/world/africa/cameroon-opposition-rejects-biyas-win-alleges-fraud-amid-violent-protests-2025-10-28/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "CF",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Central African Republic during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/central-african-republic-russia-wagner-d955ae10660d8dc5efdb258dd067be13",
+      "https://newscentraltv.com/car-election-results-halted-by-strike/",
+      "https://rca.news-pravda.com/en/world/2025/10/08/7498.html",
+      "https://corbeaunews-centrafrique.org/a-ndassima-apres-la-greve-des-habitants-les-soldats-faca-sont-appeles-au-renfort-pas-pour-mettre-de-la-securite-mais-pour-racketter/",
+      "https://www.africanews.com/2025/04/04/central-african-opposition-leads-mass-protest-against-touaderas-third-term-bid/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "TD",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Chad during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:08:35.221Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://wadr.org/chad-teachers-launch-week-long-strike-over-unmet-demands/",
+      "https://apanews.net/chad-withholds-salaries-of-striking-teachers/",
+      "https://apanews.net/chadian-teachers-threaten-strike-as-govt-reneges-on-promises/",
+      "https://www.africa-press.net/en/policy/chad-jails-teachers-union-leader-amid-rising-tensions",
+      "https://lendjamtimes.com/2025/10/21/les-mouvements-de-greve-au-tchad-revendications-legitimes-ou-instruments-dune-destabilisation-orchestree-depuis-letranger/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "KM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Comoros during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "CG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Republic of the Congo Brazzaville during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://congosentinel.com/marien-ngouabi-unions-renew-strike-threat-over-pay/",
+      "https://congosentinel.com/teachers-strike-looms-in-congo-brazzaville-schools/",
+      "https://brazzavilleinsider.com/mediators-breakthrough-keeps-congo-schools-open/",
+      "https://congotimes.com/2026/09/02/congo-hospitals-paralysed-government-stays-mute/",
+      "https://congosentinel.com/university-pay-row-marien-ngouabi-staff-signal-strike/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "CD",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Democratic Republic of Congo Kinshasa during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/congo-police-break-up-protests-against-proposed-constitutional-changes-2026-09-15/",
+      "https://www.reuters.com/world/africa/congo-protesters-attack-kinshasa-embassies-over-conflict-east-2025-01-28/",
+      "https://apnews.com/article/congo-protest-opposition-constitution-kinshasa-f3ffbaaa242ff6dcf185ab1f54d86976",
+      "https://www.hrw.org/news/2026/07/09/dr-congo-crackdown-on-protesters",
+      "https://www.rfi.fr/en/africa/20260722-drc-opposition-postpones-protest-after-tshisekedi-announces-national-dialogue"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "CI",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Côte d'Ivoire Ivory Coast during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://news.abidjan.net/articles/749442/grande-rentree-du-dialogue-social-2026-le-gouvernement-et-les-partenaires-sociaux-en-phase-pour-la-poursuite-de-la-treve-sociale",
+      "https://apnews.com/article/ivory-coast-protest-ouattara-fc53cf696603449ce09331928fea5767",
+      "https://www.aljazeera.com/news/2025/10/24/ivorians-protest-flawed-and-rigged-system-as-pivotal-election-looms",
+      "https://liberiapublicradio.com/2026/03/27/cote-divoire-cocoa-fund-mismanagement-sparks-strike-threat-from-producers/",
+      "https://www.rfi.fr/en/africa/20251003-c%C3%B4te-divoire-bans-protests-over-opposition-leaders-exclusion-from-election"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "DJ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Djibouti during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.somalilandcurrent.com/djiboutians-defy-crackdown-flood-streets-to-demand-fall-of-president-guelleh-after-27-years-rule/",
+      "https://www.ardhd.org/2026/01/16/16-01-2026-breve-2540-lddh-les-djiboutiennesens-ont-ellesils-le-droit-de-manifester-pacifiquement-pour-reclamer-du-travail-non-leur-repond-iog-qui-sappuie-sur-ses-forces-armees/",
+      "https://www.somalidispatch.com/latest-news/internet-shutdown-in-djibouti-after-reported-fighting-followed-by-unrest/",
+      "https://france.news-pravda.com/en/world/2025/11/17/70781.html",
+      "https://www.khaleejtimes.com/business/london-court-rules-djibouti-illegally-seized-dp-world-port"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "EG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Egypt during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://almanassa.com/en/stories/29626",
+      "https://manassa.news/en/news/34082",
+      "https://manassa.news/en/news/30248",
+      "https://manassa.news/en/news/28724",
+      "https://manassa.news/en/news/29698"
+    ],
+    "reviewed_urls": [
+      "https://manassa.news/en/news/30248"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "GQ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Equatorial Guinea during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/equatorial-guinea-internet-shutdown-africa-d7daacc641475743972b33eaffffa4fc",
+      "https://www.theguardian.com/world/2024/oct/14/dozens-of-islanders-locked-up-as-grim-history-continues-for-annobon",
+      "https://unpo.org/unpo-welcomes-release-of-37-annobonese-detainees-following-un-wgad-opinion/",
+      "https://www.the-independent.com/news/world/africa/equatorial-guinea-annobon-island-internet-b2826671.html",
+      "https://www.ilaad.org/post/equatorial-guinea-arbitrary-detention-of-37-annob%C3%B3n-inhabitants"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ER",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Eritrea during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://indepthnews.net/crackdown-in-quatit-arrests-and-isolation-deepen-tensions-in-southern-eritrea/",
+      "https://www.eritreatoday.com/tragedy-in-logo-anseba-adi-koronakudo-teens-death-sparks-mass-arrests-and-forced-displacement-crisiseritrea-today/",
+      "https://bbc.com/news/articles/cw884l2wld8o",
+      "https://www.christiandaily.com/news/worldwide-campaign-set-for-seven-imprisoned-eritrean-church-leaders",
+      "https://awate.com/history-is-watching-us/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SZ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Eswatini during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.eswatiniobserver.com/public-sector-unions-sign-e800-million-salary-review-deal/",
+      "https://www.eswatiniobserver.com/civil-servants-notching-dispute-eswatini-psu/",
+      "https://publicservices.international/resources/news/public-sector-workers-call-on-eswatini-government-to-honour-the-2025-collective-agreement-?id=16502&lang=en",
+      "https://independentnews.co.sz/42638/local-news/police-block-psu-buses-as-workers-mobilise-for-notch-2-petition/",
+      "https://times.co.sz/26906/comments/find-common-ground-to-standoff/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ET",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Ethiopia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.hrw.org/news/2025/06/25/ethiopia-crackdown-on-health-workers-protests",
+      "https://www.hrw.org/news/2025/09/12/ethiopian-health-professionals-to-resume-striking",
+      "https://addisstandard.com/workers-day-from-protest-and-arrests-to-high-cost-of-living-ethiopian-workers-mark-may-day-under-yearlong-mounting-strain/",
+      "https://addisstandard.com/health-professionals-on-strike-continue-to-vacate-hospitals-despite-health-ministrys-claim-of-holding-talks/",
+      "https://www.aljazeera.com/features/2025/9/2/i-felt-helpless-ethiopian-doctors-held-harassed-for-seeking-better-pay"
+    ],
+    "reviewed_urls": [
+      "https://www.hrw.org/news/2025/06/25/ethiopia-crackdown-on-health-workers-protests",
+      "https://www.hrw.org/news/2025/09/12/ethiopian-health-professionals-to-resume-striking"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "TF",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in French Southern Territories during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://la1ere.franceinfo.fr/saintpierremiquelon/greve-de-la-fonction-publique-plusieurs-dizaines-de-personnes-mobilisees-a-saint-pierre-1743284.html",
+      "https://www.aspa.aero/news/post/2026-08-12-040451",
+      "https://www.ouest-france.fr/economie/greve/reportage-on-etrangle-les-travailleurs-a-la-reunion-les-fonctionnaires-mobilises-pour-leur-pouvoir-dachat-04203b72-bc10-11f1-9431-be07b240dff0",
+      "https://www.theguardian.com/world/2025/may/13/new-caledonia-riots-one-year-on-president-alcide-ponga",
+      "https://www.abc.net.au/news/2024-09-20/fresh-violence-rocks-french-overseas-territories/104374770"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Some returned candidates concern other territories, Nigeria's Niger state, diaspora or camps outside the territory; local relevance requires separate verification."
+  },
+  {
+    "code": "GA",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Gabon during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.ecofinagency.com/news-services/1205-55501-jobless-graduates-in-gabon-force-talks-with-government-over-hiring-freeze",
+      "https://africabusinessinsight.com/gabon-engages-oil-unions-in-talks-to-prevent-strike-amid-social-tensions/",
+      "https://africabusinessinsight.com/indefinite-strike-notice-threatens/",
+      "https://www.ei-ie.org/en/item/32013:gabon-teachers-resume-strike-to-secure-career-regularisation",
+      "https://congosentinel.com/gabons-1500-jobs-pledge-minister-meets-jobless/"
+    ],
+    "reviewed_urls": [
+      "https://www.ei-ie.org/en/item/32013:gabon-teachers-resume-strike-to-secure-career-regularisation"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Education International article body reviewed in English; no event proposed in this batch."
+  },
+  {
+    "code": "GM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Gambia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "GH",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Ghana during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://3news.com/news/tewu-suspends-nationwide-strike-after-agreement-with-fair-wages-and-salaries-commission",
+      "https://3news.com/news/eastern-region-teacher-unions-defend-strike-over-conditions-of-service",
+      "https://gna.org.gh/2026/10/tutag-withdraws-services-effective-thursday-demand-earned-allowances/",
+      "https://3news.com/news/anti-galamsey-protesters-issue-7-day-ultimatum-to-government",
+      "https://www.newsghana.com.gh/unpaid-nurses-storm-accra-over-10-month-salary-arrears/"
+    ],
+    "reviewed_urls": [
+      "https://3news.com/news/tewu-suspends-nationwide-strike-after-agreement-with-fair-wages-and-salaries-commission"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "GN",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Guinea Conakry during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:02.191Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/guineas-capital-conakry-paralysed-by-general-strike-2024-02-26/",
+      "https://www.reuters.com/world/africa/guinea-trade-unions-suspend-nationwide-strike-2024-02-28/",
+      "https://www.rfi.fr/en/africa/20250822-guinea-faces-prospect-of-mass-job-losses-after-mining-permits-cancelled",
+      "https://wadr.org/guinea-fuel-supply-disrupted-as-tanker-drivers-go-on-strike/",
+      "https://www.straitstimes.com/world/Guinea-charges-60-over-deadly-gold-mine-riot"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/africa/guineas-capital-conakry-paralysed-by-general-strike-2024-02-26/",
+      "https://www.reuters.com/world/africa/guinea-trade-unions-suspend-nationwide-strike-2024-02-28/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "GW",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Guinea-Bissau during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:38.084Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/sustainability/sustainable-finance-reporting/guinea-bissau-transporters-strike-over-higher-fuel-prices-2026-04-07/",
+      "https://www.reuters.com/world/africa/protesters-march-guinea-bissau-denounce-coup-2025-12-12/",
+      "https://groundswellnews.com/protests-erupt-in-guinea-bissau-after-killing-of-prominent-activist/",
+      "https://www.dw.com/en/confusion-anger-in-post-coup-guinea-bissau/a-75666062",
+      "https://www.cnbcafrica.com/2025/guinea-bissau-military-rulers-ban-protests-ahead-of-ecowas-visit"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "KE",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Kenya during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:38.084Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "LS",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Lesotho during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:38.084Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "LR",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Liberia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:38.084Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "LY",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Libya during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:38.084Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Provider rate-limit error, not an absence finding; successful retry retained separately."
+  },
+  {
+    "code": "MG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Madagascar during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:40.727Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.france24.com/en/africa/20251001-youth-protests-madagascar-president",
+      "https://www.thejakartapost.com/world/2025/10/02/madagascar-anti-government-protesters-call-for-general-strike",
+      "https://www.bbc.com/news/articles/cz082y8j3jzo",
+      "https://www.reuters.com/world/asia-pacific/madagascar-protesters-reject-presidents-offer-talks-2025-10-08/",
+      "https://www.reuters.com/world/asia-pacific/madagascar-president-plans-national-dialogue-protesters-declare-ultimatum-2025-10-07/"
+    ],
+    "reviewed_urls": [
+      "https://www.france24.com/en/africa/20251001-youth-protests-madagascar-president",
+      "https://www.bbc.com/news/articles/cn8xjjdgl8vo"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MW",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Malawi during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:40.727Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.theguardian.com/global-development/2026/feb/07/businesses-close-protest-malawi-tax-changes-electronic-invoicing-system",
+      "https://www.reuters.com/world/africa/malawi-cuts-2025-growth-forecast-inflation-spurs-street-protests-2025-02-28/",
+      "https://mg.co.za/africa/2026-05-04-malawi-trader-shutdown-exposes-deeper-tension-over-tax-reform-and-economic-crisis/",
+      "https://allafrica.com/stories/202601300053.html",
+      "https://www.bloomberg.com/news/articles/2025-02-25/malawi-protesters-block-parliament-entrance-over-price-increases"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ML",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Mali during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:40.727Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/business/world-at-work/multiple-unions-threaten-strikes-barricks-flagship-mali-gold-mine-documents-show-2026-09-18/",
+      "https://www.reuters.com/markets/commodities/workers-strike-slows-production-canadian-b2golds-key-mali-mine-sources-say-2024-12-04/",
+      "https://financialpost.com/commodities/mining/barrick-mining-reaches-deal-mali-unions-averting-strikes",
+      "https://thehill.com/homenews/ap/ap-international/ap-hundreds-of-activists-stage-malis-first-pro-democracy-rally-in-years-since-coups/",
+      "https://www.reuters.com/world/africa/mali-suspends-schools-over-fuel-crisis-strikes-deal-with-russia-petroleum-2025-10-27/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MR",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Mauritania during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:40.727Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://sahafatbladi.com/en/mauritania-rosso-hospital-doctors-resume-the-strike-after-failure-to-implement-pledges/",
+      "https://www.reuters.com/world/africa/three-die-mauritanian-detention-after-post-election-protests-ministry-says-2024-07-02/",
+      "https://mfwa.org/country-highlights/mauritania-authorities-crack-down-on-protest-against-rising-transport-fares/",
+      "https://mfwa.org/country-highlights/mauritania-police-arrest-activists-seize-journalists-equipment-during-protest/",
+      "https://medafricatimes.com/43495-mauritanias-snim-workers-launch-one-hour-protest-over-bonus-exclusion.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MU",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Mauritius during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:40.727Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://newsmoris.com/5-major-trade-unions-strike-outside-mauritius-parliament-over-new-pension-cuts/",
+      "https://www.lemauricien.com/actualites/societe/emplois-des-garanties-reclamees-manifestation-des-postiers-dans-la-capitale-demain/711721/",
+      "https://www.themeridian.info/july-2026/3281367_the-pension-march-port-louis-speaks-and-the-government-has-until-the-finance-bill-to-listen",
+      "https://newsmoris.com/hands-off-our-pensions-thousands-reject-65-retirement-age-in-mauritius/",
+      "https://newsmoris.com/mauritian-unions-threaten-general-strike-over-pension-age-rise-to-65/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "YT",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Mayotte during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:47.527Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.mayottehebdo.com/actualite/societe/salaires-securite-moyens-la-greve-federe-les-coleres-de-la-fonction-publique/",
+      "https://la1ere.franceinfo.fr/mayotte/un-nouveau-preavis-de-greve-depose-au-chm-pour-denoncer-les-conditions-de-travail-1742666.html",
+      "https://www.humanite.fr/social-et-economie/greve-generale/inegalites-avec-lhexagone-cout-de-la-vie-a-mayotte-les-syndicats-appellent-a-la-greve-generale",
+      "https://la1ere.franceinfo.fr/mayotte/greve-des-barges-aucun-navire-ne-circule-ce-mardi-malgre-la-requisition-prefectorale-le-prefet-de-mayotte-porte-plainte-1630322.html",
+      "https://lejournaldemayotte.yt/2025/10/08/greve-a-la-dtm-les-syndicats-denoncent-un-protocole-impose-et-le-refus-de-dialogue-du-conseil-departemental/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MA",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Morocco during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:47.527Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bbc.com/news/articles/cgrqpekyxpvo",
+      "https://www.reuters.com/world/africa/moroccos-youth-police-clash-fifth-night-protests-demanding-education-health-care-2025-10-01/",
+      "https://www.reuters.com/world/africa/moroccos-youth-protests-turn-violent-fourth-day-2025-09-30/",
+      "https://apnews.com/article/morocco-protests-youth-corruption-912ca1a9dbc42e6d3d2f8a1067eb12f9",
+      "https://www.reuters.com/world/africa/260-members-moroccan-security-forces-reported-hurt-youth-protests-turn-violent-2025-10-01/"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.co.uk/news/articles/c8rv2l3me40o",
+      "https://www.aljazeera.com/news/2025/9/29/gen-z-protesters-rally-across-morocco-demanding-health-education-reforms",
+      "https://www.reuters.com/world/africa/morocco-will-prioritize-health-education-spending-2026-budget-finance-minister-2025-10-16/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MZ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Mozambique during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:47.527Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://clubofmozambique.com/news/mozambique-motorcycle-taxi-drivers-protest-against-fuel-shortage-in-nampula-watch/",
+      "https://www.plataformamedia.com/en/2025/10/14/over-12000-post-election-protest-unemployed-uncompensated-in-mozambique-union/",
+      "https://apnews.com/article/mozambique-protests-election-violence-amnesty-international-97a4d3553394ce87fd99ad5382106e62",
+      "https://aimnews.org/2026/10/01/government-denies-reports-of-fuel-shortage/",
+      "https://360mozambique.com/business/otm-sindical-over-three-thousand-workers-still-uncompensated-and-unemployed-a-year-after-protests/"
+    ],
+    "reviewed_urls": [
+      "https://apnews.com/article/mozambique-protests-election-violence-amnesty-international-97a4d3553394ce87fd99ad5382106e62"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "NA",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Namibia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:47.527Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.namibian.com.na/fishermens-protest-to-resume-pending-presidential-confirmation-2/",
+      "https://www.namibian.com.na/snack-firm-turns-toarmed-guards-during-strike/",
+      "http://www.namibiansun.com/local-news/miners-demonstrate-in-swakop2025-10-23174583",
+      "https://www.namibian.com.na/union-rejects-gendevs-n6-700-pay-offer/",
+      "https://www.namibiansun.com/short-news/short-news-protesters-besiege-fisheries-ministry2025-11-06176026"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "NE",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Niger during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:09:47.527Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://lesechosduniger.com/2025/10/04/niger-le-comite-femmes-de-la-cnt-denonce-la-repression-violente-contre-les-enseignantes-contractuelles/",
+      "https://wagingnonviolence.org/2026/07/agadez-niger-longest-refugee-protest/",
+      "https://www.meltingpot.org/en/2026/08/seven-hundred-days-of-protest-in-agadez-niger/",
+      "https://www.thecable.ng/niger-state-imposes-24-hour-curfew-in-minna-after-protests-over-deaths-of-miners/",
+      "https://africanquarters.co/minna-miners-protest-37-custody-deaths/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Some returned candidates concern other territories, Nigeria's Niger state, diaspora or camps outside the territory; local relevance requires separate verification."
+  },
+  {
+    "code": "NG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Nigeria during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:05.030Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.vanguardngr.com/2026/10/lagos-universities-workers-begin-indefinite-strike/",
+      "https://apnews.com/article/nigeria-protests-74771061285bcd3b8260edfb4044610f",
+      "https://www.channelstv.com/2024/08/03/endbadgovernance-protesters-continue-demonstrations-in-lagos-port-harcourt/",
+      "https://inquirer.ng/2026/10/02/nigerian-public-servants-begin-three-day-warning-strike-demand-n500-petrol-and-new-minimum-wage/",
+      "https://www.thisdaylive.com/2025/10/01/dangote-pengassan-reach-truce-strike-to-be-called-off-sacked-workers-to-be-recalled/"
+    ],
+    "reviewed_urls": [
+      "https://www.thisdaylive.com/2025/10/01/dangote-pengassan-reach-truce-strike-to-be-called-off-sacked-workers-to-be-recalled/",
+      "https://punchng.com/breaking-dangote-refinery-dispute-pengassan-suspends-strike-after-fg-intervention/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "RE",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Réunion island during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:05.030Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://la1ere.franceinfo.fr/reunion/greve-du-2-octobre-a-la-reunion-des-centaines-de-personnes-mobilises-a-saint-denis-pour-defendre-les-acquis-sociaux-1628789.html",
+      "https://www.lequotidien.re/index.php/article/societe/2026/09/29/greve-du-29-septembre-quelle-mobilisation-a-la-reunion",
+      "https://la1ere.franceinfo.fr/reunion/greve-du-2-octobre-a-la-reunion-defiles-perturbations-a-quoi-faut-il-s-attendre-1628552.html",
+      "https://la1ere.franceinfo.fr/reunion/greve-des-taxis-les-taxiteurs-suspendent-leur-mouvement-apres-les-echanges-a-la-cgss-1630787.html",
+      "https://www.zinfos974.com/un-preavis-de-greve-illimite-depose-au-sein-de-lues-reunion/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "RW",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Rwanda during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:13.946Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://allafrica.com/stories/202608250061.html",
+      "https://www.ktpress.rw/2026/02/with-profits-threatened-bus-companies-are-fiercely-opposed-to-new-provincial-operations-system/",
+      "https://allafrica.com/stories/202605050066.html",
+      "https://www.africa-press.net/rwanda/all-news/labour-day-thousands-of-mine-workers-benefit-from-minimum-living-wage",
+      "https://taarifa.rw/2025/11/10/south-kivu-unpaid-for-18-months-nurses-go-on-strike/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Some returned candidates concern other territories, Nigeria's Niger state, diaspora or camps outside the territory; local relevance requires separate verification."
+  },
+  {
+    "code": "SH",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Saint Helena Ascension Tristan da Cunha during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:13.946Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.sams.sh/wp-content/uploads/2025/10/The-Sentinel-Vol-14-Issue-26.pdf",
+      "https://sthelenaonline.org/silence-on-ascension-island/",
+      "https://www.independent.sh/wp-content/uploads/2026/01/St-Helena-Independent-20260109.pdf",
+      "https://data.humdata.org/en/dataset/saint-helena-ascension-and-tristan-da-cunha-acled-conflict-data/resource/fb8026b8-78fa-47ce-b157-6892a2ddaa02",
+      "https://www.gbnews.com/news/st-helena-cut-off-outside-world-raf"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ST",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Sao Tome and Principe during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:20.164Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://rstp.st/2025/07/11/professores-sao-tomenses-insatisfeitos-com-o-governo-ameacam-boicotar-proximo-ano-letivo/",
+      "https://forbesafricalusofona.com/greve-de-jornalistas-obriga-cancelamento-da-conferencia-dos-presidentes-dos-grupos-parlamentares-em-sao-tome-e-principe/",
+      "https://rstp.st/2024/10/28/greve-dos-medicos-nao-se-pode-exercer-a-medicina-em-condicoes-que-parecem-sitio-de-catastrofe/",
+      "https://rstp.st/2024/03/13/trabalhadores-da-agripalma-em-greve-ha-mais-de-um-mes-sairam-as-ruas-em-protesto/",
+      "https://observador.pt/2026/09/02/jornalistas-sao-tomenses-iniciam-greve-e-ameacam-boicotar-cobertura-da-tomada-de-posse-do-pr/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SN",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Senegal during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:20.164Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/senegal-protest-unions-hidden-debt-sonko-8608b47695043cc50579934d2f8721a4",
+      "https://www.reuters.com/world/africa/student-dies-senegal-university-protests-over-finances-escalate-2026-02-10/",
+      "https://www.reuters.com/world/africa/senegal-election-delay-was-legal-despite-backlash-says-minister-2024-02-09/",
+      "https://www.reuters.com/world/africa/students-senegal-clash-with-security-forces-over-financial-aid-2025-12-03/",
+      "https://africabusinessinsight.com/senegal-unions-call-nationwide-strike-over-planned-labour-code-reforms/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/africa/senegal-election-delay-was-legal-despite-backlash-says-minister-2024-02-09/",
+      "https://www.reuters.com/world/africa/senegal-constitutional-council-election-delay-was-unlawful-2024-02-15/",
+      "https://www.dw.com/en/senegal-announces-new-date-for-delayed-presidential-election/a-68458491"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SC",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Seychelles during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:25.764Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.nation.sc/articles/29625/demonstrators-oppose-proposed-coast-guard-base-on-assomption-island",
+      "https://www.nation.sc/articles/31133/public-march-defends-sbcs-independence",
+      "https://theseychellestimes.com/2026/05/02/labour-day-mass-religious-leaders-preach-work-ethic-while-government-fails-workers/",
+      "https://www.africa-press.net/seychelles/all-news/alleged-teacher-protest-at-anse-royale-creche",
+      "https://theseychellesindependent.com/2026/06/19/sbc-a-march-that-costs-the-state-more-than-scr-170-million/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SL",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Sierra Leone during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:25.764Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/business/world-at-work/sierra-leones-largest-diamond-miner-shuts-down-laying-off-more-than-1000-workers-2025-05-12/",
+      "https://www.sierraleonemonitor.com/public-staff-begin-strike-demands/",
+      "https://komontok.co.uk/public-universities-to-remain-closed-as-lecturers-demand-100-salary-increase/",
+      "https://theinformantsl.com/2026/09/22/over-uasa-strike-actiongovernment-engages-university-leadership/",
+      "https://www.sierraleonemonitor.com/university-lecturers-nationwide-strike/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SO",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Somalia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:33.966Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/somali-military-opposition-allied-militias-trade-fire-ahead-anti-government-2026-06-04/",
+      "https://www.horndiplomat.com/somalia-traders-shut-businesses-to-protest-imf-backed-sales-tax/",
+      "https://www.somaliguardian.com/news/somalia-news/traders-in-somalias-capital-declare-strike-over-new-arbitrary-taxes/",
+      "https://apnews.com/article/turkey-somalia-president-visit-e160eb59c4b77b6f403d970e11b799bf",
+      "https://www.somaliguardian.com/news/somalia-news/somali-opposition-delays-protest-over-mogadishu-evictions-citing-security-concerns/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ZA",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in South Africa during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:33.966Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://dailynews.co.za/news/south-africa/2025-10-07-cosatu-protests-spark-western-cape-governments-commitment-to-create-600000-jobs-by-2035/",
+      "https://allafrica.com/stories/202510080037.html",
+      "https://iol.co.za/news/south-africa/2025-10-07-unions-demand-action-against-corrupt-syndicates-who-exploited-tembisa-hospital-workers/",
+      "https://www.dailymaverick.co.za/article/2024-10-07-workers-take-to-sa-city-streets-to-call-for-rethink-on-austerity-measures-job-cuts-and-price-hikes/",
+      "https://dfa.co.za/diamond-fields-advertiser/news/2026-09-25-numsa-warns-of-security-risks-as-unpaid-eskom-guards-strike-in-northern-cape/"
+    ],
+    "reviewed_urls": [
+      "https://www.dailymaverick.co.za/article/2024-10-07-workers-take-to-sa-city-streets-to-call-for-rethink-on-austerity-measures-job-cuts-and-price-hikes/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SS",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in South Sudan during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:43.684Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.eyeradio.org/govt-truck-drivers-strike-deal-sink-deal-to-end-juba-nimule-highway-strike/",
+      "https://www.radiotamazuj.org/en/news/article/nilpet-employees-strike-over-unpaid-wages-benefits",
+      "https://www.africa-press.net/south-sudan/all-news/jonglei-workers-cancel-strike-over-salary-delays",
+      "https://www.sudanspost.com/unity-state-suspends-24-headteachers-after-pro-machar-demonstration/",
+      "https://www.onecitizendaily.com/index.php/2026/07/14/central-bank-staff-resume-strike-after-governor-dissolves-workers-union/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SD",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Sudan during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:43.684Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://thesudantimes.com/sudan/gedaref-price-protests-turn-into-anti-burhan-demonstrations/",
+      "https://www.vantageke.com/news/sudan-war-deepens-economic-crisis-as-omdurman-traders-shut-shops-over-new-taxes-zvwib",
+      "https://thesudantimes.com/sudan/residents-block-sudan-highway-over-saf-allied-armed-groups/",
+      "https://thesudantimes.com/sudan/gedaref-committees-warn-saf-authorities-against-protest-crackdown/",
+      "https://hcntimes.com/sudan-protests-spread-over-crippling-power-cuts-water-shortages/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "TZ",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Tanzania during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:52.481Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://thechanzo.com/2026/10/02/tanzania-bus-strike-ends-but-drivers-fight-is-far-from-over/",
+      "https://dailynews.co.tz/leaders-of-bus-truck-drivers-call-off-the-two-day-strike-after-talks-with-pm-nchemba/",
+      "https://www.reuters.com/business/media-telecom/tanzania-tells-civil-servants-students-stay-home-after-chaotic-election-2025-10-30/",
+      "https://www.thecitizen.co.tz/tanzania/news/national/counting-the-losses-from-bus-truck-drivers-strike-5615506",
+      "https://thechanzo.com/2026/09/30/tanzania-drivers-strike-over-15-point-licence-system-strands-thousands-nationwide/"
+    ],
+    "reviewed_urls": [
+      "https://dailynews.co.tz/leaders-of-bus-truck-drivers-call-off-the-two-day-strike-after-talks-with-pm-nchemba/",
+      "https://thechanzo.com/2026/10/02/tanzania-bus-strike-ends-but-drivers-fight-is-far-from-over/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "TG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Togo during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:10:52.481Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.africanews.com/2026/07/27/protesters-in-togo-call-for-return-to-previous-constitution/",
+      "https://www.reuters.com/world/africa/togo-soldiers-break-up-protests-against-longtime-leader-2025-06-26/",
+      "https://apnews.com/article/togo-protest-gnassingbe-ad20d3d5c2e3b0fa767210cdb70fca2d",
+      "https://www.bbc.com/news/articles/cj3rr57vkxro",
+      "https://www.bbc.com/news/articles/c78n23981x7o"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/africa/togo-soldiers-break-up-protests-against-longtime-leader-2025-06-26/",
+      "https://apnews.com/article/togo-protest-gnassingbe-ad20d3d5c2e3b0fa767210cdb70fca2d"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. AP June 27 fetch was truncated; the Reuters body was subsequently read with web open."
+  },
+  {
+    "code": "TN",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Tunisia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:01.647Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/sustainability/climate-energy/general-strike-protests-paralyse-tunisias-gabes-over-pollution-crisis-2025-10-21/",
+      "https://www.reuters.com/world/africa/hundreds-protest-tunisias-capital-over-worsening-pollution-crisis-2025-10-25/",
+      "https://www.reuters.com/sustainability/tunisias-powerful-ugtt-union-announces-nationwide-strike-january-21-2025-12-05/",
+      "https://apnews.com/article/tunisia-gabes-phosphate-protests-violence-injuries-ca222626d89ffb1ec5e17bb71dd677b1",
+      "https://apnews.com/article/tunisia-protest-saied-heat-water-6dc88797e0e8b8ea5a82a71a42538c9e"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/sustainability/climate-energy/general-strike-protests-paralyse-tunisias-gabes-over-pollution-crisis-2025-10-21/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "UG",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Uganda during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:01.647Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.monitor.co.ug/uganda/news/national/city-traders-leader-arrested-as-govt-moves-to-stop-strike-5256118",
+      "https://www.monitor.co.ug/uganda/news/national/traders-suspend-strike-as-museveni-pledges-talks-5259466",
+      "https://www.monitor.co.ug/uganda/news/national/museveni-issues-warning-but-teachers-stand-ground-5222564",
+      "https://www.monitor.co.ug/uganda/news/national/traders-strike-paralyses-city-4584354",
+      "https://dailyexpress.co.ug/2025/10/03/govt-gives-striking-teachers-one-week-to-return-to-work-or-be-fired-unatu-strikes-back/"
+    ],
+    "reviewed_urls": [
+      "https://www.monitor.co.ug/uganda/news/national/traders-suspend-strike-as-museveni-pledges-talks-5259466"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "EH",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Western Sahara during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:06.646Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.spsrasd.info/en/2025/10/29/12594.html",
+      "https://www.spsrasd.info/en/2025/10/30/12612.html",
+      "https://www.spsrasd.info/en/2025/10/27/12545.html",
+      "https://www.spsrasd.info/en/2025/12/11/13441.html",
+      "https://www.spsrasd.info/en/2024/10/24/5944.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews. Some returned candidates concern other territories, Nigeria's Niger state, diaspora or camps outside the territory; local relevance requires separate verification."
+  },
+  {
+    "code": "ZM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Zambia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:06.646Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.business-humanrights.org/en/latest-news/zambia-workers-at-munali-nickel-mine-demand-payment-of-outstanding-salaries/",
+      "https://www.lusakatimes.com/2025/09/09/civil-servants-warn-of-strike-over-salary-delays/",
+      "https://zambia24.com/2026/08/07/no-trucks-no-economy/",
+      "https://www.zambiamonitor.com/just-in-illegal-miners-protest-in-chingola-demand-access-to-mine-site-video/",
+      "https://www.lusakatimes.com/2026/05/02/zambia-workers-demand-more-than-speeches/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "ZW",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Zimbabwe during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:15.555Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bbc.com/news/articles/czx4g9ejjj9o",
+      "https://newshour.co.zw/teachers-union-declares-two-day-work-week-in-protest-over-poverty-wages-and-constitutional-amendments/",
+      "https://www.bbc.com/news/articles/c9w8krjyk01o",
+      "https://nehandaradio.com/2025/04/25/university-of-zimbabwe-lecturers-intensify-strike-action-demanding-us2-250-salary/",
+      "https://nehandaradio.com/2026/08/01/peoples-coalition-claims-july-31-stay-away-drew-widespread-response-announces-next-phase-of-campaign/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "KM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Comoros during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:45.369Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://monitor.civicus.org/explore/comoros-right-of-journalists-to-keep-sources-secret-is-upheld-after-pressure-arrests-of-protesters/",
+      "https://monitor.civicus.org/explore/fuel-price-increases-trigger-strikes-and-deadly-protests/",
+      "https://www.arabnews.com/world/comoros-paralyzed-by-strike-against-sharp-fuel-price-hikes-2643311",
+      "https://internationalviewpoint.org/Comorian-healthworkers-strike-against-wage-inequality",
+      "https://apnews.com/article/comoros-protests-unrest-elections-assoumani-bbea90c144941c0cae2c129c2fee6507"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "GM",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Gambia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:45.369Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/gambia-protesters-burn-tyres-denounce-power-cuts-2026-09-08/",
+      "https://foroyaa.net/workers-strike-compels-ports-authority-to-take-over-staff-matters/",
+      "https://thepoint.gm/africa/gambia/headlines/gia-staff-stage-sit-down-strike-over-medical-benefits-loans",
+      "https://www.bbc.com/news/articles/cgmr22kpd9yo",
+      "https://askanigambia.com/gambia-port-of-banjul-operations-halted-as-gpa-workers-continue-strike-over-welfare-concerns/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "KE",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Kenya during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:54.186Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://nairobinews.co.ke/public-university-lecturers-strike-over-pay-after-talks-collapse/",
+      "https://www.bbc.co.uk/news/articles/cm2p0n44drvo",
+      "https://www.standardmedia.co.ke/health/health-science/article/2001530985/nairobi-health-workers-protest-salary-delays-as-county-pledges-payment-soon",
+      "https://www.aljazeera.com/news/2026/8/28/kenyan-police-fire-tear-gas-at-nairobi-protest-against-import-duty-hike",
+      "https://www.cbc.ca/news/world/kenya-protests-1.7246939"
+    ],
+    "reviewed_urls": [
+      "https://www.cbc.ca/news/world/kenya-protests-1.7246939"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "LS",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Lesotho during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:54.186Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://lestimes.com/?p=91421",
+      "https://groundup.news/article/workers-march-in-maseru-as-agoa-uncertainty-threatens-thousands-jobs/",
+      "https://www.enca.com/business/lesotho-textile-workers-march-against-us-tariff-job-losses",
+      "https://www.thepost.co.ls/news/matekane-bows-to-pressure/",
+      "https://groundup.news/article/police-block-protest-over-textile-jobs-in-lesotho/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "LR",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Liberia during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:59.812Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://elbcnews.com/2025/10/22/labor-minister-ends-aggrieved-workers-one-day-protest-at-liberia-telecommunications-corp/",
+      "https://allafrica.com/stories/202607150326.html",
+      "https://www.thenewdawnliberia.com/no-deal-no-work/",
+      "https://allafrica.com/stories/202601280361.html",
+      "https://www.liberianobserver.com/news/workers-stage-violent-protest-in-yekepa/article_4d67b897-c623-402b-a808-9f2a4d5ffc38.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "LY",
+    "query": "Original news reporting on demonstrations, protests or labor strikes in Libya during 2024, 2025 and 2026 through October 2, with named local cities and reported government or policy outcomes.",
+    "attempted_at": "2026-10-02T21:11:59.812Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.al-monitor.com/originals/2026/10/libyas-pay-strike-rallies-teachers-across-divided-nation",
+      "https://apnews.com/article/libya-electricity-protests-946df09420adc2729a9cc031bd272260",
+      "https://libyareview.com/68182/west-libyas-wage-crisis-who-is-protesting-and-what-do-they-want/",
+      "https://www.aa.com.tr/en/middle-east/libyan-teachers-protest-in-tripoli-amid-nationwide-strike-over-pay/4075408",
+      "https://www.aljazeera.com/news/2026/7/27/protests-erupt-in-libyas-tripoli-as-anger-grows-over-power-cuts"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MA",
+    "query": "Original reporting on Morocco GenZ212 youth protests beginning September27 2025, subsequent government health education budget concession and named cities.",
+    "attempted_at": "2026-10-02T21:14:48.710Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/morocco-squashes-youth-led-protesters-over-health-education-2025-09-30/",
+      "https://apnews.com/article/morocco-protests-youth-corruption-912ca1a9dbc42e6d3d2f8a1067eb12f9",
+      "https://www.aljazeera.com/news/2025/9/29/gen-z-protesters-rally-across-morocco-demanding-health-education-reforms",
+      "https://www.bbc.co.uk/news/articles/c8rv2l3me40o",
+      "https://www.moroccoworldnews.com/2025/09/261073/genz-212-protests-prompt-health-ministers-urgent-parliament-summons/"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.co.uk/news/articles/c8rv2l3me40o",
+      "https://www.aljazeera.com/news/2025/9/29/gen-z-protesters-rally-across-morocco-demanding-health-education-reforms",
+      "https://www.reuters.com/world/africa/morocco-will-prioritize-health-education-spending-2026-budget-finance-minister-2025-10-16/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MA",
+    "query": "Original reporting Morocco government 2026 budget increased health and education spending after GenZ212 protests October2025",
+    "attempted_at": "2026-10-02T21:17:57.567Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/morocco-will-prioritize-health-education-spending-2026-budget-finance-minister-2025-10-16/",
+      "https://www.moroccoworldnews.com/2025/10/264251/ministerial-council-2026-finance-bill-to-accelerate-path-toward-emerging-morocco/",
+      "https://www.middleeastmonitor.com/20251020-after-protests-morocco-raises-health-and-education-budget-to-15-billion-in-2026/",
+      "https://www.moroccoworldnews.com/2025/10/264014/morocco-to-revise-upcoming-budget-prioritize-health-and-education-spending/",
+      "https://en.hespress.com/123841-finance-minister-details-how-mad-140-bln-budget-will-be-spent-on-health-education-in-2026.html"
+    ],
+    "reviewed_urls": [
+      "https://www.bbc.co.uk/news/articles/c8rv2l3me40o",
+      "https://www.aljazeera.com/news/2025/9/29/gen-z-protesters-rally-across-morocco-demanding-health-education-reforms",
+      "https://www.reuters.com/world/africa/morocco-will-prioritize-health-education-spending-2026-budget-finance-minister-2025-10-16/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "SN",
+    "query": "Reporting on Senegal Constitutional Council overturning presidential election delay on February15 2024 after protests, and President Macky Sall agreeing to hold election March24 2024.",
+    "attempted_at": "2026-10-02T21:13:57.937Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/africa/senegal-constitutional-council-election-delay-was-unlawful-2024-02-15/",
+      "https://www.reuters.com/world/africa/senegal-factions-should-consult-over-election-timing-government-says-2024-02-16/",
+      "https://apnews.com/article/senegal-macky-sall-election-027a038e7f52b88e6e7b68a7f9e26c1d",
+      "https://www.dw.com/en/senegal-announces-new-date-for-delayed-presidential-election/a-68458491",
+      "https://www.nytimes.com/2024/02/15/world/africa/senegal-election-court-ruling.html"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/africa/senegal-election-delay-was-legal-despite-backlash-says-minister-2024-02-09/",
+      "https://www.reuters.com/world/africa/senegal-constitutional-council-election-delay-was-unlawful-2024-02-15/",
+      "https://www.dw.com/en/senegal-announces-new-date-for-delayed-presidential-election/a-68458491"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "MG",
+    "query": "Original reporting on Madagascar youth protests September October2025, dismissal of government September29 and military takeover after Rajoelina ousted October14 2025.",
+    "attempted_at": "2026-10-02T21:14:05.329Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/madagascar-deadly-unrest-22-killed-un-6d7fdc429b089938b97ea044a65b4466",
+      "https://www.reuters.com/world/africa/young-protesters-madagascar-renew-demands-water-power-2025-09-29/",
+      "https://www.reuters.com/world/asia-pacific/madagascars-president-dissolves-national-assembly-escalating-crisis-2025-10-14/",
+      "https://www.bbc.com/news/articles/cn8xjjdgl8vo",
+      "https://www.aljazeera.com/news/2025/9/29/madagascar-president-dissolves-government-after-youth-led-deadly-protests"
+    ],
+    "reviewed_urls": [
+      "https://www.france24.com/en/africa/20251001-youth-protests-madagascar-president",
+      "https://www.bbc.com/news/articles/cn8xjjdgl8vo"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  },
+  {
+    "code": "NG",
+    "query": "PENGASSAN October1 October2 2025 strike suspended after Dangote settlement redeployment no pay loss reporting",
+    "attempted_at": "2026-10-02T21:14:11.811Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://dailytrust.com/pengassan-suspends-strike-dangote-to-redeploy-sacked-workers/",
+      "https://www.thisdaylive.com/2025/10/02/pengassan-suspends-strike-after-fg-brokered-deal-with-dangote/",
+      "https://punchng.com/dangote-to-redeploy-disengaged-workers-says-fg/",
+      "https://guardian.ng/news/pengassan-agrees-to-suspend-strike-resolves-rift-with-dangote-refinery/",
+      "https://punchng.com/breaking-dangote-refinery-dispute-pengassan-suspends-strike-after-fg-intervention/"
+    ],
+    "reviewed_urls": [
+      "https://www.thisdaylive.com/2025/10/01/dangote-pengassan-reach-truce-strike-to-be-called-off-sacked-workers-to-be-recalled/",
+      "https://punchng.com/breaking-dangote-refinery-dispute-pengassan-suspends-strike-after-fg-intervention/"
+    ],
+    "note": "Initial English-language screen; not exhaustive. Reviewed URLs include article-body checks and separately identified partial fetches. Search-result snippets are not counted as full-page reviews."
+  }
+]

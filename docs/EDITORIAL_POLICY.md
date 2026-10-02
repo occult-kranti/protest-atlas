@@ -1,6 +1,6 @@
 # Protest Atlas editorial policy
 
-Version 1.1 · AI-assisted policy review 2 October 2026 · policy for a public, static reporting atlas
+Version 1.2 · AI-assisted policy review 2 October 2026 · policy for a public, static reporting atlas
 
 ## Purpose and scope
 
@@ -56,6 +56,12 @@ Do not publish private participant names, handles, faces, contact information, a
 A government statement opposing a demand is a **response**, not evidence that an opposing protest occurred. An actual counter-demonstration gets its own sourced episode, connected only when the relationship is documented. Do not manufacture a matching “other side” for visual symmetry. Unsupported claims do not earn equal evidentiary status because they oppose a supported claim. Describe the evidence and attribute disagreements without suppressing well-supported findings.
 
 Event totals, participant estimates, geographic spread, social engagement, and source volume cannot establish which view is more popular. Public opinion requires a separately sourced, appropriately described survey and is outside the initial event tracker.
+
+## Endings and results
+
+An ended/suspended label requires a source about the bounded episode ending or being suspended. A concession, an old date or silence does not establish an end. Black shadows mean that a displayed record meets this rule; a country may contain both ended and unknown episodes. The map must never imply a completed national protest history.
+
+Results record a sourced change, its date when known, and named actors benefited or set back. Label each actor assessment `explicit` or `inference`, explain its scope, and separately state whether the source connects the change to the action. Temporal sequence alone does not establish causation. Mixed results and unknown outcomes are legitimate; avoid declaring a universal winner or inferring national opinion. Conflicting end reports remain visible and may require unknown status.
 
 ## Intensity and state response
 

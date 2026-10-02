@@ -1,0 +1,1228 @@
+[
+  {
+    "id": "bd-quota-uprising-2024",
+    "title": "Quota reform protests and uprising",
+    "country": "BD",
+    "country_name": "Bangladesh",
+    "region": "Asia",
+    "location": {
+      "label": "Dhaka and Chittagong",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Jobs",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:25:26.241Z",
+    "last_observed_at": "2024-08-05",
+    "summary": "Student quota protests broadened into demands for Hasina’s resignation; she resigned and left Bangladesh on August 5.",
+    "positions": [
+      {
+        "actor": "Students Against Discrimination",
+        "stance": "oppose",
+        "target": "Job quotas and Hasina’s government",
+        "claim": "Sought quota reform, then Hasina’s resignation.",
+        "source_ids": [
+          "bd-quota-uprising-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [
+      {
+        "action": "OHCHR found reasonable grounds for systematic serious violations by the former government and security apparatus.",
+        "attribution": "OHCHR fact-finding report summary; inquiry invited by the interim government.",
+        "source_ids": [
+          "bd-quota-uprising-2024-ohchr"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "bd-quota-uprising-2024-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/why-did-bangladesh-pm-sheikh-hasina-resign-where-is-she-now-2024-08-06/",
+        "title": "Why did Bangladesh PM Sheikh Hasina resign and where is she now?",
+        "publisher": "Reuters",
+        "published_at": "2024-08-07",
+        "accessed_at": "2026-10-02T21:14:09.963Z"
+      },
+      {
+        "id": "bd-quota-uprising-2024-ohchr",
+        "url": "https://www.ohchr.org/sites/default/files/documents/countries/bangladesh/abuses-protests-july-august-bangladesh-infographic-1-en.pdf",
+        "title": "BANGLADESH: Violations and abuses related to the protests of July and August 2024",
+        "publisher": "OHCHR",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:20:00.787Z"
+      },
+      {
+        "id": "bd-quota-uprising-2024-quota-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/after-protests-bangladesh-government-formally-accept-ruling-job-quotas-2024-07-23/",
+        "title": "Bangladesh accepts court ruling to cut state job quotas after unrest, eases curfew",
+        "publisher": "Reuters",
+        "published_at": "2024-07-23",
+        "accessed_at": "2026-10-02T21:22:56.615Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted review of underlying Reuters reporting and a second source; partial source dependencies noted in context. No human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2024-07-23",
+        "text": "Government accepted the ruling opening 93% of state jobs to competition.",
+        "source_ids": [
+          "bd-quota-uprising-2024-quota-reuters"
+        ]
+      },
+      {
+        "date": "2024-08-05",
+        "text": "Hasina resigned following sustained demonstrations.",
+        "source_ids": [
+          "bd-quota-uprising-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "kr-yoon-removal-protests-2024-2025",
+    "title": "Rival rallies over Yoon’s impeachment",
+    "country": "KR",
+    "country_name": "Korea, Republic of",
+    "region": "Asia",
+    "location": {
+      "label": "Seoul",
+      "precision": "city"
+    },
+    "issues": [
+      "Democracy",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:34.758Z",
+    "last_observed_at": "2025-04-04",
+    "summary": "Opposing rallies sought Yoon’s removal or reinstatement after martial law. The Constitutional Court removed him on April 4.",
+    "positions": [
+      {
+        "actor": "Anti-Yoon demonstrators",
+        "stance": "oppose",
+        "target": "Yoon’s presidency",
+        "claim": "Called for Yoon’s ouster.",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-reuters"
+        ]
+      },
+      {
+        "actor": "Pro-Yoon demonstrators",
+        "stance": "oppose",
+        "target": "Yoon’s removal",
+        "claim": "Opposed impeachment and sought restoration of presidential powers.",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-december-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "kr-yoon-removal-protests-2024-2025-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/south-koreas-impeached-president-yoon-faces-court-ruling-decide-his-fate-2025-04-03/",
+        "title": "South Korea's Yoon removed from office over martial law, election looms",
+        "publisher": "Reuters",
+        "published_at": "2025-04-04",
+        "accessed_at": "2026-10-02T21:14:11.388Z"
+      },
+      {
+        "id": "kr-yoon-removal-protests-2024-2025-december-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/rival-protests-over-south-koreas-impeached-president-yoon-held-seoul-2024-12-21/",
+        "title": "Rival protests over South Korea's impeached President Yoon held in Seoul",
+        "publisher": "Reuters",
+        "published_at": "2024-12-21",
+        "accessed_at": "2026-10-02T21:20:19.364Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-12-21",
+        "text": "Rival pro- and anti-Yoon rallies gathered in Seoul.",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-december-reuters"
+        ]
+      },
+      {
+        "date": "2025-04-04",
+        "text": "Anti-Yoon crowds celebrated removal; supporters expressed anger.",
+        "source_ids": [
+          "kr-yoon-removal-protests-2024-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "in-farmers-march-2024",
+    "title": "Farmers’ renewed march for guaranteed crop prices",
+    "country": "IN",
+    "country_name": "India",
+    "region": "Asia",
+    "location": {
+      "label": "Shambhu",
+      "precision": "city"
+    },
+    "issues": [
+      "Agriculture",
+      "Livelihoods"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:36.851Z",
+    "last_observed_at": "2024-02-21",
+    "summary": "Farmers seeking legally guaranteed crop prices paused their march after renewed talks were offered; police used tear gas and water cannons.",
+    "positions": [
+      {
+        "actor": "Protesting farmers’ unions",
+        "stance": "support",
+        "target": "Legally guaranteed crop prices",
+        "claim": "Demanded crop prices backed by law.",
+        "source_ids": [
+          "in-farmers-march-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "in-farmers-march-2024-reuters",
+        "url": "https://www.reuters.com/world/india/with-cranes-excavators-indian-farmers-prepare-march-capital-2024-02-21/",
+        "title": "Police fire tear gas on Indian farmers marching to capital, government offers talks",
+        "publisher": "Reuters",
+        "published_at": "2024-02-21",
+        "accessed_at": "2026-10-02T21:14:23.514Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-02-21",
+        "text": "Farmers paused for two days after a fresh talks offer.",
+        "source_ids": [
+          "in-farmers-march-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pk-khan-islamabad-sitin-2024",
+    "title": "Islamabad sit-in demanding Imran Khan’s release",
+    "country": "PK",
+    "country_name": "Pakistan",
+    "region": "Asia",
+    "location": {
+      "label": "Islamabad",
+      "precision": "city"
+    },
+    "issues": [
+      "Political detention",
+      "Governance"
+    ],
+    "start_date": "2024-11-24",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:36.852Z",
+    "last_observed_at": "2024-11-27",
+    "summary": "Khan supporters demanded his release. Security forces cleared the sit-in; PTI leaders disagreed over whether the protest had ended.",
+    "positions": [
+      {
+        "actor": "Pakistan Tehreek-e-Insaf supporters",
+        "stance": "oppose",
+        "target": "Imran Khan’s detention",
+        "claim": "Demanded Khan’s release.",
+        "source_ids": [
+          "pk-khan-islamabad-sitin-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "pk-khan-islamabad-sitin-2024-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/supporters-pakistans-imran-khan-call-off-protest-local-media-says-2024-11-27/",
+        "title": "Nearly 1,000 held in Pakistan after pro-Khan protests",
+        "publisher": "Reuters",
+        "published_at": "2024-11-27",
+        "accessed_at": "2026-10-02T21:14:24.780Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-11-27",
+        "text": "Security forces cleared the Islamabad sit-in; police reported arrests.",
+        "source_ids": [
+          "pk-khan-islamabad-sitin-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "am-border-policy-protests-2024",
+    "title": "Protests against border concessions and Pashinyan",
+    "country": "AM",
+    "country_name": "Armenia",
+    "region": "Asia",
+    "location": {
+      "label": "Yerevan",
+      "precision": "city"
+    },
+    "issues": [
+      "Border policy",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:36.852Z",
+    "last_observed_at": "2024-06-12",
+    "summary": "Demonstrators opposing border concessions demanded Pashinyan’s resignation. Police fired stun grenades during June 12 clashes.",
+    "positions": [
+      {
+        "actor": "Anti-government demonstrators",
+        "stance": "oppose",
+        "target": "Pashinyan’s border policies and premiership",
+        "claim": "Demanded his resignation.",
+        "source_ids": [
+          "am-border-policy-protests-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "am-border-policy-protests-2024-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/armenian-pm-says-peace-deal-with-azerbaijan-needs-only-adjustments-before-2024-06-12/",
+        "title": "Protests erupt as Armenia nears peace deal with Azerbaijan",
+        "publisher": "Reuters",
+        "published_at": "2024-06-12",
+        "accessed_at": "2026-10-02T21:14:26.155Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-06-12",
+        "text": "Police used stun grenades; authorities reported civilian injuries and detentions.",
+        "source_ids": [
+          "am-border-policy-protests-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ge-foreign-influence-law-protests-2024",
+    "title": "Protests against the foreign influence law",
+    "country": "GE",
+    "country_name": "Georgia",
+    "region": "Asia",
+    "location": {
+      "label": "Tbilisi",
+      "precision": "city"
+    },
+    "issues": [
+      "Civil liberties",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:15:36.852Z",
+    "last_observed_at": "2024-05-24",
+    "summary": "Opponents protested the foreign influence bill. Parliament’s speaker signed it into law on June 3 despite opposition.",
+    "positions": [
+      {
+        "actor": "Opponents of the foreign influence bill",
+        "stance": "oppose",
+        "target": "Foreign influence legislation",
+        "claim": "Opposed the bill as a threat to dissent.",
+        "source_ids": [
+          "ge-foreign-influence-law-protests-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ge-foreign-influence-law-protests-2024-reuters",
+        "url": "https://www.reuters.com/world/europe/georgian-parliamentary-speaker-signs-foreign-agents-bill-into-law-2024-06-03/",
+        "title": "Georgian parliamentary speaker signs 'foreign agents' bill into law",
+        "publisher": "Reuters",
+        "published_at": "2024-06-03",
+        "accessed_at": "2026-10-02T21:14:27.629Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; present activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-05-24",
+        "text": "A photographed protest procession opposed the bill in Tbilisi.",
+        "source_ids": [
+          "ge-foreign-influence-law-protests-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "id-lawmakers-perks-protests-2025",
+    "title": "Protests over lawmakers’ perks and police violence",
+    "country": "ID",
+    "country_name": "Indonesia",
+    "region": "Asia",
+    "location": {
+      "label": "Jakarta and Bandung",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Public spending",
+      "Policing"
+    ],
+    "start_date": "2025-08-25",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:18.574Z",
+    "last_observed_at": "2025-09-02",
+    "summary": "Protests against lawmakers’ allowances broadened after a police vehicle killed a motorcycle driver. Prabowo announced cuts to some perks.",
+    "positions": [
+      {
+        "actor": "Student groups and other demonstrators",
+        "stance": "oppose",
+        "target": "Lawmakers’ perks and policing",
+        "claim": "Opposed allowances and sought police reform.",
+        "source_ids": [
+          "id-lawmakers-perks-protests-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "id-lawmakers-perks-protests-2025-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/whats-fuelling-rage-indonesia-2025-09-02/",
+        "title": "Explainer: What's fuelling the rage in Indonesia?",
+        "publisher": "Reuters",
+        "published_at": "2025-09-02",
+        "accessed_at": "2026-10-02T21:15:51.351Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-02",
+        "text": "Smaller demonstrations continued despite announced concessions.",
+        "source_ids": [
+          "id-lawmakers-perks-protests-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mn-anti-corruption-protests-2025",
+    "title": "Anti-corruption protests and prime minister’s resignation",
+    "country": "MN",
+    "country_name": "Mongolia",
+    "region": "Asia",
+    "location": {
+      "label": "Ulaanbaatar",
+      "precision": "city"
+    },
+    "issues": [
+      "Corruption",
+      "Governance"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:34.758Z",
+    "last_observed_at": "2025-06-03",
+    "summary": "Weeks of demonstrations alleged corruption involving Oyun-Erdene’s family. He resigned after losing parliamentary support.",
+    "positions": [
+      {
+        "actor": "Anti-corruption demonstrators",
+        "stance": "oppose",
+        "target": "Alleged corruption involving the prime minister’s family",
+        "claim": "Questioned alleged corruption and demanded the prime minister’s resignation.",
+        "source_ids": [
+          "mn-anti-corruption-protests-2025-reuters",
+          "mn-anti-corruption-protests-2025-bbc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "mn-anti-corruption-protests-2025-reuters",
+        "url": "https://www.reuters.com/world/china/mongolian-pm-resigns-after-losing-parliament-backing-street-protests-2025-06-03/",
+        "title": "Mongolian PM resigns after losing parliament backing, street protests",
+        "publisher": "Reuters",
+        "published_at": "2025-06-03",
+        "accessed_at": "2026-10-02T21:15:52.676Z"
+      },
+      {
+        "id": "mn-anti-corruption-protests-2025-bbc",
+        "url": "https://www.bbc.com/news/articles/c5yg8dxv5w9o",
+        "title": "Mongolia PM resigns after son's luxury holiday stirs public fury",
+        "publisher": "BBC News",
+        "published_at": "2025-06-03",
+        "accessed_at": "2026-10-02T21:19:33.391Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted review of underlying Reuters reporting and a second source; partial source dependencies noted in context. No human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2025-06-03",
+        "text": "Parliament’s failed confidence ballot caused the prime minister’s resignation.",
+        "source_ids": [
+          "mn-anti-corruption-protests-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "np-gen-z-protests-2025",
+    "title": "Youth protests against corruption and the social media ban",
+    "country": "NP",
+    "country_name": "Nepal",
+    "region": "Asia",
+    "location": {
+      "label": "Kathmandu, Itahari, Biratnagar, Bharatpur and Pokhara",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Corruption",
+      "Digital rights"
+    ],
+    "start_date": "2025-09-08",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:34.758Z",
+    "last_observed_at": "2025-09-09",
+    "summary": "Youth protests against corruption and a social media ban escalated after deaths. Oli resigned and the ban was lifted; unrest continued.",
+    "positions": [
+      {
+        "actor": "Youth anti-corruption demonstrators",
+        "stance": "oppose",
+        "target": "Corruption and social media restrictions",
+        "claim": "Opposed corruption and the ban.",
+        "source_ids": [
+          "np-gen-z-protests-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "np-gen-z-protests-2025-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/young-anti-corruption-protesters-oust-nepal-pm-oli-2025-09-09/",
+        "title": "Young anti-corruption protesters oust Nepal PM Oli",
+        "publisher": "Reuters",
+        "published_at": "2025-09-09",
+        "accessed_at": "2026-10-02T21:15:54.964Z"
+      },
+      {
+        "id": "np-gen-z-protests-2025-abc",
+        "url": "https://www.abc.net.au/news/2025-09-10/nepal-kathmandu-gen-z-protests-social-media/105756398",
+        "title": "A deadly 'Gen Z' protest in Nepal was sparked by a social media ban. But the anger goes beyond blocked apps",
+        "publisher": "ABC News with Wires",
+        "published_at": "2025-09-10",
+        "accessed_at": "2026-10-02T21:20:04.244Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted review of underlying Reuters reporting and a second source; partial source dependencies noted in context. No human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-09",
+        "text": "Oli resigned, while protesters remained in the streets.",
+        "source_ids": [
+          "np-gen-z-protests-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tr-imamoglu-detention-protests-2025",
+    "title": "Protests against İmamoğlu’s detention",
+    "country": "TR",
+    "country_name": "Türkiye",
+    "region": "Asia",
+    "location": {
+      "label": "Istanbul",
+      "precision": "city"
+    },
+    "issues": [
+      "Political detention",
+      "Democracy"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:18.574Z",
+    "last_observed_at": "2025-03-29",
+    "summary": "Crowds rallied against İmamoğlu’s imprisonment. CHP sought his release and an early election; government denied influencing the judiciary.",
+    "positions": [
+      {
+        "actor": "CHP-led demonstrators",
+        "stance": "oppose",
+        "target": "İmamoğlu’s detention",
+        "claim": "Sought release and an early election.",
+        "source_ids": [
+          "tr-imamoglu-detention-protests-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "tr-imamoglu-detention-protests-2025-reuters",
+        "url": "https://www.reuters.com/world/middle-east/large-crowds-rally-istanbul-over-jailing-citys-mayor-2025-03-29/",
+        "title": "Large crowds rally in Istanbul over jailing of Erdogan's main rival",
+        "publisher": "Reuters",
+        "published_at": "2025-03-29",
+        "accessed_at": "2026-10-02T21:15:56.535Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-03-29",
+        "text": "A large Istanbul rally demanded freedom for İmamoğlu.",
+        "source_ids": [
+          "tr-imamoglu-detention-protests-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "my-turun-anwar-rally-2025",
+    "title": "Turun Anwar rally over living costs and reforms",
+    "country": "MY",
+    "country_name": "Malaysia",
+    "region": "Asia",
+    "location": {
+      "label": "Kuala Lumpur",
+      "precision": "city"
+    },
+    "issues": [
+      "Cost of living",
+      "Governance"
+    ],
+    "start_date": "2025-07-26",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:34.758Z",
+    "last_observed_at": "2025-07-26",
+    "summary": "Opposition supporters demanded Anwar’s resignation over living costs and alleged unfulfilled reforms.",
+    "positions": [
+      {
+        "actor": "Opposition rally participants",
+        "stance": "oppose",
+        "target": "Anwar’s premiership",
+        "claim": "Demanded resignation over costs and reforms.",
+        "source_ids": [
+          "my-turun-anwar-rally-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "my-turun-anwar-rally-2025-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/thousands-rally-malaysia-call-pm-anwars-resignation-2025-07-26/",
+        "title": "Thousands rally in Malaysia to call for PM Anwar's resignation",
+        "publisher": "Reuters",
+        "published_at": "2025-07-26",
+        "accessed_at": "2026-10-02T21:21:34.758Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-07-26",
+        "text": "Protesters marched and heard opposition speeches.",
+        "source_ids": [
+          "my-turun-anwar-rally-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ir-economic-unrest-2025-2026",
+    "title": "Economic protests broadening into anti-government unrest",
+    "country": "IR",
+    "country_name": "Iran, Islamic Republic of",
+    "region": "Asia",
+    "location": {
+      "label": "Tehran",
+      "precision": "city"
+    },
+    "issues": [
+      "Cost of living",
+      "Governance"
+    ],
+    "start_date": "2025-12-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:18.575Z",
+    "last_observed_at": "2026-01-09",
+    "summary": "Economic protests broadened into anti-government demonstrations. Reuters verified Tehran marches; authorities imposed an internet shutdown.",
+    "positions": [
+      {
+        "actor": "Anti-government demonstrators",
+        "stance": "oppose",
+        "target": "Economic conditions and Iran’s leadership",
+        "claim": "Economic grievances broadened into slogans against authorities.",
+        "source_ids": [
+          "ir-economic-unrest-2025-2026-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ir-economic-unrest-2025-2026-reuters",
+        "url": "https://www.reuters.com/world/middle-east/iran-cut-off-world-supreme-leader-warns-protesters-2026-01-09/",
+        "title": "New Trump warning as Iran cuts internet with protests across country",
+        "publisher": "Reuters",
+        "published_at": "2026-01-09",
+        "accessed_at": "2026-10-02T21:16:15.819Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2026-01-09",
+        "text": "Reuters-verified videos showed marches in Tehran amid an internet blackout.",
+        "source_ids": [
+          "ir-economic-unrest-2025-2026-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tl-lawmaker-pensions-protests-2025",
+    "title": "Student protests over lawmakers’ vehicles and pensions",
+    "country": "TL",
+    "country_name": "Timor-Leste",
+    "region": "Asia",
+    "location": {
+      "label": "Dili",
+      "precision": "city"
+    },
+    "issues": [
+      "Public spending",
+      "Governance"
+    ],
+    "start_date": "2025-09-15",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:34.758Z",
+    "last_observed_at": "2025-09-26",
+    "summary": "Students opposed lawmakers’ vehicle procurement and lifetime pensions. MPs later voted to scrap the pensions, pending presidential signature.",
+    "positions": [
+      {
+        "actor": "Student demonstrators",
+        "stance": "oppose",
+        "target": "Lawmakers’ lifetime allowances",
+        "claim": "Demanded cancellation of lifetime allowances.",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "tl-lawmaker-pensions-protests-2025-reuters",
+        "url": "https://www.reuters.com/world/asia-pacific/east-timor-lawmakers-agree-scrap-lawmaker-pension-allowances-that-sparked-2025-09-17/",
+        "title": "East Timor lawmakers agree to scrap lawmaker pension allowances that sparked student protests",
+        "publisher": "Reuters",
+        "published_at": "2025-09-17",
+        "accessed_at": "2026-10-02T21:16:18.012Z"
+      },
+      {
+        "id": "tl-lawmaker-pensions-protests-2025-afp-abc",
+        "url": "https://www.abc.net.au/news/2025-09-26/timor-leste-scraps-lifetime-pensions-student-protests/105822222",
+        "title": "Timor-Leste scraps lifetime pensions after student-led protests",
+        "publisher": "Agence France-Presse via ABC News",
+        "published_at": "2025-09-26",
+        "accessed_at": "2026-10-02T21:20:02.295Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted review of underlying Reuters reporting and a second source; partial source dependencies noted in context. No human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-17",
+        "text": "Parties agreed to cancel the plan and reported cessation.",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-reuters"
+        ]
+      },
+      {
+        "date": "2025-09-26",
+        "text": "Parliament voted unanimously to scrap lifetime pensions, pending presidential signature.",
+        "source_ids": [
+          "tl-lawmaker-pensions-protests-2025-afp-abc"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jo-israel-treaty-rallies-2024",
+    "title": "Amman rallies against the peace treaty with Israel",
+    "country": "JO",
+    "country_name": "Jordan",
+    "region": "Asia",
+    "location": {
+      "label": "Amman",
+      "precision": "city"
+    },
+    "issues": [
+      "Palestine solidarity",
+      "Foreign policy"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:18.575Z",
+    "last_observed_at": "2024-03-28",
+    "summary": "Demonstrators demanded closure of Israel’s embassy and an end to Jordan’s peace treaty. The fifth consecutive rally was peaceful.",
+    "positions": [
+      {
+        "actor": "Pro-Palestinian demonstrators",
+        "stance": "oppose",
+        "target": "Jordan’s peace treaty and Israel’s embassy",
+        "claim": "Demanded treaty termination and embassy closure.",
+        "source_ids": [
+          "jo-israel-treaty-rallies-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "jo-israel-treaty-rallies-2024-reuters",
+        "url": "https://www.reuters.com/world/middle-east/jordanians-protest-against-peace-treaty-with-israel-fresh-rallies-2024-03-29/",
+        "title": "Jordanians protest against peace treaty with Israel in fresh rallies",
+        "publisher": "Reuters",
+        "published_at": "2024-03-29",
+        "accessed_at": "2026-10-02T21:16:19.194Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-03-28",
+        "text": "Thousands rallied for a fifth consecutive day.",
+        "source_ids": [
+          "jo-israel-treaty-rallies-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "il-histadrut-hostage-strike-2024",
+    "title": "General strike demanding a hostage agreement",
+    "country": "IL",
+    "country_name": "Israel",
+    "region": "Asia",
+    "location": {
+      "label": "Haifa",
+      "precision": "city"
+    },
+    "issues": [
+      "Hostages",
+      "Ceasefire"
+    ],
+    "start_date": "2024-09-02",
+    "start_date_precision": "day",
+    "end_date": "2024-09-02",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:18:18.575Z",
+    "last_observed_at": "2024-09-02",
+    "summary": "Histadrut launched a general strike seeking a hostage deal. It accepted a Labour Court order and called the strike off.",
+    "positions": [
+      {
+        "actor": "Histadrut union",
+        "stance": "support",
+        "target": "A deal returning hostages",
+        "claim": "Pressed government to reach a hostage agreement.",
+        "source_ids": [
+          "il-histadrut-hostage-strike-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "il-histadrut-hostage-strike-2024-reuters",
+        "url": "https://www.reuters.com/world/middle-east/israeli-labour-strike-push-gaza-hostage-deal-disrupts-flights-buses-2024-09-02/",
+        "title": "Israelis strike and protest to demand Gaza hostage deal",
+        "publisher": "Reuters",
+        "published_at": "2024-09-02",
+        "accessed_at": "2026-10-02T21:16:20.581Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted review of underlying reporting via extraction fallback. No human sign-off; current activity is not established."
+    },
+    "timeline": [
+      {
+        "date": "2024-09-02",
+        "text": "Histadrut ended its general strike following the court order.",
+        "source_ids": [
+          "il-histadrut-hostage-strike-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cy-cola-strike-2025",
+    "title": "General strike for cost-of-living allowance restoration",
+    "country": "CY",
+    "country_name": "Cyprus",
+    "region": "Asia",
+    "location": {
+      "label": "Limassol",
+      "precision": "city"
+    },
+    "issues": [
+      "Labour",
+      "Pay"
+    ],
+    "start_date": "2025-09-11",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:54.825Z",
+    "last_observed_at": "2025-09-11",
+    "summary": "Public and private sector workers rallied during a general strike, seeking full restoration and wider coverage of the cost-of-living allowance.",
+    "positions": [
+      {
+        "actor": "SEK, PEO and DEOK trade union representatives",
+        "stance": "support",
+        "target": "Cost-of-living allowance",
+        "claim": "Sought full restoration and expansion to all workers.",
+        "source_ids": [
+          "cy-cola-strike-2025-source"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "cy-cola-strike-2025-source",
+        "url": "https://cyprus-mail.com/2025/09/11/thousands-rally-in-limassol-for-full-restoration-of-cost-of-living-allowance",
+        "title": "Thousands rally in Limassol for full restoration of cost-of-living allowance",
+        "publisher": "Cyprus Mail",
+        "published_at": "2025-09-11",
+        "accessed_at": "2026-10-02T21:18:54.825Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "Original local reporting reviewed. The union estimated turnout while police offered no count; no policy concession established. AI-assisted; no human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-11",
+        "text": "Workers rallied during the island-wide general strike.",
+        "source_ids": [
+          "cy-cola-strike-2025-source"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sg-workers-placard-action-2024",
+    "title": "Migrant workers’ money-related placard action",
+    "country": "SG",
+    "country_name": "Singapore",
+    "region": "Asia",
+    "location": {
+      "label": "Singapore",
+      "precision": "city"
+    },
+    "issues": [
+      "Labour",
+      "Pay"
+    ],
+    "start_date": "2024-10-24",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:18:54.825Z",
+    "last_observed_at": "2024-10-24",
+    "summary": "Migrant workers held money-related placards in Geylang. The ministry said the workers denied salary arrears; the grievance remains uncertain.",
+    "positions": [
+      {
+        "actor": "Migrant workers holding placards",
+        "stance": "support",
+        "target": "Money-related grievance",
+        "claim": "Placards referred to an outstanding amount; unpaid salary was disputed.",
+        "source_ids": [
+          "sg-workers-placard-action-2024-source"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "Not established"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "sg-workers-placard-action-2024-source",
+        "url": "https://mothership.sg/2024/10/migrant-workers-protest-bto-hdb-construction/",
+        "title": "Migrant workers hold up money-related signs at Geylang BTO site, MOM says workers not owed salary",
+        "publisher": "Mothership",
+        "published_at": "2024-10-26",
+        "accessed_at": "2026-10-02T21:18:54.825Z"
+      }
+    ],
+    "verification": {
+      "level": "contested",
+      "note": "Local reporting reviewed, including a social media image and ministry/police responses. Placards establish action but salary arrears are disputed. AI-assisted; no human sign-off."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-24",
+        "text": "Workers were photographed holding placards; police later confirmed an investigation.",
+        "source_ids": [
+          "sg-workers-placard-action-2024-source"
+        ]
+      }
+    ]
+  }
+]

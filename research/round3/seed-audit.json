@@ -1,0 +1,44 @@
+{
+  "audit_at": "2026-10-02T21:09:52Z",
+  "auditor": "Independent AI skeptical advisor; no human editorial sign-off",
+  "scope": "Three existing public seeds and their claimed 2026-10-02 observation dates; current fetched evidence only",
+  "decision": "Retain all three seed episodes with unknown status. No date-quarantine is justified by retrieved evidence. Correct access provenance and add accessible wire copies before claiming a refreshed full-text review.",
+  "reads": {"distinct_pages_with_text_read": 4, "direct_primary_pages_with_text_read": 2, "wire_syndications_with_text_read": 2, "failed_direct_reuters_fetch": true, "generic_web_direct_opens_failed": 3, "exa_search_results_requested": 5},
+  "events": [
+    {
+      "event_id": "fr-schools-20261002",
+      "date_verdict": "2026-10-02 supported",
+      "required_correction": "Add accessible Reuters wire copy to event sources and describe its access accurately; the original Reuters URL returned CRAWL_HTTP_401 in this audit. Do not erase the older review's successful-access claim, but distinguish that older claim from this audit's unsuccessful direct access.",
+      "quarantine": false,
+      "evidence": [
+        {"url": "https://www.reuters.com/world/about-400-french-schools-closed-some-student-protests-turn-violent-2026-10-02/", "provider": "Exa", "access_result": "CRAWL_HTTP_401", "content_read": false},
+        {"url": "https://www.marketscreener.com/news/about-400-french-schools-closed-as-some-student-protests-turn-violent-ce785ddadc8bf325", "provider": "Exa", "access_result": "full article text fetched", "published_at": "2026-10-02T01:20:00-04:00", "updated_at": "2026-10-02T14:50:00-04:00", "publisher_chain": "Reuters via MarketScreener", "title": "Students and police clash as France struggles to quell school protests", "finding": "Updated report explicitly describes Friday clashes, classroom conditions/funding demands, tear gas, closures, and fires. Byline includes Layli Foroudi and Katya Skvortsova. Older search-index version has a different headline and shorter Charlotte Van Campenhout byline; this is a version difference, not proof of a fabricated date."}
+      ],
+      "status_advice": "Keep unknown. An observation on Oct 2 and planned later strike establish neither present-moment activity nor end. Do not infer exact onset from last week or last month.",
+      "outcome_advice": "Do not infer a student victory from a below-inflation proposed education budget increase, or an end from school closures. A proposal is not enacted relief."
+    },
+    {
+      "event_id": "in-electoral-20261002",
+      "date_verdict": "2026-10-02 supported",
+      "required_correction": "Add the accessed AP syndication because this audit's direct AP extraction contains only video/captions and cannot itself support Mumbai. Preserve AP as the origin; two host URLs are one reporting chain.",
+      "quarantine": false,
+      "evidence": [
+        {"url": "https://apnews.com/article/1d43de28dfd6fa920133d98e9d0e8e35", "provider": "Exa", "access_result": "partial text: video description and photo captions", "published_at": "2026-10-02", "publisher_chain": "Associated Press", "finding": "Caption explicitly dates New Delhi protest and police detention to Friday, Oct. 2, 2026. Extract is truncated, so it does not independently establish Mumbai."},
+        {"url": "https://www.seattletimes.com/nation-world/indias-cockroach-youth-protesters-are-to-rally-again-and-demand-ouster-of-election-chief/", "provider": "Exa", "access_result": "full article text fetched", "published_at_metadata": "2026-10-02", "displayed_publication": "Oct. 1, 2026 at 11:08 pm", "publisher_chain": "Associated Press via The Seattle Times", "finding": "Sheikh Saaliq AP report describes Friday Mumbai demonstration and separate New Delhi gathering blocked by police; it attributes electoral misconduct allegations and includes institutional denials. The local display date versus UTC metadata is not evidence the India event occurred on October 1."}
+      ],
+      "status_advice": "Keep unknown; renewed demonstrations and future plans do not establish an end.",
+      "outcome_advice": "The article's July education-minister resignation is background to another campaign, not the outcome of this October electoral episode. Claimed electoral advantage to BJP is a contested allegation, not a proven protest outcome."
+    },
+    {
+      "event_id": "es-housing-20261002",
+      "date_verdict": "2026-10-02 supported",
+      "required_correction": "Replace generic source title with the actual article title if normalizing source metadata. Current core claims are supported. Keep AP/Reuters/Al Jazeera as one linked evidence chain.",
+      "quarantine": false,
+      "evidence": [
+        {"url": "https://www.aljazeera.com/news/2026/10/2/spains-parliament-rejects-govt-housing-decrees-amid-mass-protests", "provider": "Exa", "access_result": "full article text fetched", "published_at": "2026-10-02", "publisher_chain": "Al Jazeera Staff, AP and Reuters", "title": "Spain’s parliament rejects gov’t housing decrees amid mass protests", "finding": "Page dates itself Oct 2 and describes Friday legislative rejection and a Madrid renters' protest. It also describes a continuing encampment and a preliminary agreement for an evicted resident to return."}
+      ],
+      "status_advice": "Keep unknown. No end or suspension is reported; rejection of measures is not cessation.",
+      "outcome_advice": "A documented October 2 legislative defeat is a limited setback for the government and supporters of these decrees. Describe whose preferred policy failed; do not claim all renters lost, landlords won, or the protest caused the rejection. One resident's preliminary return agreement is neither a completed return nor a nationwide housing victory."
+    }
+  ]
+}

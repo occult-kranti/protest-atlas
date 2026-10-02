@@ -1,0 +1,721 @@
+[
+  {
+    "event_id": "dz-teachers-20250211",
+    "episode_scope": "The February teachers' strike; excludes January student protests.",
+    "cities": [],
+    "status_basis": {
+      "text": "A two-day action was reported; its actual completion was not confirmed.",
+      "source_ids": [
+        "dz-teachers-20250211-source-1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "ao-fuel-20250728",
+    "episode_scope": "The July fuel-price strike and associated unrest, not all Angolan cost-of-living opposition.",
+    "cities": [
+      {
+        "name": "Luanda",
+        "source_ids": [
+          "ao-fuel-20250728-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "ao-fuel-20250728-source-1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted; no human sign-off. BBC original reporting includes official claims and medical testimony; casualty claims differ and exact turnout is omitted."
+  },
+  {
+    "event_id": "bj-livingcosts-20240427",
+    "episode_scope": "The April-May union protest sequence in Cotonou.",
+    "cities": [
+      {
+        "name": "Cotonou",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "bj-livingcosts-20240427-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Government temporarily suspended cereal exports to ease prices; the report does not establish protest causation.",
+        "favours": [
+          {
+            "actor": "Food consumers",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The measure aimed to relieve domestic prices; effectiveness is not established."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "bj-livingcosts-20240427-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Original AFP reporting; the cabinet action is dated only to the publication week."
+  },
+  {
+    "event_id": "gn-generalstrike-20240226",
+    "episode_scope": "The February 26-28 national work stoppage; excludes later strikes.",
+    "cities": [
+      {
+        "name": "Conakry",
+        "source_ids": [
+          "gn-generalstrike-20240226-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Unions explicitly suspended this stoppage on February 28; this is not resolution of all demands.",
+      "source_ids": [
+        "gn-generalstrike-20240226-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-02-28",
+        "summary": "A detained union leader was released, after which unions suspended the strike.",
+        "favours": [
+          {
+            "actor": "Guinean Trade Union Movement",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Reuters identifies the release as a key demand met."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "gn-generalstrike-20240226-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "eg-jadetextile-20260208",
+    "episode_scope": "The February 8-10 Jade Textile work stoppage, not all Egyptian textile unrest.",
+    "cities": [
+      {
+        "name": "10th of Ramadan City",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      },
+      {
+        "name": "Ismailia",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Workers and the labor ministry reported the strike ended February 10; threats to strike again are separate.",
+      "source_ids": [
+        "eg-jadetextile-20260208-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2026-02-10",
+        "summary": "Bargaining produced a wage-restructuring agreement; precise increases and implementation remained unclear.",
+        "favours": [
+          {
+            "actor": "Jade Textile workers",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "A promised pay change addresses demands, but workers disputed clarity and representation."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "eg-jadetextile-20260208-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Independent local reporting includes worker concerns and the ministry's less detailed account; company follow-through not checked."
+  },
+  {
+    "event_id": "et-healthworkers-20250513",
+    "episode_scope": "The May 2025 health-worker stoppage and documented follow-up; September's proposed strike is not counted as confirmed action.",
+    "cities": [
+      {
+        "name": "Addis Ababa",
+        "source_ids": [
+          "et-healthworkers-20250513-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "et-healthworkers-20250513-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "In late August, the health ministry directed free-care clinics and work transport for health professionals; delivery was not established.",
+        "favours": [
+          {
+            "actor": "Public healthcare workers and families",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The instructions address two demands, conditional on implementation."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "et-healthworkers-20250513-source-2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Two HRW pages are the same advocacy organization, not independent corroboration; Addis Ababa is established through episode-related detention."
+  },
+  {
+    "event_id": "gh-tewu-20251001",
+    "episode_scope": "The nationwide TEWU stoppage suspended October 1; onset is not established.",
+    "cities": [],
+    "status_basis": {
+      "text": "The union explicitly suspended the action with effect from October 1; it reserved the right to resume.",
+      "source_ids": [
+        "gh-tewu-20251001-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-10-01",
+        "summary": "The commission committed to expedited talks; final conditions were still outstanding.",
+        "favours": [
+          {
+            "actor": "TEWU members",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "A procedural concession advances negotiations but does not establish improved pay."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "gh-tewu-20251001-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Local report reproduces union leadership statements. No protest city or onset date established."
+  },
+  {
+    "event_id": "ke-financebill-202406",
+    "episode_scope": "The June Finance Bill protest wave; excludes later anniversary and unrelated demonstrations.",
+    "cities": [
+      {
+        "name": "Nairobi",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      },
+      {
+        "name": "Eldoret",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Withdrawal did not establish protest end; the report still described calls for further action.",
+      "source_ids": [
+        "ke-financebill-202406-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-06-26",
+        "summary": "Ruto announced he would not sign the 2024 Finance Bill and it would be withdrawn.",
+        "favours": [
+          {
+            "actor": "Anti-Finance Bill protesters",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "Reuters describes the reversal as a major victory for their demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ke-financebill-202406-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. CBC is a Reuters republication, not an independent source. Full onset date not established."
+  },
+  {
+    "event_id": "tz-drivers-20260929",
+    "episode_scope": "The September 29-30 stoppage; excludes longstanding employment disputes and later industrial action.",
+    "cities": [
+      {
+        "name": "Dar es Salaam",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "name": "Dodoma",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "name": "Mbeya",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "name": "Mwanza",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "name": "Moshi",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      },
+      {
+        "name": "Tarime",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Both reports establish leaders' suspension on September 30, with resumed transport confirmed by October 1.",
+      "source_ids": [
+        "tz-drivers-20260929-source-1",
+        "tz-drivers-20260929-source-2"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Government suspended the 15-point licensing system pending review; underlying employment issues remained unresolved.",
+        "favours": [
+          {
+            "actor": "Bus and truck drivers",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "Suspension removes the contested system during review, without guaranteeing lasting reform."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "tz-drivers-20260929-source-2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Government-owned Daily News emphasizes dialogue; independent The Chanzo reports rule suspension and unresolved demands. Article displays October 1 despite October 2 URL."
+  },
+  {
+    "event_id": "tg-governance-20250626",
+    "episode_scope": "The late-June Lomé mobilization, not the entire opposition to the constitutional changes.",
+    "cities": [
+      {
+        "name": "Lomé",
+        "source_ids": [
+          "tg-governance-20250626-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "tg-governance-20250626-source-1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "tn-gabes-20251021",
+    "episode_scope": "The October pollution protest sequence; the reported strike is one episode within it.",
+    "cities": [
+      {
+        "name": "Gabès",
+        "source_ids": [
+          "tn-gabes-20251021-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "tn-gabes-20251021-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-10-20",
+        "summary": "The health minister announced a cancer hospital; plant closure was not established.",
+        "favours": [
+          {
+            "actor": "Gabès residents",
+            "effect": "unclear",
+            "basis": "inference",
+            "note": "A hospital promise is distinct from the demanded pollution removal; delivery remained unverified."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "tn-gabes-20251021-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "mz-election-20241021",
+    "episode_scope": "The protest/crackdown period documented October 21-January 25; excludes later unrest and treats neither review cutoff as proof of ending.",
+    "cities": [
+      {
+        "name": "Maputo",
+        "source_ids": [
+          "mz-election-20241021-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "mz-election-20241021-source-1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted; no human sign-off. AP reports Amnesty and local monitoring claims, rather than independent verification of every death; official and civil-society totals differ."
+  },
+  {
+    "event_id": "za-decentwork-20241007",
+    "episode_scope": "October 7 day-of-action reporting, not all South African anti-austerity campaigns.",
+    "cities": [
+      {
+        "name": "Cape Town",
+        "source_ids": [
+          "za-decentwork-20241007-source-1"
+        ]
+      },
+      {
+        "name": "Johannesburg",
+        "source_ids": [
+          "za-decentwork-20241007-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "A day of action is reported; no explicit completion or resolution is verified.",
+      "source_ids": [
+        "za-decentwork-20241007-source-1"
+      ]
+    },
+    "outcome_status": "not-established",
+    "outcomes": [],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "sn-electiondelay-202402",
+    "episode_scope": "The February-March election-delay dispute; excludes earlier opposition protests.",
+    "cities": [
+      {
+        "name": "Dakar",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      },
+      {
+        "name": "Touba",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      },
+      {
+        "name": "Thiès",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      },
+      {
+        "name": "Richard Toll",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      },
+      {
+        "name": "Kolda",
+        "source_ids": [
+          "sn-electiondelay-202402-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "sn-electiondelay-202402-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2024-02-15",
+        "summary": "The court annulled the postponement.",
+        "favours": [
+          {
+            "actor": "Opposition presidential candidates",
+            "effect": "benefit",
+            "basis": "explicit",
+            "note": "An opposition candidate welcomed the ruling."
+          }
+        ],
+        "causality": "not-established",
+        "source_ids": [
+          "sn-electiondelay-202402-source-2"
+        ]
+      },
+      {
+        "date": "2024-03-06",
+        "summary": "Government announced March 24 elections following weeks of protest.",
+        "favours": [
+          {
+            "actor": "Anti-postponement demonstrators",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The date fell before Sall's mandate expired, matching their timing demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "sn-electiondelay-202402-source-3"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Limited source breadth and follow-up; this episode is not a country-level summary."
+  },
+  {
+    "event_id": "ng-pengassan-20250928",
+    "episode_scope": "The September 28-October 1 PENGASSAN stoppage; excludes NUPENG's separate dispute.",
+    "cities": [],
+    "status_basis": {
+      "text": "PUNCH reports an explicit temporary suspension October 1; settlement implementation and lasting resolution are unverified.",
+      "source_ids": [
+        "ng-pengassan-20250928-source-2"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-10-01",
+        "summary": "Agreement required redeployment within Dangote Group without pay loss and protection from victimisation.",
+        "favours": [
+          {
+            "actor": "Dismissed refinery workers",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "Employment and pay protections were promised, but return to the refinery and implementation were not established."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ng-pengassan-20250928-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. THISDAY says Monday commencement; PUNCH quotes the union's precise September 28 onset. PUNCH clarifies suspension rather than permanent settlement; Abuja/Lagos bylines are not treated as strike-city evidence."
+  },
+  {
+    "event_id": "ug-traders-20251104",
+    "episode_scope": "The November traders' stoppage; excludes the separate August strike.",
+    "cities": [
+      {
+        "name": "Kampala",
+        "source_ids": [
+          "ug-traders-20251104-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Suspension is reported, but its exact effective date is not established; no end date is invented.",
+      "source_ids": [
+        "ug-traders-20251104-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Officials promised meetings and began listing flood-affected traders; completed compensation was not established.",
+        "favours": [
+          {
+            "actor": "Kampala traders",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "A procedural opening addresses demands, conditional on follow-through."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ug-traders-20251104-source-1"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. Full article body was returned despite subscription prompts. November 4 is calendar-resolved from the report's 'last Tuesday' relative to November 10."
+  },
+  {
+    "event_id": "mg-genz-20250925",
+    "episode_scope": "The September-October youth mobilization and immediate power-transfer sequence; excludes subsequent governance.",
+    "cities": [
+      {
+        "name": "Antananarivo",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      },
+      {
+        "name": "Antsiranana",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      },
+      {
+        "name": "Toliara",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "Government change and celebrations do not establish an end to the protest episode.",
+      "source_ids": [
+        "mg-genz-20250925-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": "2025-09-29",
+        "summary": "Rajoelina dismissed the cabinet seeking to placate unrest; protesters rejected this as insufficient.",
+        "favours": [
+          {
+            "actor": "Gen Z protesters",
+            "effect": "mixed",
+            "basis": "explicit",
+            "note": "The report records protesters saying dismissal did not meet their demand."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "mg-genz-20250925-source-1"
+        ]
+      },
+      {
+        "date": "2025-10-14",
+        "summary": "Military unit claimed power and court named its chief leader; Rajoelina rejected the takeover and impeachment.",
+        "favours": [
+          {
+            "actor": "CAPSAT leadership",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The unit obtained governing authority."
+          },
+          {
+            "actor": "Gen Z protesters",
+            "effect": "mixed",
+            "basis": "inference",
+            "note": "Removal aligned with a demand, but military control and institution suspension did not establish their wider reforms."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "mg-genz-20250925-source-2"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. AFP and BBC give independent reporting; power transfer is contested and not reduced to an unqualified protest victory."
+  },
+  {
+    "event_id": "ma-genz212-20250927",
+    "episode_scope": "The GenZ 212 mobilization from September 27 and immediate budget response; excludes earlier Agadir hospital protests.",
+    "cities": [
+      {
+        "name": "Casablanca",
+        "source_ids": [
+          "ma-genz212-20250927-source-2"
+        ]
+      },
+      {
+        "name": "Rabat",
+        "source_ids": [
+          "ma-genz212-20250927-source-2"
+        ]
+      },
+      {
+        "name": "Marrakesh",
+        "source_ids": [
+          "ma-genz212-20250927-source-2"
+        ]
+      },
+      {
+        "name": "Agadir",
+        "source_ids": [
+          "ma-genz212-20250927-source-2"
+        ]
+      }
+    ],
+    "status_basis": {
+      "text": "The sources do not establish an end; current activity remains unknown.",
+      "source_ids": [
+        "ma-genz212-20250927-source-1"
+      ]
+    },
+    "outcome_status": "documented",
+    "outcomes": [
+      {
+        "date": null,
+        "summary": "Finance minister pledged to reprioritise health and education in the next budget; details and implementation were pending.",
+        "favours": [
+          {
+            "actor": "GenZ 212 public-service campaign",
+            "effect": "benefit",
+            "basis": "inference",
+            "note": "The pledge addresses spending priorities protesters sought, without establishing delivery."
+          }
+        ],
+        "causality": "reported-link",
+        "source_ids": [
+          "ma-genz212-20250927-source-3"
+        ]
+      }
+    ],
+    "research_note": "AI-assisted; no human sign-off. BBC, AFP-derived Al Jazeera and Reuters minister interview; Reuters body read with web open after truncated Exa fetch. Interview occurred earlier in publication week, so no exact outcome date is assigned."
+  }
+]

@@ -1,0 +1,1021 @@
+[
+  {
+    "code": "AF",
+    "query": "News reporting on protests, strikes or demonstrations in Afghanistan (AF) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.684Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.bbc.com/news/articles/c992vdk3g3yo",
+      "https://www.afintl.com/en/202609050903",
+      "https://apnews.com/article/afghanistan-taliban-women-arrested-protest-467c3740866f9d2cecb970fee64a8a72",
+      "https://www.afintl.com/en/202608018810",
+      "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/09/03/afghanistan-defends-ban-on-protest-citing-islamic-law"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Herat June 2026 women’s arrest protests and Kabul/Yaftal candidates returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "AM",
+    "query": "News reporting on protests, strikes or demonstrations in Armenia (AM) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://asbarez.com/arf-youth-hold-protest-outside-armenias-national-security-service-headquarters/",
+      "https://www.panorama.am/en/news/2026/07/02/%D5%A2%D5%B8%D5%B2%D5%B8%D6%84%D5%AB-%D5%A1%D5%AF%D6%81%D5%AB%D5%A1/3163212",
+      "https://armenianweekly.com/2025/10/23/gyumri-erupts-after-mayors-arrest-this-is-an-operation-against-democracy-itself-say-opposition/",
+      "https://oc-media.org/demonstrations-in-yerevan-calling-for-the-release-of-armenians-held-in-azerbaijan/",
+      "https://www.thearmenianreport.com/post/masked-forces-raid-gyumri-city-hall-and-arrest-opposition-mayor-protests-erupt"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/armenian-pm-says-peace-deal-with-azerbaijan-needs-only-adjustments-before-2024-06-12/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "AZ",
+    "query": "News reporting on protests, strikes or demonstrations in Azerbaijan (AZ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://oc-media.org/over-50-azerbaijanis-including-minors-detained-ahead-of-rally-demanding-justice-for-students-death/",
+      "https://oc-media.org/azerbaijani-police-lock-down-city-amidst-reports-of-mass-arrests-and-beatings/",
+      "https://jam-news.net/sexual-harassment-and-brutality-at-azerbaijan-protest/",
+      "https://www.meydan.tv/en/article/the-right-to-protest-how-the-ban-on-protests-in-azerbaijan-turned-into-systematicrepression/",
+      "https://jam-news.net/azerbaijani-meydan-tv-journalists-stage-protest-in-a-courtroom-on-world-press-freedom-day/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Rally/arrest and courtroom-action candidates returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "BH",
+    "query": "News reporting on protests, strikes or demonstrations in Bahrain (BH) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.middleeasteye.net/news/war-iran-ignited-civil-unrest-bahrain",
+      "https://www.adhrb.org/2026/02/criminalizing-opinion-and-demands-an-overview-of-the-four-latest-waves-of-repression-of-freedoms-in-bahrain/",
+      "https://www.telesurenglish.net/pro-iran-protests-erupt-in-bahrain-after-iranian-strike-on-u-s-base/",
+      "https://vob.org/en/?p=13458",
+      "https://en.abna24.com/news/1788470/Thousands-of-Bahrainis-Hold-Rallies-Urging-Revenge-for-Assassination"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. March 2026 unrest and rights-monitor accounts returned; incentives and dates need deeper review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "BT",
+    "query": "News reporting on protests, strikes or demonstrations in Bhutan (BT) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://bhutanwatch.org/wp-content/uploads/2026/05/HR-Report-2026-merged.pdf",
+      "https://www.ohchr.org/en/press-releases/2025/04/bhutan-un-experts-call-release-long-term-political-prisoners",
+      "https://english.pardafas.com/global-campaign-protests-at-the-hague-for-bhutanese-political-prisoners/",
+      "https://thebhutanese.bt/a-shift/",
+      "https://thebhutanese.bt/will-not-hesitate-to-remove-any-minister-if-there-was-any-intervention-in-esp-pm/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Screen returned prisoner-rights material and diaspora action in The Hague; no local episode verified. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "BN",
+    "query": "News reporting on protests, strikes or demonstrations in Brunei Darussalam (BN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://gnv.news/archives/987496637",
+      "https://kopitalkmho.blogspot.com/2025/06/brunei-oil-exit-fourth-wave-of-public.html",
+      "https://www.thestar.com.my/aseanplus/aseanplus-news/2026/10/02/roadshow-connects-brunei-jobseekers-with-employment-opportunities",
+      "https://www.linkedin.com/pulse/brunei-oil-exit-third-wave-public-reckoning-malai-hassan-othman-kxbdc",
+      "https://thediplomat.com/2026/10/trouble-in-shangri-la-why-bruneians-are-going-to-australia-for-illegal-migrant-work/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Employment and social commentary returned; no bounded local collective-action episode verified. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KH",
+    "query": "News reporting on protests, strikes or demonstrations in Cambodia (KH) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://cambodianess.com/article/workers-block-road-in-kampong-speu-over-layoffs-and-lunch-subsidy-demand",
+      "https://cumw.org/km/news/20260126/",
+      "https://apnews.com/article/hun-manet-cambodia-vietnam-laos-development-protests-fed8f3ef7320fd87413f66e1125cf63f",
+      "https://hongkongfp.com/2026/04/28/chinese-protesters-demand-cambodia-unfreeze-accounts-with-scam-linked-firm/",
+      "https://www.business-humanrights.org/en/latest-news/cambodia-over-100-grab-drivers-protest-to-demand-stable-pricing-policy-to-reflect-surging-fuel-costs-incl-co-comment/"
+    ],
+    "reviewed_urls": [
+      "https://apnews.com/article/hun-manet-cambodia-vietnam-laos-development-protests-fed8f3ef7320fd87413f66e1125cf63f"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. AP body reviewed: arrests around a planned August 18, 2024 Phnom Penh rally; actual local rally occurrence not established. Labour candidates remain unread. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "CN",
+    "query": "News reporting on protests, strikes or demonstrations in China (CN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "http://www.aqwhw.cn/news/33d9099876.html",
+      "https://www.mmcxw.com/news/4656.html",
+      "https://www.chinatimes.com/realtimenews/20261002003421-260405",
+      "https://www.nownews.com/news/6880159",
+      "https://www.taisounds.com/news/content/77/291717"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/signs-rare-unrest-among-north-korean-workers-china-researchers-say-2024-02-08/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Initial results included Taiwan and South Korea mismatches. Disambiguation found mainland worker candidates. Helong report reviewed: researchers claimed January 2024 protests but Reuters could not independently confirm them; excluded from proposed events. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "CY",
+    "query": "News reporting on protests, strikes or demonstrations in Cyprus (CY) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:30.685Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://en.politis.com.cy/news/education/1042295/teacher-appointment-system-unions-plan-protest-outside-presidential-palace",
+      "https://cyprus-mail.com/2025/09/11/thousands-rally-in-limassol-for-full-restoration-of-cost-of-living-allowance",
+      "https://cyprus-mail.com/2025/09/10/three-hour-strike-to-disrupt-flights-schools-and-health-services-across-cyprus",
+      "https://en.politis.com.cy/news/education/1034493/teachers-unions-announce-joint-protest-outside-presidential-palace",
+      "https://cyprus-mail.com/2026/06/24/hourly-government-workers-on-strike-services-affected"
+    ],
+    "reviewed_urls": [
+      "https://cyprus-mail.com/2025/09/11/thousands-rally-in-limassol-for-full-restoration-of-cost-of-living-allowance"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "GE",
+    "query": "News reporting on protests, strikes or demonstrations in Georgia (GE) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/georgia-tbilisi-election-vote-crackdown-rally-protest-99857159a19c077edaf9d800207c1215",
+      "https://en.wikipedia.org/wiki/2024%E2%80%932026_Georgian_protests",
+      "https://www.reuters.com/world/georgian-police-use-water-cannon-repel-protesters-presidential-palace-2025-10-04/",
+      "https://apnews.com/article/georgia-russia-crackdown-protests-european-union-40cef7f965eb796ab23443f1c66d439b",
+      "https://www.reuters.com/world/georgian-pm-says-protesters-aimed-topple-government-accuses-eu-meddling-2025-10-05/"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/europe/georgian-parliamentary-speaker-signs-foreign-agents-bill-into-law-2024-06-03/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "HK",
+    "query": "News reporting on protests, strikes or demonstrations in Hong Kong (HK) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "IN",
+    "query": "News reporting on protests, strikes or demonstrations in India (IN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "ID",
+    "query": "News reporting on protests, strikes or demonstrations in Indonesia (ID) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.jakartadaily.id/news/16215187328/major-roads-in-central-jakarta-shut-down-as-ride-hailing-driver-protests-demand-fare-reform-formal-regulation-of-sector",
+      "https://observerid.com/demanding-fairer-tariff-ride-hailing-drivers-hold-protest-and-industrial-strike/",
+      "https://www.geo.tv/latest/621233-deadly-indonesia-protests-force-u-turn-on-lawmakers-pay",
+      "https://www.digitaljournal.com/article/govt-gestures-leave-roots-of-indonesia-protests-intact/",
+      "https://www.suara.com/news/2025/10/30/103554/gelar-konsolidasi-aksi-hari-ini-5-juta-buruh-siap-mogok-nasional-bila-tuntutan-tak-didengar"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/whats-fuelling-rage-indonesia-2025-09-02/",
+      "https://www.bbc.com/news/articles/clyrk2kxlngo"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "IR",
+    "query": "News reporting on protests, strikes or demonstrations in Iran, Islamic Republic of (IR) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/middle-east/one-person-killed-iran-protests-over-economic-woes-2026-01-01/",
+      "https://www.abc.net.au/news/2026-01-02/iran-economic-crisis-sparks-large-protests-against-regime/106192000",
+      "https://www.al-monitor.com/index%2ephp/originals/2026/01/irans-protests-what-we-know",
+      "https://en.wikipedia.org/wiki/2025%E2%80%932026_Iranian_protests",
+      "https://www.aljazeera.com/news/2026/1/12/what-we-know-about-the-protests-sweeping-iran"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/middle-east/iran-cut-off-world-supreme-leader-warns-protesters-2026-01-09/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "IQ",
+    "query": "News reporting on protests, strikes or demonstrations in Iraq (IQ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/iraq-protest-customs-tariffs-oil-debt-a9a836969d13f3658019bce38bbccb07",
+      "https://shafaq.com/en/society/Protests-sweep-Iraq-s-south-over-unpaid-wages-water-crisis",
+      "https://hcntimes.com/shafaq-news-fuel-jobs-dominate-week-of-protests-across-iraq/",
+      "https://www.aljazeera.com/video/newsfeed/2026/8/10/aje-onl-nf_kut-protests-escalate-over-iraqs-electricity-crisis-090826",
+      "https://infonews.ca/news/516966/iraqi-prime-minister-to-resign-in-wake-of-deadly-protests/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Baghdad tariff and water/wage candidates returned; underlying pages not reviewed. Reposted old unrest may have recent metadata. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "IL",
+    "query": "News reporting on protests, strikes or demonstrations in Israel (IL) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/middle-east/israeli-labour-strike-push-gaza-hostage-deal-disrupts-flights-buses-2024-09-02/",
+      "https://www.aljazeera.com/news/2025/8/17/israelis-hold-nationwide-protest-to-end-gaza-war-bring-back-the-hostages",
+      "https://matzav.com/we-will-die-not-enlist-yeshiva-bochur-freed-after-protesters-surround-police-vehicle-in-tel-aviv/",
+      "https://apnews.com/article/israel-protest-haredim-draft-military-gaza-war-c432eaa4dc3a3ab17f82efa2b8cb7a86",
+      "https://www.cnn.com/2024/09/02/middleeast/israel-general-strike-hostage-deal-intl-hnk"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/middle-east/israeli-labour-strike-push-gaza-hostage-deal-disrupts-flights-buses-2024-09-02/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "JP",
+    "query": "News reporting on protests, strikes or demonstrations in Japan (JP) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://znn.jp/2025/10/post-481938.html",
+      "https://coki.jp/article/column/60344/",
+      "https://www.sankei.com/article/20251104-XWLEMVLFJNFGTLRLVLD357DGVE/",
+      "https://note.com/caffelover/n/nb168aa800efb",
+      "https://www.sankei.com/article/20251010-B3QTDMVJ5JAXNBBFKEVT6Z4Z4U/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Japanese-language demonstration reports returned; underlying pages not reviewed or translated in this pass. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "JO",
+    "query": "News reporting on protests, strikes or demonstrations in Jordan (JO) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "KZ",
+    "query": "News reporting on protests, strikes or demonstrations in Kazakhstan (KZ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "KP",
+    "query": "News reporting on protests, strikes or demonstrations in Korea, Democratic People's Republic of (KP) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.700Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://en.yna.co.kr/view/AEN20260904008100315",
+      "https://www.khan.co.kr/en/article/202610011513007",
+      "https://www.ajupress.com/view/20260912203351501",
+      "https://en.yna.co.kr/view/AEN20260715001251315",
+      "https://www.asiae.co.kr/en/article/2026090316340947858"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Initial official-name query produced South Korea mismatches. Follow-up returned walk-out claims and North Korean workers in China; no independently verified episode inside North Korea established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KR",
+    "query": "News reporting on protests, strikes or demonstrations in Korea, Republic of (KR) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://en.yna.co.kr/view/AEN20260904008100315",
+      "https://en.sedaily.com/society/2026/10/01/subcontract-workers-stage-crane-protest-at-hanwha-ocean",
+      "https://biz.heraldcorp.com/article/10891967",
+      "https://biz.chosun.com/en/en-society/2025/10/01/KOKB743SAZASHAD57MQ2CQCU3Q/",
+      "https://www.businesskorea.co.kr/news/articleView.html?idxno=278182"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/south-koreas-impeached-president-yoon-faces-court-ruling-decide-his-fate-2025-04-03/",
+      "https://www.reuters.com/world/asia-pacific/rival-protests-over-south-koreas-impeached-president-yoon-held-seoul-2024-12-21/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KW",
+    "query": "News reporting on protests, strikes or demonstrations in Kuwait (KW) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "KG",
+    "query": "News reporting on protests, strikes or demonstrations in Kyrgyzstan (KG) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "LA",
+    "query": "News reporting on protests, strikes or demonstrations in Lao People's Democratic Republic (LA) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.business-humanrights.org/en/latest-news/laos-chinese-invested-rare-earth-mines-continue-to-expand-despite-ongoing-concerns-over-pollution-and-villager-compensation-disputes/",
+      "https://thediplomat.com/2026/02/laos-elections-stained-by-activists-death/",
+      "https://www.hrw.org/news/2026/03/02/laos-investigate-prominent-dissidents-death",
+      "https://unpo.org/wp-content/uploads/2025/08/Chaofa-Hmong-Final-Submission-to-SRs-August-2025-final.pdf",
+      "https://www.bangkokpost.com/thailand/general/3329559/another-lao-activist-disappears-in-thailand"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Mining disputes and dissident death reporting returned; collective-action episode not verified. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "LB",
+    "query": "News reporting on protests, strikes or demonstrations in Lebanon (LB) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "MO",
+    "query": "News reporting on protests, strikes or demonstrations in Macao (MO) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://macaudailytimes.com.mo/lawyer-criticizes-authorities-for-detaining-protester-calls-legal-system-predictable-and-unreliable.html",
+      "https://www.plataformamedia.com/en/2026/05/01/no-labor-day-protests-in-macau-for-the-seventh-consecutive-year/",
+      "https://macaudailytimes.com.mo/food-delivery-platforms-under-fire-as-riders-protest-pay-cuts-industry-calls-for-regulation.html",
+      "https://biz.chosun.com/en/en-international/2025/09/17/5JSHJYPQP5FSZO6MKAVM4GBWEA/",
+      "https://www.reuters.com/world/china/macau-democrat-arrested-colluding-with-foreign-anti-china-forces-2025-07-31/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Detention and delivery-worker candidates returned; underlying pages not reviewed. No-protest commentary is not absence proof. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "MY",
+    "query": "News reporting on protests, strikes or demonstrations in Malaysia (MY) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "search-failed",
+    "result_count": 0,
+    "candidate_urls": [],
+    "reviewed_urls": [],
+    "note": "Initial attempt received Exa 429 per-user rate limit; retained in screening attempt. Retry follows."
+  },
+  {
+    "code": "MV",
+    "query": "News reporting on protests, strikes or demonstrations in Maldives (MV) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://apnews.com/article/maldives-protest-arrests-maldivian-democratic-party-25561cac2009c3a2fe0ef3758fe42229",
+      "https://mvrepublic.com/news/mdp-holds-mass-protest-against-muizzu-government/",
+      "https://en.wikipedia.org/wiki/2025_Maldivian_protests",
+      "https://maldivesindependent.com/politics/photos-from-the-frontline-pepper-spray-and-sonic-weapons-in-majeedhee-magu-standoff-dfe0",
+      "https://en.wikipedia.org/wiki/2026_Maldivian_protests"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Opposition demonstrations around October 2025 returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "MN",
+    "query": "News reporting on protests, strikes or demonstrations in Mongolia (MN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:08:53.701Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://mn.ibtimes.com/motorists-protest-fuel-shortages-price-increases-ulaanbaatar-1812492",
+      "https://centralasiawire.com/articles/drivers-circle-sukhbaatar-square-as-mongolias-opposition-moves-on-the-cabinet",
+      "https://news.mn/en/801827/",
+      "https://apnews.com/article/mongolia-china-tinto-copper-mine-protest-tolgoi-f7c438c2666d8c52a0015533630302ad",
+      "https://www.ei-ie.org/en/item/31454:mongolia-thousands-of-teachers-and-education-support-personnel-rally-to-demand-salary-increase-and-adequate-investment-in-the-education"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/china/mongolian-pm-resigns-after-losing-parliament-backing-street-protests-2025-06-03/",
+      "https://www.bbc.com/news/articles/c5yg8dxv5w9o"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "MM",
+    "query": "News reporting on protests, strikes or demonstrations in Myanmar (MM) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://infonews.ca/news/105675/violence-protests-mark-anniversary-of-myanmar-army-rule/",
+      "https://www.bbc.co.uk/news/articles/cge2l1xj2zdo",
+      "https://athanmyanmar.org/freedom-of-peaceful-assembly-fopa-2025-september/",
+      "https://eng.mizzima.com/2025/10/29/27702",
+      "https://www.bnionline.net/en/news/waingmaw-residents-kachin-state-renew-opposition-china-backed-myitsone-dam-project"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Resistance, dam opposition and festival-attack reporting returned; protest dates and episode boundaries need review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "NP",
+    "query": "News reporting on protests, strikes or demonstrations in Nepal (NP) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://newsable.asianetnews.com/world/nepal-protests-demand-climate-justice-after-deadly-rasuwa-floods-articleshow-xr0dkas",
+      "https://www.indianeconomicobserver.com/news/demand-for-climate-justice-rises-in-nepal-commemoration-continues-for-flood-victims20261003004804/",
+      "https://apnews.com/article/nepal-protest-social-media-ban-89cf500969536cf2a35c3fb884cfa620",
+      "https://www.abc.net.au/news/2025-09-10/nepal-kathmandu-gen-z-protests-social-media/105756398",
+      "https://www.bbc.com/news/articles/cjd1ndmrej0o"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/young-anti-corruption-protesters-oust-nepal-pm-oli-2025-09-09/",
+      "https://www.abc.net.au/news/2025-09-10/nepal-kathmandu-gen-z-protests-social-media/105756398"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "OM",
+    "query": "News reporting on protests, strikes or demonstrations in Oman (OM) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.khaleejtimes.com/world/gulf/oman-expat-workers-convicted-rioting-vandalism",
+      "https://timelinedaily.com/west-asia/no-political-or-religious-events-in-public-places-oman-after-kerala-cms-welcome-procession-row",
+      "https://thearabiannews.com/oman-court-issues-verdict-59-expats-sentenced-for-december-25-riots-and-vandalism/",
+      "https://worldisraelnews.com/oman-stays-silent-on-flydubai-attack-as-omanis-doubt-co-pilot-was-behind-it/",
+      "https://www.reuters.com/world/middle-east/job-seeking-omanis-protest-again-press-cash-strapped-government-2021-05-25/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Worker-riot sentencing and 2021 protest material returned; original collective grievance/date needs review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "PK",
+    "query": "News reporting on protests, strikes or demonstrations in Pakistan (PK) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.arabnews.pk/pakistan/protests-erupt-across-pakistan-after-israel-intercepts-gaza-aid-flotilla-2617581",
+      "https://apnews.com/article/pakistan-kashmir-protest-death-toll-rises-talks-3bd4fd8a72bcb7d3bbff7cc45032e926",
+      "https://www.dawn.com/news/2033819/traders-protest-imposition-of-taxes-in-malakand-division",
+      "https://www.nation.com.pk/02-Oct-2026/ji-threatens-long-march-govt-fails-offer-relief-petroleum-prices",
+      "https://apnews.com/article/pakistan-violent-protest-kashmir-over-subsidies-b104fb6da251f1fcf1e7f2b64cd416ed"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/supporters-pakistans-imran-khan-call-off-protest-local-media-says-2024-11-27/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "PS",
+    "query": "News reporting on protests, strikes or demonstrations in Palestine, State of (PS) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://alquds.com/en/posts/259996-hundreds-of-settlers-storm-joseph-s-tomb-in-nablus-amid-widespread-arrest",
+      "https://aljazeeranews-mggx1uo47w.edgeone.app/news/2026/4/1/palestinians-in-west-bank-protest-strike-against-israeli-death-penalty-law",
+      "https://english.aawsat.com/arab-world/5325201-israeli-troops-block-olive-harvest-west-bank",
+      "https://www.arabnews.com/middle-east/palestinian-killed-in-second-straight-day-of-settler-violence-mayor-3004311",
+      "https://english.palinfo.com/jerusalem/2026/10/01/371175/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Results included a nonofficial Al Jazeera mirror and violence/occupation reports; no protest episode verified from underlying reporting. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "PH",
+    "query": "News reporting on protests, strikes or demonstrations in Philippines (PH) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.philstar.com/nation/2026/09/28/2559508/drivers-transport-operators-begin-3-day-strike-over-fuel-price-hikes",
+      "https://www.manilatimes.net/2026/09/29/news/piston-renews-fuel-tax-price-cut-demands-on-strikes-first-day/2435179",
+      "https://www.gmanetwork.com/news/topstories/nation/1003934/transport-strike-starts-as-fare-hike-takes-effect/story/",
+      "https://thecitypost.net/government-workers-intensify-call-for-p5000-pera-hold-lunch-break-protests/",
+      "https://www.philstar.com/headlines/2026/09/30/2559929/piston-continues-strike-manibela-ends-protest"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. September 2026 transport-strike candidates returned; separate unions’ cessation must be distinguished before assigning an end. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "QA",
+    "query": "News reporting on protests, strikes or demonstrations in Qatar (QA) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.business-humanrights.org/en/latest-news/qatar-govt-announces-amendments-to-labour-law-incl-restrictions-on-strikes-right-to-organise/",
+      "https://www.ngocstip.org/qatar-erupts-in-fury-massive-protests-demand-revenge-after-israeli-strike-hits-doha/",
+      "https://aviationa2z.com/index.php/2026/06/02/qatar-airways-cabin-crew-says-company-accommodation-feels-like-jail-and-more/",
+      "https://www.paddleyourownkanoo.com/2026/06/04/qatar-airways-cabin-crew-reveal-the-reasons-why-they-took-part-in-a-historic-sickout/",
+      "https://distantnews.com/article/qatar-grants-migrant-workers-conditional-right-to-strike-hhv9x2fq"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Labour-law changes and airline sick-out candidates returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "SA",
+    "query": "News reporting on protests, strikes or demonstrations in Saudi Arabia (SA) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.business-humanrights.org/en/latest-news/saudi-arabia-600-migrant-construction-workers-protest-eight-months-wage-theft-at-pif-funded-usd26bn-mecca-based-development-project/",
+      "https://en.abna24.com/news/854334/Saudi-regime-continues-crackdown-citizens-call-for-protests",
+      "https://saudistreets.com/2026/09/20/saudi-arabia-issues-first-air-raid-alerts-for-riyadh-as-houthi-attacks-escalate/",
+      "https://www.latimes.com/world-nation/story/2026-09-08/houthi-attacks-on-saudi-arabia-ignite-fires-at-oil-facilities-wound-73-people",
+      "https://kfgo.com/2026/10/02/saudis-plan-assault-on-houthis-to-break-red-sea-chokehold/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Alleged migrant-worker wage protest and 2017/military news returned; episode and original sourcing need review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "SG",
+    "query": "News reporting on protests, strikes or demonstrations in Singapore (SG) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.straitstimes.com/singapore/courts-crime/couple-fined-13k-for-telling-foreign-workers-at-worksites-to-hold-placards-demanding-payment",
+      "https://theonlinecitizen.com/2026/10/02/international-groups-urge-singapore-to-drop-charges-against-civil-society-activists-and-protect-peaceful-assembly",
+      "https://theonlinecitizen.com/2026/05/02/over-1-500-rally-at-hong-lim-park-for-labour-day-as-climate-and-workers-movements-unite-for-the-first-time",
+      "https://mothership.sg/2024/10/migrant-workers-protest-bto-hdb-construction/",
+      "https://www.channelnewsasia.com/singapore/six-charged-prohibited-processions-assemblies-6371541"
+    ],
+    "reviewed_urls": [
+      "https://mothership.sg/2024/10/migrant-workers-protest-bto-hdb-construction/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "LK",
+    "query": "News reporting on protests, strikes or demonstrations in Sri Lanka (LK) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:17.629Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://lankaleader.lk/news/22723-protest-march-in-colombo-tomorrow-against-tax-burden-col-crisis",
+      "https://www.straitstimes.com/asia/south-asia/sri-lanka-protests-oppose-contentious-judicial-reforms",
+      "https://lankaleader.lk/news/22644-psa-to-launch-nationwide-protest-over-rising-cost-of-living",
+      "https://apnews.com/video/protests-erupt-in-sri-lankas-capital-over-the-arrest-of-ex-president-wickremesinghe-83064d86cc1442a99abb421cb74cb5fb",
+      "https://ceylondailynews.lk/home/2026/09/16/railway-strike/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Returned future march plans, judicial protests and August 2025 ex-president detention protests; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "SY",
+    "query": "News reporting on protests, strikes or demonstrations in Syrian Arab Republic (SY) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/middle-east/syria-fuel-price-hikes-trigger-widest-protests-since-assad-fall-2026-09-14/",
+      "https://www.aljazeera.com/news/2026/9/16/people-dont-have-money-syrian-fuel-hikes-deepen-economic-pain",
+      "https://www.arabnews.com/middle-east/syria-protests-spread-to-kurdish-majority-northeast-3001894",
+      "https://www.aljazeera.com/features/2026/9/14/syria-fuel-price-hikes-test-public-patience-with-economic-recovery",
+      "https://www.arabnews.com/middle-east/analysis-why-syrias-latest-fuel-price-hike-is-stoking-public-anger-3001659"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. September 2026 fuel-price protest candidate returned. Exa extraction stopped before article body; two generic full-body fetch attempts errored. No event proposed from snippets. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "TJ",
+    "query": "News reporting on protests, strikes or demonstrations in Tajikistan (TJ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://charter97.org/en/news/2026/9/30/700213/",
+      "https://www.business-humanrights.org/en/latest-news/tajikistan-labour-dispute-emerges-at-zijin-mining-run-gold-mine-over-alleged-pay-disparities-between-local-and-chinese-workers-incl-companys-comment/",
+      "https://www.hrw.org/news/2025/09/03/tajikistan-investigate-deaths-of-five-pamiri-political-prisoners",
+      "https://www.occrp.org/en/feature/two-years-after-protest-crackdown-tajikistans-journalists-have-gone-into-exile-heres-whats-lost-when-journalists-flee",
+      "https://asiaplus.news/en/2025/10/02/power-cuts-begin-early-in-tajikistan-amid-unofficial-electricity-limits/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Mine-pay and other candidates returned alongside older-crackdown retrospectives; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "TH",
+    "query": "News reporting on protests, strikes or demonstrations in Thailand (TH) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://thestandard.co/people-protest-world-bank-imf/",
+      "https://www.bangkokpost.com/thailand/politics/3054510/nationwide-protests-urge-pm-to-step-down",
+      "https://www.bbc.com/news/articles/ceq7glqzr53o",
+      "https://www.cnbc.com/2025/06/28/thai-protesters-call-for-prime-minister-paetongtarns-resignation.html",
+      "https://www.bangkokpost.com/thailand/general/3128986/rare-earth-pact-with-us-draws-rally"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. June 2025 anti-premier rallies and later issue demonstrations returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "TL",
+    "query": "News reporting on protests, strikes or demonstrations in Timor-Leste (TL) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/asia-pacific/east-timor-lawmakers-agree-scrap-lawmaker-pension-allowances-that-sparked-2025-09-17/",
+      "https://www.bbc.com/news/articles/cy4ry7vpkdeo",
+      "https://www.aljazeera.com/news/2025/9/26/east-timor-mps-bow-to-protesters-vote-to-scrap-lifetime-pensions",
+      "https://www.abc.net.au/news/2025-09-15/timor-leste-protesters-demand-repeal-of-plan-to-buy-cars-for-mps/105776898",
+      "https://www.abc.net.au/news/2025-09-26/timor-leste-scraps-lifetime-pensions-student-protests/105822222"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/east-timor-lawmakers-agree-scrap-lawmaker-pension-allowances-that-sparked-2025-09-17/",
+      "https://www.abc.net.au/news/2025-09-26/timor-leste-scraps-lifetime-pensions-student-protests/105822222"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "TR",
+    "query": "News reporting on protests, strikes or demonstrations in Türkiye (TR) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://siyasihaber10.org/disk-sosyal-isten-a101-onlerinde-4-ilde-es-zamanli-eylem-satan-biziz-suyu-bile-parayla-iciyoruz/",
+      "https://www.evrensel.net/haber/529708/turk-is-eyleminde-hukumet-istifa-slogani-iscinin-mutfaginda-yangin-var",
+      "https://www.turkiyetoday.com/region/turkish-conservatives-march-on-us-missions-in-turkiye-after-israel-intercepted-sumud-3207842",
+      "https://www.abc.net.au/news/2025-03-26/turkiye-protests-enter-seventh-day-imamoglu/105096196",
+      "https://www.abc.net.au/news/2025-03-29/turkiye-protests-erdogan-i-mamoglu-presidential-challenger/105109840"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/middle-east/large-crowds-rally-istanbul-over-jailing-citys-mayor-2025-03-29/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "TM",
+    "query": "News reporting on protests, strikes or demonstrations in Turkmenistan (TM) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.rferl.org/a/turkmenistan-protest-electricity-economy/33784533.html",
+      "https://timesca.com/medical-staff-in-turkmenistan-resign-en-masse-over-extortion-to-avoid-picking-cotton/",
+      "https://iphronline.org/articles/turkmenistan-economic-hardship-repression-and-targeting-of-critics-at-home-and-abroad/",
+      "https://timesca.com/power-outages-in-turkmenistan-lead-to-dismissals-as-blackouts-continue/",
+      "https://iphronline.org/articles/turkmenistan-enforced-prosperity-narratives-corruption-driven-internet-censorship-and-repression-of-dissent-at-home-and-abroad/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Power outage and forced-cotton-related action candidates returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "AE",
+    "query": "News reporting on protests, strikes or demonstrations in United Arab Emirates (AE) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.business-humanrights.org/en/latest-news/uae-13000-workers-protest-at-two-azizi-developments-construction-sites-following-allegation-of-deaths-at-accommodation-co-calls-allegations-falserumours/",
+      "https://www.tbsnews.net/bangladesh/expatriate-workers-affected-july-uprising-stage-protest-demanding-govt-action-1065266",
+      "https://www.hrw.org/news/2024/07/24/uae-unjust-convictions-follow-bangladesh-protests",
+      "https://www.tbsnews.net/bangladesh/body-abdul-hamid-july-uprising-protester-returns-home-uae-prison-1257336",
+      "https://apnews.com/article/israel-palestinians-uae-protest-nyu-abu-dhabi-cf6827bd74437dee93f755eb3f4919e4"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. 2024 solidarity arrests and 2025 worker protest candidates returned; returned Bangladesh action is geographically distinct; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "UZ",
+    "query": "News reporting on protests, strikes or demonstrations in Uzbekistan (UZ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://uz.kursiv.media/en/2026-09-12/uzbekistan-enforces-new-strike-law-securing-worker-jobs/",
+      "https://www.gazeta.uz/en/2026/06/13/strike/",
+      "https://www.hrw.org/news/2025/07/02/karakalpakstan-victims-await-justice-three-years-on",
+      "https://www.hrw.org/news/2024/07/01/uzbekistan-2-years-no-justice-autonomous-republic",
+      "https://tashkenttimes.uz/national/17294-senate-passes-amendments-legalizing-labor-strikes"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Strike-legislation updates and 2022-crackdown retrospectives returned; legislation alone is not a protest episode. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "VN",
+    "query": "News reporting on protests, strikes or demonstrations in Viet Nam (VN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/asia-pacific/vietnams-grab-drivers-call-two-day-app-boycott-over-falling-earnings-2026-09-10/",
+      "https://www.abc.net.au/asia/tree-of-justice-protest-how-vietnamese-youth-mobilise-online/107071970",
+      "https://www.asianews.it/en/south-east-asia/vietnam/hanoi-residents-protest-against-red-river-mega-project",
+      "https://vietnamnet.vn/en/grab-vietnam-says-drivers-free-to-log-off-as-fee-dispute-grows-2554696.html",
+      "https://www.arabnews.com/world/hanoi-residents-mount-silent-protest-over-home-demolitions-2648361"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Grab-driver boycott and displacement demonstrations returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "YE",
+    "query": "News reporting on protests, strikes or demonstrations in Yemen (YE) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:09:45.200Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://south24.net/news/newse.php?nid=5652",
+      "https://en.ypagency.net/399937",
+      "https://en.ypagency.net/402842",
+      "https://en.ypagency.net/402684",
+      "https://www.presstv.co.uk/Detail/2025/10/03/756214/Yemen-rallies-Gaza-Israel-genocide"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Aden services/civil-disobedience and solidarity candidates returned; outlet incentives and underlying event dates need deeper review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "HK",
+    "query": "News reporting on protests, strikes or demonstrations in Hong Kong (HK) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:06.167Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.hrw.org/news/2026/10/02/hong-kong-silences-remembrance-of-police-abuses",
+      "https://hongkongfp.com/2025/10/08/pro-palestinian-rally-in-hong-kong-calls-for-ceasefire-condemns-israel-war-on-gaza/",
+      "https://www.abc.net.au/news/2026-10-01/hong-kong-arrests-journalist-and-activist-national-security-law/107214732",
+      "https://infonews.ca/news/476995/hong-kong-protester-shot-as-china-marks-its-70th-anniversary-2/",
+      "https://www.the-independent.com/asia/china/hong-kong-police-journalist-arrest-boom-news-b3059582.html"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Returned 2019 retrospective/reposted material and later solidarity/anniversary candidates; event date needs body review. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "IN",
+    "query": "News reporting on protests, strikes or demonstrations in India (IN) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:12.842Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.thehindu.com/news/cities/Delhi/blocked-routes-and-repeated-detentions-mark-sir-protest-in-delhi/article71537069.ece",
+      "https://indianexpress.com/article/india/cec-gyanesh-kumar-resignation-protest-mumbai-delhi-cjp-sir-electoral-rolls-10904343/",
+      "https://www.aljazeera.com/news/2026/10/2/indian-authorities-clamp-down-as-cockroach-movement-launches-new-protests",
+      "https://timesofindia.indiatimes.com/india/protests-against-cec-gyanesh-kumar-over-700-detained-in-delhi-thousands-attend-cjp-stir-in-mumbai-top-developments/articleshow/134644594.cms",
+      "https://www.thehindubusinessline.com/news/anti-cec-protests-erupt-across-country-over-sir-hundreds-detained-in-delhi/article71537116.ece"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/india/with-cranes-excavators-indian-farmers-prepare-march-capital-2024-02-21/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "JO",
+    "query": "News reporting on protests, strikes or demonstrations in Jordan (JO) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:16.269Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.reuters.com/world/middle-east/jordanians-protest-against-peace-treaty-with-israel-fresh-rallies-2024-03-29/",
+      "https://www.newarab.com/news/jordanian-forces-disperse-gaza-march-outside-israeli-embassy",
+      "https://garaanews.com/article/14332",
+      "https://www.latimes.com/world-nation/story/2024-04-11/jordan-pro-palestinian-protests",
+      "https://www.newarab.com/features/amman-protesters-voice-anger-against-donald-trumps-gaza-plan"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/middle-east/jordanians-protest-against-peace-treaty-with-israel-fresh-rallies-2024-03-29/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KZ",
+    "query": "News reporting on protests, strikes or demonstrations in Kazakhstan (KZ) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:20.817Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.amnesty.org/en/latest/news/2026/04/kazakhstan-sentencing-of-19-activists-over-peaceful-xinjiang-protest-a-travesty-of-justice/",
+      "https://en.orda.kz/kazakhstan-activists-denied-permission-for-anti-vat-protests-in-three-cities-8714/",
+      "https://thediplomat.com/2026/09/kazakhstan-again-sentences-activists-for-supposed-attempt-to-seize-power/",
+      "https://www.rferl.org/a/astana-nuclear-kazakh/33148851.html",
+      "https://www.yerepouni-news.com/kazakhstan-anti-china-demonstrators-face-long-prison-terms-after-fiery-protest/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Xinjiang solidarity and anti-VAT candidates returned; permits/convictions do not establish current activity. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KW",
+    "query": "News reporting on protests, strikes or demonstrations in Kuwait (KW) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:23.987Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.voiceofemirates.com/en/business/oil-and-gas/2026/03/20/for-the-second-time-in-24-hours-protests-target-the-mina-al-ahmadi-refinery-and-kuwaiti-air-defenses-are-on-high-alert/",
+      "https://www.arabtimesonline.com/news/kuwait-labor-authority-takes-action-against-fuel-company-over-workers-protest-in-al-abdali/",
+      "https://www.arabtimesonline.com/news/employer-company-officials-referred-to-cid-over-labor-dispute-in-kuwait/",
+      "https://www.arabtimesonline.com/news/dont-buy-let-it-rot-kuwait-consumers-protest-high-fish-prices/",
+      "https://www.gulf-insider.com/kuwait-probes-worker-gathering/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Worker-gathering and consumer-boycott candidates returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KG",
+    "query": "News reporting on protests, strikes or demonstrations in Kyrgyzstan (KG) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:43.245Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://thediplomat.com/2024/12/no-rallies-in-3-years-kyrgyz-president-claims-stability-forgets-reality/",
+      "https://www.reuters.com/world/asia-pacific/kyrgyzstan-moves-purge-allies-ousted-security-chief-2026-02-12/",
+      "https://thediplomat.com/2023/12/amid-protests-kyrgyzstan-delays-new-tax-regulations/",
+      "https://akipress.com/news:921675:Bishkek_court_holds_closed_hearing_in_Social_Democrats_mass_unrest_trial/",
+      "https://akipress.com/news:920325:Court_reviews_evidence_in_Social_Democrats_mass_unrest_trial_as_defense_questions_absence_of_Kadyr_Atambaev/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Retrospectives, a 2023 tax protest and 2026 criminal proceedings returned; no bounded in-window episode verified. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "LB",
+    "query": "News reporting on protests, strikes or demonstrations in Lebanon (LB) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:46.658Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://today.lorientlejour.com/article/1549083/transport-unions-call-off-strike-public-sector-employees-hold.html",
+      "https://today.lorientlejour.com/article/1548759/unionists-and-workers-from-north-lebanon-demonstrate-in-tripoli-against-the-high-cost-of-living.html",
+      "https://apnews.com/article/lebanon-taxes-fuel-salaries-protests-5971edfb501c3aee4f508709ee702d15",
+      "https://en.annahar.com/en/350427/will-rising-fuel-prices-cripple-lebanons-land-transport-sector",
+      "https://www.aljazeera.com/features/2026/6/28/in-lebanon-framework-agreement-signed-with-israel-spurs-protest-criticism"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Transport/public-sector strikes and Beirut roadblocks returned; underlying pages not reviewed. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "MY",
+    "query": "News reporting on protests, strikes or demonstrations in Malaysia (MY) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:10:50.556Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.malaysiakini.com/news/756844",
+      "https://www.nst.com.my/news/nation/2025/10/1286022/malaysians-rally-us-embassy-demanding-release-global-sumud-flotilla",
+      "https://www.bernama.com/en/news.php?id=2474185",
+      "https://www.nst.com.my/news/nation/2025/10/1286133/ultras-malaya-march-us-embassy-light-flares-pro-palestine-rally-watch",
+      "https://www.channelnewsasia.com/asia/malaysia-global-sumud-flotilla-gaza-activists-detained-sultan-ibrahim-israel-palestine-5383831"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/thousands-rally-malaysia-call-pm-anwars-resignation-2025-07-26/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "BD",
+    "query": "News reporting on protests, strikes or demonstrations in Bangladesh (BD) in 2024, 2025 and 2026 through October 2, with dates, cities, demands and government response.",
+    "attempted_at": "2026-10-02T21:21:32.087Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.thedailystar.net/news/transport/news/indefinite-transport-strike-begins-habiganj-4287666",
+      "https://www.tbsnews.net/bangladesh/mpo-teachers-reject-5-house-allowance-raise-demand-20-1264081",
+      "https://www.aljazeera.com/news/2025/10/17/clashes-erupt-in-bangladeshs-dhaka-in-protests-over-govts-new-charter",
+      "https://www.tbsnews.net/bangladesh/police-city-officials-under-attack-during-mirpur-eviction-drive-salahuddin-cites",
+      "https://www.tbsnews.net/bangladesh/garment-workers-block-dhaka-chattogram-highway-sitakunda-over-unpaid-wages-1258126"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/why-did-bangladesh-pm-sheikh-hasina-resign-where-is-she-now-2024-08-06/",
+      "https://www.ohchr.org/sites/default/files/documents/countries/bangladesh/abuses-protests-july-august-bangladesh-infographic-1-en.pdf",
+      "https://www.reuters.com/world/asia-pacific/after-protests-bangladesh-government-formally-accept-ruling-job-quotas-2024-07-23/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Proposed episode(s) have underlying source review; review URLs include targeted follow-ups beyond the first five candidates. Present activity and full yearly recall are not established. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "CN",
+    "query": "Reliable reporting on protests or worker strikes inside mainland China, excluding Taiwan and South Korea, in 2024, 2025 and 2026 through October 2, with named mainland cities and dates.",
+    "attempted_at": "2026-10-02T21:22:56.615Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.rfa.org/english/china/2025/05/21/china-economy-workers-wage-protests/",
+      "https://www.reuters.com/business/world-at-work/with-national-holidays-approaching-chinese-workers-demand-proper-break-2026-09-29/",
+      "https://www.chinastrategy.org/2025/04/29/protests-by-unpaid-chinese-workers-spread-amid-factory-closures/",
+      "https://www.theepochtimes.com/china/factory-strikes-spread-across-china-as-workers-protest-pay-and-benefits-changes-6039750",
+      "https://www.visiontimes.com/2026/02/04/return-our-blood-and-sweat-money-protests-surge-across-china-over-unpaid-wages.html"
+    ],
+    "reviewed_urls": [
+      "https://www.reuters.com/world/asia-pacific/signs-rare-unrest-among-north-korean-workers-china-researchers-say-2024-02-08/"
+    ],
+    "note": "Initial country-specific historical screen, not exhaustive. Initial results included Taiwan and South Korea mismatches. Disambiguation found mainland worker candidates. Helong report reviewed: researchers claimed January 2024 protests but Reuters could not independently confirm them; excluded from proposed events. English query; result metadata was checked for geography/date collisions where evident."
+  },
+  {
+    "code": "KP",
+    "query": "Reliable reporting about public protests or collective strikes occurring inside North Korea, the Democratic People's Republic of Korea, not South Korea or demonstrations abroad, in 2024, 2025 and 2026 through October 2.",
+    "attempted_at": "2026-10-02T21:23:02.789Z",
+    "provider": "Exa",
+    "status": "searched",
+    "result_count": 5,
+    "candidate_urls": [
+      "https://www.dailynk.com/english/north-korean-workers-walk-out-on-kim-jong-uns-new-years-speech-demanding-more-sacrifice/",
+      "https://www.reuters.com/world/asia-pacific/signs-rare-unrest-among-north-korean-workers-china-researchers-say-2024-02-08/",
+      "https://www.dailynk.com/english/north-korea-workers-complain-receiving-meager-rations-workers-party-anniversary/",
+      "https://en.wikipedia.org/wiki/2024_Helong_North_Korean_migrant_workers_unrest",
+      "https://thepressunited.com/news/north-korea-arrests-factory-workers-for-diverting-goods-to-markets/"
+    ],
+    "reviewed_urls": [],
+    "note": "Initial country-specific historical screen, not exhaustive. Initial official-name query produced South Korea mismatches. Follow-up returned walk-out claims and North Korean workers in China; no independently verified episode inside North Korea established. English query; result metadata was checked for geography/date collisions where evident."
+  }
+]

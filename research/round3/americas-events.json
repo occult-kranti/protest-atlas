@@ -1,0 +1,1429 @@
+[
+  {
+    "id": "ca-postal-strike-2024",
+    "title": "Postal strike and imposed return to work",
+    "country": "CA",
+    "country_name": "Canada",
+    "region": "Americas",
+    "location": {
+      "label": "Canada; Mississauga picketing",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labour rights",
+      "Pay"
+    ],
+    "start_date": "2024-11-15",
+    "start_date_precision": "day",
+    "end_date": "2024-12-17",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:23:44.808Z",
+    "last_observed_at": "2024-12-18",
+    "summary": "Canada Post workers' national stoppage was ordered to end after the labour board found bargaining at an impasse.",
+    "positions": [
+      {
+        "actor": "Canadian Union of Postal Workers",
+        "stance": "support",
+        "target": "New collective agreements",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "ca-postal-strike-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "National postal operations stopped.",
+      "violence": "Unknown",
+      "source_ids": [
+        "ca-postal-strike-2024-s1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Labour board ordered a return to work.",
+        "attribution": "Reuters reporting",
+        "source_ids": [
+          "ca-postal-strike-2024-s1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ca-postal-strike-2024-s1",
+        "url": "https://www.reuters.com/world/americas/canada-post-workers-strike-end-after-labor-board-ruling-2024-12-16/",
+        "title": "Canada Post workers strike to end after labor board ruling",
+        "publisher": "Reuters",
+        "published_at": "2024-12-16",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      },
+      {
+        "id": "ca-postal-strike-2024-s2",
+        "url": "https://www.canadapost-postescanada.ca/cpc/en/our-company/news-and-media/corporate-news/negotiations/2024-12-16-cupw-negotiations-postal-operations-to-resume-on-tuesday-december-17-following-cirb-ruling",
+        "title": "Postal operations to resume on December 17 following CIRB ruling",
+        "publisher": "Canada Post",
+        "published_at": "2024-12-16",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      },
+      {
+        "id": "ca-postal-strike-2024-s3",
+        "url": "https://www.canadapost-postescanada.ca/cpc/en/our-company/news-and-media/corporate-news/negotiations/2024-12-18-operations-update-accepting-parcels-and-mail-starting-december-19",
+        "title": "Operations update: Accepting parcels and mail starting December 19",
+        "publisher": "Canada Post",
+        "published_at": "2024-12-18",
+        "accessed_at": "2026-10-02T21:21:14.198Z"
+      },
+      {
+        "id": "ca-postal-strike-2024-s4",
+        "url": "https://www.cbc.ca/news/canada/british-columbia/canada-post-workers-to-return-tuesday-1.7411292",
+        "title": "Canada Post says workers to return Tuesday after labour board ruling",
+        "publisher": "The Canadian Press via CBC News",
+        "published_at": "2024-12-15",
+        "accessed_at": "2026-10-02T21:23:44.808Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human sign-off. Reuters and Canadian Press accounts plus employer statements. Employer confirms restart December 18; interim-pay details are attributed."
+    },
+    "timeline": [
+      {
+        "date": "2024-11-15",
+        "text": "Picketing documented in Mississauga.",
+        "source_ids": [
+          "ca-postal-strike-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-12-17",
+        "text": "Mandated resumption date.",
+        "source_ids": [
+          "ca-postal-strike-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-12-18",
+        "text": "Employer confirmed network fully operational and mail delivery restarted.",
+        "source_ids": [
+          "ca-postal-strike-2024-s3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "br-federal-education-strike-2024",
+    "title": "Federal education strike and pay agreement",
+    "country": "BR",
+    "country_name": "Brazil",
+    "region": "Americas",
+    "location": {
+      "label": "Brazil",
+      "precision": "country"
+    },
+    "issues": [
+      "Education",
+      "Pay"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:16:01.603Z",
+    "last_observed_at": "2024-06-27",
+    "summary": "Federal education unions signed an agreement with government following their strike over pay and career conditions.",
+    "positions": [
+      {
+        "actor": "ANDES-SN, Sinasefe and Fasubra",
+        "stance": "support",
+        "target": "Improved pay and career conditions",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "br-federal-education-strike-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "br-federal-education-strike-2024-s1",
+        "url": "https://www.andes.org.br/conteudos/noticia/aNDES-sN-assina-acordo-com-governo-apos-determinacao-das-bases1",
+        "title": "ANDES-SN assina acordo com governo após determinação das bases",
+        "publisher": "ANDES-SN",
+        "published_at": "2024-06-27",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Primary union source has bargaining incentives; implementation not independently evaluated."
+    },
+    "timeline": [
+      {
+        "date": "2024-06-27",
+        "text": "Unions signed the negotiated agreement.",
+        "source_ids": [
+          "br-federal-education-strike-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mx-judges-strike-2024",
+    "title": "Judicial strike and contested return to work",
+    "country": "MX",
+    "country_name": "Mexico",
+    "region": "Americas",
+    "location": {
+      "label": "Mexico",
+      "precision": "country"
+    },
+    "issues": [
+      "Judicial independence",
+      "Labour rights"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:21:14.198Z",
+    "last_observed_at": "2024-10-15",
+    "summary": "Judges voted for work resumption, but judicial employees continued opposing reform and refused the planned October 16 return.",
+    "positions": [
+      {
+        "actor": "Federal judges and magistrates",
+        "stance": "oppose",
+        "target": "Judicial reform",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "mx-judges-strike-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "mx-judges-strike-2024-s1",
+        "url": "https://www.jurist.org/news/2024/10/mexico-judges-end-strike-and-vow-job-action-against-judicial-reforms/",
+        "title": "Mexico judges end strike and vow job action against judicial reforms",
+        "publisher": "JURIST",
+        "published_at": "2024-10-14",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      },
+      {
+        "id": "mx-judges-strike-2024-s2",
+        "url": "https://www.excelsior.com.mx/nacional/trabajadores-del-pjf-acuerdan-fin-de-paro-asumiran-otra-modalidad-de-protesta/1678805",
+        "title": "Trabajadores del PJF acuerdan fin de paro; asumirán otra modalidad de protesta",
+        "publisher": "Excélsior",
+        "published_at": "2024-10-13",
+        "accessed_at": "2026-10-02T21:21:14.198Z"
+      },
+      {
+        "id": "mx-judges-strike-2024-s3",
+        "url": "https://www.jornada.com.mx/2024/10/16/politica/008n1pol",
+        "title": "Rechazan trabajadores de tribunales y juzgados federales retomar labores",
+        "publisher": "La Jornada",
+        "published_at": "2024-10-16",
+        "accessed_at": "2026-10-02T21:21:14.198Z"
+      }
+    ],
+    "verification": {
+      "level": "contested",
+      "note": "AI-assisted, no human editorial sign-off. JURIST's end date conflicts with local reporting of a planned October 16 return and continued worker stoppage; actual unified cessation unestablished."
+    },
+    "timeline": [
+      {
+        "date": "2024-09-16",
+        "text": "Reform entered into force.",
+        "source_ids": [
+          "mx-judges-strike-2024-s2"
+        ]
+      },
+      {
+        "date": "2024-10-15",
+        "text": "Judicial workers protested and announced continuing their stoppage.",
+        "source_ids": [
+          "mx-judges-strike-2024-s3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pa-banana-strike-2025",
+    "title": "Banana workers seek pension protections",
+    "country": "PA",
+    "country_name": "Panama",
+    "region": "Americas",
+    "location": {
+      "label": "Bocas del Toro province; Changuinola talks",
+      "precision": "region"
+    },
+    "issues": [
+      "Pensions",
+      "Labour rights"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:16:01.603Z",
+    "last_observed_at": "2025-06-11",
+    "summary": "SITRAIBANA struck over pension changes; June talks produced legislative commitments while employment after Chiquita's closure remained unsettled.",
+    "positions": [
+      {
+        "actor": "SITRAIBANA banana workers",
+        "stance": "support",
+        "target": "Restoration of pension protections",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "pa-banana-strike-2025-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Roadblocks obstructed banana exports.",
+      "violence": "Unknown",
+      "source_ids": [
+        "pa-banana-strike-2025-s1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "pa-banana-strike-2025-s1",
+        "url": "https://www.bananalink.org.uk/news/panama-banana-workers-union-government-talks-bring-agreement-to-end-chiquita-strike/",
+        "title": "Union-government talks bring agreement to end Chiquita strike",
+        "publisher": "Banana Link",
+        "published_at": "2025-06-12",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Labour-rights advocacy source; commitments are not represented as enacted benefits."
+    },
+    "timeline": [
+      {
+        "date": "2025-06-11",
+        "text": "Assembly leader announced agreement with SITRAIBANA.",
+        "source_ids": [
+          "pa-banana-strike-2025-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ec-diesel-subsidy-strike-2025",
+    "title": "Indigenous national strike over diesel subsidies",
+    "country": "EC",
+    "country_name": "Ecuador",
+    "region": "Americas",
+    "location": {
+      "label": "Quito and Imbabura",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Fuel prices",
+      "Indigenous rights"
+    ],
+    "start_date": "2025-09-18",
+    "start_date_precision": "day",
+    "end_date": "2025-10-22",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:16:01.603Z",
+    "last_observed_at": "2025-10-22",
+    "summary": "CONAIE opposed diesel-subsidy removal and ended highway-blocking protests after a threat of military clearance.",
+    "positions": [
+      {
+        "actor": "Confederation of Indigenous Nationalities of Ecuador",
+        "stance": "oppose",
+        "target": "Diesel subsidy removal",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Highway blockades impeded traffic.",
+      "violence": "HRW documented excessive force; some protesters also engaged in violence.",
+      "source_ids": [
+        "ec-diesel-subsidy-strike-2025-s2"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government declared emergencies and deployed military forces.",
+        "attribution": "Associated Press reporting",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ec-diesel-subsidy-strike-2025-s1",
+        "url": "https://apnews.com/article/ecuador-indigenous-protests-diesel-noboa-subsidy-521777333a079090e8dee4698fc0ca70",
+        "title": "Indigenous alliance ends highway-blocking protests after military threat",
+        "publisher": "Associated Press",
+        "published_at": "2025-10-22",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      },
+      {
+        "id": "ec-diesel-subsidy-strike-2025-s2",
+        "url": "https://www.hrw.org/news/2025/10/21/ecuador-abusive-response-to-protests",
+        "title": "Ecuador: Abusive Response to Protests",
+        "publisher": "Human Rights Watch",
+        "published_at": "2025-10-21",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. AP ending report plus HRW investigation, which has rights-monitoring incentives."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-18",
+        "text": "CONAIE announced national strike.",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s2"
+        ]
+      },
+      {
+        "date": "2025-10-22",
+        "text": "CONAIE announced protest termination.",
+        "source_ids": [
+          "ec-diesel-subsidy-strike-2025-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gy-teachers-pay-strikes-2024",
+    "title": "Teachers' strikes and multi-year settlement",
+    "country": "GY",
+    "country_name": "Guyana",
+    "region": "Americas",
+    "location": {
+      "label": "Guyana",
+      "precision": "country"
+    },
+    "issues": [
+      "Pay",
+      "Education"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": "2024-06-21",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:16:01.603Z",
+    "last_observed_at": "2024-08-21",
+    "summary": "Teachers ended their stoppage by agreement; GTU and the ministry later signed a 2024–2026 pay and benefits deal.",
+    "positions": [
+      {
+        "actor": "Guyana Teachers’ Union",
+        "stance": "support",
+        "target": "Multi-year pay and benefits agreement",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "gy-teachers-pay-strikes-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "gy-teachers-pay-strikes-2024-s1",
+        "url": "https://newsroom.gy/2024/06/21/teachers-back-to-work-govt-union-maintain-positions-for-multi-year-agreement/",
+        "title": "Teachers back to work: multi-year agreement negotiations",
+        "publisher": "News Room Guyana",
+        "published_at": "2024-06-21",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      },
+      {
+        "id": "gy-teachers-pay-strikes-2024-s2",
+        "url": "https://www.stabroeknews.com/2024/08/21/news/guyana/education-ministry-gtusign-deal-for-2024-26/",
+        "title": "Education Ministry, GTU sign deal for 2024-26",
+        "publisher": "Stabroek News",
+        "published_at": "2024-08-21",
+        "accessed_at": "2026-10-02T21:16:01.603Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Stabroek reproduces union statement and presidential figures; implementation unaudited."
+    },
+    "timeline": [
+      {
+        "date": "2024-06-21",
+        "text": "Union and ministry agreed to end strike.",
+        "source_ids": [
+          "gy-teachers-pay-strikes-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-08-21",
+        "text": "Signed multi-year deal.",
+        "source_ids": [
+          "gy-teachers-pay-strikes-2024-s2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "us-port-strike-2024",
+    "title": "East and Gulf Coast dockworkers' strike",
+    "country": "US",
+    "country_name": "United States of America",
+    "region": "Americas",
+    "location": {
+      "label": "East and Gulf Coast ports; Portsmouth documented",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Pay",
+      "Automation",
+      "Labour rights"
+    ],
+    "start_date": "2024-10-01",
+    "start_date_precision": "day",
+    "end_date": "2024-10-03",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2024-10-04",
+    "summary": "ILA dockworkers suspended their three-day stoppage after a tentative wage deal; ports reopened October 4.",
+    "positions": [
+      {
+        "actor": "International Longshoremen’s Association",
+        "stance": "support",
+        "target": "Higher wages and protections against automation",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Shipping stopped at 36 ports.",
+      "violence": "Unknown",
+      "source_ids": [
+        "us-port-strike-2024-s1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "us-port-strike-2024-s1",
+        "url": "https://www.reuters.com/world/us/us-port-strike-ends-clearing-long-ship-queues-will-take-time-2024-10-04/",
+        "title": "US port strike ends, leaving cargo backlog",
+        "publisher": "Reuters",
+        "published_at": "2024-10-04",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Tentative terms, not final ratified settlement; numerical membership is not rally turnout."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-01",
+        "text": "Stoppage began.",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-10-03",
+        "text": "Tentative agreement suspended strike.",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-10-04",
+        "text": "Ports reopened.",
+        "source_ids": [
+          "us-port-strike-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cu-santiago-shortages-protests-2024",
+    "title": "Food and power protests in Santiago",
+    "country": "CU",
+    "country_name": "Cuba",
+    "region": "Americas",
+    "location": {
+      "label": "Santiago de Cuba",
+      "precision": "city"
+    },
+    "issues": [
+      "Electricity",
+      "Food access"
+    ],
+    "start_date": "2024-03-17",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2024-03-17",
+    "summary": "Residents demonstrated over prolonged power blackouts and food shortages.",
+    "positions": [
+      {
+        "actor": "Santiago demonstrators",
+        "stance": "support",
+        "target": "Electricity and food supply",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "cu-santiago-shortages-protests-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "cu-santiago-shortages-protests-2024-s1",
+        "url": "https://www.bbc.com/news/world-latin-america-68595885",
+        "title": "Cubans stage rare street protest over power blackouts",
+        "publisher": "BBC News",
+        "published_at": "2024-03-18",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. BBC cites AFP resident account for relief; no causal or lasting concession inferred."
+    },
+    "timeline": [
+      {
+        "date": "2024-03-17",
+        "text": "Residents protested shortages.",
+        "source_ids": [
+          "cu-santiago-shortages-protests-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ve-election-protests-2024",
+    "title": "Protests over disputed presidential result",
+    "country": "VE",
+    "country_name": "Venezuela, Bolivarian Republic of",
+    "region": "Americas",
+    "location": {
+      "label": "Venezuela, Bolivarian Republic of",
+      "precision": "city"
+    },
+    "issues": [
+      "Elections",
+      "Government accountability"
+    ],
+    "start_date": "2024-07-29",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2024-07-30",
+    "summary": "Thousands protested Maduro's claimed election victory; opposition disputed the result and security forces dispersed crowds.",
+    "positions": [
+      {
+        "actor": "Election-result demonstrators",
+        "stance": "oppose",
+        "target": "Official presidential election result",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "ve-election-protests-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Clashes and burning objects reported.",
+      "source_ids": [
+        "ve-election-protests-2024-s1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Police used tear gas and rubber bullets.",
+        "attribution": "BBC News reporting",
+        "source_ids": [
+          "ve-election-protests-2024-s1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ve-election-protests-2024-s1",
+        "url": "https://www.bbc.com/news/articles/cw5yze5k500o",
+        "title": "Venezuelans clash with police after disputed election result",
+        "publisher": "BBC News",
+        "published_at": "2024-07-30",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Election fraud is the opposition's claim; detentions' exact dates are unspecified."
+    },
+    "timeline": [
+      {
+        "date": "2024-07-29",
+        "text": "Crowds demonstrated in Caracas.",
+        "source_ids": [
+          "ve-election-protests-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pe-lima-transport-security-strike-2024",
+    "title": "Transport strike demanding security",
+    "country": "PE",
+    "country_name": "Peru",
+    "region": "Americas",
+    "location": {
+      "label": "Peru",
+      "precision": "city"
+    },
+    "issues": [
+      "Public safety",
+      "Extortion"
+    ],
+    "start_date": "2024-10-23",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2024-10-23",
+    "summary": "Bus drivers struck over extortion and attacks; markets also closed in solidarity.",
+    "positions": [
+      {
+        "actor": "Transport unions and supporting market workers",
+        "stance": "support",
+        "target": "Protection from criminal attacks",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "pe-lima-transport-security-strike-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Bus services and commuting disrupted.",
+      "violence": "Unknown",
+      "source_ids": [
+        "pe-lima-transport-security-strike-2024-s1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Soldiers deployed; in-person school classes closed.",
+        "attribution": "Reuters reporting",
+        "source_ids": [
+          "pe-lima-transport-security-strike-2024-s1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "pe-lima-transport-security-strike-2024-s1",
+        "url": "https://www.reuters.com/world/americas/peru-bus-drivers-strike-disrupts-lima-amid-rising-crime-concerns-2024-10-23/",
+        "title": "Peru bus drivers strike disrupts Lima amid rising crime concerns",
+        "publisher": "Reuters",
+        "published_at": "2024-10-23",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. President promised arrests, but no implemented security improvement established."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-23",
+        "text": "Drivers struck demanding action on insecurity.",
+        "source_ids": [
+          "pe-lima-transport-security-strike-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ar-labor-reform-protests-2026",
+    "title": "Union opposition to labour reform",
+    "country": "AR",
+    "country_name": "Argentina",
+    "region": "Americas",
+    "location": {
+      "label": "Argentina",
+      "precision": "city"
+    },
+    "issues": [
+      "Labour rights",
+      "Collective bargaining"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2026-02-27",
+    "summary": "Unions and opposition groups protested outside Congress as lawmakers approved Milei's labour reform.",
+    "positions": [
+      {
+        "actor": "Union and opposition demonstrators",
+        "stance": "oppose",
+        "target": "Government labour reform",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "ar-labor-reform-protests-2026-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Police-protester clashes reported.",
+      "source_ids": [
+        "ar-labor-reform-protests-2026-s1"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "At least three arrests reported.",
+        "attribution": "Associated Press reporting",
+        "source_ids": [
+          "ar-labor-reform-protests-2026-s1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ar-labor-reform-protests-2026-s1",
+        "url": "https://apnews.com/article/argentina-milei-labor-reform-protests-4746f019e02ad8eb2dd4355a2b4beb99",
+        "title": "Argentine lawmakers approve historic labor reform",
+        "publisher": "Associated Press",
+        "published_at": "2026-02-27",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Legislative passage does not establish protest cessation."
+    },
+    "timeline": [
+      {
+        "date": "2026-02-27",
+        "text": "Senate passed reform amid protests.",
+        "source_ids": [
+          "ar-labor-reform-protests-2026-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "co-labor-referendum-strike-2025",
+    "title": "Union strike backing labour reform referendum",
+    "country": "CO",
+    "country_name": "Colombia",
+    "region": "Americas",
+    "location": {
+      "label": "Colombia",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Labour rights",
+      "Referendum"
+    ],
+    "start_date": "2025-05-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2025-06-20",
+    "summary": "Unions began a 48-hour strike backing Petro's labour referendum; Congress subsequently approved a negotiated labour-reform text.",
+    "positions": [
+      {
+        "actor": "Pro-reform labour unions",
+        "stance": "support",
+        "target": "Labour rights reform and referendum",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Bogotá bus lanes blocked.",
+      "violence": "Unknown",
+      "source_ids": [
+        "co-labor-referendum-strike-2025-s1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "co-labor-referendum-strike-2025-s1",
+        "url": "https://apnews.com/article/colombia-president-petro-labor-reform-referendum-congress-d11ec381d5e47a2c005c5bc3369ce6cf",
+        "title": "Colombia’s labor unions participate in 48-hour strike",
+        "publisher": "Associated Press",
+        "published_at": "2025-05-28",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      },
+      {
+        "id": "co-labor-referendum-strike-2025-s2",
+        "url": "https://www.senado.gov.co/index.php/el-senado/noticias/6576-reforma-laboral-a-sancion-presidencial",
+        "title": "Reforma laboral a sanción presidencial",
+        "publisher": "Senate of Colombia",
+        "published_at": "2025-06-20",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Senate source describes its own legislative work; no claim that a referendum actually occurred."
+    },
+    "timeline": [
+      {
+        "date": "2025-05-28",
+        "text": "Unions began strike backing referendum.",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s1"
+        ]
+      },
+      {
+        "date": "2025-06-20",
+        "text": "Congress approved reconciled reform text.",
+        "source_ids": [
+          "co-labor-referendum-strike-2025-s2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "do-romero-mine-protests-2026",
+    "title": "Protests over Romero mine and water protection",
+    "country": "DO",
+    "country_name": "Dominican Republic",
+    "region": "Americas",
+    "location": {
+      "label": "San Juan province",
+      "precision": "region"
+    },
+    "issues": [
+      "Water",
+      "Environment",
+      "Mining"
+    ],
+    "start_date": "2026-05-03",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2026-05-04",
+    "summary": "Residents protested possible water pollution from the Romero mine; the president suspended related activity.",
+    "positions": [
+      {
+        "actor": "San Juan water-protection movement",
+        "stance": "oppose",
+        "target": "Romero mining project",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "do-romero-mine-protests-2026-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "do-romero-mine-protests-2026-s1",
+        "url": "https://www.reuters.com/world/dominican-republic-president-halts-goldquest-mining-project-after-protests-2026-05-05/",
+        "title": "Dominican Republic president halts GoldQuest mining project after protests",
+        "publisher": "Reuters",
+        "published_at": "2026-05-05",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. Suspension is neither permanent cancellation nor proof protests ended."
+    },
+    "timeline": [
+      {
+        "date": "2026-05-03",
+        "text": "Residents protested environmental concerns.",
+        "source_ids": [
+          "do-romero-mine-protests-2026-s1"
+        ]
+      },
+      {
+        "date": "2026-05-04",
+        "text": "President suspended project activity.",
+        "source_ids": [
+          "do-romero-mine-protests-2026-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gl-self-determination-rally-2026",
+    "title": "Nuuk rally against US takeover demand",
+    "country": "GL",
+    "country_name": "Greenland",
+    "region": "Americas",
+    "location": {
+      "label": "Greenland",
+      "precision": "city"
+    },
+    "issues": [
+      "Self-determination",
+      "Territorial sovereignty"
+    ],
+    "start_date": "2026-01-17",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2026-01-17",
+    "summary": "Demonstrators in Nuuk, including the prime minister, opposed Trump's demand for US control and supported Greenland's own choice.",
+    "positions": [
+      {
+        "actor": "Nuuk self-determination demonstrators",
+        "stance": "oppose",
+        "target": "Proposed US takeover of Greenland",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "gl-self-determination-rally-2026-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "gl-self-determination-rally-2026-s1",
+        "url": "https://www.reuters.com/world/europe/protesters-denmark-support-greenland-after-trumps-takeover-threat-2026-01-17/",
+        "title": "Protesters rally in Denmark and Greenland against Trump annexation threat",
+        "publisher": "Reuters",
+        "published_at": "2026-01-17",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. No policy concession or broader movement ending established; Copenhagen crowd estimates are not applied to Nuuk."
+    },
+    "timeline": [
+      {
+        "date": "2026-01-17",
+        "text": "Nuuk demonstration defended self-determination.",
+        "source_ids": [
+          "gl-self-determination-rally-2026-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sx-palestine-protest-rights-2025",
+    "title": "Palestine solidarity protest and withdrawn restrictions",
+    "country": "SX",
+    "country_name": "Sint Maarten (Dutch part)",
+    "region": "Americas",
+    "location": {
+      "label": "Sint Maarten (Dutch part)",
+      "precision": "country"
+    },
+    "issues": [
+      "Palestine solidarity",
+      "Assembly rights"
+    ],
+    "start_date": "2025-01-10",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2025-03-14",
+    "summary": "Organizers held a peaceful Palestine solidarity demonstration and challenged imposed restrictions; the minister subsequently withdrew them.",
+    "positions": [
+      {
+        "actor": "SXM in Solidarity with Palestine",
+        "stance": "support",
+        "target": "Palestine solidarity and lawful protest conditions",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "sx-palestine-protest-rights-2025-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Legal representatives described the demonstration as peaceful.",
+      "source_ids": [
+        "sx-palestine-protest-rights-2025-s1"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "sx-palestine-protest-rights-2025-s1",
+        "url": "https://pilp.nu/en/sxm-in-solidarity-with-palestine-vindicated-minister-withdraws-conditions-that-were-imposed-on-the-peaceful-demonstration-held-on-january-10th-2025/",
+        "title": "New case won in Sint Maarten: Minister lifts conditions on peaceful protest",
+        "publisher": "PILP",
+        "published_at": "2025-03-14",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. PILP represented organizers and has litigation incentives; exact withdrawal date and protest city were not supplied."
+    },
+    "timeline": [
+      {
+        "date": "2025-01-10",
+        "text": "Demonstration held under contested conditions.",
+        "source_ids": [
+          "sx-palestine-protest-rights-2025-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sv-public-sector-budget-march-2024",
+    "title": "Public-sector march opposing budget cuts",
+    "country": "SV",
+    "country_name": "El Salvador",
+    "region": "Americas",
+    "location": {
+      "label": "El Salvador",
+      "precision": "country"
+    },
+    "issues": [
+      "Public services",
+      "Labour rights",
+      "Budget cuts"
+    ],
+    "start_date": "2024-10-19",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2024-11-01",
+    "summary": "Workers marched against proposed education and health cuts; solidarity organization CISPES reported subsequent dismissals.",
+    "positions": [
+      {
+        "actor": "Teachers, healthcare and public-sector unions",
+        "stance": "oppose",
+        "target": "2025 budget cuts and job eliminations",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "sv-public-sector-budget-march-2024-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "sv-public-sector-budget-march-2024-s1",
+        "url": "https://cispes.org/article/wave-retaliation-follows-public-sector-union-march-against-budget-cuts?language=en",
+        "title": "Wave of Retaliation Follows Public Sector Union March Against Budget Cuts",
+        "publisher": "CISPES",
+        "published_at": "2024-11-01",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. CISPES is a solidarity advocate relying partly on union testimony; individual layoff causes and full count not independently verified."
+    },
+    "timeline": [
+      {
+        "date": "2024-10-19",
+        "text": "Public-sector workers marched against proposed austerity.",
+        "source_ids": [
+          "sv-public-sector-budget-march-2024-s1"
+        ]
+      },
+      {
+        "date": "2024-10-21",
+        "text": "Teachers' union secretary-general dismissed, according to CISPES.",
+        "source_ids": [
+          "sv-public-sector-budget-march-2024-s1"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ht-textile-minimum-wage-protests-2026",
+    "title": "Textile workers demand higher minimum pay",
+    "country": "HT",
+    "country_name": "Haiti",
+    "region": "Americas",
+    "location": {
+      "label": "Port-au-Prince and Ouanaminthe",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Pay",
+      "Cost of living"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2026-05-08",
+    "summary": "Textile workers protested living costs. Ouanaminthe workers rejected a government wage rise and continued their stoppage.",
+    "positions": [
+      {
+        "actor": "Haitian textile workers and UTRACO",
+        "stance": "support",
+        "target": "Higher minimum wage",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s2"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "CODEVI activity slowed, affecting nearby livelihoods.",
+      "violence": "Unknown",
+      "source_ids": [
+        "ht-textile-minimum-wage-protests-2026-s2"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ht-textile-minimum-wage-protests-2026-s1",
+        "url": "https://www.pbs.org/newshour/world/surging-oil-prices-spark-protest-in-haiti-as-workers-demand-salary-increases",
+        "title": "Surging oil prices spark protest in Haiti as workers demand salary increases",
+        "publisher": "Associated Press via PBS",
+        "published_at": "2026-04-13",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      },
+      {
+        "id": "ht-textile-minimum-wage-protests-2026-s2",
+        "url": "https://haitiantimes.com/2026/05/08/haiti-textile-workers-striking/",
+        "title": "Haiti textile workers reject government’s modest pay raise, maintain strike",
+        "publisher": "The Haitian Times",
+        "published_at": "2026-05-08",
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. AP copy at PBS is one source, not two. Haitian Times separately reports CODEVI workers; exact joint campaign onset unestablished."
+    },
+    "timeline": [
+      {
+        "date": "2026-04-13",
+        "text": "Workers protested wages in Port-au-Prince.",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s1"
+        ]
+      },
+      {
+        "date": "2026-05-04",
+        "text": "Government announced 1,000-gourde daily minimum.",
+        "source_ids": [
+          "ht-textile-minimum-wage-protests-2026-s2"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "py-youth-accountability-protests-2025",
+    "title": "Youth-led accountability protest in Asunción",
+    "country": "PY",
+    "country_name": "Paraguay",
+    "region": "Americas",
+    "location": {
+      "label": "Paraguay",
+      "precision": "city"
+    },
+    "issues": [
+      "Corruption",
+      "Public services",
+      "Democratic accountability"
+    ],
+    "start_date": "2025-09-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:19:49.914Z",
+    "last_observed_at": "2025-09-28",
+    "summary": "Youth-led demonstrators demanded accountability and better services; arrests and reported excessive force drew institutional condemnation.",
+    "positions": [
+      {
+        "actor": "Generation Z youth activists",
+        "stance": "support",
+        "target": "Government accountability and public services",
+        "claim": "Demand attributed to the collective, not a finding of national support.",
+        "source_ids": [
+          "py-youth-accountability-protests-2025-s1"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No verified numerical estimate retained"
+      },
+      "disruption": "Unknown",
+      "violence": "Unknown",
+      "source_ids": []
+    },
+    "state_response": [
+      {
+        "action": "International IDEA reported 31 arrests and condemnation of police conduct.",
+        "attribution": "International IDEA reporting",
+        "source_ids": [
+          "py-youth-accountability-protests-2025-s1"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "py-youth-accountability-protests-2025-s1",
+        "url": "https://www.idea.int/democracytracker/report/paraguay/september-2025",
+        "title": "Paraguay — September 2025: Crackdown on youth-led protests",
+        "publisher": "International IDEA",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:19:49.914Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no human editorial sign-off. IDEA is an intergovernmental democracy monitor summarizing other records; condemnation dates and underlying documents not independently fetched."
+    },
+    "timeline": [
+      {
+        "date": "2025-09-28",
+        "text": "Youth-led protest met police crackdown.",
+        "source_ids": [
+          "py-youth-accountability-protests-2025-s1"
+        ]
+      }
+    ]
+  }
+]

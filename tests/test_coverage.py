@@ -45,11 +45,11 @@ def coverage():
 
 
 class CoverageLedgerTests(unittest.TestCase):
-    def test_repository_ledger_retains_seed_only_coverage(self):
+    def test_repository_ledger_matches_actual_source_checked_countries(self):
         data = validate_repository_coverage(ROOT, NOW)
         self.assertEqual(len(data['countries']), 249)
         checked = {row['code'] for row in data['countries'] if row['status'] == 'limited-source-check'}
-        self.assertEqual(checked, {'FR', 'IN', 'ES'})
+        self.assertEqual(checked, {e['country'] for e in load_json(ROOT / 'public/events.json')['events']})
         self.assertFalse(data['human_editorial_review'])
 
     def test_ledger_cannot_freshen_source_time_or_expand_language(self):

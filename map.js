@@ -1,3 +1,4 @@
+import {completionKind} from './history.js';
 /* Local D3 / Natural Earth map. Counts describe the index, never protest severity. */
 const WIDTH = 1000;
 const HEIGHT = 530;
@@ -46,12 +47,12 @@ async function localJSON(path) {
   return response.json();
 }
 
-export async function createWorldMap({ container, tooltip, onSelect = () => {}, onHover = () => {} }) {
+export async function createWorldMap({ container, tooltip, onSelect = () => {}, onSelectCity = () => {}, onHover = () => {} }) {
   if (!container) throw new Error('A map container is required');
   container.replaceChildren();
   let state = { events: [], countries: [], selectedCountry: '', mode: 'reported', loading: true, error: false };
   let records = new Map();
-  let svg, viewport, countries, d3, projection, path, zoom, transform;
+  let svg, viewport, countries, cityLayer, d3, projection, path, zoom, transform;
   let features = [];
   const emptyPattern = `map-no-records-${++mapInstance}`;
   let hovered = null;
@@ -75,7 +76,7 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
     if (state.loading || state.error) return state.error ? 'Published coverage unavailable' : 'Published coverage loading';
     const count = records.get(feature.properties.code)?.length ?? 0;
     if (state.mode === 'example') return count ? `${count} illustrative ${count === 1 ? 'record' : 'records'} · not real events` : 'No illustrative records';
-    return count ? `${count} source-linked ${count === 1 ? 'record' : 'records'} in this view` : 'No published records in this view';
+    return count ? `${count} source-linked ${count === 1 ? 'record' : 'records'} in this view; ${(records.get(feature.properties.code)||[]).filter(e=>e.status==='ended').length} ended or suspended episodes` : 'No published records in this view';
   }
   function showTooltip(event, feature) {
     hovered = feature;
@@ -111,6 +112,7 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
   function applyTransform(next) {
     viewport.attr('transform', next);
     transform = next;
+    scaleCities();
     svg.attr('data-zoom', next.k.toFixed(2));
     hideTooltip();
     dispatch('mapzoom', { scale: next.k, min: 1, max: 8 });
@@ -125,6 +127,7 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
     svg.attr('aria-label', `World map of ${state.mode === 'example' ? 'illustrative example records, not real events' : 'published source-linked records'}. Select a country to filter the index. Country directory provides every territory.`);
     countries
       .attr('fill', (feature) => feature.properties.code === state.selectedCountry ? COLORS.selected : (!unavailable && records.has(feature.properties.code) ? (state.mode === 'example' ? COLORS.example : COLORS.reported) : `url(#${emptyPattern})`))
+      .attr('data-completion', feature=>completionKind(records.get(feature.properties.code)||[]))
       .attr('data-has-records', (feature) => !unavailable && records.has(feature.properties.code) ? 'true' : 'false')
       .attr('data-selected', (feature) => feature.properties.code && feature.properties.code === state.selectedCountry ? 'true' : 'false')
       .attr('tabindex', (feature) => !unavailable && feature.properties.code && (records.has(feature.properties.code) || feature.properties.code === state.selectedCountry) ? 0 : null)
@@ -132,6 +135,7 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
       .attr('aria-label', (feature) => `${countryName(feature)}. ${countText(feature)}.${feature.properties.code ? ' Select country.' : ' Contextual map area.'}`)
       .attr('aria-pressed', (feature) => feature.properties.code ? String(feature.properties.code === state.selectedCountry) : null)
       .style('cursor', (feature) => feature.properties.code ? 'pointer' : 'default');
+    paintCities();
     countries.select('title').text((feature) => `${countryName(feature)} — ${countText(feature)}`);
     if (state.error) status.textContent = 'Published data unavailable. The map cannot show record coverage. Use the country directory or retry loading.';
     else if (state.loading) status.textContent = 'Loading published coverage…';
@@ -139,6 +143,36 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
     status.hidden = !status.textContent;
     container.dataset.mapState = state.error ? 'data-error' : state.loading ? 'loading' : 'ready';
     if (hovered) hideTooltip();
+  }
+  function scaleCities() {
+    if(!cityLayer)return;
+    const k=transform?.k||1;
+    cityLayer.selectAll('circle').attr('r',4.5/k);
+    cityLayer.selectAll('text').attr('y',-8/k).style('font-size',`${11/k}px`).attr('display',d=>state.selectedCountry===d.country||k>=3?null:'none');
+  }
+  function paintCities() {
+    if(!cityLayer)return;
+    const geography=new Map((state.cityGeography?.places||[]).map(c=>[c.id,c]));
+    const contexts=new Map((state.contexts?.records||[]).map(c=>[c.event_id,c]));
+    const grouped=new Map();
+    if(!state.loading&&!state.error)for(const event of state.events||[])for(const city of contexts.get(event.id)?.cities||[]){
+      const id=event.country+':'+city.name, place=geography.get(id);if(!place)continue;
+      if(!grouped.has(id))grouped.set(id,{...place,events:[]});grouped.get(id).events.push(event);
+    }
+    const select=(_,d)=>{hideTooltip();onSelectCity(d.country,d.name);};
+    const markers=cityLayer.selectAll('g').data([...grouped.values()],d=>d.id).join(enter=>{
+      const group=enter.append('g');
+      group.append('circle').attr('class','city-point').attr('role','button').attr('tabindex',0)
+        .on('click',select).on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select(event,d);}});
+      group.append('text').attr('class','city-label').attr('text-anchor','middle').attr('aria-hidden','true');
+      group.append('title');return group;
+    });
+    markers.attr('transform',d=>`translate(${projection([d.lon,d.lat])})`);
+    markers.select('circle').attr('data-city',d=>d.id).attr('data-ended',d=>String(d.events.some(e=>e.status==='ended')))
+      .attr('aria-label',d=>`${d.name}, ${d.country}. ${d.events.length} records; ${d.events.filter(e=>e.status==='ended').length} ended or suspended. Generalized city point, not a protest site. Select city.`);
+    markers.select('text').text(d=>d.name);
+    markers.select('title').text(d=>`${d.name}: ${d.events.length} source-linked records; ${d.events.filter(e=>e.status==='ended').length} ended or suspended. City reference point, not protest site.`);
+    scaleCities();
   }
   const api = {
     update(next = {}) { state = { ...state, ...next }; records = groupRecordsByCountry(state.events); paint(); },
@@ -183,6 +217,7 @@ export async function createWorldMap({ container, tooltip, onSelect = () => {}, 
       .on('keydown', (event, feature) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(feature); } else if (event.key === 'Escape') hideTooltip(); });
     countries.append('title');
     viewport.append('path').datum(topojson.mesh(topology, topology.objects.countries, (a, b) => a !== b)).attr('class', 'map-borders').attr('d', path).attr('fill', 'none').attr('stroke', COLORS.border).attr('stroke-width', 0.7).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none').attr('aria-hidden', 'true');
+    cityLayer=viewport.append('g').attr('class','map-city-points');
     zoom = d3.zoom().extent([[0, 0], [WIDTH, HEIGHT]]).translateExtent([[0, 0], [WIDTH, HEIGHT]]).scaleExtent([1, 8]).filter((event) => !event.ctrlKey && !event.button && event.type !== 'wheel').on('zoom', (event) => applyTransform(event.transform));
     svg.call(zoom).on('dblclick.zoom', null);
     transform = d3.zoomIdentity;

@@ -1,0 +1,1402 @@
+[
+  {
+    "id": "fo-workers-wage-strike-2024",
+    "title": "Workers' wage strike and negotiated settlement",
+    "country": "FO",
+    "country_name": "Faroe Islands",
+    "region": "Europe",
+    "location": {
+      "label": "Tórshavn",
+      "precision": "city"
+    },
+    "issues": [
+      "Wages",
+      "Labor rights"
+    ],
+    "start_date": "2024-05-14",
+    "start_date_precision": "day",
+    "end_date": "2024-06-09",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2024-06-09",
+    "summary": "Faroese workers struck for higher wages; five unions and employers agreed a two-year wage settlement that ended the strike.",
+    "positions": [
+      {
+        "actor": "Faroese workers' unions",
+        "stance": "support",
+        "target": "Higher wages",
+        "claim": "Unions rejected the initial offer and demanded a proper raise.",
+        "source_ids": [
+          "fo-workers-wage-strike-2024-localfo-end",
+          "fo-workers-wage-strike-2024-localfo-start"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Supply chains, cargo transport and refuse collection were affected.",
+      "violence": "unknown",
+      "source_ids": [
+        "fo-workers-wage-strike-2024-localfo-end",
+        "fo-workers-wage-strike-2024-localfo-start"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "fo-workers-wage-strike-2024-localfo-end",
+        "url": "https://local.fo/workers-strike-ends-in-agreement-on-wage-hike/",
+        "title": "Workers’ strike ends in agreement on wage hike",
+        "publisher": "Local.fo",
+        "published_at": "2024-06-10",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      },
+      {
+        "id": "fo-workers-wage-strike-2024-localfo-start",
+        "url": "https://local.fo/workers-strike-hits-faroe-islands-with-potentially-serious-implications/",
+        "title": "Workers’ strike hits Faroe Islands with potentially serious implications",
+        "publisher": "Local.fo",
+        "published_at": "2024-05-14",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Two reports from one local publisher; do not treat them as independent corroboration. End article page says June 10 although search metadata says June 9."
+    },
+    "timeline": [
+      {
+        "date": "2024-05-14",
+        "text": "Faroese workers struck for higher wages; five unions and employers agreed a two-year wage settlement that ended the strike.",
+        "source_ids": [
+          "fo-workers-wage-strike-2024-localfo-end",
+          "fo-workers-wage-strike-2024-localfo-start"
+        ]
+      },
+      {
+        "date": "2024-06-09",
+        "text": "Five unions and employers signed a two-year contract with a total hourly wage increase of DKK 16.80 over two years.",
+        "source_ids": [
+          "fo-workers-wage-strike-2024-localfo-end"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "bg-budget-protests-2025",
+    "title": "Protests against the proposed 2026 budget",
+    "country": "BG",
+    "country_name": "Bulgaria",
+    "region": "Europe",
+    "location": {
+      "label": "Sofia, Plovdiv, Varna, Burgas, Blagoevgrad",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Taxes",
+      "Government accountability"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2025-12-02",
+    "summary": "Demonstrators opposed proposed tax and contribution increases and alleged corruption; the government withdrew its draft budget.",
+    "positions": [
+      {
+        "actor": "Budget demonstrators",
+        "stance": "support",
+        "target": "Withdrawal of proposed tax and contribution increases",
+        "claim": "Protesters opposed the draft budget and called for accountability.",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Mass rallies; clashes in Sofia.",
+      "violence": "Masked protesters attacked party offices; police arrests were reported.",
+      "source_ids": [
+        "bg-budget-protests-2025-bbc"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government announced withdrawal of its draft budget proposals and a new budget procedure.",
+        "attribution": "Reported in the cited article.",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "bg-budget-protests-2025-bbc",
+        "url": "https://www.bbc.com/news/articles/cjezwzw088jo",
+        "title": "Bulgaria ditches budget plan after tens of thousands join protests",
+        "publisher": "BBC News",
+        "published_at": "2025-12-02",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. BBC article includes wire material and named official statements. No later outcome or protest cessation inferred."
+    },
+    "timeline": [
+      {
+        "date": "2025-12-02",
+        "text": "Dated report documents this mobilisation; precise onset remains unknown.",
+        "source_ids": [
+          "bg-budget-protests-2025-bbc"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ad-housing-rally-2025",
+    "title": "Housing affordability demonstration in Andorra la Vella",
+    "country": "AD",
+    "country_name": "Andorra",
+    "region": "Europe",
+    "location": {
+      "label": "Andorra la Vella",
+      "precision": "city"
+    },
+    "issues": [
+      "Housing"
+    ],
+    "start_date": "2025-04-05",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2025-04-05",
+    "summary": "Residents demonstrated in Andorra la Vella seeking solutions to rising housing prices.",
+    "positions": [
+      {
+        "actor": "Housing demonstrators",
+        "stance": "support",
+        "target": "Affordable housing",
+        "claim": "Demonstrators demanded solutions to increased housing prices.",
+        "source_ids": [
+          "ad-housing-rally-2025-civicus"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "A street demonstration was reported.",
+      "violence": "unknown",
+      "source_ids": [
+        "ad-housing-rally-2025-civicus"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ad-housing-rally-2025-civicus",
+        "url": "https://monitor.civicus.org/explore/protest-for-decent-housing/",
+        "title": "Protest for decent housing",
+        "publisher": "CIVICUS Monitor",
+        "published_at": "2025-04-23",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Rights-monitoring synthesis has a civic-space advocacy perspective and links local reporting; police and organiser turnout estimates differ, so no numerical estimate is adopted."
+    },
+    "timeline": [
+      {
+        "date": "2025-04-05",
+        "text": "Residents demonstrated in Andorra la Vella seeking solutions to rising housing prices.",
+        "source_ids": [
+          "ad-housing-rally-2025-civicus"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ba-flood-accountability-2025",
+    "title": "Students seek accountability after deadly floods",
+    "country": "BA",
+    "country_name": "Bosnia and Herzegovina",
+    "region": "Europe",
+    "location": {
+      "label": "Sarajevo",
+      "precision": "city"
+    },
+    "issues": [
+      "Government accountability",
+      "Disaster response"
+    ],
+    "start_date": "2025-02-10",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2025-02-10",
+    "summary": "Students in Sarajevo demanded accountability and transparent reconstruction after deadly October 2024 floods.",
+    "positions": [
+      {
+        "actor": "Sarajevo student demonstrators",
+        "stance": "support",
+        "target": "Flood accountability and reconstruction",
+        "claim": "Students called for responsibility and transparency.",
+        "source_ids": [
+          "ba-flood-accountability-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "unknown",
+      "violence": "unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "ba-flood-accountability-2025-reuters",
+        "url": "https://www.reuters.com/world/europe/bosnian-students-protest-government-inaction-after-deadly-floods-2025-02-10/",
+        "title": "Bosnian students protest government inaction after deadly floods",
+        "publisher": "Reuters",
+        "published_at": "2025-02-10",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Reuters body reviewed using web fallback after Exa extraction truncated. No subsequent concession established."
+    },
+    "timeline": [
+      {
+        "date": "2025-02-10",
+        "text": "Students in Sarajevo demanded accountability and transparent reconstruction after deadly October 2024 floods.",
+        "source_ids": [
+          "ba-flood-accountability-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gr-tempe-accountability-2025",
+    "title": "Rail-disaster accountability demonstrations",
+    "country": "GR",
+    "country_name": "Greece",
+    "region": "Europe",
+    "location": {
+      "label": "Athens, Thessaloniki",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Government accountability",
+      "Transport safety"
+    ],
+    "start_date": "2025-02-28",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2025-02-28",
+    "summary": "Unions and victims' relatives mobilised for accountability on the Tempe rail disaster's second anniversary.",
+    "positions": [
+      {
+        "actor": "Victims' relatives and unions",
+        "stance": "support",
+        "target": "Rail-disaster accountability",
+        "claim": "Demonstrators sought justice and safer railways.",
+        "source_ids": [
+          "gr-tempe-accountability-2025-ap"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Flights, trains and ferries were halted.",
+      "violence": "Clashes with riot police were reported.",
+      "source_ids": [
+        "gr-tempe-accountability-2025-ap"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Police used tear gas and water cannon.",
+        "attribution": "Reported in the cited article.",
+        "source_ids": [
+          "gr-tempe-accountability-2025-ap"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "gr-tempe-accountability-2025-ap",
+        "url": "https://apnews.com/article/greece-tempe-rail-disaster-strike-d9996948371c5ec703d27006ae23db9b",
+        "title": "Violent protests in Greece on rail crash anniversary as frustration at system failures boils over",
+        "publisher": "Associated Press",
+        "published_at": "2025-02-28",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. AP article body read via fallback. No durable outcome established."
+    },
+    "timeline": [
+      {
+        "date": "2025-02-28",
+        "text": "Unions and victims' relatives mobilised for accountability on the Tempe rail disaster's second anniversary.",
+        "source_ids": [
+          "gr-tempe-accountability-2025-ap"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "hu-pride-ban-protests-2025",
+    "title": "Demonstrations opposing the Pride ban",
+    "country": "HU",
+    "country_name": "Hungary",
+    "region": "Europe",
+    "location": {
+      "label": "Budapest, Miskolc",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "LGBTQ rights",
+      "Freedom of assembly"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:22:16.463761Z",
+    "last_observed_at": "2025-04-08",
+    "summary": "Demonstrators opposed Hungary's March 2025 law restricting Pride events.",
+    "positions": [
+      {
+        "actor": "Pride-ban opponents",
+        "stance": "support",
+        "target": "Withdrawal of the Pride ban",
+        "claim": "Protesters demanded withdrawal of the law.",
+        "source_ids": [
+          "hu-pride-ban-protests-2025-ap"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Bridge traffic was blocked.",
+      "violence": "unknown",
+      "source_ids": [
+        "hu-pride-ban-protests-2025-ap"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "hu-pride-ban-protests-2025-ap",
+        "url": "https://apnews.com/article/hungary-protests-against-lgbtq-pride-ban-3ea6e7b74008ff472780468319dbe49a",
+        "title": "Protesters rally for the fourth week against Hungary’s law banning LGBTQ+ Pride events",
+        "publisher": "Associated Press",
+        "published_at": "2025-04-08",
+        "accessed_at": "2026-10-02T21:22:16.463761Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. AP body read via fallback. No repeal established."
+    },
+    "timeline": [
+      {
+        "date": "2025-04-08",
+        "text": "Dated report documents this mobilisation; precise onset remains unknown.",
+        "source_ids": [
+          "hu-pride-ban-protests-2025-ap"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fr-farmers-blockades-2024",
+    "title": "Major farmers' unions suspend roadblock mobilisation",
+    "country": "FR",
+    "country_name": "France",
+    "region": "Europe",
+    "location": {
+      "label": "Paris, Lyon",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Agriculture",
+      "Wages",
+      "Regulation"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": "2024-02-01",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:20:26.790Z",
+    "last_observed_at": "2024-02-01",
+    "summary": "FNSEA and Young Farmers suspended their roadblock mobilisation after the government offered aid and regulatory concessions.",
+    "positions": [
+      {
+        "actor": "FNSEA and Young Farmers",
+        "stance": "support",
+        "target": "Farm income support and fewer regulatory burdens",
+        "claim": "The unions treated the announced measures as tangible progress and called for blockades to end.",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Roadblocks affected motorways around Paris and Lyon.",
+      "violence": "unknown",
+      "source_ids": [
+        "fr-farmers-blockades-2024-rfi"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government announced livestock aid, loan support and a pause in its pesticide reduction plan.",
+        "attribution": "Reported in the cited articles.",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "fr-farmers-blockades-2024-rfi",
+        "url": "https://www.rfi.fr/en/france/20240201-french-farmers-call-off-tractor-protest-after-pm-unveils-raft-of-concessions",
+        "title": "French farmers unions call off protest after PM unveils raft of concessions",
+        "publisher": "RFI with AFP",
+        "published_at": "2024-02-01",
+        "accessed_at": "2026-10-02T21:14:53.028Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. RFI article credits AFP; it is one reporting stream. Its February 2 update documents the suspension while noting other-union mobilisation."
+    },
+    "timeline": [
+      {
+        "date": "2024-02-01",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "fr-farmers-blockades-2024-rfi"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "de-farm-subsidy-protests-2024",
+    "title": "Farm subsidy protests and partial government retreat",
+    "country": "DE",
+    "country_name": "Germany",
+    "region": "Europe",
+    "location": {
+      "label": "Berlin, Dresden",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Agriculture",
+      "Taxes"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.790Z",
+    "last_observed_at": "2024-01-08",
+    "summary": "Farmers opposed subsidy cuts. Government diluted its plans on January 4, but nationwide protests continued.",
+    "positions": [
+      {
+        "actor": "German farmers",
+        "stance": "support",
+        "target": "Retention of agricultural tax relief",
+        "claim": "Farmers sought cancellation of both proposed cuts.",
+        "source_ids": [
+          "de-farm-subsidy-protests-2024-reuters-protest",
+          "de-farm-subsidy-protests-2024-reuters-policy"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Tractor roadblocks caused traffic jams.",
+      "violence": "unknown",
+      "source_ids": [
+        "de-farm-subsidy-protests-2024-reuters-protest",
+        "de-farm-subsidy-protests-2024-reuters-policy"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "de-farm-subsidy-protests-2024-reuters-protest",
+        "url": "https://www.reuters.com/world/europe/german-farmers-block-roads-highway-ramps-protest-subsidy-cuts-2024-01-08/",
+        "title": "Nationwide German farmer blockades heap pressure on Scholz",
+        "publisher": "Reuters",
+        "published_at": "2024-01-08",
+        "accessed_at": "2026-10-02T21:14:53.028Z"
+      },
+      {
+        "id": "de-farm-subsidy-protests-2024-reuters-policy",
+        "url": "https://www.reuters.com/markets/europe/german-coalition-dilutes-2024-subsidy-cuts-after-farmer-backlash-2024-01-04/",
+        "title": "German budget savings shrink as farm subsidy cuts delayed",
+        "publisher": "Reuters",
+        "published_at": "2024-01-04",
+        "accessed_at": "2026-10-02T21:14:53.028Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Two Reuters bodies reviewed via fallback; one publisher. The policy retreat preceded January 8's nationwide action and responded to earlier backlash."
+    },
+    "timeline": [
+      {
+        "date": "2024-01-08",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "de-farm-subsidy-protests-2024-reuters-protest",
+          "de-farm-subsidy-protests-2024-reuters-policy"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pl-ukraine-border-farm-blockades-2024",
+    "title": "Farmers suspend Ukraine border blockades",
+    "country": "PL",
+    "country_name": "Poland",
+    "region": "Europe",
+    "location": {
+      "label": "Poland",
+      "precision": "country"
+    },
+    "issues": [
+      "Agriculture",
+      "Trade"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": "2024-04-29",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2024-04-29",
+    "summary": "Farmers suspended the remaining Ukraine border blockade; further protests remained possible.",
+    "positions": [
+      {
+        "actor": "Polish farmer protesters",
+        "stance": "support",
+        "target": "Restrictions on cheap agricultural imports",
+        "claim": "Protesters complained of unfair competition.",
+        "source_ids": [
+          "pl-ukraine-border-farm-blockades-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Border freight traffic was blocked.",
+      "violence": "unknown",
+      "source_ids": [
+        "pl-ukraine-border-farm-blockades-2024-reuters"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "pl-ukraine-border-farm-blockades-2024-reuters",
+        "url": "https://www.reuters.com/world/europe/polish-protesters-lift-months-long-blockade-ukraine-border-2024-04-29/",
+        "title": "Polish protesters suspend months-long blockade of Ukraine border",
+        "publisher": "Reuters",
+        "published_at": "2024-04-29",
+        "accessed_at": "2026-10-02T21:15:36.559Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Reuters body reviewed via fallback. Onset preceded 2024; precise farmer-joining date unverified."
+    },
+    "timeline": [
+      {
+        "date": "2024-04-29",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "pl-ukraine-border-farm-blockades-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "gb-england-doctor-strikes-2024",
+    "title": "England doctors' 2024 strike rounds and pay settlement",
+    "country": "GB",
+    "country_name": "United Kingdom of Great Britain and Northern Ireland",
+    "region": "Europe",
+    "location": {
+      "label": "England",
+      "precision": "region"
+    },
+    "issues": [
+      "Wages",
+      "Healthcare"
+    ],
+    "start_date": "2024-01-03",
+    "start_date_precision": "day",
+    "end_date": "2024-09-16",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2024-09-16",
+    "summary": "Doctors in England escalated their pay dispute with a six-day January walkout and accepted a pay agreement in September that ended the dispute.",
+    "positions": [
+      {
+        "actor": "BMA doctors in England",
+        "stance": "support",
+        "target": "Restoration of pay",
+        "claim": "The BMA sought improved pay after years of erosion and recommended accepting the 2024 agreement.",
+        "source_ids": [
+          "gb-england-doctor-strikes-2024-bma",
+          "gb-england-doctor-strikes-2024-government",
+          "gb-england-doctor-strikes-2024-bbc-start"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "NHS routine appointments were cancelled or rescheduled during strike rounds.",
+      "violence": "unknown",
+      "source_ids": [
+        "gb-england-doctor-strikes-2024-bma",
+        "gb-england-doctor-strikes-2024-government",
+        "gb-england-doctor-strikes-2024-bbc-start"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government reached a pay agreement with the BMA and committed to reviews of training and rotations.",
+        "attribution": "Reported in the cited articles.",
+        "source_ids": [
+          "gb-england-doctor-strikes-2024-bma",
+          "gb-england-doctor-strikes-2024-government",
+          "gb-england-doctor-strikes-2024-bbc-start"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "gb-england-doctor-strikes-2024-bma",
+        "url": "https://www.bma.org.uk/our-campaigns/resident-doctor-campaigns/pay-in-england/2024-pay-deal-for-resident-doctors-working-in-england",
+        "title": "2024 pay deal for resident doctors working in England",
+        "publisher": "British Medical Association",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:15:21.851Z"
+      },
+      {
+        "id": "gb-england-doctor-strikes-2024-government",
+        "url": "https://www.gov.uk/government/news/junior-doctors-accept-government-pay-deal",
+        "title": "Junior doctors accept government pay deal",
+        "publisher": "UK Department of Health and Social Care",
+        "published_at": "2024-09-16",
+        "accessed_at": "2026-10-02T21:15:21.851Z"
+      },
+      {
+        "id": "gb-england-doctor-strikes-2024-bbc-start",
+        "url": "https://www.bbc.co.uk/news/articles/c06yd17m6jko",
+        "title": "Six-day junior doctors strike begins in South East",
+        "publisher": "BBC News",
+        "published_at": "2024-01-03",
+        "accessed_at": "2026-10-02T21:16:26.116Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Union and government are primary negotiating parties with incentives to present the deal positively; BBC independently documents the January strike. Government publication date is September 16 despite Exa's previous-day metadata."
+    },
+    "timeline": [
+      {
+        "date": "2024-01-03",
+        "text": "Doctors in England escalated their pay dispute with a six-day January walkout and accepted a pay agreement in September that ended the dispute.",
+        "source_ids": [
+          "gb-england-doctor-strikes-2024-bma",
+          "gb-england-doctor-strikes-2024-government",
+          "gb-england-doctor-strikes-2024-bbc-start"
+        ]
+      },
+      {
+        "date": "2024-09-16",
+        "text": "Doctors accepted an agreement providing additional backdated pay uplifts and a 2024–25 increase of 6% plus £1,000.",
+        "source_ids": [
+          "gb-england-doctor-strikes-2024-bma",
+          "gb-england-doctor-strikes-2024-government",
+          "gb-england-doctor-strikes-2024-bbc-start"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rs-station-accountability-2024-2025",
+    "title": "Station-collapse accountability mobilisation and resignations",
+    "country": "RS",
+    "country_name": "Serbia",
+    "region": "Europe",
+    "location": {
+      "label": "Belgrade, Novi Sad",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Government accountability",
+      "Public safety"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2025-01-28",
+    "summary": "Students and supporters mobilised after the Novi Sad station disaster. The prime minister and city mayor announced resignations while students said demands remained unmet.",
+    "positions": [
+      {
+        "actor": "Students of the Blockade and supporters",
+        "stance": "support",
+        "target": "Accountability for the station disaster",
+        "claim": "Students demanded accountability and said the resignations did not satisfy their demands.",
+        "source_ids": [
+          "rs-station-accountability-2024-2025-rferl"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "A 24-hour Belgrade protest blockade began January 27.",
+      "violence": "unknown",
+      "source_ids": [
+        "rs-station-accountability-2024-2025-rferl"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "rs-station-accountability-2024-2025-rferl",
+        "url": "https://www.rferl.org/a/serbian-pm-resigns-angry-protests-train-tragedy-/33291676.html",
+        "title": "Serbian PM Milos Vucevic Steps Down Amid Protests Over Novi Sad Train Station Tragedy",
+        "publisher": "Radio Free Europe/Radio Liberty",
+        "published_at": "2025-01-28",
+        "accessed_at": "2026-10-02T21:15:37.245Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. RFE/RL body reviewed. Date is resignation announcement, not assumed legal completion of the transition; precise protest onset unknown."
+    },
+    "timeline": [
+      {
+        "date": "2025-01-28",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "rs-station-accountability-2024-2025-rferl"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ee-teachers-strike-2024",
+    "title": "Teachers' strike ends with wage compromise",
+    "country": "EE",
+    "country_name": "Estonia",
+    "region": "Europe",
+    "location": {
+      "label": "Tartu",
+      "precision": "city"
+    },
+    "issues": [
+      "Wages",
+      "Education"
+    ],
+    "start_date": "2024-01-22",
+    "start_date_precision": "day",
+    "end_date": "2024-01-30",
+    "status": "ended",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2024-01-30",
+    "summary": "Estonian teachers struck over pay and ended the dispute after accepting extra salary funding and further collective negotiations.",
+    "positions": [
+      {
+        "actor": "Estonian Education Personnel Union",
+        "stance": "support",
+        "target": "Higher teacher salaries",
+        "claim": "The union accepted a compromise below its initial pay demand and sought longer-term negotiations.",
+        "source_ids": [
+          "ee-teachers-strike-2024-err",
+          "ee-teachers-strike-2024-ministry"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Teaching was disrupted and solidarity rallies held.",
+      "violence": "unknown",
+      "source_ids": [
+        "ee-teachers-strike-2024-err",
+        "ee-teachers-strike-2024-ministry"
+      ]
+    },
+    "state_response": [
+      {
+        "action": "Government offered an additional €5.7 million for teacher pay.",
+        "attribution": "Reported in the cited articles.",
+        "source_ids": [
+          "ee-teachers-strike-2024-err",
+          "ee-teachers-strike-2024-ministry"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ee-teachers-strike-2024-err",
+        "url": "https://news.err.ee/1609237755/union-ends-teachers-strike",
+        "title": "Union ends teachers’ strike",
+        "publisher": "Estonian Public Broadcasting",
+        "published_at": "2024-01-30",
+        "accessed_at": "2026-10-02T21:16:15.166Z"
+      },
+      {
+        "id": "ee-teachers-strike-2024-ministry",
+        "url": "https://www.hm.ee/opetajate-streik",
+        "title": "Õpetajate streik",
+        "publisher": "Estonian Ministry of Education and Research",
+        "published_at": null,
+        "accessed_at": "2026-10-02T21:16:15.166Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted article review; no independent human editorial sign-off. ERR reporting and ministry's Estonian-language primary record corroborate onset and ending; parties had incentives to emphasize settlement. Tartu rally is identified in ERR's caption."
+    },
+    "timeline": [
+      {
+        "date": "2024-01-22",
+        "text": "Estonian teachers struck over pay and ended the dispute after accepting extra salary funding and further collective negotiations.",
+        "source_ids": [
+          "ee-teachers-strike-2024-err",
+          "ee-teachers-strike-2024-ministry"
+        ]
+      },
+      {
+        "date": "2024-01-30",
+        "text": "Union accepted €5.7 million additional pay funding, raising the minimum salary to €1,820, with further collective bargaining planned.",
+        "source_ids": [
+          "ee-teachers-strike-2024-err",
+          "ee-teachers-strike-2024-ministry"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ua-anti-graft-independence-2025",
+    "title": "Protests for independent anti-corruption agencies",
+    "country": "UA",
+    "country_name": "Ukraine",
+    "region": "Europe",
+    "location": {
+      "label": "Kyiv",
+      "precision": "city"
+    },
+    "issues": [
+      "Government accountability",
+      "Rule of law"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2025-07-31",
+    "summary": "Protesters opposed removal of anti-corruption agencies' independence; parliament reversed the changes and Zelensky signed the replacement law.",
+    "positions": [
+      {
+        "actor": "Anti-corruption demonstrators",
+        "stance": "support",
+        "target": "NABU and SAPO independence",
+        "claim": "Protesters demanded preservation of independent anti-corruption investigations.",
+        "source_ids": [
+          "ua-anti-graft-independence-2025-bbc",
+          "ua-anti-graft-independence-2025-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "unknown",
+      "violence": "unknown",
+      "source_ids": []
+    },
+    "state_response": [
+      {
+        "action": "Parliament approved a replacement bill and the president signed it.",
+        "attribution": "Reported in the cited articles.",
+        "source_ids": [
+          "ua-anti-graft-independence-2025-bbc",
+          "ua-anti-graft-independence-2025-reuters"
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "ua-anti-graft-independence-2025-bbc",
+        "url": "https://www.bbc.com/news/articles/cpv0n0ky4xro",
+        "title": "Young Ukrainians get their way as Zelensky overturns law to defuse crisis",
+        "publisher": "BBC News",
+        "published_at": "2025-07-31",
+        "accessed_at": "2026-10-02T21:16:15.166Z"
+      },
+      {
+        "id": "ua-anti-graft-independence-2025-reuters",
+        "url": "https://www.reuters.com/world/zelenskiy-moving-defuse-crisis-restores-power-anti-graft-agencies-2025-07-31/",
+        "title": "Zelenskiy, moving to defuse crisis, restores power of anti-graft agencies",
+        "publisher": "Reuters",
+        "published_at": "2025-07-31",
+        "accessed_at": "2026-10-02T21:16:15.166Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted article review; no independent human editorial sign-off. BBC and Reuters bodies independently reviewed; Reuters explicitly reports signature and notes pressure from both protesters and European officials, so sole protest causation is not asserted."
+    },
+    "timeline": [
+      {
+        "date": "2025-07-31",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "ua-anti-graft-independence-2025-bbc",
+          "ua-anti-graft-independence-2025-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "dk-greenland-solidarity-2026",
+    "title": "Demonstration for Greenlandic self-determination",
+    "country": "DK",
+    "country_name": "Denmark",
+    "region": "Europe",
+    "location": {
+      "label": "Copenhagen",
+      "precision": "city"
+    },
+    "issues": [
+      "Self-determination",
+      "Foreign policy"
+    ],
+    "start_date": "2026-01-17",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.791Z",
+    "last_observed_at": "2026-01-17",
+    "summary": "Demonstrators in Copenhagen opposed a US takeover of Greenland.",
+    "positions": [
+      {
+        "actor": "Greenland-solidarity demonstrators",
+        "stance": "support",
+        "target": "Greenlandic self-determination",
+        "claim": "Demonstrators rejected annexation.",
+        "source_ids": [
+          "dk-greenland-solidarity-2026-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "unknown",
+      "violence": "unknown",
+      "source_ids": []
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "dk-greenland-solidarity-2026-reuters",
+        "url": "https://www.reuters.com/world/europe/protesters-denmark-support-greenland-after-trumps-takeover-threat-2026-01-17/",
+        "title": "Protesters rally in Denmark and Greenland against Trump annexation threat",
+        "publisher": "Reuters",
+        "published_at": "2026-01-17",
+        "accessed_at": "2026-10-02T21:15:54.861Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Reuters body reviewed via fallback; no policy outcome established."
+    },
+    "timeline": [
+      {
+        "date": "2026-01-17",
+        "text": "Demonstrators in Copenhagen opposed a US takeover of Greenland.",
+        "source_ids": [
+          "dk-greenland-solidarity-2026-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fi-labour-reform-strikes-2024",
+    "title": "Political strikes against labour reforms and welfare cuts",
+    "country": "FI",
+    "country_name": "Finland",
+    "region": "Europe",
+    "location": {
+      "label": "Helsinki",
+      "precision": "city"
+    },
+    "issues": [
+      "Labor rights",
+      "Social welfare"
+    ],
+    "start_date": "2024-02-01",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.792Z",
+    "last_observed_at": "2024-02-01",
+    "summary": "Finnish workers began strikes opposing labour reforms and welfare cuts.",
+    "positions": [
+      {
+        "actor": "Finnish labour unions",
+        "stance": "support",
+        "target": "Withdrawal of labour reforms",
+        "claim": "Unions opposed restrictions on strikes and welfare cuts.",
+        "source_ids": [
+          "fi-labour-reform-strikes-2024-reuters"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Companies anticipated transport and workplace disruption.",
+      "violence": "unknown",
+      "source_ids": [
+        "fi-labour-reform-strikes-2024-reuters"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "fi-labour-reform-strikes-2024-reuters",
+        "url": "https://www.reuters.com/world/europe/finnish-workers-begin-strikes-against-labour-reforms-welfare-cuts-2024-02-01/",
+        "title": "Finnish workers on strike to protest labour reforms, welfare cuts",
+        "publisher": "Reuters",
+        "published_at": "2024-02-01",
+        "accessed_at": "2026-10-02T21:15:54.861Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Reuters body reviewed via fallback. No subsequent concession established."
+    },
+    "timeline": [
+      {
+        "date": "2024-02-01",
+        "text": "Finnish workers began strikes opposing labour reforms and welfare cuts.",
+        "source_ids": [
+          "fi-labour-reform-strikes-2024-reuters"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "es-housing-demonstrations-2025",
+    "title": "Nationwide demonstrations for affordable housing",
+    "country": "ES",
+    "country_name": "Spain",
+    "region": "Europe",
+    "location": {
+      "label": "Madrid, Palma de Mallorca",
+      "precision": "multi-location"
+    },
+    "issues": [
+      "Housing",
+      "Tourism"
+    ],
+    "start_date": "2025-04-05",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.792Z",
+    "last_observed_at": "2025-04-05",
+    "summary": "Demonstrators sought affordable homes amid rising rents and expansion of tourist flats.",
+    "positions": [
+      {
+        "actor": "Housing demonstrators and tenants' unions",
+        "stance": "support",
+        "target": "Affordable housing",
+        "claim": "Demonstrators sought lower rents and housing rights.",
+        "source_ids": [
+          "es-housing-demonstrations-2025-reuters",
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Street marches took place across multiple cities.",
+      "violence": "unknown",
+      "source_ids": [
+        "es-housing-demonstrations-2025-reuters",
+        "es-housing-demonstrations-2025-guardian"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "es-housing-demonstrations-2025-reuters",
+        "url": "https://www.reuters.com/world/europe/protesters-rally-across-spain-against-housing-crisis-tourist-flats-2025-04-05/",
+        "title": "Protesters rally across Spain against housing crisis, tourist flats",
+        "publisher": "Reuters",
+        "published_at": "2025-04-05",
+        "accessed_at": "2026-10-02T21:16:56.862Z"
+      },
+      {
+        "id": "es-housing-demonstrations-2025-guardian",
+        "url": "https://www.theguardian.com/world/2025/apr/05/spain-protest-march-housing-crisis",
+        "title": "Thousands in Spain join nationwide march to protest against housing crisis",
+        "publisher": "The Guardian",
+        "published_at": "2025-04-05",
+        "accessed_at": "2026-10-02T21:16:56.862Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted article review; no independent human editorial sign-off. Both article bodies reviewed; crowd estimates vary, so none adopted. No policy change linked to this day's mobilisation established."
+    },
+    "timeline": [
+      {
+        "date": "2025-04-05",
+        "text": "Demonstrators sought affordable homes amid rising rents and expansion of tourist flats.",
+        "source_ids": [
+          "es-housing-demonstrations-2025-reuters",
+          "es-housing-demonstrations-2025-guardian"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "al-flamingo-rallies-2026",
+    "title": "Nightly rallies against coastal development and corruption",
+    "country": "AL",
+    "country_name": "Albania",
+    "region": "Europe",
+    "location": {
+      "label": "Tirana",
+      "precision": "city"
+    },
+    "issues": [
+      "Environment",
+      "Government accountability",
+      "Public services"
+    ],
+    "start_date": null,
+    "start_date_precision": "unknown",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.792Z",
+    "last_observed_at": "2026-07-28",
+    "summary": "Nightly Tirana rallies opposed a coastal resort project and broadened into demands for accountability, political reform and improved public services.",
+    "positions": [
+      {
+        "actor": "Citizens opposing the Zvërnec development",
+        "stance": "support",
+        "target": "Protected-area policy and government accountability",
+        "claim": "Participants sought protected-area safeguards and political change; many called for the prime minister to resign.",
+        "source_ids": [
+          "al-flamingo-rallies-2026-bbc",
+          "al-flamingo-rallies-2026-ata"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Repeated street rallies were reported.",
+      "violence": "unknown",
+      "source_ids": [
+        "al-flamingo-rallies-2026-bbc",
+        "al-flamingo-rallies-2026-ata"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "al-flamingo-rallies-2026-bbc",
+        "url": "https://www.bbc.com/news/articles/c8925jnl0z3o",
+        "title": "'Flamingo Revolution' takes off as thousands demand Albanian PM's resignation",
+        "publisher": "BBC News",
+        "published_at": "2026-07-04",
+        "accessed_at": "2026-10-02T21:16:15.166Z"
+      },
+      {
+        "id": "al-flamingo-rallies-2026-ata",
+        "url": "https://en.ata.gov.al/2026/07/28/protests-against-controversial-zvernec-investment-enter-their-59th-consecutive-day/",
+        "title": "Protests against controversial Zvërnec investment enter their 59th consecutive day",
+        "publisher": "Albanian Telegraphic Agency",
+        "published_at": "2026-07-28",
+        "accessed_at": "2026-10-02T21:16:57.603Z"
+      }
+    ],
+    "verification": {
+      "level": "corroborated",
+      "note": "AI-assisted article review; no independent human editorial sign-off. BBC original interviews and state news agency reporting support episode identity. ATA has institutional incentives and is not treated as neutral on government performance. Exact onset is not inferred from consecutive-day counts."
+    },
+    "timeline": [
+      {
+        "date": "2026-07-28",
+        "text": "Dated report documents this episode; precise onset remains unknown.",
+        "source_ids": [
+          "al-flamingo-rallies-2026-bbc",
+          "al-flamingo-rallies-2026-ata"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pt-labour-reform-strike-2025",
+    "title": "General strike opposing labour-law overhaul",
+    "country": "PT",
+    "country_name": "Portugal",
+    "region": "Europe",
+    "location": {
+      "label": "Portugal",
+      "precision": "country"
+    },
+    "issues": [
+      "Labor rights",
+      "Job security"
+    ],
+    "start_date": "2025-12-11",
+    "start_date_precision": "day",
+    "end_date": null,
+    "status": "unknown",
+    "last_verified": "2026-10-02T21:20:26.792Z",
+    "last_observed_at": "2025-12-11",
+    "summary": "Portugal's two major union federations struck against proposed labour reforms affecting job security and dismissal protections.",
+    "positions": [
+      {
+        "actor": "CGTP and UGT",
+        "stance": "oppose",
+        "target": "Labour-law overhaul",
+        "claim": "Union federations opposed measures they said weakened workers' rights.",
+        "source_ids": [
+          "pt-labour-reform-strike-2025-bbc"
+        ]
+      }
+    ],
+    "intensity": {
+      "turnout": {
+        "min": null,
+        "max": null,
+        "qualifier": "No single verified numerical estimate adopted."
+      },
+      "disruption": "Transport, schools, hospitals and refuse collection were disrupted.",
+      "violence": "unknown",
+      "source_ids": [
+        "pt-labour-reform-strike-2025-bbc"
+      ]
+    },
+    "state_response": [],
+    "sources": [
+      {
+        "id": "pt-labour-reform-strike-2025-bbc",
+        "url": "https://www.bbc.com/news/articles/cdxwrvl1734o",
+        "title": "Severe disruption hits Portugal in first general strike for 12 years",
+        "publisher": "BBC News",
+        "published_at": "2025-12-11",
+        "accessed_at": "2026-10-02T21:16:26.116Z"
+      }
+    ],
+    "verification": {
+      "level": "single-source",
+      "note": "AI-assisted article review; no independent human editorial sign-off. BBC original reporting from Lisbon reviewed; policy passage or concession and beneficiary outcome were not established."
+    },
+    "timeline": [
+      {
+        "date": "2025-12-11",
+        "text": "Portugal's two major union federations struck against proposed labour reforms affecting job security and dismissal protections.",
+        "source_ids": [
+          "pt-labour-reform-strike-2025-bbc"
+        ]
+      }
+    ]
+  }
+]
