@@ -1,5 +1,28 @@
 # Release evidence — 2 October 2026
 
+## Release 3 — historical research from 2024
+
+Verified on 2 October 2026. Runtime commit: `64785a20f7fb30de8c076139d27726aa88a07c38`. [Live atlas](https://occult-kranti.github.io/protest-atlas/#atlas). [Successful Pages workflow](https://github.com/occult-kranti/protest-atlas/actions/runs/37067775278). The earlier historical-data deployment and city-reset patch also succeeded (runs `37067453098` and `37067550820`).
+
+| Check | Evidence |
+| --- | --- |
+| Research scope | 84 episodes, 81 countries/territories, 118 city references, 128 source records. Initial queries logged for all 249 entries; 168 have no published episode. No exhaustive history or current-activity claim. |
+| Semantic review | Separate skeptical advisor read the principal ending source for all 18 ended/suspended episodes plus four targeted followups. Applied 13 reversed stance corrections and Tanzania's missing status-source reference to regional inputs; regenerated public files and checked all 14 resolutions. |
+| Automated verification | 41 Python tests passed. All eight named JavaScript tests passed using `node tests/test_explorer.mjs` and `node --test --test-isolation=none --test-reporter=spec tests/test_explorer.mjs`. Build and syntax checks passed. The isolated runner in this workspace only reported a file-level test, so the non-isolated/direct runs supplied named-test evidence. GitHub workflow test and deployment gates passed. |
+| World/city map | 101 rendered city markers; 17 unresolved city names remain in text/selectors. World panel and index both show 84 records. Ended filter returns 18; 17 corresponding country polygons are available because Faroe Islands has no separate polygon at this scale. |
+| Endings/results | New Zealand record showed bounded final-day ending, later bill rejection, named beneficiary/setback assessments labeled inference, source links and an explicit no-established-protest-causation note. Ended/suspended styling does not imply countrywide cessation. |
+| Filters and URL | Combined 2024 + Paris + documented-change filters returned the farmers' record. Reload preserved all three selected values and the one-record result. Reported-year 2024 alone returned 36 records because matching includes dated timeline entries, rather than only the latest-observation year. |
+| Small-country/keyboard route | Andorra selector opened its record despite absent polygon. Pressing Enter on its city point selected `AD:Andorra la Vella` and the same one-record index. |
+| Missing coverage | Iceland panel explicitly distinguished initial search logged, source coverage not reviewed, no published episode and five unreviewed discovery leads. No zero-protest inference. |
+| Reset correction | France provided six city names plus the all-cities option. Reset restored 118 city names plus the all-cities option (119 options), 84 records and world scope. Versioned module/CSS references resolve observed browser caching of the prior controls. |
+| Responsive layout | Real iframe outer widths 320, 390, 768 and 1440 px yielded content widths 305, 375, 753 and 1425 px, respectively. At each, document scroll width equaled client width and 101 city markers were present. Phone historical filters/map were visually inspected; zoom changed from 1.00 to 1.60. |
+| Publication boundary | All historical JSON passes strict provenance validators. Coarse city source dataset and raw research remain outside the static allowlist. Credential-pattern scan found no matches in project text artifacts. |
+
+![Historical map with ended-episode shadows and city references](images/history-release3.jpg)
+
+Remaining limits: this is a selective AI-assisted research index, predominantly English-source, without independent human editorial sign-off. No country is certified complete. Physical touch/pinch, screen-reader, 200% zoom and final browser download-byte capture remain unverified; the automated CSV serializer checks passed. See HISTORICAL_RESEARCH.md, ROADMAP.md and the advisor's retained review for scope and next work. Previous release evidence below records its historical state, not the current dataset.
+
+
 ## Release 2 — world map and review workspace
 
 - Map implementation commit: `f915dcaf4131ca7c131c1cf7159d26ff15b8c212`.
