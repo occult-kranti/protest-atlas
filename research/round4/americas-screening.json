@@ -5,7 +5,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Spanish-language discovery for CL. Lead (unread): CONFECH-convened march against projected 2027 education budget cuts on 2026-10-01 in Santiago and reportedly at least 15 other cities, joined by CUT and Colegio de Profesores; snippets give competing turnout (CONFECH over 20,000; Carabineros about 6,000), about 25 detained and water cannon/tear gas use, and clashes with counter-protesting students. None of this is verified here because every fetch of the underlying articles was blocked."
+    "note": "Spanish-language discovery for CL. Lead (unread): CONFECH-convened march against projected 2027 education budget cuts on 2026-10-01 in Santiago and reportedly at least 15 other cities, joined by CUT and Colegio de Profesores; snippets give competing turnout (CONFECH over 20,000; Carabineros about 6,000), about 25 detained and water cannon/tear gas use; snippets mention confrontations, but the actors involved are not established. None of this is verified here because every fetch of the underlying articles was blocked. attempted_at is the logging time, not the search time: the search was issued at 22:06:09Z in a parallel batch with row(s) 1, 2 and returned at 22:06:16Z, per the research agent session transcript."
   },
   {
     "query": "Mexico trabajadores IMSS SNTSS bloqueo protesta octubre 2026",
@@ -13,7 +13,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Spanish-language discovery for MX. Lead (unread): IMSS workers and retirees reportedly protested for about nine hours in Mexico City on 2026-10-01, blocking Circuito Interior and Constituyentes, forcing entry into SNTSS union headquarters, demanding the union leader's resignation, a direct 10% raise (against a proposed 8.9% package), staffing and medicines; snippets put the crowd near 1,500 (attribution unclear) and mention a negotiation meeting requested for 2026-10-05 and a dialogue table at Gobernacion. Candidate URLs: proceso.com.mx/nacional/2026/10/1/trabajadores-y-jubilados-del-sntss-irrumpen-...-381045.html, mvsnoticias.com/nacional/cdmx/2026/10/1/bloquean-trabajadores-del-imss-vialidades-de-cdmx-durante-protestas-748259.html. Not recorded: fetch blocked."
+    "note": "Spanish-language discovery for MX. Lead (unread): IMSS workers and retirees reportedly protested for about nine hours in Mexico City on 2026-10-01, blocking main roads in Mexico City, forcing entry into SNTSS union headquarters, demanding the union leader's resignation, a direct 10% raise (against a proposed 8.9% package), staffing and medicines; snippets put the crowd near 1,500 (attribution unclear) and mention a negotiation meeting requested for 2026-10-05 (a meeting, not a collective action, so not an upcoming protest item) and a dialogue table at Gobernacion. Candidate URLs: proceso.com.mx/nacional/2026/10/1/trabajadores-y-jubilados-del-sntss-irrumpen-...-381045.html, mvsnoticias.com/nacional/cdmx/2026/10/1/bloquean-trabajadores-del-imss-vialidades-de-cdmx-durante-protestas-748259.html. Not recorded: fetch blocked. attempted_at is the logging time, not the search time: the search was issued at 22:06:09Z in a parallel batch with row(s) 0, 2 and returned at 22:06:15Z, per the research agent session transcript."
   },
   {
     "query": "Venezuela protestas racionamiento eléctrico cronograma electoral septiembre 2026",
@@ -21,7 +21,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Spanish-language discovery for VE. Lead (unread): night-time protests over power cuts of up to 10-16 hours reportedly in Guarico, Zulia, Merida, Aragua and Portuguesa around 2026-09-25/28 with road closures and tyre burning; 2026-10-01 protests in San Rafael del Pinal (Tachira) and San Mateo (Aragua) for an electoral timetable and power restoration. Candidate URLs: eldiario.com/2026/09/25/cortes-luz-protestas/, eldiario.com/2026/09/28/protestas-por-apagones/, elnacional.com/2026/10/manifestantes-en-tachira-y-aragua-.... Not recorded: fetch blocked."
+    "note": "Spanish-language discovery for VE. Lead (unread): night-time protests over power cuts of up to 10-16 hours reportedly in Guarico, Zulia, Merida, Aragua and Portuguesa around 2026-09-25/28 with road closures and tyre burning; 2026-10-01 protests in San Rafael del Pinal (Tachira) and San Mateo (Aragua) for an electoral timetable and power restoration. Candidate URLs: eldiario.com/2026/09/25/cortes-luz-protestas/, eldiario.com/2026/09/28/protestas-por-apagones/, elnacional.com/2026/10/manifestantes-en-tachira-y-aragua-.... Not recorded: fetch blocked. attempted_at is the logging time, not the search time: the search was issued at 22:06:09Z in a parallel batch with row(s) 0, 1 and returned at 22:06:16Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.biobiochile.cl/noticias/nacional/region-metropolitana/2026/10/01/incidentes-en-la-alameda-por-marcha-de-la-confech-contra-eventuales-recortes-del-presupuesto-2027.shtml",
@@ -29,7 +29,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:23Z and failed at 22:06:26Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://radio.uchile.cl/2026/10/01/mas-de-20-mil-personas-marchan-por-la-alameda-contra-recortes-en-educacion-y-dirigentes-acusan-represion-desmedida-de-carabineros/",
@@ -37,7 +37,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:25Z and failed at 22:06:26Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.elmostrador.cl/noticias/pais/2026/10/01/incidentes-marcan-marcha-de-la-confech-contra-eventuales-recortes-en-educacion-en-presupuesto-2027/",
@@ -45,7 +45,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:37Z and failed at 22:06:37Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.jornada.com.mx/2026/10/02/mundo/021n2mun",
@@ -53,7 +53,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:39Z and failed at 22:06:40Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 8 (CL Exa query logged 2026-10-02T21:09:07Z) and also returned by the round-4 CL search in row 0 (results at 22:06:16Z)."
   },
   {
     "query": "WebFetch https://www.latercera.com/nacional/noticia/en-vivo-marcha-estudiantes-confech-incidentes/",
@@ -61,7 +61,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:40Z and failed at 22:06:41Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.aljazeera.com/video/newsfeed/2026/10/2/student-protests-in-chile-turn-to-violent-clashes-with-police",
@@ -69,7 +69,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:48Z and failed at 22:06:48Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.conclusion.com.ar/internacionales/miles-de-estudiantes-protestan-en-chile-contra-los-recortes-previstos-en-el-presupuesto-2027/10/2026/",
@@ -77,7 +77,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:49Z and failed at 22:06:49Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.prensa-latina.cu/2026/10/01/convocan-protestas-en-chile-contra-los-recortes-en-educacion/",
@@ -85,7 +85,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:50Z and failed at 22:06:50Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://eldiario.com/2026/09/28/protestas-por-apagones/",
@@ -93,7 +93,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:08Z and failed at 22:07:08Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.elnacional.com/2026/10/manifestantes-en-tachira-y-aragua-reclamaron-un-cronograma-electoral-y-el-fin-del-racionamiento-electrico/",
@@ -101,7 +101,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:09Z and failed at 22:07:09Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.proceso.com.mx/nacional/2026/10/1/trabajadores-y-jubilados-del-sntss-irrumpen-en-oficinas-sindicales-en-cdmx-tras-nueve-horas-de-prote-381045.html",
@@ -109,7 +109,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:13Z and failed at 22:07:14Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://haitiantimes.com/",
@@ -117,7 +117,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:14Z and failed at 22:07:14Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://en.wikipedia.org/wiki/2026_United_States_general_strike",
@@ -125,7 +125,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:15Z and failed at 22:07:15Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 53 (US Exa query logged 2026-10-02T21:09:44Z); not returned by any round-4 query logged here. Wikipedia could not stand as sole evidence in any case."
   },
   {
     "query": "WebFetch https://www.breakingbelizenews.com/2026/09/24/ntucb-rejects-bricenos-response-to-11-demands-actions-will-increase-until-will-of-the-people-achieved/",
@@ -133,7 +133,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:22Z and failed at 22:07:22Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 2 (BZ Exa query logged 2026-10-02T21:08:59Z). The round-4 Belize search (row 53) also returned it, but only later (22:09:25Z), so that search was not the discovery source."
   },
   {
     "query": "WebFetch https://jamaica-gleaner.com/article/news/20261002/jmda-presses-idt-ruling-doctors-deadline-looms",
@@ -141,7 +141,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:23Z and failed at 22:07:23Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 34 (JM Exa query logged 2026-10-02T21:09:29Z); not returned by any round-4 query logged here."
   },
   {
     "query": "WebFetch https://www.waterkant.net/suriname/2026/09/30/leerkrachten-roepen-elkaar-op-om-1-oktober-niet-naar-school-te-gaan/",
@@ -149,7 +149,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:24Z and failed at 22:07:25Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 52 (SR Exa query logged 2026-10-02T21:09:44Z). The round-4 Suriname search (row 54) also returned it, but only later (22:09:26Z), so that search was not the discovery source."
   },
   {
     "query": "WebFetch https://ticotimes.net/2026/09/16/cartago-protest-police-teachers-union-court-appeal",
@@ -157,7 +157,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:25Z and failed at 22:07:26Z, per the research agent session transcript. Discovery: URL listed in candidate_urls of research/round3/americas-screening.json row 65 (CR Exa query logged 2026-10-02T21:10:32Z); not returned by any round-4 query logged here."
   },
   {
     "query": "WebFetch https://www.france24.com/es/am%C3%A9rica-latina/",
@@ -165,7 +165,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:34Z and failed at 22:07:34Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.cbc.ca/news/canada",
@@ -173,7 +173,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:35Z and failed at 22:07:35Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://news.un.org/en/news/region/americas",
@@ -181,7 +181,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:35Z and failed at 22:07:36Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.swissinfo.ch/spa/",
@@ -189,7 +189,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:36Z and failed at 22:07:36Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.infobae.com/america/",
@@ -197,7 +197,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:42Z and failed at 22:07:42Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://en.mercopress.com/",
@@ -205,7 +205,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:44Z and failed at 22:07:44Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://peoplesdispatch.org/",
@@ -213,7 +213,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:44Z and failed at 22:07:45Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.gob.mx/imss/prensa",
@@ -221,7 +221,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:45Z and failed at 22:07:45Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://elpais.com/chile/2026-10-01/marcha-de-la-confech-miles-de-estudiantes-protestan-en-la-alameda-contra-los-recortes-a-del-presupuesto-2027.html",
@@ -229,7 +229,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:35Z and failed at 22:06:35Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://apnews.com/hub/chile",
@@ -237,7 +237,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:53Z and failed at 22:06:53Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.reuters.com/world/americas/",
@@ -245,7 +245,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:06:54Z and failed at 22:06:54Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.theguardian.com/world/americas",
@@ -253,7 +253,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:10Z and failed at 22:07:10Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.bbc.com/news/world/latin_america",
@@ -261,7 +261,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:33Z and failed at 22:07:34Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://g1.globo.com/",
@@ -269,7 +269,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch returned 'Claude Code is unable to fetch from' this domain. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:43Z and failed at 22:07:43Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.efe.com/america/",
@@ -277,7 +277,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: WebFetch domain safety check rate-limited. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: WebFetch domain safety check rate-limited. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:07:45Z and failed at 22:07:45Z, per the research agent session transcript."
   },
   {
     "query": "Argentina protesta marcha universidades jubilados CGT septiembre octubre 2026",
@@ -285,7 +285,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "AR leads (unread; snippets only): CGT reportedly ruled out general strike and called a mobilisation for 2026-10-08 in defence of industry; university unions reportedly ratified rotating strikes and a federal university march on 2026-10-15; CTA reportedly announced a national strike for late October without a date. Candidate URLs: infobae.com/politica/2026/09/29/la-cgt-descarto-un-paro-general-pero-hara-una-movilizacion-el-8-de-octubre-en-defensa-de-la-industria/, perfil.com/noticias/sociedad/universidades-los-gremios-rechazaron-la-oferta-salarial-del-gobierno-y-anunciaron-nuevos-paros-y-una-marcha-federal.phtml, radiografica.org.ar/2026/09/30/cronicas-gremiales-la-cgt-movilizara-el-8-de-octubre-y-acompanara-a-las-universidades/. Not recorded as upcoming because no page could be fetched."
+    "note": "AR leads (unread; snippets only): CGT reportedly ruled out general strike and called a mobilisation for 2026-10-08 in defence of industry; university unions reportedly ratified rotating strikes and a federal university march on 2026-10-15; CTA reportedly announced a national strike for late October without a date. Candidate URLs: infobae.com/politica/2026/09/29/la-cgt-descarto-un-paro-general-pero-hara-una-movilizacion-el-8-de-octubre-en-defensa-de-la-industria/, perfil.com/noticias/sociedad/universidades-los-gremios-rechazaron-la-oferta-salarial-del-gobierno-y-anunciaron-nuevos-paros-y-una-marcha-federal.phtml, radiografica.org.ar/2026/09/30/cronicas-gremiales-la-cgt-movilizara-el-8-de-octubre-y-acompanara-a-las-universidades/. Not recorded as upcoming because no page could be fetched. attempted_at is the logging time, not the search time: the search was issued at 22:08:16Z in a parallel batch with row(s) 36, 37, 38 and returned at 22:08:23Z, per the research agent session transcript."
   },
   {
     "query": "Brasil greve protesto manifestação nacional setembro 2026",
@@ -293,7 +293,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "BR leads (unread): results mostly before 2026-09-18 (Sept 7 left and right rallies; SINASEFE federal education stoppage Sept 10-11; Banco da Amazonia strike Sept 14; postal restructuring). No in-window episode identified from snippets."
+    "note": "BR leads (unread): results mostly before 2026-09-18 (Sept 7 left and right rallies; SINASEFE federal education stoppage Sept 10-11; Banco da Amazonia strike Sept 14; postal restructuring). No in-window episode identified from snippets. attempted_at is the logging time, not the search time: the search was issued at 22:08:17Z in a parallel batch with row(s) 35, 37, 38 and returned at 22:08:24Z, per the research agent session transcript."
   },
   {
     "query": "Colombia paro marcha protesta CUT septiembre 2026",
@@ -301,7 +301,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "CO leads (unread): Fecode, CUT and other organisations reportedly called a national mobilisation for 2026-10-14 against the De la Espriella government and contemplated a national strike in November 2026 without a fixed date. Candidate URLs: infobae.com/colombia/2026/09/14/fecode-y-centrales-obreras-anunciaron-jornadas-de-marchas-..., eltiempo.com/politica/gobierno/fecode-y-centrales-obreras-anuncian-marchas-y-paro-nacional-...-3586202. Not recorded as upcoming because pages could not be fetched."
+    "note": "CO leads (unread): Fecode, CUT and other organisations reportedly called a national mobilisation for 2026-10-14 against the De la Espriella government and contemplated a national strike in November 2026 without a fixed date. Candidate URLs: infobae.com/colombia/2026/09/14/fecode-y-centrales-obreras-anunciaron-jornadas-de-marchas-..., eltiempo.com/politica/gobierno/fecode-y-centrales-obreras-anuncian-marchas-y-paro-nacional-...-3586202. Not recorded as upcoming because pages could not be fetched. attempted_at is the logging time, not the search time: the search was issued at 22:08:17Z in a parallel batch with row(s) 35, 36, 38 and returned at 22:08:22Z, per the research agent session transcript."
   },
   {
     "query": "Peru paro protesta transportistas extorsión septiembre 2026",
@@ -309,7 +309,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "PE leads (unread): mototaxi confederation reportedly announced a Lima strike for 2026-09-15 (before window). Several results concern the September 2024 transport strike and must not be conflated with 2026. No in-window episode established."
+    "note": "PE leads (unread): mototaxi confederation reportedly announced a Lima strike for 2026-09-15 (before window). Several results concern the September 2024 transport strike and must not be conflated with 2026. No in-window episode established. attempted_at is the logging time, not the search time: the search was issued at 22:08:17Z in a parallel batch with row(s) 35, 36, 37 and returned at 22:08:22Z, per the research agent session transcript."
   },
   {
     "query": "Ecuador paro protesta CONAIE septiembre 2026",
@@ -317,7 +317,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "EC: results concern the September-October 2025 CONAIE diesel strike (already in atlas as ec-diesel-subsidy-strike-2025); no 2026 in-window episode identified from snippets."
+    "note": "EC: results concern the September-October 2025 CONAIE diesel strike (already in atlas as ec-diesel-subsidy-strike-2025); no 2026 in-window episode identified from snippets. attempted_at is the logging time, not the search time: the search was issued at 22:08:34Z in a parallel batch with row(s) 40, 41, 42 and returned at 22:08:41Z, per the research agent session transcript."
   },
   {
     "query": "Bolivia bloqueos protestas paro septiembre 2026 COB",
@@ -325,7 +325,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "BO leads (unread): results describe May-June 2026 COB-led blockades with a reported 2026-06-19 agreement; nothing in the 2026-09-18 to 10-02 window identified. Possible separate pre-window episode for a later round (Wikipedia not usable as sole evidence)."
+    "note": "BO leads (unread): results describe May-June 2026 COB-led blockades with a reported 2026-06-19 agreement; nothing in the 2026-09-18 to 10-02 window identified. Possible separate pre-window episode for a later round (Wikipedia not usable as sole evidence). attempted_at is the logging time, not the search time: the search was issued at 22:08:35Z in a parallel batch with row(s) 39, 41, 42 and returned at 22:08:42Z, per the research agent session transcript."
   },
   {
     "query": "United States strike workers walk out late September 2026",
@@ -333,7 +333,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "US leads (unread): Brigham and Women's Hospital nurses (Boston) reportedly authorised an open-ended strike on 2026-09-24; Wynn casino strike in Boston reportedly began 2026-09-04; Snopes reportedly debunked an Oct 1 trucker-strike claim. Candidate URLs: nurse.org/articles/nurse-strikes-list/, snopes.com/news/2026/09/17/trucker-strike-oct-1st/, bostonglobe.com/2026/10/02/business/brigham-strike-hospital-nurses/ (from round 3 screen)."
+    "note": "US leads (unread): Brigham and Women's Hospital nurses (Boston) reportedly authorised an open-ended strike on 2026-09-24; Wynn casino strike in Boston reportedly began 2026-09-04; Snopes reportedly debunked an Oct 1 trucker-strike claim. Candidate URLs: nurse.org/articles/nurse-strikes-list/, snopes.com/news/2026/09/17/trucker-strike-oct-1st/, bostonglobe.com/2026/10/02/business/brigham-strike-hospital-nurses/ (from round 3 screen). attempted_at is the logging time, not the search time: the search was issued at 22:08:35Z in a parallel batch with row(s) 39, 40, 42 and returned at 22:08:41Z, per the research agent session transcript."
   },
   {
     "query": "Canada strike union walkout September 2026",
@@ -341,7 +341,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "CA leads (unread): federal Canada Labour Code amendments introduced around 2026-09-21 and union statements opposing strike restrictions (statements, not collective street action); Ontario teacher strike votes scheduled for November 2026 (votes, not strikes). No in-window protest episode established."
+    "note": "CA leads (unread): federal Canada Labour Code amendments introduced around 2026-09-21 and union statements opposing strike restrictions (statements, not collective street action); Ontario teacher strike votes scheduled for November 2026 (votes, not strikes). No in-window protest episode established. attempted_at is the logging time, not the search time: the search was issued at 22:08:36Z in a parallel batch with row(s) 39, 40, 41 and returned at 22:08:41Z, per the research agent session transcript."
   },
   {
     "query": "Brigham and Women's nurses strike date October 2026",
@@ -349,7 +349,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "US upcoming lead (unread): Massachusetts Nurses Association reportedly scheduled an open-ended strike by about 4,000 Brigham and Women's Hospital nurses in Boston from 2026-10-14 (second stoppage of 2026 after a July one-day strike and lockout). Candidate URLs: massnurses.org/2026/10/02/brigham-nurses-schedule-largest-open-ended-nurse-strike-..., wbur.org/news/2026/10/02/brigham-womens-hospital-nurses-plan-to-strike, wgbh.org/news/local/2026-10-02/brigham-and-womens-nurses-set-oct-14-strike-date. Fetch attempts to massnurses.org and wbur.org were EGRESS_BLOCKED, so not recorded as upcoming."
+    "note": "US upcoming lead (unread): Massachusetts Nurses Association reportedly scheduled an open-ended strike by about 4,000 Brigham and Women's Hospital nurses in Boston from 2026-10-14 (second stoppage of 2026 after a July one-day strike and lockout). Candidate URLs: massnurses.org/2026/10/02/brigham-nurses-schedule-largest-open-ended-nurse-strike-..., wbur.org/news/2026/10/02/brigham-womens-hospital-nurses-plan-to-strike, wgbh.org/news/local/2026-10-02/brigham-and-womens-nurses-set-oct-14-strike-date. Fetch attempts to massnurses.org and wbur.org were EGRESS_BLOCKED, so not recorded as upcoming. For a re-run: about 4,000 is reportedly the bargaining-unit size, not turnout; massnurses.org is the union's own site (advocacy incentive) and needs pairing with WBUR or WGBH; an announcement does not establish occurrence. attempted_at is the logging time, not the search time: the search was issued at 22:08:52Z in a parallel batch with row(s) 46, 47, 48 and returned at 22:08:58Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.massnurses.org/2026/10/02/brigham-nurses-schedule-largest-open-ended-nurse-strike-in-ma-history-to-begin-october-14-as-mgb-billionaires-refuse-to-negotiate-a-fair-contract-to-protect-patient-care/",
@@ -357,7 +357,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:09:04Z and failed at 22:09:04Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.wbur.org/news/2026/10/02/brigham-womens-hospital-nurses-plan-to-strike",
@@ -365,7 +365,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:09:05Z and failed at 22:09:05Z, per the research agent session transcript."
   },
   {
     "query": "marcha 2 de octubre 2026 Ciudad de México Tlatelolco",
@@ -373,7 +373,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "MX lead (unread): annual 2 October commemorative march in Mexico City reportedly convened by Comite 68 Pro Libertades Democraticas on 2026-10-02 (58th anniversary of Tlatelolco); snippets mostly route/traffic previews; turnout and incidents not established. Candidate: unotv.com/estados/ciudad-de-mexico/marcha-2-de-octubre/."
+    "note": "MX lead (unread): annual 2 October commemorative march in Mexico City reportedly convened by Comite 68 Pro Libertades Democraticas on 2026-10-02 (58th anniversary of Tlatelolco); snippets mostly route/traffic previews; turnout and incidents not established. 2026-10-02 is before the 2026-10-03 upcoming threshold, so it could only be an event if occurrence is reported. Candidate: unotv.com/estados/ciudad-de-mexico/marcha-2-de-octubre/. attempted_at is the logging time, not the search time: the search was issued at 22:08:52Z in a parallel batch with row(s) 43, 47, 48 and returned at 22:08:59Z, per the research agent session transcript."
   },
   {
     "query": "Haiti manifestation grève septembre 2026",
@@ -381,7 +381,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "HT: French-language query returned French (metropolitan) public-sector strike of 2026-09-29, not Haiti - name/language collision. No Haiti in-window episode identified; no update for ht-textile-minimum-wage-protests-2026 found."
+    "note": "HT: French-language query returned French (metropolitan) public-sector strike of 2026-09-29, not Haiti - name/language collision. No Haiti in-window episode identified; no update for ht-textile-minimum-wage-protests-2026 found. attempted_at is the logging time, not the search time: the search was issued at 22:08:53Z in a parallel batch with row(s) 43, 46, 48 and returned at 22:08:58Z, per the research agent session transcript."
   },
   {
     "query": "Guatemala protestas combustible bloqueos septiembre 2026",
@@ -389,7 +389,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "GT leads (unread): fuel-price blockades by transport sector reportedly ran in early September 2026 and reportedly ended around 2026-09-11 (before window); government reportedly suspended fuel taxes (tunota.com item dated 2026-10-01). Pre-window episode; candidate for a later historical round, not a round-4 in-window event."
+    "note": "GT leads (unread): fuel-price blockades by transport sector reportedly ran in early September 2026 and reportedly ended around 2026-09-11 (before window); government reportedly suspended fuel taxes (tunota.com item dated 2026-10-01). Pre-window episode; candidate for a later historical round, not a round-4 in-window event. attempted_at is the logging time, not the search time: the search was issued at 22:08:53Z in a parallel batch with row(s) 43, 46, 47 and returned at 22:09:00Z, per the research agent session transcript."
   },
   {
     "query": "Jamaica junior doctors JMDA industrial action October 2026",
@@ -397,7 +397,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "JM lead (unread; strongest in-window candidate): junior doctors (JMDA) reportedly took industrial action around 2026-10-01/02 over retroactive overtime arrears pending an Industrial Disputes Tribunal ruling; over 100 junior doctors reportedly off duty at Mandeville Regional Hospital; Health Ministry and Government statements reported 2026-10-02. Candidate URLs: jamaicaobserver.com/2026/10/02/doctors-resolute/, jamaicaobserver.com/2026/10/02/watch-mandeville-regional-emergency-mode-amid-junior-doctors-strike/, jamaica-star.com/article/news/20261001/idt-addresses-jmda%E2%80%99s-unrest. Not recorded: fetch blocked."
+    "note": "JM lead (unread; strongest in-window candidate): junior doctors (JMDA) reportedly took industrial action around 2026-10-01/02 over retroactive overtime arrears pending an Industrial Disputes Tribunal ruling; over 100 junior doctors reportedly off duty at Mandeville Regional Hospital; Health Ministry and Government statements reported 2026-10-02. Candidate URLs: jamaicaobserver.com/2026/10/02/doctors-resolute/, jamaicaobserver.com/2026/10/02/watch-mandeville-regional-emergency-mode-amid-junior-doctors-strike/, jamaica-star.com/article/news/20261001/idt-addresses-jmda%E2%80%99s-unrest. Not recorded: fetch blocked. attempted_at is the logging time, not the search time: the search was issued at 22:09:17Z in a parallel batch with row(s) 53, 54, 55 and returned at 22:09:25Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.jamaicaobserver.com/2026/10/02/doctors-resolute/",
@@ -405,7 +405,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:09:29Z and failed at 22:09:30Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.greaterbelize.com/ntucb-rejects-pms-response-prepares-further-action/",
@@ -413,7 +413,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:09:30Z and failed at 22:09:31Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.srherald.com/suriname/2026/09/30/onderwijsvakbonden-houd-kinderen-op-1-oktober-thuis/",
@@ -421,7 +421,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:09:31Z and failed at 22:09:32Z, per the research agent session transcript."
   },
   {
     "query": "Belize NTUCB march protest demands Briceño September 2026",
@@ -429,7 +429,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "BZ lead (unread): National Trade Union Congress of Belize reportedly rejected PM Briceno's 2026-09-15 reply to its 11 demands and said actions would increase (Breaking Belize News 2026-09-24); a brief union protest after a missed deadline is reported but its date is not established from snippets. Candidate URLs: breakingbelizenews.com/2026/09/24/ntucb-rejects-..., greaterbelize.com/ntucb-protests-warns-government-we-will-give-them-reasons-to-listen/."
+    "note": "BZ lead (unread): National Trade Union Congress of Belize reportedly rejected PM Briceno's 2026-09-15 reply to its 11 demands and said actions would increase (Breaking Belize News 2026-09-24); a brief union protest after a missed deadline is reported but its date is not established from snippets. Candidate URLs: breakingbelizenews.com/2026/09/24/ntucb-rejects-..., greaterbelize.com/ntucb-protests-warns-government-we-will-give-them-reasons-to-listen/. attempted_at is the logging time, not the search time: the search was issued at 22:09:17Z in a parallel batch with row(s) 49, 54, 55 and returned at 22:09:25Z, per the research agent session transcript."
   },
   {
     "query": "Suriname leerkrachten actie bonden oktober 2026",
@@ -437,7 +437,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "SR lead (unread; Dutch-language results): Gezamenlijke Onderwijs Vakbonden (FOLS, Syndicaat, DoHOS, VWPU) reportedly asked parents to keep children home on 2026-10-01 over teacher shortages and a new pay structure, and on 2026-10-02 reportedly asked adequately staffed schools to start. Whether this constitutes a strike/stay-away and its observance are not established. Candidate URLs: srherald.com/suriname/2026/09/30/onderwijsvakbonden-houd-kinderen-op-1-oktober-thuis/, dbsuriname.com/2026/10/02/onderwijsbonden-vragen-scholen-te-starten/."
+    "note": "SR lead (unread; Dutch-language results): Gezamenlijke Onderwijs Vakbonden (FOLS, Syndicaat, DoHOS, VWPU) reportedly asked parents to keep children home on 2026-10-01 over teacher shortages and a new pay structure, and on 2026-10-02 reportedly asked adequately staffed schools to start. Whether this constitutes a strike/stay-away and its observance are not established. Candidate URLs: srherald.com/suriname/2026/09/30/onderwijsvakbonden-houd-kinderen-op-1-oktober-thuis/, dbsuriname.com/2026/10/02/onderwijsbonden-vragen-scholen-te-starten/. attempted_at is the logging time, not the search time: the search was issued at 22:09:18Z in a parallel batch with row(s) 49, 53, 55 and returned at 22:09:26Z, per the research agent session transcript."
   },
   {
     "query": "Bahamas Union of Teachers strike sick-out September 2026",
@@ -445,7 +445,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "BS leads (unread): Bahamas Union of Teachers reportedly placed members on industrial action alert (2026-09-04, pre-window); BEMU administrators' action ended by a Supreme Court order around 2026-09-02 (pre-window). No in-window action established."
+    "note": "BS leads (unread): Bahamas Union of Teachers reportedly placed members on industrial action alert (2026-09-04, pre-window); BEMU administrators' action ended by a Supreme Court order around 2026-09-02 (pre-window). No in-window action established. attempted_at is the logging time, not the search time: the search was issued at 22:09:18Z in a parallel batch with row(s) 49, 53, 54 and returned at 22:09:25Z, per the research agent session transcript."
   },
   {
     "query": "Costa Rica marcha estudiantes universidades FEES protesta septiembre 2026",
@@ -453,7 +453,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "CR leads (unread): public-university students marched in San Jose on 2026-09-01 against a proposed FEES 2027 funding freeze (pre-window). In-window continuation not established from snippets; Semanario Universidad item on a march reaching Casa Presidencial is undated in results."
+    "note": "CR leads (unread): public-university students marched in San Jose on 2026-09-01 against a proposed FEES 2027 funding freeze (pre-window). In-window continuation not established from snippets; Semanario Universidad item on a march reaching Casa Presidencial is undated in results. attempted_at is the logging time, not the search time: the search was issued at 22:09:44Z in a parallel batch with row(s) 57, 58, 59 and returned at 22:09:52Z, per the research agent session transcript."
   },
   {
     "query": "Honduras protesta marcha paro septiembre 2026",
@@ -461,7 +461,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "HN leads (unread; in-window candidate): blockades and demonstrations against fuel-price increases reportedly on 2026-09-28 in Distrito Central, San Pedro Sula, Choloma, Villanueva, Yoro and Santa Barbara; transport regulator IHTT reportedly denied a national transport strike; clashes with police during clearance reportedly in Cofradia, Cortes on 2026-09-29/30; transport companies reportedly called a strike (tiempo.hn 2026-09-27). La Prensa fact-checks flag some circulating protest claims as false or out of context, so independent confirmation is essential. Candidate URLs: elheraldo.hn/honduras/ihtt-niega-paro-nacional-transporte-...-CH32179380, tiempo.hn/honduras/2026/09/27/empresas-transporte-convocan-paro-alza-precio-combustibles/, oncenoticias.hn/nacionales/paro-de-transporte-y-tomas-en-algunos-sectores-de-honduras-ihtt-habia-descartado-manifestaciones/."
+    "note": "HN leads (unread; in-window candidate): blockades and demonstrations against fuel-price increases reportedly on 2026-09-28 in Distrito Central, San Pedro Sula, Choloma, Villanueva, Yoro and Santa Barbara; transport regulator IHTT reportedly denied a national transport strike; confrontations reportedly during a police clearance in Cofradia, Cortes on 2026-09-29/30 (who did what is not established from snippets); transport companies reportedly called a strike (tiempo.hn 2026-09-27). La Prensa fact-checks flag some circulating protest claims as false or out of context, so independent confirmation is essential. Candidate URLs: elheraldo.hn/honduras/ihtt-niega-paro-nacional-transporte-...-CH32179380, tiempo.hn/honduras/2026/09/27/empresas-transporte-convocan-paro-alza-precio-combustibles/, oncenoticias.hn/nacionales/paro-de-transporte-y-tomas-en-algunos-sectores-de-honduras-ihtt-habia-descartado-manifestaciones/. attempted_at is the logging time, not the search time: the search was issued at 22:09:44Z in a parallel batch with row(s) 56, 58, 59 and returned at 22:09:51Z, per the research agent session transcript."
   },
   {
     "query": "Panamá protesta huelga septiembre 2026",
@@ -469,7 +469,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "PA: results mix 2025 episodes (CSS law strike, Bocas del Toro banana strike already in atlas as pa-banana-strike-2025) and an Argentine university strike item (Infobae politica) - country collision. No 2026 in-window Panama episode identified."
+    "note": "PA: results mix 2025 episodes (CSS law strike, Bocas del Toro banana strike already in atlas as pa-banana-strike-2025) and an Argentine university strike item (Infobae politica) - country collision. No 2026 in-window Panama episode identified. attempted_at is the logging time, not the search time: the search was issued at 22:09:45Z in a parallel batch with row(s) 56, 57, 59 and returned at 22:09:51Z, per the research agent session transcript."
   },
   {
     "query": "República Dominicana protesta paro mina Romero San Juan septiembre 2026",
@@ -477,7 +477,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "DO update lead (unread, low-quality source): a mining-industry news aggregator (discoveryalert.com) reportedly states the San Juan se levanta movement convened a demonstration on 2026-09-18 and that the Romero suspension remained in effect; other results are May 2026 reports already reflected in do-romero-mine-protests-2026. Needs a Dominican outlet (Listin Diario, Diario Libre, El Caribe) read before any update."
+    "note": "DO update lead (unread, low-quality source): a mining-industry news aggregator (discoveryalert.com) reportedly states the San Juan se levanta movement convened a demonstration on 2026-09-18 and that the Romero suspension remained in effect; other results are May 2026 reports already reflected in do-romero-mine-protests-2026. Needs a Dominican outlet (Listin Diario, Diario Libre, El Caribe) read before any update. attempted_at is the logging time, not the search time: the search was issued at 22:09:45Z in a parallel batch with row(s) 56, 57, 58 and returned at 22:09:51Z, per the research agent session transcript."
   },
   {
     "query": "San Juan se levanta marcha 18 septiembre 2026 minería",
@@ -485,7 +485,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "DO update lead (unread): organisations in San Juan province reportedly convened a concentration called San Juan se levanta on 2026-09-18 against mining in the Cordillera Central and in defence of water, prompted by a disclosed GoldQuest exploration-concession request (Cachimbo Este). Occurrence/turnout on 2026-09-18 not established from snippets (some snippets are May 2026). Candidate URLs: barrigaverde.net/convocan-concentracion-en-san-juan-contra-la-explotacion-minera-y-en-defensa-del-agua/, barrigaverde.net/san-juan-vuelve-a-levantar-su-voz-en-defensa-del-agua-y-contra-la-explotacion-minera/. No update written because no page could be fetched."
+    "note": "DO update lead (unread): organisations in San Juan province reportedly convened a concentration called San Juan se levanta on 2026-09-18 against mining in the Cordillera Central and in defence of water, prompted by a disclosed GoldQuest exploration-concession request (Cachimbo Este). Occurrence/turnout on 2026-09-18 not established from snippets (some snippets are May 2026). Candidate URLs: barrigaverde.net/convocan-concentracion-en-san-juan-contra-la-explotacion-minera-y-en-defensa-del-agua/, barrigaverde.net/san-juan-vuelve-a-levantar-su-voz-en-defensa-del-agua-y-contra-la-explotacion-minera/. No update written because no page could be fetched. attempted_at is the logging time, not the search time: the search was issued at 22:10:05Z in a parallel batch with row(s) 61, 62, 63 and returned at 22:10:11Z, per the research agent session transcript."
   },
   {
     "query": "Cuba protesta cacerolazo apagones septiembre 2026",
@@ -493,7 +493,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "CU leads (unread): Havana neighbourhood cacerolazos and street blockades over blackouts and water reported in September 2026 (Infobae 2026-09-20: protests after 36+ hour outages); Observatorio Cubano de Conflictos reportedly counted 26 in-person protests in September (Infobae 2026-10-01); national grid collapse reported 2026-09-18. Exile/opposition-aligned monitors have advocacy incentives; independent corroboration needed."
+    "note": "CU leads (unread): Havana neighbourhood cacerolazos and street blockades over blackouts and water reported in September 2026 (Infobae 2026-09-20: protests after 36+ hour outages); Observatorio Cubano de Conflictos reportedly counted 26 in-person protests in September (Infobae 2026-10-01); national grid collapse reported 2026-09-18. Exile/opposition-aligned monitors have advocacy incentives; independent corroboration needed. attempted_at is the logging time, not the search time: the search was issued at 22:10:05Z in a parallel batch with row(s) 60, 62, 63 and returned at 22:10:13Z, per the research agent session transcript."
   },
   {
     "query": "Brasil greve trabalhadores 30 de setembro 2026 protesto",
@@ -501,7 +501,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "BR leads (unread): Correios national strike reportedly began 2026-09-10 with TST ordering 80% minimum staffing; Caixa Economica Federal national stoppage reportedly from 2026-09-10 with TST judgment around 2026-09-29 (mixvale.com.br). Whether either continued into 2026-09-18..10-02 not established from snippets; exame.com item 'Quando acaba a greve dos Correios?' is undated in results."
+    "note": "BR leads (unread): Correios national strike reportedly began 2026-09-10 with TST ordering 80% minimum staffing; Caixa Economica Federal national stoppage reportedly from 2026-09-10 with TST judgment around 2026-09-29 (mixvale.com.br). Whether either continued into 2026-09-18..10-02 not established from snippets; exame.com item 'Quando acaba a greve dos Correios?' is undated in results. attempted_at is the logging time, not the search time: the search was issued at 22:10:06Z in a parallel batch with row(s) 60, 61, 63 and returned at 22:10:12Z, per the research agent session transcript."
   },
   {
     "query": "Paraguay Uruguay movilización paro protesta septiembre 2026",
@@ -509,7 +509,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "PY/UY leads (unread): PY teachers' federation (FEP) and education inter-union reportedly called national mobilisation on 2026-09-17/18 (ABC Color 2026-09-14), only 09-18 is in window; UY port workers' 24-hour strike reportedly 2026-09-21 and industrial unions' (CSI, UNTMRA) partial stoppage and march 2026-09-24 (Prensa Latina, state-run Cuban agency). Candidate URLs: abc.com.py/nacionales/2026/09/14/docentes-confirman-gran-movilizacion-nacional-para-el-17-y-18-de-septiembre/, prensa-latina.cu/2026/09/24/jornada-de-protesta-de-trabajadores-industriales-en-uruguay/, prensa-latina.cu/2026/09/21/paro-portuario-hoy-en-uruguay/."
+    "note": "PY/UY leads (unread): PY teachers' federation (FEP) and education inter-union reportedly called national mobilisation on 2026-09-17/18 (ABC Color 2026-09-14), only 09-18 is in window; UY port workers' 24-hour strike reportedly 2026-09-21 and industrial unions' (CSI, UNTMRA) partial stoppage and march 2026-09-24 (Prensa Latina, state-run Cuban agency). Candidate URLs: abc.com.py/nacionales/2026/09/14/docentes-confirman-gran-movilizacion-nacional-para-el-17-y-18-de-septiembre/, prensa-latina.cu/2026/09/24/jornada-de-protesta-de-trabajadores-industriales-en-uruguay/, prensa-latina.cu/2026/09/21/paro-portuario-hoy-en-uruguay/. attempted_at is the logging time, not the search time: the search was issued at 22:10:06Z in a parallel batch with row(s) 60, 61, 62 and returned at 22:10:13Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://barrigaverde.net/san-juan-vuelve-a-levantar-su-voz-en-defensa-del-agua-y-contra-la-explotacion-minera/",
@@ -517,7 +517,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:10:28Z and failed at 22:10:30Z, per the research agent session transcript."
   },
   {
     "query": "WebFetch https://www.abc.com.py/nacionales/2026/09/14/docentes-confirman-gran-movilizacion-nacional-para-el-17-y-18-de-septiembre/",
@@ -525,7 +525,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited."
+    "note": "FAILED fetch: EGRESS_BLOCKED by the environment network egress proxy. Timestamp is the logging time from the real clock; the fetch attempt itself was made within the preceding few minutes. Page not read and not cited. The call was issued at 22:10:29Z and failed at 22:10:30Z, per the research agent session transcript."
   },
   {
     "query": "Confech nueva marcha convocatoria octubre 2026 paro nacional Colegio de Profesores",
@@ -533,7 +533,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "CL lead (unread; strongest in-window candidate): CONFECH called a national stoppage and march on 2026-10-01 against projected education cuts in the 2027 Budget Law, joined by CUT and Colegio de Profesores; marches reportedly in Santiago and many other cities; snippets report clashes, water cannon and tear gas, at least 25 detained (BioBio), and competing turnout figures (CONFECH over 20,000; Carabineros about 6,000) - all unverified here. No announced follow-up date identified. Candidate URLs: biobiochile.cl/.../incidentes-en-la-alameda-por-marcha-de-la-confech-....shtml, radio.uchile.cl/2026/10/01/mas-de-20-mil-personas-marchan-..., elperiodista.cl/2026/10/confech-convoca-a-paro-nacional-..., meganoticias.cl/nacional/532823-.... All fetch attempts for this episode were blocked."
+    "note": "CL lead (unread; strongest in-window candidate): CONFECH called a national stoppage and march on 2026-10-01 against projected education cuts in the 2027 Budget Law, joined by CUT and Colegio de Profesores; marches reportedly in Santiago and many other cities; snippets report confrontations (actors not established), water cannon and tear gas, at least 25 detained (BioBio), and competing turnout figures (CONFECH over 20,000; Carabineros about 6,000) - all unverified here. No announced follow-up date identified. Candidate URLs: biobiochile.cl/.../incidentes-en-la-alameda-por-marcha-de-la-confech-....shtml, radio.uchile.cl/2026/10/01/mas-de-20-mil-personas-marchan-..., elperiodista.cl/2026/10/confech-convoca-a-paro-nacional-..., meganoticias.cl/nacional/532823-.... All fetch attempts for this episode were blocked. attempted_at is the logging time, not the search time: the search was issued at 22:10:36Z in a parallel batch with row(s) 67, 68, 69 and returned at 22:10:44Z, per the research agent session transcript."
   },
   {
     "query": "Observatorio Venezolano de Conflictividad Social protestas septiembre 2026",
@@ -541,7 +541,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "VE leads (unread): OVCS reportedly counted 13 protests in 9 states on 2026-09-18 (elinformadorve.com) and 652 protests in August 2026; separate reports of blackout protests with road closures in Guarico, Zulia, Merida, Aragua and Portuguesa around 2026-09-25/28 and protests for an electoral timetable in Tachira and Aragua on 2026-10-01 (El Nacional). OVCS is a civil-society monitor; counts are its own. Candidate URLs: observatoriodeconflictos.org.ve, elnacional.com/2026/10/manifestantes-en-tachira-y-aragua-..., eldiario.com/2026/09/25/cortes-luz-protestas/."
+    "note": "VE leads (unread): OVCS reportedly counted 13 protests in 9 states on 2026-09-18 (elinformadorve.com) and 652 protests in August 2026; separate reports of blackout protests with road closures in Guarico, Zulia, Merida, Aragua and Portuguesa around 2026-09-25/28 and protests for an electoral timetable in Tachira and Aragua on 2026-10-01 (El Nacional). OVCS is a civil-society monitor; counts are its own. Candidate URLs: observatoriodeconflictos.org.ve, elnacional.com/2026/10/manifestantes-en-tachira-y-aragua-..., eldiario.com/2026/09/25/cortes-luz-protestas/. attempted_at is the logging time, not the search time: the search was issued at 22:10:36Z in a parallel batch with row(s) 66, 68, 69 and returned at 22:10:42Z, per the research agent session transcript."
   },
   {
     "query": "Haiti CODEVI textile workers strike wage September 2026",
@@ -549,7 +549,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "HT update check for ht-textile-minimum-wage-protests-2026: results are the May 2026 Haitian Times report already cited and older (2025 or earlier) material; no reporting dated 2026-09-18..10-02 found. No update written."
+    "note": "HT update check for ht-textile-minimum-wage-protests-2026: results are the May 2026 Haitian Times report already cited and older (2025 or earlier) material; no reporting dated 2026-09-18..10-02 found. No update written. attempted_at is the logging time, not the search time: the search was issued at 22:10:37Z in a parallel batch with row(s) 66, 67, 69 and returned at 22:10:44Z, per the research agent session transcript."
   },
   {
     "query": "Guadeloupe Martinique Guyane grève manifestation fin septembre 2026",
@@ -557,7 +557,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "GP/MQ/GF leads (unread; French-language): public-sector strike day 2026-09-29 relayed in French Guiana (France-Guyane: schools closed in Cayenne, Kourou, Remire-Montjoly, Matoury, Macouria), Guadeloupe (CGTG renewable strike notice from 2026-09-29; inter-union march at Les Abymes per Karibinfo) and Martinique (unions extended the day to all sectors per Madinin-Art). A snippet mentions a further mobilisation announced for 2026-11-07, but which territory/organisers is unclear. Candidate URLs: franceguyane.fr/actualite/education-sante-environnement/greve-nationale-du-mardi-29-septembre-2026-...-1094394.php, bondamanjak.com/article/guadeloupe-la-cgtg-depose-un-preavis-de-greve-reconductible-a-partir-du-29-septembre, karibinfo.com/news/guadeloupe-les-syndicats-de-la-fonction-publique-ont-manifeste-aux-abymes/."
+    "note": "GP/MQ/GF leads (unread; French-language): public-sector strike day 2026-09-29 relayed in French Guiana (France-Guyane: schools closed in Cayenne, Kourou, Remire-Montjoly, Matoury, Macouria), Guadeloupe (CGTG renewable strike notice from 2026-09-29; inter-union march at Les Abymes per Karibinfo) and Martinique (unions extended the day to all sectors per Madinin-Art). A snippet mentions a further mobilisation announced for 2026-11-07, but which territory/organisers is unclear, so it cannot be an upcoming item until announced_by is sourced. The 2026-09-29 day may overlap the Europe agent's national FR strike record; avoid double counting. Candidate URLs: franceguyane.fr/actualite/education-sante-environnement/greve-nationale-du-mardi-29-septembre-2026-...-1094394.php, bondamanjak.com/article/guadeloupe-la-cgtg-depose-un-preavis-de-greve-reconductible-a-partir-du-29-septembre, karibinfo.com/news/guadeloupe-les-syndicats-de-la-fonction-publique-ont-manifeste-aux-abymes/. attempted_at is the logging time, not the search time: the search was issued at 22:10:37Z in a parallel batch with row(s) 66, 67, 68 and returned at 22:10:44Z, per the research agent session transcript."
   },
   {
     "query": "curl reachability probe of 10 news homepages (biobiochile.cl, apnews.com, reuters.com, elpais.com, bbc.com, efe.com, france24.com, infobae.com, eldiario.com, dw.com)",
@@ -565,14 +565,14 @@
     "provider": "curl",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "FAILED diagnostic: every request returned 'CONNECT tunnel failed, response 403' from the environment egress proxy. Timestamp is the logging time; the probe ran at about 2026-10-02T22:06Z. Not a research source."
+    "note": "FAILED diagnostic: every request returned 'CONNECT tunnel failed, response 403' from the environment egress proxy. Timestamp is the logging time; the 10-host probe was issued at 22:06:58Z and returned at 22:07:01Z, and a follow-up curl to bbc.com (with github.com as a control, which was reachable) ran at 22:07:03-22:07:04Z, per the research agent session transcript; i.e. within about 22:06-22:08Z. Proxy-log rejections for apnews.com and bbc.com at 22:07:22-25Z do not match these call times and may belong to another agent. Not a research source."
   },
   {
     "query": "Round-4 Americas sweep summary",
     "attempted_at": "2026-10-02T22:11:24Z",
-    "provider": "WebSearch",
+    "provider": "none",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Summary row, not a search. 31 WebSearch discovery queries ran successfully; all 39 WebFetch deep-read attempts across 39 distinct news, union, official and reference domains failed (EGRESS_BLOCKED, domain unreachable, or rate-limited safety check). Because the contract forbids citing pages that were not deep-read, no events, context records, updates or upcoming actions were written. Leads in the notes above are search-snippet leads only, not verified facts; turnout, arrest and date details in them are unverified and must be re-read from the original articles before publication. Coverage gaps: no search was run in this round for AI, AG, AW, BB, BM, BQ, BV, KY, CW, DM, SV, FK, GL, GD, GY, MS, NI, PR, BL, KN, LC, MF, PM, VC, SX, GS, TT, TC, VG, VI (27 of 57 Americas entries screened by at least one query)."
+    "note": "Summary row, not a search. 31 WebSearch discovery queries ran successfully; all 39 WebFetch deep-read attempts across 39 distinct news, union, official and reference domains failed (EGRESS_BLOCKED, domain unreachable, or rate-limited safety check). Because the contract forbids citing pages that were not deep-read, no events, context records, updates or upcoming actions were written. Leads in the notes above are search-snippet leads only, not verified facts; turnout, arrest and date details in them are unverified and must be re-read from the original articles before publication. Coverage gaps: no search was run in this round for AI, AG, AW, BB, BM, BQ, BV, KY, CW, DM, SV, FK, GL, GD, GY, MS, NI, PR, BL, KN, LC, MF, PM, VC, SX, GS, TT, TC, VG, VI (27 of 57 Americas entries screened by at least one query). This row is a summary, not an attempt (provider \"none\"); counts of search attempts exclude it. attempted_at values on every row are logging times; each attempt row's note gives the call time from the session transcript. Fetch URLs in rows 6 and 15-19 came from candidate_urls in the round-3 Americas screening file (see each note). Rows 14, 20-27 and 29-34 were direct attempts on outlet index pages, not search candidates."
   }
 ]

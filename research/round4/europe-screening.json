@@ -5,7 +5,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only. Leads: France CGT-RATP open-ended strike reportedly from 28 Sep 2026; Italy CSLE general strike call for 2 Oct 2026 (striketracker/traveltourister aggregators). Not read: no page could be fetched in this session (egress proxy blocked all news domains). Leads are not evidence."
+    "note": "Discovery only. Leads: France CGT-RATP open-ended strike reportedly from 28 Sep 2026; Italy CSLE general strike call for 2 Oct 2026 (striketracker/traveltourister aggregators). Not read: no page could be fetched in this session (egress proxy blocked all news domains). Leads are not evidence. Timestamp approximate; reconstructed and logged at 22:07:55Z."
   },
   {
     "query": "general strike September 2026",
@@ -13,7 +13,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only. Lead: France 29 Sep 2026 public-sector strike called by CGT, FO, CFDT, UNSA, FSU, Solidaires, CFE-CGC, FA-FP (connexionfrance, US Embassy France alert, sortiraparis). Fetch of connexionfrance.com, fr.usembassy.gov and sortiraparis.com failed (EGRESS_BLOCKED); nothing read."
+    "note": "Discovery only. Lead: France 29 Sep 2026 public-sector strike called by CGT, FO, CFDT, UNSA, FSU, Solidaires, CFE-CGC, FA-FP (connexionfrance, US Embassy France alert, sortiraparis). Fetch of connexionfrance.com, fr.usembassy.gov and sortiraparis.com failed (EGRESS_BLOCKED); nothing read. Timestamp approximate; reconstructed and logged at 22:07:55Z."
   },
   {
     "query": "France grève 2 octobre 2026 manifestation",
@@ -21,7 +21,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "Discovery only; French-language query. Returned items (publicsenat, franceinfo) appear to concern the 2 Oct 2025 intersyndicale day, not 2026: year collision flagged. Fetches of publicsenat.fr and franceinfo.fr failed (EGRESS_BLOCKED)."
+    "note": "Discovery only; French-language query. Returned items (publicsenat, franceinfo) appear to concern the 2 Oct 2025 intersyndicale day, not 2026: year collision flagged. Fetches of publicsenat.fr and franceinfo.fr failed (EGRESS_BLOCKED). Timestamp approximate; reconstructed and logged at 22:07:55Z."
   },
   {
     "query": "grève fonction publique 29 septembre 2026 manifestants chiffres",
@@ -29,7 +29,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "Discovery only; French. Lead: AEF info dispatch citing ministry striker rates for 29 Sep 2026 (snippet: 4.10%-9.96%) and CGT claim of 300,000 demonstrators. Fetch of aefinfo.fr failed (EGRESS_BLOCKED); figures not verified."
+    "note": "Discovery only; French. Lead: AEF info dispatch citing ministry striker rates for 29 Sep 2026 (snippet: 4.10%-9.96%) and CGT claim of 300,000 demonstrators. Fetch of aefinfo.fr failed (EGRESS_BLOCKED); figures not verified. Discrepancy: the AEF dispatch URL slug ('entre-5-et-996-de-grevistes') suggests 5%-9.96%, not the snippet's 4.10%-9.96%; resolve from a deep-read before any record. Timestamp approximate; reconstructed and logged at 22:07:55Z."
   },
   {
     "query": "\"29 septembre\" grève fonctionnaires intersyndicale manifestation Paris ministère de l'Intérieur 2026",
@@ -37,7 +37,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "Discovery only; French. Leads: La Libre (AFP/Belga dispatch, 29 Sep 2026) and jeunessedumonde.fr; snippet attributes 300,000 (CGT, incl. 70,000 Paris) vs 206,000 (Interior Ministry, 30,000 Paris). Both fetches failed (EGRESS_BLOCKED); not verified, not cited."
+    "note": "Discovery only; French. Leads: La Libre (AFP/Belga dispatch, 29 Sep 2026) and jeunessedumonde.fr; snippet attributes 300,000 (CGT, incl. 70,000 Paris) vs 206,000 (Interior Ministry, 30,000 Paris). Both fetches failed (EGRESS_BLOCKED); not verified, not cited. Timestamp approximate; reconstructed and logged at 22:07:55Z."
   },
   {
     "query": "FETCH (curl) https://www.theguardian.com/world/europe-news",
@@ -285,7 +285,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only; Italian. Leads: CSLE general strike proclaimed for 2 Oct 2026 (rail window 11:00-14:00) on fuel/essential-goods prices, tax and wages (sky tg24, today.it, fanpage, quifinanza, quotidiano.net); national school strike 16 Oct 2026; USI-CIT general strike 30 Oct 2026 against war and military spending. Not read (today.it, tg24.sky.it EGRESS_BLOCKED). Occurrence and turnout of 2 Oct not established."
+    "note": "Discovery only; Italian. Leads: CSLE general strike proclaimed for 2 Oct 2026 on fuel/essential-goods prices, tax and wages (sky tg24, today.it, fanpage, quifinanza, quotidiano.net); national school strike 16 Oct 2026; USI-CIT general strike 30 Oct 2026 against war and military spending. Not read (today.it, tg24.sky.it EGRESS_BLOCKED). Occurrence and turnout of 2 Oct not established."
   },
   {
     "query": "Serbia protest students September 2026",
@@ -365,7 +365,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only; Spanish. Leads: Seville housing march 2 Oct 2026 ('more than 15,000', Europa Press via Infobae, attribution unknown); housing encampments (Bilbao Arriaga square, Seville Las Setas) reported since ~28 Sep; protests called in 50+ cities for weekend 3-4 Oct 2026 aimed toward a housing general strike; Madrid Tenants' Union demands (Infobae, es.euronews, Pikara, teleSUR). Possible update for es-housing-20261002. infobae.com fetch EGRESS_BLOCKED; not read."
+    "note": "Discovery only; Spanish. Leads: Seville housing march 2 Oct 2026 ('more than 15,000', Europa Press via Infobae, attribution unknown); housing encampments reported in Bilbao and Seville since ~28 Sep; protests called in 50+ cities for weekend 3-4 Oct 2026 aimed toward a housing general strike; Madrid Tenants' Union demands (Infobae, es.euronews, Pikara, teleSUR). Possible update for es-housing-20261002. infobae.com fetch EGRESS_BLOCKED; not read."
   },
   {
     "query": "Portugal greve geral manifestação outubro 2026",
@@ -445,7 +445,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only; Romanian. Lead: sheep breeders and farmers protest at Piața Victoriei, Bucharest, 15 Sep 2026 over an export ban, with reported clashes, tear gas and ~30 people taken to police stations (Recorder, AgroInfo). Date is before the 18 Sep window; whether protesters stayed in Bucharest into the window is not established. Not read."
+    "note": "Discovery only; Romanian. Lead: sheep breeders and farmers protest in Bucharest, 15 Sep 2026 over an export ban, with reported clashes, tear gas and ~30 people taken to police stations (Recorder, AgroInfo). Date is before the 18 Sep window; whether protesters stayed in Bucharest into the window is not established. Not read."
   },
   {
     "query": "Bulgaria protest Sofia September 2026",
@@ -485,7 +485,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only. Georgia is outside this region's catalog scope (not region Europe); civil.ge reports continuing Rustaveli Avenue protests near 600 days (date unverified). No in-window Moldovan episode identified."
+    "note": "Discovery only. Georgia is outside this region's catalog scope (not region Europe); civil.ge reports continuing Tbilisi protests near 600 days (date unverified). No in-window Moldovan episode identified."
   },
   {
     "query": "France grève enseignants octobre 2026 préavis intersyndicale éducation",
@@ -509,7 +509,7 @@
     "provider": "WebSearch",
     "result_count": 10,
     "reviewed_urls": [],
-    "note": "Discovery only; Czech/English. Lead: Million Moments for Democracy (Milion chvilek) rally on Old Town Square, Prague, 28 Sep 2026 against the Babiš government; organisers reportedly plan next demonstration no later than 17 Nov 2026 (source of summary not identified among results). expats.cz fetch EGRESS_BLOCKED; not verified."
+    "note": "Discovery only; Czech/English. Lead: Million Moments for Democracy (Milion chvilek) rally in Prague, 28 Sep 2026. Stance target unverified: the expats.cz URL slug ('...rally-in-prague-to-defend-independence-of-czech-public-media') points to public-media independence, so a generic 'against the government' target is not supported; organisers reportedly plan next demonstration no later than 17 Nov 2026 (source of summary not identified among results). expats.cz fetch EGRESS_BLOCKED; not verified."
   },
   {
     "query": "Montenegro OR \"North Macedonia\" OR Bosnia protest September 2026",
@@ -653,7 +653,7 @@
     "provider": "WebSearch",
     "result_count": 9,
     "reviewed_urls": [],
-    "note": "Discovery only. Leads outside window: Slavija Square rally 23 May 2026 (European Western Balkans: up to ~190,000, attribution unverified; Al Jazeera gallery 24 May). No in-window Serbian rally dated 18 Sep-2 Oct verified; existing record rs-station-accountability-2024-2025 not updated."
+    "note": "Discovery only. Leads outside window: Belgrade rally 23 May 2026 (European Western Balkans: up to ~190,000, attribution unverified; Al Jazeera gallery 24 May). No in-window Serbian rally dated 18 Sep-2 Oct verified; existing record rs-station-accountability-2024-2025 not updated."
   },
   {
     "query": "Spain manifestaciones vivienda 3 y 4 de octubre 2026 sindicato de inquilinas",
