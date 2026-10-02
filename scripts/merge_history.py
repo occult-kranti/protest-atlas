@@ -50,7 +50,7 @@ def assemble(root=ROOT):
     for e in events:
         e['country_name']=catalog[e['country']]['name'];e['region']=catalog[e['country']]['region']
     events.sort(key=lambda e:(e['last_observed_at'] or '',e['id']),reverse=True)
-    write(root/'public/events.json',{'schema_version':1,'generated_at':now,'last_editorial_review':now,'coverage_note':f"Research snapshot, 1 Jan 2024–2 Oct 2026, with a selective recent-activity sweep for 18 Sep–2 Oct 2026: {len(events)} sourced episodes across {len(set(e['country'] for e in events))} countries and territories. AI-assisted, no independent human editorial sign-off. Initial country searches are not exhaustive histories. Missing records and unknown status remain coverage limits.",'events':events})
+    write(root/'public/events.json',{'schema_version':1,'generated_at':now,'last_editorial_review':now,'coverage_note':f"Research snapshot, 1 Jan 2024–2 Oct 2026: {len(events)} sourced episodes across {len(set(e['country'] for e in events))} countries and territories. {sweep_sentence(root/'research/round4')}AI-assisted, no independent human editorial sign-off. Missing records and unknown status are coverage limits, not evidence that no protests occurred.",'events':events})
     write(root/'public/event-context.json',{'schema_version':1,'window_start':'2024-01-01','window_end':WINDOW_END,'records':contexts})
     write(root/'public/research-ledger.json',{'schema_version':1,'window_start':'2024-01-01','window_end':WINDOW_END,'generated_at':now,'note':'Initial English-language discovery screening of every directory entry, followed by selected source checks. This is non-exhaustive: one logged search is not a completed country history or proof of no protests. Local-language, city-level and date coverage remain uneven.','countries':sorted(screening,key=lambda r:r['code'])})
     languages={}
@@ -104,11 +104,30 @@ def apply_round4(research,events,contexts,languages):
         upcoming.extend(part(region,'upcoming',[]))
     return upcoming
 
+def sweep_stats(research):
+    """Counts from the retained screening logs; the sentence states what the latest sweep could read."""
+    rows=[r for region in ROUND4 if (research/f'{region}-screening.json').exists() for r in read(research/f'{region}-screening.json')]
+    searches=[r for r in rows if r['provider']=='WebSearch']
+    read_pages={u for r in rows for u in r['reviewed_urls']}
+    days=sorted(r['attempted_at'][:10] for r in rows)
+    return {'searches':len(searches),'pages_read':len(read_pages),'day':days[-1] if days else None}
+
+def sweep_sentence(research):
+    stats=sweep_stats(research)
+    if not stats['day']:return ''
+    day=datetime.fromisoformat(stats['day']).strftime('%-d %b %Y')
+    if stats['pages_read']:return f"A recent-activity search on {day} read {stats['pages_read']} source pages. "
+    return f"A recent-activity search on {day} logged {stats['searches']} searches but could not open news articles, so no newer records were added. "
+
 def write_upcoming(root,items,event_ids,now):
     for item in items:
         if item['event_id'] is not None and item['event_id'] not in event_ids:item['event_id']=None
     items=sorted(items,key=lambda item:(item['planned_start'],item['country'],item['id']))
-    write(root/'public/upcoming.json',{'schema_version':1,'generated_at':now,'note':UPCOMING_NOTE,'items':items})
+    note=UPCOMING_NOTE
+    stats=sweep_stats(root/'research/round4')
+    if stats['day'] and not items:
+        note+=f" Latest search for announcements: {stats['day']}, {stats['searches']} searches logged, {stats['pages_read']} source pages could be opened; unread search results are leads, not sources, and are not published."
+    write(root/'public/upcoming.json',{'schema_version':1,'generated_at':now,'note':note,'items':items})
     print('Announced actions:',len(items))
 
 def prepare_cities(root,events,contexts):

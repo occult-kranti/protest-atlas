@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {relativeLabel, absoluteLabel, observationBand, announcementState, countdownLabel, daysUntil, updateStamps} from '../freshness.js';
+import {relativeLabel, absoluteLabel, observationBand, announcementState, countdownLabel, daysUntil, updateStamps, datasetState} from '../freshness.js';
 
 const now = Date.parse('2026-10-02T22:00:00Z');
 
@@ -37,7 +37,13 @@ test('announcements count down but never turn into occurrences', () => {
   assert.equal(daysUntil(item, now), 5);
   assert.equal(countdownLabel(item, now), 'in 5 days');
   assert.equal(countdownLabel({...item, planned_start: '2026-10-03'}, now), 'tomorrow');
-  assert.equal(countdownLabel({...item, date_precision: 'month'}, now), 'in 5 days (month precision)');
+  assert.equal(countdownLabel({...item, date_precision: 'month'}, now), 'Planned for October 2026');
+  assert.equal(countdownLabel({...item, date_precision: 'week'}, now), 'Planned for the week of 7 Oct 2026');
+  // A month or week plan stays current until its period ends, not after its first day.
+  assert.equal(announcementState({...item, planned_start: '2026-10-01', date_precision: 'month'}, now), 'scheduled-now');
+  assert.equal(announcementState({...item, planned_start: '2026-09-01', date_precision: 'month'}, now), 'date-passed');
+  assert.equal(announcementState({...item, planned_start: '2026-09-27', date_precision: 'week'}, now), 'scheduled-now');
+  assert.equal(announcementState({...item, planned_start: '2026-09-25', date_precision: 'week'}, now), 'date-passed');
   assert.equal(announcementState({...item, planned_start: '2026-10-02'}, now), 'scheduled-now');
   assert.equal(announcementState({...item, planned_start: '2026-09-30', planned_end: '2026-10-04'}, now), 'scheduled-now');
   assert.equal(announcementState({...item, planned_start: '2026-10-01'}, now), 'date-passed');
@@ -62,4 +68,16 @@ test('update stamps stay separate and ignore invalid values', () => {
   });
   assert.equal(updateStamps().dataUpdated, null);
   assert.equal(updateStamps().latestSourceCheck, null);
+});
+
+test('dataset staleness follows newest evidence, not assembly time', () => {
+  assert.equal(datasetState('2026-10-02', now), 'current');
+  assert.equal(datasetState('2026-09-30', now), 'current');
+  assert.equal(datasetState('2026-09-29', now), 'aging');
+  assert.equal(datasetState('2026-09-25', now), 'stale');
+  assert.equal(datasetState('2026-09-02', now), 'archive');
+  assert.equal(datasetState(null, now), 'unknown');
+  assert.equal(datasetState('2026-10-09', now), 'unknown');
+  assert.equal(datasetState('2026-10-02', Date.parse('2026-10-05T00:00:00Z')), 'aging');
+  assert.equal(datasetState('2026-10-02', Date.parse('2026-10-09T00:00:00Z')), 'stale');
 });

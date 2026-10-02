@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "checked_at": "2026-10-02T21:31:50Z",
+  "checked_at": "2026-10-02T22:45:35Z",
   "human_editorial_review": false,
   "coverage_note": "Selected source checks, not exhaustive country coverage. Source languages describe text actually read; null means not recorded. A search alone does not mark a country reviewed.",
   "source_languages": {

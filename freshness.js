@@ -64,13 +64,44 @@ export function observationBand(event, now = Date.now()) {
   return 'older';
 }
 
+// Long/accessible labels. Bands sort and group records; they are never a live indicator or a status.
 export const BAND_LABELS = {
-  fresh: 'Observed in the last 72 hours',
-  week: 'Observed in the last 7 days',
-  month: 'Observed in the last 30 days',
-  older: 'Observed more than 30 days ago',
-  unknown: 'Observation date not established',
+  fresh: 'Latest evidence dated within the last 72 hours',
+  week: 'Latest evidence dated 3 to 7 days ago',
+  month: 'Latest evidence dated 7 to 30 days ago',
+  older: 'Latest evidence dated more than 30 days ago',
+  unknown: 'Latest evidence date not established',
 };
+
+export const BAND_BADGES = {
+  fresh: 'Within 72 h',
+  week: '3\u20137 days ago',
+  month: '7\u201330 days ago',
+  older: 'Over 30 days ago',
+  unknown: 'Date not established',
+};
+
+export const BAND_HEADINGS = {
+  fresh: 'Latest evidence within 72 hours',
+  week: '3 to 7 days ago',
+  month: '7 to 30 days ago',
+  older: 'Earlier research, 2024\u20132026',
+  unknown: 'Evidence date not established',
+};
+
+/**
+ * Whole-snapshot staleness, measured from the NEWEST EVIDENCE date (never assembly or build time,
+ * which a rerun can refresh without adding anything).
+ */
+export function datasetState(latestObservation, now = Date.now()) {
+  const observed = toTime(latestObservation);
+  if (!Number.isFinite(observed) || observed > now) return 'unknown';
+  const age = now - observed;
+  if (age < LIVE_WINDOW_HOURS * HOUR) return 'current';
+  if (age < 7 * DAY) return 'aging';
+  if (age < 30 * DAY) return 'stale';
+  return 'archive';
+}
 
 /**
  * State of an announced action relative to today (UTC). An announcement never becomes an occurrence here:
@@ -81,20 +112,32 @@ export function announcementState(item, now = Date.now()) {
   if (item?.status === 'postponed') return 'postponed';
   const start = toTime(item?.planned_start);
   if (!Number.isFinite(start)) return 'unknown';
-  const end = Number.isFinite(toTime(item?.planned_end)) ? toTime(item.planned_end) : start;
+  const end = plannedEnd(item, start);
   const today = utcDay(now);
   if (utcDay(end) < today) return 'date-passed';
   if (utcDay(start) <= today) return 'scheduled-now';
   return 'upcoming';
 }
 
+/** Last planned day: explicit end, else the end of the stated week or month, else the start day. */
+function plannedEnd(item, start) {
+  const explicit = toTime(item?.planned_end);
+  if (Number.isFinite(explicit)) return explicit;
+  if (item?.date_precision === 'week') return start + 6 * DAY;
+  if (item?.date_precision === 'month') {
+    const date = new Date(start);
+    return Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 0);
+  }
+  return start;
+}
+
 export const ANNOUNCEMENT_LABELS = {
   upcoming: 'Announced',
-  'scheduled-now': 'Scheduled for today · occurrence not confirmed',
-  'date-passed': 'Planned date passed · occurrence not recorded here',
-  postponed: 'Reported postponed',
+  'scheduled-now': 'Planned for today \u00b7 occurrence not established',
+  'date-passed': 'Planned date passed \u00b7 occurrence not established (not recorded here)',
+  postponed: 'Reported postponed \u00b7 new date not established',
   cancelled: 'Reported cancelled',
-  unknown: 'Date not established',
+  unknown: 'Planned date not established',
 };
 
 /** Whole UTC days until the planned start (negative once passed). */
@@ -103,13 +146,15 @@ export function daysUntil(item, now = Date.now()) {
   return Number.isFinite(start) ? utcDay(start) - utcDay(now) : NaN;
 }
 
-/** Countdown text for an announcement, at day precision. */
+/** Countdown text for an announcement. Week and month plans never pretend to day precision. */
 export function countdownLabel(item, now = Date.now()) {
   const state = announcementState(item, now);
   if (state !== 'upcoming') return ANNOUNCEMENT_LABELS[state];
-  const days = daysUntil(item, now);
-  const precision = item.date_precision === 'day' || item.date_precision === 'range' ? '' : ` (${item.date_precision} precision)`;
-  return `${relative.format(days, 'day')}${precision}`;
+  if (item.date_precision === 'month') {
+    return `Planned for ${new Intl.DateTimeFormat('en-GB', {month: 'long', year: 'numeric', timeZone: 'UTC'}).format(toTime(item.planned_start))}`;
+  }
+  if (item.date_precision === 'week') return `Planned for the week of ${absoluteLabel(item.planned_start)}`;
+  return relative.format(daysUntil(item, now), 'day');
 }
 
 const latest = values => values.map(toTime).filter(Number.isFinite).reduce((a, b) => Math.max(a, b), -Infinity);
