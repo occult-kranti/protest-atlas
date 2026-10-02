@@ -69,6 +69,19 @@ class HistoryTests(unittest.TestCase):
         with self.assertRaisesRegex(ValidationError, 'requires unknown'):
             self.validate()
 
+    def test_research_window_can_advance_but_not_regress_or_exceed_today(self):
+        self.context['window_end'] = '2026-10-01'
+        with self.assertRaisesRegex(ValidationError, 'research window'):
+            self.validate()
+        self.context['window_end'] = '2026-10-03'
+        with self.assertRaisesRegex(ValidationError, 'window_end'):
+            self.validate()
+        later = datetime(2026, 10, 9, tzinfo=timezone.utc)
+        self.events['events'][0]['last_observed_at'] = '2026-10-03'
+        with self.assertRaisesRegex(ValidationError, 'outside research window'):
+            validate_context(dict(self.context, window_end='2026-10-02'), self.events, later)
+        validate_context(dict(self.context, window_end='2026-10-08'), self.events, later)
+
     def test_every_event_requires_exactly_one_context(self):
         for records in ([], self.context['records'] * 2, [dict(self.context['records'][0], event_id='foreign')]):
             self.context['records'] = records

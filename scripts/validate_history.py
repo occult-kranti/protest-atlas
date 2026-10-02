@@ -10,25 +10,28 @@ from validate_data import (ROOT, ValidationError, array, https_url, load_json, m
                            obj, refs, require, text, validate_countries)
 
 WINDOW_START = '2024-01-01'
+# Earliest research window end. Later sweeps move window_end forward (never into the future).
 WINDOW_END = '2026-10-02'
 
 
 def _window(data, path, now):
     require(type(data['schema_version']) is int and data['schema_version'] == 1,
             path, 'unsupported schema')
-    require(data['window_start'] == WINDOW_START and data['window_end'] == WINDOW_END,
-            path, 'historical window must be 2024-01-01 through 2026-10-02')
+    end = data['window_end']
+    require(data['window_start'] == WINDOW_START and isinstance(end, str) and bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', end))
+            and end >= WINDOW_END, path, 'research window must start 2024-01-01 and end on or after 2026-10-02')
     moment(data['window_start'], path + '.window_start', now)
-    moment(data['window_end'], path + '.window_end', now)
+    moment(end, path + '.window_end', now)
+    return end
 
 
-def _day(value, path, now, nullable=False):
+def _day(value, path, now, nullable=False, end=WINDOW_END):
     if value is None and nullable:
         return None
     require(isinstance(value, str) and bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', value)),
             path, 'requires an ISO day')
     day = moment(value, path, now).date()
-    require(WINDOW_START <= value <= WINDOW_END, path, 'date outside historical window')
+    require(WINDOW_START <= value <= end, path, 'date outside research window')
     return day
 
 
@@ -40,7 +43,7 @@ def _timestamp(value, path, now):
 def validate_context(data, events, now=None):
     now = now or datetime.now(timezone.utc)
     obj(data, ('schema_version', 'window_start', 'window_end', 'records'), 'context')
-    _window(data, 'context', now)
+    window_end = _window(data, 'context', now)
     event_map = {}
     all_sources = set()
     for event in events['events']:
@@ -50,7 +53,7 @@ def validate_context(data, events, now=None):
         require(event['status'] in {'unknown', 'ended', 'ongoing'}, event['id'],
                 'publication requires unknown, evidence-backed ended or evidence-backed ongoing status')
         for field in ('start_date', 'end_date', 'last_observed_at'):
-            _day(event[field], event['id'] + '.' + field, now, nullable=field != 'last_observed_at')
+            _day(event[field], event['id'] + '.' + field, now, nullable=field != 'last_observed_at', end=window_end)
         for source in event['sources']:
             require(source['id'] not in all_sources, event['id'], 'source IDs must be globally unique')
             all_sources.add(source['id'])
@@ -83,7 +86,7 @@ def validate_context(data, events, now=None):
         if basis['source_ids'] or event['status'] != 'unknown':
             refs(basis['source_ids'], source_ids, p + '.status_basis')
         if event['status'] == 'ended':
-            end = _day(event['end_date'], p + '.end_date', now)
+            end = _day(event['end_date'], p + '.end_date', now, end=window_end)
             for ref in basis['source_ids']:
                 checked = moment(sources[ref]['accessed_at'], p + '.status_source.accessed_at', now)
                 require(end <= checked.date(), p, 'end occurs after status evidence check')
@@ -98,7 +101,7 @@ def validate_context(data, events, now=None):
             text(outcome['summary'], q + '.summary')
             require(outcome['causality'] in ('reported-link', 'not-established'), q, 'unsupported causal attribution')
             refs(outcome['source_ids'], source_ids, q)
-            day = _day(outcome['date'], q + '.date', now, nullable=True)
+            day = _day(outcome['date'], q + '.date', now, nullable=True, end=window_end)
             if day:
                 require(day <= verified.date(), q, 'outcome occurs after event verification')
                 if event['start_date']:

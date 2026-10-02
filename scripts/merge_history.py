@@ -9,6 +9,8 @@ import unicodedata
 
 ROOT=Path(__file__).resolve().parents[1]
 REGIONS=('africa','asia','europe','americas','oceania')
+# Last day covered by a research sweep. Bump only when a new sweep has actually searched through that day.
+WINDOW_END='2026-10-02'
 def read(path): return json.loads(path.read_text())
 def write(path,data): path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 def normalize(value): return re.sub(r'[^a-z0-9]','',unicodedata.normalize('NFKD',value).encode('ascii','ignore').decode().lower())
@@ -49,8 +51,8 @@ def assemble(root=ROOT):
         e['country_name']=catalog[e['country']]['name'];e['region']=catalog[e['country']]['region']
     events.sort(key=lambda e:(e['last_observed_at'] or '',e['id']),reverse=True)
     write(root/'public/events.json',{'schema_version':1,'generated_at':now,'last_editorial_review':now,'coverage_note':f"Research snapshot, 1 Jan 2024–2 Oct 2026, with a selective recent-activity sweep for 18 Sep–2 Oct 2026: {len(events)} sourced episodes across {len(set(e['country'] for e in events))} countries and territories. AI-assisted, no independent human editorial sign-off. Initial country searches are not exhaustive histories. Missing records and unknown status remain coverage limits.",'events':events})
-    write(root/'public/event-context.json',{'schema_version':1,'window_start':'2024-01-01','window_end':'2026-10-02','records':contexts})
-    write(root/'public/research-ledger.json',{'schema_version':1,'window_start':'2024-01-01','window_end':'2026-10-02','generated_at':now,'note':'Initial English-language discovery screening of every directory entry, followed by selected source checks. This is non-exhaustive: one logged search is not a completed country history or proof of no protests. Local-language, city-level and date coverage remain uneven.','countries':sorted(screening,key=lambda r:r['code'])})
+    write(root/'public/event-context.json',{'schema_version':1,'window_start':'2024-01-01','window_end':WINDOW_END,'records':contexts})
+    write(root/'public/research-ledger.json',{'schema_version':1,'window_start':'2024-01-01','window_end':WINDOW_END,'generated_at':now,'note':'Initial English-language discovery screening of every directory entry, followed by selected source checks. This is non-exhaustive: one logged search is not a completed country history or proof of no protests. Local-language, city-level and date coverage remain uneven.','countries':sorted(screening,key=lambda r:r['code'])})
     languages={}
     for region in ('seed',*REGIONS):
         path=research/f'{region}-languages.json'

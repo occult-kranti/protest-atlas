@@ -46,7 +46,8 @@ def coverage():
 
 class CoverageLedgerTests(unittest.TestCase):
     def test_repository_ledger_matches_actual_source_checked_countries(self):
-        data = validate_repository_coverage(ROOT, NOW)
+        # Published data is checked against the real clock; a fixed date would reject later source checks.
+        data = validate_repository_coverage(ROOT, datetime.now(timezone.utc))
         self.assertEqual(len(data['countries']), 249)
         checked = {row['code'] for row in data['countries'] if row['status'] == 'limited-source-check'}
         self.assertEqual(checked, {e['country'] for e in load_json(ROOT / 'public/events.json')['events']})
