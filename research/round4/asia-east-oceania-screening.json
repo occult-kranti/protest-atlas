@@ -245,7 +245,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.amnesty.org/en/latest/news/2026/09/philippines-authorities-must-ensure-right-to-protest-as-fresh-anti-corruption-demonstrations-planned/",
@@ -253,7 +253,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.philstar.com/nation/2026/09/18/2556983/ncr-police-deploy-15700-sept-21-protests",
@@ -261,7 +261,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.manilatimes.net/2026/09/18/photos/black-friday-rally/2428416",
@@ -269,7 +269,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.inquirer.net/490236/live-updates-54th-anniversary-of-martial-law-declaration-sept-21-2026/",
@@ -277,7 +277,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.bulatlat.com/2026/09/23/filipinos-mark-54th-year-of-martial-law-with-resistance-to-continuing-repression-plunder/",
@@ -285,7 +285,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://gulfnews.com/world/asia/philippines/philippines-mass-sept-21-rallies-kick-off-as-malaca%C3%B1ang-locks-down-1.500681896",
@@ -293,7 +293,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.rappler.com/moveph/list-events-activities-martial-law-commemoration-2026/",
@@ -301,7 +301,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://davaotoday.com/headline/groups-to-mark-martial-law-anniversary-with-protest-accountability-over-corruption/",
@@ -309,7 +309,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.aljazeera.com/news/2026/8/28/indonesians-march-on-parliament-to-demand-crackdown-on-corruption",
@@ -317,7 +317,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.tradingview.com/news/reuters.com,2026:newsml_L1N42I03T:0-kakao-union-stages-four-hour-strike-and-rally-in-south-korea-over-pay/",
@@ -325,7 +325,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718",
@@ -333,7 +333,15 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED (WebFetch) and CONNECT 403 (curl): refused by the network egress proxy). A single curl request to the same URL also failed (proxy CONNECT 403). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). A separate curl request to the same URL is logged in its own row. attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
+  },
+  {
+    "query": "curl https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "curl",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (proxy CONNECT 403: refused by the network egress proxy); a single curl request to the same URL as the preceding WebFetch row. attempted_at is the same upper bound logged in the run failure log shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.koreatimes.co.kr/southkorea/20260903/financial-union-to-go-on-strike-friday-as-planned-over-relocation-plan",
@@ -341,7 +349,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://news.sbs.co.kr/english/article.do?news_id=N1008737267",
@@ -349,7 +357,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://globalfreedomofexpression.columbia.edu/updates/2026/09/cgfoe-protest-monitor-september-3-2026-issue-indonesia/",
@@ -357,7 +365,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.wsws.org/en/articles/2026/10/02/epkq-o02.html",
@@ -365,7 +373,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://en.wikipedia.org/wiki/2025%E2%80%932026_Philippine_anti-corruption_protests",
@@ -373,7 +381,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.rnz.co.nz/news/pacific",
@@ -381,7 +389,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://apnews.com/hub/protests",
@@ -389,7 +397,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.reuters.com/world/asia-pacific/",
@@ -397,7 +405,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://en.yna.co.kr/",
@@ -405,7 +413,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.straitstimes.com/asia",
@@ -413,7 +421,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.theguardian.com/australia-news",
@@ -421,7 +429,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.thestar.com.my/news/nation",
@@ -429,7 +437,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://en.antaranews.com/",
@@ -437,7 +445,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://hongkongfp.com/",
@@ -445,7 +453,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.fbcnews.com.fj/",
@@ -453,7 +461,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.nzherald.co.nz/nz/",
@@ -461,7 +469,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.koreaherald.com/",
@@ -469,7 +477,7 @@
     "provider": "WebFetch",
     "result_count": 0,
     "reviewed_urls": [],
-    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round. The 22:08:00Z value is a single UTC clock read truncated to whole seconds when the failure log was written (log file written at 22:08:00.77Z), not a rounded estimate."
   },
   {
     "query": "WebFetch https://www.taipeitimes.com/News/taiwan/archives/2026/10/02/2003865276",

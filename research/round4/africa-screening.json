@@ -325,7 +325,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.france24.com/en/video/20261001-cameroon-govt-announces-payments-as-teachers-strike-continues",
@@ -333,7 +333,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.channelafrica.co.za/channelafrica/news/cameroon-lecturers-continue-indefinite-strike/",
@@ -341,7 +341,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.vanguardngr.com/2026/10/lagos-universities-workers-begin-indefinite-strike/",
@@ -349,7 +349,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://gna.org.gh/2026/10/tutag-withdraws-services-effective-thursday-demand-earned-allowances/",
@@ -357,7 +357,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.reuters.com/business/world-at-work/multiple-unions-threaten-strikes-barricks-flagship-mali-gold-mine-documents-show-2026-09-18/",
@@ -365,7 +365,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://apnews.com/hub/africa",
@@ -405,7 +405,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.aljazeera.com/news/2026/10/2/uk-mauritius-chagos-sovereignty-deal-stalls-amid-fears-of-further-delays",
@@ -413,7 +413,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.ripplesnigeria.com/public-workers-commence-3-day-warning-strike-over-economic-hardship/",
@@ -493,7 +493,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.rfi.fr/en/africa/",
@@ -509,7 +509,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.hrw.org/news/2026/07/09/dr-congo-crackdown-on-protesters",
@@ -517,7 +517,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://dailynews.co.tz/upcountry-bus-services-resume/",
@@ -565,7 +565,7 @@
   "provider": "WebFetch",
   "result_count": 0,
   "reviewed_urls": [],
-  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier). URL from round-3 candidate list (research/round3/africa-screening.json candidate_urls); this fetch attempt may precede the round-4 search that re-surfaced it."
  },
  {
   "query": "https://www.crisisgroup.org/crisiswatch/september-trends-and-october-alerts-2026",
