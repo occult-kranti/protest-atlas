@@ -46,8 +46,9 @@ def validate_context(data, events, now=None):
     for event in events['events']:
         require(event['id'] not in event_map, 'events', 'duplicate event ID')
         event_map[event['id']] = event
-        require(event['status'] in {'unknown', 'ended'}, event['id'],
-                'historical publication requires unknown or evidence-backed ended status')
+        # Ongoing is allowed only with sourced status evidence; the browser still ages it after 72 hours.
+        require(event['status'] in {'unknown', 'ended', 'ongoing'}, event['id'],
+                'publication requires unknown, evidence-backed ended or evidence-backed ongoing status')
         for field in ('start_date', 'end_date', 'last_observed_at'):
             _day(event[field], event['id'] + '.' + field, now, nullable=field != 'last_observed_at')
         for source in event['sources']:
@@ -87,7 +88,7 @@ def validate_context(data, events, now=None):
                 checked = moment(sources[ref]['accessed_at'], p + '.status_source.accessed_at', now)
                 require(end <= checked.date(), p, 'end occurs after status evidence check')
         else:
-            require(event['end_date'] is None, p, 'unknown status must not imply a known end date')
+            require(event['end_date'] is None, p, 'unknown or ongoing status must not imply a known end date')
         require(record['outcome_status'] in ('documented', 'not-established'), p, 'unsupported outcome status')
         outcomes = array(record['outcomes'], p + '.outcomes')
         require(bool(outcomes) == (record['outcome_status'] == 'documented'), p, 'outcome status contradicts outcomes')

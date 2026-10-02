@@ -9,7 +9,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build import PUBLIC_COPIES, build
+from build import GENERATED_FILES, OPTIONAL_FILES, PUBLIC_COPIES, build
 from discover_gdelt import normalize, write_candidates
 from validate_data import ValidationError, load_json, validate_countries, validate_envelope
 
@@ -132,6 +132,8 @@ class PublishingTests(unittest.TestCase):
             root = Path(tmp)
             repository = Path(__file__).resolve().parents[1]
             for name in PUBLIC_COPIES:
+                if name in OPTIONAL_FILES and not (repository / name).exists():
+                    continue
                 target = root / name
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(repository / name, target)
@@ -143,7 +145,11 @@ class PublishingTests(unittest.TestCase):
             output = build(root)
             self.assertEqual(json.loads((output / 'public/events.json').read_text()), data)
             self.assertEqual(set(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file()),
-                             set(PUBLIC_COPIES.values()) | {'.nojekyll'})
+                             {out for name, out in PUBLIC_COPIES.items() if (root / name).exists()}
+                             | set(GENERATED_FILES) | {'.nojekyll'})
+            info = json.loads((output / 'public/build-info.json').read_text())
+            self.assertEqual(set(info), {'schema_version', 'built_at', 'commit', 'workflow_run_id', 'note'})
+            self.assertIn('does not change', info['note'])
 
     def test_build_rejects_symlink_source(self):
         with tempfile.TemporaryDirectory() as tmp:

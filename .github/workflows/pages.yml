@@ -29,8 +29,8 @@ jobs:
           python-version: '3.12'
       - name: Test editorial publication boundary
         run: python -m unittest discover -s tests -v
-      - name: Test map, filters, and review decisions
-        run: node --test tests/test_explorer.mjs
+      - name: Test map, filters, freshness and review decisions
+        run: node --test tests/*.mjs
       - name: Validate and build the publication allowlist
         run: python scripts/build.py
       - name: Configure Pages

@@ -56,6 +56,19 @@ class HistoryTests(unittest.TestCase):
         self.context['records'][0]['outcomes'][0]['date'] = None
         self.validate()
 
+    def test_ongoing_requires_sourced_status_basis_and_no_end(self):
+        self.events['events'][0]['status'] = 'ongoing'
+        with self.assertRaises(ValidationError):
+            self.validate()
+        self.context['records'][0]['status_basis'] = {'text': 'Reported continuing on 3 June.', 'source_ids': ['fr-source']}
+        self.validate()
+        self.events['events'][0]['end_date'] = '2024-06-03'
+        with self.assertRaisesRegex(ValidationError, 'ongoing status must not imply'):
+            self.validate()
+        self.events['events'][0].update(status='planned', end_date=None)
+        with self.assertRaisesRegex(ValidationError, 'requires unknown'):
+            self.validate()
+
     def test_every_event_requires_exactly_one_context(self):
         for records in ([], self.context['records'] * 2, [dict(self.context['records'][0], event_id='foreign')]):
             self.context['records'] = records
