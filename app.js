@@ -14,7 +14,7 @@ export function getDisplayStatus(event, now = Date.now()) {
   if (event.status === 'planned' && Number.isFinite(start) && start + 72 * HOUR < now) return 'needs-review';
   return ['planned','ended','unknown'].includes(event.status) ? event.status : 'unknown';
 }
-const statusLabel = (status) => ({ongoing:'Reported ongoing', planned:'Planned', ended:'Ended', 'needs-review':'Needs review', unknown:'Status unknown'}[status] || 'Status unknown');
+const statusLabel = (status) => ({ongoing:'Reported ongoing', planned:'Planned', ended:'Ended / suspended', 'needs-review':'Needs review', unknown:'Status unknown'}[status] || 'Status unknown');
 const currentData = () => state.mode === 'example' ? state.examples : state.reported;
 const currentEvents = () => currentData()?.events ?? [];
 const countryName = (code) => state.countries.find((country) => country.code === code)?.name ?? code;
@@ -80,7 +80,7 @@ function populateHistoryFilters() {
   $('city-filter').innerHTML='<option value="">All reported cities</option>'+unique.map(c=>`<option value="${esc(c.value)}">${esc(c.label)}</option>`).join('');
   $('city-filter').value=state.city;
 }
-function resetFilters() { state.year='';state.city='';state.outcome='';for(const key of ['year','city','outcome'])$(`${key}-filter`).value='';state.window='all'; $('window-filter').value='all'; state.query = ''; state.country = ''; state.status = ''; state.region=''; state.issue=''; $('region-filter').value=''; $('issue-filter').value=''; $('query').value=''; $('country-filter').value=''; $('status-filter').value=''; renderEvents(); }
+function resetFilters() { state.year='';state.city='';state.outcome='';for(const key of ['year','city','outcome'])$(`${key}-filter`).value='';state.window='all'; $('window-filter').value='all'; state.query = ''; state.country = ''; state.status = ''; state.region=''; state.issue=''; $('region-filter').value=''; $('issue-filter').value=''; $('query').value=''; $('country-filter').value=''; $('status-filter').value=''; populateHistoryFilters(); renderEvents(); }
 let lastTrigger;
 function openEvent(id, trigger) {
   const event = currentEvents().find((entry) => entry.id === id); if (!event) return;
