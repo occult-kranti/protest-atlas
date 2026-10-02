@@ -160,7 +160,7 @@ function exportPacket() {
   const blob = new Blob([JSON.stringify(packet, null, 2) + '\n'], {type: 'application/json'}), url = URL.createObjectURL(blob);
   const link = element('a'); link.href = url; link.download = `protest-atlas-review-${new Date().toISOString().slice(0, 10)}.json`; document.body.append(link); link.click(); link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  notice(`Exported ${state.reviews.length} draft decisions as a local JSON packet. No approval or public data changes performed.`);
+  notice(`Review packet download requested for ${state.reviews.length} draft decisions. Check your browser downloads. No public data changes performed.`);
 }
 async function start() {
   try {
