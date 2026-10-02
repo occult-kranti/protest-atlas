@@ -1,0 +1,7 @@
+{
+  "name": "protest-atlas",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test tests/test_explorer.mjs"},
+  "engines": {"node": ">=22"}
+}

@@ -4,6 +4,7 @@ __pycache__/
 node_modules/
 candidate-artifacts/
 data/candidates/
+data/review-queues/
 .env
 .env.*
 !.env.example

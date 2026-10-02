@@ -7,44 +7,59 @@
   <meta name="description" content="A source-led public atlas of protest events, demands, and state responses. Explore country coverage and inspect the evidence behind each record.">
   <title>Protest Atlas — A source-led world index</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="atlas.css">
   <script type="module" src="app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to atlas</a>
   <header class="site-header wrap">
     <a class="brand" href="./" aria-label="Protest Atlas home"><span class="brand-mark" aria-hidden="true">P<span>↗</span></span><span>Protest Atlas<small>A source-led world index</small></span></a>
-    <nav aria-label="Primary"><a href="#atlas">Event index</a><a href="#countries">Countries</a><a href="#methodology">Methodology</a></nav>
-    <span class="edition">PUBLIC EDITION <span aria-hidden="true">/</span> 01</span>
+    <nav aria-label="Primary"><a href="#atlas">World map</a><a href="#countries">Countries</a><a href="#methodology">Methodology</a><a href="review.html">Review desk ↗</a></nav>
+    <span class="edition">PUBLIC EDITION <span aria-hidden="true">/</span> 02</span>
   </header>
   <main id="main" class="wrap">
     <section class="intro" aria-labelledby="page-title">
-      <div><p class="eyebrow"><span class="small-square" aria-hidden="true"></span> THE WORLD, IN PUBLIC ASSEMBLY</p><h1 id="page-title">Understand the protest.<br><em>Follow the evidence.</em></h1><p class="intro-copy">An open index of collective action: where it happens, what people demand, and how authorities respond. Every published record comes with sources and uncertainty.</p></div>
+      <div><p class="eyebrow"><span class="small-square" aria-hidden="true"></span> THE WORLD, IN PUBLIC ASSEMBLY</p><h1 id="page-title">Explore the world.<br><em>Follow the evidence.</em></h1><p class="intro-copy">Protest reporting in geographic context. Explore the issues, demands and state responses behind each source-linked record.</p></div>
       <aside class="editorial-note"><p class="eyebrow">A NOTE ON COVERAGE</p><p>This is an editorial index, not a live census. An unreviewed country is a gap in our coverage, never evidence that no protests occurred.</p><a class="text-link" href="#methodology">How to read this atlas <span aria-hidden="true">↗</span></a></aside>
     </section>
     <div id="data-notice" class="data-notice" role="status">Loading the published index…</div>
     <section class="atlas-section" id="atlas" aria-labelledby="index-title">
-      <div class="section-heading"><div><p class="eyebrow">01 / EVENT INDEX</p><h2 id="index-title">The latest published record</h2></div><div class="mode-control" aria-label="Data selection"><button id="reported-mode" class="mode-button selected" aria-pressed="true">Reported data</button><button id="example-mode" class="mode-button" aria-pressed="false">Explore example <span aria-hidden="true">↗</span></button></div></div>
+      <div class="section-heading"><div><p class="eyebrow">01 / WORLD MAP</p><h2 id="index-title">The world in view</h2></div><div class="mode-control" aria-label="Data selection"><button id="reported-mode" class="mode-button selected" aria-pressed="true">Reported data</button><button id="example-mode" class="mode-button" aria-pressed="false">Explore example <span aria-hidden="true">↗</span></button></div></div>
       <div id="example-banner" class="example-banner" hidden><strong>Illustrative example • not a real event</strong><span>Fictional records demonstrate how to inspect an event. They are excluded from reported coverage.</span></div>
       <form id="filters" class="filter-bar" role="search" aria-label="Filter published events">
         <div class="search-field"><label for="query">Search the index</label><div class="input-wrap"><span aria-hidden="true">⌕</span><input id="query" type="search" placeholder="Issue, location, actor…" autocomplete="off"></div></div>
-        <div><label for="country-filter">Country</label><select id="country-filter"><option value="">All countries</option></select></div>
+        <div><label for="country-filter">Country</label><select id="country-filter"><option value="">World overview</option></select></div>
         <div><label for="status-filter">Status</label><select id="status-filter"><option value="">All statuses</option><option value="ongoing">Reported ongoing · recent observation</option><option value="planned">Planned</option><option value="ended">Ended</option><option value="needs-review">Needs review</option><option value="unknown">Unknown</option></select></div>
-        <button id="reset-filters" class="plain-button" type="reset">Reset filters</button>
+        <div><label for="window-filter">Observed within</label><select id="window-filter"><option value="all">All dates</option><option value="7">Last 7 days</option><option value="30">Last 30 days</option></select></div><button id="reset-filters" class="plain-button" type="reset">Reset filters</button>
         <details class="advanced-filters"><summary>Refine by region and issue</summary><div class="advanced-filter-fields"><div><label for="region-filter">Region</label><select id="region-filter"><option value="">All regions</option></select></div><div><label for="issue-filter">Issue</label><select id="issue-filter"><option value="">All issues</option></select></div></div></details>
       </form>
+      <section class="map-workspace" aria-label="Interactive world coverage map">
+        <div class="map-stage">
+          <div class="map-topline"><span id="map-mode-label">Published coverage · country view</span><span id="map-total" aria-live="polite">Loading reports…</span></div>
+          <div id="world-map" class="world-map" aria-label="World map. Select a country, or use the country selector above."><p class="map-loading">Drawing the world…</p></div>
+          <div id="map-tooltip" class="map-tooltip" hidden></div>
+          <div class="map-controls" aria-label="Map navigation"><button id="zoom-in" aria-label="Zoom in map" disabled>+</button><button id="zoom-out" aria-label="Zoom out map" disabled>−</button><button id="reset-map" aria-label="Reset map to world" disabled>World</button></div>
+          <div class="map-legend"><span><i id="legend-report-swatch" class="legend-swatch reported" aria-hidden="true"></i><span id="legend-report-text">Published reports</span></span><span><i class="legend-swatch selected" aria-hidden="true"></i>Selected country</span><span><i class="legend-swatch gap" aria-hidden="true"></i><span id="legend-gap-text">No report in this view</span></span></div>
+          <p class="map-attribution">Equal Earth projection · <a href="https://www.naturalearthdata.com/">Natural Earth</a> / <a href="https://github.com/topojson/world-atlas">World Atlas</a> · Boundaries are contextual, not a statement of sovereignty. Small territories may be absent at this scale.</p>
+        </div>
+        <aside class="map-sidebar"><div class="panel-top"><span>COUNTRY BRIEF</span><button id="clear-country" class="plain-button" hidden>Clear selection</button></div><div id="country-panel" aria-live="polite"></div></aside>
+      </section>
+      <div class="map-below"><p>Color shows reporting coverage, never public support or protest severity. Use the directory for small territories.</p><div><button id="share-view" class="small-button">Copy view link</button><button id="export-records" class="small-button" disabled>Export reports ↓</button></div><span id="action-feedback" role="status"></span></div>
+      <div class="discovery-strip"><span class="pipeline-indicator" aria-hidden="true"></span><p id="discovery-summary">Loading discovery audit…</p><a id="discovery-run" href="https://github.com/occult-kranti/protest-atlas/actions/workflows/discovery.yml">View runs ↗</a><a href="review.html">Review candidates ↗</a></div>
+      <div class="section-heading records-heading"><div><p class="eyebrow">02 / SOURCE-LED RECORDS</p><h2>Read the reporting</h2></div><p class="section-aside">The map and index share your filters.</p></div>
       <div class="index-layout">
         <div class="record-area"><div class="results-header"><p id="result-count" aria-live="polite">Loading records…</p><span>Most recently source-checked first</span></div><div id="event-list" aria-busy="true"></div></div>
         <aside class="reading-key" aria-labelledby="reading-key-title"><p class="eyebrow">READING THE RECORD</p><h3 id="reading-key-title">Context before a count.</h3><p>Open a record to see demands, opposing positions, reported impact, and the evidence for each claim.</p><dl><div><dt><span class="key-symbol" aria-hidden="true">01</span> Status</dt><dd>Ongoing labels expire 72 hours after the last source observation.</dd></div><div><dt><span class="key-symbol" aria-hidden="true">02</span> Intensity</dt><dd>Turnout, disruption, violence, and state action are shown separately.</dd></div><div><dt><span class="key-symbol" aria-hidden="true">03</span> Sources</dt><dd>Attribution travels with each claim. Unknowns stay visible.</dd></div></dl><a href="#methodology" class="text-link">Read the methodology <span aria-hidden="true">↗</span></a></aside>
       </div>
     </section>
     <section class="country-section" id="countries" aria-labelledby="countries-title">
-      <div class="section-heading"><div><p class="eyebrow">02 / WORLD OVERVIEW</p><h2 id="countries-title">Countries &amp; territories. Coverage made visible.</h2></div><p class="section-aside">Browse the directory to focus the event index.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">03 / COVERAGE DIRECTORY</p><h2 id="countries-title">Countries &amp; territories. Coverage made visible.</h2></div><p class="section-aside">Browse the directory to focus the event index.</p></div>
       <div class="coverage-overview"><div class="coverage-intro"><span class="index-number" aria-hidden="true">A—Z</span><p>A directory of countries and territories, grouped by region. Presence in this directory does not mean editorial review is complete.</p></div><div class="coverage-legend"><p><span class="legend-dot published" aria-hidden="true"></span><strong>Records published</strong><span>Source-linked events in this index</span></p><p><span class="legend-dot" aria-hidden="true"></span><strong>Not yet reviewed</strong><span>No country-wide conclusion can be drawn</span></p></div></div>
       <div class="directory-tools"><label for="directory-query">Find a country or territory</label><input id="directory-query" type="search" placeholder="Search the directory…" autocomplete="off"><p id="directory-count" aria-live="polite"></p></div>
       <div id="country-directory" class="country-directory" aria-busy="true"><p class="muted">Loading the country directory…</p></div>
     </section>
     <section id="methodology" class="methodology" aria-labelledby="methodology-title">
-      <div class="methodology-heading"><p class="eyebrow">03 / METHODOLOGY</p><h2 id="methodology-title">Evidence is part<br>of the story.</h2><p>Use this atlas as a starting point for research. Read the linked reporting before drawing conclusions.</p><a class="text-link" href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Full editorial methodology <span aria-hidden="true">↗</span></a></div>
+      <div class="methodology-heading"><p class="eyebrow">04 / METHODOLOGY</p><h2 id="methodology-title">Evidence is part<br>of the story.</h2><p>Use this atlas as a starting point for research. Read the linked reporting before drawing conclusions.</p><a class="text-link" href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Full editorial methodology <span aria-hidden="true">↗</span></a></div>
       <div class="methodology-body"><article><span class="method-number">01</span><div><h3>Describe, attribute, verify.</h3><p>Records distinguish participants’ demands, disputed claims, and authorities’ responses. A source link supports a claim; it does not make that claim undisputed. Verification notes explain what remains uncertain.</p></div></article><article><span class="method-number">02</span><div><h3>Intensity has more than one dimension.</h3><p>A large peaceful gathering differs from a small event with severe violence. Turnout estimates retain their source and uncertainty. Disruption, violence, and state action are never collapsed into a single score.</p></div></article><article><span class="method-number">03</span><div><h3>Recency is a condition, not a promise.</h3><p>“Reported ongoing” requires a source observation within the last 72 hours. Older ongoing records become “Needs review.” Future planned events remain planned. A record marked “Ended” describes the recorded event, not the end of a wider movement.</p></div></article><article><span class="method-number">04</span><div><h3>Silence is a coverage gap.</h3><p>No published record means we have not established coverage. News availability, language, access restrictions, and editorial capacity can all create uneven visibility. Locations are shown at the precision supported by the source.</p></div></article></div>
     </section>
   </main>

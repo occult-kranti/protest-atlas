@@ -2,13 +2,14 @@
 import copy
 from datetime import datetime, timezone
 import json
+import shutil
 from pathlib import Path
 import sys
 import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build import build
+from build import PUBLIC_COPIES, build
 from discover_gdelt import normalize, write_candidates
 from validate_data import ValidationError, load_json, validate_countries, validate_envelope
 
@@ -129,12 +130,12 @@ class PublishingTests(unittest.TestCase):
     def test_build_preserves_dates_and_excludes_nonpublic_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            (root / 'public').mkdir()
-            (root / 'public/countries.json').write_text(json.dumps(COUNTRIES))
-            data = fixture()
-            (root / 'public/events.json').write_text(json.dumps(data))
-            for name in ['index.html', 'styles.css', 'app.js']:
-                (root / name).write_text('test')
+            repository = Path(__file__).resolve().parents[1]
+            for name in PUBLIC_COPIES:
+                target = root / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(repository / name, target)
+            data = json.loads((root / 'public/events.json').read_text())
             (root / 'secret.env').write_text('private')
             (root / 'public/private.json').write_text('private')
             (root / 'data').mkdir()
@@ -142,7 +143,7 @@ class PublishingTests(unittest.TestCase):
             output = build(root)
             self.assertEqual(json.loads((output / 'public/events.json').read_text()), data)
             self.assertEqual(set(str(p.relative_to(output)) for p in output.rglob('*') if p.is_file()),
-                             {'index.html', 'styles.css', 'app.js', 'public/countries.json', 'public/events.json', '.nojekyll'})
+                             set(PUBLIC_COPIES.values()) | {'.nojekyll'})
 
     def test_build_rejects_symlink_source(self):
         with tempfile.TemporaryDirectory() as tmp:

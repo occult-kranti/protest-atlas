@@ -1,0 +1,45 @@
+name: Public record correction
+description: Flag an unsupported, inaccurate or outdated public claim using public reporting.
+title: "Correction: "
+labels: [correction]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue and its history are public. Do not include private participant names, handles, faces, contact details, precise routes, meeting points, shelter locations or other identifying information. Use public reporting links and a minimal description of the claim. Do not upload private evidence or full copyrighted articles. A submission is not automatic approval or publication.
+  - type: input
+    id: record-id
+    attributes:
+      label: Public record ID
+      description: Use the atlas record ID, or “coverage” for a ledger issue.
+      placeholder: fr-schools-20261002
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Relevant event or reporting date
+      placeholder: YYYY-MM-DD, or unknown
+    validations:
+      required: true
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim to correct and reason
+      description: Identify the public claim and explain what the evidence supports instead. Keep uncertainty and attribution visible.
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Supporting public source links
+      description: Link the underlying reporting and give publication dates when known. A search result or title alone cannot establish occurrence.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Public issue check
+      options:
+        - label: I have omitted private identifying information and private evidence from this public issue.
+          required: true

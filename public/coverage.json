@@ -1,0 +1,2270 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-02T20:02:59.751499Z",
+  "human_editorial_review": false,
+  "coverage_note": "Ledger assembled from the three seed source checks and the 249-entry country/territory catalog. The ledger audit time is not a fresh event review. English-source checks do not establish local-language coverage. Not reviewed means a coverage gap, never no protests. No human editorial review is claimed.",
+  "countries": [
+    {
+      "code": "AF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AX",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AQ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BB",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BJ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BQ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CX",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DJ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "EC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "EG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GQ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ER",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "EE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ET",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FJ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FR",
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T19:15:18Z",
+      "review_window": {
+        "start": "2026-10-02",
+        "end": "2026-10-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "fr-reuters"
+      ],
+      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+    },
+    {
+      "code": "GF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "DE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GP",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "HU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IN",
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T19:15:18Z",
+      "review_window": {
+        "start": "2026-10-02",
+        "end": "2026-10-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "in-ap"
+      ],
+      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+    },
+    {
+      "code": "ID",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IQ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "IT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "JM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "JP",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "JE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "JO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KP",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LB",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ML",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MQ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "YT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MX",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "FM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ME",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NP",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MP",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "NO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "OM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "QA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "RE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "RO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "RU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "RW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "BL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "KN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "LC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "MF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "PM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "WS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ST",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "RS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SX",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SB",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ZA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SS",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ES",
+      "status": "limited-source-check",
+      "last_checked": "2026-10-02T19:15:18Z",
+      "review_window": {
+        "start": "2026-10-02",
+        "end": "2026-10-02"
+      },
+      "languages": [
+        "English"
+      ],
+      "source_ids": [
+        "es-aj"
+      ],
+      "note": "AI-assisted checks of the listed English-language source reporting only. No independent human editorial review. English-source checks do not establish local-language coverage. Window describes dated reports checked, not a comprehensive search period."
+    },
+    {
+      "code": "LK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SD",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SJ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "CH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "SY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TJ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TL",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TK",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TO",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TT",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TR",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TC",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "TV",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "UG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "UA",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "AE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "GB",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "US",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "UM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "UY",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "UZ",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VU",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VN",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VG",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "VI",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "WF",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "EH",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "YE",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ZM",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    },
+    {
+      "code": "ZW",
+      "status": "not-reviewed",
+      "last_checked": null,
+      "review_window": null,
+      "languages": [],
+      "source_ids": [],
+      "note": "No documented source review in this snapshot. Local-language coverage, activity and absence of protests are unknown."
+    }
+  ]
+}

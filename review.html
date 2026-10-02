@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local editorial workspace for unverified Protest Atlas news leads. Nothing is automatically published.">
+  <meta name="referrer" content="no-referrer">
+  <title>Editor workspace — Protest Atlas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="review.css">
+  <script type="module" src="review.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to editor workspace</a>
+  <header class="site-header wrap">
+    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">P<span>↗</span></span><span>Protest Atlas<small>Local editor workspace</small></span></a>
+    <nav aria-label="Primary"><a href="./">Public atlas</a><a href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/REVIEW_WORKFLOW.md" target="_blank" rel="noopener noreferrer">Review guide ↗</a></nav>
+    <span class="edition">EDITORIAL TOOLS / 01</span>
+  </header>
+  <main id="main" class="wrap review-main">
+    <section class="review-intro" aria-labelledby="review-title">
+      <p class="eyebrow">DISCOVER → READ → REVIEW</p>
+      <h1 id="review-title">Leads need evidence.</h1>
+      <p>Import a downloaded GDELT workflow candidate JSON file. Search article leads, check the underlying reporting, and export your decisions for an editor.</p>
+      <div class="review-warning"><strong>Unverified workspace · not the public event index.</strong><p>Publisher country is an outlet attribute. GDELT seen time is a discovery timestamp. Neither establishes where or when a protest occurred. “Ready for editor” is a draft decision, never approval or publication.</p></div>
+    </section>
+    <section class="review-import" aria-label="Import and export local files">
+      <div><label for="candidate-file">Import candidate JSON · maximum 2 MB</label><input type="file" id="candidate-file" accept="application/json,.json" disabled><p class="review-help">Download and unzip the discovery artifact from <a href="https://github.com/occult-kranti/protest-atlas/actions/workflows/discovery.yml" target="_blank" rel="noopener noreferrer">GitHub Actions ↗</a>, then select <code>latest.json</code>. Importing a new file replaces the current in-memory work.</p></div>
+      <div class="review-export"><button class="review-button" type="button" id="export-packet" disabled>Export review packet ↓</button><p class="review-help">JSON download only. Work stays in this tab’s memory; refresh or close loses edits. Export before leaving. No accounts, local storage, remote submission or automatic public-data changes.</p></div>
+    </section>
+    <p id="review-notice" class="review-notice" role="status">Loading the country directory and published source URLs…</p>
+    <form id="review-filters" class="review-filters" role="search" aria-label="Search imported leads">
+      <div><label for="lead-query">Search leads</label><input id="lead-query" type="search" placeholder="Headline, publisher, language, notes…" autocomplete="off" disabled></div>
+      <div><label for="lead-disposition">Disposition</label><select id="lead-disposition" disabled><option value="">All dispositions</option><option value="unreviewed">Unreviewed</option><option value="needs-source">Needs source</option><option value="reject">Reject</option><option value="duplicate">Duplicate</option><option value="ready-for-editor">Ready for editor</option></select></div>
+    </form>
+    <div class="review-workspace">
+      <section class="review-list" aria-label="Imported news leads"><p id="lead-count" aria-live="polite">No file imported.</p><div id="lead-list"><p class="review-empty">Your candidate file appears here. Every imported article starts unreviewed.</p></div></section>
+      <section id="lead-editor" class="review-editor" aria-labelledby="editor-title"><h2 id="editor-title">Select a lead</h2><p class="review-help">Read the source before assigning occurrence country, observed date or claims. Do not include private participant names, contact details, precise routes or meeting points in notes or exported packets.</p></section>
+    </div>
+  </main>
+  <footer class="site-footer wrap"><div><strong>Protest Atlas</strong><p>A separate editorial pull request and review are required for publication.</p></div><a href="./">Return to public atlas ↗</a></footer>
+  <noscript><p class="noscript">JavaScript is required for the local review workspace. Your public atlas remains available at the home link.</p></noscript>
+</body>
+</html>
