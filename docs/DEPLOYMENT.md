@@ -23,7 +23,7 @@ Submit and approve an editorial pull request. After merge, the deployment workfl
 
 GitHub schedules are best effort. Jobs may be delayed or dropped under load; the minute offset reduces a known busy period but is not an SLA. Scheduled workflows run only on the default branch. In public repositories they are disabled after 60 days without repository activity. Re-enable a disabled workflow and use the manual run if necessary. Provider outages, quotas, network errors, Actions availability, artifact retention and repository policy can all interrupt discovery. No artifact means no successful collection; it does not mean no protests.
 
-During the 2026-10-02 implementation check, one live GDELT request returned HTTP 429 (rate limited). The configured request and failure handling are present, but successful upstream collection has not been demonstrated in that check. Monitor the first GitHub workflow run before relying on the schedule.
+During the 2026-10-02 implementation check, one local GDELT request returned HTTP 429 (rate limited). The subsequent GitHub-hosted discovery run [37054141060](https://github.com/occult-kranti/protest-atlas/actions/runs/37054141060) succeeded. Continue monitoring each run; one success is not evidence of guaranteed uptime, coverage or scheduled delivery.
 
 To disable discovery, disable that workflow in GitHub Actions or remove its `schedule` trigger. Static deployment remains independent. To recover a broken deployment, revert the offending public-data/UI change through a reviewed pull request and rerun the Pages workflow. Existing verified data should not be replaced with candidates as an outage workaround.
 

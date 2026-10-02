@@ -39,3 +39,8 @@ Executed: JavaScript module syntax check; pure temporal and UTC-date assertions;
 Browser verification was attempted with installed Playwright, but its Chromium executable was missing. A cloud-browser localhost preview was blocked by ERR_BLOCKED_BY_CLIENT. An official Chromium installation was then attempted for the remaining runtime checks; the CDN returned invalid/truncated zero-MiB ZIP downloads on all five retries and installation failed. Source and DOM simulation are not substitutes for rendered visual, keyboard, or assistive-technology verification.
 
 Not yet verified: rendered layouts at 320/390/768/1440 CSS pixels, 200% browser zoom, native dialog Tab/Shift+Tab/Escape/focus restoration, screen-reader experience, and browser console/network checks.
+
+
+## Deployed browser verification — 2 October 2026
+
+The lead agent subsequently verified the deployed GitHub Pages site in the cloud browser at https://occult-kranti.github.io/protest-atlas/. The desktop screenshot showed a readable editorial layout. Three records and the 249-entry directory loaded; housing search returned the Spanish report; event detail showed source references, positions, unknown dates and intensity; Escape closed the native dialog and returned focus to its opener; example mode displayed one clearly fictional record; selecting Brazil produced the coverage-gap message; resetting restored all records. Observed console errors came from the browser extension, not the site. Mobile viewport/200% zoom and screen-reader testing remain outstanding; the earlier local Chromium installation failure does not invalidate these deployed desktop checks.

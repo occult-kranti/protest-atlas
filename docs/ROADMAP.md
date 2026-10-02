@@ -45,7 +45,7 @@ The panel consists of AI agents playing research, UX, engineering, and advisor/s
 - [x] Three cautiously scoped source-checked reports and 249-country/territory directory.
 - [x] Explicit AI-assisted review disclosure and separate synthetic example.
 - [x] UX, editorial policy, architecture and skeptical panel records.
-- [ ] Validation, functional verification, GitHub publication and live Pages verification: see release evidence for final status.
+- [x] Validation, functional verification, GitHub publication and live Pages verification: see RELEASE_EVIDENCE.md for scope and remaining checks.
 
 Exit: source-backed claims, no unsupported “live global” wording, no secrets/personal tactical details, functioning mobile and keyboard workflow, public URL responds with this release.
 
