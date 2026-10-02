@@ -1,5 +1,5 @@
-import { createExplorer, withinWindow, readViewState, encodeViewState, csvForEvents } from './explore.js';
-import {contextFor, matchesHistory, outcomeHTML, renderResearchCoverage} from './history.js';
+import { createExplorer, withinWindow, readViewState, encodeViewState, csvForEvents } from './explore.js?v=3.1';
+import {contextFor, matchesHistory, outcomeHTML, renderResearchCoverage} from './history.js?v=3.1';
 const HOUR = 3_600_000;
 const state = { reported: null, examples: null, countries: [], mode: 'reported', loadError: false, directoryError: false, loading: true, exampleLoading: false, query: '', country: '', status: '', region: '', issue: '', directoryQuery: '', window:'all', coverage:null, discovery:null, contexts:null, research:null, cityGeography:null, year:'', city:'', outcome:'' };
 let explorer;

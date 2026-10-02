@@ -1,4 +1,4 @@
-import { createWorldMap } from './map.js';
+import { createWorldMap } from './map.js?v=3.1';
 
 const DAY = 86_400_000;
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
