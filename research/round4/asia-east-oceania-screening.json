@@ -1,0 +1,602 @@
+[
+  {
+    "query": "Indonesia protest demonstration September 2026",
+    "attempted_at": "2026-10-02T22:06:28Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: CGFoE protest monitor Sept 3 2026 issue, Al Jazeera Aug 28 2026 march (pre-window), US Embassy alert Aug 28 2026. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Philippines protest rally September 2026",
+    "attempted_at": "2026-10-02T22:06:28Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: Sept 21 2026 Martial Law anniversary anti-corruption rallies (Tribune, Philstar, Amnesty), Sept 18 Black Friday campus protest. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "South Korea strike union rally October 2026",
+    "attempted_at": "2026-10-02T22:06:28Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: Kakao four-hour strike (Reuters via TradingView), financial union Sept 4 strike (pre-window), WSWS Oct 2 steel/shipbuilding partial strikes. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Australia rally protest thousands September 2026",
+    "attempted_at": "2026-10-02T22:06:28Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Mostly 2025 or Aug 30 2026 March for Australia (pre-window) results; no window-specific lead. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Japan protest demonstration Tokyo late September 2026",
+    "attempted_at": "2026-10-02T22:08:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: Sept 19 2026 rally outside National Diet on security-legislation anniversary (snippet ~15,000; ACLED expert comment; Xinhua/CGTN state-media items pre-window). Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Taiwan protest rally Taipei September 2026",
+    "attempted_at": "2026-10-02T22:08:21Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: Taipei Times 2026-09-29 and 2026-10-02 items on civic-group protest outside Legislative Yuan at session opening; Sept 19 wildlife march. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "New Zealand strike march union September 2026",
+    "attempted_at": "2026-10-02T22:08:21Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: PSA public-service strike Sept 9 2026 (pre-window); NZCTU daily posts Sept 21 2026; nurses' march late Sept (snippet). Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Thailand protest Bangkok rally September 2026",
+    "attempted_at": "2026-10-02T22:08:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: Sept 10 Israeli-embassy rally and Sept 13 iLaw Senate-collusion rally (both pre-window); Japan Times Sept 17 on Sondhi. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Indonesia demo mahasiswa DPR akhir September 2026",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Indonesian-language query. Leads: Kompas/Suara/Tempo items on Aug 27 2026 DPR demo (pre-window); a YouTube short titled for a 24 Sept 2026 DPR demo (video, not a usable source). Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Malaysia rally protest Kuala Lumpur September 2026",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "No in-window Malaysian rally surfaced in results (2025 and early-2026 items only). Absence not established. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Hong Kong OR Macau protest petition September 2026",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results dominated by 2019-2020 timelines; no in-window HK/Macau lead. Absence not established. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "China workers protest wage arrears September 2026 China Dissent Monitor",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: Freedom House China Dissent Monitor issue 11 (Q4 2025, pre-window); Organiser.org 2026-09-28 item on hospital wage protests (partisan outlet, dates unclear). Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Papua New Guinea protest strike Port Moresby September 2026",
+    "attempted_at": "2026-10-02T22:08:52Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "No in-window PNG protest lead; results were military exercise items and 2024 unrest. Absence not established. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Fiji OR Samoa OR Tonga OR Vanuatu OR \"Solomon Islands\" protest march strike September 2026",
+    "attempted_at": "2026-10-02T22:08:52Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "No in-window protest lead; PACNEWS bulletins (Islands Business) for 2026-09-29 and 2026-09-17 surfaced but were not read; Solomon Islands no-confidence politics is not itself protest evidence. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "New Caledonia OR \"French Polynesia\" protest strike blockade September 2026",
+    "attempted_at": "2026-10-02T22:08:52Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Only pre-window 2024 and mid-2026 items (airport-relocation blockade, ferry strike threat before provincial elections). No in-window lead. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Myanmar OR Cambodia OR Vietnam OR Laos protest strike late September 2026",
+    "attempted_at": "2026-10-02T22:08:52Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results concern conflict/airstrikes and border incidents, not protest; no in-window protest lead. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "nurses strike New Zealand NZNO October 2026",
+    "attempted_at": "2026-10-02T22:09:07Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results concern the 23 October 2025 mega-strike (prior year); no 2026 announcement surfaced. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Australia union strike announced October 2026",
+    "attempted_at": "2026-10-02T22:09:07Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: Industrial disputes & news 30 Sept 2026 (disputesreport.substack.com) listing NTEU Melbourne Oct 12 strike, NTEU Brisbane universities Oct 8 stopwork, ACT AEU Term 4 escalation, TWU Sydney Airport WSO stoppages Sept 28-Oct 1, MUA Flinders Ports action. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "KCTU general strike October 2026 Korea",
+    "attempted_at": "2026-10-02T22:09:07Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Only July 2026 KCTU general strike item (Kyunghyang English) surfaced; no October 2026 announcement found. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Mongolia protest Sukhbaatar Square September 2026",
+    "attempted_at": "2026-10-02T22:09:07Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Lead: U.S. Embassy Mongolia demonstration alert dated 2026-10-01 describing ongoing protests around Sukhbaatar Square; Montsame item undated in snippet. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Mongolia protesters Ulaanbaatar October 1 2026 demands",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Same U.S. Embassy 2026-10-01 alert; demands/organizers not identified in results. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Timor-Leste protest students Dili September 2026",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Only September 2025 episode (already in atlas as tl-lawmaker-pensions-protests-2025); no 2026 in-window lead. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Korea Hyundai Steel Hanwha Ocean partial strike September 2026 union",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads: Korea Times 2026-09-28 (steel/shipbuilding tensions after Chuseok), FN News 2026-09-16 and 2026-09-12, Seoul Economic Daily 2026-09-15/16/23; POSCO 120-hour partial strike reportedly ended Sept 21, HD Hyundai Heavy talks breakdown Sept 18, Hanwha Ocean crane shutdown Sept 18 (snippet claims). Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Indonesia labour unions rally planned October 2026 KSPI Partai Buruh",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: snippets say new Labour Law deadline Oct 2026 and union coalition mobilisation; no dated announced action verified. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Philippines anti-corruption rally planned November 2026 OR October 2026 organizers announce",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results mostly 2025 announcements (Oct 31 and Nov 30 2025 rallies); OSAC alert on scheduled Metro Manila protests and Amnesty 2026-09 statement surfaced; no verified 2026-10-03+ announcement. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Australia pro-Palestine march Sydney Melbourne late September 2026",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Snippet mentions Free Palestine Melbourne events Sept 15-22 2026 and a rally listed for Oct 11 2026 in Melbourne (organiser site); not read and not usable as unread evidence. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Guam OR \"Cook Islands\" OR Kiribati OR Palau protest September 2026",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Results were PACNEWS bulletins, PIR roundup (Sept 17-23 2026) and Pacific Islands Forum communique; no street-protest lead identified. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Japan union strike OR rally announced October 2026 Okinawa base protest",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Only historical and July 2026 Okinawa rally items; no October 2026 announcement surfaced. Not read. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "Victoria doctors allied health strike AMA Victoria VAHPA October 2026",
+    "attempted_at": "2026-10-02T22:10:04Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Follow-up for existing au-victorian-hospital-strike-20261001. Leads: Border Mail, Latrobe Valley Express 2026-09-29, Bush Letter, Health Services Daily, Mirage News (union release). Snippets claim up to 10,000 doctors and at least 5,000 allied health workers (attribution unclear). Not read, so no update written. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "American Samoa seabed mining protest NOAA ship September 2026",
+    "attempted_at": "2026-10-02T22:10:04Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Follow-up for existing as-noaa-seabed-mining-protest-20260902. Results: Greenpeace USA pages, GlobeNewswire 2026-10-01 company release; no new protest activity after Sept 2 indicated in snippets. Not read, so no update written. Search attempt; attempted_at is the UTC time logged within about 20 seconds after the search returned. Search snippets are leads only; every page fetch in this run was refused by the network egress proxy, so no page was read and no record was written from this query. Empty or thin results do not establish absence."
+  },
+  {
+    "query": "WebFetch https://tribune.net.ph/2026/09/21/activists-commemorates-martial-law-with-a-protest",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.amnesty.org/en/latest/news/2026/09/philippines-authorities-must-ensure-right-to-protest-as-fresh-anti-corruption-demonstrations-planned/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.philstar.com/nation/2026/09/18/2556983/ncr-police-deploy-15700-sept-21-protests",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.manilatimes.net/2026/09/18/photos/black-friday-rally/2428416",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.inquirer.net/490236/live-updates-54th-anniversary-of-martial-law-declaration-sept-21-2026/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.bulatlat.com/2026/09/23/filipinos-mark-54th-year-of-martial-law-with-resistance-to-continuing-repression-plunder/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://gulfnews.com/world/asia/philippines/philippines-mass-sept-21-rallies-kick-off-as-malaca%C3%B1ang-locks-down-1.500681896",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.rappler.com/moveph/list-events-activities-martial-law-commemoration-2026/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://davaotoday.com/headline/groups-to-mark-martial-law-anniversary-with-protest-accountability-over-corruption/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.aljazeera.com/news/2026/8/28/indonesians-march-on-parliament-to-demand-crackdown-on-corruption",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.tradingview.com/news/reuters.com,2026:newsml_L1N42I03T:0-kakao-union-stages-four-hour-strike-and-rally-in-south-korea-over-pay/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.abc.net.au/news/2026-10-01/victoria-doctors-allied-health-professionals-strike/107216718",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED (WebFetch) and CONNECT 403 (curl): refused by the network egress proxy). A single curl request to the same URL also failed (proxy CONNECT 403). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.koreatimes.co.kr/southkorea/20260903/financial-union-to-go-on-strike-friday-as-planned-over-relocation-plan",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://news.sbs.co.kr/english/article.do?news_id=N1008737267",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://globalfreedomofexpression.columbia.edu/updates/2026/09/cgfoe-protest-monitor-september-3-2026-issue-indonesia/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.wsws.org/en/articles/2026/10/02/epkq-o02.html",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://en.wikipedia.org/wiki/2025%E2%80%932026_Philippine_anti-corruption_protests",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.rnz.co.nz/news/pacific",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://apnews.com/hub/protests",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.reuters.com/world/asia-pacific/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://en.yna.co.kr/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.straitstimes.com/asia",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.theguardian.com/australia-news",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (unable to fetch: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.thestar.com.my/news/nation",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://en.antaranews.com/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://hongkongfp.com/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.fbcnews.com.fj/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.nzherald.co.nz/nz/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.koreaherald.com/",
+    "attempted_at": "2026-10-02T22:08:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.taipeitimes.com/News/taiwan/archives/2026/10/02/2003865276",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://union.org.nz/21-september-2026/",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://acleddata.com/expert-comment/japans-evolving-security-policy-fueling-renewed-demonstrations-against",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.khaosodenglish.com/politics/2026/09/13/crowds-rally-at-bangkok-art-and-culture-centre-ahead-of-ec-ruling-in-senate-collusion-case/",
+    "attempted_at": "2026-10-02T22:08:39Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://mn.usembassy.gov/demonstration-alert-100126/",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://disputesreport.substack.com/p/industrial-disputes-and-news-30-september",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.montsame.mn/en/read/359395",
+    "attempted_at": "2026-10-02T22:09:27Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://en.sedaily.com/finance/2026/09/23/samsung-heavy-wage-deal-may-ease-shipbuilding-strike-push",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://en.fnnews.com/news/202609161541070471",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.indexbox.io/blog/posco-hd-hyundai-heavy-industries-hanwha-ocean-labor-disputes-resume-after-chuseok/",
+    "attempted_at": "2026-10-02T22:09:46Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://pireport.org/2026/09/24/pacific-islands-news-roundup-september-17-september-23-2026/",
+    "attempted_at": "2026-10-02T22:10:04Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://islandsbusiness.com/uncategorized/pacnews-one-29-september-2026",
+    "attempted_at": "2026-10-02T22:10:04Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://osac.gov/Country/Philippines/Content/Detail/Report/fa05cabd-c63e-4741-a043-28ddc241a339",
+    "attempted_at": "2026-10-02T22:10:04Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.bordermail.com.au/story/9361081/north-east-doctors-join-statewide-public-hospital-strike-over-pay/",
+    "attempted_at": "2026-10-02T22:10:29Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.greenpeace.org/usa/dont-mine-the-moana-american-samoa-rejects-deep-sea-mining-push/",
+    "attempted_at": "2026-10-02T22:10:29Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  },
+  {
+    "query": "WebFetch https://www.miragenews.com/victorian-doctors-to-launch-first-statewide-1751050/",
+    "attempted_at": "2026-10-02T22:10:29Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed page fetch (EGRESS_BLOCKED: refused by the network egress proxy). attempted_at is an upper bound logged shortly after the attempt (within about 2 minutes), not an exact attempt time. The page was not read and is not cited anywhere in this round."
+  }
+]

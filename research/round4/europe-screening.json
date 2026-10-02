@@ -1,0 +1,802 @@
+[
+  {
+    "query": "protest strike Europe October 1 2026",
+    "attempted_at": "2026-10-02T22:06:00Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: France CGT-RATP open-ended strike reportedly from 28 Sep 2026; Italy CSLE general strike call for 2 Oct 2026 (striketracker/traveltourister aggregators). Not read: no page could be fetched in this session (egress proxy blocked all news domains). Leads are not evidence."
+  },
+  {
+    "query": "general strike September 2026",
+    "attempted_at": "2026-10-02T22:06:00Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Lead: France 29 Sep 2026 public-sector strike called by CGT, FO, CFDT, UNSA, FSU, Solidaires, CFE-CGC, FA-FP (connexionfrance, US Embassy France alert, sortiraparis). Fetch of connexionfrance.com, fr.usembassy.gov and sortiraparis.com failed (EGRESS_BLOCKED); nothing read."
+  },
+  {
+    "query": "France grève 2 octobre 2026 manifestation",
+    "attempted_at": "2026-10-02T22:06:00Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; French-language query. Returned items (publicsenat, franceinfo) appear to concern the 2 Oct 2025 intersyndicale day, not 2026: year collision flagged. Fetches of publicsenat.fr and franceinfo.fr failed (EGRESS_BLOCKED)."
+  },
+  {
+    "query": "grève fonction publique 29 septembre 2026 manifestants chiffres",
+    "attempted_at": "2026-10-02T22:07:00Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; French. Lead: AEF info dispatch citing ministry striker rates for 29 Sep 2026 (snippet: 4.10%-9.96%) and CGT claim of 300,000 demonstrators. Fetch of aefinfo.fr failed (EGRESS_BLOCKED); figures not verified."
+  },
+  {
+    "query": "\"29 septembre\" grève fonctionnaires intersyndicale manifestation Paris ministère de l'Intérieur 2026",
+    "attempted_at": "2026-10-02T22:07:00Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; French. Leads: La Libre (AFP/Belga dispatch, 29 Sep 2026) and jeunessedumonde.fr; snippet attributes 300,000 (CGT, incl. 70,000 Paris) vs 206,000 (Interior Ministry, 30,000 Paris). Both fetches failed (EGRESS_BLOCKED); not verified, not cited."
+  },
+  {
+    "query": "FETCH (curl) https://www.theguardian.com/world/europe-news",
+    "attempted_at": "2026-10-02T22:07:00Z",
+    "provider": "curl",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Shell curl test failed: CONNECT tunnel 403 from the egress proxy. Not read. Timestamp approximate (between clock reads 22:06:22Z and 22:07:55Z)."
+  },
+  {
+    "query": "FETCH https://connexionfrance.com/news/high-turnout-expected-for-this-weeks-major-public-sector-strikes-in-france/817925",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://fr.usembassy.gov/demonstration-alert-public-sector-strike-september-29-2026",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.sortiraparis.com/en/news/in-paris/articles/352808-strike-on-september-29-2026-in-paris-protests-by-ratp-workers-schools-and-hospitals-what-to-expect",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.aefinfo.fr/depeche/757615-entre-5-et-996-de-grevistes-recenses-pour-la-journee-de-mobilisation-du-29septembre2026-dans-la-fonction-publique",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.lalibre.be/dernieres-depeches/2026/09/29/greve-dans-la-fonction-publique-plus-de-170-manifestions-attendues-mardi-B4LGA4Z57JE6PCDB6TL6HQSNUA/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://jeunessedumonde.fr/2026/09/30/fonction-publique-jusqu-a-300-000-manifestants-contre-le-gel-des-salaires/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.france24.com/fr/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.euronews.com/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.aljazeera.com/news/2026/10/2/spains-parliament-rejects-govt-housing-decrees-amid-mass-protests",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.marketscreener.com/news/about-400-french-schools-closed-as-some-student-protests-turn-violent-ce785ddadc8bf325",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://en.ata.gov.al/2026/07/28/protests-against-controversial-zvernec-investment-enter-their-59th-consecutive-day/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://en.wikipedia.org/wiki/Timeline_of_strikes_in_2026",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.ansa.it/english/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://balkaninsight.com/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.cgt.fr/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.gov.uk/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.rferl.org/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.publicsenat.fr/actualites/politique/greve-du-2-octobre-transports-ecoles-hopitaux-a-quelles-perturbations-sattendre",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.franceinfo.fr/economie/greve/nouvelle-journee-de-greve-et-de-manifestations-le-2-octobre-a-quoi-faut-il-s-attendre_7525000.html",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.err.ee/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.swissinfo.ch/eng/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED by network egress proxy. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.lemonde.fr/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://apnews.com/hub/europe",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.bbc.com/news/world/europe",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.theguardian.com/world/europe-news",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.reuters.com/world/europe/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.dw.com/en/top-stories/s-9097",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.rfi.fr/en/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "FETCH https://www.politico.eu/",
+    "attempted_at": "2026-10-02T22:07:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: 'unable to fetch from' domain. Page not read; not cited. Timestamp approximate within the 22:06-22:08Z attempt batch."
+  },
+  {
+    "query": "Italy sciopero generale ottobre 2026 manifestazione",
+    "attempted_at": "2026-10-02T22:08:16Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Italian. Leads: CSLE general strike proclaimed for 2 Oct 2026 (rail window 11:00-14:00) on fuel/essential-goods prices, tax and wages (sky tg24, today.it, fanpage, quifinanza, quotidiano.net); national school strike 16 Oct 2026; USI-CIT general strike 30 Oct 2026 against war and military spending. Not read (today.it, tg24.sky.it EGRESS_BLOCKED). Occurrence and turnout of 2 Oct not established."
+  },
+  {
+    "query": "Serbia protest students September 2026",
+    "attempted_at": "2026-10-02T22:08:16Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: student movement launched 'Student List' and entered snap parliamentary election reportedly set for 25 Oct 2026 (BIRN 11 Sep, AP via click2houston 14 Sep, Al Jazeera feature 28 Sep, Euronews 15 Sep, Bloomberg 4 Sep). Possible update lead for rs-station-accountability-2024-2025, but no in-window rally date verified. Not read (balkaninsight.com, aljazeera.com, euronews.com blocked)."
+  },
+  {
+    "query": "Germany Streik Demonstration September 2026",
+    "attempted_at": "2026-10-02T22:08:16Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; German/English. Leads: WSWS (2 Oct 2026) reports a 4th nationwide school strike against conscription on 25 Sep 2026 with 45,000+ in ~100 cities (partisan publisher; figures unattributed in snippet); Schleswig-Holstein municipal bus strike 21 Sep 2026 (striketracker aggregator); US Embassy Berlin alert for 12 Sep (outside window). wsws.org fetch EGRESS_BLOCKED; not read."
+  },
+  {
+    "query": "UK strike protest late September 2026 union ballot",
+    "attempted_at": "2026-10-02T22:08:16Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: RMT Chiltern Railways strike 29 Sep 2026 over driver-only operation; RMT protest at Labour conference, Liverpool, 28 Sep; RMT action short of strike at Go Cornwall from 2 Oct; PCS preparing national strike ballot 20 Oct-1 Dec 2026 (Socialist Party article 30 Sep 2026; strikecalendar.co.uk). strikecalendar.co.uk fetch EGRESS_BLOCKED; nothing read. A ballot is not an announced action."
+  },
+  {
+    "query": "Belgium national strike demonstration October 2026",
+    "attempted_at": "2026-10-02T22:08:16Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: ABVV/FGTB and ACV/CSC national demonstration in Brussels announced for 9 Oct 2026 against budget plans; ACOD public-services strike day 12 Oct 2026 (shortnews.be, brusselstimes, travelweekly). Prior general strikes listed incl. 12 May 2026. brusselstimes.com fetch EGRESS_BLOCKED; not read, not cited."
+  },
+  {
+    "query": "FETCH https://www.today.it/attualita/sciopero-generale-oggi-2-ottobre-2026-orari.html",
+    "attempted_at": "2026-10-02T22:08:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.wsws.org/en/articles/2026/10/02/zwpt-o02.html",
+    "attempted_at": "2026-10-02T22:08:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.brusselstimes.com/belgium",
+    "attempted_at": "2026-10-02T22:08:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.strikecalendar.co.uk/",
+    "attempted_at": "2026-10-02T22:08:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://tg24.sky.it/cronaca/2026/10/01/scioperi-ottobre-2026",
+    "attempted_at": "2026-10-02T22:08:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "Spain huelga general vivienda manifestación octubre 2026",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Spanish. Leads: Seville housing march 2 Oct 2026 ('more than 15,000', Europa Press via Infobae, attribution unknown); housing encampments (Bilbao Arriaga square, Seville Las Setas) reported since ~28 Sep; protests called in 50+ cities for weekend 3-4 Oct 2026 aimed toward a housing general strike; Madrid Tenants' Union demands (Infobae, es.euronews, Pikara, teleSUR). Possible update for es-housing-20261002. infobae.com fetch EGRESS_BLOCKED; not read."
+  },
+  {
+    "query": "Portugal greve geral manifestação outubro 2026",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Portuguese. Leads: CGTP-IN public-administration unions 24-hour strike 2 Oct 2026 with rally in Lisbon (ECO 2 Oct, Mais Ribatejo, STML); teachers' and AIMA staff strikes 6 Oct; easyJet Portugal cabin crew strike from ~2 Oct; CGTP national demonstration 17 Oct 2026 in Lisbon, Porto, Coimbra (Renascença 1 Oct, A Bola). eco.sapo.pt and rr.pt fetch EGRESS_BLOCKED; not read."
+  },
+  {
+    "query": "Greece general strike 24-hour September 2026 GSEE ADEDY",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Search summary attributed a 'September 2026' strike over a train crash with 57 dead; this matches the March 2023 Tempi strike, so the summary appears to misdate older reporting (year collision). Lead only: ADEDY 24-hour strike 13 May 2026 (outside window). No in-window Greek episode identified."
+  },
+  {
+    "query": "Hungary protest Budapest September 2026",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Results concerned 2025 Pride-ban protests; no in-window Hungarian episode identified in this query. Absence not established."
+  },
+  {
+    "query": "Slovakia protest Bratislava Fico September 2026",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Summary cited protests on 'Sept. 16' after Fico's China visit; context (WWII anniversary in Beijing) matches September 2025, so likely a year collision. No in-window Slovak episode verified."
+  },
+  {
+    "query": "Albania protest Tirana September 2026 Zvërnec",
+    "attempted_at": "2026-10-02T22:08:47Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: US Embassy Tirana demonstration alert for 8 Sep 2026 (outside window) stating nightly Tirana demonstrations; Tirana Times feature; albaniandailynews. Possible update lead for al-flamingo-rallies-2026 but no in-window (18 Sep-2 Oct) dated report found. albaniandailynews.com fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "FETCH https://www.infobae.com/espana/agencias/2026/10/02/mas-de-15000-personas-claman-por-la-vivienda-y-piden-una-huelga-general-en-sevilla/",
+    "attempted_at": "2026-10-02T22:09:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://eco.sapo.pt/2026/10/02/greve-da-funcao-publica-fecha-escolas-e-pressiona-governo-antes-das-negociacoes-do-oe2027/",
+    "attempted_at": "2026-10-02T22:09:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://rr.pt/noticia/pais/2026/10/01/outubro-e-mes-de-protestos-e-greves-tome-nota-do-calendario/487519/",
+    "attempted_at": "2026-10-02T22:09:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://albaniandailynews.com/news/third-day-of-protests-over-zv-rnec-held-in-tirana",
+    "attempted_at": "2026-10-02T22:09:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "Romania protest strike București septembrie 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Romanian. Lead: sheep breeders and farmers protest at Piața Victoriei, Bucharest, 15 Sep 2026 over an export ban, with reported clashes, tear gas and ~30 people taken to police stations (Recorder, AgroInfo). Date is before the 18 Sep window; whether protesters stayed in Bucharest into the window is not established. Not read."
+  },
+  {
+    "query": "Bulgaria protest Sofia September 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Results concern the Nov 2025-Jan 2026 budget/anti-government protests (existing record bg-budget-protests-2025); no in-window Bulgarian episode identified by this query. Absence not established."
+  },
+  {
+    "query": "Netherlands demonstratie staking september 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Dutch/English. Leads: FNV 24-hour national public-transport strike 9 Sep 2026 and port stoppages 4 Sep 2026 against social-security (WW/WIA) cuts (DutchNews, BNNVARA, IamExpat, UvA, UU); CNV action overview page. Dated before window; in-window follow-up actions not established."
+  },
+  {
+    "query": "Poland protest strajk Warszawa wrzesień 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Polish. Results were undated or earlier-2026 (Solidarność May 2026 Green Deal march; farmer tractor protests); a CBOS poll reference to a September union protest is unclear in year. No in-window Polish episode verified."
+  },
+  {
+    "query": "Ukraine protest Kyiv September 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads concern July 2026 protests over dismissal of Mykhailo Fedorov / military leadership (Kyiv Independent, NPR 26 Jul 2026). No in-window Ukrainian episode identified; existing record ua-anti-graft-independence-2025 not updated."
+  },
+  {
+    "query": "Georgia Tbilisi protest Moldova Chisinau protest September 2026",
+    "attempted_at": "2026-10-02T22:09:21Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Georgia is outside this region's catalog scope (not region Europe); civil.ge reports continuing Rustaveli Avenue protests near 600 days (date unverified). No in-window Moldovan episode identified."
+  },
+  {
+    "query": "France grève enseignants octobre 2026 préavis intersyndicale éducation",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; French. Leads: SUD éducation strike notice covering 23 Sep-22 Nov 2026 (a legal notice, not an announced action); Café pédagogique 30 Sep 2026 on education staff in the 29 Sep strike; periscolaire strike reportedly 1 Oct 2026 (Nantes Métropole). No specific post-3 Oct teachers' strike date verified. cafepedagogique.net fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "Ireland protest Dublin September 2026",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads: 'No Welcome for Trump' protests 12-13 Sep 2026 in Dublin/Doonbeg/Shannon (RTÉ 12 Sep; outside window); People Before Profit 'Affordable Ireland' national protest called for 19 Sep 2026 in Dublin (in window; organiser page only, occurrence not verified). pbp.ie fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "Czech Prague demonstrace září 2026 protest",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; Czech/English. Lead: Million Moments for Democracy (Milion chvilek) rally on Old Town Square, Prague, 28 Sep 2026 against the Babiš government; organisers reportedly plan next demonstration no later than 17 Nov 2026 (source of summary not identified among results). expats.cz fetch EGRESS_BLOCKED; not verified."
+  },
+  {
+    "query": "Montenegro OR \"North Macedonia\" OR Bosnia protest September 2026",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. No in-window episode identified. Leads outside window: Albanian student protests in Skopje from April 2026; regional truckers' border protest 26 Jan 2026. BIRN week-in-review 18 Sep 2026 not read (balkaninsight.com blocked)."
+  },
+  {
+    "query": "Finland OR Sweden OR Norway OR Denmark strike lakko strejk September 2026",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Lead: Norwegian Locomotive Drivers' Union (NLF) strike at Vy from 18 Sep 2026, reported continuing 22 Sep (striketracker aggregator only); Finnish teachers' strike warning 1-3 Sep 2026 (outside window). Not read; aggregator not a citable source."
+  },
+  {
+    "query": "Austria Switzerland Demo Streik Wien Zürich September 2026",
+    "attempted_at": "2026-10-02T22:09:39Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; German. Lead: Swiss climate/heat-protection demonstrations in ~9 cities (Zürich, Bern, Basel etc.) on 25 Sep 2026 by an alliance of ~130 organisations (workzeitung.ch, Klimastreik). workzeitung.ch fetch EGRESS_BLOCKED; not read. No Austrian in-window episode identified."
+  },
+  {
+    "query": "FETCH https://www.cafepedagogique.net/2026/09/30/greve-du-29-septembre-les-personnels-de-leducation-nationale-mobilises-pour-leurs-salaires-et-leurs-conditions-de-travail/",
+    "attempted_at": "2026-10-02T22:10:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.expats.cz/czech-news/article/tens-of-thousands-rally-in-prague-to-defend-independence-of-czech-public-media",
+    "attempted_at": "2026-10-02T22:10:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.workzeitung.ch/2026/09/auf-die-strasse-protestwelle-gegen-die-klimazeusler/",
+    "attempted_at": "2026-10-02T22:10:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.pbp.ie/join-the-affordable-ireland-protest-19-september-2026/",
+    "attempted_at": "2026-10-02T22:10:00Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "France intersyndicale nouvelle journée de mobilisation après 29 septembre 2026 date",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; French. Several results (Europe 1, Public Sénat, FSU on 18 Sep / 2 Oct intersyndicale days) appear to be from 2025 (year collision). 2026 lead: France 24 (28 Sep 2026) on 170+ public-sector demonstrations for 29 Sep 2026. No post-3 Oct 2026 interprofessional date verified. fsu.fr fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "UK protest arrests London September 2026 police",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Lead: Al Jazeera (28 Sep 2026) reports Palestine Action supporters arrested outside the Labour Party conference, Liverpool, ~27 Sep 2026, protest organised by Defend Our Juries; earlier mass arrests Apr 2026 and Jul 2026. Not read (aljazeera.com EGRESS_BLOCKED); arrest counts not verified."
+  },
+  {
+    "query": "Greece strike protest Athens late September 2026",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Lead: Euronews fact-check (25 Sep 2026) says viral 'Greece paralysed' video is old Tempi-anniversary footage, i.e. no verified new shutdown; Novinite '24-Hour Strike Hits Greece' undated in results. No in-window Greek episode verified. novinite.com fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "Lithuania Latvia Estonia protest Vilnius Riga September 2026",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Results mostly about Lithuania's diplomatic 'protest' note to Russia (30 Sep 2026) — not collective action; name collision flagged. Lead: Estonian educators' warning strike (15,000+ educators, 400 institutions) of unclear date (may be 2024). No in-window Baltic episode verified."
+  },
+  {
+    "query": "Croatia Slovenia prosvjed protest Zagreb Ljubljana September 2026",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads (all before 18 Sep window): Zagreb toxic-waste (Gospić/Lika) protest 5 Sep 2026 with 20-day cleanup-plan deadline (Al Jazeera, France 24/AFP, AP via Dayton Daily News, Croatia Week); Ljubljana anti-government protest 2 Sep and Israeli-embassy protest ~9-10 Sep 2026. In-window follow-ups not established."
+  },
+  {
+    "query": "Russia OR Belarus protest detained September 2026 OVD-Info",
+    "attempted_at": "2026-10-02T22:10:06Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Lead: OVD-Info reports 'Fair Elections' rallies refused approval in Russian cities in late Sep 2026 and a picketer detained in Moscow (date/year not confirmed). ovd.info fetch EGRESS_BLOCKED; not read."
+  },
+  {
+    "query": "FETCH https://www.novinite.com/articles/239211/24-Hour+Strike+Hits+Greece:+What+Tourists+Need+to+Know",
+    "attempted_at": "2026-10-02T22:10:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://fsu.fr/lintersyndicale-appelle-a-une-mobilisation-massive-le-2-octobre/",
+    "attempted_at": "2026-10-02T22:10:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://ovd.info/en",
+    "attempted_at": "2026-10-02T22:10:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://web.archive.org/web/2026/https://www.france24.com/fr/france/20260928-france-journee-mobilisation-plus-170-manifestations-service-public-syndicats-pompiers-lycees",
+    "attempted_at": "2026-10-02T22:10:30Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt via archive failed: 'unable to fetch from web.archive.org'. Page not read; not cited."
+  },
+  {
+    "query": "Serbia protest Belgrade rally 1 October 2026",
+    "attempted_at": "2026-10-02T22:10:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads outside window: Slavija Square rally 23 May 2026 (European Western Balkans: up to ~190,000, attribution unverified; Al Jazeera gallery 24 May). No in-window Serbian rally dated 18 Sep-2 Oct verified; existing record rs-station-accountability-2024-2025 not updated."
+  },
+  {
+    "query": "Spain manifestaciones vivienda 3 y 4 de octubre 2026 sindicato de inquilinas",
+    "attempted_at": "2026-10-02T22:10:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Spanish. Leads: Tenants' Unions (Sindicatos de Inquilinas) called pot-banging protests 1 Oct 2026 at town halls and demonstrations on 3-4 Oct 2026 'towards a general strike' in 22+ confirmed cities incl. Madrid, Valencia, Seville, Bilbao, Cádiz, Huelva, Guadalajara, Girona (Infobae/Europa Press 30 Sep, Telemadrid 30 Sep, elDiario.es, El Español, a24, Noticias Obreras). Would link to es-housing-20261002. Not read (infobae.com, eldiario.es blocked); not cited."
+  },
+  {
+    "query": "Italy protest Gaza flotilla corteo settembre 2026",
+    "attempted_at": "2026-10-02T22:10:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Italian. Most results concern Sep-Oct 2025 flotilla strikes (year collision). Leads: L'Indipendente 1 May 2026 flotilla protests; MilanoToday 'corteo oggi 2 ottobre' (year unconfirmed). No in-window 2026 Italian Gaza episode verified. milanotoday.it fetch EGRESS_BLOCKED."
+  },
+  {
+    "query": "Belgium ABVV ACV betoging 9 oktober 2026 Brussel",
+    "attempted_at": "2026-10-02T22:10:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; Dutch. Leads: VRT NWS and BRUZZ (8 Sep 2026) report ABVV and ACV announced a national demonstration in Brussels on 9 Oct 2026 as a 'warning' against federal austerity/budget plans; ACOD public-services strike 12 Oct 2026; ABVV reportedly threatened a national strike in week of 23 Nov if government holds firm. Search summary wrongly used past tense. vrt.be fetch EGRESS_BLOCKED; not read."
+  },
+  {
+    "query": "Germany Schulstreik Wehrpflicht 25. September 2026 Teilnehmer",
+    "attempted_at": "2026-10-02T22:10:46Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only; German. Leads: nationwide school strike against reintroduction of conscription on 25 Sep 2026; organisers ('Schulstreik gegen Wehrpflicht') claimed 45,000+ in ~100 cities; police counts cited e.g. 2,400 Berlin-Wedding, 700 Munich (ZDFheute, ms-aktuell fact-check, WSWS). zdfheute.de fetch EGRESS_BLOCKED; figures not verified."
+  },
+  {
+    "query": "FETCH https://www.vrt.be/vrtnws/nl/2026/09/08/abvv-kondigt-nationale-manifestatie-tegen-besparingsbeleid-aan-o/",
+    "attempted_at": "2026-10-02T22:11:10Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.zdfheute.de/politik/deutschland/wehrpflicht-schueler-protest-demo-100.html",
+    "attempted_at": "2026-10-02T22:11:10Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.eldiario.es/madrid/somos/manifestacion-huelga-general-vivienda-madrid-sabado-bloques-horarios-recorridos_1_13554349.html",
+    "attempted_at": "2026-10-02T22:11:10Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.milanotoday.it/cronaca/corteo-oggi-2-ottobre-gaza.html",
+    "attempted_at": "2026-10-02T22:11:10Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "resident doctors strike England October 2026 BMA dates",
+    "attempted_at": "2026-10-02T22:11:12Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Leads (BMA, NHS Employers, DHSC blog 27 May 2026) indicate the English resident doctors' dispute settled in June 2026 with no further strike dates; no in-window or upcoming action identified. Not read."
+  },
+  {
+    "query": "Moldova OR Montenegro OR Iceland OR Malta OR Luxembourg protest strike late September 2026",
+    "attempted_at": "2026-10-02T22:11:12Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. No in-window episode identified for these entries; only earlier-2026 leads (Montenegro truckers' border blockade Jan 2026; Moldova protests Mar 2026). Absence not established."
+  },
+  {
+    "query": "Andorra OR Gibraltar OR Jersey OR Guernsey OR \"Isle of Man\" OR \"Faroe Islands\" protest strike 2026",
+    "attempted_at": "2026-10-02T22:11:12Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery only. No 2026 in-window episode identified for these small jurisdictions; Faroe result refers to the 2024 strike already recorded (fo-workers-wage-strike-2024). Absence not established. Åland, Svalbard and Jan Mayen, Holy See, San Marino, Monaco and Liechtenstein were not separately queried in this round."
+  },
+  {
+    "query": "farmers protest Brussels Mercosur tractors September 2026",
+    "attempted_at": "2026-10-02T22:11:12Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only. Results concern Dec 2025 and earlier Brussels farmer protests (Copa-Cogeca; Al Jazeera 18 Dec 2025); no in-window 2026 episode identified."
+  },
+  {
+    "query": "Portugal manifestação nacional CGTP 17 outubro 2026",
+    "attempted_at": "2026-10-02T22:11:12Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Discovery only; Portuguese. Lead: CGTP-IN called (reported 11 Sep 2026 by ECO, TSF, Sábado, Sul Informação, esquerda.net; likely one Lusa chain) a 'great national demonstration' on 17 Oct 2026 in Lisbon, Porto and Coimbra, with a month of workplace actions 17 Sep-17 Oct; demands incl. minimum wage to EUR 1,100 and 15% (min EUR 150) pay rise. Fetches EGRESS_BLOCKED; not read, so not entered as an upcoming record."
+  },
+  {
+    "query": "FETCH https://www.sulinformacao.pt/2026/09/cgtp-convoca-grande-manifestacao-nacional-para-17-de-outubro/",
+    "attempted_at": "2026-10-02T22:11:40Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.tsf.pt/sociedade/artigo/cgtp-convoca-grande-manifestacao-nacional-para-17-de-outubro/18125814",
+    "attempted_at": "2026-10-02T22:11:40Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.esquerda.net/artigo/cgtp-convoca-manifestacao-para-17-de-outubro-pelo-aumento-dos-salarios/98986",
+    "attempted_at": "2026-10-02T22:11:40Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.bruzz.be/actua/samenleving/vakbonden-plannen-betoging-op-9-oktober-waarschuwing-aan-regering-2026-09-08",
+    "attempted_at": "2026-10-02T22:11:40Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "WebFetch attempt failed: EGRESS_BLOCKED. Page not read; not cited. Timestamp approximate within batch."
+  },
+  {
+    "query": "FETCH https://www.aljazeera.com/news/2026/9/28/palestine-action-protesters-arrested-outside-uk-labour-party-conference",
+    "attempted_at": "2026-10-02T22:11:53Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Final retry WebFetch failed: EGRESS_BLOCKED. Confirms the block persisted through the end of the session. Not read; not cited."
+  }
+]

@@ -1,0 +1,602 @@
+[
+ {
+  "query": "Cameroon teachers strike October 2026",
+  "attempted_at": "2026-10-02T22:06:26Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: France 24 video 2026-10-01; Channel Africa on SYNES lecturers' strike. Older VOA results relate to 2016-17 Anglophone strike. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Nigeria public servants three-day warning strike October 2026",
+  "attempted_at": "2026-10-02T22:06:26Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: JNPSNC warning strike from Oct 2 to Oct 4 2026. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Ghana TUTAG withdraws services October 2026",
+  "attempted_at": "2026-10-02T22:06:26Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: TUTAG indefinite strike from Oct 1 2026. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Libya teachers pay strike September 2026",
+  "attempted_at": "2026-10-02T22:06:26Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: Africanews 2026-09-30; Reuters-syndicated 'Teachers strike brings new upheaval' 2026-10-01; LibyaReview. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Kenya protest September 2026",
+  "attempted_at": "2026-10-02T22:08:13Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). No in-window Kenyan protest lead surfaced; results concern June-July 2026 anniversaries and a Sept 2 directive on migrant traders (no protest established). Snippets are not evidence of absence. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "South Africa strike march September 2026 union",
+  "attempted_at": "2026-10-02T22:08:13Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Lead: March and March movement announced a second day of mass action on 30 Sept 2026 (Briefly.co.za, BusinessTech). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "DR Congo protest constitution September 2026",
+  "attempted_at": "2026-10-02T22:08:13Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Lead: C64 opposition coalition nationwide day of action 15 Sept 2026 (before the 18 Sept window); EWN, Polity (Reuters copy), modernghana, Africanews, Al Jazeera. Not in window unless later activity found. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Morocco protest Gen Z 212 September 2026 anniversary",
+  "attempted_at": "2026-10-02T22:08:13Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: one-year-on analyses (Hespress, Al Jazeera 2026-09-22 on 23 Sept elections); no in-window street protest established from snippets. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Madagascar manifestation septembre 2026",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. 25 Sept 2026 declared a paid holiday commemorating the 2025 uprising (Outre-mer La 1ere, Midi Madagasikara); no in-window protest established from snippets. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "grève générale Afrique de l'Ouest syndicats octobre 2026",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Lead: Senegal FSDT announced a general strike for 21-23 Oct 2026 (allAfrica FR 2026-09-20, APS Kolda, Senego on government appeal before Dakar 2026 Youth Olympic Games). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "\"March and March\" 30 September 2026 protest Pretoria",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Lead: anti-immigration group March and March called 30 Sept 2026 national day of action (Briefly, The Citizen, Cape Town ETC; IOL post says storms may have derailed Pretoria protest). Occurrence/turnout not established; xenophobia-sensitive, needs careful sourcing. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Tanzania drivers strike resume October 2026 licence points",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Update leads for tz-drivers-20260929: The Citizen loss estimates; Daily News 'Upcountry bus services resume'; The Respondents on Katambi suspension and 14-day review from Oct 1. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Senegal FSDT grève générale 21 23 octobre 2026",
+  "attempted_at": "2026-10-02T22:08:58Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Leads for an announced 21-23 Oct 2026 FSDT general strike (allAfrica FR, Seneweb, Senego, SenePlus, Vipeoples). Not fetched/read; announcement not included because no page could be deep-read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Lagos universities workers SSANU NASU indefinite strike October 2026",
+  "attempted_at": "2026-10-02T22:08:58Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: JAC of ASUU/SSANU/NASU/NAAT at four Lagos State universities announced indefinite strike at a 2 Oct 2026 briefing (Guardian Nigeria, Edugist, Vanguard, The Eagle Online). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Uganda protest strike September 2026",
+  "attempted_at": "2026-10-02T22:08:58Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). No in-window Ugandan episode surfaced; results concern January and June 2026. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Algérie grève septembre 2026",
+  "attempted_at": "2026-10-02T22:08:58Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Results concern French 29 Sept public-service strike and Corsica Linea ferry strike affecting Algeria routes (France-based, out of Algeria scope). No Algerian in-window episode surfaced. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Réunion grève 29 septembre 2026 mobilisation",
+  "attempted_at": "2026-10-02T22:09:15Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Results are national French union notices for the 29 Sept 2026 public-service strike; Réunion-specific turnout not established from snippets (lead from round-3 screening: Le Quotidien de La Réunion 2026-09-29). attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Mayotte manifestation grève septembre 2026",
+  "attempted_at": "2026-10-02T22:09:15Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Lead: SNES Mayotte union pages and Outre-mer La 1ere report a 29 Sept 2026 public-service strike and march in Mamoudzou (snippet cites >300 marchers; attribution unverified). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Sierra Leone UASA university strike September 2026",
+  "attempted_at": "2026-10-02T22:09:15Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Name collision: most results concern Kenya's UASU (seven-day notice, strike from 2 Oct 2026; The Star 2026-09-24, Kenya Times, Citizen Digital, People Daily). Sierra Leone UASA call-off item is undated in snippet. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Zimbabwe protest stayaway September 2026",
+  "attempted_at": "2026-10-02T22:09:15Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). No in-window Zimbabwe street action established; London Vigil diary (diaspora, outside scope) and July 2026 stayaway leads only. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Kenya UASU lecturers strike October 2 2026",
+  "attempted_at": "2026-10-02T22:09:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: UASU strike over stalled 2025-2029 CBA began 2 Oct 2026 per Nation, Kenya Times, The Star (2026-10-01), University World News; KUSU and KUDHEHIA also named in snippets. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Cameroun SYNES grève enseignants universités septembre 2026",
+  "attempted_at": "2026-10-02T22:09:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Leads: SYNES unlimited strike in public universities from 3 Sept 2026; 18 Sept crisis meeting with higher-education and finance ministers; 20 Sept union rejection (allAfrica FR 2026-09-24, Camer.be, Tchadinfos, Lebledparle, 237online). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Barrick Loulo-Gounkoto Mali unions strike notice October 2026",
+  "attempted_at": "2026-10-02T22:09:45Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: unions at SOMILO/GOUNKOTO and contractor staff filed notices for action from 28 Sept 2026; Miningmx/Yahoo snippets say a deal on 21 Sept averted strikes. Threatened action, apparently called off; no in-window strike established. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Ethiopia OR Sudan OR \"South Sudan\" protest strike late September 2026",
+  "attempted_at": "2026-10-02T22:09:45Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Results describe armed conflict (Crisis Group CrisisWatch September 2026), not protest episodes; Arab News item on 'strikes' refers to drone strikes. No in-window protest lead. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Tunisia OR Egypt protest strike September 2026",
+  "attempted_at": "2026-10-02T22:10:12Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: Tunisia 48-hour fuel-transport workers' strike in Tunis (Al Jazeera 2026-09-24); multi-province protests incl. unemployed graduates in Gabes (Global Voices 2026-09-22, The New Arab); possible link to existing tn-gabes-20251021 needs checking. No Egyptian in-window lead. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Côte d'Ivoire OR Guinée OR Togo manifestation grève fin septembre 2026",
+  "attempted_at": "2026-10-02T22:10:12Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Lead: SYNAP-CI cocoa producers' unlimited strike from 16 Sept 2026 demanding removal of the Conseil Café-Cacao director (KOACI 2026-09-17). No Guinea/Togo in-window lead. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Zambia OR Malawi OR Mozambique protest strike September 2026",
+  "attempted_at": "2026-10-02T22:10:12Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Lead: UN News (Sept 2026) on post-election repression of Zambian opposition; no specific in-window protest established. Malawi OSAC item is from 2022. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Botswana OR Eswatini OR Namibia OR Lesotho strike protest September 2026",
+  "attempted_at": "2026-10-02T22:10:12Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). No in-window lead for these four countries; results are historical or concern South Africa's March and March. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Nigeria NLC TUC protest strike announced October 2026",
+  "attempted_at": "2026-10-02T22:10:27Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Leads: JNPSNC three-day public-service warning strike 2-4 Oct 2026 (First Awareness, Reporters at Large); NLC support claimed in snippet. Older NLC/TUC Oct 3 results are from 2023 (name/date collision). Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Gabon OR Congo-Brazzaville OR Tchad grève manifestation septembre 2026",
+  "attempted_at": "2026-10-02T22:10:27Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Lead: Journal de Brazza on a Pointe-Noire transport workers' strike (snippet dates it 30 Sept 2026 after a bus controller's death) and a Marien Ngouabi University strike from 1 Sept. Dates unverified. No Gabon/Chad in-window lead. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Ghana protest demonstration September 2026 Accra",
+  "attempted_at": "2026-10-02T22:10:27Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Lead: Ghana Women's Movement 'Women's Voices Matter' demonstration planned in Accra on 29 Sept 2026 (MyJoyOnline via aggregator; Rainbow Radio 2026-09-30). Occurrence not established. US Embassy alert on 'September 17' protests is undated in snippet. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Liberia OR Gambia OR \"Sierra Leone\" protest late September 2026",
+  "attempted_at": "2026-10-02T22:10:27Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Gambia power-cut protests 7 Sept 2026 and permit requirement (before window). Sierra Leone 'September 11' violent protest item (Dubawa) year unclear. No in-window lead. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Angola OR Moçambique greve manifestação setembro 2026",
+  "attempted_at": "2026-10-02T22:10:51Z",
+  "provider": "WebSearch",
+  "result_count": 10,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Portuguese-language query. Lead: Sinprof public-school teachers' strike in Angola, first phase from 21 Sept to 15 Oct 2026, further phases announced for Dec 2026, Feb 2027 and May-June 2027 (Carta de Angola 2026-09-21, Diario Economico, Oku Saka). Also a Luanda court reportedly suspended a state-media workers' strike (date unverified). No Mozambique in-window lead. Not fetched/read. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Mauritius OR Comoros OR Seychelles OR \"Cabo Verde\" protest strike September 2026",
+  "attempted_at": "2026-10-02T22:10:51Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). No in-window lead; Comoros transport strike is May 2026 (outside window). Round-3 lead on Cabo Verde fuel-price-cap opposition statement (Lusa 2026-10-02) is not a protest. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Bénin OR Burkina OR Niger OR Mali OR Sénégal manifestation grève 30 septembre 2026",
+  "attempted_at": "2026-10-02T22:10:51Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). French-language query. Burkina 30 Sept 'Nuit de la Révolution' is a state-organised commemoration, not a protest. APA FR items on Senegal FSDT strike call and government appeal to postpone (leads). Mali Loulo-Gounkoto notices reportedly averted. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "Somalia OR Djibouti OR Rwanda OR Burundi protest strike September 2026",
+  "attempted_at": "2026-10-02T22:10:51Z",
+  "provider": "WebSearch",
+  "result_count": 9,
+  "reviewed_urls": [],
+  "note": "Search-result discovery only; leads named here are unverified because no linked page could be deep-read in this session (WebFetch egress blocked for every news domain tried). Results concern diplomacy and border clashes, not protest episodes. No in-window lead. attempted_at is the UTC clock read adjacent to the search batch (within about one minute). Empty or thin results do not establish absence."
+ },
+ {
+  "query": "https://www.africanews.com/2026/09/30/libyan-teachers-extend-strike-over-pay-and-working-conditions/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.933thedrive.com/2026/10/01/teachers-strike-brings-new-upheaval-for-libyans-as-school-year-stalls/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://libyareview.com/68603/libyan-teachers-union-starts-nationwide-strike-over-pay/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.globalbankingandfinance.com/teachers-strike-brings-new-upheaval-libyans-school-year/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.al-monitor.com/originals/2026/10/libyas-pay-strike-rallies-teachers-across-divided-nation",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.france24.com/en/video/20261001-cameroon-govt-announces-payments-as-teachers-strike-continues",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.channelafrica.co.za/channelafrica/news/cameroon-lecturers-continue-indefinite-strike/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.vanguardngr.com/2026/10/lagos-universities-workers-begin-indefinite-strike/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://gna.org.gh/2026/10/tutag-withdraws-services-effective-thursday-demand-earned-allowances/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.reuters.com/business/world-at-work/multiple-unions-threaten-strikes-barricks-flagship-mali-gold-mine-documents-show-2026-09-18/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://apnews.com/hub/africa",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.bbc.com/news/world/africa",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.theguardian.com/world/africa",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.dw.com/en/africa/s-12756",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: unable to fetch (tool domain check). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://thechanzo.com/2026/10/02/tanzania-bus-strike-ends-but-drivers-fight-is-far-from-over/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.aljazeera.com/news/2026/10/2/uk-mauritius-chagos-sovereignty-deal-stalls-amid-fears-of-further-delays",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.ripplesnigeria.com/public-workers-commence-3-day-warning-strike-over-economic-hardship/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.ghanaweb.com/GhanaHomePage/NewsArchive/TUTAG-declares-indefinite-strike-over-unpaid-allowances-and-scheme-of-service-alterations-2054946",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://en.wikipedia.org/wiki/Timeline_of_strikes_in_2026",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://tribuneonlineng.com/civil-servants-set-to-commence-three-day-warning-strike-over-unmet-demands/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.mangrovepen.ng/2026/10/02/public-servants-begin-three-day-strike-over-economic-hardship/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://rainbowradioonline.com/2026/10/02/tutag-declares-indefinite-strike-over-unpaid-allowances-and-scheme-of-service-alterations/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.africa-press.net/en/policy/libya-school-year-opens-with-strike-testing-education-reform",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://reliefweb.int/updates?search=protest",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.voanews.com/africa",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://apanews.net/chad-withholds-salaries-of-striking-teachers/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.rfi.fr/en/africa/",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://allafrica.com/stories/202608250061.html",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.hrw.org/news/2026/07/09/dr-congo-crackdown-on-protesters",
+  "attempted_at": "2026-10-02T22:08:07Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: domain safety check rate-limited. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://dailynews.co.tz/upcountry-bus-services-resume/",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://aps.sn/kolda-les-syndicats-mobilisent-pour-la-greve-generale-doctobre/",
+  "attempted_at": "2026-10-02T22:08:45Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://la1ere.franceinfo.fr/mayotte/la-fonction-publique-sera-en-greve-ce-mardi-29-septembre-1742777.html",
+  "attempted_at": "2026-10-02T22:09:33Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://mayotte.snes.edu/Suite-a-la-greve-et-manifestation-du-29-septembre.html",
+  "attempted_at": "2026-10-02T22:09:33Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://guardian.ng/news/lagos-varsity-workers-begin-indefinite-strike-over-unpaid-palliative-others/",
+  "attempted_at": "2026-10-02T22:09:33Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.thecitizen.co.tz/tanzania/news/national/counting-the-losses-from-bus-truck-drivers-strike-5615506",
+  "attempted_at": "2026-10-02T22:09:33Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.crisisgroup.org/crisiswatch/september-trends-and-october-alerts-2026",
+  "attempted_at": "2026-10-02T22:10:04Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://nation.africa/kenya/news/education/lecturers-strike-grounds-learning-across-public-universities-nationwide-5617746",
+  "attempted_at": "2026-10-02T22:10:04Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://www.universityworldnews.com/post.php?story=20260926114601650",
+  "attempted_at": "2026-10-02T22:10:04Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED. Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ },
+ {
+  "query": "https://fr.allafrica.com/stories/202609200053.html",
+  "attempted_at": "2026-10-02T22:10:43Z",
+  "provider": "WebFetch",
+  "result_count": 0,
+  "reviewed_urls": [],
+  "note": "Failed deep-read attempt: EGRESS_BLOCKED (single later retry of allafrica family after earlier rate limit). Page not read and not cited. attempted_at is the UTC clock read immediately after the fetch batch (attempts occurred up to about two minutes earlier)."
+ }
+]

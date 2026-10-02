@@ -1,0 +1,466 @@
+[
+  {
+    "query": "Syria fuel price protests September 2026",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Discovery for SY fuel-price protest wave; mid-September onset. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Pakistan protests flotilla intercepted October 2026",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results mostly 2025 and May 2026 flotilla items; no in-window episode identified from this query. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "cockroach movement protest election commission India October 2",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Leads for update to existing in-electoral-20261002. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://www.aljazeera.com/news/2026/10/2/indian-authorities-clamp-down-as-cockroach-movement-launches-new-protests",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.aljazeera.com/news/2026/9/25/indias-cockroach-movement-demands-election-chiefs-resignation",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.usnews.com/news/world/articles/2026-10-02/indias-cockroach-janata-party-student-groups-to-protest-demand-poll-chiefs-resignation",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.thehindu.com/news/cities/Delhi/blocked-routes-and-repeated-detentions-mark-sir-protest-in-delhi/article71537069.ece",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://indianexpress.com/article/india/cec-gyanesh-kumar-resignation-protest-mumbai-delhi-cjp-sir-electoral-rolls-10904343/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://timesofindia.indiatimes.com/india/protests-against-cec-gyanesh-kumar-over-700-detained-in-delhi-thousands-attend-cjp-stir-in-mumbai-top-developments/articleshow/134644594.cms",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.thehindubusinessline.com/news/anti-cec-protests-erupt-across-country-over-sir-hundreds-detained-in-delhi/article71537116.ece",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://abcnews.com/International/wireStory/cockroach-protesters-demand-indias-election-chief-resign-voter-136942017",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.tbsnews.net/world/indias-cockroach-movement-protest-2-october-if-poll-chief-does-not-quit-saturday-1553496",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.seattletimes.com/nation-world/indias-cockroach-youth-protesters-are-to-rally-again-and-demand-ouster-of-election-chief/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded. URL already cited in public/events.json as source in-electoral-ap-seattle (AP syndication); not a new lead or independent corroboration."
+  },
+  {
+    "query": "https://www.euronews.com/2026/09/14/fuel-price-protests-spread-across-syria-as-parliament-summons-energy-minister",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://english.enabbaladi.net/archives/2026/10/after-price-hikes-energy-ministry-tests-syrians-resilience/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://apnews.com/hub/india",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.dawn.com/latest-news",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.bbc.com/news/world/asia",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.reuters.com/world/middle-east/syria-fuel-price-hikes-trigger-widest-protests-since-assad-fall-2026-09-14/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.arabnews.com/middle-east/syria-protests-spread-to-kurdish-majority-northeast-3001894",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.theguardian.com/world/syria",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.france24.com/en/asia-pacific/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.dw.com/en/top-stories/s-9097",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://civil.ge/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://kathmandupost.com/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.timesofisrael.com/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://shafaq.com/en",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://en.wikipedia.org/wiki/2026_Syrian_fuel_protests",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy (discovery-only test; Wikipedia would not be cited as sole evidence). Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://www.radio.gov.pk/",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch domain safety check rate-limited. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "https://web.archive.org/web/2026/https://www.aljazeera.com/news/2026/10/2/indian-authorities-clamp-down-as-cockroach-movement-launches-new-protests",
+    "attempted_at": "2026-10-02T22:06:23Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: WebFetch: unable to fetch from host. Page not read and not cited. Attempted between clock reads 2026-10-02T22:06:23Z and 2026-10-02T22:08:21Z; exact per-request time not captured, lower bound recorded."
+  },
+  {
+    "query": "Pakistan protest sit-in strike September 2026",
+    "attempted_at": "2026-10-02T22:08:29Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: Jamaat-e-Islami petroleum-levy sit-in (Karachi) with 3 Sept shutter-down strike and long-march threat; PTI march planning. Underlying pages not fetchable (egress blocked); no claims written. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Bangladesh protest blockade strike late September 2026",
+    "attempted_at": "2026-10-02T22:08:29Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "No clearly dated in-window BD episode surfaced; Global Voices 27 Sept item is commentary on mob violence. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Türkiye protest CHP rally police detained September 2026",
+    "attempted_at": "2026-10-02T22:08:29Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: 15 Sept Istanbul Caglayan courthouse LGBTQ+ protest detentions (AP/AFP) - before the 18 Sept window. No in-window CHP episode identified from snippets. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Israel protest Tel Aviv demonstrators September 2026",
+    "attempted_at": "2026-10-02T22:08:29Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Search summary mentioned anti-Netanyahu rallies in September 2026 but without verifiable dated article; summary conflated UN/New York events. Treated as unverified; not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "PTI march Imran Khan release September 27 2026 Islamabad",
+    "attempted_at": "2026-10-02T22:08:45Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Lead: TBS/Reuters-style item says PTI postponed Peshawar-to-Islamabad march from 27 Sept to 4 Oct; containers and security deployments reported. Candidate upcoming action, but underlying page blocked (tbsnews.net egress blocked); not recorded as upcoming. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Iran protest strike retirees truckers late September 2026",
+    "attempted_at": "2026-10-02T22:08:45Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads only from NCRI/PMOI-affiliated outlets (opposition advocacy, strong incentives) describing retiree/student protests 27-28 Sept and a security alert; no independent outlet surfaced. Not fetched; would need independent corroboration. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Iraq protests electricity salaries Basra Nasiriyah September 2026",
+    "attempted_at": "2026-10-02T22:08:45Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: Kurdistan24/964media/Shafaq items on wage-arrears and electricity protests; dates unclear from snippets and some results are old (VOA/CBS 2010s). Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Georgia Tbilisi Rustaveli protest October 2026",
+    "attempted_at": "2026-10-02T22:08:45Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Results mostly Wikipedia and 2024-2025 RFE/RL; civil.ge liveblog is candidate for in-window daily protest reporting but civil.ge is egress blocked. Name collision with US state checked via Tbilisi term. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Nepal protest Kathmandu demonstration late September 2026",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results were 2025 Gen Z protest retrospectives and HRW Feb 2026; no in-window Nepal episode surfaced. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Sri Lanka strike trade unions protest Colombo September 2026",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: 27 railway unions' 48-hour token strike from 17 Sept 2026 (Ceylon Daily News, Lanka Newspapers) - onset before window; possible spillover into 18 Sept. Port workers national-strike item undated in snippet. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Lebanon protest strike public sector Beirut September 2026",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: L'Orient Today reports Civil Service Employees League strike days and planned 30 Sept-1 Oct strike; transport unions/CGTL suspended a general strike. Candidate in-window episode and announcements; l'Orient egress blocked, not read. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Syria protests fuel prices continue late September 2026 minister",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Lead: The National (18 Sept 2026) reports diesel price cut after protests; onset 13-14 Sept. In-window activity after 18 Sept not established from snippets. thenationalnews.com egress blocked. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://www.rferl.org/",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Not read. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://www.brecorder.com/news/40437073/ji-says-it-will-hold-nationwide-shutter-down-strike-on-sept-3",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Not read. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://www.thenationalnews.com/news/mena/2026/09/18/syrian-government-cuts-diesel-prices-after-widespread-protests-over-fuel-costs/",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Not read or cited. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://today.lorientlejour.com/article/1549083/transport-unions-call-off-strike-public-sector-employees-hold.html",
+    "attempted_at": "2026-10-02T22:09:02Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Not read or cited. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Armenia Yerevan protest opposition church September 2026",
+    "attempted_at": "2026-10-02T22:09:26Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "No dated in-window Yerevan protest surfaced; church-state conflict items are context only. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "West Bank general strike protest Palestinians late September 2026",
+    "attempted_at": "2026-10-02T22:09:26Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results concern April 2026 death-penalty-law general strike and earlier strikes; no in-window PS episode surfaced. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Jamaat-e-Islami long march Islamabad petroleum prices October 2026",
+    "attempted_at": "2026-10-02T22:09:26Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads: The Nation (2 Oct 2026) - JI chief threatens Islamabad march if petroleum levy not withdrawn; Dawn/Arab News items on a JI march departing Karachi by train (date unclear in snippets); Pakistan Observer/Shafaqna on postponement to early October. Conflicting snippets; announcement date not verifiable without reading. Not recorded as upcoming. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Kazakhstan OR Kyrgyzstan OR Afghanistan protest rally September 2026",
+    "attempted_at": "2026-10-02T22:09:26Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Lead: CrisisWatch Sept 2026 summary mentions 5 Sept Kabul Shia seminary closure protests with reported ~28 arrests (before window). No KZ/KG in-window protest surfaced. Combined OR query; not a per-country screen. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "https://www.crisisgroup.org/crisiswatch/september-trends-and-october-alerts-2026",
+    "attempted_at": "2026-10-02T22:09:26Z",
+    "provider": "WebFetch",
+    "result_count": 0,
+    "reviewed_urls": [],
+    "note": "Failed deep-read attempt: EGRESS_BLOCKED by network egress proxy. Not read. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Maldives protest Malé opposition MDP September 2026",
+    "attempted_at": "2026-10-02T22:09:50Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Lead: Wikipedia '2026 Maldivian protests' and edition.mv MDP permit request (August 2026, prices). Wikipedia cannot stand as evidence; no dated in-window Malé protest verified. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Azerbaijan OR Jordan OR Kuwait protest detained September 2026",
+    "attempted_at": "2026-10-02T22:09:50Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Lead: CrisisWatch summary says police thwarted Popular Front/National Council rally attempts in Azerbaijan in September 2026 (dates unknown). Nothing dated for JO/KW. Combined OR query; not a per-country screen. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Yemen Aden protest electricity salaries September 2026",
+    "attempted_at": "2026-10-02T22:09:50Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads on Aden electricity/salary protests; dated items surfaced are June 2026 (Xinhua) and undated; in-window activity not established. Not fetched. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "India nationwide strike protest announced October 2026 trade unions farmers",
+    "attempted_at": "2026-10-02T22:09:50Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results concern 12 Feb 2026 Bharat Bandh; no October 2026 announcement surfaced. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Cockroach Janta Party next protest date October 2026 announced",
+    "attempted_at": "2026-10-02T22:10:03Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Leads for existing in-electoral-20261002: CNBC 25 Sept ultimatum item, Al Jazeera 2 Oct clampdown report, Britannica/Wikipedia overviews. No specific post-2 Oct announced date surfaced. Not fetched (al Jazeera egress blocked). attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "CHP rally announced October 2026 Özel İmamoğlu trial protest",
+    "attempted_at": "2026-10-02T22:10:03Z",
+    "provider": "WebSearch",
+    "result_count": 9,
+    "reviewed_urls": [],
+    "note": "Results are March 2025/March 2026 anniversary rallies; no dated upcoming CHP action for October 2026 surfaced. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  },
+  {
+    "query": "Bangladesh hartal OR blockade announced October 2026 Dhaka",
+    "attempted_at": "2026-10-02T22:10:03Z",
+    "provider": "WebSearch",
+    "result_count": 10,
+    "reviewed_urls": [],
+    "note": "Results are 2023 BNP hartal/blockade items (date collision); no October 2026 announcement surfaced. attempted_at is a batch-start clock read shared with other rows (lower bound); the exact per-request time was not captured."
+  }
+]
