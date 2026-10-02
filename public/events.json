@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-02T19:15:18Z",
+  "last_editorial_review": "2026-10-02T19:15:18Z",
+  "coverage_note": "Research preview: 3 AI-assisted, single-source records from 2 October 2026; no independent human editorial review. The directory covers 249 countries and territories, but it is not a complete current protest census. A blank country means no reviewed record in this snapshot, never no protests.",
+  "events": [
+    {
+      "id": "fr-schools-20261002",
+      "title": "School conditions and education funding",
+      "country": "FR",
+      "country_name": "France",
+      "region": "Europe",
+      "location": {
+        "label": "France",
+        "precision": "country"
+      },
+      "issues": [
+        "Education",
+        "Public services"
+      ],
+      "start_date": null,
+      "start_date_precision": "unknown",
+      "end_date": null,
+      "status": "unknown",
+      "last_observed_at": "2026-10-02",
+      "last_verified": "2026-10-02T19:15:18Z",
+      "summary": "Students protested over classroom conditions and funding.",
+      "positions": [
+        {
+          "actor": "Student demonstrators",
+          "stance": "support",
+          "target": "Improved school conditions and education funding",
+          "claim": "Demands described by Reuters.",
+          "source_ids": [
+            "fr-reuters"
+          ]
+        }
+      ],
+      "intensity": {
+        "turnout": {
+          "min": null,
+          "max": null,
+          "qualifier": "Not established"
+        },
+        "disruption": "School disruption reported.",
+        "violence": "Clashes and property fires reported; attribution varies by incident.",
+        "source_ids": [
+          "fr-reuters"
+        ]
+      },
+      "state_response": [
+        {
+          "action": "Tear gas reported",
+          "attribution": "Reuters reporting",
+          "source_ids": [
+            "fr-reuters"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "fr-reuters",
+          "url": "https://www.reuters.com/world/about-400-french-schools-closed-some-student-protests-turn-violent-2026-10-02/",
+          "title": "France: school protest reporting, 2 October",
+          "publisher": "Reuters",
+          "published_at": "2026-10-02",
+          "accessed_at": "2026-10-02T19:15:18Z"
+        }
+      ],
+      "verification": {
+        "level": "single-source",
+        "note": "AI-assisted source check. No independent human editorial review. Observation is day-level; present activity and full movement onset are not established."
+      },
+      "timeline": [
+        {
+          "date": "2026-10-02",
+          "text": "Dated report of protest activity; full onset and end not established.",
+          "source_ids": [
+            "fr-reuters"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "in-electoral-20261002",
+      "title": "Electoral roll revisions and accountability",
+      "country": "IN",
+      "country_name": "India",
+      "region": "Asia",
+      "location": {
+        "label": "Mumbai and New Delhi",
+        "precision": "multi-location"
+      },
+      "issues": [
+        "Elections",
+        "Government accountability"
+      ],
+      "start_date": null,
+      "start_date_precision": "unknown",
+      "end_date": null,
+      "status": "unknown",
+      "last_observed_at": "2026-10-02",
+      "last_verified": "2026-10-02T19:15:18Z",
+      "summary": "Demonstrators challenged electoral roll revisions and demanded the election chief’s resignation.",
+      "positions": [
+        {
+          "actor": "Youth movement and student activists",
+          "stance": "oppose",
+          "target": "Electoral roll revision process",
+          "claim": "Concerns are attributed to protesters, not established findings of misconduct.",
+          "source_ids": [
+            "in-ap"
+          ]
+        }
+      ],
+      "intensity": {
+        "turnout": {
+          "min": null,
+          "max": null,
+          "qualifier": "Not established"
+        },
+        "disruption": "Disruption not established by this record.",
+        "violence": "Not established by this record.",
+        "source_ids": [
+          "in-ap"
+        ]
+      },
+      "state_response": [
+        {
+          "action": "Police prevented gathering and detained demonstrators in New Delhi",
+          "attribution": "AP reporting",
+          "source_ids": [
+            "in-ap"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "in-ap",
+          "url": "https://apnews.com/article/1d43de28dfd6fa920133d98e9d0e8e35",
+          "title": "India: electoral protest reporting, 2 October",
+          "publisher": "Associated Press",
+          "published_at": "2026-10-02",
+          "accessed_at": "2026-10-02T19:15:18Z"
+        }
+      ],
+      "verification": {
+        "level": "single-source",
+        "note": "AI-assisted source check. No independent human editorial review. Observation is day-level; present activity and full movement onset are not established."
+      },
+      "timeline": [
+        {
+          "date": "2026-10-02",
+          "text": "Dated report of protest activity; full onset and end not established.",
+          "source_ids": [
+            "in-ap"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "es-housing-20261002",
+      "title": "Housing affordability and tenant protection",
+      "country": "ES",
+      "country_name": "Spain",
+      "region": "Europe",
+      "location": {
+        "label": "Madrid",
+        "precision": "city"
+      },
+      "issues": [
+        "Housing",
+        "Cost of living"
+      ],
+      "start_date": null,
+      "start_date_precision": "unknown",
+      "end_date": null,
+      "status": "unknown",
+      "last_observed_at": "2026-10-02",
+      "last_verified": "2026-10-02T19:15:18Z",
+      "summary": "Protesters demanded help for renters as parliament rejected housing measures.",
+      "positions": [
+        {
+          "actor": "Housing demonstrators",
+          "stance": "support",
+          "target": "Tenant protection",
+          "claim": "Demanded assistance for renters.",
+          "source_ids": [
+            "es-aj"
+          ]
+        },
+        {
+          "actor": "Junts lawmakers",
+          "stance": "oppose",
+          "target": "Proposed housing decrees",
+          "claim": "Argued the measures would constrain the rental market; parliamentary position, not a counterprotest.",
+          "source_ids": [
+            "es-aj"
+          ]
+        }
+      ],
+      "intensity": {
+        "turnout": {
+          "min": null,
+          "max": null,
+          "qualifier": "Hundreds, as reported; no numeric range inferred."
+        },
+        "disruption": "Disruption beyond the reported march not established.",
+        "violence": "Not established by this record.",
+        "source_ids": [
+          "es-aj"
+        ]
+      },
+      "state_response": [
+        {
+          "action": "Parliament rejected the decrees",
+          "attribution": "Legislative response reported by Al Jazeera; no police action established for this event",
+          "source_ids": [
+            "es-aj"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "es-aj",
+          "url": "https://www.aljazeera.com/news/2026/10/2/spains-parliament-rejects-govt-housing-decrees-amid-mass-protests",
+          "title": "Spain: housing protest reporting, 2 October",
+          "publisher": "Al Jazeera, with AP and Reuters",
+          "published_at": "2026-10-02",
+          "accessed_at": "2026-10-02T19:15:18Z"
+        }
+      ],
+      "verification": {
+        "level": "single-source",
+        "note": "AI-assisted source check. No independent human editorial review. Observation is day-level; present activity and full movement onset are not established."
+      },
+      "timeline": [
+        {
+          "date": "2026-10-02",
+          "text": "Dated report of protest activity; full onset and end not established.",
+          "source_ids": [
+            "es-aj"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+_site/
+__pycache__/
+*.pyc
+node_modules/
+candidate-artifacts/
+data/candidates/
+.env
+.env.*
+!.env.example
+*.log

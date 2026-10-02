@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-02T19:15:18Z",
+  "last_editorial_review": null,
+  "coverage_note": "Illustrative example only. Not a real event.",
+  "events": [
+    {
+      "id": "example-civic-services",
+      "title": "Illustrative example: public service funding",
+      "country": "GB",
+      "country_name": "United Kingdom of Great Britain and Northern Ireland",
+      "region": "Europe",
+      "location": {
+        "label": "Example city (fictional)",
+        "precision": "city"
+      },
+      "issues": [
+        "Public services"
+      ],
+      "start_date": null,
+      "start_date_precision": "unknown",
+      "end_date": null,
+      "status": "unknown",
+      "last_observed_at": "2026-10-02",
+      "last_verified": "2026-10-02T19:15:18Z",
+      "summary": "Fictional record demonstrating how claims and unknowns are displayed.",
+      "positions": [
+        {
+          "actor": "Example demonstrators",
+          "stance": "support",
+          "target": "Example public-service budget",
+          "claim": "Fictional demand.",
+          "source_ids": [
+            "example-source"
+          ]
+        },
+        {
+          "actor": "Example counter-demonstrators",
+          "stance": "oppose",
+          "target": "Example budget proposal",
+          "claim": "Fictional counter-demonstration.",
+          "source_ids": [
+            "example-source"
+          ]
+        }
+      ],
+      "intensity": {
+        "turnout": {
+          "min": null,
+          "max": null,
+          "qualifier": "Not established"
+        },
+        "disruption": "Illustrative disruption description.",
+        "violence": "Unknown in this fictional example.",
+        "source_ids": [
+          "example-source"
+        ]
+      },
+      "state_response": [
+        {
+          "action": "Illustrative administrative response",
+          "attribution": "Fictional example only",
+          "source_ids": [
+            "example-source"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "example-source",
+          "url": "https://example.org/illustrative-source",
+          "title": "Illustrative source, not reporting",
+          "publisher": "Example only",
+          "published_at": "2026-10-02",
+          "accessed_at": "2026-10-02T19:15:18Z"
+        }
+      ],
+      "verification": {
+        "level": "illustrative",
+        "note": "Synthetic example. Not a real protest or source."
+      },
+      "timeline": [
+        {
+          "date": "2026-10-02",
+          "text": "Dated report of protest activity; full onset and end not established.",
+          "source_ids": [
+            "example-source"
+          ]
+        }
+      ]
+    }
+  ]
+}
