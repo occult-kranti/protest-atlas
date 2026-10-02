@@ -1,0 +1,58 @@
+// Shared DOM-free HTML string helpers. Pure; safe to import in Node.
+import {absoluteLabel, relativeLabel} from '../freshness.js';
+
+export const REPO_URL = 'https://github.com/occult-kranti/protest-atlas';
+const ENTITIES = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'};
+export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ENTITIES[c]);
+
+/** http(s) URLs only; '' otherwise. */
+export function safeURL(value) {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'https:' || url.protocol === 'http:' ? url.href : '';
+  } catch { return ''; }
+}
+export function hostOf(value) {
+  const url = safeURL(value);
+  try { return url ? new URL(url).hostname.replace(/^www\./, '') : ''; } catch { return ''; }
+}
+export const plural = (n, one, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+
+export function icon(name, label = '') {
+  const svg = `<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-${esc(name)}"></use></svg>`;
+  return label ? `${svg}<span class="visually-hidden">${esc(label)}</span>` : svg;
+}
+
+/** External source link: new tab, no referrer, accessible "opens in a new tab". */
+export function sourceLink(source, label) {
+  const url = safeURL(source?.url);
+  const text = esc(label || source?.title || 'Source URL unavailable');
+  return url
+    ? `<a class="source-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${text}${icon('external')}<span class="visually-hidden"> (opens in a new tab)</span></a>`
+    : text;
+}
+
+/** 1-based position of each source id in event.sources. */
+export function sourceNumbers(event) {
+  return new Map((event?.sources ?? []).map((s, i) => [s.id, i + 1]));
+}
+
+/** In-sheet citation chips. href kept for history/outcome tests; data-scroll-to avoids hash routing. */
+export function sourceRefs(event, ids = []) {
+  const numbers = sourceNumbers(event);
+  return (ids ?? []).map(id => numbers.get(id)).filter(Boolean)
+    .map(n => `<a class="source-ref" href="#detail-source-${n}" data-scroll-to="detail-source-${n}">Source ${n}</a>`).join('');
+}
+
+/** Visible text for a time element. format: 'both' | 'absolute' | 'relative'. */
+export function timeText(value, now, format = 'both') {
+  if (format === 'absolute') return absoluteLabel(value);
+  if (format === 'relative') return relativeLabel(value, now);
+  return `${absoluteLabel(value)} · ${relativeLabel(value, now)}`;
+}
+
+/** <time> that js/stamps.js refreshTimes() can update in place. */
+export function timeTag(value, now, format = 'both', className = 'stamp-time') {
+  if (!value || !Number.isFinite(Date.parse(value))) return `<span class="${esc(className)}">Not established</span>`;
+  return `<time class="${esc(className)}" datetime="${esc(value)}" data-rel="${esc(value)}" data-format="${esc(format)}">${esc(timeText(value, now, format))}</time>`;
+}
