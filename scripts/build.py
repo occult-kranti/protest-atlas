@@ -15,13 +15,19 @@ from validate_history import validate_history_repository
 from validate_upcoming import validate_upcoming_repository
 
 PUBLIC_FILES = (
-    'index.html', 'styles.css', 'app.js', 'atlas.css', 'explore.js', 'map.js',
-    'review.html', 'review.css', 'review.js', 'history.js', 'history.css',
-    'public/event-context.json', 'public/research-ledger.json', 'public/cities.json',
-    'public/events.json', 'public/countries.json', 'public/examples.json',
-    'public/coverage.json', 'public/discovery-status.json', 'public/upcoming.json',
-    'public/world-countries.geo.json', 'public/world-110m.topo.json',
-    'public/world-map-metadata.json',
+    'index.html', '404.html', 'styles.css',
+    'css/feed.css', 'css/record.css', 'css/map.css', 'css/pages.css',
+    'app.js', 'explore.js', 'map.js', 'history.js', 'freshness.js',
+    'js/html.js', 'js/model.js', 'js/store.js', 'js/router.js', 'js/data.js', 'js/actions.js',
+    'js/filters.js', 'js/list.js', 'js/stamps.js', 'js/notice.js', 'js/sheet.js',
+    'js/record-facts.js', 'js/cards.js', 'js/detail.js',
+    'js/map-view.js', 'js/country-brief.js',
+    'js/ahead.js', 'js/countries.js', 'js/about.js',
+    'review.html', 'review.css', 'review.js',
+    'public/events.json', 'public/countries.json', 'public/examples.json', 'public/event-context.json',
+    'public/research-ledger.json', 'public/cities.json', 'public/coverage.json', 'public/discovery-status.json',
+    'public/upcoming.json', 'public/roadmap.json',
+    'public/world-110m.topo.json', 'public/world-map-codes.json', 'public/world-map-metadata.json',
     'vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js',
     'vendor/NATURAL_EARTH_LICENSE.md', 'vendor/D3_LICENSE', 'vendor/TOPOJSON_CLIENT_LICENSE', 'vendor/WORLD_ATLAS_LICENSE',
 )

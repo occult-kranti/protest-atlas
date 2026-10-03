@@ -1,4 +1,4 @@
-import {completionKind} from './history.js?v=3.1';
+import {completionKind} from './history.js';
 /* Local D3 / Natural Earth map. Counts describe the index, never protest severity. */
 const WIDTH = 1000;
 const HEIGHT = 530;
