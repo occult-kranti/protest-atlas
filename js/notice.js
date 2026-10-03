@@ -1,13 +1,13 @@
 // Pilot disclosure, snapshot/error/dropped-param notice lines, example banner (WP2). DOM-free when loaded.
 import {snapshotState, evidenceAgeDays, datasetStats, E5} from './model.js';
-import {esc, icon} from './html.js';
+import {esc, icon, plural} from './html.js';
 import {absoluteLabel, updateStamps} from '../freshness.js';
 
 export const PILOT_DISCLOSURE = 'AI-assisted reporting pilot. Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.';
 
 const COUNTRIES_ERROR = 'The country directory could not load; records are listed by country code.';
 const LINE_ORDER = ['error', 'countries-error', 'snapshot', 'dropped'];
-const daysAgo = n => `${n} ${n === 1 ? 'day' : 'days'} ago`;
+const daysAgo = n => `${plural(n, 'day')} ago`;
 
 /** H3 body, numbers from data only. */
 const h3 = ({withRecords, total, gaps}) => `An AI system opened and read the cited news articles and recorded what they report. No human editor has reviewed these records. Published episodes exist for ${withRecords} of ${total} countries and territories; the other ${gaps} are gaps in this atlas, not places without protests. Sources are mostly in English.`;

@@ -1,7 +1,7 @@
 // Record derivations (WP3; SPEC §7.4, §7.6). DOM-free. Recorded text stays verbatim: no numbers parsed
 // from prose, no stance tallies, and an unknown never becomes a zero.
-import {esc, safeURL, hostOf, absoluteText} from './html.js';
-import {observationBand, toTime} from '../freshness.js';
+import {esc, safeURL, hostOf, plural, dayParts} from './html.js';
+import {observationBand, toTime, absoluteLabel} from '../freshness.js';
 
 export const EXAMPLE_WATERMARK = 'Illustrative example • not a real event';
 export const VERIFICATION_LABELS = {'single-source': 'Single source', corroborated: 'Corroborated', contested: 'Contested', illustrative: 'Illustrative'};
@@ -58,7 +58,7 @@ export const positionLineHTML = p => `<span class="side-pill" data-stance="${esc
   + `<span class="side-target">${esc(p.target)}</span>${p.actor ? ` — <span class="side-actor">${esc(p.actor)}</span>` : ''}`;
 
 /** C10 text, or '' when nothing is left over. */
-export const morePositions = n => (n > 0 ? `+${n} more ${n === 1 ? 'position' : 'positions'} recorded` : '');
+export const morePositions = n => (n > 0 ? `+${plural(n, 'more position')} recorded` : '');
 
 /** Every position in recorded order. No grouping, no counts. */
 export function positionList(event) {
@@ -133,13 +133,12 @@ export function intensitySummary(event) {
 
 const DAY_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 const day = value => (typeof value === 'string' && DAY_ONLY.test(value.slice(0, 10)) && Number.isFinite(toTime(value.slice(0, 10))) ? value.slice(0, 10) : null);
-const dayParts = value => absoluteText(value).split(' ');   // ['29', 'Sep', '2026']
 
 /** "29 Sep – 30 Sep 2026"; "21 Dec 2025 – 4 Jan 2026" across years. */
 export function dayRange(from, to) {
   const [d1, m1, y1] = dayParts(from);
   const [, , y2] = dayParts(to);
-  return y1 === y2 ? `${d1} ${m1} – ${absoluteText(to)}` : `${absoluteText(from)} – ${absoluteText(to)}`;
+  return y1 === y2 ? `${d1} ${m1} – ${absoluteLabel(to)}` : `${absoluteLabel(from)} – ${absoluteLabel(to)}`;
 }
 
 /** Editorial §8 templates; inclusive durations from start and end only, never from the timeline. */
@@ -153,17 +152,17 @@ export function timeframe(event, context = null, now = Date.now()) {
   if (onset && end) {
     const span = Math.round((toTime(end) - toTime(onset)) / DAY) + 1;
     spanDays = span >= 1 ? span : null;
-    if (onset === end) line = `${absoluteText(onset)} (one day) · ended / suspended`;
+    if (onset === end) line = `${absoluteLabel(onset)} (one day) · ended / suspended`;
     else if (spanDays) line = `${dayRange(onset, end)} (${spanDays} days) · ended / suspended`;
-    else line = `${absoluteText(onset)} – ${absoluteText(end)} · ended / suspended`;
+    else line = `${absoluteLabel(onset)} – ${absoluteLabel(end)} · ended / suspended`;
   } else if (onset) {
-    line = `From ${absoluteText(onset)} · end not established`;
+    line = `From ${absoluteLabel(onset)} · end not established`;
   } else if (end) {
-    line = `Onset not established · ended ${absoluteText(end)}`;
+    line = `Onset not established · ended ${absoluteLabel(end)}`;
   } else {
     const dates = [...new Set((Array.isArray(event?.timeline) ? event.timeline : []).map(entry => day(entry?.date)).filter(Boolean))].sort();
     if (dates.length >= 2) line = `Dated evidence ${dayRange(dates[0], dates.at(-1))} · onset and end not established`;
-    else if (dates.length === 1) line = `Dated evidence ${absoluteText(dates[0])} only · onset and end not established`;
+    else if (dates.length === 1) line = `Dated evidence ${absoluteLabel(dates[0])} only · onset and end not established`;
     else line = 'Onset and end not established';
   }
   return {line, onset, end, latestEvidence, band, spanDays};
@@ -188,8 +187,8 @@ export function evidenceLine(event) {
   const level = event?.verification?.level;
   const levelLabel = VERIFICATION_LABELS[level] ?? VERIFICATION_LABELS['single-source'];
   const linkCount = sourcesOf(event).length;
-  const linkLabel = `${linkCount} ${linkCount === 1 ? 'link' : 'links'}`;
-  const publishedText = published ? `published ${absoluteText(published)}` : 'publication date not given';
+  const linkLabel = plural(linkCount, 'link');
+  const publishedText = published ? `published ${absoluteLabel(published)}` : 'publication date not given';
   return {
     publisher, url, published, level: level in VERIFICATION_LABELS ? level : 'single-source', levelLabel,
     levelNote: VERIFICATION_NOTES[level] ?? '', linkCount, linkLabel, publishedText, source,

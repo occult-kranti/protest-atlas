@@ -346,16 +346,22 @@ function budgets() {
 }
 const B = budgets();
 
-// `target` is the tech §6.2 table. `ceiling` is what CI enforces: a provisional integration ceiling (the WP1 review's measured
-// sizes plus headroom) pending the lead's dated §2.1 decision. Setting ceiling = target restores §6.2 exactly.
+// `target` is the tech §6.2 table. `ceiling` is what CI enforces: the integration budget (SPEC §23 "Integration addendum",
+// docs/design/INTEGRATION_NOTES.md §4). Method: gzip -9 per file, summed; source files as served (no build step minifies).
+// Ceiling = ceil(1.1 × size measured after the integration cuts), in KB of 1,024 B. Measured 3 Oct 2026: css 25,627 B,
+// critical JS 84,091 B, critical total 177,248 B (61,471 B of it data), map add-on 161,124 B (138 KB of it vendor d3,
+// topojson and map data), map-first 338,372 B. Why §6.2 is not met: SPEC rev 2 scope (C-34–C-52) landed after §6.2 was
+// sized, the 21-module static graph is frozen by C-48 (Ahead, Countries and About load eagerly, about 17 KB), and the
+// sources ship with their contract comments (about 14 KB of the JS). Shrinking needs a lazy-view split or a build-time
+// minifier (both open follow-ups), not a higher ceiling. html and events.json keep the §6.2 numbers.
 const BUDGETS = {
   html: {label: 'index.html', target: 12, ceiling: 12},
-  css: {label: 'styles.css + css/*.css', target: 16, ceiling: 26},
-  js: {label: 'critical JS (static graph of app.js)', target: 40, ceiling: 85},
+  css: {label: 'styles.css + css/*.css', target: 16, ceiling: 28},
+  js: {label: 'critical JS (static graph of app.js)', target: 40, ceiling: 91},
   events: {label: 'events.json', target: 120, ceiling: 120},
-  critical: {label: 'critical total', target: 140, ceiling: 180},
-  map: {label: 'map add-on', target: 155, ceiling: 168},
-  mapFirst: {label: 'map-first critical', target: 295, ceiling: 345},
+  critical: {label: 'critical total', target: 140, ceiling: 191},
+  map: {label: 'map add-on', target: 155, ceiling: 174},
+  mapFirst: {label: 'map-first critical', target: 295, ceiling: 364},
 };
 const MEASURED = {html: B.html, css: B.css, js: B.js, events: sizeOf('public/events.json'), critical: B.critical, map: B.map,
   mapFirst: B.critical + B.map};
@@ -368,7 +374,7 @@ test('budget report (gzip -9 bytes)', t => {
   for (const b of Object.values(BUDGETS)) assert.ok(b.ceiling >= b.target, `${b.label}: the ceiling never undercuts §6.2`);
 });
 for (const [key, {label, target, ceiling}] of Object.entries(BUDGETS)) {
-  const note = ceiling === target ? '' : ` (tech §6.2 target ${target} KB; provisional ceiling)`;
+  const note = ceiling === target ? '' : ` (tech §6.2 target ${target} KB; integration budget, SPEC §23)`;
   test(`budget: ${label} <= ${ceiling} KB gzip${note}`, () => {
     assert.ok(MEASURED[key] <= ceiling * KB, key === 'events' ? 'split an events index' : `${label} ${MEASURED[key]} > ${ceiling * KB}`);
   });

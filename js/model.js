@@ -88,6 +88,17 @@ export function indexContexts(contexts) {
   return index;
 }
 
+const namerCache = new WeakMap();
+/** code → name from countries.json (memoised per directory), else the code itself (C-37: names may be missing). */
+export function countryNamer(countries) {
+  if (!Array.isArray(countries)) return code => code;
+  if (!namerCache.has(countries)) {
+    const names = new Map(countries.map(c => [c?.code, c?.name]));
+    namerCache.set(countries, code => names.get(code) || code);
+  }
+  return namerCache.get(countries);
+}
+
 /** One event against the 9 filters. ignoreCountry also ignores city (map keeps world context). */
 export function eventMatches(event, filters, {context = null, now = Date.now(), ignoreCountry = false} = {}) {
   const f = filters ?? {};
@@ -241,7 +252,8 @@ export function evidenceAgeDays(envelope, now) {
   return Math.floor(now / DAY) - Math.floor(latest / DAY);
 }
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// freshness.js month names, so a note written as "2 Oct 2026" parses with the table that writes it.
+const MONTHS = Array.from({length: 12}, (_, i) => absoluteLabel(isoDay(Date.UTC(2000, i, 1))).split(' ')[1]);
 const isoFromLabel = label => {
   const [, day, month, year] = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})$/.exec(label) ?? [];
   const m = MONTHS.indexOf(month) + 1;

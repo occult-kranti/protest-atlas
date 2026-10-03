@@ -691,6 +691,27 @@ CHECKS[6] = async f => {
   f.ok(before && after && after !== before, `ArrowRight moves focus (${before} → ${after})`);
   f.ok(geo.length === 0, 'no request for world-countries.geo.json');
   await fr.close();
+  // Integration (WP4 request): a touch tap selects without drawing the keyboard focus ring (C-40 is keyboard only).
+  const touch = await open('390', {hash: '#/map'});
+  await touch.page.waitForSelector('#world-map svg .map-country', {timeout: 8000}).catch(() => {});
+  await touch.page.waitForTimeout(600);
+  const point = await touch.page.evaluate(() => {
+    const p = document.querySelector('.map-country[data-country="BR"]'); const r = p?.getBoundingClientRect();
+    if (!r) return null;
+    for (let dy = 0.3; dy <= 0.7; dy += 0.1) for (let dx = 0.3; dx <= 0.7; dx += 0.1) {
+      const x = r.left + r.width * dx, y = r.top + r.height * dy;
+      if (document.elementFromPoint(x, y) === p) return {x, y};
+    }
+    return null;
+  });
+  if (point) {
+    await touch.page.touchscreen.tap(point.x, point.y);
+    await touch.page.waitForTimeout(900);
+    const tapped = await touch.page.evaluate(() => ({ring: Boolean(document.querySelector('.map-focus-ring')),
+      selection: Boolean(document.querySelector('path.map-selection')), country: new URL(location.href).searchParams.get('country')}));
+    f.ok(!tapped.ring && tapped.selection, `390 touch tap on BR: selection drawn, no focus ring (${JSON.stringify(tapped)})`);
+  } else f.ok(false, '390: no tappable point on the BR path');
+  await touch.close();
 };
 
 // 7. Targets, text size, DOM size, obscured focus; short viewports: chrome coverage and full-viewport sheets.
@@ -785,6 +806,16 @@ CHECKS[8] = async f => {
     f.ok(land.focused && land.top >= land.switchBottom - 1, `"What's blocking this" lands below the switch with focus (${JSON.stringify(land)})`);
   } else f.ok(false, 'no [data-ahead-target] jump');
   await close();
+  // Integration (WP5 request): the About ledger table fits its wrapper on phones (no sideways scroll needed).
+  for (const vp of ['320', '360', '390']) {
+    const about = await open(vp, {hash: '#/about'});
+    await about.page.waitForSelector('.ledger-details summary', {timeout: 8000}).catch(() => {});
+    await about.page.click('.ledger-details summary').catch(() => {});
+    await about.page.waitForSelector('.ledger-wrap', {timeout: 4000}).catch(() => {});
+    const fit = await about.page.evaluate(() => { const w = document.querySelector('.ledger-wrap'); return w ? {scroll: w.scrollWidth, client: w.clientWidth} : null; });
+    f.ok(fit && fit.scroll <= fit.client, `${vp}: .ledger-wrap scrollWidth ${fit?.scroll} <= clientWidth ${fit?.client}`);
+    await about.close();
+  }
 };
 
 // 9. Example mode.
@@ -1088,6 +1119,7 @@ CHECKS[19] = async f => {
     f.ok(await page.evaluate(() => document.querySelector('#stamp-chip').dataset.state === 'error'), `${route}: chip data-state=error`);
     if (route === '#/map') {
       f.ok((await page.textContent('#map-legend')).includes('Coverage cannot be shown because published records did not load.'), 'map legend error copy');
+      f.ok((await page.textContent('#map-legend .legend-title').catch(() => '')).trim() === 'What the colours mean', 'the error legend keeps M1 (SPEC §11.5)');
       f.ok(await page.evaluate(() => {
         const rep = getComputedStyle(document.documentElement).getPropertyValue('--map-reported').trim();
         const probe = document.createElement('div'); probe.style.color = rep; document.body.append(probe); const rgb = getComputedStyle(probe).color; probe.remove();
@@ -1147,6 +1179,33 @@ CHECKS[21] = async f => {
     f.ok(b.top >= b.tabs - 1, `#detail-source-1 top ${Math.round(b.top)} under .rec-tabs bottom ${Math.round(b.tabs)}`);
     f.ok(await page.evaluate(() => document.activeElement?.id === 'detail-source-1'), '#detail-source-1 is focused');
   } else f.ok(false, 'no "Source 1" ref in tz-drivers');
+  // Integration (WP3 request): the "What this means" jump lands below the tabs, and a reverse Tab walk through the
+  // record body never leaves the focused element under them.
+  const help = await page.$('#record-body .facet-help[data-scroll-to="rec-intensity-help"]');
+  if (help) {
+    await help.scrollIntoViewIfNeeded();
+    await help.click();
+    await page.waitForTimeout(700);
+    const c = await page.evaluate(() => ({top: document.querySelector('#rec-intensity-help')?.getBoundingClientRect().top,
+      tabs: document.querySelector('#record-sheet .rec-tabs')?.getBoundingClientRect().bottom}));
+    f.ok(c.top >= c.tabs - 1, `#rec-intensity-help top ${Math.round(c.top)} under .rec-tabs bottom ${Math.round(c.tabs)}`);
+  } else f.ok(false, 'no "What this means" link in tz-drivers');
+  await page.focus('#record-next').catch(() => {});
+  const under = [];
+  let walked = 0;
+  for (let i = 0; i < 40; i += 1) {
+    await page.keyboard.press('Shift+Tab');
+    walked += await page.evaluate(() => (document.activeElement?.closest('#record-body') ? 1 : 0));
+    const res = await page.evaluate(() => {
+      const el = document.activeElement; const tabs = document.querySelector('#record-sheet .rec-tabs');
+      if (!el?.closest('#record-body') || el.closest('.rec-tabs') || !tabs) return null;
+      const r = el.getBoundingClientRect(); const t = tabs.getBoundingClientRect();
+      return {top: r.top, bottom: r.bottom, tabsTop: t.top, tabsBottom: t.bottom, text: el.textContent.trim().slice(0, 30)};
+    });
+    if (res && res.top < res.tabsBottom - 1 && res.bottom > res.tabsTop + 1) under.push(res);   // overlaps the tab strip
+  }
+  f.ok(walked >= 20, `reverse Tab reached ${walked} controls in the record body`);
+  f.ok(under.length === 0, `reverse Tab: focus overlapped by .rec-tabs ${JSON.stringify(under.slice(0, 3))}`);
   await close();
   const r = await open('390', {hash: '#/ahead/roadmap'});
   await r.page.waitForSelector('.roadmap-item', {timeout: 8000}).catch(() => {});

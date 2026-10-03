@@ -1,7 +1,7 @@
 // Historical context helpers and the record's outcome section (WP3). DOM-free; safe to import in Node.
 // Frozen for tests: contextFor, matchesHistory, completionKind, outcomeHTML and its pinned strings
 // ('Assessment / inference', 'protest causation is not established', 'End not established', #detail-source-N, escaping).
-import {esc, sourceRefs, dateTag} from './js/html.js';
+import {esc, sourceRefs, sourceRefsBlock as refsHTML, dateTag} from './js/html.js';
 
 export const contextFor = (contexts,id) => contexts?.records?.find(row=>row.event_id===id);
 export function matchesHistory(event,context,filters) {
@@ -18,10 +18,6 @@ export function completionKind(events=[]) {
 const CAUSALITY = {
   'reported-link': 'The source links this change to the action; causal certainty is limited.',
   'not-established': 'A subsequent change is documented; protest causation is not established.',
-};
-const refsHTML = (event, ids) => {
-  const refs = sourceRefs(event, ids || []);
-  return refs ? `<p class="rec-refs">${refs}</p>` : '';
 };
 
 /** Cities that cite the same sources share one set of "Source N" links, in first-seen order. */

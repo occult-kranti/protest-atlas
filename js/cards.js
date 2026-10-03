@@ -1,7 +1,7 @@
 // Record cards (WP3; SPEC §7, C-11, C-51). DOM-free. Both densities carry C1–C8.
 import {positionList, positionLineHTML, morePositions, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView,
   EXAMPLE_WATERMARK} from './record-facts.js';
-import {esc, sourceLinkKept, datedTimeTag, bandTag, dateTag} from './html.js';
+import {esc, sourceLinkKept, timeTag, bandTag, dateTag} from './html.js';
 import {getDisplayStatus, statusLabel} from './model.js';
 import {observationBand} from '../freshness.js';
 
@@ -17,7 +17,7 @@ function placeHTML(event, countryName) {
 }
 
 function whenHTML(event, now, band) {
-  return `<p class="card-when">Latest evidence ${datedTimeTag(event?.last_observed_at, now)} ${bandTag(band)}</p>`;
+  return `<p class="card-when">Latest evidence ${timeTag(event?.last_observed_at, now)} ${bandTag(band)}</p>`;
 }
 
 function issuesHTML(event) {

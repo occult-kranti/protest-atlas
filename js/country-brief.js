@@ -9,6 +9,7 @@ export const BRIEF_COPY = Object.freeze({
   eventsError: 'Coverage cannot be shown because published records did not load.',
   loading: 'Loading published records…',
   example: 'Illustrative example: one fictional record.',
+  exampleNone: 'no record in the illustrative example.',   // lead-approved at integration (INTEGRATION_NOTES)
   exampleLoading: 'Loading the illustrative example…',
   exampleError: 'Illustrative example unavailable',
   watermark: 'Illustrative example • not a real event',
@@ -19,7 +20,7 @@ export const BRIEF_COPY = Object.freeze({
   cityNote: 'City dots are approximate reference points, not protest sites.',
 });
 
-const dayText = v => (typeof v === 'string' && Number.isFinite(toTime(v)) ? absoluteLabel(v.slice(0, 10)).replace(/\bSept\b/, 'Sep') : '');
+const dayText = v => (typeof v === 'string' && Number.isFinite(toTime(v)) ? absoluteLabel(v.slice(0, 10)) : '');
 const time = e => { const t = toTime(e?.last_observed_at); return Number.isFinite(t) ? t : -Infinity; };
 const newestFirst = events => events.map((e, i) => [e, i]).sort((a, b) => time(b[0]) - time(a[0]) || a[1] - b[1]).map(([e]) => e);
 const list = v => (Array.isArray(v) ? v : []);
@@ -113,7 +114,8 @@ export function renderBrief(m, {now, hasPolygon = true, lazy = {}, selectedCity 
   }).join('') + '</ul>';
   if (m.mode === 'example') {
     const failed = m.state === 'example-error';
-    const text = failed ? BRIEF_COPY.exampleError : m.state === 'example-loading' ? BRIEF_COPY.exampleLoading : m.state === 'records' ? BRIEF_COPY.example : '';
+    const text = failed ? BRIEF_COPY.exampleError : m.state === 'example-loading' ? BRIEF_COPY.exampleLoading
+      : m.state === 'records' ? BRIEF_COPY.example : `${m.name}: ${BRIEF_COPY.exampleNone}`;
     return html + WATERMARK + (text ? lead(text) : '') + records + actions(...(failed ? [RETRY_EXAMPLE] : []), BACK_TO_DATA, back);
   }
 

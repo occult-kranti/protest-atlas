@@ -1,8 +1,8 @@
 // Ahead view (WP5; SPEC §12): announced protest actions and the site roadmap, plus the Reports teaser (§6.5).
 // Pure helpers first; DOM work happens only inside mountAhead(). Safe to import in Node.
-import {REPO_URL, esc, icon, plural, safeURL, sourceLink, timeTag} from './html.js';
-import {sweepFact} from './model.js';
-import {ANNOUNCEMENT_LABELS, absoluteLabel, announcementState, countdownLabel, toTime} from '../freshness.js';
+import {REPO_URL, esc, icon, plural, safeURL, sourceLink, timeTag, dayParts, patchHTML} from './html.js';
+import {sweepFact, countryNamer} from './model.js';
+import {ANNOUNCEMENT_LABELS, absoluteLabel, announcementState, countdownLabel, toTime, isoDay} from '../freshness.js';
 
 const DAY = 86_400_000;
 const RECORD_ID = /^[a-z0-9][a-z0-9-]{0,95}$/;
@@ -61,21 +61,17 @@ export function groupAnnouncements(items, now) {
   return groups;
 }
 
-// The copy deck writes September as "Sep"; newer ICU data writes "Sept".
-const sep = text => text.replace(/\bSept\b/, 'Sep');
-const fmt = options => value => sep(new Intl.DateTimeFormat('en-GB', {...options, timeZone: 'UTC'}).format(value));
+// Day, short month and year come from absoluteLabel's fixed month names ("Sep"), so every date on the site agrees.
+const fmt = options => value => new Intl.DateTimeFormat('en-GB', {...options, timeZone: 'UTC'}).format(value);
 const weekdayShort = fmt({weekday: 'short'});
-const monthShort = fmt({month: 'short'});
 const monthLong = fmt({month: 'long', year: 'numeric'});
-const dayNumber = fmt({day: 'numeric'});
-const yearNumber = fmt({year: 'numeric'});
-const dayLabel = value => sep(absoluteLabel(value));
-const isoOf = time => new Date(time).toISOString().slice(0, 10);
+const part = index => time => dayParts(isoDay(time))[index];
+const [dayNumber, monthShort, yearNumber] = [0, 1, 2].map(part);
 
 function rangeText(start, end) {
   const a = new Date(start), b = new Date(end);
-  if (a.getUTCFullYear() !== b.getUTCFullYear()) return `${dayLabel(isoOf(start))} – ${dayLabel(isoOf(end))}`;
-  if (a.getUTCMonth() !== b.getUTCMonth()) return `${dayNumber(start)} ${monthShort(start)} – ${dayLabel(isoOf(end))}`;
+  if (a.getUTCFullYear() !== b.getUTCFullYear()) return `${absoluteLabel(isoDay(start))} – ${absoluteLabel(isoDay(end))}`;
+  if (a.getUTCMonth() !== b.getUTCMonth()) return `${dayNumber(start)} ${monthShort(start)} – ${absoluteLabel(isoDay(end))}`;
   return `${dayNumber(start)}–${dayNumber(end)} ${monthShort(start)} ${yearNumber(start)}`;
 }
 
@@ -86,7 +82,7 @@ function dateDisplay(item) {
   if (!Number.isFinite(start)) return {text: 'Planned date not established', block: null};
   const end = toTime(item?.planned_end);
   if (precision === 'week') {
-    return {text: `Week of ${dayLabel(item.planned_start)} · exact day not announced`,
+    return {text: `Week of ${absoluteLabel(item.planned_start)} · exact day not announced`,
       block: {top: 'Week of', main: dayNumber(start), bottom: monthShort(start)}};
   }
   if (precision === 'month') {
@@ -98,7 +94,7 @@ function dateDisplay(item) {
       block: {top: sameMonth ? monthShort(start) : `${monthShort(start)}–${monthShort(end)}`,
         main: `${dayNumber(start)}–${dayNumber(end)}`, bottom: yearNumber(end)}};
   }
-  return {text: `${weekdayShort(start)} ${dayLabel(item.planned_start)}`,
+  return {text: `${weekdayShort(start)} ${absoluteLabel(item.planned_start)}`,
     block: {top: monthShort(start), main: dayNumber(start), bottom: weekdayShort(start)}};
 }
 
@@ -118,9 +114,9 @@ export function announcementView(item, now, {countryName = code => code, eventTi
     publisher: source?.publisher || source?.title || 'Source',
     title: source?.title ?? '',
     published: source?.published_at ?? null,
-    publishedText: source?.published_at ? dayLabel(source.published_at) : 'date not given',
+    publishedText: source?.published_at ? absoluteLabel(source.published_at) : 'date not given',
     accessed: source?.accessed_at ?? null,
-    accessedText: dayLabel(source?.accessed_at),
+    accessedText: absoluteLabel(source?.accessed_at),
   }));
   const eventId = typeof item?.event_id === 'string' && RECORD_ID.test(item.event_id) ? item.event_id : null;
   return {
@@ -187,7 +183,7 @@ export function reviewOverdue(lastReviewed, now, days = 90) {
 
 const glyph = status => `<span class="roadmap-glyph" data-glyph="${esc(status)}" aria-hidden="true">${ROADMAP_GLYPHS[status] ?? ''}</span>`;
 const statusPill = status => `<span class="roadmap-status" data-status="${esc(status)}">${glyph(status)} ${esc(ROADMAP_LABELS[status] ?? status)}</span>`;
-const dayTag = day => (ISO_DAY.test(day ?? '') ? `<time class="roadmap-date" datetime="${esc(day)}">${esc(dayLabel(day))}</time>` : 'not established');
+const dayTag = day => (ISO_DAY.test(day ?? '') ? `<time class="roadmap-date" datetime="${esc(day)}">${esc(absoluteLabel(day))}</time>` : 'not established');
 const external = (href, label, className) => `<a class="${className}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}${icon('external')}${NEW_TAB}</a>`;
 const retryButton = attrs => `<p class="announce-empty-actions"><button type="button" class="btn btn--primary" ${attrs}>Retry</button></p>`;
 
@@ -254,7 +250,7 @@ function specimenHTML() {
 }
 
 function emptyActionsHTML(sweep) {
-  const a5 = sweep?.blocked && ISO_DAY.test(sweep.day ?? '') ? A5_BLOCKED(dayLabel(sweep.day)) : A5_FALLBACK;
+  const a5 = sweep?.blocked && ISO_DAY.test(sweep.day ?? '') ? A5_BLOCKED(absoluteLabel(sweep.day)) : A5_FALLBACK;
   return `<div class="announce-empty" role="status">`
     + `<p class="announce-empty-icon">${icon('calendar-empty')}</p>`
     + `<h3 class="announce-empty-title">No announced actions are listed yet</h3>`
@@ -326,7 +322,7 @@ export function roadmapHTML({roadmap = null, status = 'idle', now = Date.now()} 
   }
   if (!valid) return `${head}<p class="roadmap-loading" role="status">Loading the roadmap…</p>`;
   const updatedDay = typeof roadmap.updated_at === 'string' ? roadmap.updated_at.slice(0, 10) : '';
-  const stamp = `<p class="roadmap-stamp">Roadmap revised ${ISO_DAY.test(updatedDay) ? `<time datetime="${esc(updatedDay)}">${esc(dayLabel(updatedDay))}</time>` : 'not established'} · AI-assisted · no human editorial owner yet</p>`;
+  const stamp = `<p class="roadmap-stamp">Roadmap revised ${ISO_DAY.test(updatedDay) ? `<time datetime="${esc(updatedDay)}">${esc(absoluteLabel(updatedDay))}</time>` : 'not established'} · AI-assisted · no human editorial owner yet</p>`;
   const links = `<div class="roadmap-links">`
     + external(`${REPO_URL}/blob/main/docs/ROADMAP.md`, 'Follow progress on GitHub', 'btn btn--primary roadmap-follow')
     + external(`${REPO_URL}/issues/new/choose`, 'Suggest a feature or report a problem', 'btn roadmap-suggest')
@@ -346,30 +342,6 @@ export function roadmapHTML({roadmap = null, status = 'idle', now = Date.now()} 
 }
 
 // ---- DOM (mountAhead) ----
-
-const FOCUS_ATTRS = ['id', 'data-ahead-target', 'data-open-record', 'data-scroll-to', 'data-retry', 'data-action', 'href'];
-
-function focusSelector(el) {
-  for (const attr of FOCUS_ATTRS) {
-    const value = el.getAttribute?.(attr);
-    if (value) return attr === 'id' ? `#${CSS.escape(value)}` : `[${attr}="${CSS.escape(value)}"]`;
-  }
-  const details = el.tagName === 'SUMMARY' ? el.closest('details[data-key]') : null;
-  return details ? `details[data-key="${CSS.escape(details.dataset.key)}"] > summary` : null;
-}
-
-/** Replace innerHTML only when the markup changed; keep open <details> and focus (tech §4.5). */
-function patch(el, html, cache) {
-  if (cache.get(el) === html) return false;
-  const active = el.ownerDocument.activeElement;
-  const focus = active && active !== el && el.contains(active) ? focusSelector(active) : null;
-  const open = [...el.querySelectorAll('details[data-key][open]')].map(d => d.dataset.key);
-  el.innerHTML = html;
-  cache.set(el, html);
-  for (const key of open) el.querySelector(`details[data-key="${CSS.escape(key)}"]`)?.setAttribute('open', '');
-  if (focus) el.querySelector(focus)?.focus({preventScroll: true});
-  return true;
-}
 
 /** Mounts #ahead-root: one section at a time from route.param, rendered on first visit; lazy roadmap; blocker landing. */
 export function mountAhead(ctx = {}) {
@@ -430,11 +402,10 @@ export function mountAhead(ctx = {}) {
       // The landing belongs to the navigation it was armed for; any other route disarms it.
       if (pendingTarget && !(onAhead && active === 'roadmap')) pendingTarget = null;
       const data = state.data ?? {};
-      const names = new Map((Array.isArray(data.countries) ? data.countries : []).map(c => [c.code, c.name]));
       const titles = new Map((data.events?.events ?? []).map(e => [e.id, e.title]));
-      patch(section('actions'), actionsHTML({
+      patchHTML(section('actions'), actionsHTML({
         upcoming: data.upcoming, events: data.events, load: state.load, now: state.now,
-        countryName: code => names.get(code) || code, eventTitle: id => titles.get(id) || '',
+        countryName: countryNamer(data.countries), eventTitle: id => titles.get(id) || '',
       }), cache);
       if (active === 'roadmap' || sections.roadmap) {
         const status = state.load?.lazy?.roadmap ?? (data.roadmap ? 'ready' : 'idle');
@@ -443,7 +414,7 @@ export function mountAhead(ctx = {}) {
           Promise.resolve().then(() => ctx.actions?.loadLazy?.('roadmap')).catch(() => {});
         }
         if (status === 'error') { roadmapRequested = false; pendingTarget = null; }
-        patch(section('roadmap'), roadmapHTML({roadmap: data.roadmap, status, now: state.now}), cache);
+        patchHTML(section('roadmap'), roadmapHTML({roadmap: data.roadmap, status, now: state.now}), cache);
       }
       sections.actions.hidden = active !== 'actions';
       if (sections.roadmap) sections.roadmap.hidden = active !== 'roadmap';

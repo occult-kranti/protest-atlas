@@ -1,6 +1,6 @@
 // About view data (WP5; SPEC §14): research scope, the lazy country-by-country ledger table and the
 // lead-discovery audit. Pure helpers first; DOM work happens only inside mountAbout(). Safe to import in Node.
-import {REPO_URL, esc, icon} from './html.js';
+import {REPO_URL, esc, icon, patchHTML} from './html.js';
 import {absoluteLabel, toTime} from '../freshness.js';
 
 const RUN_URL = new RegExp(`^${REPO_URL.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}/actions/runs/\\d+$`);
@@ -120,25 +120,6 @@ export function discoveryHTML({view, status}) {
 
 // ---- DOM (mountAbout) ----
 
-function patch(el, html, cache) {
-  if (cache.get(el) === html) return false;
-  const active = el.ownerDocument.activeElement;
-  let focus = null;
-  if (active && active !== el && el.contains(active)) {
-    if (active.tagName === 'SUMMARY') focus = 'details > summary';
-    else for (const attr of ['data-retry', 'data-action', 'href']) {
-      const value = active.getAttribute(attr);
-      if (value) { focus = `[${attr}="${CSS.escape(value)}"]`; break; }
-    }
-  }
-  const open = [...el.querySelectorAll('details[data-key][open]')].map(d => d.dataset.key);
-  el.innerHTML = html;
-  cache.set(el, html);
-  for (const key of open) el.querySelector(`details[data-key="${CSS.escape(key)}"]`)?.setAttribute('open', '');
-  if (focus) el.querySelector(focus)?.focus({preventScroll: true});
-  return true;
-}
-
 /** Mounts #research-scope and #about-discovery on first visit (C-21); the ledger table renders on first open. */
 export function mountAbout(ctx = {}) {
   const doc = globalThis.document;
@@ -187,13 +168,13 @@ export function mountAbout(ctx = {}) {
         const eventsFailed = Boolean(load.errors?.events) || (load.critical === 'error' && !data.events);
         const ready = Array.isArray(data.research?.countries) && Array.isArray(data.events?.events);
         const scope = ready ? researchScope({research: data.research, contexts: data.contexts, events: data.events, countries: data.countries}) : null;
-        patch(scopeEl, researchScopeHTML({scope, status: researchStatus, eventsFailed}), cache);
+        patchHTML(scopeEl, researchScopeHTML({scope, status: researchStatus, eventsFailed}), cache);
         const details = scopeEl.querySelector('details.ledger-details');
         if (details?.open) fillLedger(details);
       }
       if (discoveryEl) {
         const view = discoveryView(data.discovery);
-        patch(discoveryEl, discoveryHTML({view, status: load.lazy?.discovery ?? (data.discovery ? 'ready' : 'idle')}), cache);
+        patchHTML(discoveryEl, discoveryHTML({view, status: load.lazy?.discovery ?? (data.discovery ? 'ready' : 'idle')}), cache);
       }
     },
   };

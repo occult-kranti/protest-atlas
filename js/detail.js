@@ -3,7 +3,7 @@
 import {outcomeHTML} from '../history.js';
 import {positionList, positionLineHTML, morePositions, intensityFacets, intensitySummary, stateActionSummary, timeframe,
   evidenceLine, placeView, VERIFICATION_NOTES, EXAMPLE_WATERMARK} from './record-facts.js';
-import {esc, icon, hostOf, sourceLink, sourceLinkKept, sourceRefs, datedTimeTag, bandTag, dateTag, REPO_URL} from './html.js';
+import {esc, icon, hostOf, sourceLink, sourceLinkKept, sourceRefs, sourceRefsBlock as refsHTML, timeTag, bandTag, dateTag, REPO_URL} from './html.js';
 import {getDisplayStatus, statusLabel} from './model.js';
 import {observationBand} from '../freshness.js';
 
@@ -25,10 +25,6 @@ const NEEDS_REVIEW_NOTE = "Needs review: the latest evidence for this record is 
 const EXAMPLE_NOTE = 'This record is fictional and is excluded from counts and export.';
 
 const temporalHTML = () => `<p id="temporal-update" class="rec-temporal">${esc(NEEDS_REVIEW_NOTE)}</p>`;
-const refsHTML = (event, ids) => {
-  const refs = sourceRefs(event, ids);
-  return refs ? `<p class="rec-refs">${refs}</p>` : '';
-};
 const section = (id, heading, body, sub = '', extra = '') =>
   `<section id="${id}" class="rec-section${extra}" aria-labelledby="${id}-title"><h3 class="rec-h" id="${id}-title">${esc(heading)}</h3>${sub}${body}</section>`;
 
@@ -130,8 +126,8 @@ function sourcesHTML(event, now) {
   const note = VERIFICATION_NOTES[evidence.level];
   const verification = `<dl class="rec-evidence">`
     + `<div class="rec-evidence-row"><dt>Verification:</dt><dd><strong>${esc(evidence.levelLabel)}</strong></dd>${note ? `<dd class="rec-evidence-note">${esc(note)}</dd>` : ''}</div>`
-    + `<div class="rec-evidence-row"><dt>Source re-read (AI-assisted):</dt><dd>${datedTimeTag(event?.last_verified, now)}</dd></div>`
-    + `<div class="rec-evidence-row"><dt>Latest evidence:</dt><dd>${datedTimeTag(event?.last_observed_at, now)}</dd></div>`
+    + `<div class="rec-evidence-row"><dt>Source re-read (AI-assisted):</dt><dd>${timeTag(event?.last_verified, now)}</dd></div>`
+    + `<div class="rec-evidence-row"><dt>Latest evidence:</dt><dd>${timeTag(event?.last_observed_at, now)}</dd></div>`
     + `</dl>${event?.verification?.note ? `<p class="rec-verification-note">${esc(event.verification.note)}</p>` : ''}`;
   const list = sources.length
     ? `<ol class="source-list">${sources.map((source, i) => {
@@ -162,7 +158,7 @@ export function renderRecord(event, {context = null, mode = 'reported', now = Da
   return `<div class="rec-body">${[
     mode === 'example' ? `<div class="rec-example"><p class="rec-watermark">${esc(EXAMPLE_WATERMARK)}</p><p class="rec-example-note">${esc(EXAMPLE_NOTE)}</p></div>` : '',
     `<p class="rec-disclosure">${icon('info')}<span>${esc(D1)}</span></p>`,
-    `<p class="rec-meta"><span class="status rec-status" data-status="${esc(status)}">${esc(statusLabel(status, event))}</span> <span class="rec-when">Latest evidence ${datedTimeTag(event?.last_observed_at, now)} ${bandTag(band)}</span></p>`,
+    `<p class="rec-meta"><span class="status rec-status" data-status="${esc(status)}">${esc(statusLabel(status, event))}</span> <span class="rec-when">Latest evidence ${timeTag(event?.last_observed_at, now)} ${bandTag(band)}</span></p>`,
     `<p class="rec-place">${placeLine}</p>`,
     `<h2 id="detail-title" class="rec-title" tabindex="-1">${esc(event?.title)}</h2>`,
     status === 'needs-review' ? temporalHTML() : '',

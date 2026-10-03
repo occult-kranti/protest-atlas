@@ -75,7 +75,7 @@
   .feed-head > :not(h1, .feed-density) { grid-column: 1 / -1; }
 
   /* Segmented Cards | List toggle: two real 44 px buttons sharing a border. */
-  /* Equal columns, so the pressed button's check (list.js adds .feed-density-check) never shifts the pair. */
+  /* Equal columns, so the pressed button's check (static .feed-density-check in index.html) never shifts the pair. */
   .feed-density { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; justify-self: end; }
   .feed-density button {
     display: inline-flex; align-items: center; justify-content: center; gap: 4px;

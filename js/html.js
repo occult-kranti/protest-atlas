@@ -1,4 +1,4 @@
-// Shared DOM-free HTML string helpers. Pure; safe to import in Node.
+// Shared HTML string helpers. Pure and safe to import in Node; patchHTML touches the DOM only when called.
 import {absoluteLabel, relativeLabel, BAND_BADGES, BAND_LABELS} from '../freshness.js';
 
 export const REPO_URL = 'https://github.com/occult-kranti/protest-atlas';
@@ -44,6 +44,12 @@ export function sourceRefs(event, ids = []) {
     .map(n => `<a class="source-ref" href="#detail-source-${n}" data-scroll-to="detail-source-${n}">Source ${n}</a>`).join('');
 }
 
+/** sourceRefs() as a `.rec-refs` paragraph, or '' when no id resolves (record and outcome sections). */
+export function sourceRefsBlock(event, ids) {
+  const refs = sourceRefs(event, ids);
+  return refs ? `<p class="rec-refs">${refs}</p>` : '';
+}
+
 /** Visible text for a time element. format: 'both' | 'absolute' | 'relative'. */
 export function timeText(value, now, format = 'both') {
   if (format === 'absolute') return absoluteLabel(value);
@@ -66,27 +72,44 @@ export function bandTag(band) {
   return `<span class="band" data-band="${key}"><span class="band-text" aria-hidden="true">${esc(BAND_BADGES[key])}</span><span class="visually-hidden">${esc(BAND_LABELS[key])}</span></span>`;
 }
 
-/** absoluteLabel() with the copy deck's "Sep" (newer ICU data writes "Sept"). WP3 addition. */
-export const absoluteText = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
+/** ['29', 'Sep', '2026'] for an ISO day: the parts of absoluteLabel(), which writes fixed month names. */
+export const dayParts = value => absoluteLabel(value).split(' ');
 
 /** <time> with the absolute label only (no data-rel, so refreshTimes leaves it alone). WP3 addition. */
 export function dateTag(value, className = '') {
   const cls = className ? ` class="${esc(className)}"` : '';
   if (!value || !Number.isFinite(Date.parse(value))) return `<span${cls}>Not established</span>`;
-  return `<time${cls} datetime="${esc(value)}">${esc(absoluteText(value))}</time>`;
+  return `<time${cls} datetime="${esc(value)}">${esc(absoluteLabel(value))}</time>`;
 }
-
-/**
- * timeTag(value, now, 'both') in absoluteText's month names: a fixed date, then a relative part that
- * refreshTimes updates in place. The no-break space keeps "·" off the start of a line. WP3 addition.
- */
-export const datedTimeTag = (value, now) => (!value || !Number.isFinite(Date.parse(value))
-  ? timeTag(value, now)
-  : `${dateTag(value)}\u00a0· ${timeTag(value, now, 'relative')}`);
 
 /** sourceLink() whose last word and icon never part at a line break. WP3 addition. */
 export function sourceLinkKept(source, label) {
   const html = sourceLink(source, label);
   const m = html.match(/^(<a [^>]+>)((?:[^<]*\s)?)([^\s<]{1,24})(<svg[^]*?<\/svg>)/);
   return m ? `${m[1]}${m[2]}<span class="source-nowrap">${m[3]}${m[4]}</span>${html.slice(m[0].length)}` : html;
+}
+
+// Attributes that identify a focused control across a re-render, most specific first.
+const FOCUS_KEYS = ['id', 'data-select-country', 'data-ahead-target', 'data-open-record', 'data-scroll-to', 'data-retry', 'data-action', 'href'];
+
+/**
+ * Mount helper (tech §4.5): replace el.innerHTML only when the markup changed, then reopen <details data-key> that
+ * were open and give focus back to the same control (by FOCUS_KEYS, or a keyed summary). `cache` is a WeakMap.
+ */
+export function patchHTML(el, html, cache) {
+  if (cache.get(el) === html) return false;
+  const active = el.ownerDocument.activeElement;
+  let focus = null;
+  if (active && active !== el && el.contains(active)) {
+    const key = FOCUS_KEYS.find(name => active.getAttribute(name));
+    const details = active.tagName === 'SUMMARY' && active.parentElement?.dataset.key;
+    if (key) focus = key === 'id' ? `#${CSS.escape(active.id)}` : `[${key}="${CSS.escape(active.getAttribute(key))}"]`;
+    else if (details) focus = `details[data-key="${CSS.escape(details)}"] > summary`;
+  }
+  const open = [...el.querySelectorAll('details[data-key][open]')].map(d => d.dataset.key);
+  el.innerHTML = html;
+  cache.set(el, html);
+  for (const key of open) el.querySelector(`details[data-key="${CSS.escape(key)}"]`)?.setAttribute('open', '');
+  if (focus) el.querySelector(focus)?.focus({preventScroll: true});
+  return true;
 }

@@ -1,6 +1,6 @@
 // Search, quick chips, active chips and filter sheet controls (WP2). DOM-free when loaded.
 // Live apply, no draft state. #filters-body is built once per data or mode change, then patched in place (C-12).
-import {selectEvents, selectFiltered, statusOptions, activeFilterCount, availableYears, cityOptions, refinementOptions, indexContexts, STATUS_LABELS} from './model.js';
+import {selectEvents, selectFiltered, statusOptions, activeFilterCount, availableYears, cityOptions, refinementOptions, indexContexts, countryNamer, STATUS_LABELS} from './model.js';
 import {esc, icon} from './html.js';
 
 export const QUICK_CHIPS = [{key: 'window', value: '7', label: 'Last 7 days'}, {key: 'window', value: '30', label: 'Last 30 days'},
@@ -12,7 +12,6 @@ const WINDOWS = [{value: 'all', label: 'Any date'}, {value: '7', label: 'Last 7 
 const CONTEXT_NOTE = 'City and outcome filters are unavailable because record context could not load.';
 const checkIcon = cls => `<svg class="icon ${cls}" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>`;
 
-const countryNames = state => new Map((state.data.countries ?? []).map(c => [c.code, c.name]));
 const cityName = value => String(value).split(':').slice(1).join(':');
 const showLabel = n => (n === 0 ? 'Close · no records match' : n === 1 ? 'Show 1 record' : `Show ${n} records`);
 const statusText = n => (n === 0 ? 'No records match' : n === 1 ? '1 record matches' : `${n} records match`);
@@ -20,10 +19,9 @@ const statusText = n => (n === 0 ? 'No records match' : n === 1 ? '1 record matc
 /** Removable chips for every active filter (§6.2), in a fixed order. */
 function activeChips(state) {
   const f = state.filters;
-  const names = countryNames(state);
   const chips = [];
   if (f.query) chips.push({key: 'query', label: `Search: ${f.query}`});
-  if (f.country) chips.push({key: 'country', label: names.get(f.country) ?? f.country});
+  if (f.country) chips.push({key: 'country', label: countryNamer(state.data.countries)(f.country)});
   if (f.region) chips.push({key: 'region', label: `Region: ${f.region}`});
   if (f.window && f.window !== 'all') chips.push({key: 'window', label: `Last ${f.window} days`});
   if (f.status) chips.push({key: 'status', label: `Status: ${STATUS_LABELS[f.status] ?? f.status}`});

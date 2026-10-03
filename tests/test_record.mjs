@@ -11,7 +11,7 @@ import {renderCard, renderCardSkeleton} from '../js/cards.js';
 import {RECORD_SECTIONS, renderRecord, patchRecordStatus, mountRecordChrome} from '../js/detail.js';
 import {outcomeHTML, contextFor} from '../history.js';
 import * as history from '../history.js';
-import {bandTag, absoluteText} from '../js/html.js';
+import {bandTag} from '../js/html.js';
 import {BAND_BADGES, BAND_LABELS} from '../freshness.js';
 
 const load = async name => JSON.parse(await readFile(new URL(`../public/${name}`, import.meta.url)));
@@ -521,17 +521,16 @@ test('outcomeHTML keeps its pinned strings, routes refs through data-scroll-to a
 });
 
 test('dates use the copy deck month abbreviations: no card or record mixes "Sept" with "Sep"', () => {
-  assert.equal(absoluteText('2026-09-30'), '30 Sep 2026');
-  assert.equal(absoluteText('2026-10-02T21:31:50Z'), '2 Oct 2026, 21:31 UTC');
   for (const event of events) {
     for (const now of [NOW, NINE_OCT]) {
       const outputs = [card(event, {now}), card(event, {now, density: 'row'}), record(event, {now})];
       for (const html of outputs) assert.ok(!/\bSept\b/.test(html), event.id);
     }
   }
-  // The latest-evidence time keeps a refreshable relative part (js/stamps.js refreshTimes) beside the fixed date.
+  // SPEC §7.2 row 4: timeTag(last_observed_at, now, 'both'), which js/stamps.js refreshTimes keeps current.
   const tz = card(byId('tz-drivers'));
-  assert.ok(tz.includes('<time datetime="2026-10-01">1 Oct 2026</time>\u00a0· <time class="stamp-time" datetime="2026-10-01" data-rel="2026-10-01" data-format="relative">'));
+  assert.ok(tz.includes('Latest evidence <time class="stamp-time" datetime="2026-10-01" data-rel="2026-10-01" data-format="both">1 Oct 2026 · yesterday</time>'));
+  assert.ok(record(byId('tz-drivers')).includes('<span class="rec-when">Latest evidence <time class="stamp-time" datetime="2026-10-01" data-rel="2026-10-01" data-format="both">'));
 });
 
 // ------------------------------------------------------------------ css/record.css

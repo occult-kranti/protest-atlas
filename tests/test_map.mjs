@@ -331,7 +331,9 @@ test('brief: events error, no-polygon line, example mode, escaping; no real brie
   // A country without the example record: watermark and the way back, but no claim that it has a fictional record.
   const other = renderBrief(briefModel({code: 'FR', mapEvents: example.matching, allEvents: example.matching, countries, mode: 'example'}), {now: NOW});
   assert.ok(other.includes('Illustrative example • not a real event') && other.includes('data-set-mode="reported"'));
-  assert.ok(!other.includes('one fictional record') && !other.includes('brief-lead') && !other.includes('brief-ledger'));
+  assert.ok(!other.includes('one fictional record') && !other.includes('brief-ledger'));
+  // Integration decision: the lead says so plainly (lead-approved copy, INTEGRATION_NOTES).
+  assert.ok(other.includes('<p class="brief-lead" role="status">France: no record in the illustrative example.</p>'));
   const hostile = renderBrief(briefModel({code: 'FR', mapEvents: [{id: 'x', country: 'FR', title: '<script>alert(1)</script>'}], countries: [{code: 'FR', name: '<b>F</b>', region: 'Europe'}]}), {now: NOW});
   assert.ok(!hostile.includes('<script>') && !hostile.includes('<b>F</b>') && hostile.includes('&lt;script&gt;'));
   for (const country of countries) {

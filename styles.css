@@ -234,13 +234,12 @@
     [aria-disabled="true"]:is(.btn, .icon-btn):hover { background: transparent; text-decoration: none; }
   }
 
-  .badge, .band {
+  .band {
     display: inline-flex; align-items: center; min-height: 22px; padding: 1px 6px;
     border: 1px solid var(--border); border-radius: var(--r-1);
     background: var(--bg-sunken); color: var(--text-2);
     font: 600 var(--fs-xs)/1.2 var(--font-sans); white-space: nowrap; vertical-align: middle;
   }
-  .badge { letter-spacing: .06em; text-transform: uppercase; font-weight: 700; }
   .band[data-band="fresh"] { color: var(--band-fresh); }
   .band[data-band="week"] { color: var(--band-week); }
   .band[data-band="month"] { color: var(--band-month); }
@@ -264,9 +263,6 @@
   }
 
   .eyebrow { font: 700 var(--fs-xs)/1.3 var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
-  .muted { color: var(--text-muted); }
-  .stack > * + * { margin-block-start: var(--stack-space, 12px); }
-  .cluster { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cluster-space, 8px 12px); }
 
   .empty-state { padding: 20px; border: 1px dashed var(--border-strong); border-radius: var(--r-2); }
   .empty-state > :is(h2, h3) { font: 700 var(--fs-lg)/1.3 var(--font-sans); margin: 0 0 8px; }
@@ -491,8 +487,9 @@
   .sheet-minititle { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 600 var(--fs-md)/1.3 var(--font-serif); opacity: 0; }
   dialog[data-scrolled="true"] .sheet-head-title > .eyebrow { opacity: 0; }
   dialog[data-scrolled="true"] .sheet-minititle { opacity: 1; }
+  /* position: relative keeps absolutely positioned .visually-hidden text inside the scroller, not the dialog. */
   .sheet-body {
-    flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; scroll-behavior: smooth;
+    position: relative; flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; scroll-behavior: smooth;
     padding: 16px max(16px, env(safe-area-inset-right)) 24px max(16px, env(safe-area-inset-left));
   }
   .sheet-body:last-child { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }

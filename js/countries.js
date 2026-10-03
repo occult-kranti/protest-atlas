@@ -1,6 +1,7 @@
 // A–Z directory of all countries and territories with coverage-honest labels (WP5; SPEC §13, E9).
 // Pure helpers first; DOM work happens only inside mountCountries(). Safe to import in Node.
-import {esc, icon} from './html.js';
+import {esc, icon, plural, patchHTML} from './html.js';
+import {foldText as fold} from './model.js';
 
 const LABELS = {
   checking: 'Checking the search log…',
@@ -8,18 +9,14 @@ const LABELS = {
   failed: 'Search failed · no published episode',
   'not-searched': 'Not yet searched',
   unavailable: 'Coverage unavailable',
+  logUnavailable: 'Search log unavailable',   // lead-approved at integration (INTEGRATION_NOTES)
 };
+const LOG_ERROR = 'The search log could not load, so whether each country or territory was searched is not shown here.';
 const NOT_DRAWN = 'Not drawn on the map at this scale';
 const collator = new Intl.Collator('en', {sensitivity: 'base'});
 
-/** NFD, strip combining marks, lower-case (the same folding as the Reports search, tech §4.6). */
-const fold = value => String(value ?? '').normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('en');
-
-export function entriesLabel(n) {
-  return `${n} ${n === 1 ? 'entry' : 'entries'}`;
-}
-
-const episodesLabel = n => `${n} ${n === 1 ? 'episode' : 'episodes'} published`;
+export const entriesLabel = n => plural(n, 'entry', 'entries');
+const episodesLabel = n => `${plural(n, 'episode')} published`;
 
 function failures(loadError) {
   if (!loadError) return {events: false, research: false};
@@ -63,7 +60,7 @@ export function directoryRows({countries, events, research, loadError, mapCodes 
         region: country.region || '',
         count: failed.events ? null : count,
         status,
-        label: status === 'published' ? episodesLabel(count) : LABELS[status],
+        label: status === 'published' ? episodesLabel(count) : status === 'unavailable' && !failed.events ? LABELS.logUnavailable : LABELS[status],
         drawn: drawn ? drawn.has(country.code) : null,
       };
     })
@@ -127,27 +124,6 @@ export function directoryDek({rows, research}) {
 
 // ---- DOM (mountCountries) ----
 
-function focusSelector(el) {
-  const code = el.getAttribute?.('data-select-country');
-  if (code) return `[data-select-country="${CSS.escape(code)}"]`;
-  if (el.id) return `#${CSS.escape(el.id)}`;
-  for (const attr of ['data-action', 'data-retry']) {
-    const value = el.getAttribute?.(attr);
-    if (value) return `[${attr}="${CSS.escape(value)}"]`;
-  }
-  return null;
-}
-
-function patch(el, html, cache) {
-  if (cache.get(el) === html) return false;
-  const active = el.ownerDocument.activeElement;
-  const focus = active && active !== el && el.contains(active) ? focusSelector(active) : null;
-  el.innerHTML = html;
-  cache.set(el, html);
-  if (focus) el.querySelector(focus)?.focus({preventScroll: true});
-  return true;
-}
-
 /** Mounts #countries-root on first visit (C-21); lazy ledger and map codes. Row taps are app.js's (C-38). */
 export function mountCountries(ctx = {}) {
   const doc = globalThis.document;
@@ -177,7 +153,7 @@ export function mountCountries(ctx = {}) {
 
   function message(html) {
     parts = null;
-    patch(root, html, cache);
+    patchHTML(root, html, cache);
   }
 
   function request(name, state) {
@@ -216,15 +192,18 @@ export function mountCountries(ctx = {}) {
     } else {
       const text = directoryDek({rows, research: data.research});
       dek = text ? `<p class="dir-dek-text">${esc(text)}</p>` : '';
-      if (researchStatus === 'error') dek += `<p class="dir-actions"><button type="button" class="btn" data-retry="research">Retry</button></p>`;
+      if (researchStatus === 'error') {
+        dek += `<p class="dir-dek-text" id="dir-log-error">${LOG_ERROR}</p>`
+          + `<p class="dir-actions"><button type="button" class="btn" data-retry="research" aria-describedby="dir-log-error">Retry</button></p>`;
+      }
     }
     if (state.mode === 'example') dek += `<p class="dir-dek-text dir-dek-example">This directory shows reported data. Choosing a country returns you to it.</p>`;
-    patch(parts.dek, dek, cache);
+    patchHTML(parts.dek, dek, cache);
     const groups = regionGroups(rows, query);
     const trimmed = query.trim();
     const emptyText = groups.length || !trimmed ? '' : `No country or territory matches '${trimmed}'.`;
     if (parts.empty.textContent !== emptyText) parts.empty.textContent = emptyText;
-    patch(parts.regions, directoryHTML(groups), cache);
+    patchHTML(parts.regions, directoryHTML(groups), cache);
   }
 
   return {

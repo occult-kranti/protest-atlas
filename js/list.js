@@ -3,7 +3,7 @@
 import {renderCard, renderCardSkeleton} from './cards.js';
 import {aheadTeaserHTML} from './ahead.js';
 import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, sweepLine, datasetStats, activeFilterCount, indexContexts,
-  snapshotAgeText, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
+  snapshotAgeText, countryNamer, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
 import {esc} from './html.js';
 import {absoluteLabel} from '../freshness.js';
 
@@ -187,12 +187,6 @@ export function mountList(ctx) {
   const stats = $('feed-stats'), summary = $('result-summary'), list = $('event-list'), more = $('list-more');
   const density = doc.querySelector('.feed-density');
   let last = {stats: null, summary: null, list: null, more: null};
-  // The pressed layout is marked by a check as well as the fill, like the chips and the window segments (§9).
-  for (const button of density?.querySelectorAll('[data-set-density]') ?? []) {
-    if (!button.querySelector('.feed-density-check')) {
-      button.insertAdjacentHTML('afterbegin', '<svg class="icon feed-density-check" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>');
-    }
-  }
 
   /**
    * Re-render and keep focus on the same control. When that control is gone (a Clear or Retry button whose state
@@ -218,8 +212,7 @@ export function mountList(ctx) {
       const ready = eventsReady(state);
       const filtered = ready ? selectFiltered(state) : [];
       const shown = Math.min(filtered.length, state.ui.listLimit);
-      const names = new Map((state.data.countries ?? []).map(c => [c.code, c.name]));
-      const countryName = code => names.get(code) ?? code;
+      const countryName = countryNamer(state.data.countries);
 
       const statsHtml = statsHTML(state);
       if (stats && statsHtml !== last.stats) { last.stats = statsHtml; stats.innerHTML = statsHtml; }

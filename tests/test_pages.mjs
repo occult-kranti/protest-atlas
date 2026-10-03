@@ -23,7 +23,6 @@ const NOW = Date.parse('2026-10-02T23:00:00Z');
 // Values that live data owns (the roadmap and upcoming.json are edited and refreshed) are derived from the files, so a
 // data change never turns CI red without a code defect. Fixed literals are kept for fixtures and SPEC-mandated checks.
 const DAY_MS = 86_400_000;
-const label = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
 const STATUS_ORDER = ['in-progress', 'next', 'blocked', 'later', 'shipped'];
 const STATUS_NAMES = {'in-progress': 'In progress', next: 'Next', blocked: 'Blocked', later: 'Later', shipped: 'Shipped'};
 const GLYPHS = {'in-progress': '◑', next: '→', blocked: '⊘', later: '…', shipped: '✓'};
@@ -142,7 +141,7 @@ test('A5 states the sweep from upcoming.json, with a fallback when the note has 
   const sweep = /Latest search for announcements: (\d{4}-\d{2}-\d{2}), \d+ searches logged, (\d+) source pages could be opened/.exec(upcoming.note);
   if (Array.isArray(upcoming.items) && !upcoming.items.length) {
     const real = text(actionsHTML({upcoming, events, load: READY, now: NOW}));
-    if (sweep && sweep[2] === '0') assert.ok(real.includes(`On ${label(sweep[1])}, our search for announced and recent protest actions`));
+    if (sweep && sweep[2] === '0') assert.ok(real.includes(`On ${absoluteLabel(sweep[1])}, our search for announced and recent protest actions`));
     else assert.ok(real.includes('Our latest search did not find an announcement that met this standard.'));
   }
   for (const copy of ['No announced actions are listed yet',
@@ -270,7 +269,7 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
   const plain = text(html);
   assert.match(html, /<h2 id="ahead-roadmap-title"[^>]*tabindex="-1">Coming next to Protest Atlas<\/h2>/);
   assert.ok(plain.includes("'Shipped' means available on this site now and checked after it was deployed."));
-  assert.ok(plain.includes(`Roadmap revised ${label(roadmap.updated_at.slice(0, 10))} · AI-assisted · no human editorial owner yet`));
+  assert.ok(plain.includes(`Roadmap revised ${absoluteLabel(roadmap.updated_at.slice(0, 10))} · AI-assisted · no human editorial owner yet`));
   assert.ok(text(roadmapHTML({roadmap: {...roadmap, updated_at: '2026-10-02T23:00:00Z'}, status: 'ready', now: NOW}))
     .includes('Roadmap revised 2 Oct 2026 · AI-assisted · no human editorial owner yet'));
   assert.ok(plain.includes('Follow progress on GitHub'));
@@ -301,12 +300,12 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
   // Every shipped item shows its release, date and resolving evidence links.
   for (const entry of roadmap.items.filter(i => i.status === 'shipped')) {
     const article = html.match(new RegExp(`<article class="roadmap-item" id="roadmap-item-${entry.id}"[\\s\\S]*?</article>`))?.[0] ?? '';
-    assert.ok(text(article).includes(`Shipped in ${entry.shipped_in} · ${label(entry.shipped_on)}`), entry.id);
+    assert.ok(text(article).includes(`Shipped in ${entry.shipped_in} · ${absoluteLabel(entry.shipped_on)}`), entry.id);
     assert.ok(text(article).indexOf('Done when:') < text(article).indexOf('Checked by:'), entry.id);
     assert.match(article, /Checked by:/);
     assert.match(article, /class="roadmap-evidence-link" href="https:\/\/github\.com\/occult-kranti\/protest-atlas\//);
   }
-  for (const entry of roadmap.items) assert.ok(plain.includes(`Status checked ${label(entry.last_reviewed)}`), entry.id);
+  for (const entry of roadmap.items) assert.ok(plain.includes(`Status checked ${absoluteLabel(entry.last_reviewed)}`), entry.id);
   assert.doesNotMatch(text(roadmapHTML({roadmap, status: 'ready', now: lastReviewed + 30 * DAY_MS})), /Status check overdue/);
   assert.ok(text(roadmapHTML({roadmap, status: 'ready', now: lastReviewed + 92 * DAY_MS})).includes('Status check overdue'));
   assert.ok(plain.includes('What we will not build'));
@@ -367,7 +366,7 @@ test('directoryRows: E9 labels, ledger loading, failures and the drawn flag', ()
   assert.ok(failed.every(r => r.label === 'Coverage unavailable'));
   assert.doesNotMatch(directoryHTML(regionGroups(failed, '')), /Searched · no published episode|episodes? published/);
   const ledgerFailed = directoryRows({countries, events, research: null, loadError: {research: true}});
-  assert.equal(ledgerFailed.find(r => r.code === 'IS').label, 'Coverage unavailable');
+  assert.equal(ledgerFailed.find(r => r.code === 'IS').label, 'Search log unavailable', 'names what failed (E9 is for records)');
   assert.equal(ledgerFailed.find(r => r.code === 'FR').label, '2 episodes published');
   assert.equal(directoryRows({countries, events, research, mapCodes: {codes: {}}}).find(r => r.code === 'AD').drawn, null,
     'an empty placeholder code table never marks entries as not drawn');

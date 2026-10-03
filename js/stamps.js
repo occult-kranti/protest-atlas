@@ -121,14 +121,14 @@ export function chipModel(state) {
     return {state: 'current', tone: 'neutral', label: 'Snapshot', value: t.long, short: t.short, valueHTML: t.html};
   }
   const days = evidenceAgeDays(envelope, now);
-  const unit = days === 1 ? 'day' : 'days';
+  const age = `${plural(days, 'day')} old`;
   return {
     state: snap,
     tone: snap === 'aging' ? 'neutral' : 'warn',
     label: snap === 'aging' ? 'Snapshot' : 'Stale snapshot',
-    value: `newest evidence ${days} ${unit} old`,
-    short: `evidence ${days} ${unit} old`,
-    valueHTML: `<span class="stamp-chip-long">newest </span>evidence ${days} ${unit} old`,
+    value: `newest evidence ${age}`,
+    short: `evidence ${age}`,
+    valueHTML: `<span class="stamp-chip-long">newest </span>evidence ${age}`,
   };
 }
 

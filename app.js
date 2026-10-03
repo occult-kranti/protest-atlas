@@ -3,7 +3,7 @@
 import {readViewState, encodeViewState, droppedParams} from './explore.js';
 import './freshness.js';
 import {esc, icon} from './js/html.js';
-import {selectEvents, selectFiltered, timeSnapshot, indexContexts} from './js/model.js';
+import {selectEvents, selectFiltered, timeSnapshot, indexContexts, countryNamer} from './js/model.js';
 import {createStore, initialState} from './js/store.js';
 import {createRouter, parseRoute} from './js/router.js';
 import {loadCritical, createLazyLoader} from './js/data.js';
@@ -73,11 +73,6 @@ async function boot() {
   let mapPhase = 'idle';   // idle | loading | ready | failed
   let mapAttempt = 0;
 
-  const countryNamer = state => {
-    const names = new Map((state.data.countries ?? []).map(c => [c.code, c.name]));
-    return code => names.get(code) ?? code;
-  };
-
   // ---- map: lazy import with an app-owned E6 when the module itself fails (§11.2) ------------------
   function showMapFallback() {
     const stage = $('map-stage');
@@ -125,7 +120,9 @@ async function boot() {
       mapPhase = 'ready';
       map.render(store.get(), null);
       await map.ensure?.();
-      store.set(s => ({ui: {...s.ui, mapStatus: s.ui.mapStatus === 'loading' ? 'ready' : s.ui.mapStatus}}));
+      // map-view shows its own E6 when createWorldMap resolved without a drawable map (§11.2); mirror that here.
+      const drawn = $('map-stage')?.dataset.mapState !== 'unavailable';
+      store.set(s => ({ui: {...s.ui, mapStatus: s.ui.mapStatus === 'loading' ? (drawn ? 'ready' : 'unavailable') : s.ui.mapStatus}}));
     } catch (error) {
       if (map) {   // map-view owns failures after it has mounted (E6 with its own retry)
         store.set(s => ({ui: {...s.ui, mapStatus: 'unavailable'}}));
@@ -162,11 +159,9 @@ async function boot() {
       let primary = null;
       try { primary = primarySource(event); } catch { primary = null; }
       if (primary?.url) {
-        const label = primary.label || 'Read the source';
-        const named = label === 'Read the source' && primary.publisher ? `Read the source: ${primary.publisher}` : label;
         sourceLink.href = primary.url;
-        sourceLink.innerHTML = `${esc(label)}${icon('external')}`;
-        sourceLink.setAttribute('aria-label', `${named} (opens in a new tab)`);
+        sourceLink.innerHTML = `${esc(primary.label)}${icon('external')}`;
+        sourceLink.setAttribute('aria-label', primary.ariaLabel);
         sourceLink.hidden = false;
       } else {
         sourceLink.hidden = true;
@@ -214,7 +209,7 @@ async function boot() {
     const context = state.mode === 'reported' ? indexContexts(state.data.contexts).get(id) ?? null : null;
     if (openId !== id || !shown) {
       const stepping = shown && openId !== null && openId !== id;
-      recordBody.innerHTML = renderRecord(event, {context, mode: state.mode, now: state.now, countryName: countryNamer(state),
+      recordBody.innerHTML = renderRecord(event, {context, mode: state.mode, now: state.now, countryName: countryNamer(state.data.countries),
         position: index >= 0 ? {index, total: filtered.length} : null});
       fillChrome(state, event, index, filtered.length);
       if (stepping) {
