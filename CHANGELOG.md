@@ -1,6 +1,6 @@
 # Change log
 
-## 2026-10-03 — Release 4.0: mobile-first rebuild (built and verified locally; deployment pending)
+## 2026-10-03 — Release 4.0: mobile-first rebuild (deployed 3 Oct 2026, commit `f042ac0`; see docs/RELEASE_EVIDENCE.md)
 
 Interface release over the same 84 episode records as release 3 (81 countries/territories, newest evidence dated 2 Oct 2026). The data files are not byte-identical to release 3's: envelope stamps and the coverage note changed, and new public data files were added (see **Dates and data files**). Not yet merged or deployed; the live site runs release 3 until then. Deployed-site checks and the roadmap "shipped" flips (SPEC §22.4) follow the deploy and will be recorded in RELEASE_EVIDENCE.md.
 

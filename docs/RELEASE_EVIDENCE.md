@@ -1,4 +1,39 @@
-# Release evidence — 2 October 2026
+# Release evidence
+
+## Release 4.0 — mobile-first rebuild (3 October 2026)
+
+Deployed on 3 October 2026 from commit `f042ac0189f74cbfbb867dbfb99fac9c6128c175`, a fast-forward of `main` from `6f71f16`. [Live atlas](https://occult-kranti.github.io/protest-atlas/). [Pages workflow run 37143562643](https://github.com/occult-kranti/protest-atlas/actions/runs/37143562643): `validate-build`, `deploy` and `verify` all succeeded. The data is the same 84 episodes; newest evidence is dated 2 Oct 2026. The interface release changed no observation, source-check or review date.
+
+### Checked on the deployed site (GitHub-hosted runner, `verify` job)
+
+| Check | Result |
+| --- | --- |
+| Build stamp | `public/build-info.json` reports commit `f042ac0…`, equal to the deployed SHA, on the first attempt (18:16:55Z). |
+| Published files | HTTP 200 for `/`, `/index.html`, `/public/roadmap.json` and `/public/events.json`, all parsed as JSON where applicable; `/public/upcoming.json` returned 200 (optional file). |
+| Unknown path | A missing path returns the 404 page carrying `noindex`. |
+
+This session's container cannot open `github.io`: its network policy denies the host. So no browser check of the deployed pages was run from here. The browser evidence below comes from a local build of the same commit, served under the same `/protest-atlas/` prefix. That build differs from the deployed artifact only in `build-info.json`.
+
+### Verified locally before deployment
+
+| Check | Result |
+| --- | --- |
+| Automated tests | 87 Python tests and 231 Node tests passed. CI ran the same suites on the runner, with Node 22 pinned through `actions/setup-node` and Python 3.12. |
+| Browser smoke (`tests/browser/smoke.cjs`, 25 checks) | All 25 passed at the repo root after the final fixes. At `b260087` the 24-check version passed in both modes, repo root and the Pages prefix on a built copy. Checks cover routes, disclosure on every view, stamps, the 2 Oct, 9 Oct and 5 Nov clocks, permalinks, record sheet behaviour, map gestures, example isolation, failure states and the first viewport. |
+| Accessibility | axe-core 4.13: 104 scans at `b260087`, 0 violations of any impact. The scans covered 13 states (every view, both sheets, two records, example mode) at 390 and 1440 px, light and dark, on the real clock and on 9 Oct. The keyboard walkthrough covered skip links, dialog focus, roving map focus and focus after mode changes. |
+| Phone layout at 390×844, against release 3 | First record top: 540 px (603 px on the 9 Oct stale clock); it was 5,812 px. DOM: 1,130 elements, down from 6,972. Default Reports page: 8,904 px, down from 35,102. All records in List density: 14,574 px. First card visible about 123 ms unthrottled and about 2.6 s on a throttled mobile profile. About 189 KB gzip-equivalent; Reports loads no map or vendor files. |
+| Data-refresh resilience | Copies with an 85th valid record, including one in a new country and one with rewritten sweep sentences, build and pass both suites and the data-dependent smoke checks. UI tests read `tests/fixtures/snapshot-20261002/` for literal 2 Oct expectations. |
+| Editorial acceptance | §14 checks covered: the disclosure on every view and record; staleness measured from newest evidence; separate, labelled stamps; stance always with a named target and no tallies (the worked cases are the South Korea, Nigeria and New Zealand records); "not established" never shown as zero; no keyword chips; status shown before the evidence band; the Ahead empty state stating the blocked sweep; nothing from this release marked shipped. A banned-vocabulary scan found 0 hits on both clocks. |
+
+Verification history: five independent verification lenses (editorial, accessibility, mobile UX, code review and deployment) reported 43 findings: 14 major and 29 minor. All 14 majors were fixed and re-tested by a separate verifier with fresh repros. A final pass fixed 6 more minors. The resolutions, two declined minors and three deferred to the data owner are listed in `docs/design/SPEC.md` §23 and `docs/design/INTEGRATION_NOTES.md` §8.
+
+Screenshots: [Reports 390](images/release4-reports-390.png) · [stale state, 9 Oct clock](images/release4-reports-stale-390.png) · [record sheet](images/release4-record-390.png) · [map with France](images/release4-map-390.png) · [Ahead](images/release4-ahead-390.png) · [Coming next](images/release4-roadmap-390.png) · [desktop](images/release4-desktop-1440.png) · [desktop dark](images/release4-desktop-dark-1440.png).
+
+### Not yet verified, and the roadmap status that follows
+
+- No browser check of the deployed pages has been made (phone viewport, first-viewport position, sheet behaviour, map gestures), and no physical-device touch, screen-reader or Safari/WebKit check. axe and the smoke tests ran in Chromium only.
+- Under the rule that shipped means checked after deployment, the four in-progress roadmap items stay in progress in `public/roadmap.json`: mobile-first redesign, clear dates and stale warnings, the facts on cards, and the Ahead page. Two kinds of evidence would justify moving them to shipped: a smoke run against the live URL from an environment that can reach `github.io`, or a recorded check on a phone (SPEC §22.4).
+- Data is unchanged and newest evidence is dated 2 Oct 2026, so the site will show its aging and stale states from 5 Oct and 9 Oct. The data refresh is waiting on a session with news-site access ([handoff](HANDOFF_DATA_REFRESH.md)).
 
 ## Release 3 — historical research from 2024
 

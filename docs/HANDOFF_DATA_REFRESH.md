@@ -2,6 +2,8 @@
 
 Written 3 Oct 2026 (about 01:10 UTC) and revised about 01:45 UTC after an independent review, by the session building the 4.0 interface on branch `ccr-77796c82-ka7vhp`. It is meant for a **separate** Claude Code session whose cloud environment can open news websites. That session's only job is the data refresh.
 
+> **Update, 3 Oct 2026, 18:17 UTC:** release 4.0 is deployed and `main` is at `f042ac0`. `main` now contains the pipeline base `e633dfe` and the import commit `6ae56cc` (leads, v2 workflows, this handoff). So under §2.1 a data session branches from `origin/main` and skips the import step. The UI tests read frozen fixtures, so a valid refresh should keep CI green.
+
 This file is a work plan. It is not a source. Every lead it mentions is an unverified search-snippet claim.
 
 **Pinned inputs.**

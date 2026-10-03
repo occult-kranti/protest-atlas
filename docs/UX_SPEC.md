@@ -1,6 +1,6 @@
 # Protest Atlas UX specification — release 4.0
 
-Status, 3 Oct 2026: **built and verified locally; not yet deployed.** The live site still runs the release-3 interface until 4.0 is merged to `main` and Pages deploys it. Nothing below has been checked on the deployed site; those checks follow the deploy (SPEC §22.4) and go into RELEASE_EVIDENCE.md.
+Status, 3 Oct 2026: **deployed (commit `f042ac0`); the post-deploy check confirmed the live build stamp and published files.** The browser evidence below comes from an identical local build. No browser check has yet run on the deployed pages; those checks follow the deploy (SPEC §22.4) and go into RELEASE_EVIDENCE.md.
 
 This document summarises the interface as built. The binding build specification is [design/SPEC.md](design/SPEC.md), with the integration and verification decisions in its §23 and in [design/INTEGRATION_NOTES.md](design/INTEGRATION_NOTES.md). Copy rules and the risk register are in [design/EDITORIAL_GUIDANCE.md](design/EDITORIAL_GUIDANCE.md). The design panel and the verifiers were AI agents; no human designer, engineer, editor or assistive-technology user has reviewed this interface. The release-3 description this file used to hold is in Git history.
 

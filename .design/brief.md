@@ -1,6 +1,6 @@
 # Protest Atlas design brief
 
-Product: a public, source-led index of collective action, hosted as a static GitHub Pages site. Release 4.0 (built and verified locally on 3 Oct 2026; deployment pending) is a mobile-first rebuild of the interface over the release-3 data. The binding design is `docs/design/SPEC.md`; this brief keeps the direction and the invariants.
+Product: a public, source-led index of collective action, hosted as a static GitHub Pages site. Release 4.0 (deployed 3 Oct 2026, commit `f042ac0`) is a mobile-first rebuild of the interface over the release-3 data. The binding design is `docs/design/SPEC.md`; this brief keeps the direction and the invariants.
 
 Primary job: on a phone first, read dated, source-checked reports of protest activity, see how old the newest evidence is, filter by country, issue, region, status, city, year, outcome and observed date, and open a record to inspect attributed positions toward named targets, intensity, state response, outcome and the original reporting. Secondary jobs: see published coverage on a country map, browse all 249 countries and territories, read announced protest actions kept apart from reports, and see what the atlas itself is building next. A separate local editor desk prepares draft decisions from unverified news leads.
 

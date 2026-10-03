@@ -2,7 +2,7 @@
 
 Protest Atlas is a static HTML/CSS/JavaScript site. GitHub Pages serves the built files; there is no application server, database, account system or browser-side API secret. Public JSON is curated editorial data, not an automatic event feed.
 
-Release 4.0 (built and verified locally on 3 Oct 2026; deployment pending) rebuilds the front end as ES modules with a store and hash router. The data contracts and the publication boundary below are unchanged except where noted. The binding design is [design/SPEC.md](design/SPEC.md); [design/TECH_ARCHITECTURE.md](design/TECH_ARCHITECTURE.md) is the plan it amends, and [design/INTEGRATION_NOTES.md](design/INTEGRATION_NOTES.md) records what was built and measured.
+Release 4.0 (deployed 3 Oct 2026, commit `f042ac0`) rebuilds the front end as ES modules with a store and hash router. The data contracts and the publication boundary below are unchanged except where noted. The binding design is [design/SPEC.md](design/SPEC.md); [design/TECH_ARCHITECTURE.md](design/TECH_ARCHITECTURE.md) is the plan it amends, and [design/INTEGRATION_NOTES.md](design/INTEGRATION_NOTES.md) records what was built and measured.
 
 ## Front end (release 4.0)
 

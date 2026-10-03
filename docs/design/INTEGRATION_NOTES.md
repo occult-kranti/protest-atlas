@@ -314,7 +314,7 @@ Payload after round 1 (gzip -9, test_shell's method): CSS 27,243 B (ceiling 28,6
 ### 8.4 Open risks after round 1
 
 1. **Critical JS headroom is 701 B.** Any further change to the 21-module graph will need the lazy Ahead/Countries/About split or a minifier (§4), not a higher ceiling.
-2. **Nothing has been checked on the deployed site.** The verify job, smoke against the live URL and the §22.4 roadmap flips follow the deploy. The live site still runs release 3.
+2. **Deployed 3 Oct 2026 (`f042ac0`, run 37143562643).** The verify job confirmed the build stamp and published files on the live site. A browser smoke against the live URL and the §22.4 roadmap flips are still outstanding, because this session cannot reach github.io.
 3. **Chromium only.** Smoke and axe ran in Chromium. Safari/WebKit (for example the dates-sheet scrolling that m5 addressed), Firefox, screen readers and physical phones are untested.
 4. **The "Taiwan" and "Palestine" display names** await an editorial owner (M9; ISO "Taiwan, Province of China" and "Palestine, State of"); there is no human editor.
 5. **Data-pipeline items m25–m27** stay open until the data PR merges; the data session works around them by process (handoff §4 for week and month dates, the consolidate step for the window date).

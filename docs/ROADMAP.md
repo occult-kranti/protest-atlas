@@ -1,6 +1,6 @@
 # Protest Atlas roadmap and delivery tracker
 
-Updated 3 October 2026 for release 4.0, which is built and verified locally but not yet deployed; the live site runs release 3. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
+Updated 3 October 2026 for release 4.0, deployed to GitHub Pages on 3 Oct 2026 (commit `f042ac0`, Pages run 37143562643, post-deploy build-stamp check passed); browser checks of the live pages are still pending. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
 
 ## Product decision
 
@@ -73,11 +73,11 @@ Acceptance: map and index use the same filtered records; colors describe publica
 
 Acceptance: no search-only candidate is presented as a sourced episode; historical reports cannot imply current activity; city markers represent generalized city references; every outcome and ending has local source references. Deployment and browser evidence: RELEASE_EVIDENCE.md.
 
-### Release 4.0 — mobile-first rebuild (built; deployment pending)
+### Release 4.0 — mobile-first rebuild (deployed 3 Oct 2026; live browser check pending)
 
 Branch `ccr-77796c82-ka7vhp`. Binding design: `docs/design/SPEC.md`; integration and verification record: `docs/design/INTEGRATION_NOTES.md`; interface summary: `UX_SPEC.md`. Same 84 records as release 3 (newest evidence 2 Oct 2026); the envelope stamps, coverage note and new public data files are listed in CHANGELOG.md. The design panel, builders and verifiers were AI agents.
 
-**Built and verified locally, not deployed.** These are not shipped: the deployed-site steps under the next heading decide that, and no roadmap item flips before them.
+**Deployed 3 Oct 2026 (commit `f042ac0`).** These are deployed but not yet marked shipped: the browser check of the deployed site under the next heading decides that, and no roadmap item moves to shipped before it.
 
 - Five views (Reports, Map, Ahead, Countries, About) and a routed record sheet; `app.js` plus 19 modules in `js/` with a store and hash router; filters in the URL; release-3 links still resolve.
 - Separate, named update stamps; staleness from the newest evidence date (aging after 72 hours, stale from 7 days, archive from 30), shown as one warning line with "Why?".
@@ -86,15 +86,16 @@ Branch `ccr-77796c82-ka7vhp`. Binding design: `docs/design/SPEC.md`; integration
 - Map: no scroll trap (Explore mode), loaded on first visit, TopoJSON plus `public/world-map-codes.json` at runtime; `world-countries.geo.json` no longer published.
 - Short country display names (24, AI-chosen with reference to Unicode CLDR; display only) and search aliases.
 - A visible state for each file that can fail: records, directory, context, example, map, search ledger, roadmap, announcements.
-- CI: Node 22 via pinned `setup-node`, every `tests/*.mjs` file, configure-pages v6.0.0 and deploy-pages v5.0.1, queued (not cancelled) deploys, and a post-deploy `verify` job for the build stamp, the root, `index.html`, `events.json` and `roadmap.json` (the JSON must parse; `upcoming.json` optional) and the 404 page. It runs only on `main`, so it has not run yet.
+- CI: Node 22 via pinned `setup-node`, every `tests/*.mjs` file, configure-pages v6.0.0 and deploy-pages v5.0.1, queued (not cancelled) deploys, and a post-deploy `verify` job for the build stamp, the root, `index.html`, `events.json` and `roadmap.json` (the JSON must parse; `upcoming.json` optional) and the 404 page. It runs only on `main`; its first run (37143562643) passed.
 - Tests stop pinning live data: frozen fixtures in `tests/fixtures/snapshot-20261002/`, invariant-only checks on `public/*.json`, code and data budgeted apart.
 - Verification round 1: 14 major and 29 minor findings; 36 resolved, 2 in part, 2 declined, 3 deferred to the data-pipeline owner (SPEC §23 addendum).
 - Local evidence at `b260087`: 87 Python and 227 Node tests pass; browser smoke 24/24 in the Pages layout (Chromium); axe-core 0 violations in 80 page states and a synthetic valid refresh that keeps both suites green, both run with one-off scripts that are not committed (INTEGRATION_NOTES §8.3).
 
 **Deploy-dependent and open:**
 
-- [ ] Merge to `main` through a reviewed PR, respecting the two-way ownership rule with the data session (handoff §2.2), and let Pages deploy.
-- [ ] Post-deploy `verify` job green; smoke against the live URL, or a recorded manual phone check; RELEASE_EVIDENCE.md updated.
+- [x] Deploy: `main` fast-forwarded to `f042ac0` with the maintainer's approval, and Pages deployed it (run 37143562643).
+- [x] Post-deploy `verify` job green: the live build stamp matched the commit and all published files returned 200. RELEASE_EVIDENCE.md updated.
+- [ ] Smoke against the live URL, or a recorded manual phone check. This session's container cannot reach github.io, so it needs a session or CI job with that access.
 - [ ] Roadmap flips under SPEC §22.4 for the four in-progress items, one commit, only for items whose acceptance passes on the deployed site. `UX_SPEC.md`, which `mobile-first-redesign` cites, is already rewritten for 4.0.
 - [ ] Safari/WebKit, Firefox, screen-reader and physical-phone checks. None has been run.
 - [ ] Carry-overs from round 1: Countries "published only" filter and region jumps; roadmap item density on phones; validator and window items m25–m27 (data-pipeline owner); an editorial decision on the "Taiwan" and "Palestine" display names (ISO "Taiwan, Province of China" and "Palestine, State of"); payloads above the tech §6.2 targets, with 701 B of critical-JS headroom.
@@ -155,7 +156,7 @@ No predictive unrest risk scoring, national approval percentages, private-person
 
 Added 3 Oct 2026 and revised the same day after an independent review of the handoff. The tasks are in dependency order and carry no dates. The roadmap items named below are in `public/roadmap.json` and SPEC §20 (`docs/design/SPEC.md`).
 
-**Status after 4.0 verification round 1 (3 Oct 2026):** task 1 is still blocked. In task 4 the test-fixture step is done, and the 4.0 release is built and verified locally; its next steps are the PR, the deploy, the post-deploy checks and the §22.4 roadmap flips.
+**Status, 3 Oct 2026, after the 4.0 deploy:** task 1 is still blocked. In task 4 the test-fixture step is done, and 4.0 is deployed (`f042ac0`) with its post-deploy check green. Remaining are a browser check of the live site and the §22.4 roadmap flips. `main` now contains `e633dfe`, so a data session should branch from `origin/main` (handoff §2.1 step 1).
 
 1. **Data refresh in a session with news access.** Follow [HANDOFF_DATA_REFRESH.md](HANDOFF_DATA_REFRESH.md). Its §8 holds the paste-ready prompt.
    - **Status:** blocked until a Claude Code session exists whose cloud environment can open news websites. On 2 Oct the sweep logged 167 searches and opened 0 pages. Still blocked on 3 Oct; nothing newer has been published.
