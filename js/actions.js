@@ -24,6 +24,11 @@ export function exportAllowed(state) {
   return {ok: true, reason: ''};
 }
 
+/** aria-disabled for every export control and for the share controls (C-43); app.js applies it after each render. */
+export function controlStates(state) {
+  return {csvDisabled: !exportAllowed(state).ok, shareDisabled: state?.mode === 'example'};
+}
+
 const EMPTY_FILTERS = Object.freeze(readViewState(''));
 const sanitize = filters => readViewState(encodeViewState(filters));
 const sameFilters = (a, b) => FILTER_KEYS.every(key => a?.[key] === b?.[key]);

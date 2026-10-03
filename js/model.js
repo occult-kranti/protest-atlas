@@ -20,12 +20,12 @@ export function getDisplayStatus(event, now = Date.now()) {
 }
 
 const validDay = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
-const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-/** "30 Sep 2026" (UTC day) with fixed English abbreviations, so status labels match the copy deck on every ICU. */
-const statusDay = value => {
-  const date = new Date(Date.parse(value));
-  return `${date.getUTCDate()} ${MONTH_ABBR[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
-};
+/** absoluteLabel with the copy deck's "Sep" (newer ICU writes "Sept"). Every day or stamp WP2 prints goes through it. */
+export const absText = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
+const statusDay = value => absText(isoDay(Date.parse(value)));
+
+/** E5, shared by the list, the notice and the filter sheet's error state (C-37). */
+export const E5 = 'Published records could not be loaded, so coverage is unknown at the moment, not zero.';
 
 /**
  * Status label (ST1–ST5). With an event, the dated forms:
@@ -231,9 +231,9 @@ export function snapshotState(envelope, now) {
  */
 export function snapshotAgeText(value, now) {
   const time = toTime(value);
-  if (!Number.isFinite(time)) return absoluteLabel(value);
+  if (!Number.isFinite(time)) return absText(value);
   const relative = now - time >= DAY ? relativeLabel(isoDay(time), now) : relativeLabel(value, now);
-  return `${absoluteLabel(value)} · ${relative}`;
+  return `${absText(value)} · ${relative}`;
 }
 
 /** Whole UTC days from the newest evidence day to today; null when no valid evidence date. */
@@ -243,11 +243,11 @@ export function evidenceAgeDays(envelope, now) {
   return Math.floor(now / DAY) - Math.floor(latest / DAY);
 }
 
-const MONTHS = {Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06', Jul: '07', Aug: '08', Sep: '09', Oct: '10', Nov: '11', Dec: '12'};
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const isoFromLabel = label => {
-  const match = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})$/.exec(label);
-  if (!match || !MONTHS[match[2]]) return null;
-  const iso = `${match[3]}-${MONTHS[match[2]]}-${match[1].padStart(2, '0')}`;
+  const [, day, month, year] = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})$/.exec(label) ?? [];
+  const m = MONTHS.indexOf(month) + 1;
+  const iso = m ? `${year}-${String(m).padStart(2, '0')}-${day.padStart(2, '0')}` : '';
   return Number.isFinite(Date.parse(iso)) ? iso : null;
 };
 
@@ -271,6 +271,12 @@ export function sweepFact({events, upcoming} = {}) {
     announcements = {day: a[1], blocked: pagesRead === 0, searches: Number(a[2]), pagesRead};
   }
   return {records, announcements};
+}
+
+/** S7 from a sweepFact result (§6.4); '' unless the latest records sweep is known to have been blocked. */
+export function sweepLine(sweep) {
+  const day = sweep?.records?.blocked ? sweep.records.day : null;
+  return day ? `A search for newer reports on ${absText(day)} could not open news websites, so no records were added. Recent coverage is especially thin.` : '';
 }
 
 const BAND_ORDER = ['fresh', 'week', 'month', 'older', 'unknown'];

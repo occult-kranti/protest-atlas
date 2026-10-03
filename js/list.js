@@ -2,9 +2,9 @@
 // The first two imports are mandatory static edges (SPEC §19.0).
 import {renderCard, renderCardSkeleton} from './cards.js';
 import {aheadTeaserHTML} from './ahead.js';
-import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, datasetStats, activeFilterCount, indexContexts, snapshotAgeText, STATUS_LABELS, PAGE_SIZE} from './model.js';
+import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, sweepLine, datasetStats, activeFilterCount, indexContexts,
+  snapshotAgeText, absText, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
 import {esc} from './html.js';
-import {absoluteLabel} from '../freshness.js';
 
 const COPY = Object.freeze({
   loading: 'Loading published records…',
@@ -12,7 +12,6 @@ const COPY = Object.freeze({
   exampleStats: 'Illustrative example mode: one fictional record. It is excluded from counts, the directory and CSV export.',
   exampleStatsError: 'Illustrative example unavailable. Nothing here is reported data.',
   exampleSummaryError: 'Illustrative example unavailable',
-  e5: 'Published records could not be loaded, so coverage is unknown at the moment, not zero.',
   e1Title: 'No published episode matches these filters.',
   e1Body: 'That describes this atlas, not the world. It does not mean no protests happened in this place, on this issue or in this period.',
   e8Body: 'Try another word, or browse by country.',
@@ -40,11 +39,6 @@ function emptyState(title, body, actions) {
   return `<div class="empty-state feed-empty"><h2 class="feed-empty-title">${esc(title)}</h2>${body ? `<p>${esc(body)}</p>` : ''}<div class="empty-state-actions">${actions}</div></div>`;
 }
 
-/** S7, from data only (§6.6); '' when the sweep fact is absent or not blocked. */
-function sweepText(state) {
-  const fact = sweepFact({events: state.data.events, upcoming: state.data.upcoming}).records;
-  return fact?.blocked ? `A search for newer reports on ${absoluteLabel(fact.day)} could not open news websites, so no records were added. Recent coverage is especially thin.` : '';
-}
 
 /** S3 for the fresh group. */
 const s3 = n => `${n} ${n === 1 ? 'has' : 'have'} evidence dated within the last 72 hours. That is not confirmation that ${n === 1 ? 'it is' : 'they are'} ongoing.`;
@@ -73,7 +67,7 @@ export function statsHTML(state) {
   const stats = datasetStats(envelope, state.data.countries, state.now);
   const s1 = `<p class="feed-stat feed-stat--assembled">Snapshot assembled ${ageTag(envelope.generated_at, state.now, 'feed-stat-time')}</p>`;
   const newest = stats.newestEvidence
-    ? ` · newest evidence dated <time datetime="${esc(stats.newestEvidence)}">${esc(absoluteLabel(stats.newestEvidence))}</time>` : '';
+    ? ` · newest evidence dated <time datetime="${esc(stats.newestEvidence)}">${esc(absText(stats.newestEvidence))}</time>` : '';
   const episodes = `<strong>${stats.episodes}</strong> published ${stats.episodes === 1 ? 'episode' : 'episodes'}`;
   const scope = state.load.errors.countries || !stats.directoryTotal
     ? `${episodes}${newest}`
@@ -133,7 +127,7 @@ export function listHTML(state, filtered, {countryName = code => code} = {}) {
   }
 
   if (load.errors.events) {
-    return {busy: false, html: emptyState(COPY.e5, '',
+    return {busy: false, html: emptyState(E5, '',
       '<button type="button" class="btn btn--primary" data-action="retry-data">Retry</button><a class="btn" href="public/events.json">Open the published data file</a>')};
   }
   if (!state.data.events) return {busy: true, html: `<p class="feed-loading">${esc(COPY.loading)}</p><div class="feed-skeleton" aria-hidden="true">${renderCardSkeleton(2)}</div>`};
@@ -143,7 +137,7 @@ export function listHTML(state, filtered, {countryName = code => code} = {}) {
     return {busy: false, html: emptyState(COPY.trueEmpty, '', `${BROWSE}<button type="button" class="btn" data-set-mode="example">Explore an illustrative example</button>`)};
   }
 
-  const s7 = sweepText(state);
+  const s7 = sweepLine(sweepFact({events: state.data.events, upcoming: state.data.upcoming}));
   const gap = emptyBandNotice(all, state.now);
   const gapHTML = gap ? `<div class="feed-gap"><p class="feed-gap-line">${esc(COPY.e4[gap])}</p>${s7 ? `<p class="feed-gap-line">${esc(s7)}</p>` : ''}</div>` : '';
   if (!filtered.length) return {busy: false, html: gapHTML + emptyResultHTML(state)};
@@ -193,14 +187,20 @@ export function mountList(ctx) {
   const density = doc.querySelector('.feed-density');
   let last = {stats: null, summary: null, list: null, more: null};
 
+  /**
+   * Re-render and keep focus on the same control. When that control is gone (a Clear or Retry button whose state
+   * has passed), focus moves to a stable target instead of falling to <body>: the search field after
+   * "Clear search", otherwise the Reports title.
+   */
   function replaceKeepingFocus(el, html) {
     const active = doc.activeElement;
-    const focus = el.contains(active) ? focusKeyOf(active) : null;
+    const inside = el.contains(active);
+    const focus = inside ? focusKeyOf(active) : null;
     el.innerHTML = html;
-    if (focus) {
-      const target = el.querySelector(`[${attrName(focus.key)}="${CSS.escape(focus.value)}"]`);
-      target?.focus({preventScroll: true});
-    }
+    if (!inside) return;
+    const target = focus && el.querySelector(`[${attrName(focus.key)}="${CSS.escape(focus.value)}"]`);
+    const fallback = () => (focus?.key === 'clearFilter' && focus.value === 'query' && $('query')) || $('latest-title');
+    (target || fallback())?.focus({preventScroll: true});
   }
 
   return {

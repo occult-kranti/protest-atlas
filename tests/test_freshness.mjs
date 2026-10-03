@@ -19,6 +19,9 @@ test('absolute labels are UTC and never invent a time for day-only values', () =
   assert.equal(absoluteLabel('2026-10-02'), '2 Oct 2026');
   assert.equal(absoluteLabel('2026-10-02T21:31:50Z'), '2 Oct 2026, 21:31 UTC');
   assert.equal(absoluteLabel(undefined), 'Not established');
+  // Independent of ICU month data ("Sept" in some versions).
+  assert.equal(absoluteLabel('2026-09-30'), '30 Sep 2026');
+  assert.equal(absoluteLabel('2026-09-30T04:05:59Z'), '30 Sep 2026, 04:05 UTC');
 });
 
 test('observation band uses last_observed_at only, with a strict 72-hour edge', () => {

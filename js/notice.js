@@ -1,11 +1,10 @@
 // Pilot disclosure, snapshot/error/dropped-param notice lines, example banner (WP2). DOM-free when loaded.
-import {snapshotState, evidenceAgeDays, datasetStats} from './model.js';
+import {snapshotState, evidenceAgeDays, datasetStats, absText, E5} from './model.js';
 import {icon} from './html.js';
-import {absoluteLabel, updateStamps} from '../freshness.js';
+import {updateStamps} from '../freshness.js';
 
 export const PILOT_DISCLOSURE = 'AI-assisted reporting pilot. Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.';
 
-const E5 = 'Published records could not be loaded, so coverage is unknown at the moment, not zero.';
 const COUNTRIES_ERROR = 'The country directory could not load; records are listed by country code.';
 const LINE_ORDER = ['error', 'countries-error', 'snapshot', 'dropped'];
 const daysAgo = n => `${n} ${n === 1 ? 'day' : 'days'} ago`;
@@ -29,7 +28,7 @@ export function noticeModel(state) {
   if (envelope && !errors.events) {
     const snap = snapshotState(envelope, now);
     const days = evidenceAgeDays(envelope, now);
-    const newest = absoluteLabel(updateStamps({events: envelope}).latestObservation);
+    const newest = absText(updateStamps({events: envelope}).latestObservation);
     if (snap === 'aging') lines.push({kind: 'snapshot', text: `No evidence newer than ${newest} (${daysAgo(days)}) is in this snapshot. More recent protests are missing.`});
     if (snap === 'stale') lines.push({kind: 'snapshot', text: `This snapshot has nothing newer than ${newest}, ${daysAgo(days)}. Read it as an archive of past reporting, not as a picture of protests today.`});
     if (snap === 'archive') lines.push({kind: 'snapshot', text: `Archive: newest evidence ${newest}. This atlas is not currently being maintained as a tracker.`});

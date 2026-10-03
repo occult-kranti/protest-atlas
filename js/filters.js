@@ -139,6 +139,15 @@ export function mountFilters(ctx) {
     });
     input.addEventListener('keydown', event => { if (event.key === 'Enter') commit(); });
     input.addEventListener('search', commit);
+    // The clear button hides itself once the query is empty, so focus moves to the field first (WCAG 2.4.3).
+    // app.js's delegated data-clear-filter handler then clears the filter.
+    clearBtn.addEventListener('click', () => {
+      clearTimeout(timer);
+      timer = null;
+      input.value = '';
+      input.focus({preventScroll: true});
+      clearBtn.hidden = true;
+    });
   }
 
   const toggle = event => {
@@ -216,8 +225,10 @@ export function mountFilters(ctx) {
     const key = [state.mode, state.data.events, state.data.examples, state.data.countries, state.data.contexts, state.load.critical, state.load.errors.events, state.load.errors.contexts];
     if (!bodyKey || key.some((v, i) => v !== bodyKey[i])) {
       bodyKey = key;
+      const hadFocus = body.contains(doc.activeElement);   // e.g. [Retry] in the events-error body
       body.innerHTML = bodyHTML(state, full);
       cityKey = [state.filters.country, full];
+      if (hadFocus) $('filters-title')?.focus({preventScroll: true});
     }
     const form = body.querySelector('.filter-form');
     if (!form) return;
@@ -229,7 +240,8 @@ export function mountFilters(ctx) {
       const shown = options.has(value);
       if (row.hidden === shown) row.hidden = !shown;
       const n = row.querySelector('.filter-n');
-      const text = shown ? `(${options.get(value)})` : '';
+      const count = options.get(value);
+      const text = shown && count ? `(${count})` : '';   // a selected status with no match shows no zero (editorial §3.5)
       if (n.textContent !== text) n.textContent = text;
       row.querySelector('input').checked = value === f.status;
     }

@@ -42,12 +42,17 @@ export function relativeLabel(value, now = Date.now()) {
 }
 
 /** Absolute UTC label: "2 Oct 2026" for days, "2 Oct 2026, 21:31 UTC" for timestamps. */
+// Fixed English month abbreviations: ICU versions differ ("Sep" vs "Sept"), and every date on the site must read the same.
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const pad = n => String(n).padStart(2, '0');
+
 export function absoluteLabel(value) {
   const time = toTime(value);
   if (!Number.isFinite(time)) return 'Not established';
-  const options = {day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC'};
-  if (DAY_ONLY.test(value)) return new Intl.DateTimeFormat('en-GB', options).format(time);
-  return `${new Intl.DateTimeFormat('en-GB', {...options, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).format(time)} UTC`;
+  const date = new Date(time);
+  const day = `${date.getUTCDate()} ${MONTHS[date.getUTCMonth()]} ${date.getUTCFullYear()}`;
+  if (DAY_ONLY.test(value)) return day;
+  return `${day}, ${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())} UTC`;
 }
 
 /**

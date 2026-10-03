@@ -1,9 +1,9 @@
 // Snapshot chip, dates sheet rows, footer stamps and time refresh (WP2). DOM-free when loaded.
 // Every stamp names its own subject; stamps are never merged into one "updated" time (editorial §4).
 import {discoveryView} from './about.js';
-import {snapshotState, evidenceAgeDays, sweepFact, snapshotAgeText} from './model.js';
-import {esc, plural, timeTag, timeText, REPO_URL} from './html.js';
-import {absoluteLabel, updateStamps} from '../freshness.js';
+import {snapshotState, evidenceAgeDays, sweepFact, sweepLine, snapshotAgeText, absText} from './model.js';
+import {esc, plural, timeText, dateTag, datedTimeTag, REPO_URL} from './html.js';
+import {updateStamps} from '../freshness.js';
 
 /** T4: labels and explainers, editorial §4 verbatim (with the §18.2 discovery rewrite). */
 export const STAMP_ROWS = Object.freeze([
@@ -24,38 +24,34 @@ const valid = v => typeof v === 'string' && Number.isFinite(Date.parse(v));
 const stripTags = html => html.replace(/<[^>]*>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 const commitLink = sha => `<a class="stamp-list-commit" href="${esc(`${REPO_URL}/commit/${sha}`)}">${esc(sha.slice(0, 7))}</a>`;
 
-/** S7 from data (§6.6); '' unless the latest sweep is known to have been blocked. */
-function sweepLine(sweep) {
-  const day = sweep?.records?.blocked ? sweep.records.day : null;
-  return day ? `A search for newer reports on ${absoluteLabel(day)} could not open news websites, so no records were added. Recent coverage is especially thin.` : '';
-}
-
 /**
  * Dates rows (§10). extras = {announcementsCount, discovery, discoveryLoad, sweep} (C-03), plus the optional
  * announcementsLoad and buildLoad ('absent' | 'error') from state.load.errors.
- * → [{key, label, note, html, text, present}]
+ * → [{key, label, note, value, html, text, present}]: value is the row's HTML (tech §7.2), html an alias of it,
+ * text its plain text. Dates use the copy deck's month names; the relative parts are <time data-rel> for refreshTimes.
  */
 export function stampItems(stamps, now, extras = {}) {
   const s = stamps ?? {};
   const rows = [];
   const row = (key, html, present = true) => {
     const def = STAMP_ROWS.find(r => r.key === key);
-    rows.push({key, label: def.label, note: def.note, html, text: stripTags(html), present});
+    rows.push({key, label: def.label, note: def.note, value: html, html, text: stripTags(html), present});
   };
-  const when = value => (valid(value) ? timeTag(value, now, 'both') : 'Not established');
+  const when = value => (valid(value) ? datedTimeTag(value, now) : 'Not established');
+  const count = (n, noun) => ` ·\u00a0${esc(plural(n, noun)).replace(' ', '\u00a0')}`;   // "· 0 items" never splits
 
   row('dataUpdated', valid(s.dataUpdated)
     ? `<time class="stamp-time" datetime="${esc(s.dataUpdated)}" data-rel="${esc(s.dataUpdated)}" data-format="both" data-days="utc">${esc(snapshotAgeText(s.dataUpdated, now))}</time>`
     : 'Not established', valid(s.dataUpdated));
   if (valid(s.editorialReview) && s.editorialReview !== s.dataUpdated) row('editorialReview', when(s.editorialReview));
-  row('latestObservation', valid(s.latestObservation) ? `dated ${timeTag(s.latestObservation, now, 'both')}` : 'Not established', valid(s.latestObservation));
+  row('latestObservation', valid(s.latestObservation) ? `dated ${when(s.latestObservation)}` : 'Not established', valid(s.latestObservation));
   row('latestSourceCheck', when(s.latestSourceCheck), valid(s.latestSourceCheck));
 
   if (extras.announcementsLoad === 'error') row('announcementsUpdated', 'Could not load', false);
   else if (extras.announcementsLoad === 'absent' || !valid(s.announcementsUpdated)) row('announcementsUpdated', 'Not published in this snapshot', false);
   else {
-    const count = Number.isInteger(extras.announcementsCount) ? ` · ${esc(plural(extras.announcementsCount, 'item'))}` : '';
-    row('announcementsUpdated', `${when(s.announcementsUpdated)}${count}`);
+    const n = extras.announcementsCount;
+    row('announcementsUpdated', `${when(s.announcementsUpdated)}${Number.isInteger(n) ? count(n, 'item') : ''}`);
   }
 
   if (extras.buildLoad === 'error') row('siteBuilt', 'Site build stamp could not be read', false);
@@ -65,7 +61,7 @@ export function stampItems(stamps, now, extras = {}) {
   const view = extras.discovery;
   if (extras.discoveryLoad === 'error') row('discovery', 'Discovery audit unavailable.', false);
   else if (extras.discoveryLoad === 'ready' && view && valid(view.date) && Number.isFinite(Number(view.count))) {
-    row('discovery', `GDELT artifact created ${timeTag(view.date, now, 'absolute')} · ${esc(plural(Number(view.count), 'unverified lead'))}`);
+    row('discovery', `GDELT artifact created ${dateTag(view.date, 'stamp-time')}${count(Number(view.count), 'unverified lead')}`);
   } else if (extras.discoveryLoad === 'ready') row('discovery', 'Discovery audit unavailable.', false);
   else row('discovery', 'Loading…', false);
 
@@ -94,7 +90,7 @@ const stampsOf = state => updateStamps({events: state.data?.events, upcoming: st
 
 /** "2 Oct 2026, 22:45 UTC" split so the two-line chip can hide the year (§4.1). */
 function chipTime(value) {
-  const label = absoluteLabel(value);
+  const label = absText(value);
   const match = /^(\d{1,2} \S+) (\d{4}), (\d{2}:\d{2}) UTC$/.exec(label);
   if (!match) return {html: esc(label), long: label, short: label};
   const [, dayMonth, year, time] = match;
@@ -139,7 +135,7 @@ function chipHTML(model) {
 }
 
 /** Absolute label with no-break spaces, so "2 Oct 2026" never splits across lines. */
-const keep = value => esc(absoluteLabel(value)).replace(/ /g, '\u00a0');
+const keep = value => esc(absText(value)).replace(/ /g, '\u00a0');
 
 /** Footer T1 / T2 (§4.4). '' while the critical files are loading. */
 export function footerStampsHTML(state) {
