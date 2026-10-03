@@ -117,7 +117,7 @@
         <div id="feed-stats" class="feed-stats"></div>
         <nav class="latest-links" aria-label="More ways in">
           <a href="#/map">See where published episodes are on the map</a><a href="#/countries">All 249 countries and territories, A to Z</a>
-          <button type="button" data-open-sheet="stamps-sheet">What the dates on this page mean</button></nav>
+          <button type="button" data-open-sheet="stamps-sheet" aria-haspopup="dialog">What the dates on this page mean</button></nav>
       </aside>
       <div id="filter-bar" class="filter-bar"></div>
       <div id="active-filters" class="active-filters"></div>
@@ -188,8 +188,8 @@
       <ul class="about-tools">
         <li><button type="button" class="about-tool" data-action="export-csv"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"></use></svg>Download CSV of the records matching your current filters</button></li>
         <li><a class="about-tool" href="public/events.json">Published data (JSON)</a></li>
-        <li><a class="about-tool" href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Editorial policy ↗</a></li>
-        <li><a class="about-tool" href="https://github.com/occult-kranti/protest-atlas">Source code and corrections ↗</a><p class="about-tool-note">Please do not post private details about participants.</p></li>
+        <li><a class="about-tool" href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Editorial policy&nbsp;<span aria-hidden="true">↗</span></a></li>
+        <li><a class="about-tool" href="https://github.com/occult-kranti/protest-atlas">Source code and corrections&nbsp;<span aria-hidden="true">↗</span></a><p class="about-tool-note">Please do not post private details about participants.</p></li>
         <li><a class="about-tool" href="review.html">Editor desk</a><p class="about-tool-note">Local tool for reviewing leads. Nothing is published from it.</p></li>
         <li><button type="button" id="about-example" class="about-tool" data-set-mode="example">Explore an illustrative example</button></li>
       </ul>
@@ -208,7 +208,7 @@
       <li><a href="#/latest">Reports</a></li><li><a href="#/map">Map</a></li><li><a href="#/ahead">Ahead</a></li><li><a href="#/ahead/roadmap">Coming next</a></li><li><a href="#/countries">Countries</a></li><li><a href="#/about">About</a></li>
     </ul>
     <ul>
-      <li><a href="public/events.json">Published data (JSON)</a></li><li><a href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Editorial policy ↗</a></li><li><a href="https://github.com/occult-kranti/protest-atlas">Source code and corrections ↗</a></li><li><a href="review.html">Editor desk</a></li>
+      <li><a href="public/events.json">Published data (JSON)</a></li><li><a href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">Editorial policy&nbsp;<span aria-hidden="true">↗</span></a></li><li><a href="https://github.com/occult-kranti/protest-atlas">Source code and corrections&nbsp;<span aria-hidden="true">↗</span></a></li><li><a href="review.html">Editor desk</a></li>
     </ul>
     <p id="footer-stamps" class="footer-stamps"></p>
     <p>Country directory adapted from <a href="https://github.com/lukes/ISO-3166-Countries-with-Regional-Codes">ISO country data</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Map geometry: <a href="https://www.naturalearthdata.com/">Natural Earth</a> via <a href="https://github.com/topojson/world-atlas">world-atlas</a>.</p>

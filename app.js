@@ -7,7 +7,7 @@ import {selectEvents, selectFiltered, timeSnapshot, indexContexts} from './js/mo
 import {createStore, initialState} from './js/store.js';
 import {createRouter, parseRoute} from './js/router.js';
 import {loadCritical, createLazyLoader} from './js/data.js';
-import {createActions, exportAllowed, FEEDBACK} from './js/actions.js';
+import {createActions, controlStates, FEEDBACK} from './js/actions.js';
 import {mountFilters} from './js/filters.js';
 import {mountList} from './js/list.js';
 import {mountStamps, refreshTimes} from './js/stamps.js';
@@ -56,6 +56,7 @@ async function boot() {
       store.set({route});
       if (meta.unknown) actions?.setFeedback(FEEDBACK.unknownSection);
     },
+    beforePush: () => syncURL(store.get(), {now: true}),   // the entry being left keeps the filters it showed
   });
   actions = createActions({store, router, loader, sheets, env: {defaultView}});
   const ctx = {store, actions, env: {defaultView, mapGestures, reducedMotion}};
@@ -88,7 +89,8 @@ async function boot() {
       box.className = 'map-fallback';
       stage.append(box);
     }
-    box.innerHTML = `<p>${esc(E6)}</p><div class="map-fallback-actions"><button type="button" class="btn btn--primary" data-action="retry-map">Retry map</button><a class="btn" href="#/countries">Open Countries</a></div>`;
+    box.innerHTML = `<p class="map-fallback-text" role="status">${esc(E6)}</p><div class="map-fallback-actions">`
+      + '<button type="button" class="btn" data-action="retry-map">Retry map</button><a class="btn btn--quiet" href="#/countries">Open Countries</a></div>';
     for (const id of ['map-regions', 'map-controls', 'map-selbar']) { const el = $(id); if (el) el.hidden = true; }
     const legend = $('map-legend');
     if (legend) legend.innerHTML = `<p class="legend-note">${M7}</p><p class="legend-note">${esc(M8)}</p>`;
@@ -107,10 +109,17 @@ async function boot() {
     if (mapPhase === 'loading' || mapPhase === 'ready') return;
     const retrying = mapPhase === 'failed';
     mapPhase = 'loading';
-    if (retrying) clearMapFallback();
+    if (retrying) {
+      // [Retry map] is removed with the fallback, so focus moves to the view title instead of <body>.
+      const refocus = $('map-stage')?.querySelector('.map-fallback')?.contains(doc.activeElement);
+      clearMapFallback();
+      if (refocus) $('map-title')?.focus({preventScroll: true});
+    }
     store.set(s => ({ui: {...s.ui, mapStatus: 'loading'}}));
     try {
-      const specifier = mapAttempt++ ? `./js/map-view.js?retry=${mapAttempt}` : './js/map-view.js';
+      // A retry keeps the import map's ?v= stamp and adds its own, so the browser fetches the module again.
+      const base = import.meta.resolve?.('./js/map-view.js') ?? './js/map-view.js';
+      const specifier = mapAttempt++ ? `${base}${base.includes('?') ? '&' : '?'}retry=${mapAttempt}` : './js/map-view.js';
       const module = await import(specifier);
       map = module.mountMap(ctx);
       mapPhase = 'ready';
@@ -166,8 +175,14 @@ async function boot() {
     }
   }
 
+  /** The element that opened this record; a typed hash or Back/Forward has none (the last click was for another id). */
+  const triggerFor = id => {
+    const el = actions.recordTrigger();
+    return el && (el.dataset?.openRecord === id || el.getAttribute?.('href') === `#/record/${id}`) ? el : null;
+  };
+
   function recordReturnFocus(id) {
-    const trigger = actions.recordTrigger();
+    const trigger = triggerFor(id);
     return () => {
       if (trigger?.isConnected && trigger.getClientRects().length) return trigger;
       return [...doc.querySelectorAll('[data-open-record]')]
@@ -208,7 +223,7 @@ async function boot() {
         if (announcer) announcer.textContent = `${event.title}. Record ${index + 1} of ${filtered.length} in this view.`;
       } else if (!shown) {
         titleBeforeRecord = doc.title;
-        openSheet(recordSheet, {trigger: actions.recordTrigger(), focus: '#detail-title', returnFocus: recordReturnFocus(id)});
+        openSheet(recordSheet, {trigger: triggerFor(id), focus: '#detail-title', returnFocus: recordReturnFocus(id)});
       }
       openId = id;
       doc.title = `${event.title} — Protest Atlas`;
@@ -270,24 +285,25 @@ async function boot() {
 
   // ---- aria-disabled on export and share controls (C-43) -------------------------------------------
   function syncDisabled(state) {
-    const csvOff = !exportAllowed(state).ok;
-    for (const el of doc.querySelectorAll('[data-action="export-csv"]')) setDisabled(el, csvOff);
-    const shareOff = state.mode === 'example';
-    for (const el of doc.querySelectorAll('[data-action="share-view"], #record-share')) setDisabled(el, shareOff);
+    const {csvDisabled, shareDisabled} = controlStates(state);
+    for (const el of doc.querySelectorAll('[data-action="export-csv"]')) setDisabled(el, csvDisabled);
+    for (const el of doc.querySelectorAll('[data-action="share-view"], #record-share')) setDisabled(el, shareDisabled);
   }
 
   // ---- URL query (tech §2.3: replaceState, debounced, reported mode, after the critical load) -------
+  // Filters are not history: whichever entry is shown (after a filter change, a push, Back or Forward) has its
+  // query rewritten to the filters on screen, so a reload or a copied address restores what the reader sees.
   let urlTimer = null;
-  function syncURL(state) {
+  function syncURL(state, {now = false} = {}) {
+    clearTimeout(urlTimer);
     if (state.mode !== 'reported' || state.load.critical === 'loading') return;
     const q = encodeViewState(state.filters);
     const search = q ? `?${q}` : '';
-    clearTimeout(urlTimer);
     if (search === location.search) return;
-    urlTimer = setTimeout(() => {
-      history.replaceState(history.state, '', `${location.pathname}${search}${location.hash}`);
-    }, URL_DEBOUNCE_MS);
+    const write = () => history.replaceState(history.state, '', `${location.pathname}${search}${location.hash}`);
+    if (now) write(); else urlTimer = setTimeout(write, URL_DEBOUNCE_MS);
   }
+  addEventListener('popstate', () => syncURL(store.get(), {now: true}));
 
   // ---- render loop: one subscription, coalesced per frame (tech §4.5) -------------------------------
   let rendered = null;
@@ -315,7 +331,8 @@ async function boot() {
     syncDisabled(state);
     syncRecord(state, prev);
     renderFeedback(state);
-    if (!prev || state.filters !== prev.filters || state.load.critical !== prev.load.critical || state.mode !== prev.mode) syncURL(state);
+    if (prev && state.route !== prev.route) syncURL(state, {now: true});
+    else if (!prev || state.filters !== prev.filters || state.load.critical !== prev.load.critical || state.mode !== prev.mode) syncURL(state);
     lastSnapshot = timeSnapshot(state);
     router.afterRender();
     refreshTimes(doc, Date.now());
@@ -345,8 +362,12 @@ async function boot() {
         if (shareTrigger?.isConnected) shareTrigger.focus({preventScroll: true});
         return true;
       case 'retry-map':
-        if (!map) { loadMap(); return true; }
-        return false;   // map-view.js owns it once loaded
+        if (map) return false;   // map-view.js owns it once loaded
+        // A failed static dependency (map.js, country-brief.js) stays failed in the module map until a reload,
+        // so after one failed re-import the retry reloads the page (only when online: offline it would lose the page).
+        if (mapAttempt >= 2 && globalThis.navigator?.onLine !== false) location.reload();
+        else loadMap();
+        return true;
       default: return false;
     }
   }

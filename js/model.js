@@ -20,9 +20,7 @@ export function getDisplayStatus(event, now = Date.now()) {
 }
 
 const validDay = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
-/** absoluteLabel with the copy deck's "Sep" (newer ICU writes "Sept"). Every day or stamp WP2 prints goes through it. */
-export const absText = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
-const statusDay = value => absText(isoDay(Date.parse(value)));
+const statusDay = value => absoluteLabel(isoDay(Date.parse(value)));   // "30 Sep 2026", the UTC day
 
 /** E5, shared by the list, the notice and the filter sheet's error state (C-37). */
 export const E5 = 'Published records could not be loaded, so coverage is unknown at the moment, not zero.';
@@ -231,9 +229,9 @@ export function snapshotState(envelope, now) {
  */
 export function snapshotAgeText(value, now) {
   const time = toTime(value);
-  if (!Number.isFinite(time)) return absText(value);
+  if (!Number.isFinite(time)) return absoluteLabel(value);
   const relative = now - time >= DAY ? relativeLabel(isoDay(time), now) : relativeLabel(value, now);
-  return `${absText(value)} · ${relative}`;
+  return `${absoluteLabel(value)} · ${relative}`;
 }
 
 /** Whole UTC days from the newest evidence day to today; null when no valid evidence date. */
@@ -276,7 +274,7 @@ export function sweepFact({events, upcoming} = {}) {
 /** S7 from a sweepFact result (§6.4); '' unless the latest records sweep is known to have been blocked. */
 export function sweepLine(sweep) {
   const day = sweep?.records?.blocked ? sweep.records.day : null;
-  return day ? `A search for newer reports on ${absText(day)} could not open news websites, so no records were added. Recent coverage is especially thin.` : '';
+  return day ? `A search for newer reports on ${absoluteLabel(day)} could not open news websites, so no records were added. Recent coverage is especially thin.` : '';
 }
 
 const BAND_ORDER = ['fresh', 'week', 'month', 'older', 'unknown'];

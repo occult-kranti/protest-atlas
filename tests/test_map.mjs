@@ -8,8 +8,8 @@ import {
   groupRecordsByCountry, countRecordsByCountry, attachCodes, ringParts, focusParts, focusTransform, zoomButtonState,
   readingOrder, nextInDirection, gestureFilter, placeLabels,
 } from '../map.js';
-import {overviewModel, renderOverview, briefModel, renderBrief, searchSentence, RECENT_LIMIT} from '../js/country-brief.js';
-import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, MAP_COPY, REGIONS} from '../js/map-view.js';
+import {overviewModel, renderOverview, briefModel, renderBrief, searchSentence, countSentence, RECENT_LIMIT} from '../js/country-brief.js';
+import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, describeCountry, MAP_COPY, REGIONS} from '../js/map-view.js';
 
 const root = new URL('../', import.meta.url);
 const text = path => readFile(new URL(path, root), 'utf8');
@@ -169,6 +169,14 @@ test('placeLabels tries right, then left, then drops the label (the dot stays)',
   assert.equal(placeLabels([{id: 'a', x: 100, y: 50, r: 3.5, w: 40}, {id: 'e', x: 130, y: 52, r: 3.5, w: 20}]).get('a'), 'left',
     'a label never covers another dot');
   assert.equal(placeLabels([{id: 'x', x: 5, y: 2, r: 3.5, w: 30}], {width: 100, height: 100}).get('x'), null, 'no room above the top edge');
+  // AD-like: the selected territory's label (free) ignores the neighbours' dots on both sides; theirs then give way.
+  const crowded = [{id: 'ad', x: 100, y: 50, r: 3.5, w: 90, free: true}, {id: 'es1', x: 150, y: 52, r: 3.5, w: 60}, {id: 'es2', x: 40, y: 48, r: 3.5, w: 60}];
+  assert.equal(placeLabels(crowded.map(i => ({...i, free: false})), {width: 400, height: 200}).get('ad'), null);
+  const freed = placeLabels(crowded, {width: 400, height: 200});
+  assert.equal(freed.get('ad'), 'right');
+  assert.equal(freed.get('es1'), null, 'a non-free label still avoids the placed label box (its dot stays)');
+  assert.equal(placeLabels([{id: 'a', x: 100, y: 50, r: 3.5, w: 40, free: true}, {id: 'b', x: 130, y: 52, r: 3.5, w: 20, free: true}]).get('a'), 'left',
+    'free labels still avoid each other\'s dots');
 });
 
 test('real geometry: codes reproduce the GeoJSON codes; land fits 984×432; Antarctica clips away', async () => {
@@ -311,11 +319,19 @@ test('brief: events error, no-polygon line, example mode, escaping; no real brie
   assert.ok(ad.html.includes('data-open-record="ad-housing-rally-2025"'));
   const mc = brief('MC', {}, {hasPolygon: false});
   assert.ok(mc.html.includes('Monaco is too small to draw on this map at this scale.') && !mc.html.includes('listed below'));
+  const adFiltered = brief('AD', {mapEvents: [], filtered: true}, {hasPolygon: false});
+  assert.equal(adFiltered.model.state, 'filtered-out');
+  assert.ok(adFiltered.html.includes('Andorra is too small to draw on this map at this scale.</p>') && !adFiltered.html.includes('listed below'),
+    'no "listed below" when every record is filtered out');
   const example = briefModel({code: 'GB', mapEvents: [{id: 'example-civic-services', country: 'GB', title: 'Example', last_observed_at: '2026-10-01', status: 'unknown'}],
     allEvents: [], countries, mode: 'example'});
   const exampleHTML = renderBrief(example, {now: NOW});
   assert.ok(exampleHTML.includes('Illustrative example • not a real event') && exampleHTML.includes('Illustrative example: one fictional record.'));
   assert.ok(exampleHTML.includes('data-set-mode="reported"') && !exampleHTML.includes('brief-ledger'));
+  // A country without the example record: watermark and the way back, but no claim that it has a fictional record.
+  const other = renderBrief(briefModel({code: 'FR', mapEvents: example.matching, allEvents: example.matching, countries, mode: 'example'}), {now: NOW});
+  assert.ok(other.includes('Illustrative example • not a real event') && other.includes('data-set-mode="reported"'));
+  assert.ok(!other.includes('one fictional record') && !other.includes('brief-lead') && !other.includes('brief-ledger'));
   const hostile = renderBrief(briefModel({code: 'FR', mapEvents: [{id: 'x', country: 'FR', title: '<script>alert(1)</script>'}], countries: [{code: 'FR', name: '<b>F</b>', region: 'Europe'}]}), {now: NOW});
   assert.ok(!hostile.includes('<script>') && !hostile.includes('<b>F</b>') && hostile.includes('&lt;script&gt;'));
   for (const country of countries) {
@@ -354,6 +370,8 @@ test('legend carries M1–M8 verbatim, the hint first, and M9 only with a time w
 test('legend variants: events error, example, example loading and error, unavailable', () => {
   const error = legendHTML({eventsError: true});
   assert.ok(error.startsWith('<p class="map-hint">'));
+  assert.deepEqual(legendText(error), [MAP_COPY.hintFine, M[0], 'Coverage cannot be shown because published records did not load.', 'Retry'],
+    'the hint and M1 stay; the list and notes are replaced (§11.5)');
   assert.ok(error.includes('<p class="legend-note legend-status" role="status">Coverage cannot be shown because published records did not load.</p>'));
   assert.ok(error.includes('data-action="retry-data">Retry</button>') && !error.includes('legend-list'));
   const example = legendHTML({mode: 'example'});
@@ -388,12 +406,61 @@ test('selection bar, region chips and controls', () => {
   assert.equal(hasNonPlaceFilters({query: 'x'}), true);
 });
 
-test('WP4 copy contains no banned vocabulary', () => {
-  const banned = /\b(live|live now|happening now|right now|breaking|real-time|active protests|current protests|hotspots?|trending|most active|escalating|severity|danger|risk level|top countries|top issues|sides|vs|as of|synced|join|attend|rsvp)\b/i;
-  const all = [legendHTML({}), legendHTML({eventsError: true}), legendHTML({mode: 'example', example: 'error'}), controlsHTML(), regionChipsHTML(),
-    selectionBarHTML({name: 'France', count: 2}), brief('FR').html, brief('IS').html, renderOverview(overviewModel({mapEvents: events, countries}), {now: NOW}),
+test('WP4 copy contains no banned vocabulary (SPEC §18.1)', () => {
+  const banned = new RegExp(`\\b(${['live', 'live now', 'happening now', 'right now', 'breaking', 'real-time', 'active protests', 'current protests', 'ongoing now',
+    'tracking \\d+ protests', '\\d+ protests worldwide', 'hotspots?', 'trending', 'most active', 'escalating', 'unrest index', 'severity', 'danger', 'risk level',
+    'top countries', 'top issues', 'sides', 'vs', 'as of', 'synced', 'join', 'attend', 'rsvp', 'remind me', 'add to calendar', 'live desk'].join('|')})\\b`, 'i');
+  const stamp = /^(updated|last updated|reviewed|verified)\b/i;
+  const exampleBrief = (state, extra = {}) => renderBrief(briefModel({code: 'FR', countries, mode: 'example', example: state, ...extra}), {now: NOW});
+  const all = [legendHTML({}), legendHTML({eventsError: true}), legendHTML({mode: 'example'}), legendHTML({mode: 'example', example: 'loading'}),
+    legendHTML({mode: 'example', example: 'error'}), legendHTML({unavailable: true}), legendHTML({window: '7', citiesError: true, coarse: true}),
+    controlsHTML(), regionChipsHTML(), selectionBarHTML({name: 'France', count: 2}), selectionBarHTML({name: 'France', state: 'filtered-out', publishedCount: 2}),
+    brief('FR').html, brief('IS').html, brief('AD', {}, {hasPolygon: false}).html, brief('FR', {error: true}).html, brief('FR', {loading: true}).html,
+    exampleBrief('loading'), exampleBrief('error'), renderOverview(overviewModel({mapEvents: events, countries}), {now: NOW}),
+    ...['error', 'loading', 'example-loading', 'example-error'].map(status => renderOverview(overviewModel({countries, status, mode: status.startsWith('example') ? 'example' : 'reported'}), {now: NOW})),
     ...Object.values(MAP_COPY)].join('\n');
   // M8 says "how severe" (allowed: it is not "severity"); check the plain text only.
-  const hit = plain(all).find(line => banned.test(line));
+  const lines = plain(all);
+  const hit = lines.find(line => banned.test(line) || stamp.test(line) || /^new$/i.test(line));
   assert.equal(hit, undefined, hit);
+});
+
+// ---------------------------------------------------------------- example mode never borrows the events-error copy (C-38)
+
+test('describeCountry: tooltip and aria-label text by state', () => {
+  const fr = events.filter(e => e.country === 'FR');
+  assert.equal(describeCountry(fr), '2 published episodes. Includes a sourced ended or suspended episode.');
+  assert.equal(describeCountry(fr.slice(0, 1), {filtered: true}), countSentence(1, true, fr[0].status === 'ended'));
+  assert.equal(describeCountry([]), MAP_COPY.gap);
+  assert.equal(describeCountry(fr, {error: true}), 'Coverage cannot be shown because published records did not load.');
+  assert.equal(describeCountry(fr, {loading: true}), 'Loading published records…');
+  const example = [{id: 'example-civic-services', country: 'GB', status: 'unknown'}];
+  assert.equal(describeCountry(example, {mode: 'example'}), MAP_COPY.example);
+  assert.equal(describeCountry(undefined, {mode: 'example'}), '', 'no claim for a country without the example record');
+  assert.equal(describeCountry(undefined, {mode: 'example', example: 'loading'}), 'Loading the illustrative example…');
+  assert.equal(describeCountry(example, {mode: 'example', example: 'error'}), 'Illustrative example unavailable');
+});
+
+test('example loading and error: brief and overview say so, never that published records failed', () => {
+  const states = {loading: 'Loading the illustrative example…', error: 'Illustrative example unavailable'};
+  for (const [example, lead] of Object.entries(states)) {
+    const model = briefModel({code: 'FR', mapEvents: [], allEvents: [], countries, mode: 'example', example});
+    assert.equal(model.state, `example-${example}`);
+    const html = renderBrief(model, {now: NOW});
+    assert.ok(html.includes(`<p class="brief-lead" role="status">${lead}</p>`), example);
+    assert.ok(html.includes('Illustrative example • not a real event') && html.includes('data-set-mode="reported">Back to reported data</button>'));
+    assert.equal(html.includes('data-retry="examples">Retry example</button>'), example === 'error');
+    for (const wrong of ['published records did not load', 'Loading published records', 'retry-data', 'brief-ledger', 'one fictional record']) assert.ok(!html.includes(wrong), `${example}: ${wrong}`);
+    const overview = renderOverview(overviewModel({countries, mode: 'example', status: `example-${example}`}), {now: NOW});
+    assert.ok(overview.includes(lead) && !overview.includes('published records did not load') && !overview.includes('retry-data'));
+    assert.equal(overview.includes('data-retry="examples"'), example === 'error');
+  }
+});
+
+test('city chips keep one focus key across both states', () => {
+  const {model} = brief('FR');
+  const key = html => html.match(/data-focus-key="city:FR:Paris"[^>]*/)?.[0] ?? '';
+  const off = key(renderBrief(model, {now: NOW, lazy: {coverage: 'ready', research: 'ready'}}));
+  const on = key(renderBrief(model, {now: NOW, selectedCity: 'FR:Paris', lazy: {coverage: 'ready', research: 'ready'}}));
+  assert.ok(off.includes('data-select-city="FR:Paris"') && on.includes('data-clear-filter="city"'));
 });

@@ -6,15 +6,16 @@ import {
   PAGE_SIZE, STATUS_LABELS, statusLabel, foldText, searchableText, queryTokens, indexContexts, eventMatches,
   sortByObservation, selectEvents, selectFiltered, activeFilterCount, availableYears, cityOptions, refinementOptions,
   statusOptions, datasetStats, snapshotState, evidenceAgeDays, sweepFact, groupByBand, emptyBandNotice, timeSnapshot, getDisplayStatus,
+  sweepLine, E5,
 } from '../js/model.js';
 import {createStore, initialState} from '../js/store.js';
-import {VIEWS, ROUTE_ALIASES, VIEW_NAMES, parseRoute, formatRoute} from '../js/router.js';
+import {VIEWS, ROUTE_ALIASES, VIEW_NAMES, parseRoute, formatRoute, createRouter} from '../js/router.js';
 import {CRITICAL, LAZY, SHAPES, DataError, fetchJSON, loadCritical, createLazyLoader} from '../js/data.js';
-import {createActions, exportAllowed, FEEDBACK} from '../js/actions.js';
+import {createActions, exportAllowed, controlStates, FEEDBACK} from '../js/actions.js';
 import {QUICK_CHIPS} from '../js/filters.js';
 import {statsHTML, summaryText, listHTML, moreHTML} from '../js/list.js';
-import {STAMP_ROWS, stampItems, chipModel, footerStampsHTML} from '../js/stamps.js';
-import {PILOT_DISCLOSURE, noticeModel} from '../js/notice.js';
+import {STAMP_ROWS, stampItems, chipModel, footerStampsHTML, refreshTimes} from '../js/stamps.js';
+import {PILOT_DISCLOSURE, noticeModel, mountNotice} from '../js/notice.js';
 import {FILTER_KEYS, droppedParams, shareURL, readViewState, encodeViewState} from '../explore.js';
 import {updateStamps} from '../freshness.js';
 
@@ -701,6 +702,288 @@ test('list on the 9 Oct clock: E4 + S7 at the top, first group 7 to 30 days, no 
 test('quick chips carry no counts (C-10)', () => {
   assert.deepEqual(QUICK_CHIPS.map(c => c.label), ['Last 7 days', 'Last 30 days', 'Ended / suspended', 'Outcome documented']);
   assert.ok(QUICK_CHIPS.every(c => !/\d+\)/.test(c.label)));
+});
+
+// ------------------------------------------------------------------------------------ review fixes
+
+test('copy-deck months: every WP2 day reads "Sep", never "Sept"; S7 and E5 have one source each', () => {
+  assert.equal(statusLabel('ended', {end_date: '2026-09-30'}), 'Ended / suspended 30 Sep 2026');
+  assert.equal(sweepLine({records: {day: '2026-09-30', blocked: true}}),
+    'A search for newer reports on 30 Sep 2026 could not open news websites, so no records were added. Recent coverage is especially thin.');
+  assert.equal(sweepLine({records: {day: '2026-09-30', blocked: false}}), '');
+  assert.equal(sweepLine(null), '');
+  const sept = {...events, events: events.events.map(e => ({...e, last_observed_at: '2026-09-02'}))};
+  const notice = noticeModel(readyState({data: {...readyState().data, events: sept}, now: T('2026-09-07T12:00:00Z')}));
+  assert.match(notice.lines.find(l => l.kind === 'snapshot').text, /No evidence newer than 2 Sep 2026 \(5 days ago\)/);
+  assert.match(statsHTML(readyState({data: {...readyState().data, events: sept}})), />2 Sep 2026<\/time>/);
+  const failed = readyState({data: {...readyState().data, events: null}, load: {...readyState().load, critical: 'error', errors: {events: 'error'}}});
+  assert.equal(noticeModel(failed).lines.find(l => l.kind === 'error').text, E5);
+  assert.ok(listHTML(failed, []).html.includes(E5));
+});
+
+test('controlStates: CSV refused in example mode, while loading, on error and with 0 matches; share only in example mode (C-43)', () => {
+  assert.deepEqual(controlStates(readyState()), {csvDisabled: false, shareDisabled: false});
+  assert.deepEqual(controlStates(withFilters({query: 'zzqx'})), {csvDisabled: true, shareDisabled: false});
+  assert.deepEqual(controlStates(withFilters({country: 'IS', status: 'ended'})), {csvDisabled: true, shareDisabled: false});
+  const loading = initialState({filters: EMPTY, now: OCT2});
+  assert.deepEqual(controlStates(loading), {csvDisabled: true, shareDisabled: false});
+  const failed = readyState({data: {...readyState().data, events: null}, load: {...readyState().load, critical: 'error', errors: {events: 'error'}}});
+  assert.deepEqual(controlStates(failed), {csvDisabled: true, shareDisabled: false});
+  const example = readyState({mode: 'example', data: {...readyState().data, examples}, load: {...readyState().load, lazy: {...readyState().load.lazy, examples: 'ready'}}});
+  assert.deepEqual(controlStates(example), {csvDisabled: true, shareDisabled: true});
+});
+
+test('refreshTimes: the snapshot stamp counts UTC days, so S1, the dates sheet, the chip and the notice agree (§16.2 item 8)', () => {
+  const now = T('2026-10-12T00:01:00Z');
+  const generated = events.generated_at;
+  const utc = {dataset: {rel: generated, days: 'utc', format: 'both'}, textContent: 'stale'};
+  const plain = {dataset: {rel: '2026-10-02T21:25:00Z', format: 'relative'}, textContent: 'stale'};
+  refreshTimes({querySelectorAll: selector => (selector === 'time[data-rel]' ? [utc, plain] : [])}, now);
+  assert.match(utc.textContent, /^2 Oct 2026, \d{2}:\d{2} UTC · 10 days ago$/);
+  assert.equal(plain.textContent, '9 days ago');
+  const state = readyState({now});
+  assert.equal(chipModel(state).value, 'newest evidence 10 days old');
+  assert.match(noticeModel(state).lines.find(l => l.kind === 'snapshot').text, /10 days ago/);
+  let writes = 0;
+  const counted = {dataset: utc.dataset, get textContent() { return utc.textContent; }, set textContent(v) { writes += 1; }};
+  refreshTimes({querySelectorAll: () => [counted]}, now);
+  assert.equal(writes, 0, 'unchanged text is not rewritten');
+  refreshTimes(null, now);   // no root: no throw
+});
+
+test('stampItems rows carry value (tech §7.2) and "0 items" never splits from its number', () => {
+  const items = stampItems(updateStamps({events, upcoming}), OCT2, {announcementsCount: 0});
+  for (const item of items) assert.equal(item.value, item.html);
+  const row = items.find(i => i.key === 'announcementsUpdated');
+  assert.ok(row.html.endsWith('\u00a0· 0\u00a0items'), row.html);
+  assert.match(row.html, /<time class="stamp-time" datetime="[^"]+" data-rel="[^"]+" data-format="relative">14 minutes ago<\/time>/);
+  const discovery = stampItems(updateStamps({events}), OCT2, {discoveryLoad: 'ready', discovery: {date: '2026-09-30T19:27:08Z', count: 1}}).find(i => i.key === 'discovery');
+  assert.equal(discovery.text, 'GDELT artifact created 30 Sep 2026, 19:27 UTC · 1 unverified lead');
+});
+
+/** A history and document double for createRouter: entries, push/replace/back/forward, popstate and hashchange. */
+function fakeBrowser(hash = '#/latest') {
+  const entries = [{url: `/protest-atlas/${hash}`, state: null}];
+  let index = 0;
+  const listeners = {};
+  const focused = [];
+  const fire = (type, event = {}) => { for (const fn of listeners[type] ?? []) fn(event); };
+  const hashOf = url => (url.includes('#') ? url.slice(url.indexOf('#')) : '');
+  const win = {
+    scrollY: 0,
+    location: {pathname: '/protest-atlas/', search: '', get hash() { return hashOf(entries[index].url); }},
+    history: {
+      scrollRestoration: 'auto',
+      get state() { return entries[index].state; },
+      pushState(state, _title, url) { entries.splice(index + 1); entries.push({url: url ?? entries[index].url, state: structuredClone(state)}); index += 1; },
+      replaceState(state, _title, url) { entries[index] = {url: url ?? entries[index].url, state: structuredClone(state)}; },
+      back() { index -= 1; fire('popstate'); fire('hashchange'); },
+      forward() { index += 1; fire('popstate'); fire('hashchange'); },
+    },
+    addEventListener(type, fn) { (listeners[type] ??= []).push(fn); },
+    matchMedia: () => ({matches: false, addEventListener() {}}),
+    scrollTo({top}) { win.scrollY = top; fire('scroll'); },
+  };
+  const titles = new Map();
+  const doc = {
+    title: '',
+    documentElement: {dataset: {}},
+    querySelector(selector) {
+      if (!titles.has(selector)) titles.set(selector, {focus() { focused.push(selector); }, getClientRects: () => [{}]});
+      return titles.get(selector);
+    },
+    querySelectorAll: () => [],
+    dispatchEvent() {},
+  };
+  return {
+    win, doc, entries, focused,
+    get url() { return entries[index].url; },
+    /** A native fragment navigation (skip link, typed hash): a new entry with no state, popstate, then hashchange. */
+    jump(nextHash, y) {
+      entries.splice(index + 1);
+      entries.push({url: `/protest-atlas/${nextHash}`, state: null});
+      index += 1;
+      win.scrollY = y;   // the browser scrolls to the target before the events fire
+      fire('popstate');
+      fire('hashchange');
+    },
+    scroll(y) { win.scrollY = y; fire('scroll'); },
+  };
+}
+
+test('router: user navigation scrolls to the top and focuses the title; Back AND Forward restore each entry (C-35)', () => {
+  const browser = fakeBrowser('#/latest');
+  const saved = {window: globalThis.window, document: globalThis.document};
+  globalThis.window = browser.win;
+  globalThis.document = browser.doc;
+  try {
+    const routes = [];
+    let pushes = 0;
+    const router = createRouter({defaultView: 'latest', onChange: route => routes.push(route), beforePush: () => { pushes += 1; }});
+    router.start();
+    assert.equal(browser.win.history.scrollRestoration, 'manual');
+    assert.equal(browser.win.history.state.view, 'latest');
+    assert.ok(browser.win.history.state.key);
+
+    browser.scroll(1500);
+    router.go({view: 'map'});
+    router.afterRender();
+    assert.equal(pushes, 1);
+    assert.equal(browser.url, '/protest-atlas/#/map');
+    assert.equal(browser.win.scrollY, 0);
+    assert.equal(browser.focused.at(-1), '#map-title');
+    assert.equal(browser.doc.title, 'Map — Protest Atlas');
+
+    browser.scroll(400);
+    browser.win.history.back();
+    router.afterRender();
+    assert.equal(router.current().view, 'latest');
+    assert.equal(browser.win.scrollY, 1500, 'Back restores the Reports position');
+    assert.equal(browser.focused.at(-1), '#latest-title');
+
+    browser.win.history.forward();
+    router.afterRender();
+    assert.equal(router.current().view, 'map');
+    assert.equal(browser.win.scrollY, 400, 'Forward restores the Map position');
+
+    // A record overlay opened and closed by Back changes neither scroll nor focus.
+    const focusCount = browser.focused.length;
+    router.go({record: 'es-housing-20261002'});
+    browser.scroll(400);
+    browser.win.history.back();
+    router.afterRender();
+    assert.equal(router.current().record, null);
+    assert.equal(browser.win.scrollY, 400);
+    assert.equal(browser.focused.length, focusCount);
+
+    // Re-selecting the shown view scrolls to the top; a query-only change is not the router's business.
+    browser.scroll(900);
+    router.go({view: 'map'});
+    assert.equal(browser.win.scrollY, 0);
+  } finally {
+    globalThis.window = saved.window;
+    globalThis.document = saved.document;
+  }
+});
+
+test('router: Back to a non-route hash (#main) shows the view that entry was on', () => {
+  const browser = fakeBrowser('#/latest');
+  const saved = {window: globalThis.window, document: globalThis.document};
+  globalThis.window = browser.win;
+  globalThis.document = browser.doc;
+  try {
+    const router = createRouter({defaultView: 'latest'});
+    router.start();
+    browser.scroll(0);
+    browser.jump('#main', 120);              // skip link: a new entry, the view stays
+    assert.equal(router.current().view, 'latest');
+    assert.equal(browser.win.history.state.view, 'latest');
+    router.go({view: 'map'});
+    router.afterRender();
+    assert.equal(browser.doc.documentElement.dataset.view, 'map');
+    browser.win.history.back();              // URL #main again
+    router.afterRender();
+    assert.equal(browser.url, '/protest-atlas/#main');
+    assert.equal(router.current().view, 'latest');
+    assert.equal(browser.doc.documentElement.dataset.view, 'latest');
+    assert.equal(browser.win.scrollY, 120);
+    browser.win.history.back();              // #/latest: same view, nothing moves
+    assert.equal(router.current().view, 'latest');
+    browser.jump('#/ahead/roadmap', 0);      // a typed route hash still navigates
+    router.afterRender();
+    assert.deepEqual([router.current().view, router.current().param], ['ahead', 'roadmap']);
+    assert.equal(browser.focused.at(-1), '#ahead-roadmap-title');
+  } finally {
+    globalThis.window = saved.window;
+    globalThis.document = saved.document;
+  }
+});
+
+/** Just enough DOM for mountNotice: elements with classes, data-*, children, text and a tiny innerHTML parser. */
+function miniDOM() {
+  class Node {
+    constructor(tag) { this.tagName = tag; this.children = []; this.parent = null; this.className = ''; this.dataset = {}; this.text = ''; this.hidden = false; this.writes = 0; }
+    get textContent() { return this.text + this.children.map(c => c.textContent).join(''); }
+    set textContent(value) { this.writes += 1; this.children = []; this.text = String(value); }
+    set innerHTML(html) {
+      this.writes += 1;
+      this.children = [];
+      this.text = '';
+      const stack = [this];
+      for (const [, close, tag, attrs, text] of html.matchAll(/<(\/?)([a-z0-9]+)([^>]*)>|([^<]+)/gi)) {
+        const top = stack.at(-1);
+        if (text !== undefined) { const t = new Node('#text'); t.text = text; top.append(t); continue; }
+        if (close) { stack.pop(); continue; }
+        const el = new Node(tag.toUpperCase());
+        el.className = /class="([^"]*)"/.exec(attrs)?.[1] ?? '';
+        for (const [, key, value] of attrs.matchAll(/data-([a-z-]+)="([^"]*)"/g)) el.dataset[key.replace(/-([a-z])/g, (_, c) => c.toUpperCase())] = value;
+        top.append(el);
+        stack.push(el);
+      }
+    }
+    get siblings() { return this.parent ? this.parent.children : []; }
+    get previousElementSibling() { const i = this.siblings.indexOf(this); return i > 0 ? this.siblings[i - 1] : null; }
+    append(...nodes) { for (const n of nodes) { n.remove(); n.parent = this; this.children.push(n); } }
+    prepend(node) { node.remove(); node.parent = this; this.children.unshift(node); }
+    after(node) { node.remove(); node.parent = this.parent; this.siblings.splice(this.siblings.indexOf(this) + 1, 0, node); }
+    remove() { if (this.parent) this.parent.children.splice(this.parent.children.indexOf(this), 1); this.parent = null; }
+    matches(selector) {
+      const [, tag, cls, kind] = /^([a-z]*)(?:\.([a-z-]+))?(?:\[data-kind="([^"]+)"\])?$/.exec(selector) ?? [];
+      if (tag && this.tagName !== tag.toUpperCase()) return false;
+      if (cls && !this.className.split(' ').includes(cls)) return false;
+      return !kind || this.dataset.kind === kind;
+    }
+    *walk() { for (const c of this.children) { yield c; yield* c.walk(); } }
+    querySelector(selector) { for (const n of this.walk()) if (n.tagName !== '#text' && n.matches(selector)) return n; return null; }
+  }
+  const root = new Node('DIV');
+  root.innerHTML = '<div class="notice-inner"><p class="notice-pilot"><strong>AI-assisted reporting pilot.</strong> Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.</p></div>';
+  const banner = new Node('DIV');
+  return {root, banner, document: {getElementById: id => ({'data-notice': root, 'example-banner': banner})[id] ?? null, createElement: tag => new Node(tag.toUpperCase())}};
+}
+
+test('mountNotice patches in place: the pilot line and "What this means" are never replaced; lines change only when their text does (C-26)', () => {
+  const dom = miniDOM();
+  const saved = globalThis.document;
+  globalThis.document = dom.document;
+  try {
+    const notice = mountNotice({});
+    const loading = initialState({filters: EMPTY, now: OCT2});
+    notice.render(loading);
+    const pilot = dom.root.querySelector('.notice-pilot');
+    assert.equal(dom.root.querySelector('.notice-more'), null, 'no counts while loading');
+    notice.render(readyState());
+    const more = dom.root.querySelector('.notice-more');
+    assert.ok(more, '"What this means" appears once counts are known');
+    assert.match(more.textContent, /Published episodes exist for 81 of 249 countries and territories/);
+    assert.equal(dom.root.querySelector('.notice-line'), null);
+    notice.render(readyState({now: T('2026-10-05T00:00:00Z')}));
+    const line = dom.root.querySelector('.notice-line[data-kind="snapshot"]');
+    const span = line.querySelector('.notice-line-text');
+    assert.equal(span.textContent, 'No evidence newer than 2 Oct 2026 (3 days ago) is in this snapshot. More recent protests are missing.');
+    assert.equal(span.querySelector('.notice-date').textContent, '2 Oct 2026', 'the date sits in a nowrap span');
+    const writes = span.writes;
+    notice.render(readyState({now: T('2026-10-05T06:00:00Z')}));   // same text: no write
+    assert.equal(span.writes, writes);
+    notice.render(readyState({now: T('2026-10-06T00:00:00Z')}));   // new day count: the same node is updated
+    assert.equal(dom.root.querySelector('.notice-line[data-kind="snapshot"]'), line);
+    assert.equal(span.writes, writes + 1);
+    assert.match(span.textContent, /\(4 days ago\)/);
+    notice.render(readyState({now: T('2026-10-09T12:00:00Z'), ui: {...readyState().ui, droppedParams: ['status']}}));
+    assert.equal(dom.root.querySelector('.notice-line[data-kind="snapshot"]'), line, 'S4 → S5 reuses the node');
+    assert.match(span.textContent, /^This snapshot has nothing newer than/);
+    assert.ok(dom.root.querySelector('.notice-line[data-kind="dropped"]'));
+    assert.equal(dom.root.querySelector('.notice-pilot'), pilot);
+    assert.equal(dom.root.querySelector('.notice-more'), more);
+    assert.equal(dom.root.dataset.tone, 'warn');
+    notice.render(readyState());
+    assert.equal(dom.root.querySelector('.notice-line'), null, 'lines are removed when their state passes');
+    assert.equal(dom.root.querySelector('.notice-pilot'), pilot);
+    assert.equal(dom.root.dataset.tone, 'info');
+    assert.equal(dom.banner.hidden, true);
+  } finally {
+    globalThis.document = saved;
+  }
 });
 
 // ----------------------------------------------------------------------------------------- hygiene

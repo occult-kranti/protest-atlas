@@ -1,21 +1,37 @@
-// <dialog> sheet behaviour and chrome metrics (WP1). Tech §4.6 with SPEC C-01 (no detents), C-13, C-25, C-42, C-47.
-// DOM-free when loaded: every `document`/`window` access happens inside a function call.
+// <dialog> sheets and chrome metrics (WP1; tech §4.6, SPEC C-01, C-13, C-25, C-42, C-47). DOM-free at import.
 
 const DEFAULT_FOCUS = '[data-autofocus], h2[tabindex="-1"]';
 const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), '
   + 'textarea:not([disabled]), summary, [tabindex]:not([tabindex="-1"])';
 
-/** dialog -> {trigger, returnFocus, closing} for every sheet opened through openSheet. */
-const sheets = new WeakMap();
-/** document -> {destroy} so initSheets binds its listeners once per root. */
-const bound = new WeakMap();
-/** document -> chrome-metrics controller (initChromeMetrics is idempotent). */
-const metrics = new WeakMap();
+const sheets = new WeakMap();   // dialog -> {trigger, returnFocus, closing}
+const bound = new WeakMap();    // root -> initSheets api
+const metrics = new WeakMap();  // document -> initChromeMetrics api
 
 const docOf = node => node?.ownerDocument ?? (node?.nodeType === 9 ? node : null);
 const viewOf = node => docOf(node)?.defaultView ?? null;
 const isConnected = el => Boolean(el && el.isConnected !== false);
 const displayed = el => Boolean(el && typeof el.getClientRects === 'function' && el.getClientRects().length > 0);
+const onScreen = el => {
+  const view = viewOf(el);
+  const r = view && el.getBoundingClientRect?.();
+  return !r || (r.bottom > 0 && r.right > 0 && r.top < view.innerHeight && r.left < view.innerWidth);
+};
+
+// overflow: hidden on <html> removes a classic scrollbar; pad by its width so the page does not shift sideways.
+function lockScroll(doc) {
+  const html = doc?.documentElement;
+  if (!html || html.classList.contains?.('sheet-open')) return;
+  const gap = typeof html.clientWidth === 'number' ? (doc.defaultView?.innerWidth ?? 0) - html.clientWidth : 0;
+  if (gap > 0 && html.style) html.style.paddingInlineEnd = `${gap}px`;
+  html.classList.add('sheet-open');
+}
+function unlockScroll(doc) {
+  const html = doc?.documentElement;
+  if (!html || doc.querySelector?.('dialog.sheet[open]')) return;
+  html.classList.remove('sheet-open');
+  if (html.style?.paddingInlineEnd) html.style.paddingInlineEnd = '';
+}
 
 function emit(dialog, type, detail) {
   const Ctor = viewOf(dialog)?.CustomEvent ?? globalThis.CustomEvent;
@@ -42,7 +58,7 @@ function resolveTarget(dialog, focus) {
   return dialog.querySelector?.(FOCUSABLE) ?? dialog;
 }
 
-/** Element that scrolls the sheet: `.sheet-body`, or the dialog itself under `max-height: 500px` (C-42). */
+/** `.sheet-body`, or the dialog itself under `max-height: 500px` (C-42). */
 export function sheetScroller(dialog) {
   if (!dialog) return null;
   const body = dialog.querySelector?.(':scope > .sheet-body') ?? null;
@@ -69,9 +85,9 @@ export function openSheet(dialog, {trigger = null, focus = DEFAULT_FOCUS, return
       closing: false,
     };
     sheets.set(dialog, record);
+    lockScroll(doc);
     if (typeof dialog.showModal === 'function') dialog.showModal();
     else dialog.open = true;
-    doc?.documentElement?.classList.add('sheet-open');
   } else if (known) {
     if (trigger) known.trigger = trigger;
     if (typeof returnFocus === 'function') known.returnFocus = returnFocus;
@@ -79,19 +95,22 @@ export function openSheet(dialog, {trigger = null, focus = DEFAULT_FOCUS, return
   const target = resolveTarget(dialog, focus);
   const heading = target !== dialog && target.matches?.('h1, h2, h3, [tabindex="-1"]');
   if (target === dialog && !dialog.hasAttribute?.('tabindex')) dialog.setAttribute?.('tabindex', '-1');
-  // Headings take programmatic focus without a ring (SPEC §8.1); a named control scrolls into view.
   focusElement(target, heading ? {preventScroll: true, focusVisible: false} : {preventScroll: false});
   emit(dialog, 'sheet:open', {reason: 'open', trigger: sheets.get(dialog)?.trigger ?? null});
 }
 
+// Focus goes back without scrolling (C-35). A returnFocus() target that lies wholly off-screen (a deep-linked record's
+// card far down the list) is skipped for the view title, so focus is never invisible (WCAG 2.4.11).
 function restoreFocus(dialog, record) {
   const doc = docOf(dialog);
-  const candidates = [];
-  try { candidates.push(record?.returnFocus?.()); } catch { /* returnFocus is advisory */ }
-  candidates.push(record?.trigger, doc?.getElementById?.('main'));
-  for (const el of candidates) {
+  let returned = null;
+  try { returned = record?.returnFocus?.() ?? null; } catch { /* advisory */ }
+  const title = [...(doc?.querySelectorAll?.('main h1[tabindex="-1"]') ?? [])].find(displayed);
+  const candidates = [[returned, true], [record?.trigger, false], [title, true], [doc?.getElementById?.('main'), false]];
+  for (const [el, visibleOnly] of candidates) {
     if (!el || el === doc?.body || !isConnected(el) || dialog.contains?.(el)) continue;
     if (el.id !== 'main' && !displayed(el)) continue;
+    if (visibleOnly && !onScreen(el)) continue;
     if (focusElement(el, {preventScroll: true})) return el;
   }
   return null;
@@ -100,9 +119,7 @@ function restoreFocus(dialog, record) {
 function finishClose(dialog, reason) {
   const record = sheets.get(dialog) ?? {};
   sheets.delete(dialog);
-  const doc = docOf(dialog);
-  const anyOpen = doc?.querySelector?.('dialog.sheet[open]');
-  if (!anyOpen) doc?.documentElement?.classList.remove('sheet-open');
+  unlockScroll(docOf(dialog));
   restoreFocus(dialog, record);
   emit(dialog, 'sheet:close', {reason});
 }
@@ -133,7 +150,7 @@ function scrollTargetIntoView(target) {
   target.scrollIntoView?.({block: 'start', behavior: 'auto'});
 }
 
-/** Jump to an in-page id without touching the hash route; honours scroll-padding (WCAG 2.4.11). */
+/** In-page jump without touching the route; honours scroll-padding (WCAG 2.4.11). */
 function scrollToId(id, root) {
   const doc = docOf(root) ?? root;
   const target = id ? doc.getElementById(id) : null;
@@ -163,7 +180,7 @@ export function initSheets(root = document) {
     const target = event.target;
     if (!target?.closest) return;
 
-    // Backdrop: a click whose press and release both fall outside the open sheet's box.
+    // Backdrop: press and release both outside the sheet's box.
     if (target.matches?.('dialog.sheet[open]')) {
       const wasOutside = downOutside === target;
       downOutside = null;
@@ -188,7 +205,7 @@ export function initSheets(root = document) {
       const dialog = (named && doc.getElementById(named)) || closer.closest('dialog');
       const isLink = closer.matches('a[href]');
       if (!isLink) event.preventDefault();
-      // An <a href data-close-sheet> closes the sheet and lets its navigation run (C-47).
+      // <a href data-close-sheet> closes and lets the navigation run (C-47).
       if (dialog) closeSheet(dialog, isLink ? 'link' : 'button');
       return;
     }
@@ -200,7 +217,7 @@ export function initSheets(root = document) {
     }
   };
 
-  // cancel and close do not bubble, so they are caught in the capture phase.
+  // cancel and close do not bubble: capture phase.
   const onCancel = event => {
     const dialog = event.target;
     if (!dialog?.matches?.('dialog.sheet')) return;
@@ -211,11 +228,11 @@ export function initSheets(root = document) {
     const dialog = event.target;
     if (!dialog?.matches?.('dialog.sheet')) return;
     const record = sheets.get(dialog);
-    if (record && !record.closing) finishClose(dialog, 'programmatic');
+    // A late 'close' from a sheet that was closed and reopened in the same task must not close the new session.
+    if (record && !record.closing && !dialog.open) finishClose(dialog, 'programmatic');
   };
 
-  // Keeps a focused control fully inside a sideways-scrolling row (quick chips, region chips, record tabs). Browsers only
-  // scroll "if needed", and a partly visible chip counts as visible, so its centre could sit outside the row (WCAG 2.4.11).
+  // Keeps a focused control wholly inside a sideways-scrolling row (chips, record tabs); browsers stop at "partly visible".
   const onFocusIn = event => {
     const el = event.target;
     const view = doc.defaultView;
@@ -252,7 +269,7 @@ export function initSheets(root = document) {
   return api;
 }
 
-/** Writes measured --header-h and --tabbar-h on :root for displayed elements only (C-25, C-44). */
+/** Measured --header-h / --tabbar-h on :root, for displayed elements only (C-25, C-44). */
 export function initChromeMetrics(root = document) {
   const doc = docOf(root) ?? root;
   if (metrics.has(doc)) { metrics.get(doc).refresh(); return metrics.get(doc); }

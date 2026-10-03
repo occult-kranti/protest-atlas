@@ -2,6 +2,7 @@
 // Local-only browser smoke for Protest Atlas 4.0 (SPEC §22.2, tech §10.4). CommonJS because NODE_PATH does not apply to ESM.
 //   NODE_PATH=$(npm root -g) node tests/browser/smoke.cjs [--root _site] [--prefix /protest-atlas/] [--direction live|atlas]
 //                                                          [--shots <dir>] [--only 1,2,13] [--skip 12] [--verbose]
+//                                                          [--baseline-css <3.1 styles.css>]   (check 10 without git)
 // Starts its own static server, drives Chromium through every check and prints a JSON summary. Exit 1 on any failure.
 // It never runs in CI (outside the tests/*.mjs and test_*.py globs).
 'use strict';
@@ -30,6 +31,7 @@ if (!PREFIX.startsWith('/')) PREFIX = `/${PREFIX}`;
 if (!PREFIX.endsWith('/')) PREFIX += '/';
 const DIRECTION = arg('direction', 'live');
 const SHOTS = arg('shots') ? path.resolve(arg('shots')) : null;
+const BASELINE_CSS = arg('baseline-css') ? path.resolve(arg('baseline-css')) : null;
 const ONLY = arg('only') ? new Set(arg('only').split(',').map(s => s.trim())) : null;
 const SKIP = new Set((arg('skip') || '').split(',').map(s => s.trim()).filter(Boolean));
 const VERBOSE = flag('verbose');
@@ -57,10 +59,11 @@ const VP = {
   '320': {viewport: {width: 320, height: 640}, isMobile: true, hasTouch: true, deviceScaleFactor: 2},
   '640x410': {viewport: {width: 640, height: 410}},
   '844x390': {viewport: {width: 844, height: 390}, isMobile: true, hasTouch: true, deviceScaleFactor: 2},
+  '720x450': {viewport: {width: 720, height: 450}},
   '320x256': {viewport: {width: 320, height: 256}},
 };
 const MAIN_VPS = ['360', '390', '768', '1440'];
-const SHORT_VPS = ['640x410', '844x390', '320x256'];
+const SHORT_VPS = ['640x410', '844x390', '720x450', '320x256'];
 
 // Which package must land before a check can pass (SPEC §19 acceptance lists).
 const OWNERS = {
@@ -97,14 +100,15 @@ function startServer() {
 // Data used by the checks (record ids, data-verbatim exception for the vocabulary scans)
 const readJSON = file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
 const EVENTS = readJSON('public/events.json');
-const PUBLIC_STRINGS = (() => {
-  const out = [];
-  const walk = v => { if (typeof v === 'string') out.push(v); else if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
+const PUBLIC_VALUES = (() => {
+  const out = new Set();
+  const walk = v => { if (typeof v === 'string') out.add(v.trim()); else if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
   for (const f of fs.readdirSync(path.join(ROOT, 'public')).filter(n => n.endsWith('.json'))) {
     try { walk(readJSON(`public/${f}`)); } catch { /* unreadable file: no exception granted */ }
   }
-  return out.join('\u0000');
+  return [...out];
 })();
+const VERBATIM_MIN = 24;   // a shorter text node is exempt only when it equals a whole value
 
 const BANNED = ['live', 'live now', 'happening now', 'right now', 'breaking', 'real-time', 'active protests', 'current protests',
   'ongoing now', 'hotspots?', 'trending', 'most active', 'escalating', 'unrest index', 'severity', 'danger', 'risk level',
@@ -209,20 +213,44 @@ async function openRecord(page, id, search = '') {
   await page.waitForTimeout(300);
 }
 
-/** Text-level scans over the whole DOM: banned vocabulary (§18.1) and stance totals (§18.1, editorial check 3). */
+/**
+ * Text-level scans over the whole DOM: banned vocabulary (§18.1) and stance totals (§18.1, editorial check 3).
+ * Data-verbatim exception (b): the text node equals a whole public/*.json value, or it is at least VERBATIM_MIN characters,
+ * occurs inside a value, and the term matches the value at the same place (so "Live" inside "Livelihoods" is still a hit).
+ */
 async function scanDOM(page, label) {
-  return page.evaluate(({banned, allow, stance, publicStrings, label}) => {
+  return page.evaluate(({banned, allow, stance, publicValues, min, label}) => {
     const hits = [];
-    const res = banned.map(s => new RegExp(s, 'i'));
-    const stanceRe = new RegExp(stance, 'i');
-    const verbatim = text => text.length > 3 && publicStrings.includes(text);
+    const values = new Set(publicValues);
+    const long = publicValues.filter(v => v.length >= min);
+    const inValue = (text, source) => {
+      const g = new RegExp(source, 'gi');
+      for (const v of long) {
+        const at = v.indexOf(text);
+        if (at < 0) continue;
+        g.lastIndex = 0;
+        for (let m = g.exec(v); m; m = g.exec(v)) {
+          if (m.index >= at && m.index + m[0].length <= at + text.length) return true;
+          if (!m[0]) g.lastIndex += 1;
+        }
+      }
+      return false;
+    };
+    const verbatim = (texts, source) => texts.some(t => values.has(t) || (t.length >= min && inValue(t, source)));
     const check = (where, raw, {stanceScan = true} = {}) => {
       const trimmed = raw.replace(/\s+/g, ' ').trim();
       if (!trimmed) return;
+      const texts = [trimmed, raw.trim()];
       let text = trimmed;
       for (const a of allow) text = text.split(a).join(' ');
-      for (const re of res) if (re.test(text) && !verbatim(trimmed) && !verbatim(raw.trim())) hits.push({label, kind: 'banned', where, text: trimmed.slice(0, 160), term: re.source});
-      if (stanceScan && (stanceRe.test(text) || text.includes('%')) && !verbatim(trimmed) && !verbatim(raw.trim())) hits.push({label, kind: 'stance-total', where, text: trimmed.slice(0, 160)});
+      for (const source of banned) {
+        if (new RegExp(source, 'i').test(text) && !verbatim(texts, source)) hits.push({label, kind: 'banned', where, text: trimmed.slice(0, 160), term: source});
+      }
+      if (stanceScan) {
+        for (const source of [stance, '%']) {
+          if (new RegExp(source, 'i').test(text) && !verbatim(texts, source)) hits.push({label, kind: 'stance-total', where, text: trimmed.slice(0, 160)});
+        }
+      }
     };
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     for (let n = walker.nextNode(); n; n = walker.nextNode()) {
@@ -242,7 +270,27 @@ async function scanDOM(page, label) {
       if (/^(updated|last updated|reviewed|verified)\b/i.test(el.textContent.trim())) hits.push({label, kind: 'stamp-word', where: el.className, text: el.textContent.trim().slice(0, 80)});
     }
     return hits;
-  }, {banned: BANNED_SOURCES, allow: ALLOWLIST, stance: STANCE_TOTAL, publicStrings: PUBLIC_STRINGS, label});
+  }, {banned: BANNED_SOURCES, allow: ALLOWLIST, stance: STANCE_TOTAL, publicValues: PUBLIC_VALUES, min: VERBATIM_MIN, label});
+}
+
+/** The scanner must see short UI labels that also occur inside data ("Live" in "Livelihoods", "vs" in URLs). */
+async function scanSelfTest(f, kind) {
+  const {page, close} = await open('390');
+  const headline = PUBLIC_VALUES.find(v => /(?<![\w-])join(?![\w-])/i.test(v) && v.length >= VERBATIM_MIN && v.length < 160);
+  await page.evaluate(headline => {
+    const box = document.createElement('div');
+    box.innerHTML = '<span class="smoke-probe badge">Live</span><span class="smoke-probe chip">LIVE</span><span class="smoke-probe">vs</span>'
+      + '<span class="smoke-probe">Join</span><span class="smoke-probe badge">New</span><p class="smoke-probe">12 against</p><p class="smoke-probe">40%</p>'
+      + (headline ? `<p class="smoke-probe">${headline.replace(/</g, '&lt;')}</p>` : '');
+    document.querySelector('#main').append(box);
+  }, headline ?? null);
+  const hits = (await scanDOM(page, 'self-test')).filter(h => String(h.where).includes('smoke-probe') && (kind === 'banned' ? h.kind !== 'stance-total' : h.kind === 'stance-total'));
+  const texts = hits.map(h => h.text).sort();
+  const expected = kind === 'banned' ? ['Join', 'LIVE', 'Live', 'New', 'vs'] : ['12 against', '40%'];
+  f.ok(JSON.stringify(texts) === JSON.stringify(expected), `scanner self-test (${kind}): ${JSON.stringify(texts)} vs ${JSON.stringify(expected)}`);
+  if (headline) f.ok(!texts.includes(headline), 'scanner self-test: a whole data value stays exempt');
+  else f.note('no data value with "join" to test the exemption');
+  await close();
 }
 
 /** Controls smaller than 44×44 within the first `screens` viewports (inline links inside running text are exempt). */
@@ -473,38 +521,47 @@ CHECKS[4] = async f => {
   } else f.ok(false, '4.5 no .source-ref in the record');
   await close();
 
-  // 4.6 Share feedback inside the sheet: no navigator.share, clipboard refused.
-  const s = await open('390');
-  await s.page.evaluate(() => {
-    try { Object.defineProperty(navigator, 'share', {value: undefined, configurable: true}); } catch {}
-    try { Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.reject(new Error('denied'))}, configurable: true}); } catch {}
-  });
-  await openRecord(s.page, WORKED.tz);
-  await s.page.click('#record-share');
-  await s.page.waitForTimeout(500);
-  const fb = await s.page.evaluate(() => {
-    const el = document.querySelector('#record-feedback');
-    if (!el || el.hidden) return {visible: false};
-    const r = el.getBoundingClientRect();
-    const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
-    const input = el.querySelector('.toast-url');
-    return {visible: true, onTop: el.contains(hit), value: input?.value ?? '', focused: document.activeElement === input,
-      selected: input ? input.selectionStart === 0 && input.selectionEnd === input.value.length : false};
-  });
-  f.ok(fb.visible && fb.onTop, `4.6 #record-feedback visible on top (${JSON.stringify(fb)})`);
-  f.ok(fb.value.includes(`#/record/${WORKED.tz}`), '4.6 .toast-url holds the record URL');
-  f.ok(fb.focused && fb.selected, '4.6 .toast-url focused and fully selected');
-  await s.page.waitForTimeout(5000);
-  f.ok(await s.page.evaluate(() => !document.querySelector('#record-feedback').hidden), '4.6 still visible after 5 s');
-  await s.page.click('#record-feedback .toast-close').catch(() => f.ok(false, '4.6 no .toast-close'));
-  await s.page.waitForTimeout(300);
-  f.ok(await s.page.evaluate(() => document.querySelector('#record-feedback').hidden && document.activeElement?.id === 'record-share'), '4.6 Close hides it and focus returns to #record-share');
-  await s.page.evaluate(() => Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.resolve()}, configurable: true}));
-  await s.page.click('#record-share');
-  await s.page.waitForTimeout(400);
-  f.ok((await s.page.textContent('#record-feedback')).includes('Link copied.'), '4.6 "Link copied." inside the sheet');
-  f.ok(((await s.page.textContent('#action-feedback')) || '').trim() === '', '4.6 #action-feedback stays empty');
-  await s.close();
+  // 4.6 Share feedback inside the sheet: no navigator.share, clipboard refused. Also at 844×390 and 720×450 (200 % zoom), where
+  // the dialog scrolls as one and the toast must still sit inside the viewport (C-36, C-42, WCAG 2.4.11).
+  for (const vp of ['390', '844x390', '720x450']) {
+    const s = await open(vp);
+    await s.page.evaluate(() => {
+      try { Object.defineProperty(navigator, 'share', {value: undefined, configurable: true}); } catch {}
+      try { Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.reject(new Error('denied'))}, configurable: true}); } catch {}
+    });
+    await openRecord(s.page, WORKED.tz);
+    await s.page.click('#record-share');
+    await s.page.waitForTimeout(500);
+    const probe = () => s.page.evaluate(() => {
+      const el = document.querySelector('#record-feedback');
+      if (!el || el.hidden) return {visible: false};
+      const r = el.getBoundingClientRect();
+      const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      const input = el.querySelector('.toast-url');
+      return {visible: true, onTop: el.contains(hit), inView: r.top >= 0 && r.bottom <= innerHeight && r.left >= 0 && r.right <= innerWidth,
+        rect: [r.left, r.top, r.width, r.height].map(Math.round), value: input?.value ?? '', focused: document.activeElement === input,
+        selected: input ? input.selectionStart === 0 && input.selectionEnd === input.value.length : false};
+    });
+    const fb = await probe();
+    f.ok(fb.visible && fb.onTop && fb.inView, `4.6 ${vp}: #record-feedback visible on top inside the viewport (${JSON.stringify(fb)})`);
+    f.ok(fb.value.includes(`#/record/${WORKED.tz}`), `4.6 ${vp}: .toast-url holds the record URL`);
+    f.ok(fb.focused && fb.selected, `4.6 ${vp}: .toast-url focused and fully selected`);
+    await shot(s.page, `feedback-${vp}`);
+    if (vp === '390') {
+      await s.page.waitForTimeout(5000);
+      f.ok(await s.page.evaluate(() => !document.querySelector('#record-feedback').hidden), '4.6 still visible after 5 s');
+    }
+    await s.page.click('#record-feedback .toast-close').catch(() => f.ok(false, `4.6 ${vp}: no .toast-close`));
+    await s.page.waitForTimeout(300);
+    f.ok(await s.page.evaluate(() => document.querySelector('#record-feedback').hidden && document.activeElement?.id === 'record-share'), `4.6 ${vp}: Close hides it and focus returns to #record-share`);
+    await s.page.evaluate(() => Object.defineProperty(navigator, 'clipboard', {value: {writeText: () => Promise.resolve()}, configurable: true}));
+    await s.page.click('#record-share');
+    await s.page.waitForTimeout(400);
+    const copied = await probe();
+    f.ok((await s.page.textContent('#record-feedback')).includes('Link copied.') && copied.inView, `4.6 ${vp}: "Link copied." inside the sheet and the viewport (${JSON.stringify(copied.rect)})`);
+    f.ok(((await s.page.textContent('#action-feedback')) || '').trim() === '', `4.6 ${vp}: #action-feedback stays empty`);
+    await s.close();
+  }
 
   // 4.7 Stepping at the ends, scroll reset and the announcer; outside the filtered list.
   const t = await open('390', {search: '?country=FR'});
@@ -529,6 +586,20 @@ CHECKS[4] = async f => {
     prev: document.querySelector('#record-prev').hidden, next: document.querySelector('#record-next').hidden}));
   f.ok(outside.eyebrow === 'Record' && outside.prev && outside.next, `4.7 a record outside the filters: eyebrow "Record", no prev/next (${JSON.stringify(outside)})`);
   await t.close();
+
+  // 4.8 An <a href data-close-sheet> closes the sheet and its navigation runs (C-47).
+  const l = await open('390');
+  await l.page.click('[data-open-sheet="filters-sheet"]');
+  await l.page.waitForTimeout(400);
+  const link = await l.page.$('#filters-sheet a[href][data-close-sheet]');
+  if (link) {
+    await link.scrollIntoViewIfNeeded();
+    await link.click();
+    await l.page.waitForTimeout(700);
+    const after = await l.page.evaluate(() => ({open: document.querySelector('#filters-sheet').open, hash: location.hash, focus: document.activeElement?.id}));
+    f.ok(!after.open && after.hash === '#/ahead/roadmap' && after.focus === 'ahead-roadmap-title', `4.8 a[data-close-sheet] closes and navigates (${JSON.stringify(after)})`);
+  } else f.ok(false, '4.8 no #filters-sheet a[href][data-close-sheet]');
+  await l.close();
 };
 
 // 5. Permalinks.
@@ -550,7 +621,7 @@ CHECKS[5] = async f => {
 
 // 6. Map (tech 6 + C-40/C-41).
 CHECKS[6] = async f => {
-  for (const vp of ['390', '1440']) {
+  for (const vp of ['360', '390', '768', '1440']) {
     const {page, close, errors} = await open(vp, {hash: '#/map'});
     await page.waitForSelector('#world-map svg .map-country', {timeout: 8000}).catch(() => {});
     const info = await page.evaluate(() => {
@@ -582,7 +653,7 @@ CHECKS[6] = async f => {
       await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2);
       await page.mouse.wheel(0, 300);
       await page.waitForTimeout(400);
-      if (vp === '390') f.ok(await page.evaluate(() => scrollY) > y0, `${vp}: wheel over the map scrolls the page`);
+      if (vp === '390' || vp === '1440') f.ok(await page.evaluate(() => scrollY) > y0, `${vp}: wheel over the map scrolls the page`);
     }
     f.ok(!errors.some(e => /world-countries\.geo\.json/.test(e)), `${vp}: no GeoJSON request`);
     await close();
@@ -663,7 +734,7 @@ CHECKS[7] = async f => {
       f.ok(cov.ratio <= 0.45, `${vp} ${route}: fixed/sticky chrome covers ${(cov.ratio * 100).toFixed(0)}% after scrolling`);
       f.ok((await overflow(s.page)) <= 0, `${vp} ${route}: horizontal overflow`);
       await s.page.evaluate(() => { scrollTo(0, 0); document.activeElement?.blur(); });
-      const hidden = await obscuredFocus(s.page, 25);
+      const hidden = await obscuredFocus(s.page, 40);
       f.ok(hidden.length === 0, `${vp} ${route}: obscured focus ${JSON.stringify(hidden.slice(0, 3))}`);
     }
     await go(s.page, '#/latest');
@@ -677,6 +748,8 @@ CHECKS[7] = async f => {
       }, which === 'record' ? '#record-sheet' : '#filters-sheet');
       f.ok(fill.fills && /auto|scroll/.test(fill.scrolls), `${vp}: the ${which} sheet fills the viewport and scrolls as one (${JSON.stringify(fill)})`);
       await shot(s.page, `short-${which}-${vp}`);
+      const inSheet = await obscuredFocus(s.page, 40);
+      f.ok(inSheet.length === 0, `${vp}: obscured focus in the ${which} sheet ${JSON.stringify(inSheet.slice(0, 3))}`);
       await s.page.keyboard.press('Escape');
       await s.page.waitForTimeout(300);
     }
@@ -756,7 +829,9 @@ CHECKS[9] = async f => {
 // 10. review.html against the 3.1 baseline (styles.css from the baseline commit through page.route).
 CHECKS[10] = async f => {
   let baselineCSS;
-  try { baselineCSS = execFileSync('git', ['-C', REPO, 'show', `${BASELINE_COMMIT}:styles.css`], {encoding: 'utf8'}); } catch (e) { f.ok(false, `git show ${BASELINE_COMMIT}:styles.css failed`); return; }
+  try {
+    baselineCSS = BASELINE_CSS ? fs.readFileSync(BASELINE_CSS, 'utf8') : execFileSync('git', ['-C', REPO, 'show', `${BASELINE_COMMIT}:styles.css`], {encoding: 'utf8'});
+  } catch (e) { f.ok(false, BASELINE_CSS ? `cannot read ${BASELINE_CSS}` : `git show ${BASELINE_COMMIT}:styles.css failed (pass --baseline-css <file>)`); return; }
   const boxes = async (vp, baseline) => {
     const ctx = await browser.newContext({...VP[vp]});
     const page = await ctx.newPage();
@@ -775,7 +850,7 @@ CHECKS[10] = async f => {
     await ctx.close();
     return {...out, errors};
   };
-  for (const vp of ['390', '1440']) {
+  for (const vp of ['390', '768', '1440']) {
     const base = await boxes(vp, true);
     const now = await boxes(vp, false);
     f.ok(now.errors.length === 0, `${vp}: review errors ${now.errors}`);
@@ -901,6 +976,7 @@ async function scanAllStates(clock) {
 
 // 14. Banned vocabulary on the 2 Oct and 9 Oct DOMs.
 CHECKS[14] = async f => {
+  await scanSelfTest(f, 'banned');
   for (const clock of [CLOCK, STALE_CLOCK]) {
     const hits = (await scanAllStates(clock)).filter(h => h.kind !== 'stance-total');
     f.ok(hits.length === 0, `${clock}: ${JSON.stringify(hits.slice(0, 6))}`);
@@ -1110,6 +1186,7 @@ CHECKS[22] = async f => {
 
 // 23. Stance totals on the 2 Oct and 9 Oct DOMs.
 CHECKS[23] = async f => {
+  await scanSelfTest(f, 'stance');
   for (const clock of [CLOCK, STALE_CLOCK]) {
     const hits = (await scanAllStates(clock)).filter(h => h.kind === 'stance-total');
     f.ok(hits.length === 0, `${clock}: ${JSON.stringify(hits.slice(0, 6))}`);

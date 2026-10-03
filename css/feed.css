@@ -9,15 +9,18 @@
   .feed-stat-time, .feed-stat time { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .feed-stat--assembled .feed-stat-time { color: var(--text-2); }
   .feed-stat--scope { font: 600 var(--fs-md)/1.32 var(--font-sans); color: var(--text); text-wrap: pretty; }
+  @media (min-width: 600px) { .feed-stat--scope { letter-spacing: -.01em; } }   /* S2 on one line in the 720 column (§5) */
   .feed-stat--scope strong { font-weight: 750; }
   .feed-stat--example { font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
 
   /* ---- #filter-bar: search, Filters (n), quick chips (§6.2) ------------------------------------------ */
+  /* Below 600 the search takes the full width, so its placeholder is never cut, and "Filters (n)" leads the
+     quick-chip row. From 600 the Filters button sits beside the search and the chips wrap underneath. */
   .filter-bar {
-    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center;
+    display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 4px; align-items: center;
     margin-top: 10px;
   }
-  .filter-search { position: relative; min-width: 0; }
+  .filter-search { position: relative; min-width: 0; grid-column: 1 / -1; }
   .filter-search input {
     width: 100%; min-height: 48px; padding: 0 44px 0 42px;
     border: 1px solid var(--border-input); border-radius: var(--r-2);
@@ -32,22 +35,26 @@
   }
   .filter-clear { position: absolute; right: 2px; top: 50%; translate: 0 -50%; color: var(--text-2); }
   .filter-clear[hidden] { display: none; }
-  .filter-open { min-height: 48px; padding-inline: 14px 16px; }
+  .filter-open { min-height: var(--tap); padding-inline: 12px 14px; border-radius: var(--r-pill); gap: 6px; }
   .filter-count { font-variant-numeric: tabular-nums; }
 
+  /* The chips scroll inside their own box, bleeding to the right edge; an 8 px fade at each end. */
   .quick-chips {
-    grid-column: 1 / -1; min-width: 0;
-    margin-inline: calc(-1 * var(--gutter)); padding: 3px var(--gutter);
+    min-width: 0;
+    margin-inline-end: calc(-1 * var(--gutter)); padding: 3px var(--gutter) 3px 8px;
     overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
-    scroll-padding-inline: var(--gutter);
-    mask-image: linear-gradient(to right, transparent 0, var(--text) var(--gutter), var(--text) calc(100% - var(--gutter)), transparent 100%);
+    scroll-padding-inline: 8px var(--gutter);
+    mask-image: linear-gradient(to right, transparent 0, var(--text) 8px, var(--text) calc(100% - var(--gutter)), transparent 100%);
   }
   .quick-chips::-webkit-scrollbar { display: none; }
   .quick-chips-track { display: flex; gap: 8px; width: max-content; padding-block: 2px; }
   .quick-chip .icon:not(.chip-check) { width: 18px; height: 18px; margin-inline-end: -4px; }
   @media (min-width: 600px) {
+    .filter-bar { grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
+    .filter-search { grid-column: auto; }
+    .filter-open { min-height: 48px; padding-inline: 14px 16px; border-radius: var(--r-2); gap: 8px; }
     /* Wider screens: the chips wrap instead of scrolling, so none is hidden under a fade. */
-    .quick-chips { margin-inline: 0; padding: 0; overflow: visible; mask-image: none; }
+    .quick-chips { grid-column: 1 / -1; margin-inline: 0; padding: 0; overflow: visible; mask-image: none; }
     .quick-chips-track { flex-wrap: wrap; width: auto; padding: 0; gap: 8px 6px; }
     .quick-chip { padding-inline: 10px; }
   }
@@ -68,8 +75,10 @@
   .feed-head > :not(h1, .feed-density) { grid-column: 1 / -1; }
 
   /* Segmented Cards | List toggle: two real 44 px buttons sharing a border. */
-  .feed-density { display: inline-flex; }
+  /* Equal columns, so the pressed button's check (list.js adds .feed-density-check) never shifts the pair. */
+  .feed-density { display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; justify-self: end; }
   .feed-density button {
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
     min-height: var(--tap); min-width: 64px; padding: 0 14px;
     border: 1px solid var(--border-input); background: var(--bg-raised); color: var(--text-2);
     font: 600 var(--fs-sm)/1 var(--font-sans); cursor: pointer;
@@ -79,16 +88,24 @@
   .feed-density button:last-child { margin-inline-start: -1px; border-radius: 0 var(--r-pill) var(--r-pill) 0; }
   .feed-density button[aria-pressed="true"] { position: relative; background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
   .feed-density button:focus-visible { position: relative; z-index: 1; }
+  .feed-density-check { flex: none; width: 16px; height: 16px; margin-inline-start: -4px; }
+  .feed-density button:not([aria-pressed="true"]) .feed-density-check { display: none; }
   .feed-head h1 { align-self: center; }
 
   .result-summary { margin: 0; min-height: 1.45em; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
 
-  .feed-actions { display: flex; flex-wrap: wrap; gap: 0 4px; margin: 0 0 0 -8px; }
+  /* The -8 px offset aligns the first label with the title. The same gap and offset hold when a button is
+     refused (dashed box), so the row never moves; only a refused first button (example mode) drops the offset. */
+  .feed-actions { display: flex; flex-wrap: wrap; gap: 0 8px; margin: 0 0 0 -8px; }
   .feed-actions .btn { padding-inline: 8px; font-size: var(--fs-sm); gap: 6px; }
   .feed-actions .btn .icon { width: 18px; height: 18px; }
   .feed-actions .btn[aria-disabled="true"] { border-color: var(--border-input); }
-  /* Refused actions draw a dashed box, so drop the optical offset and give the boxes room. */
-  .feed-actions:has(> [aria-disabled="true"]) { margin: 4px 0; gap: 8px; }
+  .feed-actions:has(> :first-child[aria-disabled="true"]) { margin-inline-start: 0; }
+  @media (min-width: 600px) {
+    /* The summary and the actions share a row (§5: the first card and the next one start higher). */
+    .feed-head > .result-summary { grid-column: 1; }
+    .feed-head > .feed-actions { grid-column: 2; justify-self: end; margin: 0; }
+  }
 
   .feed-explainer { margin-bottom: -6px; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
   .feed-explainer[open] { margin-bottom: 4px; }
@@ -115,7 +132,7 @@
     font: 700 var(--fs-md)/1.3 var(--font-sans); color: var(--text);
   }
   .feed-group-count { font-weight: 600; color: var(--text-muted); font-variant-numeric: tabular-nums; }
-  .feed-group-note { margin: 1px 0 0; max-width: 62ch; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
+  .feed-group-note { margin: 1px 0 0; max-width: 80ch; text-wrap: pretty; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
   .feed-group-note--end { margin-top: 12px; padding-inline-start: 12px; border-inline-start: 2px solid var(--border); }
 
   .feed-list { display: grid; gap: 12px; margin: 6px 0 0; padding: 0; list-style: none; }
@@ -148,7 +165,7 @@
   .filter-field > label { display: block; font-weight: 600; }
   /* A group of fields (History) is a ruled section; its field labels sit one step below the legend. */
   .filter-group:has(> .filter-field) { padding-top: 16px; border-top: 1px solid var(--border); }
-  .filter-group > .filter-field > label { font-size: 15px; color: var(--text-2); }
+  .filter-group > .filter-field > label { font-size: var(--fs-md); color: var(--text-2); }
   .filter-field select { width: 100%; min-height: 48px; font-size: var(--fs-md); }
   .filter-field select:disabled { color: var(--text-muted); border-style: dashed; cursor: not-allowed; }
   .filter-help { margin: 8px 0 0; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-muted); max-width: 60ch; }
@@ -166,7 +183,7 @@
   .filter-segment label {
     position: relative; display: flex; align-items: center; justify-content: center; gap: 4px;
     min-height: 48px; padding: 0 6px; border-radius: calc(var(--r-2) - 3px);
-    color: var(--text); font: 600 15px/1.2 var(--font-sans); text-align: center; cursor: pointer;
+    color: var(--text); font: 600 var(--fs-md)/1.2 var(--font-sans); text-align: center; cursor: pointer;
     transition: background-color var(--dur-1) var(--ease-out);
   }
   .filter-segment label:has(input:checked) {
@@ -211,7 +228,7 @@
   .stamp-list { margin: 0; border-top: 1px solid var(--border); }
   .stamp-list-row { display: grid; gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .stamp-list-label { font: 700 var(--fs-md)/1.3 var(--font-sans); color: var(--text); }
-  .stamp-list-value { margin: 0; font-size: 15px; line-height: 1.4; font-variant-numeric: tabular-nums; color: var(--text); }
+  .stamp-list-value { margin: 0; font-size: var(--fs-md); line-height: 1.4; font-variant-numeric: tabular-nums; color: var(--text); }
   .stamp-list-note { margin: 2px 0 0; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-muted); max-width: 62ch; }
   .stamp-list-commit { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .95em; }
   .stamp-list-sweep {
@@ -239,6 +256,7 @@
   .notice-line .icon { width: 18px; height: 18px; margin-top: 1px; }
   .notice-line[data-kind="error"], .notice-line[data-kind="countries-error"] { background: var(--danger-weak); color: var(--danger); }
   .notice-line-text { min-width: 0; text-wrap: pretty; }
+  .notice-date { white-space: nowrap; }
   @media (min-width: 1200px) {
     .notice-inner { display: flex; flex-wrap: wrap; align-items: center; column-gap: 16px; }
     .notice-pilot { flex: 0 1 auto; }

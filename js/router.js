@@ -50,14 +50,25 @@ const sameView = (a, b) => Boolean(a && b) && a.view === b.view && effectivePara
  * History binding (tech §2.3 + C-24 + C-35).
  * → {start(), go(route, {replace, user}), current(), closeRecord(), afterRender(), refreshNav()}
  * onChange(route, prev, meta) runs for every applied route; meta = {source: 'initial'|'user'|'pop'|'program', unknown, alias}.
+ * beforePush() runs just before each pushState (app.js writes a pending query into the entry being left).
+ *
+ * Every entry the app sees carries history.state {key, view, param, record}. `positions` keeps, per key, the scrollY
+ * the entry had when it was left (by a push, Back or Forward), so Back and Forward both restore it; scrollY in the
+ * state itself survives a reload. The stored view lets Back to a non-route hash (#main) show the view it was on.
  */
-export function createRouter({defaultView = 'latest', onChange = () => {}} = {}) {
+export function createRouter({defaultView = 'latest', onChange = () => {}, beforePush = () => {}} = {}) {
   let current = null;
   let pending = null;      // {scroll: number, focus: string[]} applied after the next render
   let started = false;
+  let activeKey = null;    // key of the entry on screen
+  let lastY = 0;           // scrollY at the last scroll event: an entry left by a fragment jump is stored pre-jump
+  let seq = 0;
+  const positions = new Map();
 
   const win = () => globalThis.window;
   const doc = () => globalThis.document;
+  const newKey = () => `${Date.now().toString(36)}.${(seq++).toString(36)}.${Math.random().toString(36).slice(2, 6)}`;
+  const routeState = route => ({view: route.view, param: route.param ?? null, record: route.record ?? null});
 
   function titleTargets(next, prev) {
     if (next.view === 'ahead') {
@@ -67,20 +78,34 @@ export function createRouter({defaultView = 'latest', onChange = () => {}} = {})
     return [`#${next.view}-title`];
   }
 
-  function saveScroll() {
+  /** Merge into the current entry's state (same URL). */
+  function stamp(extra) {
     const w = win();
-    try { w.history.replaceState({...(w.history.state ?? {}), scrollY: w.scrollY}, ''); } catch { /* ignore */ }
+    try { w.history.replaceState({...(w.history.state ?? {}), ...extra}, ''); } catch { /* ignore */ }
   }
 
   function writeURL(route, {replace}) {
     const w = win();
     const url = `${w.location.pathname}${w.location.search}${formatRoute(route)}`;
     if (replace) {
-      w.history.replaceState({...(w.history.state ?? {}), atlas: true}, '', url);
-    } else {
-      saveScroll();
-      w.history.pushState({atlas: true, pushed: true}, '', url);
+      w.history.replaceState({...(w.history.state ?? {}), atlas: true, ...routeState(route)}, '', url);
+      return;
     }
+    beforePush();
+    positions.set(activeKey, w.scrollY);
+    stamp({scrollY: w.scrollY});
+    activeKey = newKey();
+    w.history.pushState({atlas: true, pushed: true, key: activeKey, ...routeState(route)}, '', url);
+  }
+
+  /** The browser moved to another entry (Back, Forward, a typed hash, a fragment link): store the one it left. */
+  function arrive() {
+    const w = win();
+    const key = w.history.state?.key;
+    if (key && key === activeKey) return;
+    if (activeKey) positions.set(activeKey, key ? w.scrollY : lastY);
+    activeKey = key ?? newKey();
+    if (!key) stamp({key: activeKey});
   }
 
   /** aria-current="page" on the most specific displayed match inside each nav container (§3.3). */
@@ -124,7 +149,7 @@ export function createRouter({defaultView = 'latest', onChange = () => {}} = {})
     }
     const viewChanged = !sameView(prev, current);
     if (meta.source === 'initial' || !viewChanged) pending = null;
-    else if (meta.source === 'pop') pending = {scroll: Number(win()?.history.state?.scrollY) || 0, focus: titleTargets(current, prev)};
+    else if (meta.source === 'pop') pending = {scroll: positions.get(activeKey) ?? (Number(win()?.history.state?.scrollY) || 0), focus: titleTargets(current, prev)};
     else pending = {scroll: 0, focus: titleTargets(current, prev)};
     onChange(current, prev, meta);
     d?.dispatchEvent(new CustomEvent('atlas:route', {detail: {route: current, prev}}));
@@ -142,8 +167,12 @@ export function createRouter({defaultView = 'latest', onChange = () => {}} = {})
     const w = win();
     const parsed = parseRoute(w.location.hash, defaultView);
     if (!parsed) {
-      // Not a route (#main, #after-map): keep the current view, or the default one on first load.
-      if (!current) apply({view: defaultView}, {source});
+      // Not a route (#main, #after-map). An entry that stored a view shows it again; a fresh jump keeps the
+      // current view (the default one on first load), which is then stored in the entry.
+      const saved = w.history.state;
+      const next = VIEWS.includes(saved?.view) ? routeState(saved) : current ?? {view: defaultView, param: null, record: null};
+      if (!sameRoute(current, next)) apply(next, {source});
+      stamp(routeState(current));
       return;
     }
     if (parsed.unknown) {
@@ -164,15 +193,16 @@ export function createRouter({defaultView = 'latest', onChange = () => {}} = {})
       started = true;
       const w = win();
       try { w.history.scrollRestoration = 'manual'; } catch { /* ignore */ }
-      if (!w.history.state?.atlas) {
-        try { w.history.replaceState({...(w.history.state ?? {}), atlas: true}, ''); } catch { /* ignore */ }
-      }
-      w.addEventListener('popstate', () => fromLocation('pop'));
-      w.addEventListener('hashchange', () => fromLocation('user'));
+      activeKey = w.history.state?.key ?? newKey();
+      lastY = w.scrollY;
+      w.addEventListener('scroll', () => { lastY = w.scrollY; }, {passive: true});
+      w.addEventListener('popstate', () => { arrive(); fromLocation('pop'); });
+      w.addEventListener('hashchange', () => { arrive(); fromLocation('user'); });
       for (const query of ['(min-width: 900px)', '(min-width: 1200px)']) {
         w.matchMedia?.(query)?.addEventListener?.('change', refreshNav);
       }
       fromLocation('initial');
+      stamp({atlas: true, key: activeKey, ...routeState(current)});
     },
 
     /** Navigate. A record route keeps the view underneath. Re-selecting the shown view scrolls to the top. */

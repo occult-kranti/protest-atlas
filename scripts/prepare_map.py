@@ -30,13 +30,13 @@ def geometry_code(geometry, codes):
 
 
 def code_table(topology, codes):
-    """{raw geometry id: alpha-2}, in topology order; geometries without a mapped id are omitted."""
+    """{raw geometry id: alpha-2}, sorted by id (it gzips smaller); geometries without a mapped id are omitted."""
     table = {}
     for geometry in topology['objects']['countries']['geometries']:
         code = geometry_code(geometry, codes)
         if geometry.get('id') is not None and code:
             table[str(geometry['id'])] = code
-    return table
+    return dict(sorted(table.items()))
 
 
 def prepare(root=ROOT):

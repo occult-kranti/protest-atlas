@@ -1,5 +1,3 @@
-// Lazy map mount (WP4): region chips, overlay controls, legend (M1–M9), selection bar, country panel, Explore,
-// failure and retry. Reached only through app.js's import(); DOM-free at import. Copy is verbatim from SPEC §11.
 import {createWorldMap, zoomButtonState, REGION_VIEWS} from '../map.js';
 import {overviewModel, briefModel, renderOverview, renderBrief, countSentence, BRIEF_COPY} from './country-brief.js';
 import {esc, icon, plural} from './html.js';
@@ -26,35 +24,35 @@ export const MAP_COPY = Object.freeze({
   exploreDone: 'Done exploring',
 });
 export const windowNote = days => `Showing episodes with latest evidence in the last ${days} days`;
-let dragHintShown = false;  // once per page session
+let dragHintShown = false;
 
-/** Any filter other than country and city (the map ignores both, tech §4.6). */
 export function hasNonPlaceFilters(f = {}) {
   return ['query', 'region', 'issue', 'status', 'year', 'outcome'].some(key => f?.[key]) || (!!f?.window && f.window !== 'all');
 }
 
-/** #map-legend (SPEC §11.5); the hint comes first except when the map is unavailable (M7 + M8 only). */
+export function describeCountry(list, {mode = 'reported', example = 'ready', error = false, loading = false, filtered = false} = {}) {
+  if (mode === 'example') return example === 'error' ? BRIEF_COPY.exampleError : example === 'loading' ? BRIEF_COPY.exampleLoading : list?.length ? MAP_COPY.example : '';
+  if (error) return BRIEF_COPY.eventsError;
+  if (loading) return BRIEF_COPY.loading;
+  return list?.length ? countSentence(list.length, filtered, list.some(e => e.status === 'ended')) : MAP_COPY.gap;
+}
+
 export function legendHTML({mode = 'reported', example = 'ready', eventsError = false, unavailable = false, window = 'all', citiesError = false, coarse = false} = {}) {
   const note = (kind, text) => `<p class="legend-note" data-kind="${kind}">${text}</p>`;
   const tail = note('small', `${esc(MAP_COPY.smallLead)}<a href="#/countries">${esc(MAP_COPY.smallLink)}</a>`) + note('footnote', esc(MAP_COPY.footnote));
   if (unavailable) return tail;
-  const hint = `<p class="map-hint">${esc(coarse ? MAP_COPY.hintCoarse : MAP_COPY.hintFine)}</p>`;
-  const status = (text, button) => `<p class="legend-note legend-status" role="status">${esc(text)}</p><div class="legend-actions">${button}</div>`;
+  const head = `<p class="map-hint">${esc(coarse ? MAP_COPY.hintCoarse : MAP_COPY.hintFine)}</p><h2 class="legend-title">${esc(MAP_COPY.legendTitle)}</h2>`;
+  const status = (text, attr, label) => `${head}<p class="legend-note legend-status" role="status">${esc(text)}</p><div class="legend-actions"><button type="button" class="btn" ${attr}>${label}</button></div>`;
   const isExample = mode === 'example';
-  if (eventsError && !isExample) return hint + status(BRIEF_COPY.eventsError, '<button type="button" class="btn" data-action="retry-data">Retry</button>');
+  if (eventsError && !isExample) return status(BRIEF_COPY.eventsError, 'data-action="retry-data"', 'Retry');
   const item = (kind, text) => `<li><i class="legend-swatch" data-kind="${kind}" aria-hidden="true"></i><span>${esc(text)}</span></li>`;
-  const head = `${hint}<h2 class="legend-title">${esc(MAP_COPY.legendTitle)}</h2>`;
-  if (isExample && example === 'error') {
-    return head + status(BRIEF_COPY.exampleError, '<button type="button" class="btn" data-set-mode="reported">Back to reported data</button>')
-      + `<ul class="legend-list">${item('city', MAP_COPY.city)}</ul>${tail}`;
-  }
+  const city = item('city', MAP_COPY.city);
+  if (isExample && example === 'error') return status(BRIEF_COPY.exampleError, 'data-set-mode="reported"', 'Back to reported data') + `<ul class="legend-list">${city}</ul>${tail}`;
   const first = !isExample ? item('reported', MAP_COPY.reported) : item('example', example === 'loading' ? BRIEF_COPY.exampleLoading : MAP_COPY.example);
-  return `${head}<ul class="legend-list">${first}${item('gap', MAP_COPY.gap)}${item('selected', MAP_COPY.selected)}${item('ended', MAP_COPY.ended)}`
-    + `${item('city', MAP_COPY.city)}</ul>${tail}${window === '7' || window === '30' ? note('window', esc(windowNote(window))) : ''}`
-    + (citiesError ? note('cities', esc(MAP_COPY.citiesError)) : '');
+  return `${head}<ul class="legend-list">${first}${item('gap', MAP_COPY.gap)}${item('selected', MAP_COPY.selected)}${item('ended', MAP_COPY.ended)}${city}</ul>${tail}`
+    + (window === '7' || window === '30' ? note('window', esc(windowNote(window))) : '') + (citiesError ? note('cities', esc(MAP_COPY.citiesError)) : '');
 }
 
-/** #map-selbar: "{France} · {2 published episodes match}" + [See brief] (< 900, CSS) + [World]; example mode shows the name only. */
 export function selectionBarHTML({name = '', state = 'records', count = 0, publishedCount = 0, filtered = false, mode = 'reported'} = {}) {
   const detail = mode === 'example' ? ''
     : state === 'records' ? plural(count, 'published episode') + (filtered ? (count === 1 ? ' matches' : ' match') : '')
@@ -77,9 +75,9 @@ export function controlsHTML() {
     + button('map-explore', 'map-explore', `${icon('hand')}<span class="map-explore-label">${MAP_COPY.explore}</span>`).replace('map-btn--text"', 'map-btn--text map-explore" aria-pressed="false"');
 }
 
-const FOCUS_KEYS = ['data-open-record', 'data-select-country', 'data-select-city', 'data-clear-filter', 'data-set-mode', 'data-retry', 'data-action', 'id', 'href'];
+const FOCUS_KEYS = ['data-focus-key', 'data-open-record', 'data-select-country', 'data-select-city', 'data-clear-filter', 'data-set-mode', 'data-retry', 'data-action', 'id', 'href'];
+const SLICES = ['route', 'filters', 'data', 'load', 'mode', 'now'];
 
-/** Component protocol (tech §4.5): mountMap({store, actions, env}) → {render(state, prev), ensure(): Promise<void>}. */
 export function mountMap({actions = {}, env = {}} = {}) {
   const doc = globalThis.document, $ = id => doc.getElementById(id);
   const [view, stage, container, tip, controls, regions, selbar, legend, panel] = ['view-map', 'map-stage', 'world-map', 'map-tooltip', 'map-controls',
@@ -89,15 +87,15 @@ export function mountMap({actions = {}, env = {}} = {}) {
   const reducedMotion = typeof env.reducedMotion === 'function' ? env.reducedMotion : () => !!media('(prefers-reduced-motion: reduce)')?.matches;
   const coarse = media('(pointer: coarse)'), gestures = env.mapGestures === 'map' ? 'map' : 'page';
   let map = null, mapPromise = null, mapStatus = 'idle', explore = false, region = 'World', latest = null, flags = {}, counts = new Map();
-  let framed, framedVia = '', citiesTried = false, payloadKey = '', drawnData = [], hintTimer = 0, touchStart = null;
-  const painted = {}, requested = new Set();
+  let framed, payloadKey = '', drawnData = [], hintTimer = 0, touchStart = null;
+  const painted = {};
 
   Object.assign(regions, {innerHTML: regionChipsHTML(region)});
   regions.setAttribute('role', 'group');
   regions.setAttribute('aria-label', 'Map regions');
   controls.innerHTML = controlsHTML();
   tip?.setAttribute('aria-hidden', 'true');
-  panel?.setAttribute('tabindex', '-1');  // target of the selection bar's data-scroll-to
+  panel?.setAttribute('tabindex', '-1');
   const [zoomIn, zoomOut, reset, exploreButton] = ['zoom-in', 'zoom-out', 'reset-map', 'map-explore'].map($);
   const panelTitle = () => $('country-panel-title');
 
@@ -120,12 +118,11 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (region === 'World' && s.zoomOut) setRegion(null);
     else if (region === null && ok && !s.zoomOut) setRegion('World');
   }
-  /** Replaces content and restores focus by data-* signature (tech §4.5). keepLead keeps the role="status" lead node
-   *  connected and only changes its text, so screen readers announce the new lead. */
-  function setHTML(el, html, key, keepLead = false) {
+  // Focus returns by signature within one scope, else to the panel title; keepLead keeps the role="status" node.
+  function setHTML(el, html, key, scope = '', keepLead = false) {
     if (painted[key] === html) return;
     const active = el.contains(doc.activeElement) ? doc.activeElement : null;
-    const name = active && FOCUS_KEYS.find(k => active.hasAttribute(k));
+    const name = active && painted[`${key}@`] === scope && FOCUS_KEYS.find(k => active.hasAttribute(k));
     const value = name && active.getAttribute(name);
     const template = doc.createElement('template');
     template.innerHTML = html;
@@ -138,12 +135,8 @@ export function mountMap({actions = {}, env = {}} = {}) {
       if (oldLead.innerHTML !== newLead.innerHTML) oldLead.innerHTML = newLead.innerHTML;
     } else el.replaceChildren(template.content);
     painted[key] = html;
-    if (active) ([...el.querySelectorAll(`[${name}]`)].find(n => n.getAttribute(name) === value) ?? panelTitle())?.focus({preventScroll: true});
-  }
-  function requestLazy(name) {
-    if ((latest?.load?.lazy?.[name] ?? 'idle') !== 'idle' || requested.has(name) || !actions.loadLazy) return;
-    requested.add(name);
-    queueMicrotask(() => { requested.delete(name); if ((latest?.load?.lazy?.[name] ?? 'idle') === 'idle') actions.loadLazy(name); });
+    painted[`${key}@`] = scope;
+    if (active) ((name && [...el.querySelectorAll(`[${name}]`)].find(n => n.getAttribute(name) === value)) || panelTitle())?.focus({preventScroll: true});
   }
   function setExplore(on, focus = false) {
     if ((on = !!on && mapStatus === 'ready') === explore) return;
@@ -155,25 +148,14 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (on) stage.scrollIntoView?.({block: 'nearest', behavior: reducedMotion() ? 'auto' : 'smooth'});
     if (focus) exploreButton.focus({preventScroll: true});
   }
-  /** Auto-focus (tech §5.4): mainland cluster, else city points (no polygon), else the region, else the world. */
   function frameCountry(code) {
-    if (!map?.ready) return '';
+    if (!map?.ready) return;
     setRegion(null);
-    if (code && map.focusCountry(code)) return 'polygon';
-    if (code && map.focusCities(code)) return 'cities';
+    if (code && map.focusCountry(code)) return;
     const home = latest?.data?.countries?.find?.(c => c.code === code)?.region;
-    if (code && home && map.focusRegion(home)) { setRegion(home); return 'region'; }
+    if (code && home && map.focusRegion(home)) return setRegion(home);
     map.reset();
     setRegion('World');
-    return 'world';
-  }
-  /** Tooltip and aria-label text for a country, from the same sentences as the brief. */
-  function describe(code) {
-    if (flags.error) return BRIEF_COPY.eventsError;
-    if (flags.loading) return BRIEF_COPY.loading;
-    const list = counts.get(code);
-    if (flags.isExample) return list ? MAP_COPY.example : '';
-    return list ? countSentence(list.length, hasNonPlaceFilters(latest?.filters), list.some(e => e.status === 'ended')) : MAP_COPY.gap;
   }
 
   view.addEventListener('click', event => {
@@ -184,7 +166,7 @@ export function mountMap({actions = {}, env = {}} = {}) {
     else if (action === 'map-reset' || (action === 'map-region' && target.dataset.value === 'World')) { map?.reset(); setRegion('World'); }
     else if (action === 'map-region') { if (map?.focusRegion(target.dataset.value)) setRegion(target.dataset.value); }
     else if (action === 'map-explore') setExplore(!explore);
-    else if (action === 'map-focus') framedVia = frameCountry(latest?.filters?.country);
+    else if (action === 'map-focus') frameCountry(latest?.filters?.country);
     else if (action === 'retry-map' && mapStatus === 'unavailable') {
       map?.destroy();
       [map, mapPromise, mapStatus, framed, payloadKey] = [null, null, 'idle', undefined, ''];
@@ -196,9 +178,6 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (e.key === 'Escape' && explore && !doc.querySelector('dialog[open]')) setExplore(false, view.contains(doc.activeElement));
   });
   container.addEventListener('mapzoom', e => syncZoom(e.detail));
-  // A chip reached by Tab in the sideways-scrolling row must be fully visible (WCAG 2.4.11).
-  regions.addEventListener('focusin', e => e.target.scrollIntoView?.({block: 'nearest', inline: 'nearest'}));
-  // One-time hint when a coarse pointer drags one finger sideways in page mode.
   stage.addEventListener('touchstart', e => { touchStart = e.touches.length === 1 && !explore ? e.touches[0] : null; }, {passive: true});
   stage.addEventListener('touchmove', e => {
     if (!touchStart || dragHintShown || e.touches.length !== 1 || !coarse?.matches || !tip) return;
@@ -213,18 +192,17 @@ export function mountMap({actions = {}, env = {}} = {}) {
     hintTimer = setTimeout(() => { if (tip.dataset.kind === 'hint') { tip.hidden = true; tip.removeAttribute('data-kind'); } }, 4000);
   }, {passive: true});
   if (typeof IntersectionObserver === 'function') new IntersectionObserver(([entry]) => { if (!entry.isIntersecting) setExplore(false); }).observe(stage);
-  coarse?.addEventListener?.('change', () => latest && paint(latest));
 
   function paint(state) {
-    const lazy = state.load?.lazy ?? {}, filters = state.filters ?? {}, data = state.data ?? {};
+    const lazy = state.load?.lazy ?? {}, filters = state.filters ?? {}, data = state.data ?? {}, now = state.now;
     const isExample = state.mode === 'example';
-    const example = !isExample ? null : lazy.examples === 'error' ? 'error' : lazy.examples === 'ready' && data.examples ? 'ready' : 'loading';
-    const eventsError = !isExample && !!state.load?.errors?.events;
-    flags = {isExample, example, eventsError, loading: isExample ? example === 'loading' : !eventsError && !data.events, error: isExample ? example === 'error' : eventsError};
-    const off = flags.loading || flags.error;
+    const example = !isExample ? 'ready' : lazy.examples === 'error' ? 'error' : lazy.examples === 'ready' && data.examples ? 'ready' : 'loading';
+    const error = !isExample && !!state.load?.errors?.events, loading = !isExample && !error && !data.events;
+    const filtered = hasNonPlaceFilters(filters), off = error || loading || example !== 'ready';
+    flags = {mode: state.mode, example, error, loading, filtered};
     const code = /^[A-Z]{2}$/.test(filters.country ?? '') ? filters.country : '';
     const countries = Array.isArray(data.countries) ? data.countries : [];
-    const now = state.now ?? Date.now(), unavailable = mapStatus === 'unavailable', filtered = hasNonPlaceFilters(filters);
+    const unavailable = mapStatus === 'unavailable';
     const mapEvents = off ? [] : selectFiltered(state, {ignoreCountry: true});
     counts = new Map();
     for (const e of mapEvents) counts.set(e.country, [...counts.get(e.country) ?? [], e]);
@@ -242,24 +220,23 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (isExample && !watermark) stage.append(Object.assign(doc.createElement('p'), {className: 'map-watermark', textContent: BRIEF_COPY.watermark}));
     else if (!isExample) watermark?.remove();
 
-    setHTML(legend, legendHTML({mode: state.mode, example: example ?? 'ready', eventsError, unavailable, window: filters.window,
+    setHTML(legend, legendHTML({mode: state.mode, example, eventsError: error, unavailable, window: filters.window,
       citiesError: lazy.cities === 'error', coarse: !!coarse?.matches}), 'legend');
 
     let brief = null;
     if (!code) {
-      const status = isExample ? (example === 'ready' ? 'ready' : `example-${example}`) : flags.error ? 'error' : flags.loading ? 'loading' : 'ready';
-      setHTML(panel, renderOverview(overviewModel({mapEvents, countries, mode: state.mode, filtered, status}), {now}), 'panel', true);
+      const status = isExample ? (example === 'ready' ? 'ready' : `example-${example}`) : error ? 'error' : loading ? 'loading' : 'ready';
+      setHTML(panel, renderOverview(overviewModel({mapEvents, countries, mode: state.mode, filtered, status}), {now}), 'panel', 'world', true);
     } else {
-      brief = briefModel({code, mapEvents: off ? [] : selectFiltered(state), allEvents: off ? [] : selectEvents(state), countries, mode: state.mode,
-        coverage: data.coverage ?? null, research: data.research ?? null, contexts: data.contexts ?? null, filtered: filtered || !!filters.city, ...flags});
+      brief = briefModel({code, mapEvents: off ? [] : selectFiltered(state), allEvents: off ? [] : selectEvents(state), countries, mode: state.mode, example,
+        coverage: data.coverage ?? null, research: data.research ?? null, contexts: data.contexts ?? null, filtered: filtered || !!filters.city, error, loading});
       setHTML(panel, renderBrief(brief, {now, hasPolygon: !map?.ready || map.hasCountry(code), selectedCity: filters.city ?? '',
-        lazy: {coverage: lazy.coverage, research: lazy.research}}), 'panel', true);
+        lazy: {coverage: lazy.coverage, research: lazy.research}}), 'panel', code, true);
     }
-    // Selection bar (C-39): in flow between the stage and the legend, only while a country is selected.
     const showBar = !!code && !unavailable;
     if (showBar) {
       setHTML(selbar, selectionBarHTML({name: brief.name, state: brief.state, count: brief.matching.length, publishedCount: brief.publishedCount,
-        filtered: filtered || !!filters.city, mode: state.mode}), 'selbar');
+        filtered: filtered || !!filters.city, mode: state.mode}), 'selbar', code);
     }
     if (selbar.hidden === showBar) {
       const hadFocus = selbar.contains(doc.activeElement);
@@ -268,43 +245,40 @@ export function mountMap({actions = {}, env = {}} = {}) {
     }
 
     if (map?.ready) {
-      const key = [mapEvents.map(e => e.id), code, state.mode, flags.loading, flags.error, filtered, countries.length, !!data.cities, !!data.contexts].join('|');
+      const key = [mapEvents.map(e => e.id), code, state.mode, example, error, loading, filtered, countries.length, !!data.cities, !!data.contexts].join('|');
       if (key !== payloadKey || data.events !== drawnData[0] || data.examples !== drawnData[1]) {
         [payloadKey, drawnData] = [key, [data.events, data.examples]];
-        map.update({events: mapEvents, countries, selectedCountry: code, mode: state.mode, loading: flags.loading, error: flags.error,
-          contexts: isExample ? null : data.contexts ?? null, cityGeography: data.cities ?? null, filtered});
+        // Example loading or failed: neutral land (C-38).
+        map.update({events: mapEvents, countries, selectedCountry: code, mode: state.mode, loading: loading || example === 'loading',
+          error: error || example === 'error', contexts: isExample ? null : data.contexts ?? null, cityGeography: data.cities ?? null});
       }
-      // Frame on selection change, and once more when city points arrive for a territory that fell back to its region.
-      const refine = code && code === framed && /region|world/.test(framedVia) && data.cities && !citiesTried;
-      if (code !== framed || refine) {
-        citiesTried = refine || !!data.cities;
-        framed = code;
-        framedVia = frameCountry(code);
-      }
+      if (code !== framed) frameCountry(framed = code);
     }
     syncZoom();
-    if (mapStatus !== 'idle') requestLazy('cities');
-    if (code && !isExample) { requestLazy('coverage'); requestLazy('research'); }
+    for (const name of [mapStatus !== 'idle' && 'cities', code && !isExample && 'coverage', code && !isExample && 'research']) {
+      if (name && (lazy[name] ?? 'idle') === 'idle') actions.loadLazy?.(name);
+    }
   }
 
   function ensure() {
     if (!mapPromise) {
       mapStatus = stage.dataset.mapState = 'loading';
-      mapPromise = createWorldMap({container, tooltip: tip, gestures, reducedMotion, describe,
-        onSelect: code => (code === latest?.filters?.country ? (framedVia = frameCountry(code)) : actions.selectCountry?.(code)),
+      mapPromise = createWorldMap({container, tooltip: tip, gestures, reducedMotion,
+        describe: code => describeCountry(counts.get(code), flags),
+        onSelect: code => (code === latest?.filters?.country ? frameCountry(code) : actions.selectCountry?.(code)),
         onSelectCity: (country, name) => actions.selectCity?.(country, name),
-        labelObstacles: () => [...stage.querySelectorAll('.map-btn, .map-watermark')].map(el => el.getBoundingClientRect()),
       }).then(api => { map = api; mapStatus = api.ready ? 'ready' : 'unavailable'; }, () => { mapStatus = 'unavailable'; })
         .then(() => { [payloadKey, framed] = ['', undefined]; if (latest) paint(latest); });
     }
     return mapPromise;
   }
 
-  function render(state) {
+  function render(state, prev) {
     if (!state) return;
     latest = state;
     if (state.route?.view !== 'map') return setExplore(false);
     ensure();
+    if (prev && prev.route?.view === 'map' && SLICES.every(k => state[k] === prev[k])) return;
     paint(state);
   }
   return {render, ensure};

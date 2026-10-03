@@ -3,8 +3,9 @@
 import {renderCard, renderCardSkeleton} from './cards.js';
 import {aheadTeaserHTML} from './ahead.js';
 import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, sweepLine, datasetStats, activeFilterCount, indexContexts,
-  snapshotAgeText, absText, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
+  snapshotAgeText, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
 import {esc} from './html.js';
+import {absoluteLabel} from '../freshness.js';
 
 const COPY = Object.freeze({
   loading: 'Loading published records…',
@@ -67,7 +68,7 @@ export function statsHTML(state) {
   const stats = datasetStats(envelope, state.data.countries, state.now);
   const s1 = `<p class="feed-stat feed-stat--assembled">Snapshot assembled ${ageTag(envelope.generated_at, state.now, 'feed-stat-time')}</p>`;
   const newest = stats.newestEvidence
-    ? ` · newest evidence dated <time datetime="${esc(stats.newestEvidence)}">${esc(absText(stats.newestEvidence))}</time>` : '';
+    ? ` · newest evidence dated <time datetime="${esc(stats.newestEvidence)}">${esc(absoluteLabel(stats.newestEvidence))}</time>` : '';
   const episodes = `<strong>${stats.episodes}</strong> published ${stats.episodes === 1 ? 'episode' : 'episodes'}`;
   const scope = state.load.errors.countries || !stats.directoryTotal
     ? `${episodes}${newest}`
@@ -186,6 +187,12 @@ export function mountList(ctx) {
   const stats = $('feed-stats'), summary = $('result-summary'), list = $('event-list'), more = $('list-more');
   const density = doc.querySelector('.feed-density');
   let last = {stats: null, summary: null, list: null, more: null};
+  // The pressed layout is marked by a check as well as the fill, like the chips and the window segments (§9).
+  for (const button of density?.querySelectorAll('[data-set-density]') ?? []) {
+    if (!button.querySelector('.feed-density-check')) {
+      button.insertAdjacentHTML('afterbegin', '<svg class="icon feed-density-check" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>');
+    }
+  }
 
   /**
    * Re-render and keep focus on the same control. When that control is gone (a Clear or Retry button whose state

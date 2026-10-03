@@ -1,7 +1,7 @@
 // Pilot disclosure, snapshot/error/dropped-param notice lines, example banner (WP2). DOM-free when loaded.
-import {snapshotState, evidenceAgeDays, datasetStats, absText, E5} from './model.js';
-import {icon} from './html.js';
-import {updateStamps} from '../freshness.js';
+import {snapshotState, evidenceAgeDays, datasetStats, E5} from './model.js';
+import {esc, icon} from './html.js';
+import {absoluteLabel, updateStamps} from '../freshness.js';
 
 export const PILOT_DISCLOSURE = 'AI-assisted reporting pilot. Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.';
 
@@ -28,7 +28,7 @@ export function noticeModel(state) {
   if (envelope && !errors.events) {
     const snap = snapshotState(envelope, now);
     const days = evidenceAgeDays(envelope, now);
-    const newest = absText(updateStamps({events: envelope}).latestObservation);
+    const newest = absoluteLabel(updateStamps({events: envelope}).latestObservation);
     if (snap === 'aging') lines.push({kind: 'snapshot', text: `No evidence newer than ${newest} (${daysAgo(days)}) is in this snapshot. More recent protests are missing.`});
     if (snap === 'stale') lines.push({kind: 'snapshot', text: `This snapshot has nothing newer than ${newest}, ${daysAgo(days)}. Read it as an archive of past reporting, not as a picture of protests today.`});
     if (snap === 'archive') lines.push({kind: 'snapshot', text: `Archive: newest evidence ${newest}. This atlas is not currently being maintained as a tracker.`});
@@ -96,7 +96,9 @@ export function mountNotice(ctx) {
         anchor.after(node);
       }
       const span = node.querySelector('.notice-line-text');
-      if (span.textContent !== byKind.get(kind)) span.textContent = byKind.get(kind);
+      const text = byKind.get(kind);
+      // Written only when the text changes; "2 Oct 2026" sits in a nowrap span so a date never splits.
+      if (span.textContent !== text) span.innerHTML = esc(text).replace(/\d{1,2} [A-Z][a-z]{2} \d{4}/g, '<span class="notice-date">$&</span>');
       anchor = node;
     }
   }
