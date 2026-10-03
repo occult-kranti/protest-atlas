@@ -90,11 +90,44 @@ export function indexContexts(contexts) {
 
 const namerCache = new WeakMap();
 /** code → name from countries.json (memoised per directory), else the code itself (C-37: names may be missing). */
+/**
+ * Common English short names for formal ISO 3166 directory names, reviewed from Unicode CLDR display names.
+ * Display only: public/countries.json keeps the ISO name, which stays visible where precision matters
+ * (country brief, directory). Disputed or politically marked names keep their ISO form (e.g. Falkland
+ * Islands (Malvinas), Hong Kong, Macao, Holy See); CLDR's "&" and "Congo - Kinshasa" styles are not used.
+ */
+export const COUNTRY_SHORT_NAMES = Object.freeze({
+  BN: 'Brunei', BO: 'Bolivia', CD: 'DR Congo', CG: 'Republic of the Congo', FM: 'Micronesia',
+  GB: 'United Kingdom', IR: 'Iran', KP: 'North Korea', KR: 'South Korea', LA: 'Laos', MD: 'Moldova',
+  MF: 'Saint Martin', NL: 'Netherlands', PS: 'Palestine', RU: 'Russia', SX: 'Sint Maarten', SY: 'Syria',
+  TW: 'Taiwan', TZ: 'Tanzania', US: 'United States', VE: 'Venezuela', VG: 'British Virgin Islands',
+  VI: 'US Virgin Islands', VN: 'Vietnam',
+});
+
+/** Extra search terms people commonly type. Search only; never displayed. */
+export const COUNTRY_ALIASES = Object.freeze({
+  AE: ['UAE'], BA: ['Bosnia'], CD: ['DRC', 'Congo-Kinshasa', 'Zaire'], CG: ['Congo-Brazzaville'],
+  CI: ['Ivory Coast', "Cote d'Ivoire"], CV: ['Cape Verde'], CZ: ['Czech Republic'], FK: ['Falklands', 'Malvinas'],
+  GB: ['UK', 'Britain', 'Great Britain', 'England', 'Scotland', 'Wales', 'Northern Ireland'],
+  KP: ['DPRK'], KR: ['Korea'], MK: ['Macedonia'], MM: ['Burma'], NL: ['Holland'],
+  PS: ['Palestinian territories', 'Gaza', 'West Bank'], SZ: ['Swaziland'], TL: ['East Timor'],
+  TR: ['Turkey', 'Turkiye'], US: ['USA', 'US', 'America'], VA: ['Vatican'],
+});
+
+export function displayCountryName(code, isoName) {
+  return COUNTRY_SHORT_NAMES[code] || isoName || code || '';
+}
+
+/** Every name a reader might search for: ISO name, short display name and aliases. */
+export function countrySearchTerms(code, isoName) {
+  return [...new Set([isoName, COUNTRY_SHORT_NAMES[code], ...(COUNTRY_ALIASES[code] ?? [])].filter(Boolean))];
+}
+
 export function countryNamer(countries) {
-  if (!Array.isArray(countries)) return code => code;
+  if (!Array.isArray(countries)) return code => COUNTRY_SHORT_NAMES[code] || code;
   if (!namerCache.has(countries)) {
     const names = new Map(countries.map(c => [c?.code, c?.name]));
-    namerCache.set(countries, code => names.get(code) || code);
+    namerCache.set(countries, code => displayCountryName(code, names.get(code)) || code);
   }
   return namerCache.get(countries);
 }
