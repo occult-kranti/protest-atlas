@@ -1,12 +1,12 @@
 # Protest Atlas roadmap and delivery tracker
 
-Updated for release 3, 2 October 2026. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
+Updated 3 October 2026 for release 4.0, which is built and verified locally but not yet deployed; the live site runs release 3. Product name: **Protest Atlas**. Owner: repository maintainer; human editorial role is not yet staffed. Dates below are planning windows after staffing, not delivery promises. Release verification is recorded separately in `RELEASE_EVIDENCE.md`.
 
 ## Product decision
 
 Build an accessible static website on GitHub Pages, backed by a versioned event ledger and automated discovery. Give a reader a short, attributable answer to: where, when, what issue, who supports/opposes what, what occurred, how the state responded, and how recently this was observed. Make the source trail and missing evidence immediately available.
 
-Worldwide recall remains unestablished. Release 3 has 84 sourced episodes in 81 countries/territories and initial searches logged for all 249 directory entries, covering 2024-01-01 through 2026-10-02. There are 118 sourced city references, 18 ended/suspended episodes and 57 episodes with documented outcomes. The remaining 168 countries have no published episode; no country is certified exhaustive. Source checks remain predominantly English and AI-assisted. Published-country counts measure this dataset, not the proportion of worldwide protests captured. See HISTORICAL_RESEARCH.md for the audit and next priorities.
+Worldwide recall remains unestablished. Release 4.0 changes the interface, not the data. Release 3 has 84 sourced episodes in 81 countries/territories and initial searches logged for all 249 directory entries, covering 2024-01-01 through 2026-10-02. There are 118 sourced city references, 18 ended/suspended episodes and 57 episodes with documented outcomes. The remaining 168 countries have no published episode; no country is certified exhaustive. Source checks remain predominantly English and AI-assisted. Published-country counts measure this dataset, not the proportion of worldwide protests captured. See HISTORICAL_RESEARCH.md for the audit and next priorities.
 
 ## Expert panel decisions
 
@@ -73,6 +73,29 @@ Acceptance: map and index use the same filtered records; colors describe publica
 
 Acceptance: no search-only candidate is presented as a sourced episode; historical reports cannot imply current activity; city markers represent generalized city references; every outcome and ending has local source references. Deployment and browser evidence: RELEASE_EVIDENCE.md.
 
+### Release 4.0 — mobile-first rebuild (built; deployment pending)
+
+Branch `ccr-77796c82-ka7vhp`. Binding design: `docs/design/SPEC.md`; integration and verification record: `docs/design/INTEGRATION_NOTES.md`; interface summary: `UX_SPEC.md`. Same data as release 3 (84 episodes, newest evidence 2 Oct 2026). The design panel, builders and verifiers were AI agents.
+
+- [x] Five views (Reports, Map, Ahead, Countries, About) and a routed record sheet; `app.js` plus 19 modules in `js/` with a store and hash router; filters in the URL; release-3 links still resolve.
+- [x] Separate, named update stamps; staleness from the newest evidence date (aging after 72 hours, stale from 7 days, archive from 30), shown as one warning line with "Why?".
+- [x] Cards with status first, stance with a named target, intensity facets kept apart, police/state response, timeframe and the first source; "not established" never shown as zero or blank. A compact List layout.
+- [x] Ahead: announced protest actions kept apart from reports (an honest empty list in this snapshot) and Coming next from `public/roadmap.json`, with `scripts/validate_roadmap.py`.
+- [x] Map: no scroll trap (Explore mode), loaded on first visit, TopoJSON plus `public/world-map-codes.json` at runtime; `world-countries.geo.json` no longer published.
+- [x] Short country display names (24, AI-chosen with reference to Unicode CLDR; display only) and search aliases.
+- [x] A visible state for each file that can fail: records, directory, context, example, map, search ledger, roadmap, announcements.
+- [x] CI: Node 22 via pinned `setup-node`, every `tests/*.mjs` file, configure-pages v6.0.0 and deploy-pages v5.0.1, queued (not cancelled) deploys, and a post-deploy `verify` job for the build stamp, required files and the 404 page.
+- [x] Tests stop pinning live data: frozen fixtures in `tests/fixtures/snapshot-20261002/`, invariant-only checks on `public/*.json`, code and data budgeted apart.
+- [x] Verification round 1: 14 major and 29 minor findings; 36 resolved, 2 in part, 2 declined, 3 deferred to the data-pipeline owner (SPEC §23 addendum).
+- [x] Local evidence at `b260087`: 87 Python and 227 Node tests pass; browser smoke 24/24 in the Pages layout (Chromium); axe-core 0 violations in 80 page states; a synthetic valid refresh keeps both suites green.
+- [ ] Merge to `main` through a reviewed PR, respecting the two-way ownership rule with the data session (handoff §2.2), and let Pages deploy.
+- [ ] Post-deploy `verify` job green; smoke against the live URL, or a recorded manual phone check; RELEASE_EVIDENCE.md updated.
+- [ ] Roadmap flips under SPEC §22.4 for the four in-progress items, one commit, only for items whose acceptance passes on the deployed site. `UX_SPEC.md`, which `mobile-first-redesign` cites, is already rewritten for 4.0.
+- [ ] Safari/WebKit, Firefox, screen-reader and physical-phone checks. None has been run.
+- [ ] Carry-overs from round 1: map tap accuracy at world zoom; Countries "published only" filter and region jumps; roadmap item density on phones; validator and window items m25–m27 (data-pipeline owner); an editorial decision on the "Taiwan" display name; payloads above the tech §6.2 targets, with 701 B of critical-JS headroom.
+
+Acceptance: H1 visible on every view in every state; no record is labelled "latest" or "new" once the snapshot is stale; no stance totals and no combined intensity; unknown is never zero; announced actions never shown as occurrences; Map, Reports and CSV describe the same filtered records; every failed file says so and offers Retry. All of this holds locally; none of it is yet checked on the deployed site.
+
 ### P1 — maintainable human-reviewed pilot (estimated weeks 1–2)
 
 - [ ] Appoint an editorial owner and backup; establish capacity before adding countries. Start the independently reviewed track with 5–10 countries across several regions and languages selected by actual reviewer availability; the wider AI-assisted snapshot does not constitute that track.
@@ -125,8 +148,10 @@ No predictive unrest risk scoring, national approval percentages, private-person
 
 Added 3 Oct 2026 and revised the same day after an independent review of the handoff. The tasks are in dependency order and carry no dates. The roadmap items named below are in `public/roadmap.json` and SPEC §20 (`docs/design/SPEC.md`).
 
+**Status after 4.0 verification round 1 (3 Oct 2026):** task 1 is still blocked. In task 4 the test-fixture step is done, and the 4.0 release is built and verified locally; its next steps are the PR, the deploy, the post-deploy checks and the §22.4 roadmap flips.
+
 1. **Data refresh in a session with news access.** Follow [HANDOFF_DATA_REFRESH.md](HANDOFF_DATA_REFRESH.md). Its §8 holds the paste-ready prompt.
-   - **Status:** blocked until a Claude Code session exists whose cloud environment can open news websites. On 2 Oct the sweep logged 167 searches and opened 0 pages.
+   - **Status:** blocked until a Claude Code session exists whose cloud environment can open news websites. On 2 Oct the sweep logged 167 searches and opened 0 pages. Still blocked on 3 Oct; nothing newer has been published.
    - **Precondition:** the handoff, the leads and the v2 workflows are pushed to `ccr-77796c82-ka7vhp`. The import commit and the lead checksums are at the top of the handoff.
    - **Inputs:** 192 unverified leads in `research/round4/LEADS.json` (21 P1, 48 P2, 123 P3) and the v2 workflows in `research/round4/workflows/`.
    - **Method:** run on a data branch based on commit `e633dfe`, or on `origin/main` once `main` contains it. The work reaches `main` through a reviewed pull request.
@@ -161,12 +186,16 @@ Added 3 Oct 2026 and revised the same day after an independent review of the han
    - record a newest-evidence-age metric for BLK-4.
 
    It runs as a scheduled routine in the news-access environment. Publication stays human-reviewed.
-4. **4.0 interface release.** In progress on branch `ccr-77796c82-ka7vhp`. The work packages and integration steps are in SPEC §19 and §22.
+4. **4.0 interface release.** Built and verified locally on branch `ccr-77796c82-ka7vhp` (see "Release 4.0" above); not yet merged or deployed. The work packages, integration and verification are in SPEC §19, §22 and §23.
    - **Ownership until the data PR merges:** this branch commits no change to `research/round4/**`, the six public data JSON files, `scripts/merge_history.py` or the four data validators. An unavoidable change is pushed before the data session imports, or the data session is asked to re-import from the new SHA. Before every UI commit, run `git checkout -- public/events.json public/event-context.json public/coverage.json public/research-ledger.json public/cities.json public/upcoming.json` to discard local merge reruns.
-   - **Before the 4.0 PR, tests stop pinning live data:**
-     - Literal assertions, such as the `sweepFact` values, record counts and stamps in `tests/test_core.mjs`, read a frozen fixture copy, for example `tests/fixtures/snapshot-20261002/{events,upcoming,coverage}.json`.
-     - Tests on the real `public/*.json` assert only invariants: `sweepFact` parses to non-null, counts agree with each other, and the newest evidence is not after today.
-     - SPEC §6.6, §19 WP3 (the "33 records" count) and §22.2 (the "84 records" smoke check) are updated to match.
-   - After the data PR merges, this branch merges `main`. With the fixture rule in place, that merge needs no test edits.
-   - The release then reaches `main` through its own PR.
-   - The §22.4 checks run on the deployed site before any 4.0 roadmap item is marked shipped.
+   - [x] **Done: tests stop pinning live data.**
+     - Literal assertions (the `sweepFact` values, record counts, the first card, the stale walkthrough, stamps) read `tests/fixtures/snapshot-20261002/`, byte copies of the 2 Oct data.
+     - Tests on the real `public/*.json` assert only invariants, and smoke derives its clocks and counts from `public/events.json`. Code and data have separate size budgets.
+     - SPEC §23 "Verification round 1 addendum" records the change for §6.6, §19 WP3 and §22.2.
+     - Checked: a scratch copy with one extra valid record (85 episodes) passes the build, 87 Python and 227 Node tests. Handoff §2.2 now tells the data session that a UI test failing on valid data is a UI bug to report, not a test to edit.
+   - **Next, in order:**
+     1. Open the 4.0 PR into `main`. If the data PR merges first, this branch merges `main` first; with the fixtures in place, that merge needs no test edits.
+     2. After the merge, Pages deploys. The `verify` job must pass: the live `public/build-info.json` carries the merge commit, the shell and required JSON answer 200 and parse, and unknown paths get the `noindex` 404.
+     3. Run smoke against the live URL (`--prefix /protest-atlas/`), or record a manual phone check, and update RELEASE_EVIDENCE.md.
+     4. Flip roadmap items under SPEC §22.4 only, in one commit: `mobile-first-redesign`, `clear-dates-and-stale-warnings`, `record-cards-key-dimensions` and `ahead-page` become shipped in 4.0 only if their acceptance passes on the deployed site, each with a `test` evidence entry; `updated_at`, `last_reviewed` and the roadmap note change with them. Items that fail stay in progress. `UX_SPEC.md` is already rewritten for 4.0.
+   - The §22.4 checks run on the deployed site before any 4.0 roadmap item is marked shipped. Nothing in this release is to be described as shipped before then.

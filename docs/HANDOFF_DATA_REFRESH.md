@@ -127,6 +127,15 @@ main 6f71f16 ── 0f4854f … 11bdb7f ── 7f0b1d5 ── c1ca039 ── e63
 
 Do not reword the sentence templates in `merge_history.sweep_sentence` or `write_upcoming`: the 4.0 interface parses them (SPEC §6.6).
 
+**UI tests and new data** (updated 3 Oct 2026, after 4.0 verification round 1). The 4.0 UI tests no longer pin live data:
+- Every assertion on specific counts, ids, dates or walkthrough text (84 episodes, the first card, the 9 Oct stale walkthrough, the `sweepFact` 2 Oct/167/0 values, the "33 records" intensity count) reads the frozen copy in `tests/fixtures/snapshot-20261002/`.
+- Tests on `public/*.json` check only invariants that hold for any valid snapshot, and the browser smoke derives its clocks and counts from `public/events.json`.
+- Code and data have separate size budgets in `tests/test_shell.mjs`. The data guards are `events.json` ≤ 120 KB gzip, critical data ≤ 180 KB and `cities.json` ≤ 16 KB, several times the 2 Oct sizes.
+
+A valid data refresh should therefore keep CI green. Checked on a `git archive` copy of the 4.0 branch at `b260087` with one extra valid record (85 episodes, newest evidence 3 Oct): the build, 87 Python tests and 227 Node tests pass. These tests reach a data branch only when it merges `origin/main` after 4.0 has merged (§2.3).
+
+The rules for this session do not change. Never edit an existing file under `tests/`, and never edit the fixtures, which stay the 2 Oct snapshot whatever the data become. **If a UI test fails on data that pass every validator, that is a UI bug:** do not change the test, the fixtures or the data to make it pass. Report the failing test and its message in the PR for the UI owner.
+
 **Ownership runs both ways.** From the handoff push until the data PR merges, the UI branch commits no change to:
 - `research/round4/**`;
 - the six public data JSON files above;
@@ -421,7 +430,7 @@ If one daily run is missed, the evidence stays at D = R−1. The site is then "a
 | 10 | **Competing figures.** | CGT vs Interior Ministry (FR). CONFECH vs Carabineros (CL). Organisers vs police (DE). | Keep both figures, attributed, in the qualifier text. Never average them. |
 | 11 | **Privacy.** | DE school strikers (minors), detainees in IN and CL. | No private names, faces, meeting points or addresses. |
 | 12 | **Week/month announcements shown as passed early.** | BE "week of 23 Nov", the "late October" items. | `planned_end` set to the end of the period (Step 4). |
-| 13 | **Collision with the UI session.** | Shared working files. 4.0 tests specified against today's data may break: SPEC §6.6 (the `sweepFact` 2 Oct/167/0 assertion), §19 WP3 (the "33 records" count) and §22.2 (the "84 records" smoke check). | Scope check and two-way ownership (§2.2). Keep the sweep sentences unchanged. On the UI side (ROADMAP task 4), before the 4.0 PR: literal assertions read a frozen fixture copy (for example `tests/fixtures/snapshot-20261002/`), tests on real `public/*.json` assert only invariants, and SPEC §6.6, §19 WP3 and §22.2 change to match. Until then, a data PR whose only red check is a UI test pinning old data reports it and does not edit the test. |
+| 13 | **Collision with the UI session.** | Shared working files. The 4.0 tests were first written against today's data: SPEC §6.6 (the `sweepFact` 2 Oct/167/0 assertion), §19 WP3 (the "33 records" count) and §22.2 (the "84 records" smoke check). | Scope check and two-way ownership (§2.2). Keep the sweep sentences unchanged. Done on the UI side on 3 Oct (ROADMAP task 4): those assertions read `tests/fixtures/snapshot-20261002/`, tests on real `public/*.json` assert only invariants, and smoke derives its counts from the data (§2.2 "UI tests and new data"). A data PR whose only red check is a UI test reports it as a UI bug and does not edit the test. |
 | 14 | **Window overreach.** | Some regions completed while others were blocked. | `WINDOW_END` is set to the last day actually searched. The PR and the release note name every region not covered through that day. |
 | 15 | **Long runs and container loss.** | Five regions with sequential lead and discovery batches. | Commit and push after each region (Step 3). Resume apply with `resumeFromRunId` and `apply_attempt`. The scans only append. |
 | 16 | **Restamping** reads as review. | `merge_history.py` rewrites `generated_at` and `last_editorial_review` on every run. | Known issue (editorial guidance §16.3). Never describe a rerun as a review. The 4.0 interface labels it "Snapshot assembled". |

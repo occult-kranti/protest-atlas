@@ -261,3 +261,57 @@ Each change keeps or tightens what the test was checking.
    - `docs/UX_SPEC.md` for 4.0;
    - RELEASE_EVIDENCE;
    - running smoke on the deployed site.
+
+---
+
+## 8. Verification round 1 (3 Oct 2026)
+
+After integration, five read-only verification lenses (editorial honesty, accessibility, mobile UX and visual design, code correctness and security, deployment readiness) checked the integrated build with Playwright scripts, axe-core and code reading. They reported **14 major and 29 minor findings**. Two fix lanes (Reports; pages and map) then worked on them, and the lead integrated the result as commits `c09b7d8` (frozen fixtures, short country names and aliases) and `b260087`. All of these agents are AI agents; no human reviewed the findings or the fixes. SPEC §23 "Verification round 1 addendum" is the contract-level summary and holds the copy table.
+
+**Outcome:** 36 resolved, 2 resolved in part (Minor 18, 19), 2 declined (Minor 14, 17), 3 deferred to the data-pipeline owner (Minor 25, 26, 27).
+
+### 8.1 Resolved, by area
+
+| Area | Finding → change | Files |
+|---|---|---|
+| Reports, stale state | M5: once the snapshot ages, one notice warning line with a "Why?" disclosure holds E4 and S7 (no `.feed-gap`); S1 is hidden below 600 px; the share/CSV row moves under the list on phones. First card top on 9 Oct: 603 px at 390 and 360 (was 895 and 916) | js/notice.js, js/list.js, css/feed.css, index.html |
+| Reports, density | M6: List is a scan row (status · evidence date · country, title, "For: {target} · Against: {target}", evidence); card Intensity collapses to one labelled line when two or more facets are not established. m20: the record glance Intensity cell uses labelled rows | js/cards.js, js/detail.js, css/record.css |
+| Reports, search and filters | M7: Enter blurs the field on touch and the result summary scrolls under the header when it sits below mid-viewport. m12: the label contains the visible words. m15: "Share this view" on coarse pointers with Web Share; shared titles name the filters. m16: enabled quiet buttons get a solid outline | js/filters.js, app.js, js/actions.js, css/feed.css, styles.css |
+| Country names | M8: aliases in Countries and Reports search; actionable no-match with "Browse A–Z". M9: 24 short display names (CLDR-referenced, AI-chosen, display only) with the ISO name kept as a second line in the brief and directory | js/model.js, js/countries.js, js/country-brief.js, js/map-view.js, js/about.js |
+| Failure states | M11: Countries rows wait while records reload; the dek shows "Retrying…". M12: a context-file failure is unknown, not absent: notice line, paused city/outcome filters and chips, record Outcome with its own Retry (`retry-contexts`), CSV "not loaded". m21: focus stays in the section after a Retry. m23: `SHAPES.countries` requires string names | js/countries.js, js/notice.js, js/model.js, js/filters.js, js/detail.js, js/actions.js, explore.js, js/data.js, js/about.js, js/ahead.js |
+| Focus and landmarks | M4: focus goes to the view title when a mode switch hides its trigger. m5: the dates-sheet body is a focusable region, plus a "Done" button. m6: hidden `h2` in example mode. m7: the example banner is a named region; the 404 notice is in a landmark. m8: sheet heads and foots are `div`s | app.js, index.html, 404.html, js/list.js, styles.css |
+| Map | M2: the focus stacking rule is scoped to the zoom group, so "Explore map" never moves. M3: the brief's live lead keeps its node (direct-child lookup on the fragment). M10: the selection bar stays above the tab bar in Explore. m9: document-level Escape hides the tooltip. m10: 5 px room for focus rings in scrollers. m11: dashed CanvasText focus ring in forced colours. m13: "Back to world" on the selection bar | css/map.css, js/map-view.js, map.js |
+| Ahead and About | M1: ledger column "Pages opened in the first search", caption note, dash for none. m1: R3 in-progress wording. m2: the teaser counts only upcoming items; a list with none upcoming says so with the sweep fact. m3: roadmap claims corrected | js/about.js, js/ahead.js, public/roadmap.json |
+| Example mode | m4: "no source was checked" replaces the AI-check wording on the card, D1 and Outcome; no re-read row | js/record-facts.js, js/detail.js |
+| Robustness | m22: the 60 s tick restores the first visible card's offset after a regroup (smoke 13: −496 → −495 px). m24: roadmap test evidence must start a `test(` title of at least 8 characters, or name a method inside its class | js/list.js, scripts/validate_roadmap.py |
+| Tests and CI | M13, M14: walkthrough and count assertions read `tests/fixtures/snapshot-20261002/` (byte copies of the 2 Oct data); tests on `public/*.json` assert invariants only; smoke derives its clocks and counts from `public/events.json`; test_shell budgets code apart from data. m28: DEPLOYMENT.md pins and the verify job. m29: `actions/setup-node` v6.5.0 with Node 22 | tests/*, tests/browser/smoke.cjs, docs/DEPLOYMENT.md, .github/workflows/pages.yml |
+
+Resolved in part, declined and deferred items, with reasons, are listed in SPEC §23 "Verification round 1 addendum". In short: Countries keeps one A–Z list without a "published only" toggle or region jumps (m18); roadmap items keep "Done when" and "Depends on" open (m19); small-country taps at world zoom still select directly (m14, a known limit in MAP_IMPLEMENTATION.md); sheets have no swipe-to-dismiss (m17); and three data-pipeline items wait for the data-session ownership window to close (m25–m27).
+
+### 8.2 Decisions that supersede earlier sections of this file
+
+- §2.1 "Tests that pin the 2 Oct snapshot: the tests stay as they are" and §7 risk 1 are **superseded**: the fixtures are in place, and HANDOFF_DATA_REFRESH.md §2.2 now tells the data session that a UI test failing on valid new data is a UI bug to report.
+- §7 risk 3 (the first title clearing the tab bar by 10 px at 390 × 844) is **reduced**: on the 2 Oct clock the first title bottom is 657 px at 360 × 780, and on the 9 Oct and 5 Nov clocks the first card starts at 603 and 583 px at both phone sizes. On 9 Oct at 360 × 780 the first title ends at 720 px, 4 px past the 716 px target, which stays reported, not enforced (I-03).
+- §4 budgets: the code ceilings now exclude data (critical code 125 KB, map add-on 170 KB, map-first code 294 KB), with separate data guards (`events.json` 120 KB, critical data 180 KB, `cities.json` 16 KB). The CSS (28 KB) and critical JS (91 KB) ceilings are unchanged.
+
+### 8.3 Verification run (local, commit `b260087`)
+
+| # | Command | Result |
+|---|---|---|
+| 1 | `python3 -m unittest discover -s tests` | 87 tests, OK (84 before round 1) |
+| 2 | `node --test tests/*.mjs` (Node 22.22.0) | 227 / 227 (203 before round 1) |
+| 3 | `python3 scripts/build.py` | every validator passes |
+| 4 | `smoke.cjs --root _site --prefix /protest-atlas/` on a `git archive` copy | 24 / 24 checks in 280 s; check 10 rerun with `--baseline-css` because the export has no Git history |
+| 5 | The same copy plus one valid synthetic record (`patch_refresh.py`: 85 episodes, newest evidence 3 Oct) | build passes; Python 87 OK; Node 227 / 227 |
+| 6 | axe-core 4.13.0 over 80 page states (six routes, record sheet, dates and filter sheets, example mode; 390 and 1440; light and dark; 2 and 9 Oct clocks) | 0 violations |
+
+Payload after round 1 (gzip -9, test_shell's method): CSS 27,243 B (ceiling 28,672), critical JS 92,483 B (ceiling 93,184), critical code 125,845 B (ceiling 128,000), critical data 61,471 B, map add-on code and geometry 159,803 B (ceiling 174,080), map-first code 285,648 B (ceiling 301,056).
+
+### 8.4 Open risks after round 1
+
+1. **Critical JS headroom is 701 B.** Any further change to the 21-module graph will need the lazy Ahead/Countries/About split or a minifier (§4), not a higher ceiling.
+2. **Nothing has been checked on the deployed site.** The verify job, smoke against the live URL and the §22.4 roadmap flips follow the deploy. The live site still runs release 3.
+3. **Chromium only.** Smoke and axe ran in Chromium. Safari/WebKit (for example the dates-sheet scrolling that m5 addressed), Firefox, screen readers and physical phones are untested.
+4. **The "Taiwan" display name** awaits an editorial owner (M9); there is no human editor.
+5. **Data-pipeline items m25–m27** stay open until the data PR merges; the data session works around them by process (handoff §4 for week and month dates, the consolidate step for the window date).
+6. **The data refresh is still blocked** (no news access), so from 9 Oct 00:00 UTC the deployed 4.0 would show the stale state, which round 1 made the primary layout.
