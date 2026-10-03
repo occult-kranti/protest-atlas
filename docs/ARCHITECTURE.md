@@ -24,7 +24,7 @@ Release 4.0 (built and verified locally on 3 Oct 2026; deployment pending) rebui
 
 Apart from `app.js`, every module is DOM-free when imported (DOM work happens only inside its `mount*`, `init*` or `start` functions), so `tests/*.mjs` import them in Node. `review.html` keeps its own `review.js` and the legacy `styles.css` selectors it needs.
 
-**Payload.** CI measures gzip -9 per file. Code and data are budgeted separately, so a data refresh cannot fail a code-size gate: critical code (HTML, CSS, critical JS) 125,845 B against a 125 KB ceiling, of which critical JS 92,483 B against 91 KB; map add-on code and geometry 159,803 B against 170 KB; critical data 61,471 B against 180 KB, `events.json` against 120 KB. All code buckets exceed the original targets in tech §6.2; INTEGRATION_NOTES §4 explains why and what would recover them (lazy Ahead, Countries and About; a minifier; D3 submodules).
+**Payload.** CI measures gzip -9 per file. Code and data are budgeted separately, so a data refresh cannot fail a code-size gate: critical code (HTML, CSS, critical JS) 125,845 B against a 125 KB ceiling, of which critical JS 92,483 B against 91 KB; map add-on code and geometry 159,803 B against 170 KB; critical data 61,471 B against 180 KB, `events.json` against 120 KB. The CSS, critical-JS, critical-code, map add-on and map-first buckets exceed the original targets in tech §6.2 (index.html, at 6,119 B against 12 KB, does not); INTEGRATION_NOTES §4 explains why and what would recover them (lazy Ahead, Countries and About; a minifier; D3 submodules).
 
 ## Geographic exploration
 

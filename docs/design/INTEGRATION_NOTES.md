@@ -268,6 +268,8 @@ Each change keeps or tightens what the test was checking.
 
 After integration, five read-only verification lenses (editorial honesty, accessibility, mobile UX and visual design, code correctness and security, deployment readiness) checked the integrated build with Playwright scripts, axe-core and code reading. They reported **14 major and 29 minor findings**. Two fix lanes (Reports; pages and map) then worked on them, and the lead integrated the result as commits `c09b7d8` (frozen fixtures, short country names and aliases) and `b260087`. All of these agents are AI agents; no human reviewed the findings or the fixes. SPEC §23 "Verification round 1 addendum" is the contract-level summary and holds the copy table.
 
+The `c09b7d8` and `b260087` commit messages are inaccurate. In `c09b7d8`, "reviewed" and "CLDR-reviewed" mean reviewed by an AI agent, and disputed names were not kept in ISO form (TW → "Taiwan", PS → "Palestine"); both names are open items for an editorial owner (§8.4). `b260087` is titled "WIP: Reports fix lane complete (pages/map lane in progress)", but its diff contains both fix lanes. Its code is what was verified; the later commits on this branch change only documentation and screenshots.
+
 **Outcome:** 36 resolved, 2 resolved in part (Minor 18, 19), 2 declined (Minor 14, 17), 3 deferred to the data-pipeline owner (Minor 25, 26, 27).
 
 ### 8.1 Resolved, by area
@@ -302,8 +304,10 @@ Resolved in part, declined and deferred items, with reasons, are listed in SPEC 
 | 2 | `node --test tests/*.mjs` (Node 22.22.0) | 227 / 227 (203 before round 1) |
 | 3 | `python3 scripts/build.py` | every validator passes |
 | 4 | `smoke.cjs --root _site --prefix /protest-atlas/` on a `git archive` copy | 24 / 24 checks in 280 s; check 10 rerun with `--baseline-css` because the export has no Git history |
-| 5 | The same copy plus one valid synthetic record (`patch_refresh.py`: 85 episodes, newest evidence 3 Oct) | build passes; Python 87 OK; Node 227 / 227 |
-| 6 | axe-core 4.13.0 over 80 page states (six routes, record sheet, dates and filter sheets, example mode; 390 and 1440; light and dark; 2 and 9 Oct clocks) | 0 violations |
+| 5 | The same copy plus one valid synthetic record (`patch_refresh.py`, a one-off script in the session scratch directory, not committed: 85 episodes, newest evidence 3 Oct) | build passes; Python 87 OK; Node 227 / 227 |
+| 6 | axe-core 4.13.0 over 80 page states (six routes, record sheet, dates and filter sheets, example mode; 390 and 1440; light and dark; 2 and 9 Oct clocks), run by `axe-sweep.cjs` from a scratch directory; neither the script nor axe-core is committed | 0 violations |
+
+Rows 1–4 can be rerun from the repository. Rows 5 and 6, the map tap count in MAP_IMPLEMENTATION.md (`maptap2.cjs`, one tap on each of 66 small countries) and the selection-bar position check were made with one-off scripts kept only in the session scratch directory. They are not committed, so those results are session results that cannot be reproduced from the repository as it stands.
 
 Payload after round 1 (gzip -9, test_shell's method): CSS 27,243 B (ceiling 28,672), critical JS 92,483 B (ceiling 93,184), critical code 125,845 B (ceiling 128,000), critical data 61,471 B, map add-on code and geometry 159,803 B (ceiling 174,080), map-first code 285,648 B (ceiling 301,056).
 
@@ -312,6 +316,6 @@ Payload after round 1 (gzip -9, test_shell's method): CSS 27,243 B (ceiling 28,6
 1. **Critical JS headroom is 701 B.** Any further change to the 21-module graph will need the lazy Ahead/Countries/About split or a minifier (§4), not a higher ceiling.
 2. **Nothing has been checked on the deployed site.** The verify job, smoke against the live URL and the §22.4 roadmap flips follow the deploy. The live site still runs release 3.
 3. **Chromium only.** Smoke and axe ran in Chromium. Safari/WebKit (for example the dates-sheet scrolling that m5 addressed), Firefox, screen readers and physical phones are untested.
-4. **The "Taiwan" display name** awaits an editorial owner (M9); there is no human editor.
+4. **The "Taiwan" and "Palestine" display names** await an editorial owner (M9; ISO "Taiwan, Province of China" and "Palestine, State of"); there is no human editor.
 5. **Data-pipeline items m25–m27** stay open until the data PR merges; the data session works around them by process (handoff §4 for week and month dates, the consolidate step for the window date).
 6. **The data refresh is still blocked** (no news access), so from 9 Oct 00:00 UTC the deployed 4.0 would show the stale state, which round 1 made the primary layout.
