@@ -46,16 +46,16 @@ function entryHTML(event, outcome) {
 }
 
 /**
- * D7 "What changed — and for whom?" (record sheet, inside section#rec-outcome).
- * `scope: false` leaves the episode scope to the record overview ("Scope of this record:").
+ * D7 "What changed — and for whom?". Optional third argument (WP3 addition; the two-argument call is unchanged):
+ * `scope: false` leaves the episode scope to the record overview; `headingId` is the host's id for the heading.
  */
-export function outcomeHTML(event,context,{scope = true} = {}) {
+export function outcomeHTML(event,context,{scope = true, headingId = ''} = {}) {
   const sources = {sources: event?.sources || []};
   const cities=cityGroups(context?.cities).map(g=>`<span class="outcome-city">${g.names.map(esc).join(', ')} ${sourceRefs(sources,g.ids)}</span>`).join('<span class="outcome-sep" aria-hidden="true"> · </span>');
   const ended = event?.status==='ended';
   const documented = context?.outcome_status==='documented' && (context.outcomes||[]).length;
   return `<div class="outcome-section">`
-    + `<h3 class="rec-h" id="rec-outcome-title">What changed — and for whom?</h3>`
+    + `<h3 class="rec-h"${headingId ? ` id="${esc(headingId)}"` : ''}>What changed — and for whom?</h3>`
     + (scope || !context ? `<p class="episode-scope">${esc(context?.episode_scope||'The recorded episode; the wider movement may continue.')}</p>` : '')
     + (cities ? `<p class="outcome-cities"><strong>Reported cities:</strong> ${cities}</p>` : '')
     + `<div class="completion-note${ended?' confirmed-ended':''}"><p class="completion-title"><strong>${ended?'Ended / suspended episode':'End not established'}</strong></p><p>${esc(context?.status_basis?.text||'Age alone does not establish that this episode ended.')}</p>${refsHTML(sources, context?.status_basis?.source_ids)}</div>`

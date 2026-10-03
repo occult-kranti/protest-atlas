@@ -66,15 +66,27 @@ export function bandTag(band) {
   return `<span class="band" data-band="${key}"><span class="band-text" aria-hidden="true">${esc(BAND_BADGES[key])}</span><span class="visually-hidden">${esc(BAND_LABELS[key])}</span></span>`;
 }
 
-/**
- * absoluteLabel() with the copy deck's month abbreviations: newer ICU data writes September as "Sept";
- * the deck (and js/model.js statusLabel) write "Sep". WP3 addition.
- */
+/** absoluteLabel() with the copy deck's "Sep" (newer ICU data writes "Sept"). WP3 addition. */
 export const absoluteText = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
 
-/** <time> with the absolute label only, for days or timestamps (no data-rel, so refreshTimes leaves it alone). WP3 addition. */
+/** <time> with the absolute label only (no data-rel, so refreshTimes leaves it alone). WP3 addition. */
 export function dateTag(value, className = '') {
   const cls = className ? ` class="${esc(className)}"` : '';
   if (!value || !Number.isFinite(Date.parse(value))) return `<span${cls}>Not established</span>`;
   return `<time${cls} datetime="${esc(value)}">${esc(absoluteText(value))}</time>`;
+}
+
+/**
+ * timeTag(value, now, 'both') in absoluteText's month names: a fixed date, then a relative part that
+ * refreshTimes updates in place. The no-break space keeps "·" off the start of a line. WP3 addition.
+ */
+export const datedTimeTag = (value, now) => (!value || !Number.isFinite(Date.parse(value))
+  ? timeTag(value, now)
+  : `${dateTag(value)}\u00a0· ${timeTag(value, now, 'relative')}`);
+
+/** sourceLink() whose last word and icon never part at a line break. WP3 addition. */
+export function sourceLinkKept(source, label) {
+  const html = sourceLink(source, label);
+  const m = html.match(/^(<a [^>]+>)((?:[^<]*\s)?)([^\s<]{1,24})(<svg[^]*?<\/svg>)/);
+  return m ? `${m[1]}${m[2]}<span class="source-nowrap">${m[3]}${m[4]}</span>${html.slice(m[0].length)}` : html;
 }

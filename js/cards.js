@@ -1,43 +1,40 @@
-// Record cards, HTML strings (WP3; SPEC §7, C-11, C-51). DOM-free and safe to import in Node.
-// Both densities carry C1–C8: status (leads, dated), place, title, latest evidence + band, issues,
-// timeframe, for/against with named targets, intensity, police/state, and the evidence row.
-import {positionList, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView} from './record-facts.js';
-import {esc, sourceLink, timeTag, bandTag, dateTag} from './html.js';
+// Record cards (WP3; SPEC §7, C-11, C-51). DOM-free. Both densities carry C1–C8.
+import {positionList, positionLineHTML, morePositions, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView,
+  EXAMPLE_WATERMARK} from './record-facts.js';
+import {esc, sourceLinkKept, datedTimeTag, bandTag, dateTag} from './html.js';
 import {getDisplayStatus, statusLabel} from './model.js';
 import {observationBand} from '../freshness.js';
 
-const MAX_POSITIONS = 2;
-export const EXAMPLE_WATERMARK = 'Illustrative example • not a real event';
+const SEP = '\u00a0· ';   // keeps each "·" off the start of a line
 
-/** ST1–ST5 with dates (C-06), from js/model.js statusLabel. */
+/** ST1–ST5 with dates (C-06). */
 const statusHTML = (status, event) =>
   `<span class="status" data-status="${esc(status)}">${esc(statusLabel(status, event))}</span>`;
 
 function placeHTML(event, countryName) {
   const place = placeView(event, countryName);
-  return `<p class="card-place"><strong>${esc(place.country)}</strong>${place.label ? ` · ${esc(place.label)}` : ''}</p>`;
+  return `<p class="card-place"><strong>${esc(place.country)}</strong>${place.label ? `${SEP}${esc(place.label)}` : ''}</p>`;
 }
 
 function whenHTML(event, now, band) {
-  return `<p class="card-when">Latest evidence ${timeTag(event?.last_observed_at, now, 'both')} ${bandTag(band)}</p>`;
+  return `<p class="card-when">Latest evidence ${datedTimeTag(event?.last_observed_at, now)} ${bandTag(band)}</p>`;
 }
 
 function issuesHTML(event) {
   const issues = (Array.isArray(event?.issues) ? event.issues : []).filter(Boolean);
-  return issues.length ? `<p class="card-issues"><span class="visually-hidden">Issues: </span>${issues.map(esc).join(' · ')}</p>` : '';
+  return issues.length ? `<p class="card-issues"><span class="visually-hidden">Issues: </span>${issues.map(esc).join(SEP)}</p>` : '';
 }
 
-/** C4 + C10: at most two positions in recorded order, never clamped; the pill is hue-free. */
+/** C4 + C10: at most two positions in recorded order, never clamped. */
 function sidesHTML(event) {
   const positions = positionList(event);
   if (!positions.length) return '<p class="card-sides-none">No position is recorded in this record.</p>';
-  const shown = positions.slice(0, MAX_POSITIONS).map(p =>
-    `<li class="card-side"><span class="side-pill" data-stance="${esc(p.stance)}">${esc(p.pill)}</span> <span class="side-target">${esc(p.target)}</span> — <span class="side-actor">${esc(p.actor)}</span></li>`).join('');
-  const more = positions.length - MAX_POSITIONS;
-  return `<ul class="card-sides">${shown}</ul>${more > 0 ? `<p class="card-more">+${more} more ${more === 1 ? 'position' : 'positions'} recorded</p>` : ''}`;
+  const more = morePositions(positions.length - 2);
+  return `<ul class="card-sides">${positions.slice(0, 2).map(p => `<li class="card-side">${positionLineHTML(p)}</li>`).join('')}</ul>`
+    + (more ? `<p class="card-more">${more}</p>` : '');
 }
 
-/** C6: one line when nothing is described, otherwise three fixed rows shown verbatim. */
+/** C6: one line when nothing is described, else three fixed rows, verbatim. */
 function intensityHTML(event) {
   const summary = intensitySummary(event);
   if (summary.allUnknown) return `<p class="facet-none">${esc(summary.line)}</p>`;
@@ -45,7 +42,7 @@ function intensityHTML(event) {
     `<li class="facet-item"><span class="facet-name">${esc(item.label)}:</span> ${esc(item.text)}</li>`).join('')}</ul>`;
 }
 
-/** C7: "{action} — {attribution}" verbatim; none → "Not established in this record". */
+/** C7, verbatim. */
 function stateHTML(event) {
   const summary = stateActionSummary(event);
   if (!summary.present) return esc(summary.text);
@@ -53,11 +50,12 @@ function stateHTML(event) {
     `${esc(item.action)}${item.attribution ? ` — <span class="card-attribution">${esc(item.attribution)}</span>` : ''}`).join('; ');
 }
 
-/** C8: publisher link (above the stretched card link) · published date · level · links · AI-assisted check. */
+/** C8; the publisher link sits above the stretched card link. */
 function evidenceHTML(event) {
   const line = evidenceLine(event);
   const published = line.published ? `published ${dateTag(line.published)}` : 'publication date not given';
-  return `<p class="card-evidence">${sourceLink(line.source, line.publisher)} · ${published} · <span class="card-level">${esc(line.levelLabel)}</span> · ${esc(line.linkLabel)} · AI-assisted check</p>`;
+  return `<p class="card-evidence">${line.publisher ? `${sourceLinkKept(line.source, line.publisher)}${SEP}` : ''}${published}${SEP}`
+    + `<span class="card-level">${esc(line.levelLabel)}</span>${SEP}<span class="card-links">${esc(line.linkLabel)}</span>${SEP}AI-assisted check</p>`;
 }
 
 /** C9: the only element that may be clamped. */
@@ -69,10 +67,7 @@ function outcomeHTML(context) {
 
 const fact = (label, value) => `<div class="card-fact"><dt>${esc(label)}</dt><dd>${value}</dd></div>`;
 
-/**
- * One record card. `density` is 'card' (compact label-column, default) or 'row' (List).
- * The title link is stretched over the card; the publisher link sits above it. No chevron.
- */
+/** One record card; `density` is 'card' (default) or 'row' (List). The title link is stretched; no chevron. */
 export function renderCard(event, {context = null, mode = 'reported', now = Date.now(), countryName = code => code, density = 'card'} = {}) {
   const status = getDisplayStatus(event, now);
   const band = observationBand(event, now);
@@ -92,7 +87,7 @@ export function renderCard(event, {context = null, mode = 'reported', now = Date
       title,
       issuesHTML(event),
       sidesHTML(event),
-      `<p class="card-row-facts"><span class="card-row-label">Timeframe:</span> ${esc(timing.line)} · <span class="card-row-label">Intensity:</span> ${esc(intensitySummary(event).line)}</p>`,
+      `<p class="card-row-facts"><span class="card-row-label">Timeframe:</span> ${esc(timing.line)}${SEP}<span class="card-row-label">Intensity:</span> ${esc(intensitySummary(event).line)}</p>`,
       `<p class="card-row-state"><span class="card-row-label">Police / state:</span> ${stateHTML(event)}</p>`,
       evidenceHTML(event),
     ].join(''));
@@ -115,7 +110,7 @@ export function renderCard(event, {context = null, mode = 'reported', now = Date
   ].join(''));
 }
 
-/** Placeholder cards while records load (aria-hidden; static, no shimmer). */
+/** Static, aria-hidden placeholders while records load. */
 export function renderCardSkeleton(count = 3) {
   const n = Math.max(0, Math.min(12, Number.isFinite(count) ? Math.floor(count) : 3));
   const lines = ['short', 'medium', 'title', 'title-2', 'medium', 'long', 'long', 'short'];

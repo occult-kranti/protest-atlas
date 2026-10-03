@@ -12,10 +12,7 @@ const collator = new Intl.Collator('en', {sensitivity: 'base'});
 
 const eventsOf = events => (Array.isArray(events) ? events : (Array.isArray(events?.events) ? events.events : []));
 
-/**
- * Scope counts for #research-scope. The window comes from the ledger, never from hard-coded dates.
- * cityCount is null when the event context is missing (not zero).
- */
+/** Scope counts for #research-scope; the window comes from the ledger. cityCount null (not 0) without contexts. */
 export function researchScope({research, contexts, events, countries} = {}) {
   const list = eventsOf(events);
   const ledger = Array.isArray(research?.countries) ? research.countries : [];
@@ -45,10 +42,7 @@ export function researchScope({research, contexts, events, countries} = {}) {
   };
 }
 
-/**
- * The lead-discovery audit row (About and the dates sheet, C-03). null when the manifest is missing or invalid.
- * runUrl is kept only when it is this repository's Actions run URL.
- */
+/** Lead-discovery audit (C-03); null when invalid. runUrl only for this repository's Actions runs. */
 export function discoveryView(discovery) {
   if (!discovery || typeof discovery !== 'object') return null;
   const date = discovery.last_success_at;
@@ -145,10 +139,7 @@ function patch(el, html, cache) {
   return true;
 }
 
-/**
- * Mounts #research-scope and #about-discovery on the first visit to #/about (C-21). Loads the research ledger and
- * the discovery manifest lazily; the ledger table renders only when its <details> is first opened.
- */
+/** Mounts #research-scope and #about-discovery on first visit (C-21); the ledger table renders on first open. */
 export function mountAbout(ctx = {}) {
   const doc = globalThis.document;
   const scopeEl = doc?.getElementById('research-scope');

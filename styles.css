@@ -443,7 +443,7 @@
   }
   .site-footer--app strong { font: 700 var(--fs-lg)/1.2 var(--font-serif); }
   .site-footer--app ul { display: flex; flex-wrap: wrap; gap: 0 20px; margin: 0; padding: 0; list-style: none; }
-  .site-footer--app li a { display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); min-height: var(--tap); }
+  .site-footer--app li a { display: inline-flex; align-items: center; min-width: var(--tap); min-height: var(--tap); }
   .footer-stamps { margin: 0; color: var(--text-2); }
   .footer-stamps:empty { display: none; }
   .site-footer--app > p:last-child { margin: 0; color: var(--text-muted); }

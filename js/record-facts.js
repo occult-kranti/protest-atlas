@@ -1,12 +1,12 @@
-// Pure record derivations (WP3): positions, intensity, police/state response, timeframe and evidence.
-// DOM-free and safe to import in Node. Every derivation shows recorded text verbatim; it never parses
-// numbers out of prose, never tallies stances and never turns an unknown into a zero (SPEC §7.4, §7.6).
-import {safeURL, hostOf, absoluteText} from './html.js';
+// Record derivations (WP3; SPEC §7.4, §7.6). DOM-free. Recorded text stays verbatim: no numbers parsed
+// from prose, no stance tallies, and an unknown never becomes a zero.
+import {esc, safeURL, hostOf, absoluteText} from './html.js';
 import {observationBand, toTime} from '../freshness.js';
 
+export const EXAMPLE_WATERMARK = 'Illustrative example • not a real event';
 export const VERIFICATION_LABELS = {'single-source': 'Single source', corroborated: 'Corroborated', contested: 'Contested', illustrative: 'Illustrative'};
 
-/** Explainers shown beside the verification label in the record (SPEC §8.8, verbatim). */
+/** SPEC §8.8, verbatim. */
 export const VERIFICATION_NOTES = {
   'single-source': 'One newsroom or reporting chain, however many links. Two copies of one wire story count as one source.',
   corroborated: 'The AI-assisted check found more than one independent source for key claims. This is not independent human verification.',
@@ -41,7 +41,7 @@ export function positionView(p) {
     pill: PILL[stance],
     pillLong: PILL_LONG[stance],
     target: text(p?.target) || 'target not established',
-    actor: text(p?.actor) || 'actor not established',
+    actor: text(p?.actor),
     claim: text(p?.claim),
     sourceIds: ids(p?.source_ids),
   };
@@ -50,8 +50,15 @@ export function positionView(p) {
 /** "Against · Yoon’s removal — Pro-Yoon demonstrators". */
 export function positionSentence(position) {
   const view = positionView(position);
-  return `${view.pill} · ${view.target} — ${view.actor}`;
+  return `${view.pill} · ${view.target}${view.actor ? ` — ${view.actor}` : ''}`;
 }
+
+/** C4 line markup (cards and the glance): hue-free pill, target, actor. */
+export const positionLineHTML = p => `<span class="side-pill" data-stance="${esc(p.stance)}">${esc(p.pill)}</span> `
+  + `<span class="side-target">${esc(p.target)}</span>${p.actor ? ` — <span class="side-actor">${esc(p.actor)}</span>` : ''}`;
+
+/** C10 text, or '' when nothing is left over. */
+export const morePositions = n => (n > 0 ? `+${n} more ${n === 1 ? 'position' : 'positions'} recorded` : '');
 
 /** Every position in recorded order. No grouping, no counts. */
 export function positionList(event) {
@@ -128,14 +135,14 @@ const DAY_ONLY = /^\d{4}-\d{2}-\d{2}$/;
 const day = value => (typeof value === 'string' && DAY_ONLY.test(value.slice(0, 10)) && Number.isFinite(toTime(value.slice(0, 10))) ? value.slice(0, 10) : null);
 const dayParts = value => absoluteText(value).split(' ');   // ['29', 'Sep', '2026']
 
-/** "29 Sep – 30 Sep 2026" within a year, "21 Dec 2025 – 4 Jan 2026" across years. */
+/** "29 Sep – 30 Sep 2026"; "21 Dec 2025 – 4 Jan 2026" across years. */
 export function dayRange(from, to) {
   const [d1, m1, y1] = dayParts(from);
   const [, , y2] = dayParts(to);
   return y1 === y2 ? `${d1} ${m1} – ${absoluteText(to)}` : `${absoluteText(from)} – ${absoluteText(to)}`;
 }
 
-/** Editorial §8 templates. Durations are inclusive and come from start and end only, never from the timeline. */
+/** Editorial §8 templates; inclusive durations from start and end only, never from the timeline. */
 export function timeframe(event, context = null, now = Date.now()) {
   const onset = day(event?.start_date);
   const end = day(event?.end_date);
@@ -166,17 +173,17 @@ export function timeframe(event, context = null, now = Date.now()) {
 
 const sourcesOf = event => (Array.isArray(event?.sources) ? event.sources : []);
 
-/** The first cited source with a safe URL (else the first source): drives C8 and the sheet's primary link. */
+/** The first source with a safe URL, else the first source (C8 and the sheet's primary link). */
 function primary(event) {
   const sources = sourcesOf(event);
   return sources.find(source => safeURL(source?.url)) ?? sources[0] ?? null;
 }
 
-/** C8 parts. `text` is the evidence row without link markup. Source count is never a confidence score. */
+/** C8 parts; `text` is the row without link markup. An unnamed source without a URL leaves the publisher out. */
 export function evidenceLine(event) {
   const source = primary(event);
   const url = safeURL(source?.url);
-  const publisher = text(source?.publisher) || hostOf(url) || 'Source not named';
+  const publisher = text(source?.publisher) || hostOf(url);
   const published = day(source?.published_at);
   const level = event?.verification?.level;
   const levelLabel = VERIFICATION_LABELS[level] ?? VERIFICATION_LABELS['single-source'];
@@ -186,7 +193,7 @@ export function evidenceLine(event) {
   return {
     publisher, url, published, level: level in VERIFICATION_LABELS ? level : 'single-source', levelLabel,
     levelNote: VERIFICATION_NOTES[level] ?? '', linkCount, linkLabel, publishedText, source,
-    text: `${publisher} · ${publishedText} · ${levelLabel} · ${linkLabel} · AI-assisted check`,
+    text: [publisher, publishedText, levelLabel, linkLabel, 'AI-assisted check'].filter(Boolean).join(' · '),
   };
 }
 
@@ -204,10 +211,7 @@ export function primarySource(event) {
 
 const PRECISION_LABELS = {city: 'city-level', region: 'region-level', country: 'country-level', 'multi-location': 'several locations'};
 
-/**
- * C1 parts. `country` comes from countryName(code) (the code itself when the directory failed to load);
- * `label` is dropped when it only repeats the country name.
- */
+/** C1 parts: countryName(code), else the code; the label is dropped when it repeats the country. */
 export function placeView(event, countryName = code => code) {
   let named = '';
   try { named = text(countryName(event?.country)); } catch { named = ''; }

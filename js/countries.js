@@ -36,14 +36,7 @@ function drawnCodes(mapCodes) {
   return values.length ? new Set(values) : null;
 }
 
-/**
- * One row per directory entry, A–Z by name.
- * - events: the reported envelope ({events: [...]}) or an array of events; example records never count here.
- * - research: the research ledger, or null while it is still loading (rows read "Checking the search log…").
- * - loadError: null | 'events' | 'research' | {events, research}. An events failure makes every row
- *   "Coverage unavailable" (C-37); a ledger failure does so only for rows without a published episode.
- * - mapCodes: public/world-map-codes.json once loaded; drawn is null until then.
- */
+/** Rows A–Z (E9). research null = still loading; loadError null|'events'|'research'|{events, research} (C-37). */
 export function directoryRows({countries, events, research, loadError, mapCodes = null} = {}) {
   const failed = failures(loadError);
   const list = Array.isArray(events) ? events : (Array.isArray(events?.events) ? events.events : []);
@@ -79,10 +72,7 @@ export function directoryRows({countries, events, research, loadError, mapCodes 
 
 const words = value => fold(value).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
 
-/**
- * [{region, rows}] with regions A–Z and empty regions dropped. Folded search: every query word must start a word of
- * the name or region, or equal the ISO code ("aland" finds Åland Islands, not New Zealand).
- */
+/** [{region, rows}] A–Z. Each folded query word starts a word of the name or region, or equals the code. */
 export function regionGroups(rows, query = '') {
   const tokens = words(query);
   const matches = row => {
@@ -158,11 +148,7 @@ function patch(el, html, cache) {
   return true;
 }
 
-/**
- * Mounts #countries-root on the first visit to #/countries (C-21), loads the research ledger and the map code
- * table lazily, and keeps the directory current. Row taps are handled by app.js (data-select-country +
- * data-view-after="map"; example mode returns to reported data first, C-38).
- */
+/** Mounts #countries-root on first visit (C-21); lazy ledger and map codes. Row taps are app.js's (C-38). */
 export function mountCountries(ctx = {}) {
   const doc = globalThis.document;
   const root = doc?.getElementById('countries-root');

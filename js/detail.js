@@ -1,9 +1,9 @@
-// Record sheet body, section nav, status patching and sheet chrome (WP3; SPEC §8, C-15, C-16, C-42, C-46).
-// DOM-free when loaded: DOM work happens only inside patchRecordStatus and mountRecordChrome.
+// Record sheet body, section nav, status patching and scroll-spy (WP3; SPEC §8, C-15, C-42, C-46).
+// DOM-free when loaded: only patchRecordStatus and mountRecordChrome touch the DOM.
 import {outcomeHTML} from '../history.js';
-import {positionList, intensityFacets, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView,
-  VERIFICATION_NOTES} from './record-facts.js';
-import {esc, icon, sourceLink, sourceRefs, timeTag, bandTag, dateTag, REPO_URL} from './html.js';
+import {positionList, positionLineHTML, morePositions, intensityFacets, intensitySummary, stateActionSummary, timeframe,
+  evidenceLine, placeView, VERIFICATION_NOTES, EXAMPLE_WATERMARK} from './record-facts.js';
+import {esc, icon, hostOf, sourceLink, sourceLinkKept, sourceRefs, datedTimeTag, bandTag, dateTag, REPO_URL} from './html.js';
 import {getDisplayStatus, statusLabel} from './model.js';
 import {observationBand} from '../freshness.js';
 
@@ -22,10 +22,8 @@ const D6_EMPTY = 'No police or state response is recorded in this record. That i
 const D8_SUB = 'Dated entries only. Gaps between dates are not assumed activity.';
 const TIMELINE_RULE = "'Reported ongoing' needs evidence dated within the last 72 hours. A newer source re-read alone cannot renew it.";
 const NEEDS_REVIEW_NOTE = "Needs review: the latest evidence for this record is more than 72 hours old, so it can no longer be labelled 'Reported ongoing'. Its current status is not established.";
-const EXAMPLE_WATERMARK = 'Illustrative example • not a real event';
 const EXAMPLE_NOTE = 'This record is fictional and is excluded from counts and export.';
 
-const statusText = (status, event) => statusLabel(status, event);   // ST1–ST5 with dates (C-06), js/model.js
 const temporalHTML = () => `<p id="temporal-update" class="rec-temporal">${esc(NEEDS_REVIEW_NOTE)}</p>`;
 const refsHTML = (event, ids) => {
   const refs = sourceRefs(event, ids);
@@ -33,17 +31,15 @@ const refsHTML = (event, ids) => {
 };
 const section = (id, heading, body, sub = '', extra = '') =>
   `<section id="${id}" class="rec-section${extra}" aria-labelledby="${id}-title"><h3 class="rec-h" id="${id}-title">${esc(heading)}</h3>${sub}${body}</section>`;
-const pillLine = p =>
-  `<span class="side-pill" data-stance="${esc(p.stance)}">${esc(p.pill)}</span> <span class="side-target">${esc(p.target)}</span> — <span class="side-actor">${esc(p.actor)}</span>`;
 
 // ---------------------------------------------------------------- overview and glance (D2, D3)
 
 function glanceHTML(event, timing) {
   const positions = positionList(event);
-  const more = positions.length - 2;
+  const more = morePositions(positions.length - 2);
   const sides = positions.length
-    ? positions.slice(0, 2).map(p => `<span class="rec-glance-line">${pillLine(p)}</span>`).join('')
-      + (more > 0 ? `<span class="rec-glance-line rec-glance-more">+${more} more ${more === 1 ? 'position' : 'positions'} recorded</span>` : '')
+    ? positions.slice(0, 2).map(p => `<span class="rec-glance-line">${positionLineHTML(p)}</span>`).join('')
+      + (more ? `<span class="rec-glance-line rec-glance-more">${more}</span>` : '')
     : 'No position is recorded in this record.';
   const cell = (target, label, value) =>
     `<a class="rec-glance-cell" href="#${target}" data-scroll-to="${target}"><span class="rec-glance-label">${esc(label)}</span><span class="rec-glance-value">${value}</span></a>`;
@@ -75,7 +71,7 @@ function tabsHTML() {
 function positionsHTML(event) {
   const positions = positionList(event);
   const body = positions.length
-    ? `<ul class="rec-positions">${positions.map(p => `<li class="rec-position"><p class="rec-actor">${esc(p.actor)}</p>`
+    ? `<ul class="rec-positions">${positions.map(p => `<li class="rec-position">${p.actor ? `<p class="rec-actor">${esc(p.actor)}</p>` : ''}`
       + `<p class="rec-stance"><span class="side-pill" data-stance="${esc(p.stance)}">${esc(p.pillLong)}</span> <span class="side-target">${esc(p.target)}</span></p>`
       + (p.claim ? `<p class="rec-claim"><span class="rec-claim-label">As reported:</span> ${esc(p.claim)}</p>` : '')
       + `${refsHTML(event, p.sourceIds)}</li>`).join('')}</ul>`
@@ -134,14 +130,16 @@ function sourcesHTML(event, now) {
   const note = VERIFICATION_NOTES[evidence.level];
   const verification = `<dl class="rec-evidence">`
     + `<div class="rec-evidence-row"><dt>Verification:</dt><dd><strong>${esc(evidence.levelLabel)}</strong></dd>${note ? `<dd class="rec-evidence-note">${esc(note)}</dd>` : ''}</div>`
-    + `<div class="rec-evidence-row"><dt>Source re-read (AI-assisted):</dt><dd>${timeTag(event?.last_verified, now, 'both')}</dd></div>`
-    + `<div class="rec-evidence-row"><dt>Latest evidence:</dt><dd>${timeTag(event?.last_observed_at, now, 'both')}</dd></div>`
+    + `<div class="rec-evidence-row"><dt>Source re-read (AI-assisted):</dt><dd>${datedTimeTag(event?.last_verified, now)}</dd></div>`
+    + `<div class="rec-evidence-row"><dt>Latest evidence:</dt><dd>${datedTimeTag(event?.last_observed_at, now)}</dd></div>`
     + `</dl>${event?.verification?.note ? `<p class="rec-verification-note">${esc(event.verification.note)}</p>` : ''}`;
   const list = sources.length
-    ? `<ol class="source-list">${sources.map((source, i) => `<li id="detail-source-${i + 1}" class="source-item" tabindex="-1">`
-      + `<span class="source-title">${sourceLink(source, source?.title)}</span> — ${esc(source?.publisher || 'Publisher not named')}`
-      + ` · ${source?.published_at ? `published ${dateTag(source.published_at)}` : 'published date not given'}`
-      + `${source?.accessed_at ? ` · opened ${dateTag(source.accessed_at)}` : ''}</li>`).join('')}</ol>`
+    ? `<ol class="source-list">${sources.map((source, i) => {
+      const publisher = (typeof source?.publisher === 'string' && source.publisher.trim()) || hostOf(source?.url);
+      return `<li id="detail-source-${i + 1}" class="source-item" tabindex="-1"><span class="source-title">${sourceLinkKept(source, source?.title)}</span>`
+        + `${publisher ? ` — ${esc(publisher)}` : ''}\u00a0· ${source?.published_at ? `published ${dateTag(source.published_at)}` : 'published date not given'}`
+        + `${source?.accessed_at ? `\u00a0· opened ${dateTag(source.accessed_at)}` : ''}</li>`;
+    }).join('')}</ol>`
     : '';
   const footer = `<div class="rec-footer"><p class="rec-id">Record ID: <code>${esc(event?.id)}</code></p>`
     + `<p class="rec-correction">${sourceLink({url: `${REPO_URL}/issues/new/choose`}, 'Report a correction')}</p>`
@@ -153,19 +151,18 @@ function sourcesHTML(event, now) {
 
 // ---------------------------------------------------------------- record
 
-/** HTML for #record-body (SPEC §8.2 order). `position` ({index, total}) is accepted for compatibility; app.js fills the eyebrow. */
-export function renderRecord(event, {context = null, mode = 'reported', now = Date.now(), countryName = code => code, position = null} = {}) {
-  void position;
+/** HTML for #record-body (SPEC §8.2 order). app.js fills the eyebrow, so `position` is unused. */
+export function renderRecord(event, {context = null, mode = 'reported', now = Date.now(), countryName = code => code} = {}) {
   const status = getDisplayStatus(event, now);
   const band = observationBand(event, now);
   const timing = timeframe(event, context, now);
   const place = placeView(event, countryName);
-  // A no-break space keeps each "·" at the end of a line, never orphaned at the start of the next.
+  // A no-break space keeps each "·" off the start of a line.
   const placeLine = [`<strong>${esc(place.country)}</strong>`, place.label && esc(place.label), place.precision && `<span class="rec-precision">${esc(place.precision)}</span>`].filter(Boolean).join('\u00a0· ');
   return `<div class="rec-body">${[
     mode === 'example' ? `<div class="rec-example"><p class="rec-watermark">${esc(EXAMPLE_WATERMARK)}</p><p class="rec-example-note">${esc(EXAMPLE_NOTE)}</p></div>` : '',
     `<p class="rec-disclosure">${icon('info')}<span>${esc(D1)}</span></p>`,
-    `<p class="rec-meta"><span class="status rec-status" data-status="${esc(status)}">${esc(statusText(status, event))}</span> <span class="rec-when">Latest evidence ${timeTag(event?.last_observed_at, now, 'both')} ${bandTag(band)}</span></p>`,
+    `<p class="rec-meta"><span class="status rec-status" data-status="${esc(status)}">${esc(statusLabel(status, event))}</span> <span class="rec-when">Latest evidence ${datedTimeTag(event?.last_observed_at, now)} ${bandTag(band)}</span></p>`,
     `<p class="rec-place">${placeLine}</p>`,
     `<h2 id="detail-title" class="rec-title" tabindex="-1">${esc(event?.title)}</h2>`,
     status === 'needs-review' ? temporalHTML() : '',
@@ -174,7 +171,7 @@ export function renderRecord(event, {context = null, mode = 'reported', now = Da
     positionsHTML(event),
     intensityHTML(event),
     stateHTML(event),
-    `<section id="rec-outcome" class="rec-section" aria-labelledby="rec-outcome-title">${outcomeHTML(event, context, {scope: false})}</section>`,
+    `<section id="rec-outcome" class="rec-section" aria-labelledby="rec-outcome-title">${outcomeHTML(event, context, {scope: false, headingId: 'rec-outcome-title'})}</section>`,
     timelineHTML(event, timing),
     sourcesHTML(event, now),
   ].join('')}</div>`;
@@ -185,7 +182,7 @@ export function patchRecordStatus(root, event, now = Date.now()) {
   if (!root?.querySelector || !event) return;
   const status = getDisplayStatus(event, now);
   const badge = root.querySelector('.rec-status');
-  const label = statusText(status, event);
+  const label = statusLabel(status, event);
   if (badge && (badge.getAttribute('data-status') !== status || badge.textContent !== label)) {
     badge.setAttribute('data-status', status);
     badge.textContent = label;
@@ -209,9 +206,8 @@ function scrollerOf(dialog) {
 const offsetOf = el => (el && getComputedStyle(el).position !== 'static' ? el.offsetHeight : 0);
 
 /**
- * Scroll-spy (aria-current="true" on the matching .rec-tabs link) and the mini-title flag
- * (dialog[data-scrolled="true"] once #detail-title is out of view). IntersectionObservers use root: dialog,
- * which works whether .sheet-body or the dialog scrolls (C-42). refresh() runs after each render.
+ * Scroll-spy (aria-current on the .rec-tabs link) and dialog[data-scrolled] once #detail-title is out of view.
+ * Observers use root: dialog, so either scroller works (C-42). refresh() runs after each render.
  */
 export function mountRecordChrome(dialog) {
   if (!dialog || typeof IntersectionObserver === 'undefined') return {refresh() {}, destroy() {}};
@@ -292,9 +288,9 @@ export function mountRecordChrome(dialog) {
     }
   }
 
-  // Keyboard focus on a tab partly outside the sideways-scrolling strip brings the whole tab into view.
+  // A focused tab partly outside the sideways strip scrolls fully into view.
   const onFocus = event => { if (event.target.matches?.('.rec-tabs a')) reveal(event.target, true); };
-  // The short-viewport layout (C-42) makes the head and tabs static: the observer insets change with it.
+  // The short-viewport layout (C-42) makes the head and tabs static, which changes the observer insets.
   const short = typeof matchMedia === 'function' ? matchMedia('(max-height: 500px)') : null;
   const onLayout = () => { if (sections.length) refresh(); };
   dialog.addEventListener('scroll', schedule, {capture: true, passive: true});

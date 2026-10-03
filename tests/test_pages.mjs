@@ -10,6 +10,7 @@ import {directoryDek, directoryHTML, directoryRows, entriesLabel, mountCountries
 import {
   discoveryHTML, discoveryView, ledgerTableHTML, mountAbout, researchScope, researchScopeHTML,
 } from '../js/about.js';
+import {absoluteLabel, relativeLabel} from '../freshness.js';
 
 const read = async path => JSON.parse(await readFile(new URL(`../${path}`, import.meta.url), 'utf8'));
 const [events, countries, upcoming, roadmap, research, contexts, discovery, mapCodes] = await Promise.all([
@@ -19,6 +20,17 @@ const [events, countries, upcoming, roadmap, research, contexts, discovery, mapC
 ]);
 
 const NOW = Date.parse('2026-10-02T23:00:00Z');
+// Values that live data owns (the roadmap and upcoming.json are edited and refreshed) are derived from the files, so a
+// data change never turns CI red without a code defect. Fixed literals are kept for fixtures and SPEC-mandated checks.
+const DAY_MS = 86_400_000;
+const label = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
+const STATUS_ORDER = ['in-progress', 'next', 'blocked', 'later', 'shipped'];
+const STATUS_NAMES = {'in-progress': 'In progress', next: 'Next', blocked: 'Blocked', later: 'Later', shipped: 'Shipped'};
+const GLYPHS = {'in-progress': '◑', next: '→', blocked: '⊘', later: '…', shipped: '✓'};
+const roadmapCounts = STATUS_ORDER.map(status => [status, roadmap.items.filter(i => i.status === status).length]).filter(([, n]) => n);
+const lastReviewed = Math.max(...roadmap.items.map(i => Date.parse(i.last_reviewed)));
+// The 2 Oct 2026 announcement note, as a fixture (SPEC §19 WP5 acceptance: "On 2 Oct 2026, our search …").
+const NOTE_2_OCT = 'Announcements of planned collective actions, attributed to named organisers or institutions and linked to their reporting. An announcement is not evidence that an action will occur, of its size or of its legality. City and date level only; AI-assisted source check without independent human editorial review. Missing announcements are a coverage gap. Latest search for announcements: 2026-10-02, 167 searches logged, 0 source pages could be opened; unread search results are leads, not sources, and are not published.';
 const STALE = Date.parse('2026-10-09T12:00:00Z');
 const READY = {critical: 'ready', errors: {}, lazy: {}};
 const text = html => html.replace(/<[^>]+>/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/\s+/g, ' ').trim();
@@ -84,9 +96,10 @@ test('announcementView: date text by precision, countdown only for day and range
   const range = announcementView(item({planned_start: '2026-10-07', planned_end: '2026-10-09', date_precision: 'range'}), NOW);
   assert.equal(range.dateText, '7–9 Oct 2026');
   assert.equal(range.countdown, 'in 5 days');
-  const sep = new Intl.DateTimeFormat('en-GB', {month: 'short', timeZone: 'UTC'}).format(Date.parse('2026-09-30'));
+  // The copy deck writes "Sep", whatever the ICU data says.
   assert.equal(announcementView(item({planned_start: '2026-09-30', planned_end: '2026-10-02', date_precision: 'range'}), Date.parse('2026-09-20T00:00:00Z')).dateText,
-    `30 ${sep} – 2 Oct 2026`);
+    '30 Sep – 2 Oct 2026');
+  assert.equal(announcementView(item({planned_start: '2026-09-29'}), Date.parse('2026-09-20T00:00:00Z')).dateText, 'Tue 29 Sep 2026');
   assert.equal(announcementView(item({planned_start: '2026-12-30', planned_end: '2027-01-02', date_precision: 'range'}), NOW).dateText,
     '30 Dec 2026 – 2 Jan 2027');
   const week = announcementView(item({planned_start: '2026-10-05', date_precision: 'week'}), NOW);
@@ -121,9 +134,17 @@ test('a period that includes today gets the period label; a day item today keeps
   assert.equal(announcementView(item({status: 'cancelled'}), NOW).stateLabel, 'Reported cancelled');
 });
 
-test('A5 states the 2 Oct sweep from the real upcoming.json, with a fallback when the note has no sweep sentence', () => {
-  const html = actionsHTML({upcoming, events, load: READY, now: NOW});
+test('A5 states the sweep from upcoming.json, with a fallback when the note has no sweep sentence', () => {
+  const fixture = {...upcoming, items: [], note: NOTE_2_OCT};
+  const html = actionsHTML({upcoming: fixture, events, load: READY, now: NOW});
   assert.match(text(html), /On 2 Oct 2026, our search for announced and recent protest actions could not open news websites from the research environment\./);
+  // The real file: the A5 day is whatever its own note says (parsed here independently of sweepFact).
+  const sweep = /Latest search for announcements: (\d{4}-\d{2}-\d{2}), \d+ searches logged, (\d+) source pages could be opened/.exec(upcoming.note);
+  if (Array.isArray(upcoming.items) && !upcoming.items.length) {
+    const real = text(actionsHTML({upcoming, events, load: READY, now: NOW}));
+    if (sweep && sweep[2] === '0') assert.ok(real.includes(`On ${label(sweep[1])}, our search for announced and recent protest actions`));
+    else assert.ok(real.includes('Our latest search did not find an announcement that met this standard.'));
+  }
   for (const copy of ['No announced actions are listed yet',
     'This list includes an announced action only after the article announcing it has been opened and read. Nothing meets that standard in this snapshot.',
     'Times, meeting points and routes are never listed.',
@@ -131,17 +152,25 @@ test('A5 states the 2 Oct sweep from the real upcoming.json, with a fallback whe
     PERIOD_NOW_LABEL]) {
     assert.ok(text(html).includes(copy), copy);
   }
-  assert.match(text(html), /Announced-actions list compiled 2 Oct 2026, 22:45 UTC · 14 minutes ago · 0 items/);
-  assert.match(html, /<time class="stamp-time" datetime="2026-10-02T22:45:35Z" data-rel=/, 'refreshTimes can update the A9 stamp');
+  assert.ok(text(html).includes(`Announced-actions list compiled ${absoluteLabel(upcoming.generated_at)} · ${relativeLabel(upcoming.generated_at, NOW)} · 0 items`));
+  assert.ok(html.includes(`<time class="stamp-time" datetime="${upcoming.generated_at}" data-rel=`), 'refreshTimes can update the A9 stamp');
+  assert.match(text(actionsHTML({upcoming: {...fixture, generated_at: '2026-10-02T22:45:35Z'}, events, load: READY, now: NOW})),
+    /Announced-actions list compiled 2 Oct 2026, 22:45 UTC · 14 minutes ago · 0 items/);
   assert.match(html, /<h2 id="ahead-actions-title"[^>]*tabindex="-1"/);
   assert.match(html, /<h3 class="announce-empty-title">/);
   assert.match(html, /data-ahead-target="roadmap-item-list-announced-actions"/);
   assert.match(html, /class="announce-empty" role="status"/);
-  const plain = actionsHTML({upcoming: {...upcoming, note: 'An announcement is not evidence that an action will occur.'}, events, load: READY, now: NOW});
+  // The state vocabulary is always visible: after the collapsed specimen, not inside it (SPEC §12.2 "Then …").
+  const specimen = html.match(/<details class="announce-specimen"[\s\S]*?<\/details>/)?.[0] ?? '';
+  assert.ok(specimen.includes('Layout specimen • not an announcement'));
+  assert.ok(!specimen.includes('Every announcement shows one of these states'));
+  assert.ok(html.indexOf('</details><h3 class="announce-states-title">Every announcement shows one of these states</h3><ul class="announce-states">') > 0);
+  assert.equal((html.match(/<span class="announce-pill" data-state=/g) ?? []).length, 7);
+  const plain = actionsHTML({upcoming: {...fixture, note: 'An announcement is not evidence that an action will occur.'}, events, load: READY, now: NOW});
   assert.ok(text(plain).includes('Our latest search did not find an announcement that met this standard. An empty list does not mean nothing is planned.'));
   assert.doesNotMatch(plain, /On 2 Oct 2026/);
   // Hard-coded dates are forbidden: a later blocked sweep shows its own day.
-  const later = actionsHTML({upcoming: {...upcoming, note: upcoming.note.replace('2026-10-02', '2026-10-05')}, events, load: READY, now: STALE});
+  const later = actionsHTML({upcoming: {...fixture, note: NOTE_2_OCT.replace('2026-10-02', '2026-10-05')}, events, load: READY, now: STALE});
   assert.match(text(later), /On 5 Oct 2026, our search/);
 });
 
@@ -192,9 +221,12 @@ test('aheadTeaserHTML covers 0 items, n items, absent, error and loading', () =>
 
 test('roadmapGroups order and counts; empty groups are omitted', () => {
   const groups = roadmapGroups(roadmap);
-  assert.deepEqual(groups.map(g => g.status), ['in-progress', 'next', 'blocked', 'later', 'shipped']);
-  assert.deepEqual(groups.map(g => g.items.length), [4, 7, 5, 8, 6]);
-  assert.deepEqual(groups.map(g => g.label), ['In progress', 'Next', 'Blocked', 'Later', 'Shipped']);
+  assert.deepEqual(groups.map(g => g.status), roadmapCounts.map(([status]) => status));
+  assert.deepEqual(groups.map(g => g.items.length), roadmapCounts.map(([, n]) => n));
+  assert.deepEqual(groups.map(g => g.label), roadmapCounts.map(([status]) => STATUS_NAMES[status]));
+  const fixture = ['shipped', 'later', 'blocked', 'next', 'in-progress', 'next'].map((status, i) => ({id: `i${i}`, status}));
+  assert.deepEqual(roadmapGroups({items: fixture}).map(g => [g.status, g.items.length]),
+    [['in-progress', 1], ['next', 2], ['blocked', 1], ['later', 1], ['shipped', 1]]);
   assert.deepEqual(roadmapGroups({items: [{id: 'a', status: 'shipped'}, {id: 'b', status: 'next'}]}).map(g => g.status), ['next', 'shipped']);
   assert.deepEqual(roadmapGroups(null), []);
 });
@@ -209,6 +241,12 @@ test('evidenceHref maps every kind and rejects unsafe references', () => {
   assert.equal(evidenceHref({kind: 'commit', ref: 'cf3349d'}), `${repo}/commit/cf3349d`);
   assert.equal(evidenceHref({kind: 'url', ref: `${repo}/actions/runs/37067775278`}), `${repo}/actions/runs/37067775278`);
   assert.equal(evidenceHref({kind: 'url', ref: 'javascript:alert(1)'}), null);
+  // URL evidence must still be inside the repository after the browser normalises it.
+  for (const ref of [`${repo}/../../evil/x`, `${repo}/%2e%2e/%2E%2E/evil`, `${repo}\\..\\..\\evil`, 'https://github.com/evil/x',
+    `https://user@github.com/occult-kranti/protest-atlas/x`, `${repo}.evil.example/x`, `http://github.com/occult-kranti/protest-atlas/x`]) {
+    assert.equal(evidenceHref({kind: 'url', ref}), null, ref);
+  }
+  assert.equal(evidenceHref({kind: 'url', ref: `${repo}/a/../actions/runs/1`}), `${repo}/actions/runs/1`, 'normalised inside the repo');
   assert.equal(evidenceHref({kind: 'file', ref: '../secret'}), null);
   assert.equal(evidenceHref({kind: 'file', ref: '/etc/passwd'}), null);
   assert.equal(evidenceHref({kind: 'doc', ref: 'javascript:alert(1)'}), null);
@@ -232,7 +270,9 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
   const plain = text(html);
   assert.match(html, /<h2 id="ahead-roadmap-title"[^>]*tabindex="-1">Coming next to Protest Atlas<\/h2>/);
   assert.ok(plain.includes("'Shipped' means available on this site now and checked after it was deployed."));
-  assert.ok(plain.includes('Roadmap revised 2 Oct 2026 · AI-assisted · no human editorial owner yet'));
+  assert.ok(plain.includes(`Roadmap revised ${label(roadmap.updated_at.slice(0, 10))} · AI-assisted · no human editorial owner yet`));
+  assert.ok(text(roadmapHTML({roadmap: {...roadmap, updated_at: '2026-10-02T23:00:00Z'}, status: 'ready', now: NOW}))
+    .includes('Roadmap revised 2 Oct 2026 · AI-assisted · no human editorial owner yet'));
   assert.ok(plain.includes('Follow progress on GitHub'));
   assert.ok(plain.includes('Suggest a feature or report a problem'));
   assert.ok(plain.includes('Please do not post private details about participants.'));
@@ -243,25 +283,32 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
     'Blocked : cannot proceed until the named blocker is resolved.']) {
     assert.ok(plain.includes(line), line);
   }
-  assert.ok(plain.includes('In progress (4) → Next (7) ⊘ Blocked (5) … Later (8) ✓ Shipped (6)'));
+  const jump = roadmapCounts.map(([status, n], i) => `${i ? `${GLYPHS[status]} ` : ''}${STATUS_NAMES[status]} (${n})`).join(' ');
+  assert.ok(plain.includes(jump), jump);
   const order = [...html.matchAll(/<section class="roadmap-group" id="roadmap-([a-z-]+)"/g)].map(m => m[1]);
-  assert.deepEqual(order, ['in-progress', 'next', 'blocked', 'later', 'shipped']);
-  assert.equal([...html.matchAll(/<article class="roadmap-item" id="roadmap-item-[a-z0-9-]+" data-status="[a-z-]+" tabindex="-1"/g)].length, 30);
+  assert.deepEqual(order, roadmapCounts.map(([status]) => status));
+  assert.deepEqual(order, STATUS_ORDER.filter(status => order.includes(status)), 'groups in SPEC order');
+  assert.equal([...html.matchAll(/<article class="roadmap-item" id="roadmap-item-[a-z0-9-]+" data-status="[a-z-]+" tabindex="-1"/g)].length, roadmap.items.length);
   assert.match(html, /<h4 class="roadmap-item-title"/);
   // The blocker landing target and its dependency link (SPEC §12.2).
   const target = html.match(/<article class="roadmap-item" id="roadmap-item-list-announced-actions"[\s\S]*?<\/article>/)?.[0] ?? '';
   assert.match(target, /Blocked by:/);
-  assert.match(target, /data-scroll-to="roadmap-item-add-reports-after-2-oct-2026">Add reports after 2 Oct 2026<\/a>/);
+  assert.match(target, /<ul class="roadmap-deps-list"><li><a href="#roadmap-item-add-reports-after-2-oct-2026" data-scroll-to="roadmap-item-add-reports-after-2-oct-2026">Add reports after 2 Oct 2026<\/a><\/li>/);
+  // SPEC §12.3 field order: Done when, Blocked by, Depends on, Status checked.
+  const fields = ['Done when:', 'Blocked by:', 'Depends on:', 'Status checked'].map(part => text(target).indexOf(part));
+  assert.deepEqual([...fields].sort((a, b) => a - b), fields);
+  assert.ok(fields.every(at => at > 0));
   // Every shipped item shows its release, date and resolving evidence links.
   for (const entry of roadmap.items.filter(i => i.status === 'shipped')) {
     const article = html.match(new RegExp(`<article class="roadmap-item" id="roadmap-item-${entry.id}"[\\s\\S]*?</article>`))?.[0] ?? '';
-    assert.match(text(article), new RegExp(`Shipped in ${entry.shipped_in.replace('.', '\\.')} · 2 Oct 2026`));
+    assert.ok(text(article).includes(`Shipped in ${entry.shipped_in} · ${label(entry.shipped_on)}`), entry.id);
+    assert.ok(text(article).indexOf('Done when:') < text(article).indexOf('Checked by:'), entry.id);
     assert.match(article, /Checked by:/);
     assert.match(article, /class="roadmap-evidence-link" href="https:\/\/github\.com\/occult-kranti\/protest-atlas\//);
   }
-  assert.ok(plain.includes('Status checked 2 Oct 2026'));
-  assert.doesNotMatch(plain, /Status check overdue/);
-  assert.ok(text(roadmapHTML({roadmap, status: 'ready', now: Date.parse('2027-02-01T00:00:00Z')})).includes('Status check overdue'));
+  for (const entry of roadmap.items) assert.ok(plain.includes(`Status checked ${label(entry.last_reviewed)}`), entry.id);
+  assert.doesNotMatch(text(roadmapHTML({roadmap, status: 'ready', now: lastReviewed + 30 * DAY_MS})), /Status check overdue/);
+  assert.ok(text(roadmapHTML({roadmap, status: 'ready', now: lastReviewed + 92 * DAY_MS})).includes('Status check overdue'));
   assert.ok(plain.includes('What we will not build'));
   for (const line of NOT_PLANNED) assert.ok(plain.includes(line), line);
   const loading = roadmapHTML({roadmap: null, status: 'loading', now: NOW});
@@ -393,6 +440,13 @@ test('the ledger table has every entry, its caption from the ledger window and n
   assert.match(html, /<th scope="row">France<\/th><td>First search logged<\/td><td class="ledger-num">2<\/td>/);
   assert.doesNotMatch(html, /https?:\/\//);
   for (const row of research.countries) for (const url of row.candidate_urls ?? []) assert.ok(!html.includes(url));
+  // A countries-only failure (C-37) still lists every ledger entry, by code.
+  for (const missing of [[], null]) {
+    const fallback = ledgerTableHTML({research, events, countries: missing});
+    assert.equal((fallback.match(/<tr><th scope="row">/g) ?? []).length, research.countries.length);
+    assert.match(fallback, /<th scope="row">FR<\/th><td>First search logged<\/td><td class="ledger-num">2<\/td>/);
+    assert.doesNotMatch(fallback, /https?:\/\//);
+  }
 });
 
 test('discoveryView keeps only this repository\'s run URL and reads the schedule from data', () => {

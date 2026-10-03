@@ -45,6 +45,8 @@ const textOf = (html, cls) => {
 };
 /** Every text node between tags. */
 const textNodes = html => [...html.matchAll(/>([^<]+)</g)].map(m => decode(m[1]).trim()).filter(Boolean);
+/** aria-label, title and alt values (SPEC §18.1 scans them with the text). */
+const attrTexts = html => [...html.matchAll(/\s(?:aria-label|title|alt)="([^"]*)"/g)].map(m => decode(m[1]).trim()).filter(Boolean);
 /** All string values in the published data, for the data-verbatim exception (SPEC §18.1 b). */
 const dataStrings = [];
 const collect = value => {
@@ -85,6 +87,23 @@ test('positionView and positionSentence: four stances, unknown stance, missing t
   assert.equal(positionView({actor: 'Union', stance: 'oppose'}).target, 'target not established');
   assert.equal(positionSentence({actor: 'Pro-Yoon demonstrators', stance: 'oppose', target: 'Yoon’s removal'}), 'Against · Yoon’s removal — Pro-Yoon demonstrators');
   assert.equal(positionSentence({actor: 'Party', stance: 'mixed', target: 'Bill'}), 'Mixed · Bill — Party');
+});
+
+test('a position without an actor drops the actor rather than inventing copy', () => {
+  const view = positionView({stance: 'oppose', target: 'Bill'});
+  assert.equal(view.actor, '');
+  assert.equal(positionSentence({stance: 'oppose', target: 'Bill'}), 'Against · Bill');
+  const event = {...byId('tz-drivers'), positions: [{stance: 'support', target: 'Pay', claim: 'Asked.', source_ids: []}]};
+  for (const html of [renderCard(event, {now: NOW}), renderRecord(event, {now: NOW})]) {
+    assert.ok(text(html).includes('For Pay'));
+    assert.ok(!/actor not established| — <span class="side-actor"><\/span>|class="rec-actor"/.test(html));
+  }
+  const unnamed = {...byId('tz-drivers'), sources: [{id: 's1', url: '', publisher: '', title: 'Notice', published_at: null}]};
+  for (const html of [renderCard(unnamed, {now: NOW}), renderCard(unnamed, {now: NOW, density: 'row'}), renderRecord(unnamed, {now: NOW})]) {
+    assert.ok(!/Source not named|Publisher not named/.test(html));
+  }
+  assert.ok(text(renderCard(unnamed, {now: NOW})).includes('publication date not given · Corroborated · 1 link · AI-assisted check'));
+  assert.ok(text(renderRecord(unnamed, {now: NOW})).includes('Notice · published date not given'), 'D10 omits a missing publisher (§8.8 wording)');
 });
 
 test('positionList keeps recorded order and derives no counts (worked cases, editorial §5.2)', () => {
@@ -177,6 +196,10 @@ test('evidenceLine and primarySource (C8, C-16)', () => {
     const event = events.find(e => e.id === id);
     if (event) assert.equal(evidenceLine(event).levelLabel, 'Contested');
   }
+  const unnamed = evidenceLine({verification: {level: 'corroborated'}, sources: [{id: 's1', url: '', publisher: '', published_at: '2026-10-01'}]});
+  assert.equal(unnamed.publisher, '');
+  assert.equal(unnamed.text, 'published 1 Oct 2026 · Corroborated · 1 link · AI-assisted check', 'no invented publisher name');
+  assert.equal(evidenceLine({sources: [{id: 's1', url: 'https://www.example.org/a'}]}).publisher, 'example.org', 'host when unnamed');
   assert.deepEqual(primarySource(byId('kr-yoon')).label, 'Read Reuters');
   const es = primarySource(byId('es-housing-2026'));
   assert.equal(es.label, 'Read the source', '"Al Jazeera, with AP and Reuters" is over 24 characters');
@@ -241,6 +264,7 @@ test('every real card, both densities: evidence row, issues, timeframe and inten
       const t = text(html);
       const label = `${event.id} (${density})`;
       assert.match(html, /<p class="card-evidence"><a class="source-link" href="https:[^"]+" target="_blank" rel="noopener noreferrer">/, label);
+      assert.match(html, /<span class="source-nowrap">[^<\s]+<svg class="icon"/, `${label}: the icon never wraps alone`);
       assert.match(t, /(published \d{1,2} [A-Z][a-z]{2} \d{4}|publication date not given)/, label);
       assert.match(t, / · (Single source|Corroborated|Contested) · \d+ links? · AI-assisted check/, label);
       assert.ok(html.includes('class="card-issues"'), label);
@@ -403,6 +427,28 @@ test('needs-review: the #temporal-update note and status (patchRecordStatus cont
   assert.ok(aged.indexOf('id="detail-title"') < aged.indexOf('id="temporal-update"'));
   assert.ok(text(aged).includes('Needs review · current status unknown'));
   assert.doesNotThrow(() => patchRecordStatus(null, ongoing, NOW));
+  // A DOM stand-in with the four nodes patchRecordStatus reads: ongoing → needs-review → ongoing.
+  const live = {status: '', label: '', band: '', note: false, calls: []};
+  const meta = fresh.match(/<span class="status rec-status" data-status="([^"]+)">([^<]+)<\/span>/);
+  Object.assign(live, {status: meta[1], label: decode(meta[2]), band: fresh.match(/class="band" data-band="([^"]+)"/)[1]});
+  const root = {querySelector(sel) {
+    if (sel === '.rec-status') return {getAttribute: () => live.status, setAttribute: (n, v) => { live.calls.push(n); live.status = v; },
+      get textContent() { return live.label; }, set textContent(v) { live.label = v; }};
+    if (sel === '.rec-meta .band') return {getAttribute: () => live.band, set outerHTML(v) { live.band = v.match(/data-band="([^"]+)"/)[1]; live.bandHTML = v; }};
+    if (sel === '#temporal-update') return live.note ? {remove() { live.note = false; }} : null;
+    if (sel === '#detail-title') return {insertAdjacentHTML(where, html) { assert.equal(where, 'afterend'); live.note = html.startsWith('<p id="temporal-update"'); }};
+    return null;
+  }};
+  assert.deepEqual([live.status, live.band, live.note], ['ongoing', 'fresh', false]);
+  patchRecordStatus(root, ongoing, NOW);
+  assert.deepEqual(live.calls, [], 'no writes when nothing changed');
+  patchRecordStatus(root, ongoing, Date.parse('2026-10-06T00:00:00Z'));
+  assert.deepEqual([live.status, live.label, live.band, live.note], ['needs-review', 'Needs review · current status unknown', 'week', true]);
+  assert.ok(!live.bandHTML.includes('aria-label') && live.bandHTML.includes('class="band-text" aria-hidden="true"'));
+  patchRecordStatus(root, ongoing, Date.parse('2026-10-06T00:00:00Z'));
+  assert.equal(live.note, true, 'the note is inserted once');
+  patchRecordStatus(root, ongoing, NOW);
+  assert.deepEqual([live.status, live.label, live.band, live.note], ['ongoing', 'Reported ongoing · evidence dated 2 Oct 2026', 'fresh', false]);
   const chrome = mountRecordChrome(null);
   assert.equal(typeof chrome.refresh, 'function');
   assert.equal(typeof chrome.destroy, 'function');
@@ -440,7 +486,7 @@ test('copy scans: no quotation marks, tallies, "Sides", "Violence:", +/− glyph
     for (const html of outputs) {
       assert.ok(!/[“”]/.test(html), `${event.id} curly quotes`);
       assert.ok(!/\+ ?FOR|− ?AGAINST|Violence:/.test(html), event.id);
-      for (const node of textNodes(html)) {
+      for (const node of [...textNodes(html), ...attrTexts(html)]) {
         if (fromData(node)) continue;
         assert.ok(!banned.test(node), `${event.id}: "${node}"`);
         assert.ok(!tally.test(node), `${event.id}: "${node}"`);
@@ -467,13 +513,25 @@ test('outcomeHTML keeps its pinned strings, routes refs through data-scroll-to a
   assert.ok(text(html).includes('Reported cities: Lyon, Paris Source 1'), 'cities that share sources share one link');
   assert.ok(html.includes('Bounded episode'));
   assert.ok(!outcomeHTML(event, context, {scope: false}).includes('Bounded episode'), 'the record overview owns the scope line');
+  assert.ok(!html.includes(' id="'), 'the two-argument call adds no ids');
+  assert.ok(outcomeHTML(event, context, {headingId: 'rec-outcome-title'}).includes('<h3 class="rec-h" id="rec-outcome-title">What changed — and for whom?</h3>'));
+  assert.ok(record(byId('tz-drivers')).includes('<section id="rec-outcome" class="rec-section" aria-labelledby="rec-outcome-title"><div class="outcome-section"><h3 class="rec-h" id="rec-outcome-title">'));
   assert.equal(history.renderResearchCoverage, undefined, 'moved to js/about.js');
   assert.ok(text(outcomeHTML(event, {...context, outcome_status: 'not-established', outcomes: []})).includes('No sourced outcome established in this snapshot.'));
 });
 
-test('dates use the copy deck month abbreviations', () => {
+test('dates use the copy deck month abbreviations: no card or record mixes "Sept" with "Sep"', () => {
   assert.equal(absoluteText('2026-09-30'), '30 Sep 2026');
   assert.equal(absoluteText('2026-10-02T21:31:50Z'), '2 Oct 2026, 21:31 UTC');
+  for (const event of events) {
+    for (const now of [NOW, NINE_OCT]) {
+      const outputs = [card(event, {now}), card(event, {now, density: 'row'}), record(event, {now})];
+      for (const html of outputs) assert.ok(!/\bSept\b/.test(html), event.id);
+    }
+  }
+  // The latest-evidence time keeps a refreshable relative part (js/stamps.js refreshTimes) beside the fixed date.
+  const tz = card(byId('tz-drivers'));
+  assert.ok(tz.includes('<time datetime="2026-10-01">1 Oct 2026</time>\u00a0· <time class="stamp-time" datetime="2026-10-01" data-rel="2026-10-01" data-format="relative">'));
 });
 
 // ------------------------------------------------------------------ css/record.css
@@ -495,4 +553,14 @@ test('record.css: components layer only, tokens only, no data-stance or id selec
   assert.match(body, /@media \(forced-colors: active\) \{[\s\S]*\.card\[data-ended="true"\][\s\S]*border: 3px solid CanvasText/);
   assert.match(body, /\.side-pill \{ border: 1px solid CanvasText; \}/);
   assert.match(body, /\.source-ref \{[^}]*min-height: var\(--tap\)/);
+  // §8.1 geometry: the tabs stick at the scrollport edge (above .sheet-body's 16 px top padding), so the 52 px
+  // scroll-padding clears them on every data-scroll-to jump and reverse-Tab focus.
+  assert.match(body, /\.rec-tabs \{[^}]*position: sticky;\s*top: calc\(-1 \* var\(--sp-4\)\);/);
+  assert.ok(!/\.source-item:focus \{[^}]*outline: none/.test(body), 'a keyboard "Source N" jump keeps its focus ring');
+  // Forced colours: only the current tab keeps a bar; the glance keeps its dividers.
+  const forced = body.slice(body.indexOf('@media (forced-colors: active)'));
+  assert.match(forced, /\.rec-tab \{ border-block-end-color: Canvas; \}/);
+  assert.match(forced, /\.rec-tab\[aria-current="true"\] \{ border-block-end-color: Highlight; \}/);
+  assert.match(forced, /\.rec-glance-grid \{ forced-color-adjust: none; background: CanvasText;/);
+  assert.match(forced, /\.rec-glance-cell \{ forced-color-adjust: auto; \}/);
 });

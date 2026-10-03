@@ -8,7 +8,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: var(--sp-2);
+    gap: 6px;
     padding: var(--card-pad-y) var(--card-pad-x);
     background: var(--bg-raised);
     border: 1px solid var(--border);
@@ -28,7 +28,7 @@
     outline-offset: 2px;
   }
 
-  /* Example watermark (C11): 45° stripes, white text; a full-bleed band at the top of the card. */
+  /* C11 example watermark: full-bleed striped band */
   .card-watermark,
   .rec-watermark {
     padding: 6px var(--card-pad-x, var(--sp-4));
@@ -76,13 +76,11 @@
   /* 5 · issues (C3) */
   .card-issues { color: var(--text-2); }
 
-  /* 6 · facts: 104 px label column when the card's container query width is 340 px or more (tablet and up);
-     below that the label sits above its value, which keeps verbatim text on fewer lines at phone width */
+  /* 6 · facts: label above value; a 104 px label column once the card is 340 px wide */
   .card-facts {
     display: grid;
-    gap: 10px;
-    margin-block-start: var(--sp-1);
-    padding-block-start: var(--sp-3);
+    gap: var(--sp-2);
+    padding-block-start: 10px;
     border-block-start: 1px solid var(--border);
   }
   .card-fact { display: grid; gap: 2px; }
@@ -126,7 +124,7 @@
   .side-actor { color: var(--text-2); }
 
   /* Intensity (C6): three fixed rows, verbatim */
-  .facet-list { list-style: none; padding: 0; display: grid; gap: 2px; }
+  .facet-list { list-style: none; padding: 0; display: grid; }
   .facet-name { font-weight: 600; }
 
   /* Police / state (C7) */
@@ -143,22 +141,24 @@
   }
   .card-outcome-label { color: var(--text); font-weight: 600; }
 
-  /* 8 · evidence (C8): the publisher link sits above the stretched card link */
+  /* 8 · evidence (C8). The publisher link sits above the stretched card link; its hit area grows up into
+     the row's top padding and stops short of the next line. */
   .card-evidence {
-    margin-block-start: var(--sp-1);
-    padding-block-start: var(--sp-3);
+    padding-block-start: 10px;
     border-block-start: 1px solid var(--border);
     color: var(--text-2);
   }
   .card-evidence .source-link {
     position: relative;
     z-index: 1;
-    padding: 14px 4px;
-    margin: -14px -4px;
+    padding: 11px 4px 2px;
+    margin: -11px -4px -2px;
     color: var(--text);
     font-weight: 600;
   }
   .card-level { color: var(--text); font-weight: 600; }
+  .card-level,
+  .card-links { white-space: nowrap; }
 
   .source-link {
     color: inherit;
@@ -166,6 +166,7 @@
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
   }
+  .source-nowrap { white-space: nowrap; }
   .source-link .icon,
   .rec-disclosure .icon {
     width: 14px;
@@ -208,7 +209,8 @@
   .card-row-facts,
   .card-row-state { color: var(--text-2); }
   .card-row-label { color: var(--text); font-weight: 600; }
-  .card[data-density="row"] .card-evidence { margin: 0; padding: 0; border: 0; }
+  .card[data-density="row"] .card-evidence { padding: 0; border: 0; }
+  .card[data-density="row"] .card-evidence .source-link { padding-block-start: 4px; margin-block-start: -4px; }
 
   /* ---------------------------------------------------------------- Skeleton (static: nothing pulses) */
   .card-skeletons { display: grid; gap: var(--sp-3); }
@@ -229,8 +231,7 @@
   /* ===================================================================== Record sheet body (SPEC §8) */
 
   .rec-body {
-    /* Containing block for .visually-hidden (position: absolute) text, so it never escapes the scrolling
-       .sheet-body and makes the dialog itself scrollable. */
+    /* Contains .visually-hidden text, which would otherwise make the dialog itself scrollable */
     position: relative;
     container: rec / inline-size;
     color: var(--text);
@@ -240,8 +241,6 @@
     overflow-wrap: break-word;
   }
   .rec-body :where(p, ul, ol, dl, dd, h2, h3, h4) { margin: 0; }
-  /* Jump targets land below the sticky tabs even when the body's top padding offsets them (WCAG 2.4.11). */
-  .rec-body [id] { scroll-margin-top: var(--sp-5); }
 
   .rec-example {
     margin-block-end: var(--sp-4);
@@ -314,13 +313,6 @@
     font-weight: 700;
   }
   .rec-h--sources { margin-block-start: var(--sp-6); }
-  .rec-section--overview > .rec-h {
-    margin-block-end: var(--sp-1);
-    color: var(--text-muted);
-    font-size: var(--fs-xs);
-    letter-spacing: .06em;
-    text-transform: uppercase;
-  }
   .rec-sub {
     max-width: 62ch;
     margin-block-end: var(--sp-4);
@@ -328,8 +320,6 @@
     font-size: var(--fs-sm);
     line-height: 1.45;
   }
-  .rec-sub:focus { outline: none; }
-  .rec-sub:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 
   /* D3 overview */
   .rec-summary { font-size: var(--fs-md); line-height: var(--lh-body); }
@@ -379,18 +369,18 @@
     .rec-glance-cell:hover { background: var(--accent-weak); }
   }
 
-  /* D11 sticky section tabs (scroll-spy sets aria-current="true") */
+  /* Sticky section tabs (scroll-spy sets aria-current). They stick at the scrollport edge, above
+     .sheet-body's 16 px top padding, so its 52 px scroll-padding clears them (§8.1, WCAG 2.4.11). The
+     shadow paints the side padding so scrolled text never shows beside them. */
   .rec-tabs {
     position: sticky;
-    top: 0;
+    top: calc(-1 * var(--sp-4));
     z-index: var(--z-sticky);
     margin-block-start: var(--sp-6);
     background: var(--bg-raised);
     border-block-end: 1px solid var(--border);
-    /* Full-bleed surface: covers the body's side padding and, when stuck, its top padding (up to the
-       24 px top margin), so scrolled text never shows around the tabs. */
     box-shadow: 0 0 0 100vmax var(--bg-raised);
-    clip-path: inset(calc(-1 * var(--sp-6)) -100vmax 0);
+    clip-path: inset(0 -100vmax);
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;
@@ -440,7 +430,7 @@
   .rec-position { padding-block: var(--sp-4) var(--sp-2); border-block-start: 1px solid var(--border); }
   .rec-position:first-child { padding-block-start: 0; border-block-start: 0; }
   .rec-actor { margin-block-end: 6px; font-size: var(--fs-md); font-weight: 600; }
-  .rec-stance { margin-block-end: var(--sp-2); font-size: 17px; line-height: 1.4; }
+  .rec-stance { margin-block-end: var(--sp-2); font-size: var(--fs-md); line-height: 1.4; }
   .rec-stance .side-pill { margin-inline-end: 2px; }
   .rec-claim { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
   .rec-claim-label { color: var(--text); font-weight: 600; }
@@ -599,17 +589,18 @@
   .rec-verification-note { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
   .source-list {
     display: grid;
-    gap: var(--sp-3);
+    gap: var(--sp-1);
     margin-block-start: var(--sp-1);
     padding-inline-start: var(--sp-5);
     color: var(--text-2);
     font-size: var(--fs-sm);
     line-height: 1.45;
   }
-  .source-item { padding-inline-start: var(--sp-1); overflow-wrap: anywhere; }
-  .source-item:focus { outline: none; }
+  /* The padding keeps the focus ring (on a "Source N" jump) clear of the number and the text */
+  .source-item { padding: var(--sp-1) var(--sp-2); overflow-wrap: anywhere; }
+  .source-item:focus-visible { outline-offset: -1px; border-radius: var(--r-1); }
   .source-item::marker { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
-  /* Inline padding closes the gaps between wrapped lines, so the whole title is one hit area. */
+  /* The padding closes the gaps between wrapped lines: one hit area per title */
   .source-title .source-link { padding-block: 3px; color: var(--text); font-weight: 600; }
   .source-caveat { margin-block-start: var(--sp-3); color: var(--text-2); font-size: var(--fs-sm); }
   .rec-footer {
@@ -624,16 +615,12 @@
   .rec-id code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--fs-sm); color: var(--text); overflow-wrap: anywhere; }
   .rec-correction .source-link { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--text); font-weight: 600; }
 
-  @media (min-width: 600px) {
-    .rec-title { font-size: 30px; }
-  }
-
   /* §17.10 short viewports: the record tabs scroll with the body */
   @media (max-height: 500px) {
     .rec-tabs { position: static; }
   }
 
-  /* §17.10 forced colours: the ended shadow becomes a 3 px border; pills and marks keep a visible edge */
+  /* §17.10 forced colours: the ended shadow becomes a 3 px border; pills, marks, tabs and glance keep edges */
   @media (forced-colors: active) {
     .card[data-ended="true"],
     .completion-note.confirmed-ended { box-shadow: none; border: 3px solid CanvasText; }
@@ -644,7 +631,10 @@
     .rec-watermark { border: 2px solid CanvasText; }
     .rec-mark { forced-color-adjust: none; background: CanvasText; }
     .rec-mark--open { background: transparent; border-color: CanvasText; }
+    .rec-tab { border-block-end-color: Canvas; }
     .rec-tab[aria-current="true"] { border-block-end-color: Highlight; }
+    .rec-glance-grid { forced-color-adjust: none; background: CanvasText; border-color: CanvasText; }
+    .rec-glance-cell { forced-color-adjust: auto; }
     .card-skeleton-line { border: 1px solid CanvasText; }
   }
 }
