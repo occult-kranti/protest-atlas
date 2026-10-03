@@ -3,7 +3,7 @@
 import {renderCard, renderCardSkeleton} from './cards.js';
 import {aheadTeaserHTML} from './ahead.js';
 import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, sweepLine, datasetStats, activeFilterCount, indexContexts,
-  snapshotAgeText, countryNamer, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
+  snapshotAgeText, snapshotState, countryNamer, E4, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
 import {esc} from './html.js';
 import {absoluteLabel} from '../freshness.js';
 
@@ -20,11 +20,10 @@ const COPY = Object.freeze({
   trueEmpty: 'No episodes are published in this snapshot.',
   exampleErrorTitle: 'The illustrative example could not load.',
   exampleErrorBody: 'Nothing here is reported data.',
-  e4: {
-    fresh: 'No episode in this snapshot has evidence dated within the last 72 hours. That is a gap in this dataset, not a sign that no protests happened.',
-    week: 'No episode in this snapshot has evidence dated in the last 7 days. That is a gap in this dataset, not a sign that no protests happened.',
-  },
+  exampleHeading: 'Illustrative example',
 });
+
+const NOTICE_STATES = new Set(['aging', 'stale', 'archive']);
 
 /** E7 rule sentence per status (C-50). */
 const E7_RULES = {
@@ -124,7 +123,8 @@ export function listHTML(state, filtered, {countryName = code => code} = {}) {
     }
     if (lazy !== 'ready') return {busy: true, html: `<p class="feed-loading">${esc(COPY.exampleLoading)}</p><div class="feed-skeleton" aria-hidden="true">${renderCardSkeleton(1)}</div>`};
     if (!filtered.length) return {busy: false, html: emptyResultHTML(state)};
-    return {busy: false, html: `<ol class="feed-list" data-density="${density}">${filtered.slice(0, state.ui.listLimit).map(card).join('')}</ol>`};
+    // A hidden h2 keeps the outline h1 → h2 → h3 (MINOR 6).
+    return {busy: false, html: `<h2 class="visually-hidden">${esc(COPY.exampleHeading)}</h2><ol class="feed-list" data-density="${density}">${filtered.slice(0, state.ui.listLimit).map(card).join('')}</ol>`};
   }
 
   if (load.errors.events) {
@@ -140,7 +140,9 @@ export function listHTML(state, filtered, {countryName = code => code} = {}) {
 
   const s7 = sweepLine(sweepFact({events: state.data.events, upcoming: state.data.upcoming}));
   const gap = emptyBandNotice(all, state.now);
-  const gapHTML = gap ? `<div class="feed-gap"><p class="feed-gap-line">${esc(COPY.e4[gap])}</p>${s7 ? `<p class="feed-gap-line">${esc(s7)}</p>` : ''}</div>` : '';
+  // Once the snapshot ages, E4 and S7 sit behind the notice's "Why?" (MAJOR 5).
+  const inNotice = NOTICE_STATES.has(snapshotState(state.data.events, state.now));
+  const gapHTML = gap && !inNotice ? `<div class="feed-gap"><p class="feed-gap-line">${esc(E4[gap])}</p>${s7 ? `<p class="feed-gap-line">${esc(s7)}</p>` : ''}</div>` : '';
   if (!filtered.length) return {busy: false, html: gapHTML + emptyResultHTML(state)};
 
   let remaining = state.ui.listLimit;
@@ -204,6 +206,21 @@ export function mountList(ctx) {
     (target || fallback())?.focus({preventScroll: true});
   }
 
+  /** The first card under the header and its top: a tick or data re-render keeps it where the reader had it (MINOR 22). */
+  function anchorOf() {
+    const win = doc.defaultView;
+    if (!win || win.scrollY <= 0) return null;
+    const header = parseFloat(win.getComputedStyle(doc.documentElement).scrollPaddingTop) || 0;
+    const card = [...list.querySelectorAll('.card')].find(c => c.getBoundingClientRect().bottom > header);
+    return card ? {id: card.dataset.id, top: card.getBoundingClientRect().top} : null;
+  }
+  function restore(anchor) {
+    const card = anchor && list.querySelector(`.card[data-id="${CSS.escape(anchor.id)}"]`);
+    const delta = card ? card.getBoundingClientRect().top - anchor.top : 0;
+    // 'instant' overrides html { scroll-behavior: smooth }, so the card never visibly jumps and glides back.
+    if (Math.abs(delta) >= 1) doc.defaultView.scrollBy({top: delta, left: 0, behavior: 'instant'});
+  }
+
   return {
     render(state, prev) {
       if (prev && state.data === prev.data && state.load === prev.load && state.filters === prev.filters && state.mode === prev.mode
@@ -224,8 +241,11 @@ export function mountList(ctx) {
       if (list) {
         list.setAttribute('aria-busy', String(busy));
         if (html !== last.list) {
+          const same = prev && state.filters === prev.filters && state.mode === prev.mode && state.ui.listLimit === prev.ui.listLimit && state.ui.density === prev.ui.density;
+          const anchor = same ? anchorOf() : null;
           last.list = html;
           replaceKeepingFocus(list, html);
+          restore(anchor);
           const grew = prev && state.ui.listLimit > prev.ui.listLimit && state.filters === prev.filters && state.mode === prev.mode;
           if (grew) {
             const links = list.querySelectorAll('.card-link');

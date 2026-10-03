@@ -11,6 +11,12 @@ The repository is ready for a static GitHub Pages deployment. A maintainer still
 5. Run **Validate and deploy Pages**, or push an approved change to `main`. The build validates data and tests before producing the Pages artifact. Pull requests validate and build without publishing.
 6. Open the deployment URL shown in the workflow's `github-pages` environment. Test filters, the country detail view, source links and the data-freshness labels after deployment. Relative asset/data paths support project sites such as `https://OWNER.github.io/REPO/`.
 
+### Post-deploy check and queueing
+
+After every deploy from `main`, the **verify** job checks the live site from the GitHub runner. It polls `public/build-info.json` for up to 10 minutes until its `commit` equals the pushed commit (`github.sha`), so a stale CDN copy cannot pass. Then it requires HTTP 200 from the site root, `index.html`, `public/roadmap.json` and `public/events.json`, and those two JSON files must also parse. `public/upcoming.json` is optional: a 404 is reported as a notice, because the Ahead view has an "absent" state; when it is published (200) it must parse as JSON too. Finally, an unknown path must return the 404 page with `noindex`. The job writes the stamp and the response headers to the run summary. It runs only after a deploy and is not a pull-request gate, so a failed verify marks the run red without blocking the next merge.
+
+Runs on `main` queue rather than cancel: the workflow concurrency group cancels superseded runs only for pull requests, and the deploy job has its own `pages-deploy` group with `cancel-in-progress: false`. A newer push never cancels a running build or deploy. It waits for the whole previous run, including verify (up to 15 minutes), then builds and deploys its own validated artifact. If several pushes arrive, GitHub keeps only the newest waiting run: a third push cancels the second while it is still waiting, never the run in progress. The manual checks in step 6 remain necessary; verify proves which build is served, not that it reads correctly.
+
 Only the deploy job has `pages: write` and `id-token: write`. Discovery has no repository write or deployment permission. Checkout does not persist credentials, and no credentials are compiled into public files.
 
 ## Candidate schedule and review
@@ -29,16 +35,19 @@ To disable discovery, disable that workflow in GitHub Actions or remove its `sch
 
 ## Dependency pins
 
-Actions are pinned to full commit SHAs. These versions and SHAs were read from the official `actions/*` GitHub API tag references on 2026-10-02:
+Actions are pinned to full commit SHAs. checkout, setup-python, upload-pages-artifact and upload-artifact were read from the official `actions/*` GitHub API tag references on 2026-10-02. configure-pages, deploy-pages and setup-node were re-verified with `git ls-remote --tags https://github.com/actions/<name>` on 2026-10-03:
 
 | Action | Version | Commit SHA |
 | --- | --- | --- |
 | checkout | v7.0.1 | `3d3c42e5aac5ba805825da76410c181273ba90b1` |
 | setup-python | v7.0.0 | `5fda3b95a4ea91299a34e894583c3862153e4b97` |
-| configure-pages | v5.0.0 | `983d7736d9b0ae728b81ab479565c72886d7745b` |
+| setup-node | v6.5.0 | `249970729cb0ef3589644e2896645e5dc5ba9c38` |
+| configure-pages | v6.0.0 | `45bfe0192ca1faeb007ade9deae92b16b8254a0d` |
 | upload-pages-artifact | v5.0.0 | `fc324d3547104276b827a68afc52ff2a11cc49c9` |
-| deploy-pages | v4.0.5 | `d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e` |
+| deploy-pages | v5.0.1 | `368f82528645a54fb793d4d04e342629a3f51346` |
 | upload-artifact | v7.0.1 | `043fb46d1a93c77aae656e7c1c64a875d1fc6a0a` |
+
+setup-node installs Node.js 22 (`package.json` engines: `>=22`) with `package-manager-cache: false` (there is no lockfile), so `node --test` runs on a chosen major version instead of whatever the runner image ships.
 
 Review release notes and verify the full SHA in the upstream repository before updating a pin. The official Pages artifact action also has its own internal dependencies; an outer SHA does not freeze every upstream/transitive action reference. Review those dependencies when updating.
 

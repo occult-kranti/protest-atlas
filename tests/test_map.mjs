@@ -9,7 +9,8 @@ import {
   readingOrder, nextInDirection, gestureFilter, placeLabels,
 } from '../map.js';
 import {overviewModel, renderOverview, briefModel, renderBrief, searchSentence, countSentence, RECENT_LIMIT} from '../js/country-brief.js';
-import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, describeCountry, MAP_COPY, REGIONS} from '../js/map-view.js';
+import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, describeCountry, displayCountries, directChild, MAP_COPY, REGIONS} from '../js/map-view.js';
+import {displayCountryName} from '../js/model.js';
 
 const root = new URL('../', import.meta.url);
 const text = path => readFile(new URL(path, root), 'utf8');
@@ -216,12 +217,18 @@ test('real geometry: FR frames mainland France; US the contiguous states; RU and
 
 // ---------------------------------------------------------------- country brief and overview
 
-const events = (await json('public/events.json')).events;
-const countries = await json('public/countries.json');
-const research = await json('public/research-ledger.json');
-const coverage = await json('public/coverage.json');
-const contexts = await json('public/event-context.json');
-const candidateURLs = research.countries.flatMap(row => row.candidate_urls ?? []);
+// Walkthrough literals (84 records, the five newest countries, France's brief) read the frozen 2 Oct snapshot
+// (tests/fixtures/snapshot-20261002), never public/*.json, so a data refresh cannot turn them red. `live` is the
+// published data, for invariants derived from it.
+const SNAPSHOT = 'tests/fixtures/snapshot-20261002';
+const events = (await json(`${SNAPSHOT}/events.json`)).events;
+const countries = await json(`${SNAPSHOT}/countries.json`);
+const research = await json(`${SNAPSHOT}/research-ledger.json`);
+const coverage = await json(`${SNAPSHOT}/coverage.json`);
+const contexts = await json(`${SNAPSHOT}/event-context.json`);
+const live = {events: (await json('public/events.json')).events, countries: await json('public/countries.json'),
+  research: await json('public/research-ledger.json'), coverage: await json('public/coverage.json'), contexts: await json('public/event-context.json')};
+const candidateURLs = [...research.countries, ...live.research.countries].flatMap(row => row.candidate_urls ?? []);
 const noCandidateURL = html => { for (const url of candidateURLs) assert.ok(!html.includes(url), `candidate URL leaked: ${url}`); };
 
 test('overviewModel lists the five most recently observed countries, not a ranking by count', () => {
@@ -238,6 +245,8 @@ test('overviewModel lists the five most recently observed countries, not a ranki
   assert.ok(html.includes('<h3 class="brief-subtitle">Most recent evidence</h3>'));
   assert.equal((html.match(/class="brief-country"/g) ?? []).length, 5);
   assert.ok(html.includes('data-select-country="IN"') && html.includes('India</span> · <span class="brief-country-date">latest evidence 2 Oct 2026'));
+  // Short display names (model.COUNTRY_SHORT_NAMES): "Tanzania", never "Tanzania, United Republic of".
+  assert.ok(html.includes('Tanzania</span> · ') && !html.includes('United Republic'));
   assert.ok(html.includes('<a href="#/countries">All 249 countries and territories, A to Z</a>'));
   const filtered = renderOverview(overviewModel({mapEvents: events.slice(0, 3), countries, filtered: true}), {now: NOW});
   assert.ok(filtered.includes('Published episodes in 3 of 249 countries and territories match your filters.'));
@@ -247,6 +256,19 @@ test('overviewModel lists the five most recently observed countries, not a ranki
   assert.ok(!renderOverview(overviewModel({countries, status: 'error'})).includes('brief-country"'), 'rows omitted on error');
   assert.ok(renderOverview(overviewModel({countries, status: 'loading'})).includes('Loading published records…'));
   assert.ok(renderOverview(overviewModel({mapEvents: [{id: 'x', country: 'GB'}], countries, mode: 'example'})).includes('Illustrative example: one fictional record.'));
+});
+
+test('overviewModel on the published files: counts and the five newest countries follow the data', () => {
+  const m = overviewModel({mapEvents: live.events, countries: live.countries, mode: 'reported'});
+  assert.equal(m.count, live.events.length);
+  assert.equal(m.directoryTotal, live.countries.length);
+  assert.equal(m.countryCount, new Set(live.events.map(e => e.country).filter(c => /^[A-Z]{2}$/.test(c))).size);
+  // Newest latest evidence first; ties keep file order; one row per country.
+  const order = live.events.map((e, i) => [e, i]).sort((a, b) => (Date.parse(b[0].last_observed_at) - Date.parse(a[0].last_observed_at)) || a[1] - b[1]);
+  const newest = [...new Set(order.map(([e]) => e.country))].slice(0, RECENT_LIMIT);
+  assert.deepEqual(m.recent.map(r => r.code), newest);
+  for (const row of m.recent) assert.equal(row.name, displayCountryName(row.code, live.countries.find(c => c.code === row.code)?.name));
+  assert.ok(renderOverview(m, {now: NOW}).includes(`Published episodes in ${m.countryCount} of ${m.directoryTotal} countries and territories.`));
 });
 
 const brief = (code, extra = {}, opts = {}) => {
@@ -275,6 +297,39 @@ test('briefModel has no leads; the FR brief shows records, the ledger, cities an
   assert.ok(one.includes('1 published episode matches your filters.') && !one.includes('Includes a sourced ended'));
   const pressed = renderBrief(brief('FR').model, {now: NOW, selectedCity: 'FR:Paris', lazy: {coverage: 'ready', research: 'ready'}});
   assert.ok(pressed.includes('data-clear-filter="city" aria-pressed="true">'));
+});
+
+test('brief: short display name with the ISO name as a secondary line; the live lead names the country', () => {
+  const {model, html} = brief('TZ');
+  assert.equal(model.name, 'Tanzania');
+  assert.equal(model.isoName, 'Tanzania, United Republic of');
+  assert.ok(html.includes('<h2 id="country-panel-title" class="brief-title" tabindex="-1">Tanzania</h2><p class="brief-iso">ISO name: Tanzania, United Republic of</p>'));
+  // Moving between countries with the same count still changes the role="status" text (4.1.3).
+  assert.match(html, /<p class="brief-lead" role="status"><span class="visually-hidden">Tanzania: <\/span>1 published episode\./);
+  const fr = brief('FR').html;
+  assert.ok(!fr.includes('brief-iso'), 'no secondary line when the names agree');
+  assert.match(fr, /<p class="brief-lead" role="status"><span class="visually-hidden">France: <\/span>2 published episodes\./);
+  const kr = brief('KR');
+  assert.equal(kr.model.name, 'South Korea');
+  assert.ok(kr.html.includes('Show South Korea in Reports'));
+});
+
+test('displayCountries maps to short names once per directory; directChild finds a fragment child', () => {
+  const mapped = displayCountries(countries);
+  assert.equal(mapped, displayCountries(countries), 'memoised per array');
+  assert.equal(mapped.length, countries.length);
+  assert.equal(mapped.find(c => c.code === 'GB').name, 'United Kingdom');
+  assert.equal(mapped.find(c => c.code === 'GB').isoName, 'United Kingdom of Great Britain and Northern Ireland');
+  // The brief built from map-view's display directory still shows the ISO line.
+  const tz = renderBrief(briefModel({code: 'TZ', mapEvents: events, allEvents: events, countries: mapped}), {now: NOW});
+  assert.ok(tz.includes('>Tanzania</h2><p class="brief-iso">ISO name: Tanzania, United Republic of</p>'));
+  assert.equal(mapped.find(c => c.code === 'FR').name, 'France');
+  assert.equal(countries.find(c => c.code === 'GB').name, 'United Kingdom of Great Britain and Northern Ireland', 'input untouched');
+  assert.deepEqual(displayCountries(null), []);
+  const lead = {matches: selector => selector === '.brief-lead'};
+  assert.equal(directChild({children: [{matches: () => false}, lead]}, '.brief-lead'), lead);
+  assert.equal(directChild({children: []}, '.brief-lead'), null);
+  assert.equal(directChild(null, '.brief-lead'), null);
 });
 
 test('E3: records exist but none match the filters', () => {
@@ -341,6 +396,14 @@ test('brief: events error, no-polygon line, example mode, escaping; no real brie
     assert.ok(!/\b0 results\b/.test(html), country.code);
     assert.ok(!/>0</.test(html), country.code);
   }
+  // The same invariant on the published files.
+  for (const country of live.countries) {
+    const model = briefModel({code: country.code, mapEvents: live.events, allEvents: live.events, countries: live.countries,
+      coverage: live.coverage, research: live.research, contexts: live.contexts});
+    const html = renderBrief(model, {now: NOW, lazy: {coverage: 'ready', research: 'ready'}});
+    assert.ok(!/\b0 results\b/.test(html) && !/>0</.test(html), country.code);
+    noCandidateURL(html);
+  }
 });
 
 // ---------------------------------------------------------------- legend, selection bar, controls
@@ -369,6 +432,16 @@ test('legend carries M1–M8 verbatim, the hint first, and M9 only with a time w
   assert.ok(legendHTML({citiesError: true}).includes('City points could not load; city names stay in records and filters.'));
 });
 
+test('legend hint follows Explore: one finger moves the map, so the page-scroll hint is not shown', () => {
+  const coarse = legendText(legendHTML({coarse: true, explore: true}));
+  assert.equal(coarse[0], 'One finger moves the map. Tap Done exploring to scroll the page again.');
+  assert.ok(!coarse.some(line => /One finger scrolls the page|turn on Explore map/.test(line)));
+  assert.equal(legendText(legendHTML({explore: true}))[0], MAP_COPY.hintFineExplore);
+  assert.match(MAP_COPY.hintFineExplore, /Done exploring/);
+  assert.deepEqual(legendText(legendHTML({coarse: true, explore: true})).slice(1), M, 'only the hint changes');
+  assert.equal(legendText(legendHTML({eventsError: true, coarse: true, explore: true}))[0], MAP_COPY.hintCoarseExplore);
+});
+
 test('legend variants: events error, example, example loading and error, unavailable', () => {
   const error = legendHTML({eventsError: true});
   assert.ok(error.startsWith('<p class="map-hint">'));
@@ -389,7 +462,8 @@ test('selection bar, region chips and controls', () => {
   const bar = selectionBarHTML({name: 'France', state: 'records', count: 2, filtered: true});
   assert.ok(plain(bar).join(' ').startsWith('France · 2 published episodes match'));
   assert.ok(bar.includes('href="#country-panel" data-scroll-to="country-panel">See brief</a>'));
-  assert.ok(bar.includes('data-clear-filter="country">World</button>'));
+  // One label for clearing the country, as in the brief (MINOR 13): the region chip and #reset-map only move the view.
+  assert.ok(bar.includes('data-clear-filter="country">Back to world</button>'));
   assert.ok(selectionBarHTML({name: 'France', state: 'records', count: 1, filtered: true}).includes('1 published episode matches'));
   assert.ok(selectionBarHTML({name: 'France', state: 'records', count: 2}).includes('<span>2 published episodes</span>'));
   assert.ok(selectionBarHTML({name: 'France', state: 'filtered-out', publishedCount: 2}).includes('2 published episodes, none match your filters'));

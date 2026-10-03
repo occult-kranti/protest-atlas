@@ -3,10 +3,10 @@
 import {readViewState, encodeViewState, droppedParams} from './explore.js';
 import './freshness.js';
 import {esc, icon} from './js/html.js';
-import {selectEvents, selectFiltered, timeSnapshot, indexContexts, countryNamer} from './js/model.js';
+import {selectEvents, selectFiltered, timeSnapshot, indexContexts, countryNamer, contextsPaused} from './js/model.js';
 import {createStore, initialState} from './js/store.js';
 import {createRouter, parseRoute} from './js/router.js';
-import {loadCritical, createLazyLoader} from './js/data.js';
+import {loadCritical, loadFile, createLazyLoader} from './js/data.js';
 import {createActions, controlStates, FEEDBACK} from './js/actions.js';
 import {mountFilters} from './js/filters.js';
 import {mountList} from './js/list.js';
@@ -43,7 +43,7 @@ async function boot() {
   if (initialDrops.length) store.set(s => ({ui: {...s.ui, droppedParams: initialDrops}}));
 
   const lazy = createLazyLoader();
-  const loader = {load: lazy.load, state: lazy.state, reset: lazy.reset, critical: () => loadCritical()};
+  const loader = {load: lazy.load, state: lazy.state, reset: lazy.reset, critical: () => loadCritical(), file: name => loadFile(name)};
   const recordSheet = $('record-sheet');
   const recordBody = $('record-body');
   const stampsSheet = $('stamps-sheet');
@@ -207,10 +207,11 @@ async function boot() {
     const filtered = selectFiltered(state);
     const index = filtered.findIndex(e => e.id === id);
     const context = state.mode === 'reported' ? indexContexts(state.data.contexts).get(id) ?? null : null;
+    const body = () => renderRecord(event, {context, mode: state.mode, now: state.now, countryName: countryNamer(state.data.countries),
+      contextsError: contextsPaused(state), position: index >= 0 ? {index, total: filtered.length} : null});
     if (openId !== id || !shown) {
       const stepping = shown && openId !== null && openId !== id;
-      recordBody.innerHTML = renderRecord(event, {context, mode: state.mode, now: state.now, countryName: countryNamer(state.data.countries),
-        position: index >= 0 ? {index, total: filtered.length} : null});
+      recordBody.innerHTML = body();
       fillChrome(state, event, index, filtered.length);
       if (stepping) {
         const scroller = sheetScroller(recordSheet);
@@ -222,6 +223,22 @@ async function boot() {
       }
       openId = id;
       doc.title = `${event.title} — Protest Atlas`;
+      recordChrome.refresh?.();
+      return;
+    }
+    if (prev && (state.data.contexts !== prev.data.contexts || contextsPaused(state) !== contextsPaused(prev))) {
+      // Contexts changed (Retry): re-render in place; focus on the gone Retry goes to the outcome heading.
+      const scroller = sheetScroller(recordSheet);
+      const top = scroller?.scrollTop ?? 0;
+      const hadFocus = recordBody.contains(doc.activeElement);
+      recordBody.innerHTML = body();
+      if (scroller) scroller.scrollTop = top;
+      if (hadFocus) {
+        const heading = recordBody.querySelector('#rec-outcome-title');
+        heading?.setAttribute('tabindex', '-1');
+        (heading ?? $('detail-title'))?.focus({preventScroll: true});
+      }
+      fillChrome(state, event, index, filtered.length);
       recordChrome.refresh?.();
       return;
     }
@@ -312,9 +329,11 @@ async function boot() {
     rendered = state;
     html.dataset.mode = state.mode;
     html.dataset.loading = String(state.load.critical === 'loading');
-    for (const component of components) component.render(state, prev);
+    // One failing component must not blank the others (MINOR 23).
+    const renderSafely = component => { try { component.render(state, prev); } catch (error) { console.error(error); } };
+    components.forEach(renderSafely);
     const view = state.route.view;
-    for (const component of mounted.values()) component.render(state, prev);
+    mounted.forEach(renderSafely);
     if (firstVisit[view] && !mounted.has(view)) {
       const component = firstVisit[view](ctx);
       mounted.set(view, component);
@@ -339,6 +358,15 @@ async function boot() {
     requestAnimationFrame(flush);
   });
 
+  function focusTitleIfLost(trigger) {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const active = doc.activeElement;
+      const lost = !active || active === doc.body || active === trigger;
+      if (!lost || (trigger.isConnected && trigger.getClientRects().length)) return;
+      $(`${store.get().route.view}-title`)?.focus({preventScroll: true});
+    }));
+  }
+
   // ---- delegated clicks (tech §4.8 + C-13) ----------------------------------------------------------------
   function onAction(name, el) {
     switch (name) {
@@ -351,6 +379,7 @@ async function boot() {
         if (el.getAttribute('aria-disabled') !== 'true') actions.stepRecord(name === 'record-next' ? 1 : -1);
         return true;
       case 'retry-data': actions.retryCritical(); return true;
+      case 'retry-contexts': actions.retryContexts(); return true;
       case 'clear-except-country': actions.clearExceptCountry(); return true;
       case 'dismiss-feedback':
         actions.dismissFeedback();
@@ -383,8 +412,11 @@ async function boot() {
     if (modeEl) {
       event.preventDefault();
       const mode = modeEl.dataset.setMode;
+      const before = store.get().mode;
       actions.setMode(mode);
       if (mode === 'example' && store.get().route.view !== 'latest') actions.navigate('latest');   // C-38
+      // The switch often hides its own trigger: focus the view title, never <body> (WCAG 2.4.3).
+      if (store.get().mode !== before) focusTitleIfLost(modeEl);
       return;
     }
 
@@ -451,6 +483,10 @@ async function boot() {
 
   // ---- start ------------------------------------------------------------------------------------------------
   if (!doc.title) doc.title = P1;
+  // Where the OS share sheet is used (coarse pointer + Web Share), the button says so (MINOR 15).
+  if (typeof navigator.share === 'function' && globalThis.matchMedia?.('(pointer: coarse)').matches) {
+    for (const b of doc.querySelectorAll('[data-action="share-view"]')) if (b.lastChild?.nodeType === 3) b.lastChild.textContent = 'Share this view';
+  }
   router.start();
   if (!scheduled) { scheduled = true; requestAnimationFrame(flush); }
   await actions.loadCritical();

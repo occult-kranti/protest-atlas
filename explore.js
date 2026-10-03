@@ -14,10 +14,13 @@ export function encodeViewState(state) {
   for (const [key,value] of Object.entries({q:state.query,country:state.country,region:state.region,issue:state.issue,status:state.status,year:state.year,city:state.city,outcome:state.outcome,window:state.window === 'all' ? '' : state.window})) if (value) params.set(key,value);
   return params.toString();
 }
+export const CSV_NOT_LOADED = 'not loaded';
 export function csvForEvents(events,contexts=null) {
   const context=id=>contexts?.records?.find(c=>c.event_id===id);
+  const loaded = Array.isArray(contexts?.records);
+  const ctx = (id, read) => loaded ? read(context(id)) : CSV_NOT_LOADED;
   const cell = value => { let s=String(value ?? ''); if (/^[\s]*[=+@-]/.test(s) || /^[\t\r]/.test(s)) s="'"+s; return '"'+s.replaceAll('"','""')+'"'; };
-  const rows = [['record_id','country','title','issues','last_observed','recorded_status','status_note','cities','completion_basis','what_changed','whose_favour','source_urls'], ...events.map(e => [e.id,e.country_name,e.title,e.issues.join('; '),e.last_observed_at,e.status,'Recorded status only; consult observation age and source uncertainty',(context(e.id)?.cities||[]).map(c=>c.name).join('; '),context(e.id)?.status_basis?.text||'End not established',(context(e.id)?.outcomes||[]).map(o=>o.summary).join(' | '),(context(e.id)?.outcomes||[]).flatMap(o=>o.favours.map(f=>f.actor+': '+f.effect+' ('+f.basis+') — '+f.note)).join(' | '),e.sources.map(s=>s.url).join(' | ')])];
+  const rows = [['record_id','country','title','issues','last_observed','recorded_status','status_note','cities','completion_basis','what_changed','whose_favour','source_urls'], ...events.map(e => [e.id,e.country_name,e.title,e.issues.join('; '),e.last_observed_at,e.status,'Recorded status only; consult observation age and source uncertainty',ctx(e.id,c=>(c?.cities||[]).map(x=>x.name).join('; ')),ctx(e.id,c=>c?.status_basis?.text||'End not established'),ctx(e.id,c=>(c?.outcomes||[]).map(o=>o.summary).join(' | ')),ctx(e.id,c=>(c?.outcomes||[]).flatMap(o=>o.favours.map(f=>f.actor+': '+f.effect+' ('+f.basis+') — '+f.note)).join(' | ')),e.sources.map(s=>s.url).join(' | ')])];
   return rows.map(row=>row.map(cell).join(',')).join('\r\n');
 }
 

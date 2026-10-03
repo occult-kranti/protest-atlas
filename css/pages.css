@@ -85,6 +85,11 @@
     border-style: dashed; border-color: var(--text-muted); background: transparent;
   }
   .announce-passed { margin-top: 20px; border-top: 1px solid var(--border); }
+  /* Items exist but none is upcoming: an explicit line and the sweep fact, never a silent gap (editorial §10.4). */
+  .announce-none { margin: 4px 0 16px; padding: 14px 16px; border: 1px dashed var(--border-strong); border-radius: var(--r-2); background: var(--bg-raised); }
+  .announce-none > p { margin: 0; color: var(--text-2); font-size: var(--fs-sm); line-height: 1.5; max-width: 62ch; }
+  .announce-none > p + p { margin-top: 8px; }
+  .announce-none > .announce-none-title { color: var(--text); font: 600 var(--fs-md)/1.4 var(--font-sans); }
   .announce-passed > .announce-list { padding-block: 8px; }
 
   /* The specimen is watermarked and drawn with a dashed frame so it never reads as a real announcement. */
@@ -198,9 +203,23 @@
   .dir-actions { margin: 0 0 16px; }
   .dir-search { display: grid; gap: 6px; max-width: 480px; margin: 4px 0 8px; }
   .dir-search-label { font: 600 var(--fs-sm)/1.3 var(--font-sans); color: var(--text); }
-  .dir-search-input { width: 100%; min-height: 48px; font-size: var(--fs-md); }
-  .dir-empty { margin: 8px 0 0; font-weight: 600; }
-  .dir-empty:empty { display: none; }
+  /* Same field as the Reports search (.filter-search): icon, no native cancel, a 44 px clear button. */
+  .dir-search-field { position: relative; min-width: 0; }
+  .dir-search-input { width: 100%; min-height: 48px; padding: 0 44px 0 42px; font-size: var(--fs-md); appearance: none; }
+  .dir-search-input::-webkit-search-cancel-button { appearance: none; display: none; }
+  .dir-search-icon {
+    position: absolute; left: 13px; top: 50%; width: 20px; height: 20px; translate: 0 -50%;
+    color: var(--text-muted); pointer-events: none;
+  }
+  .dir-clear { position: absolute; right: 2px; top: 50%; translate: 0 -50%; color: var(--text-2); }
+  .dir-clear[hidden] { display: none; }
+  .dir-search-hint { margin: 0; color: var(--text-muted); font-size: var(--fs-sm); line-height: 1.4; }
+  .dir-empty { margin: 8px 0 0; }
+  .dir-empty-text { margin: 0; font-weight: 600; max-width: 62ch; }
+  .dir-empty-text:empty { display: none; }
+  .dir-empty-actions { margin: 8px 0 0; }
+  .dir-empty-actions[hidden] { display: none; }
+  .dir-dek:focus:not(:focus-visible) { outline: none; }
   .dir-loading { margin: 8px 0 0; color: var(--text-2); }
   .dir-error { max-width: var(--feed-max); }
   .dir-error-title { font: 700 var(--fs-lg)/1.3 var(--font-sans); margin: 0 0 12px; }
@@ -220,6 +239,7 @@
   .dir-row:focus-visible { outline-offset: -3px; }
   .dir-text { flex: 1; min-width: 0; display: grid; gap: 1px; }
   .dir-name { font: 600 17px/1.3 var(--font-serif); }
+  .dir-iso { color: var(--text-muted); font-size: var(--fs-sm); line-height: 1.35; }
   .dir-status { color: var(--text-muted); font-size: var(--fs-sm); line-height: 1.35; }
   .dir-row[data-status="published"] .dir-status { color: var(--text); font-weight: 600; }
   .dir-row[data-status="unavailable"] .dir-status, .dir-row[data-status="failed"] .dir-status { color: var(--text-2); }
@@ -264,6 +284,8 @@
   .ledger-wrap:focus-visible { outline-offset: 2px; }
   .ledger-table { width: 100%; font-size: var(--fs-sm); line-height: 1.4; }
   .ledger-table caption { padding: 10px 12px; caption-side: top; text-align: start; color: var(--text-2); font-weight: 600; }
+  .ledger-caption-note { display: block; margin-top: 4px; color: var(--text-muted); font: 400 var(--fs-xs)/1.45 var(--font-sans); max-width: 62ch; }
+  #research-scope:focus:not(:focus-visible) { outline: none; }
   /* Phones: sentence-case headers and tight cells (6 px from 360 px, 3 px at 320 px), so all four columns fit
      without sideways scrolling. */
   .ledger-table th, .ledger-table td {

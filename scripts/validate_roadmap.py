@@ -37,6 +37,7 @@ PY_TEST_FILE = re.compile(r'^tests/test_[A-Za-z0-9_]+\.py$')
 MJS_TEST_FILE = re.compile(r'^tests/[A-Za-z0-9_.-]+\.mjs$')
 PY_TEST_NAME = re.compile(r'^(?:([A-Za-z_][A-Za-z0-9_]*)\.)?(test[A-Za-z0-9_]*)$')
 FORBIDDEN_ROOTS = ('_site', '.git', 'research')
+MIN_TITLE = 8   # a node:test title prefix this short could match almost any test
 
 
 def _iso_day(value, path):
@@ -89,18 +90,23 @@ def _resolve_test(ref, evidence_root, path):
                 'Python test evidence must be a top-level tests/test_*.py file that CI runs')
         match = PY_TEST_NAME.fullmatch(name)
         require(bool(match), path, 'Python test evidence must name test_method or TestClass.test_method')
-        source = _repository_file(file_part, evidence_root, path).read_text(encoding='utf-8')
+        source = _repository_file(file_part, evidence_root, path).read_text(encoding='utf-8') + '\n'
         cls, method = match.groups()
         require(re.search(rf'^\s*def {re.escape(method)}\(', source, re.M) is not None, path,
                 f'test {method} not found in {file_part}')
         if cls:
-            require(re.search(rf'^class {re.escape(cls)}\b', source, re.M) is not None, path,
-                    f'test class {cls} not found in {file_part}')
+            body = re.search(rf'^class {re.escape(cls)}\b[^\n]*\n((?:[ \t]+[^\n]*\n|[ \t]*\n)*)', source, re.M)
+            require(body is not None, path, f'test class {cls} not found in {file_part}')
+            require(re.search(rf'^[ \t]+def {re.escape(method)}\(', body.group(1), re.M) is not None, path,
+                    f'test {method} is not a method of {cls} in {file_part}')
         return
     require(bool(MJS_TEST_FILE.fullmatch(file_part)), path,
             'test evidence must be a top-level tests/test_*.py or tests/*.mjs file that CI runs (not tests/browser/)')
+    require(len(name) >= MIN_TITLE, path, f'test evidence needs a test title of at least {MIN_TITLE} characters')
     source = _repository_file(file_part, evidence_root, path).read_text(encoding='utf-8')
-    require(name in source, path, f'test title not found in {file_part}: {name}')
+    # The name must start the title of a test(...) call, not merely occur somewhere in the file.
+    require(re.search(r"\btest\(\s*(['\"`])" + re.escape(name), source) is not None, path,
+            f'test title not found in {file_part}: {name}')
 
 
 def _resolve_evidence(entry, evidence_root, path):

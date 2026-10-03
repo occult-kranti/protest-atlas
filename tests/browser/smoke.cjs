@@ -37,8 +37,6 @@ const SKIP = new Set((arg('skip') || '').split(',').map(s => s.trim()).filter(Bo
 const VERBOSE = flag('verbose');
 if (SHOTS) fs.mkdirSync(SHOTS, {recursive: true});
 
-const CLOCK = '2026-10-02T23:00:00Z';
-const STALE_CLOCK = '2026-10-09T12:00:00Z';
 const BASELINE_COMMIT = '7f0b1d5';
 const H1 = 'AI-assisted reporting pilot. Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.';
 const D1 = 'AI-assisted source check · no human editorial review';
@@ -69,7 +67,7 @@ const SHORT_VPS = ['640x410', '844x390', '720x450', '320x256'];
 const OWNERS = {
   1: 'all', 2: 'WP2 (+WP1 notice/header)', 3: 'WP2 router', 4: 'WP2 + WP3 + WP1 sheets', 5: 'WP2', 6: 'WP4', 7: 'all (WP1 primitives)',
   8: 'WP5', 9: 'WP2 + WP3 + WP4', 10: 'WP1', 11: 'WP1', 12: 'all', 13: 'WP2', 14: 'all', 15: 'WP3', 16: 'WP3', 17: 'WP2 + WP3',
-  18: 'WP2 + WP4', 19: 'WP2 + WP4 + WP5', 20: 'WP2 + WP5', 21: 'WP3 + WP5 + WP1 sheets', 22: 'WP2', 23: 'WP3',
+  18: 'WP2 + WP4', 19: 'WP2 + WP4 + WP5', 20: 'WP2 + WP5', 21: 'WP3 + WP5 + WP1 sheets', 22: 'WP2', 23: 'WP3', 24: 'WP2',
 };
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -100,6 +98,20 @@ function startServer() {
 // Data used by the checks (record ids, data-verbatim exception for the vocabulary scans)
 const readJSON = file => JSON.parse(fs.readFileSync(path.join(ROOT, file), 'utf8'));
 const EVENTS = readJSON('public/events.json');
+
+// Clocks and counts come from the data being served, never from the 2 Oct snapshot (MAJOR 13), so a data refresh
+// moves every walkthrough with it. On the 2 Oct data they are exactly 2 Oct 23:00, 9 Oct 12:00 and 5 Nov 12:00 UTC.
+const DAY_MS = 86_400_000;
+const EPISODES = EVENTS.events.length;
+const NEWEST = EVENTS.events.map(e => e.last_observed_at).filter(v => Number.isFinite(Date.parse(v))).sort((a, b) => Date.parse(b) - Date.parse(a))[0];
+const NEWEST_DAY = Date.parse(NEWEST.slice(0, 10));                      // 00:00 UTC of the newest evidence day
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const NEWEST_LABEL = (d => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`)(new Date(NEWEST_DAY));
+const iso = time => new Date(time).toISOString().replace('.000Z', 'Z');
+const CLOCK = iso(Math.floor((Math.max(Date.parse(EVENTS.generated_at), Date.parse(NEWEST)) + 15 * 60_000) / 60_000) * 60_000);
+const STALE_CLOCK = iso(NEWEST_DAY + 7.5 * DAY_MS);
+const ARCHIVE_CLOCK = iso(NEWEST_DAY + 34.5 * DAY_MS);
+const OF_ALL = new RegExp(`of ${EPISODES} published records`);
 const PUBLIC_VALUES = (() => {
   const out = new Set();
   const walk = v => { if (typeof v === 'string') out.add(v.trim()); else if (Array.isArray(v)) v.forEach(walk); else if (v && typeof v === 'object') Object.values(v).forEach(walk); };
@@ -614,7 +626,8 @@ CHECKS[5] = async f => {
   const b = await open('390', {search: '?status=live&year=1999'});
   f.ok(/were not recognised and were removed/.test(await b.page.textContent('#data-notice')), 'dropped-params line');
   await b.close();
-  const c = await open('390', {search: '?status=ongoing'});
+  // At newest + 7.5 days no record can carry 'Reported ongoing' (72-hour rule), so E7 holds on any valid data refresh.
+  const c = await open('390', {search: '?status=ongoing', clock: STALE_CLOCK});
   f.ok(/currently labelled 'Reported ongoing'/.test(await c.page.textContent('#event-list')), '?status=ongoing shows E7');
   await c.close();
 };
@@ -829,12 +842,13 @@ CHECKS[9] = async f => {
   await page.waitForTimeout(1200);
   f.ok(await page.evaluate(() => location.hash) === '#/latest', '#about-example goes to #/latest');
   f.ok(await page.isVisible('.card-watermark'), 'card watermark');
-  f.ok(await page.evaluate(() => document.querySelector('.feed-actions [data-action="export-csv"]')?.getAttribute('aria-disabled') === 'true'), 'Reports CSV aria-disabled');
+  f.ok(await page.evaluate(() => [...document.querySelectorAll('.feed-actions [data-action="export-csv"]')].every(b => b.getAttribute('aria-disabled') === 'true')), 'Reports CSV aria-disabled');
   f.ok(await page.evaluate(() => document.querySelector('#view-about [data-action="export-csv"]')?.getAttribute('aria-disabled') === 'true'), 'About CSV aria-disabled');
-  await page.click('.feed-actions [data-action="export-csv"]', {force: true});   // aria-disabled stays operable (C-43)
+  // Phones show the share/CSV row under the list (MAJOR 5); ':visible' picks the displayed copy at any width.
+  await page.click('.feed-actions [data-action="export-csv"]:visible', {force: true});   // aria-disabled stays operable (C-43)
   await page.waitForTimeout(300);
   f.ok(/excluded/.test(await page.textContent('#action-feedback')), 'CSV refusal mentions "excluded"');
-  await page.click('.feed-actions [data-action="share-view"]', {force: true});
+  await page.click('.feed-actions [data-action="share-view"]:visible', {force: true});
   await page.waitForTimeout(300);
   f.ok((await page.textContent('#action-feedback')).includes('Sharing is off in example mode.'), 'share refusal');
   await page.click('.card-link');
@@ -844,13 +858,19 @@ CHECKS[9] = async f => {
   await page.click('#tab-bar a[data-nav="map"]');
   await page.waitForSelector('.map-watermark', {timeout: 8000}).catch(() => {});
   f.ok(await page.isVisible('.map-watermark'), 'map watermark');
+  // The banner's own button hides with the banner: focus goes to the view title, never <body> (MAJOR 4).
+  await page.focus('#example-banner [data-set-mode="reported"]');
+  await page.keyboard.press('Enter');
+  await page.waitForTimeout(500);
+  f.ok(await page.evaluate(() => document.documentElement.dataset.mode === 'reported' && document.activeElement?.id === 'map-title'),
+    `Back to reported data (banner) focuses #map-title (${await page.evaluate(() => document.activeElement?.id || document.activeElement?.tagName)})`);
   await close();
   const r = await open('390', {search: '?country=FR&window=30'});
   await r.page.evaluate(() => {
     try { Object.defineProperty(navigator, 'share', {value: undefined, configurable: true}); } catch {}
     Object.defineProperty(navigator, 'clipboard', {value: {writeText: t => { window.__copied = t; return Promise.resolve(); }}, configurable: true});
   });
-  await r.page.click('.feed-actions [data-action="share-view"]');
+  await r.page.click('.feed-actions [data-action="share-view"]:visible');
   await r.page.waitForTimeout(400);
   const copied = await r.page.evaluate(() => window.__copied || '');
   f.ok(/country=FR/.test(copied) && /window=30/.test(copied), `Copy link to this view copies the filters (${copied})`);
@@ -951,9 +971,15 @@ CHECKS[13] = async f => {
     const {page, close} = await open(vp, {clock: STALE_CLOCK});
     const chip = await page.evaluate(() => ({state: document.querySelector('#stamp-chip').dataset.state, text: document.querySelector('#stamp-chip').textContent}));
     f.ok(chip.state === 'stale' && /Stale snapshot/i.test(chip.text), `${vp}: chip ${JSON.stringify(chip)}`);
-    const s5 = 'This snapshot has nothing newer than 2 Oct 2026, 7 days ago.';
+    const s5 = `This snapshot has nothing newer than ${NEWEST_LABEL}, 7 days ago.`;
     f.ok((await page.textContent('#data-notice')).includes(s5), `${vp}: S5 on #/latest`);
-    f.ok(/in the last 7 days/.test(await page.textContent('.feed-gap').catch(() => '')), `${vp}: .feed-gap E4 "in the last 7 days"`);
+    // E4 and S7 sit behind the warn line's "Why?" (MAJOR 5); the list no longer repeats them in a .feed-gap.
+    f.ok(!(await page.$('.feed-gap')), `${vp}: no .feed-gap above the list`);
+    await page.click('#data-notice .notice-why-btn');
+    await page.waitForTimeout(200);
+    const why = await page.evaluate(() => ({open: document.querySelector('.notice-why-btn')?.getAttribute('aria-expanded'),
+      visible: Boolean(document.querySelector('#notice-why')?.getClientRects().length), text: document.querySelector('#notice-why')?.textContent ?? ''}));
+    f.ok(why.open === 'true' && why.visible && /in the last 7 days/.test(why.text), `${vp}: "Why?" opens E4 "in the last 7 days" ${JSON.stringify(why)}`);
     const titles = await page.$$eval('.feed-group-title', ts => ts.map(t => t.textContent.trim()));
     f.ok(titles.length && titles[0].startsWith('7 to 30 days ago'), `${vp}: first group "${titles[0]}"`);
     f.ok(!titles.some(t => t.includes('within 72 hours')), `${vp}: no "within 72 hours" group`);
@@ -965,18 +991,46 @@ CHECKS[13] = async f => {
     f.ok((await page.textContent('#data-notice')).includes(s5), `${vp}: S5 on #/map`);
     await close();
   }
-  const live = await open('1440', {clock: '2026-10-02T23:59:00Z', install: true});
+  const live = await open('1440', {clock: iso(NEWEST_DAY + DAY_MS - 60_000), install: true});
   await live.page.clock.fastForward((48 * 60 + 2) * 60 * 1000);
   await live.page.clock.runFor(61000);
   await live.page.waitForTimeout(500);
-  f.ok((await live.page.textContent('#data-notice')).includes('No evidence newer than 2 Oct 2026'), 'S4 appears without a reload past 5 Oct 00:00');
+  f.ok((await live.page.textContent('#data-notice')).includes(`No evidence newer than ${NEWEST_LABEL}`), 'S4 appears without a reload past the 72-hour mark');
   await live.page.clock.fastForward((7 * 24 * 60) * 60 * 1000);
   await live.page.clock.runFor(61000);
   await live.page.waitForTimeout(500);
   const later = await live.page.evaluate(() => ({chip: document.querySelector('#stamp-chip').textContent, notice: document.querySelector('#data-notice').textContent}));
-  f.ok(/newest evidence 10 days old/.test(later.chip), `12 Oct: chip "${later.chip.trim()}"`);
-  f.ok(/10 days ago/.test(later.notice), '12 Oct: S5 contains "10 days ago"');
+  f.ok(/newest evidence 10 days old/.test(later.chip), `newest + 10 days: chip "${later.chip.trim()}"`);
+  f.ok(/10 days ago/.test(later.notice), 'newest + 10 days: S5 contains "10 days ago"');
   await live.close();
+
+  // MINOR 22 without the smoke's scroll-behavior override: the tick that crosses the newest day's 72-hour boundary
+  // regroups the list, and the reader's first card stays put on every scroll frame (no jump and glide back).
+  const keep = await open('390', {clock: iso(NEWEST_DAY + 3 * DAY_MS - 110_000), install: true, keepScrollBehavior: true});
+  const placed = await keep.page.evaluate(() => {
+    const cards = [...document.querySelectorAll('#event-list .card')];
+    const target = cards[Math.min(4, cards.length - 1)];
+    if (!target) return null;
+    scrollTo({top: scrollY + target.getBoundingClientRect().top - 120, behavior: 'instant'});
+    const header = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const anchor = cards.find(c => c.getBoundingClientRect().bottom > header);
+    return anchor ? {id: anchor.dataset.id, top: anchor.getBoundingClientRect().top} : null;
+  });
+  if (placed) {
+    await keep.page.evaluate(id => {
+      window.__smokeTops = [];
+      addEventListener('scroll', () => window.__smokeTops.push(document.querySelector(`.card[data-id="${CSS.escape(id)}"]`)?.getBoundingClientRect().top ?? NaN));
+    }, placed.id);
+    const before = await keep.page.$$eval('.feed-group-title', ts => ts.map(t => t.textContent.trim()).join('|'));
+    await keep.page.clock.runFor(180_000);
+    await keep.page.waitForTimeout(800);
+    const after = await keep.page.evaluate(id => ({groups: [...document.querySelectorAll('.feed-group-title')].map(t => t.textContent.trim()).join('|'),
+      top: document.querySelector(`.card[data-id="${CSS.escape(id)}"]`)?.getBoundingClientRect().top, tops: window.__smokeTops}), placed.id);
+    f.note(`scroll anchor ${placed.id}: ${Math.round(placed.top)} → ${Math.round(after.top)}; groups "${before}" → "${after.groups}"; scroll frames ${after.tops.map(Math.round).join(',')}`);
+    f.ok(after.top !== undefined && Math.abs(after.top - placed.top) <= 2, `scroll anchor ${placed.id}: ${placed.top} → ${after.top}`);
+    f.ok(after.tops.every(t => Math.abs(t - placed.top) <= 2), `scroll anchor never jumps: frames ${after.tops.map(Math.round)}`);
+  } else f.ok(false, 'scroll anchor: no card to place');
+  await keep.close();
 };
 
 async function scanAllStates(clock) {
@@ -1039,19 +1093,38 @@ CHECKS[15] = async f => {
 
 // 16. Status before band on tz-drivers.
 CHECKS[16] = async f => {
-  const {page, close} = await open('390');
+  // Filtered to TZ so the card is on the first page however many newer records a refresh adds.
+  const {page, close} = await open('390', {search: '?country=TZ'});
   const tz = await page.evaluate(id => {
     const card = document.querySelector(`.card[data-id="${id}"]`);
     const status = card?.querySelector('.status'); const band = card?.querySelector('.band');
     return {status: status?.textContent.trim(), before: Boolean(status && band && (status.compareDocumentPosition(band) & Node.DOCUMENT_POSITION_FOLLOWING))};
   }, WORKED.tz);
-  f.ok(tz.status === 'Ended / suspended 30 Sep 2026', `tz status "${tz.status}"`);
+  const tzEnd = EVENTS.events.find(e => e.id === WORKED.tz)?.end_date ?? '';
+  const tzDay = Date.parse(tzEnd) ? (d => `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`)(new Date(Date.parse(tzEnd))) : '';
+  f.ok(tz.status === `Ended / suspended ${tzDay}`.trim(), `tz status "${tz.status}" (end ${tzEnd})`);
   f.ok(tz.before, 'tz .status precedes .band');
   await close();
 };
 
-// 17. First viewport (2 Oct clock only).
+// 17. First viewport. Hard requirements: the first card top above the tab bar at 390×844 and 360×780 on the current,
+// stale (newest + 7.5 days) and archive (newest + 34.5 days) clocks, and the first title fully visible at 390×844 on the
+// current clock (MAJOR 5: the stale state is the primary layout for most of the site's deployed life).
 CHECKS[17] = async f => {
+  for (const clock of [STALE_CLOCK, ARCHIVE_CLOCK]) {
+    for (const vp of ['390', '360']) {
+      const s = await open(vp, {clock});
+      const r = await s.page.evaluate(() => {
+        const c = document.querySelector('#event-list .card')?.getBoundingClientRect(); const t = document.querySelector('#event-list .card-title')?.getBoundingClientRect();
+        const tab = document.querySelector('#tab-bar'); const tabH = tab && tab.getClientRects().length ? tab.getBoundingClientRect().height : 0;
+        return {cardTop: c?.top, titleBottom: t?.bottom, limit: innerHeight - tabH, state: document.querySelector('#stamp-chip')?.dataset.state};
+      });
+      f.ok(r.cardTop !== undefined && r.cardTop < r.limit, `${clock} ${vp}: first .card top ${Math.round(r.cardTop)} ≥ ${Math.round(r.limit)} (${r.state})`);
+      f.note(`${clock} ${vp}: first card top ${Math.round(r.cardTop)}, title bottom ${Math.round(r.titleBottom)} (limit ${Math.round(r.limit)})`);
+      await shot(s.page, `first-viewport-${vp}-${clock.slice(0, 10)}`);
+      await s.close();
+    }
+  }
   const a = await open('390');
   const r390 = await a.page.evaluate(() => {
     const t = document.querySelector('.card-title')?.getBoundingClientRect();
@@ -1097,7 +1170,8 @@ CHECKS[18] = async f => {
   await page.waitForTimeout(400);
   await page.click('#event-list [data-set-mode="reported"]');
   await page.waitForTimeout(800);
-  f.ok(/of 84 published records/.test(await page.textContent('#result-summary')), 'Back to reported data restores the 84-record list');
+  f.ok(OF_ALL.test(await page.textContent('#result-summary')), `Back to reported data restores the ${EPISODES}-record list`);
+  f.ok(await page.evaluate(() => document.activeElement?.id === 'latest-title'), 'focus moves to #latest-title, not <body> (MAJOR 4)');
   await page.unroute('**/*public/examples.json*');
   await page.click('#about-example').catch(async () => { await go(page, '#/about'); await page.click('#about-example'); });
   await page.waitForTimeout(500);
@@ -1148,9 +1222,11 @@ CHECKS[19] = async f => {
 // 20. Countries-only failure.
 CHECKS[20] = async f => {
   const {page, close} = await open('390', {block: [{pattern: 'public/countries.json', status: 500}]});
-  f.ok(/of 84 published records/.test(await page.textContent('#result-summary')), 'the list renders 84 records');
+  f.ok(OF_ALL.test(await page.textContent('#result-summary')), `the list renders ${EPISODES} records`);
   const notice = await page.textContent('#data-notice');
   f.ok(notice.includes('The country directory could not load; records are listed by country code.') && !notice.includes(E5), 'countries-error line, no E5');
+  const places = await page.$$eval('#event-list .card-place strong, #event-list .card-row-country', els => els.map(e => e.textContent.trim()));
+  f.ok(places.length > 0 && places.every(t => /^[A-Z]{2}$/.test(t)), `cards list by country code, as the notice says (${[...new Set(places)].slice(0, 8)})`);
   await go(page, '#/countries');
   await page.waitForTimeout(500);
   f.ok((await page.textContent('#view-countries')).includes('The country directory could not load.'), 'Countries error state');
@@ -1252,6 +1328,42 @@ CHECKS[23] = async f => {
   }
 };
 
+// 24. Search and filter feedback on phones (MAJOR 7) and country names in search (MAJOR 8).
+CHECKS[24] = async f => {
+  const spain = EVENTS.events.filter(e => e.country === 'ES').length;
+  for (const vp of ['390', '360']) {
+    const {page, close} = await open(vp);
+    await page.tap('#query');
+    await page.keyboard.type('Spain');
+    await page.keyboard.press('Enter');
+    await page.waitForTimeout(900);
+    const r = await page.evaluate(() => {
+      const tab = document.querySelector('#tab-bar'); const tabH = tab && tab.getClientRects().length ? tab.getBoundingClientRect().height : 0;
+      return {active: document.activeElement?.id || document.activeElement?.tagName, summary: document.querySelector('#result-summary').getBoundingClientRect().top,
+        card: document.querySelector('#event-list .card')?.getBoundingClientRect().top, half: innerHeight / 2, limit: innerHeight - tabH};
+    });
+    f.ok(r.active !== 'query', `${vp}: Enter blurs #query on touch (active ${r.active})`);
+    if (spain) f.ok(r.summary <= r.half && r.card < r.limit, `${vp}: after search the summary (${Math.round(r.summary)}) is in the upper half and the first result (${Math.round(r.card)}) in view`);
+    await shot(page, `search-${vp}`);
+    await close();
+  }
+  const s = await open('390', {clock: STALE_CLOCK});
+  await s.page.click('.quick-chip[data-set-filter="window"][data-value="7"]');
+  await s.page.waitForTimeout(900);
+  const e1 = await s.page.evaluate(() => {
+    const el = document.querySelector('#event-list .empty-state'); const tab = document.querySelector('#tab-bar');
+    return {top: el?.getBoundingClientRect().top, bottom: el?.getBoundingClientRect().bottom, limit: innerHeight - (tab?.getBoundingClientRect().height ?? 0), text: el?.textContent ?? ''};
+  });
+  f.ok(/That describes this atlas, not the world/.test(e1.text) && e1.bottom <= e1.limit, `stale "Last 7 days": the E1 explanation is in view ${JSON.stringify({top: Math.round(e1.top), bottom: Math.round(e1.bottom), limit: e1.limit})}`);
+  await shot(s.page, 'stale-7d-390');
+  await s.close();
+  const k = await open('390', {search: '?q=South%20Korea'});
+  const kr = EVENTS.events.filter(e => e.country === 'KR').map(e => e.id);
+  const ids = await k.page.$$eval('#event-list .card', cs => cs.map(c => c.dataset.id));
+  f.ok(kr.every(id => ids.includes(id)), `"South Korea" finds ${kr.join(', ')} (${ids.slice(0, 4)})`);
+  await k.close();
+};
+
 // ---------------------------------------------------------------------------------------------------------------
 (async () => {
   const server = await startServer();
@@ -1272,7 +1384,7 @@ CHECKS[23] = async f => {
   await browser.close();
   server.close();
   const failed = Object.entries(results).filter(([, r]) => r.status === 'fail').map(([id]) => Number(id));
-  const summary = {root: path.relative(REPO, ROOT) || '.', prefix: PREFIX, clock: CLOCK, seconds: Math.round((Date.now() - started) / 1000),
+  const summary = {root: path.relative(REPO, ROOT) || '.', prefix: PREFIX, clock: CLOCK, stale: STALE_CLOCK, archive: ARCHIVE_CLOCK, episodes: EPISODES, seconds: Math.round((Date.now() - started) / 1000),
     passed: Object.values(results).filter(r => r.status === 'pass').length, failed, checks: results};
   console.log(JSON.stringify(summary, null, 2));
   process.exit(failed.length ? 1 : 0);

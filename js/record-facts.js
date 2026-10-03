@@ -4,6 +4,8 @@ import {esc, safeURL, hostOf, plural, dayParts} from './html.js';
 import {observationBand, toTime, absoluteLabel} from '../freshness.js';
 
 export const EXAMPLE_WATERMARK = 'Illustrative example • not a real event';
+/** Replaces "AI-assisted check", D1 and the D9 re-read row for the fictional example record. */
+export const ILLUSTRATIVE_CHECK = 'no source was checked';
 export const VERIFICATION_LABELS = {'single-source': 'Single source', corroborated: 'Corroborated', contested: 'Contested', illustrative: 'Illustrative'};
 
 /** SPEC §8.8, verbatim. */
@@ -189,10 +191,11 @@ export function evidenceLine(event) {
   const linkCount = sourcesOf(event).length;
   const linkLabel = plural(linkCount, 'link');
   const publishedText = published ? `published ${absoluteLabel(published)}` : 'publication date not given';
+  const checkLabel = level === 'illustrative' ? ILLUSTRATIVE_CHECK : 'AI-assisted check';
   return {
     publisher, url, published, level: level in VERIFICATION_LABELS ? level : 'single-source', levelLabel,
-    levelNote: VERIFICATION_NOTES[level] ?? '', linkCount, linkLabel, publishedText, source,
-    text: [publisher, publishedText, levelLabel, linkLabel, 'AI-assisted check'].filter(Boolean).join(' · '),
+    levelNote: VERIFICATION_NOTES[level] ?? '', linkCount, linkLabel, publishedText, source, checkLabel,
+    text: [publisher, publishedText, levelLabel, linkLabel, checkLabel].filter(Boolean).join(' · '),
   };
 }
 

@@ -1,6 +1,6 @@
 // State transitions, share and export (WP2). Imports per SPEC §19.0. DOM-free when loaded:
 // browser APIs are reached only inside the default `platform` functions, at call time.
-import {PAGE_SIZE, selectFiltered, cityOptions, indexContexts, refinementOptions} from './model.js';
+import {PAGE_SIZE, STATUS_LABELS, selectEvents, selectFiltered, cityOptions, indexContexts, refinementOptions, countryNamer} from './model.js';
 import {FILTER_KEYS, readViewState, encodeViewState, csvForEvents, shareURL} from '../explore.js';
 
 export const FEEDBACK = Object.freeze({
@@ -12,9 +12,23 @@ export const FEEDBACK = Object.freeze({
   csvExample: 'Export is off in example mode: illustrative records are excluded.',
   csvEmpty: 'Nothing to export: no records match these filters.',
   csvNotLoaded: 'Records are not loaded yet, so there is nothing to export.',
+  contextsFailed: 'Outcomes, endings and cities still could not load.',
 });
 
 const csvDone = n => `CSV downloaded: ${n} ${n === 1 ? 'record' : 'records'}.`;
+
+/** Share sheet title with the view's filters or the record's title: "Protest Atlas · France · Last 30 days" (MINOR 15). */
+export function shareTitle(state, kind = 'view') {
+  if (kind === 'record') {
+    const title = selectEvents(state).find(e => e.id === state?.route?.record)?.title;
+    return title ? `${title} — Protest Atlas` : 'Protest Atlas';
+  }
+  const f = state?.filters ?? {};
+  const parts = [f.query && `Search: ${f.query}`, f.country && countryNamer(state?.data?.countries)(f.country), f.region,
+    f.city && f.city.split(':').slice(1).join(':'), f.window && f.window !== 'all' && `Last ${f.window} days`, f.status && STATUS_LABELS[f.status],
+    f.issue, f.year, f.outcome && (f.outcome === 'documented' ? 'Outcome documented' : 'Outcome not established')].filter(Boolean);
+  return ['Protest Atlas', ...parts].join(' · ');
+}
 
 /** Guard used by the export handler itself and by every export control's aria-disabled (C-43). */
 export function exportAllowed(state) {
@@ -130,6 +144,25 @@ export function createActions({store, router, loader, sheets = null, env = {}, p
     return result;
   }
 
+  let contextsRetry = null;
+  /** Retry only event-context.json (MAJOR 12); paused filters apply once it arrives. */
+  function retryContexts() {
+    if (contextsRetry) return contextsRetry;
+    if (!store.get().load.errors.contexts || typeof loader.file !== 'function') return Promise.resolve(false);
+    contextsRetry = loader.file('contexts').then(contexts => {
+      store.set(s => {
+        const {contexts: _failed, ...errors} = s.load.errors;
+        return {data: {...s.data, contexts}, load: {...s.load, errors}};
+      });
+      validateFilters();
+      return true;
+    }, () => {
+      setFeedback(FEEDBACK.contextsFailed);
+      return false;
+    }).finally(() => { contextsRetry = null; });
+    return contextsRetry;
+  }
+
   const actions = {
     setFilter(key, value) { setFilters({[key]: value}); },
     setFilters,
@@ -198,6 +231,7 @@ export function createActions({store, router, loader, sheets = null, env = {}, p
     },
     loadCritical: loadCriticalData,
     retryCritical() { return loadCriticalData(); },
+    retryContexts,
     validateFilters,
     setFeedback,
     dismissFeedback() {
@@ -213,7 +247,7 @@ export function createActions({store, router, loader, sheets = null, env = {}, p
       const url = shareURL({origin: loc?.origin ?? '', pathname: loc?.pathname ?? '/', filters: s.filters, route: s.route, defaultView, kind});
       if (io.canShare()) {
         try {
-          await io.share({url, title: 'Protest Atlas'});
+          await io.share({url, title: shareTitle(s, kind)});
           return 'shared';
         } catch (error) {
           if (error?.name === 'AbortError') return 'cancelled';

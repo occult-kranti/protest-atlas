@@ -96,11 +96,23 @@ const FOCUS_KEYS = ['id', 'data-select-country', 'data-ahead-target', 'data-open
  * Mount helper (tech §4.5): replace el.innerHTML only when the markup changed, then reopen <details data-key> that
  * were open and give focus back to the same control (by FOCUS_KEYS, or a keyed summary). `cache` is a WeakMap.
  */
+/** Focus target when the focused control left with a re-render: the nearest focusable section title, else the view h1. */
+function fallbackTitle(el) {
+  const doc = el.ownerDocument;
+  for (let node = el; node && node !== doc.body; node = node.parentElement) {
+    const id = node.getAttribute?.('aria-labelledby');
+    const title = id ? doc.getElementById(id.split(/\s+/)[0]) : null;
+    if (title?.hasAttribute('tabindex') && title.getClientRects().length) return title;
+  }
+  return el.closest('.view')?.querySelector('h1[tabindex="-1"]') ?? null;
+}
+
 export function patchHTML(el, html, cache) {
   if (cache.get(el) === html) return false;
   const active = el.ownerDocument.activeElement;
+  const hadFocus = Boolean(active && active !== el && el.contains(active));
   let focus = null;
-  if (active && active !== el && el.contains(active)) {
+  if (hadFocus) {
     const key = FOCUS_KEYS.find(name => active.getAttribute(name));
     const details = active.tagName === 'SUMMARY' && active.parentElement?.dataset.key;
     if (key) focus = key === 'id' ? `#${CSS.escape(active.id)}` : `[${key}="${CSS.escape(active.getAttribute(key))}"]`;
@@ -110,6 +122,8 @@ export function patchHTML(el, html, cache) {
   el.innerHTML = html;
   cache.set(el, html);
   for (const key of open) el.querySelector(`details[data-key="${CSS.escape(key)}"]`)?.setAttribute('open', '');
-  if (focus) el.querySelector(focus)?.focus({preventScroll: true});
+  const target = focus ? el.querySelector(focus) : null;
+  if (target) target.focus({preventScroll: true});
+  else if (hadFocus) fallbackTitle(el)?.focus({preventScroll: true});
   return true;
 }

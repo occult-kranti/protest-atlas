@@ -108,7 +108,7 @@
   </div></header>
   <div id="data-notice" class="notice" role="status" data-tone="info"><div class="notice-inner">
     <p class="notice-pilot"><strong>AI-assisted reporting pilot.</strong> Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.</p></div></div>
-  <div id="example-banner" class="example-banner" hidden>
+  <div id="example-banner" class="example-banner" role="region" aria-label="Illustrative example" hidden>
     <p><strong>Illustrative example • not a real event.</strong> You are viewing one fictional record. It is excluded from counts, the directory and CSV export.</p>
     <button type="button" class="btn" data-set-mode="reported">Back to reported data</button></div>
   <main id="main" tabindex="-1">
@@ -134,6 +134,9 @@
       </div>
       <div id="event-list" class="feed" aria-busy="true"></div>
       <div id="list-more" class="list-more"></div>
+      <div class="feed-actions feed-actions--foot">
+        <button type="button" class="btn btn--quiet" data-action="share-view"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-link"></use></svg>Copy link to this view</button>
+        <button type="button" class="btn btn--quiet" data-action="export-csv"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-download"></use></svg>Download CSV</button></div>
     </section>
     <section class="view" id="view-map" data-view="map" aria-labelledby="map-title">
       <div class="view-head"><h1 id="map-title" tabindex="-1">Published coverage</h1>
@@ -215,27 +218,28 @@
   </footer>
   <div id="action-feedback" class="toast" role="status" aria-live="polite" hidden></div>
   <dialog id="record-sheet" class="sheet sheet--record" aria-labelledby="detail-title">
-    <header class="sheet-head">
+    <div class="sheet-head">
       <button type="button" id="record-close" class="btn btn--quiet" data-close-sheet><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg>Close</button>
       <div class="sheet-head-title"><span id="record-eyebrow" class="eyebrow">Record</span><span id="record-minititle" class="sheet-minititle" aria-hidden="true"></span></div>
       <button type="button" id="record-share" class="icon-btn" data-action="share-record" aria-label="Share this record"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-share"></use></svg></button>
       <p id="record-announcer" class="visually-hidden" role="status" aria-live="polite"></p>
-    </header>
+    </div>
     <div id="record-body" class="sheet-body"></div>
-    <footer id="record-actions" class="sheet-foot">
+    <div id="record-actions" class="sheet-foot">
       <button type="button" id="record-prev" class="icon-btn" data-action="record-prev" aria-label="Previous record in this view"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-left"></use></svg></button>
       <a id="record-source" class="btn btn--primary" href="#" target="_blank" rel="noopener noreferrer" hidden>Read the source</a>
       <button type="button" id="record-next" class="icon-btn" data-action="record-next" aria-label="Next record in this view"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chevron-right"></use></svg></button>
       <div id="record-feedback" class="toast toast--sheet" role="status" aria-live="polite" hidden></div>
-    </footer>
+    </div>
   </dialog>
   <dialog id="filters-sheet" class="sheet sheet--filters" aria-labelledby="filters-title">
-    <header class="sheet-head"><h2 id="filters-title" tabindex="-1">Filters</h2><button type="button" class="icon-btn" data-close-sheet aria-label="Close filters"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg></button></header>
+    <div class="sheet-head"><h2 id="filters-title" tabindex="-1">Filters</h2><button type="button" class="icon-btn" data-close-sheet aria-label="Close filters"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg></button></div>
     <div id="filters-body" class="sheet-body"></div>
-    <footer id="filters-foot" class="sheet-foot"><p id="filters-status" class="visually-hidden" role="status" aria-live="polite"></p></footer></dialog>
+    <div id="filters-foot" class="sheet-foot"><p id="filters-status" class="visually-hidden" role="status" aria-live="polite"></p></div></dialog>
   <dialog id="stamps-sheet" class="sheet sheet--stamps" aria-labelledby="stamps-title">
-    <header class="sheet-head"><h2 id="stamps-title" tabindex="-1">What the dates on this page mean</h2><button type="button" class="icon-btn" data-close-sheet aria-label="Close"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg></button></header>
-    <div id="stamps-body" class="sheet-body"></div></dialog>
+    <div class="sheet-head"><h2 id="stamps-title" tabindex="-1">What the dates on this page mean</h2><button type="button" class="icon-btn" data-close-sheet aria-label="Close"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg></button></div>
+    <div id="stamps-body" class="sheet-body" tabindex="0" role="region" aria-labelledby="stamps-title"></div>
+    <div class="sheet-foot"><button type="button" class="btn btn--primary sheet-done" data-close-sheet>Done</button></div></dialog>
   <noscript><div class="noscript">JavaScript is required to search this index. <a href="public/events.json">Read the published data</a> or <a href="https://github.com/occult-kranti/protest-atlas/blob/main/docs/EDITORIAL_POLICY.md">read the methodology</a>.</div></noscript>
 </body>
 </html>

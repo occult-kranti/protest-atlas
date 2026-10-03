@@ -14,7 +14,7 @@ const validTime = v => typeof v === 'string' && Number.isFinite(Date.parse(v));
 /** name → (value) => boolean. A file that fails its shape check counts as an error, never as empty data. */
 export const SHAPES = Object.freeze({
   events: v => isObject(v) && Array.isArray(v.events),
-  countries: v => Array.isArray(v) && v.every(c => isObject(c) && typeof c.code === 'string'),
+  countries: v => Array.isArray(v) && v.every(c => isObject(c) && typeof c.code === 'string' && typeof c.name === 'string'),
   contexts: v => isObject(v) && Array.isArray(v.records),
   upcoming: v => isObject(v) && Array.isArray(v.items),
   build: v => isObject(v) && validTime(v.built_at),
@@ -81,6 +81,12 @@ export async function loadCritical({fetchImpl = globalThis.fetch} = {}) {
   if (!Array.isArray(data.countries)) data.countries = [];
   const critical = REQUIRED.some(name => errors[name]) ? 'error' : 'ready';
   return {data, errors, critical};
+}
+
+/** One critical file again, shape-checked (contexts Retry, MAJOR 12). */
+export function loadFile(name, {fetchImpl = globalThis.fetch} = {}) {
+  if (!Object.hasOwn(CRITICAL, name)) return Promise.reject(new DataError(`Unknown file ${name}`, {file: name, kind: 'absent'}));
+  return loadOne(name, CRITICAL[name], fetchImpl);
 }
 
 /** Memoised lazy files. load(name) resolves with the data or rejects with a DataError; reset(name) allows a retry. */

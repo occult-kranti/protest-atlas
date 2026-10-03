@@ -1,12 +1,15 @@
 import {createWorldMap, zoomButtonState, REGION_VIEWS} from '../map.js';
 import {overviewModel, briefModel, renderOverview, renderBrief, countSentence, BRIEF_COPY} from './country-brief.js';
 import {esc, icon, plural} from './html.js';
-import {selectFiltered, selectEvents} from './model.js';
+import {selectFiltered, selectEvents, displayCountryName} from './model.js';
 
 export const REGIONS = ['World', ...Object.keys(REGION_VIEWS)];
 export const MAP_COPY = Object.freeze({
   hintCoarse: 'One finger scrolls the page. To move the map, pinch with two fingers, use + and −, or turn on Explore map.',
   hintFine: 'Drag to move the map. Use + and −, or Ctrl and scroll, to zoom.',
+  // While Explore is on (gestures 'map'): one finger and the wheel move the map, so the page hint would be false.
+  hintCoarseExplore: 'One finger moves the map. Tap Done exploring to scroll the page again.',
+  hintFineExplore: 'Drag to move the map. Scroll, or use + and −, to zoom. Choose Done exploring, or press Escape, to scroll the page again.',
   dragHint: 'Use two fingers, or Explore map, to move the map.',
   legendTitle: 'What the colours mean',
   reported: 'Published episode matches your filters',
@@ -37,11 +40,13 @@ export function describeCountry(list, {mode = 'reported', example = 'ready', err
   return list?.length ? countSentence(list.length, filtered, list.some(e => e.status === 'ended')) : MAP_COPY.gap;
 }
 
-export function legendHTML({mode = 'reported', example = 'ready', eventsError = false, unavailable = false, window = 'all', citiesError = false, coarse = false} = {}) {
+export function legendHTML({mode = 'reported', example = 'ready', eventsError = false, unavailable = false, window = 'all', citiesError = false, coarse = false,
+  explore = false} = {}) {
   const note = (kind, text) => `<p class="legend-note" data-kind="${kind}">${text}</p>`;
   const tail = note('small', `${esc(MAP_COPY.smallLead)}<a href="#/countries">${esc(MAP_COPY.smallLink)}</a>`) + note('footnote', esc(MAP_COPY.footnote));
   if (unavailable) return tail;
-  const head = `<p class="map-hint">${esc(coarse ? MAP_COPY.hintCoarse : MAP_COPY.hintFine)}</p><h2 class="legend-title">${esc(MAP_COPY.legendTitle)}</h2>`;
+  const hint = explore ? (coarse ? MAP_COPY.hintCoarseExplore : MAP_COPY.hintFineExplore) : coarse ? MAP_COPY.hintCoarse : MAP_COPY.hintFine;
+  const head = `<p class="map-hint">${esc(hint)}</p><h2 class="legend-title">${esc(MAP_COPY.legendTitle)}</h2>`;
   const status = (text, attr, label) => `${head}<p class="legend-note legend-status" role="status">${esc(text)}</p><div class="legend-actions"><button type="button" class="btn" ${attr}>${label}</button></div>`;
   const isExample = mode === 'example';
   if (eventsError && !isExample) return status(BRIEF_COPY.eventsError, 'data-action="retry-data"', 'Retry');
@@ -60,7 +65,7 @@ export function selectionBarHTML({name = '', state = 'records', count = 0, publi
         : state === 'no-record' ? 'no published episode in this atlas' : '';
   return `<p class="map-selbar-text"><strong class="map-selbar-name">${esc(name)}</strong>${detail ? ` · <span>${esc(detail)}</span>` : ''}</p>`
     + '<div class="map-selbar-actions"><a class="btn btn--quiet map-selbar-brief" href="#country-panel" data-scroll-to="country-panel">See brief</a>'
-    + '<button type="button" class="btn map-selbar-clear" data-clear-filter="country">World</button></div>';
+    + '<button type="button" class="btn map-selbar-clear" data-clear-filter="country">Back to world</button></div>';
 }
 
 export function regionChipsHTML(pressed = 'World') {
@@ -75,6 +80,21 @@ export function controlsHTML() {
     + button('map-explore', 'map-explore', `${icon('hand')}<span class="map-explore-label">${MAP_COPY.explore}</span>`).replace('map-btn--text"', 'map-btn--text map-explore" aria-pressed="false"');
 }
 
+const displayCache = new WeakMap();
+/** countries.json with short display names (model.COUNTRY_SHORT_NAMES) for every map label, tooltip and aria-label. */
+export function displayCountries(countries) {
+  if (!Array.isArray(countries)) return [];
+  if (!displayCache.has(countries)) {
+    displayCache.set(countries, countries.map(c => (c && typeof c === 'object' ? {...c, name: displayCountryName(c.code, c.name), isoName: c.isoName ?? c.name} : c)));
+  }
+  return displayCache.get(countries);
+}
+
+/** The first direct child of a fragment that matches `selector` (`:scope >` does not work on a DocumentFragment). */
+export function directChild(fragment, selector) {
+  return [...(fragment?.children ?? [])].find(node => node.matches(selector)) ?? null;
+}
+
 const FOCUS_KEYS = ['data-focus-key', 'data-open-record', 'data-select-country', 'data-select-city', 'data-clear-filter', 'data-set-mode', 'data-retry', 'data-action', 'id', 'href'];
 const SLICES = ['route', 'filters', 'data', 'load', 'mode', 'now'];
 
@@ -87,7 +107,7 @@ export function mountMap({actions = {}, env = {}} = {}) {
   const reducedMotion = typeof env.reducedMotion === 'function' ? env.reducedMotion : () => !!media('(prefers-reduced-motion: reduce)')?.matches;
   const coarse = media('(pointer: coarse)'), gestures = env.mapGestures === 'map' ? 'map' : 'page';
   let map = null, mapPromise = null, mapStatus = 'idle', explore = false, region = 'World', latest = null, flags = {}, counts = new Map();
-  let framed, payloadKey = '', drawnData = [], hintTimer = 0, touchStart = null;
+  let framed, payloadKey = '', drawnData = [], hintTimer = 0, touchStart = null, revealSelection = false, legendArgs = null;
   const painted = {};
 
   Object.assign(regions, {innerHTML: regionChipsHTML(region)});
@@ -126,7 +146,8 @@ export function mountMap({actions = {}, env = {}} = {}) {
     const value = name && active.getAttribute(name);
     const template = doc.createElement('template');
     template.innerHTML = html;
-    const oldLead = keepLead && el.querySelector(':scope > .brief-lead'), newLead = oldLead && template.content.querySelector(':scope > .brief-lead');
+    // The role="status" lead node must survive, or the new text is not announced (4.1.3): only its text changes.
+    const oldLead = keepLead && el.querySelector(':scope > .brief-lead'), newLead = oldLead && directChild(template.content, '.brief-lead');
     if (newLead) {
       const nodes = [...template.content.childNodes], at = nodes.indexOf(newLead);
       for (const child of [...el.childNodes]) if (child !== oldLead) child.remove();
@@ -145,9 +166,34 @@ export function mountMap({actions = {}, env = {}} = {}) {
     map?.setGestures(on ? 'map' : gestures);
     exploreButton.setAttribute('aria-pressed', String(on));
     exploreButton.querySelector('span').textContent = on ? MAP_COPY.exploreDone : MAP_COPY.explore;
-    if (on) stage.scrollIntoView?.({block: 'nearest', behavior: reducedMotion() ? 'auto' : 'smooth'});
+    paintLegend();
+    // Top-aligned (under the header), so the selection bar below the stage stays above the tab bar on phones.
+    if (on) stage.scrollIntoView?.({block: 'start', behavior: reducedMotion() ? 'auto' : 'smooth'});
     if (focus) exploreButton.focus({preventScroll: true});
   }
+  function paintLegend() {
+    if (legendArgs) setHTML(legend, legendHTML({...legendArgs, explore}), 'legend');
+  }
+  // After a selection made on the map itself, the selection bar must not sit under the tab bar (Explore on phones),
+  // and the scroll never takes the top of the stage (World, +, −) under the sticky header.
+  function revealSelbar() {
+    if (selbar.hidden || !latest || latest.route?.view !== 'map') return;
+    const pinned = el => { const style = el && getComputedStyle(el); return !!style && style.display !== 'none' && ['fixed', 'sticky'].includes(style.position); };
+    const bar = doc.getElementById('tab-bar'), header = doc.getElementById('site-header');
+    const barTop = pinned(bar) ? bar.getBoundingClientRect().top : globalThis.innerHeight;
+    const headerBottom = pinned(header) ? Math.max(0, header.getBoundingClientRect().bottom) : 0;
+    const over = Math.min(selbar.getBoundingClientRect().bottom + 8 - barTop, stage.getBoundingClientRect().top - headerBottom);
+    if (over > 0) globalThis.scrollBy?.({top: over, behavior: reducedMotion() ? 'auto' : 'smooth'});
+  }
+  // Explore sizes the stage from the real selection-bar height (it wraps to two lines for long names on narrow phones).
+  // Only a shown bar is measured, so the stage does not jump when the bar hides. The observer runs after layout and
+  // before paint, so revealSelbar (two frames later) sees the final stage height.
+  function syncSelbarHeight() {
+    if (selbar.hidden || !selbar.offsetHeight) return;
+    const margin = parseFloat(getComputedStyle(selbar).marginBlockStart) || 0;
+    stage.style.setProperty('--selbar-h', `${Math.ceil(selbar.offsetHeight + margin)}px`);
+  }
+  if (typeof ResizeObserver === 'function') new ResizeObserver(syncSelbarHeight).observe(selbar);
   function frameCountry(code) {
     if (!map?.ready) return;
     setRegion(null);
@@ -201,7 +247,7 @@ export function mountMap({actions = {}, env = {}} = {}) {
     const filtered = hasNonPlaceFilters(filters), off = error || loading || example !== 'ready';
     flags = {mode: state.mode, example, error, loading, filtered};
     const code = /^[A-Z]{2}$/.test(filters.country ?? '') ? filters.country : '';
-    const countries = Array.isArray(data.countries) ? data.countries : [];
+    const countries = displayCountries(data.countries);
     const unavailable = mapStatus === 'unavailable';
     const mapEvents = off ? [] : selectFiltered(state, {ignoreCountry: true});
     counts = new Map();
@@ -220,8 +266,8 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (isExample && !watermark) stage.append(Object.assign(doc.createElement('p'), {className: 'map-watermark', textContent: BRIEF_COPY.watermark}));
     else if (!isExample) watermark?.remove();
 
-    setHTML(legend, legendHTML({mode: state.mode, example, eventsError: error, unavailable, window: filters.window,
-      citiesError: lazy.cities === 'error', coarse: !!coarse?.matches}), 'legend');
+    legendArgs = {mode: state.mode, example, eventsError: error, unavailable, window: filters.window, citiesError: lazy.cities === 'error', coarse: !!coarse?.matches};
+    paintLegend();
 
     let brief = null;
     if (!code) {
@@ -242,6 +288,10 @@ export function mountMap({actions = {}, env = {}} = {}) {
       const hadFocus = selbar.contains(doc.activeElement);
       selbar.hidden = !showBar;
       if (hadFocus) panelTitle()?.focus({preventScroll: true});
+    }
+    if (revealSelection) {
+      revealSelection = false;
+      if (showBar) requestAnimationFrame(() => requestAnimationFrame(revealSelbar));
     }
 
     if (map?.ready) {
@@ -265,7 +315,11 @@ export function mountMap({actions = {}, env = {}} = {}) {
       mapStatus = stage.dataset.mapState = 'loading';
       mapPromise = createWorldMap({container, tooltip: tip, gestures, reducedMotion,
         describe: code => describeCountry(counts.get(code), flags),
-        onSelect: code => (code === latest?.filters?.country ? frameCountry(code) : actions.selectCountry?.(code)),
+        onSelect: code => {
+          if (code === latest?.filters?.country) { frameCountry(code); requestAnimationFrame(revealSelbar); return; }
+          revealSelection = true;
+          actions.selectCountry?.(code);
+        },
         onSelectCity: (country, name) => actions.selectCity?.(country, name),
       }).then(api => { map = api; mapStatus = api.ready ? 'ready' : 'unavailable'; }, () => { mapStatus = 'unavailable'; })
         .then(() => { [payloadKey, framed] = ['', undefined]; if (latest) paint(latest); });

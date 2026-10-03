@@ -3,21 +3,29 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {
-  NOT_PLANNED, PERIOD_NOW_LABEL, actionsHTML, aheadTeaserHTML, announcementView, evidenceHref, groupAnnouncements,
-  mountAhead, reviewOverdue, roadmapGroups, roadmapHTML,
+  NONE_UPCOMING, NOT_PLANNED, PERIOD_NOW_LABEL, actionsHTML, aheadTeaserHTML, announcementView, evidenceHref, groupAnnouncements,
+  mountAhead, reviewOverdue, roadmapGroups, roadmapHTML, upcomingCount,
 } from '../js/ahead.js';
-import {directoryDek, directoryHTML, directoryRows, entriesLabel, mountCountries, regionGroups} from '../js/countries.js';
+import {directoryDek, directoryHTML, directoryRows, entriesLabel, mountCountries, noMatchText, regionGroups} from '../js/countries.js';
 import {
-  discoveryHTML, discoveryView, ledgerTableHTML, mountAbout, researchScope, researchScopeHTML,
+  LEDGER_PAGES_HEADER, discoveryHTML, discoveryView, ledgerTableHTML, mountAbout, researchScope, researchScopeHTML,
 } from '../js/about.js';
+import {displayCountryName} from '../js/model.js';
 import {absoluteLabel, relativeLabel} from '../freshness.js';
 
 const read = async path => JSON.parse(await readFile(new URL(`../${path}`, import.meta.url), 'utf8'));
-const [events, countries, upcoming, roadmap, research, contexts, discovery, mapCodes] = await Promise.all([
-  read('public/events.json'), read('public/countries.json'), read('public/upcoming.json'), read('public/roadmap.json'),
-  read('public/research-ledger.json'), read('public/event-context.json'), read('public/discovery-status.json'),
-  read('public/world-map-codes.json'),
-]);
+// Two data sets (tests/fixtures/snapshot-20261002/README.md):
+// - the frozen 2 Oct 2026 snapshot, for walkthrough literals (84 episodes, 249 entries, France's 2 episodes, the ledger
+//   window, the 2 Oct discovery audit). Never public/*.json, so a legitimate data refresh cannot turn these red;
+// - `live`, the published public/*.json, for invariants derived from the data itself.
+const SNAPSHOT = 'tests/fixtures/snapshot-20261002';
+const FILES = {events: 'events.json', countries: 'countries.json', upcoming: 'upcoming.json', roadmap: 'roadmap.json',
+  research: 'research-ledger.json', contexts: 'event-context.json', discovery: 'discovery-status.json'};
+const load = async dir => Object.fromEntries(await Promise.all(Object.entries(FILES).map(async ([key, file]) => [key, await read(`${dir}/${file}`)])));
+const [snap, live, mapCodes] = await Promise.all([load(SNAPSHOT), load('public'), read('public/world-map-codes.json')]);
+const {events, countries, upcoming, research, contexts, discovery} = snap;
+// The roadmap is edited by hand (never by a data refresh); its tests derive counts and titles from the published file.
+const {roadmap} = live;
 
 const NOW = Date.parse('2026-10-02T23:00:00Z');
 // Values that live data owns (the roadmap and upcoming.json are edited and refreshed) are derived from the files, so a
@@ -84,6 +92,24 @@ test('a fixture item dated yesterday appears only under the A8 date-passed group
   assert.doesNotMatch(passed, /✓|took place|happened/i);
 });
 
+test('items but none upcoming: an explicit empty line and the sweep fact come before the passed group', () => {
+  const data = {...upcoming, note: NOTE_2_OCT, items: [item({id: 'gone', planned_start: '2026-10-01', action: 'Gone strike'}),
+    item({id: 'off', status: 'cancelled', action: 'Called-off march'})]};
+  const html = actionsHTML({upcoming: data, events, load: READY, now: NOW});
+  const plain = text(html);
+  assert.ok(plain.includes(NONE_UPCOMING), 'NONE_UPCOMING line');
+  assert.ok(plain.includes('On 2 Oct 2026, our search for announced and recent protest actions could not open news websites from the research environment, so no new announcement could be added.'), 'A5 sweep fact');
+  assert.equal(plain.split('An empty list does not mean nothing is planned.').length - 1, 1, 'the caveat is said once');
+  assert.doesNotMatch(plain, /so none are listed here/, 'the empty-list A5 ending does not sit above listed items');
+  assert.ok(plain.indexOf(NONE_UPCOMING) < plain.indexOf('Called-off march'), 'before the cancelled item');
+  assert.ok(plain.indexOf(NONE_UPCOMING) < plain.indexOf('Planned dates that have passed (1)'), 'before the passed group');
+  const unblocked = text(actionsHTML({upcoming: {...data, note: NOTE_2_OCT.replace('0 source pages could be opened', '4 source pages could be opened')}, events, load: READY, now: NOW}));
+  assert.ok(unblocked.includes('Latest search for announcements: 2 Oct 2026.'));
+  assert.doesNotMatch(unblocked, /could not open news websites/);
+  // One upcoming item: no empty line.
+  assert.ok(!text(actionsHTML({upcoming: {...data, items: [...data.items, item()]}, events, load: READY, now: NOW})).includes(NONE_UPCOMING));
+});
+
 test('announcementView: date text by precision, countdown only for day and range', () => {
   const day = announcementView(item(), NOW, {countryName: code => ({FR: 'France'})[code]});
   assert.equal(day.state, 'upcoming');
@@ -137,10 +163,10 @@ test('A5 states the sweep from upcoming.json, with a fallback when the note has 
   const fixture = {...upcoming, items: [], note: NOTE_2_OCT};
   const html = actionsHTML({upcoming: fixture, events, load: READY, now: NOW});
   assert.match(text(html), /On 2 Oct 2026, our search for announced and recent protest actions could not open news websites from the research environment\./);
-  // The real file: the A5 day is whatever its own note says (parsed here independently of sweepFact).
-  const sweep = /Latest search for announcements: (\d{4}-\d{2}-\d{2}), \d+ searches logged, (\d+) source pages could be opened/.exec(upcoming.note);
-  if (Array.isArray(upcoming.items) && !upcoming.items.length) {
-    const real = text(actionsHTML({upcoming, events, load: READY, now: NOW}));
+  // The published file: the A5 day is whatever its own note says (parsed here independently of sweepFact).
+  const sweep = /Latest search for announcements: (\d{4}-\d{2}-\d{2}), \d+ searches logged, (\d+) source pages could be opened/.exec(live.upcoming.note);
+  if (Array.isArray(live.upcoming.items) && !live.upcoming.items.length) {
+    const real = text(actionsHTML({upcoming: live.upcoming, events: live.events, load: READY, now: NOW}));
     if (sweep && sweep[2] === '0') assert.ok(real.includes(`On ${absoluteLabel(sweep[1])}, our search for announced and recent protest actions`));
     else assert.ok(real.includes('Our latest search did not find an announcement that met this standard.'));
   }
@@ -205,7 +231,21 @@ test('aheadTeaserHTML covers 0 items, n items, absent, error and loading', () =>
   assert.ok(zero.includes('Announced protest actions: none are listed yet. An empty list does not mean nothing is planned.'));
   assert.ok(zero.includes('Coming next to Protest Atlas: what we are building, what is blocked and what we will not build.'));
   const some = text(aheadTeaserHTML({upcoming: {...upcoming, items: [item(), item({id: 'b'})]}, load: READY, now: NOW}));
-  assert.ok(some.includes('Announced protest actions: 2 listed. An announcement is not evidence that the action will happen.'));
+  assert.ok(some.includes('Announced protest actions: 2 upcoming actions listed. An announcement is not evidence that the action will happen.'));
+  // Editorial §10.4: date-passed, postponed and cancelled items are never counted as upcoming.
+  const mixed = [item({id: 'today', planned_start: '2026-10-02'}), item({id: 'soon'}), item({id: 'gone', planned_start: '2026-10-01'}),
+    item({id: 'off', status: 'cancelled'}), item({id: 'later', status: 'postponed'})];
+  assert.equal(upcomingCount(mixed, NOW), 2);
+  assert.ok(text(aheadTeaserHTML({upcoming: {...upcoming, items: mixed}, load: READY, now: NOW})).includes('Announced protest actions: 2 upcoming actions listed.'));
+  const passed = text(aheadTeaserHTML({upcoming: {...upcoming, items: [item({planned_start: '2026-10-01'}), item({id: 'c', status: 'cancelled'})]}, load: READY, now: NOW}));
+  assert.ok(passed.includes('Announced protest actions: no upcoming action is listed. An empty list does not mean nothing is planned.'), passed);
+  assert.ok(text(aheadTeaserHTML({upcoming: {...upcoming, items: [item()]}, load: READY, now: NOW})).includes('1 upcoming action listed.'));
+  // The published file: the count follows the data.
+  if (Array.isArray(live.upcoming?.items) && live.upcoming.items.length) {
+    const n = upcomingCount(live.upcoming.items, Date.now());
+    const teaser = text(aheadTeaserHTML({upcoming: live.upcoming, load: READY, now: Date.now()}));
+    assert.ok(n ? teaser.includes(`${n} upcoming action${n === 1 ? '' : 's'} listed.`) : teaser.includes('no upcoming action is listed.'), teaser);
+  }
   assert.ok(text(aheadTeaserHTML({upcoming: null, load: {...READY, errors: {upcoming: 'absent'}}, now: NOW}))
     .includes('Announced protest actions: the list is not published in this snapshot.'));
   assert.ok(text(aheadTeaserHTML({upcoming: null, load: {...READY, errors: {upcoming: 'error'}}, now: NOW}))
@@ -277,7 +317,7 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
   assert.ok(plain.includes('Please do not post private details about participants.'));
   assert.match(html, /href="https:\/\/github\.com\/occult-kranti\/protest-atlas\/blob\/main\/docs\/ROADMAP\.md"/);
   assert.match(html, /href="https:\/\/github\.com\/occult-kranti\/protest-atlas\/issues\/new\/choose"/);
-  for (const line of ['Shipped : available on this site now.', 'In progress : being built; not available yet.',
+  for (const line of ['Shipped : available on this site now.', 'In progress : built or being built; not yet confirmed on the deployed site.',
     'Next : planned, and can start without outside help.', 'Later : only after the listed conditions are met.',
     'Blocked : cannot proceed until the named blocker is resolved.']) {
     assert.ok(plain.includes(line), line);
@@ -289,12 +329,24 @@ test('roadmap section: R2, R5, legend, jump pills, groups in order, items and NO
   assert.deepEqual(order, STATUS_ORDER.filter(status => order.includes(status)), 'groups in SPEC order');
   assert.equal([...html.matchAll(/<article class="roadmap-item" id="roadmap-item-[a-z0-9-]+" data-status="[a-z-]+" tabindex="-1"/g)].length, roadmap.items.length);
   assert.match(html, /<h4 class="roadmap-item-title"/);
-  // The blocker landing target and its dependency link (SPEC §12.2).
+  // The blocker landing target (the Ahead empty state links to this id) and its dependency links (SPEC §12.2).
+  const landing = roadmap.items.find(entry => entry.id === 'list-announced-actions');
+  assert.ok(landing, 'the [data-ahead-target] landing item exists');
   const target = html.match(/<article class="roadmap-item" id="roadmap-item-list-announced-actions"[\s\S]*?<\/article>/)?.[0] ?? '';
-  assert.match(target, /Blocked by:/);
-  assert.match(target, /<ul class="roadmap-deps-list"><li><a href="#roadmap-item-add-reports-after-2-oct-2026" data-scroll-to="roadmap-item-add-reports-after-2-oct-2026">Add reports after 2 Oct 2026<\/a><\/li>/);
+  if (landing.status === 'blocked') assert.match(target, /Blocked by:/);
+  const titleOf = new Map(roadmap.items.map(entry => [entry.id, entry.title]));
+  for (const dep of landing.depends_on) {
+    assert.ok(target.includes(`<li><a href="#roadmap-item-${dep}" data-scroll-to="roadmap-item-${dep}">${titleOf.get(dep)}</a></li>`), dep);
+  }
+  // The 2 Oct roadmap, as a fixture: the dependency reads "Add reports after 2 Oct 2026".
+  const fixture = roadmapHTML({roadmap: snap.roadmap, status: 'ready', now: NOW})
+    .match(/<article class="roadmap-item" id="roadmap-item-list-announced-actions"[\s\S]*?<\/article>/)?.[0] ?? '';
+  assert.match(fixture, /<ul class="roadmap-deps-list"><li><a href="#roadmap-item-add-reports-after-2-oct-2026" data-scroll-to="roadmap-item-add-reports-after-2-oct-2026">Add reports after 2 Oct 2026<\/a><\/li>/);
+  // Items do not repeat their group's visible pill (density); the status stays in text for screen readers.
+  assert.doesNotMatch(target, /class="roadmap-status"/);
+  assert.ok(target.includes(`<span class="visually-hidden">Status: ${STATUS_NAMES[landing.status]}. Area: </span>`));
   // SPEC §12.3 field order: Done when, Blocked by, Depends on, Status checked.
-  const fields = ['Done when:', 'Blocked by:', 'Depends on:', 'Status checked'].map(part => text(target).indexOf(part));
+  const fields = ['Done when:', 'Blocked by:', 'Depends on:', 'Status checked'].map(part => text(fixture).indexOf(part));
   assert.deepEqual([...fields].sort((a, b) => a - b), fields);
   assert.ok(fields.every(at => at > 0));
   // Every shipped item shows its release, date and resolving evidence links.
@@ -340,7 +392,7 @@ test('NOT_PLANNED has 8 items and no roadmap or Ahead copy uses banned vocabular
   for (const id of ['mobile-first-redesign', 'clear-dates-and-stale-warnings', 'record-cards-key-dimensions', 'ahead-page']) assert.ok(!shipped.has(id), id);
 });
 
-test('directoryRows: E9 labels, ledger loading, failures and the drawn flag', () => {
+test('directoryRows: E9 labels, ledger loading, failures and the drawn flag (2 Oct snapshot)', () => {
   const codes = Object.keys(mapCodes.codes ?? {}).length ? mapCodes : {codes: {250: 'FR', 724: 'ES', 352: 'IS'}};
   const rows = directoryRows({countries, events, research, loadError: null, mapCodes: codes});
   const by = code => rows.find(row => row.code === code);
@@ -352,6 +404,11 @@ test('directoryRows: E9 labels, ledger loading, failures and the drawn flag', ()
   assert.equal(by('IS').label, 'Searched · no published episode');
   assert.equal(rows[0].name, 'Afghanistan');
   assert.ok(rows.findIndex(r => r.code === 'AX') < rows.findIndex(r => r.code === 'AL'), 'Åland sorts under A');
+  // Short display names (model.COUNTRY_SHORT_NAMES), sorted by what is shown; the ISO name is kept.
+  assert.equal(by('KR').name, 'South Korea');
+  assert.equal(by('KR').isoName, 'Korea, Republic of');
+  assert.equal(by('GB').name, 'United Kingdom');
+  assert.ok(rows.findIndex(r => r.code === 'KR') > rows.findIndex(r => r.code === 'SO'), 'South Korea sorts under S');
   const ledger = {...research, countries: research.countries.filter(r => r.code !== 'IS')
     .map(r => (r.code === 'AF' ? {...r, status: 'search-failed'} : r))};
   const partial = directoryRows({countries, events, research: ledger, loadError: null});
@@ -372,35 +429,82 @@ test('directoryRows: E9 labels, ledger loading, failures and the drawn flag', ()
     'an empty placeholder code table never marks entries as not drawn');
 });
 
-test('regionGroups, entriesLabel and the directory markup', () => {
+test('directoryRows while records reload after a failure: never labelled from the ledger alone (C-37 retry race)', () => {
+  // loadCriticalData keeps data.countries but data.events is null until the retry settles.
+  const pending = directoryRows({countries, events: null, research, loadError: {events: false}, eventsPending: true});
+  assert.ok(pending.every(r => r.status === 'pending' && r.label === 'Checking published records…' && r.count === null));
+  assert.equal(directoryDek({rows: pending, research}), null, 'no coverage sentence while records load');
+  const html = directoryHTML(regionGroups(pending, ''));
+  assert.doesNotMatch(html, /Searched · no published episode|Not yet searched|Search failed|episodes? published/);
+  // An events error still wins over pending.
+  assert.ok(directoryRows({countries, events: null, research, loadError: 'events', eventsPending: true}).every(r => r.label === 'Coverage unavailable'));
+});
+
+test('directoryRows on the published files: counts follow the data', () => {
+  const rows = directoryRows({countries: live.countries, events: live.events, research: live.research, loadError: null});
+  assert.equal(rows.length, live.countries.length);
+  const counts = new Map();
+  for (const e of live.events.events) counts.set(e.country, (counts.get(e.country) ?? 0) + 1);
+  for (const row of rows) {
+    const n = counts.get(row.code) ?? 0;
+    if (n) assert.equal(row.label, `${n} ${n === 1 ? 'episode' : 'episodes'} published`, row.code);
+    else assert.notEqual(row.status, 'published', row.code);
+    assert.equal(row.name, displayCountryName(row.code, live.countries.find(c => c.code === row.code).name));
+  }
+  const withRecords = rows.filter(r => r.status === 'published').length;
+  assert.equal(withRecords, new Set(live.events.events.map(e => e.country).filter(code => rows.some(r => r.code === code))).size);
+  assert.ok(directoryDek({rows, research: live.research}).startsWith(`${withRecords} of ${rows.length} have a published episode.`));
+});
+
+test('regionGroups: word-prefix search over display names, ISO names and common aliases; the directory markup', () => {
   assert.equal(entriesLabel(1), '1 entry');
   assert.equal(entriesLabel(60), '60 entries');
   assert.equal(entriesLabel(0), '0 entries');
   const rows = directoryRows({countries, events, research, mapCodes: {codes: {250: 'FR'}}});
   const groups = regionGroups(rows, '');
+  const find = query => regionGroups(rows, query).flatMap(g => g.rows.map(r => r.code));
   assert.deepEqual(groups.map(g => g.region), ['Africa', 'Americas', 'Antarctic', 'Asia', 'Europe', 'Oceania']);
   assert.equal(entriesLabel(groups.find(g => g.region === 'Antarctic').rows.length), '1 entry');
-  assert.deepEqual(regionGroups(rows, 'sao tome').flatMap(g => g.rows.map(r => r.code)), ['ST']);
-  assert.deepEqual(regionGroups(rows, 'aland').flatMap(g => g.rows.map(r => r.code)), ['AX']);
-  assert.deepEqual(regionGroups(rows, 'zealand').flatMap(g => g.rows.map(r => r.code)), ['NZ']);
-  assert.deepEqual(regionGroups(rows, 'cote').flatMap(g => g.rows.map(r => r.code)), ['CI']);
-  assert.deepEqual(regionGroups(rows, 'us').flatMap(g => g.rows.map(r => r.code)), ['US']);
+  assert.deepEqual(find('sao tome'), ['ST']);
+  assert.deepEqual(find('aland'), ['AX']);
+  assert.deepEqual(find('zealand'), ['NZ']);
+  assert.deepEqual(find('cote'), ['CI']);
+  // "us" is the United States by code and alias, and the US Virgin Islands by their short name.
+  assert.deepEqual(find('us'), ['US', 'VI']);
   assert.equal(regionGroups(rows, 'antarctic')[0].rows.length, 1);
-  assert.equal(regionGroups(rows, 'fr').flatMap(g => g.rows.map(r => r.code)).includes('FR'), true);
-  assert.deepEqual(regionGroups(rows, 'zzzz'), []);
+  assert.equal(find('fr').includes('FR'), true);
+  assert.deepEqual(find('zzzz'), []);
+  // Common names readers type (MAJOR 8): every one finds its entry.
+  for (const [query, code] of [['South Korea', 'KR'], ['korea', 'KR'], ['Vietnam', 'VN'], ['viet nam', 'VN'], ['UK', 'GB'], ['Britain', 'GB'],
+    ['great britain', 'GB'], ['USA', 'US'], ['America', 'US'], ['Ivory Coast', 'CI'], ['Russia', 'RU'], ['Iran', 'IR'], ['Syria', 'SY'],
+    ['Laos', 'LA'], ['Bolivia', 'BO'], ['Venezuela', 'VE'], ['Tanzania', 'TZ'], ['Moldova', 'MD'], ['Czech Republic', 'CZ'],
+    ['Turkey', 'TR'], ['Taiwan', 'TW'], ['DR Congo', 'CD'], ['DRC', 'CD'], ['Burma', 'MM']]) {
+    assert.ok(find(query).includes(code), `${query} → ${code} (${find(query)})`);
+  }
+  assert.deepEqual(find('South Korea'), ['KR']);
+  assert.ok(find('uk').includes('UA') && find('uk').includes('GB'), 'UK finds the United Kingdom as well as Ukraine');
   const html = directoryHTML(groups);
   assert.match(html, /<h2 class="dir-region-title" id="dir-region-antarctic">Antarctic <span class="dir-count">1 entry<\/span><\/h2>/);
   assert.match(html, /<button type="button" class="dir-row" data-select-country="FR" data-view-after="map"/);
   assert.equal((html.match(/data-select-country=/g) ?? []).length, 249);
   assert.match(html, /data-select-country="AD"[^>]*>[\s\S]*?Not drawn on the map at this scale/);
-  assert.doesNotMatch(html.match(/data-select-country="FR"[\s\S]*?<\/button>/)[0], /Not drawn/);
+  assert.doesNotMatch(html.match(/data-select-country="FR"[\s\S]*?<\/button>/)[0], /Not drawn|dir-iso/);
+  // The short name leads; the ISO name follows as secondary text.
+  assert.match(html, /data-select-country="KR"[^>]*><span class="dir-text"><span class="dir-name">South Korea<\/span><span class="dir-iso"><span class="visually-hidden">, ISO name <\/span>Korea, Republic of<\/span>/);
   assert.equal(directoryDek({rows, research}),
     '81 of 249 have a published episode. A first search was logged for all 249; searched is not reviewed, and no published episode does not mean no protests.');
   assert.equal(directoryDek({rows, research: null}), '81 of 249 have a published episode.');
   assert.doesNotMatch(text(html), BANNED);
 });
 
-test('researchScope on the real files, with the window taken from the ledger', () => {
+test('noMatchText is actionable and empty without a query', () => {
+  assert.equal(noMatchText('Atlantis'), "No country or territory name starts with 'Atlantis'. Try another spelling, or browse A–Z.");
+  assert.equal(noMatchText('  zz  '), "No country or territory name starts with 'zz'. Try another spelling, or browse A–Z.");
+  assert.equal(noMatchText(''), '');
+  assert.equal(noMatchText('   '), '');
+});
+
+test('researchScope on the 2 Oct snapshot, with the window taken from the ledger', () => {
   const scope = researchScope({research, contexts, events, countries});
   assert.equal(scope.positions, 92);
   assert.equal(scope.episodes, 84);
@@ -430,13 +534,36 @@ test('researchScope on the real files, with the window taken from the ledger', (
   assert.match(researchScopeHTML({scope: null, status: 'ready', eventsFailed: true}), /data-action="retry-data"/);
 });
 
-test('the ledger table has every entry, its caption from the ledger window and no candidate URLs', () => {
+test('researchScope on the published files equals counts derived independently', () => {
+  const scope = researchScope({research: live.research, contexts: live.contexts, events: live.events, countries: live.countries});
+  const list = live.events.events;
+  assert.equal(scope.episodes, list.length);
+  assert.equal(scope.positions, list.reduce((n, e) => n + (e.positions?.length ?? 0), 0));
+  assert.equal(scope.ended, list.filter(e => e.status === 'ended').length);
+  assert.equal(scope.countriesWithRecords, new Set(list.map(e => e.country)).size);
+  assert.equal(scope.screened, live.research.countries.filter(r => r.status === 'searched').length);
+  assert.equal(scope.total, live.countries.length);
+  const country = new Map(list.map(e => [e.id, e.country]));
+  const cities = new Set(live.contexts.records.filter(r => country.has(r.event_id)).flatMap(r => (r.cities ?? []).map(c => `${country.get(r.event_id)}:${c.name}`)));
+  assert.equal(scope.cityCount, cities.size);
+  const plain = text(researchScopeHTML({scope, status: 'ready'}));
+  assert.ok(plain.includes(`Positions recorded ${scope.positions} across ${scope.episodes} episodes`));
+});
+
+test('the ledger table: every entry, the window caption, what the pages column measures, no bare zero, no candidate URLs', () => {
   const html = ledgerTableHTML({research, events, countries});
   assert.equal((html.match(/<tr><th scope="row">/g) ?? []).length, 249);
   assert.ok(text(html).includes('First searches, 1 Jan 2024 to 2 Oct 2026'));
-  assert.ok(text(html).includes('Country or territory Research stage Published episodes Source pages read'));
-  assert.match(html, /<th scope="row">Iceland<\/th><td>First search logged<\/td><td class="ledger-num">None published<\/td>/);
-  assert.match(html, /<th scope="row">France<\/th><td>First search logged<\/td><td class="ledger-num">2<\/td>/);
+  assert.match(html, /<caption><span id="ledger-caption">First searches, 1 Jan 2024 to 2 Oct 2026<\/span>/);
+  // MAJOR 1: the column says what it measures (pages logged in the first search), and the caption explains it.
+  assert.equal(LEDGER_PAGES_HEADER, 'Pages opened in the first search');
+  assert.ok(text(html).includes('Country or territory Research stage Published episodes Pages opened in the first search'));
+  assert.doesNotMatch(html, /Source pages read/);
+  assert.ok(text(html).includes('Pages opened in the first search counts only the pages logged during that first search. Each published record lists every article it cites, including later reads. A dash means no page was logged.'));
+  assert.match(html, /<th scope="row">Iceland<\/th><td>First search logged<\/td><td class="ledger-num">None published<\/td><td class="ledger-num"><span aria-hidden="true">—<\/span><span class="visually-hidden">None logged<\/span><\/td>/);
+  assert.match(html, /<th scope="row">France<\/th><td>First search logged<\/td><td class="ledger-num">2<\/td><td class="ledger-num">1<\/td>/);
+  assert.match(html, /<th scope="row">South Korea<\/th>/, 'display names, as everywhere else');
+  assert.doesNotMatch(html, />0</, 'never a bare zero');
   assert.doesNotMatch(html, /https?:\/\//);
   for (const row of research.countries) for (const url of row.candidate_urls ?? []) assert.ok(!html.includes(url));
   // A countries-only failure (C-37) still lists every ledger entry, by code.
@@ -446,6 +573,14 @@ test('the ledger table has every entry, its caption from the ledger window and n
     assert.match(fallback, /<th scope="row">FR<\/th><td>First search logged<\/td><td class="ledger-num">2<\/td>/);
     assert.doesNotMatch(fallback, /https?:\/\//);
   }
+});
+
+test('the ledger table on the published files: one row per entry, caption from the ledger window, no bare zero', () => {
+  const html = ledgerTableHTML({research: live.research, events: live.events, countries: live.countries});
+  assert.equal((html.match(/<tr><th scope="row">/g) ?? []).length, live.countries.length);
+  assert.ok(text(html).includes(`First searches, ${absoluteLabel(live.research.window_start)} to ${absoluteLabel(live.research.window_end)}`));
+  assert.doesNotMatch(html, />0</);
+  for (const row of live.research.countries) for (const url of row.candidate_urls ?? []) assert.ok(!html.includes(url));
 });
 
 test('discoveryView keeps only this repository\'s run URL and reads the schedule from data', () => {
@@ -469,6 +604,14 @@ test('discoveryView keeps only this repository\'s run URL and reads the schedule
   assert.ok(text(discoveryHTML({view: null, status: 'error'})).includes('Discovery audit unavailable.'));
   assert.ok(text(discoveryHTML({view: null, status: 'loading'})).includes('Loading…'));
   assert.doesNotMatch(discoveryHTML({view: {...view, runUrl: null}, status: 'ready'}), /Workflow run/);
+});
+
+test('discoveryView on the published file reads its date, count and schedule from the data', () => {
+  const view = discoveryView(live.discovery);
+  if (!view) return;   // an invalid audit shows "Discovery audit unavailable" (covered above)
+  assert.equal(view.date, live.discovery.last_success_at);
+  assert.equal(view.count, live.discovery.candidate_count);
+  assert.equal(view.summary, `GDELT artifact created ${absoluteLabel(live.discovery.last_success_at)} · ${view.countText}`);
 });
 
 test('mount functions are inert without a DOM', () => {

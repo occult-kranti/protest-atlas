@@ -11,7 +11,8 @@ permissions:
   contents: read
 
 # Pull requests cancel their own superseded runs; pushes to main queue instead, so a newer push never cancels
-# a build or deploy that is already running (tech §10.3).
+# a build or deploy that is already running (tech §10.3). It waits for the whole previous run, verify included;
+# GitHub keeps only the newest waiting run per group, so a third push replaces a second one that is still waiting.
 concurrency:
   group: pages-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -29,6 +30,11 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
+      # A deliberate Node major for node --test (package.json engines: >=22), not whatever the runner image ships.
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
       - name: Test editorial publication boundary, roadmap evidence and internal links
         run: python -m unittest discover -s tests -v
       - name: Test map, filters, freshness, pages and review decisions
@@ -66,7 +72,8 @@ jobs:
         uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
 
   # Post-deploy evidence, run on the GitHub runner (the build container cannot reach github.io): the live site must
-  # serve this commit's build stamp, and the shell and the required data files must answer 200. public/upcoming.json is
+  # serve this commit's build stamp, the shell and the required data files must answer 200, and every JSON file it
+  # fetches (roadmap, events, and upcoming when published) must parse. public/upcoming.json is
   # optional in build.py (OPTIONAL_FILES) and the UI has an "absent" state, so a 404 there is reported, not a failure.
   # Not a PR gate.
   verify:
@@ -109,7 +116,7 @@ jobs:
             sleep 20
           done
           failed=0
-          json_paths="public/roadmap.json"
+          json_paths="public/roadmap.json public/events.json"
           for path in "" "index.html" "public/roadmap.json" "public/events.json"; do
             code=$(curl -sS -o /dev/null --max-time 20 -w '%{http_code}' "$base/$path?verify=$RUN_ID") || true
             echo "$code /$path"

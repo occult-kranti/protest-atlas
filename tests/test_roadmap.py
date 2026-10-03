@@ -93,6 +93,20 @@ class RoadmapValidatorTests(unittest.TestCase):
             with self.subTest(ref=ref):
                 self.fails(manifest(item(evidence=[{'kind': 'test', 'ref': ref, 'label': 'Test'}])), 'test')
 
+    def test_test_ref_must_start_a_test_title_or_name_a_method_of_its_class(self):
+        # A substring of the file is not a test: 'a' and '=' occur in every source file.
+        for ref in ('tests/y.mjs::a', 'tests/y.mjs::=', 'tests/y.mjs::works', 'tests/y.mjs::node:test'):
+            with self.subTest(ref=ref):
+                self.fails(manifest(item(evidence=[{'kind': 'test', 'ref': ref, 'label': 'Test'}])), 'test')
+        (self.root / 'tests/z.mjs').write_text("import test from 'node:test';\ntest(`map totals agree with reported data`, () => {});\n")
+        self.check(manifest(item(evidence=[{'kind': 'test', 'ref': 'tests/z.mjs::map totals agree', 'label': 'Prefix'}])))
+        (self.root / 'tests/test_w.py').write_text(
+            'import unittest\n\nclass Other(unittest.TestCase):\n    def test_feature(self):\n        pass\n\n\n'
+            'class FeatureTests(unittest.TestCase):\n    def test_else(self):\n        pass\n')
+        self.fails(manifest(item(evidence=[{'kind': 'test', 'ref': 'tests/test_w.py::FeatureTests.test_feature', 'label': 'T'}])),
+                   'not a method of FeatureTests')
+        self.check(manifest(item(evidence=[{'kind': 'test', 'ref': 'tests/test_w.py::Other.test_feature', 'label': 'T'}])))
+
     def test_browser_and_non_ci_test_refs_fail(self):
         for ref in ('tests/browser/smoke.cjs::shell works', 'tests/browser/test_z.py::test_feature',
                     'tests/browser/y.mjs::shell works', 'index.html::doctype'):

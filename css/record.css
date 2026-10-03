@@ -123,7 +123,7 @@
   .side-target { font-weight: 600; }
   .side-actor { color: var(--text-2); }
 
-  /* Intensity (C6): three fixed rows, verbatim */
+  /* Intensity (C6): three fixed rows, verbatim; one wrapped line when two or more facets are not established */
   .facet-list { list-style: none; padding: 0; display: grid; }
   .facet-name { font-weight: 600; }
 
@@ -144,9 +144,11 @@
   /* 8 · evidence (C8). The publisher link sits above the stretched card link; its hit area grows up into
      the row's top padding and stops short of the next line. */
   .card-evidence {
-    padding-block-start: 10px;
+    padding-block-start: 8px;
     border-block-start: 1px solid var(--border);
     color: var(--text-2);
+    font-size: 13px;
+    line-height: 1.4;
   }
   .card-evidence .source-link {
     position: relative;
@@ -203,13 +205,18 @@
   }
   .card[data-density="row"] .card-watermark { border-radius: 0; padding-inline: var(--sp-2); margin-inline: 0; }
   .card[data-density="row"][data-ended="true"] .card-watermark { margin-inline-start: calc(-1 * var(--sp-3)); }
+  /* A scan row (MAJOR 6): status · latest evidence · country, title, one stance line, the C8 row. */
+  .card[data-density="row"] { --card-pad-y: 10px; gap: 3px; line-height: 1.35; }
   .card[data-density="row"] .card-title { font-size: 17px; line-height: 1.3; }
-  .card[data-density="row"] .card-sides { gap: var(--sp-1); }
-  .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
-  .card-row-facts,
-  .card-row-state { color: var(--text-2); }
-  .card-row-label { color: var(--text); font-weight: 600; }
-  .card[data-density="row"] .card-evidence { padding: 0; border: 0; }
+  .card-meta { color: var(--text-2); font-size: 13px; }
+  .card-meta .status { display: inline; font-size: 13px; }
+  .card-row-when time { color: var(--text); }
+  .card-row-country { color: var(--text); font-weight: 650; }
+  .card-row-sides { color: var(--text-2); }
+  .card-row-stance { color: var(--text); font-weight: 650; }
+  .card-row-side .side-target { color: var(--text); font-weight: 500; }
+  .card-row-sides .card-more { margin: 0; }
+  .card[data-density="row"] .card-evidence { padding: 0; border: 0; line-height: inherit; }
   .card[data-density="row"] .card-evidence .source-link { padding-block-start: 4px; margin-block-start: -4px; }
 
   /* ---------------------------------------------------------------- Skeleton (static: nothing pulses) */
@@ -280,6 +287,7 @@
   .rec-when time { color: var(--text); }
   .rec-place { margin-block-start: var(--sp-2); color: var(--text-2); font-size: var(--fs-sm); }
   .rec-place strong { color: var(--text); font-weight: 650; }
+  .rec-country-iso { display: block; color: var(--text-muted); font-size: var(--fs-xs); line-height: 1.4; }
   .rec-title {
     margin-block: var(--sp-1) var(--sp-3);
     font-family: var(--font-serif);
@@ -548,6 +556,17 @@
     line-height: 1.45;
   }
   .small-note { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  /* Context file failed: unknown, never "none" (MAJOR 12) */
+  .rec-unavailable {
+    display: grid;
+    gap: var(--sp-3);
+    justify-items: start;
+    padding: var(--sp-3) var(--sp-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
 
   /* D8 timeline: 10 px ink marks, no connecting line; unknown onset is an open bracket */
   .rec-timeframe { margin-block-end: var(--sp-3); font-weight: 600; }

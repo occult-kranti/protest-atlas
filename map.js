@@ -168,6 +168,9 @@ export async function createWorldMap({container, tooltip = null, onSelect = () =
     if (tooltip) { tooltip.hidden = true; tooltip.replaceChildren(); tooltip.removeAttribute('data-kind'); }
     onHover(null);
   }
+  // 1.4.13: Escape dismisses a hover tooltip wherever focus is, not only on a focused country.
+  const onEscape = e => { if (e.key === 'Escape' && tipShown) hideTip(); };
+  doc.addEventListener('keydown', onEscape);
   function showTip(title, text, x, y) {
     tipShown = true;
     if (!tooltip) return;
@@ -354,6 +357,7 @@ export async function createWorldMap({container, tooltip = null, onSelect = () =
     destroy() {
       destroyed = true;
       ready = false;
+      doc.removeEventListener('keydown', onEscape);
       observer?.disconnect();
       svg?.interrupt();
       hideTip();

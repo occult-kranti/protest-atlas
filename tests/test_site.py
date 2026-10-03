@@ -195,5 +195,40 @@ class BuiltSiteLinkTests(unittest.TestCase):
                 self.assert_published('review.html', value)
 
 
+class WorkflowPinTests(unittest.TestCase):
+    """Every action is pinned to a full SHA, and docs/DEPLOYMENT.md lists the same version and SHA (tech §10.3)."""
+
+    USES = re.compile(r'^\s*(?:-\s*)?uses:\s*([\w.-]+/[\w.-]+)@(\S+)(?:\s+#\s*(\S+))?\s*$', re.M)
+
+    def test_actions_are_sha_pinned_and_documented(self):
+        docs = (REPOSITORY / 'docs/DEPLOYMENT.md').read_text(encoding='utf-8')
+        table = {name: (version, sha) for name, version, sha in
+                 re.findall(r'^\|\s*([\w.-]+)\s*\|\s*(v[\d.]+)\s*\|\s*`([0-9a-f]{40})`\s*\|', docs, re.M)}
+        workflows = sorted((REPOSITORY / '.github/workflows').glob('*.yml'))
+        self.assertTrue(workflows)
+        seen = 0
+        for workflow in workflows:
+            for action, ref, version in self.USES.findall(workflow.read_text(encoding='utf-8')):
+                seen += 1
+                with self.subTest(workflow=workflow.name, action=action):
+                    self.assertRegex(ref, r'^[0-9a-f]{40}$', f'{action} must be pinned to a full commit SHA')
+                    self.assertTrue(version, f'{action} needs a "# vX.Y.Z" comment naming the pinned release')
+                    name = action.split('/', 1)[1]
+                    self.assertIn(name, table, f'docs/DEPLOYMENT.md has no pin row for {name}')
+                    self.assertEqual(table[name], (version, ref), f'docs/DEPLOYMENT.md pin row for {name} is out of date')
+        self.assertGreater(seen, 0)
+
+    def test_verify_parses_every_required_json_file(self):
+        """The verify job parses every required .json it checks for HTTP 200, as docs/DEPLOYMENT.md says."""
+        workflow = (REPOSITORY / '.github/workflows/pages.yml').read_text(encoding='utf-8')
+        parsed = re.search(r'^\s*json_paths="([^"]*)"\s*$', workflow, re.M)
+        self.assertIsNotNone(parsed, 'verify must start json_paths with the required JSON files')
+        required = re.search(r'^\s*for path in "" ((?:"[^"]*"\s*)+); do\s*$', workflow, re.M)
+        self.assertIsNotNone(required, 'verify must list the paths that have to answer 200')
+        json_required = {path for path in re.findall(r'"([^"]+)"', required.group(1)) if path.endswith('.json')}
+        self.assertIn('public/events.json', json_required)
+        self.assertLessEqual(json_required, set(parsed.group(1).split()))
+
+
 if __name__ == '__main__':
     unittest.main()

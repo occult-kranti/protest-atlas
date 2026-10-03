@@ -1,6 +1,7 @@
 @layer components {
+  /* 5 px of padding (offset by a negative margin) so the 3 px focus ring with its 2 px offset is never clipped. */
   .map-regions {
-    display: flex; gap: var(--sp-2); margin-block: var(--sp-3); padding: 2px; margin-inline: -2px;
+    display: flex; gap: var(--sp-2); margin-block: calc(var(--sp-3) - 3px); padding: 5px; margin-inline: -5px;
     overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
   }
   .map-regions::-webkit-scrollbar { display: none; }
@@ -9,7 +10,9 @@
     position: relative; overflow: hidden; isolation: isolate; aspect-ratio: 16 / 10;
     background: var(--map-ocean); border-radius: var(--r-2); transition: height var(--dur-2) var(--ease-out);
   }
-  .map-stage[data-explore="true"] { aspect-ratio: auto; height: min(70svh, 560px); }
+  /* Explore leaves room for the selection bar between the stage and the tab bar: --selbar-h is the measured bar plus its
+     margin (map-view.js; 104 px = one wrapped line on a phone until measured), plus 16 px for the scroll gap. */
+  .map-stage[data-explore="true"] { aspect-ratio: auto; height: min(70svh, 560px, calc(100svh - var(--header-h) - var(--tabbar-h) - var(--selbar-h, 104px) - 16px)); }
   .map-stage[data-map-state="unavailable"] { aspect-ratio: auto; height: auto; }
   .world-map { position: absolute; inset: 0; background: var(--map-ocean); }
   .map-stage[data-map-state="unavailable"] .world-map { position: static; }
@@ -55,7 +58,8 @@
   .map-btn .icon { width: 20px; height: 20px; flex: none; }
   .map-btn:disabled { color: var(--text-muted); cursor: not-allowed; }
   .map-btn:disabled > * { opacity: .6; }
-  .map-btn:focus-visible { position: relative; z-index: 1; }
+  /* Only the joined zoom buttons need lifting over their neighbour's border; .map-explore keeps position: absolute. */
+  .map-zoom .map-btn:focus-visible { position: relative; z-index: 1; }
   .map-explore { position: absolute; inset-block-end: var(--sp-2); inset-inline-start: var(--sp-2); }
   .map-explore[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
   @media (hover: hover) and (pointer: fine) {
@@ -116,6 +120,7 @@
   .country-panel { margin-block-start: var(--sp-6); }
   .brief-eyebrow { margin: 0 0 var(--sp-1); font-size: var(--fs-xs); font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .brief-title { margin: 0 0 var(--sp-2); font: 600 var(--fs-2xl)/1.15 var(--font-serif); }
+  .brief-iso { margin: calc(-1 * var(--sp-1)) 0 var(--sp-3); font-size: var(--fs-sm); line-height: 1.45; color: var(--text-muted); }
   .brief-lead { margin: 0 0 var(--sp-3); font-size: var(--fs-md); line-height: var(--lh-body); }
   .brief-note, .brief-watermark { margin: 0 0 var(--sp-3); }
   .brief-watermark { display: inline-block; }
@@ -152,7 +157,9 @@
     .map-main { grid-column: 1; min-width: 0; }
     .country-panel {
       grid-column: 2; grid-row: 1 / span 2; margin-block-start: var(--sp-3); position: sticky; inset-block-start: calc(var(--header-h) + 16px);
-      max-block-size: calc(100dvh - var(--header-h) - 32px); overflow: auto; overscroll-behavior: contain; padding-inline-end: var(--sp-1);
+      max-block-size: calc(100dvh - var(--header-h) - 32px); overflow: auto; overscroll-behavior: contain;
+      /* 5 px inside the scroller (offset outside) so focus rings on .brief-country rows are not clipped. */
+      padding: 5px var(--sp-1) 5px 5px; margin-inline-start: -5px;
     }
     .map-stage { aspect-ratio: 1000 / 448; }
     .map-stage[data-explore="true"] { aspect-ratio: auto; }
@@ -174,7 +181,9 @@
     .map-country[data-has-records="true"], .world-map[data-mode="example"] .map-country[data-has-records="true"] { fill: CanvasText; stroke: Canvas; }
     .map-country:is([data-completion="ended-only"], [data-completion="mixed"]) { stroke-width: 2; stroke-dasharray: 3 2; }
     .map-no-records-pattern path, .map-borders { stroke: CanvasText; }
-    .map-selection, .map-focus-ring { stroke: Highlight; }
+    .map-selection { stroke: Highlight; }
+    /* Keyboard focus must differ from the selection, which the roving tabindex lands on first. */
+    .map-focus-ring { stroke: CanvasText; stroke-dasharray: 6 3; }
     .map-selection-halo, .map-focus-halo, .city-point, .city-label { stroke: Canvas; }
     .city-point, .city-label { fill: CanvasText; }
     .legend-swatch { border-color: CanvasText; }

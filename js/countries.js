@@ -1,10 +1,11 @@
 // A–Z directory of all countries and territories with coverage-honest labels (WP5; SPEC §13, E9).
 // Pure helpers first; DOM work happens only inside mountCountries(). Safe to import in Node.
 import {esc, icon, plural, patchHTML} from './html.js';
-import {foldText as fold} from './model.js';
+import {foldText as fold, displayCountryName, countrySearchTerms} from './model.js';
 
 const LABELS = {
   checking: 'Checking the search log…',
+  pending: 'Checking published records…',
   searched: 'Searched · no published episode',
   failed: 'Search failed · no published episode',
   'not-searched': 'Not yet searched',
@@ -33,9 +34,14 @@ function drawnCodes(mapCodes) {
   return values.length ? new Set(values) : null;
 }
 
-/** Rows A–Z (E9). research null = still loading; loadError null|'events'|'research'|{events, research} (C-37). */
-export function directoryRows({countries, events, research, loadError, mapCodes = null} = {}) {
+/**
+ * Rows A–Z by display name (E9). research null = still loading; loadError null|'events'|'research'|{events, research} (C-37).
+ * eventsPending: published records are (re)loading, so no row may be labelled from the search log yet (never
+ * "Searched · no published episode" without records). `name` is the short display name; `isoName` the directory name.
+ */
+export function directoryRows({countries, events, research, loadError, mapCodes = null, eventsPending = false} = {}) {
   const failed = failures(loadError);
+  const pending = !failed.events && Boolean(eventsPending);
   const list = Array.isArray(events) ? events : (Array.isArray(events?.events) ? events.events : []);
   const counts = new Map();
   for (const event of list) if (event?.country) counts.set(event.country, (counts.get(event.country) ?? 0) + 1);
@@ -47,6 +53,7 @@ export function directoryRows({countries, events, research, loadError, mapCodes 
       const count = counts.get(country.code) ?? 0;
       let status;
       if (failed.events) status = 'unavailable';
+      else if (pending) status = 'pending';
       else if (count > 0) status = 'published';
       else if (failed.research) status = 'unavailable';
       else if (!ledger) status = 'checking';
@@ -54,11 +61,14 @@ export function directoryRows({countries, events, research, loadError, mapCodes 
         const row = ledger.get(country.code);
         status = row?.status === 'searched' ? 'searched' : row?.status === 'search-failed' ? 'failed' : 'not-searched';
       }
+      const isoName = country.name || country.code;
       return {
         code: country.code,
-        name: country.name || country.code,
+        name: displayCountryName(country.code, country.name) || country.code,
+        isoName,
+        terms: countrySearchTerms(country.code, isoName),
         region: country.region || '',
-        count: failed.events ? null : count,
+        count: failed.events || pending ? null : count,
         status,
         label: status === 'published' ? episodesLabel(count) : status === 'unavailable' && !failed.events ? LABELS.logUnavailable : LABELS[status],
         drawn: drawn ? drawn.has(country.code) : null,
@@ -68,15 +78,22 @@ export function directoryRows({countries, events, research, loadError, mapCodes 
 }
 
 const words = value => fold(value).split(/[^\p{L}\p{N}]+/u).filter(Boolean);
+const haystacks = new WeakMap();
 
-/** [{region, rows}] A–Z. Each folded query word starts a word of the name or region, or equals the code. */
+/**
+ * [{region, rows}] A–Z. Each folded query word starts a word of the display name, the ISO name, a common alias
+ * (model.countrySearchTerms: "South Korea", "UK", "Ivory Coast", "USA") or the region, or equals the code.
+ */
 export function regionGroups(rows, query = '') {
   const tokens = words(query);
+  const haystack = row => {
+    if (!haystacks.has(row)) haystacks.set(row, words([row.name, row.isoName, ...(row.terms ?? []), row.region].filter(Boolean).join(' ')));
+    return haystacks.get(row);
+  };
   const matches = row => {
     if (!tokens.length) return true;
-    const haystack = words(`${row.name} ${row.region}`);
     const code = fold(row.code);
-    return tokens.every(token => token === code || haystack.some(word => word.startsWith(token)));
+    return tokens.every(token => token === code || haystack(row).some(word => word.startsWith(token)));
   };
   const groups = new Map();
   for (const row of Array.isArray(rows) ? rows : []) {
@@ -93,8 +110,10 @@ export function regionGroups(rows, query = '') {
 const slug = value => fold(value).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'other';
 
 function rowHTML(row) {
+  const iso = row.isoName && row.isoName !== row.name
+    ? `<span class="dir-iso"><span class="visually-hidden">, ISO name </span>${esc(row.isoName)}</span>` : '';
   return `<li class="dir-item"><button type="button" class="dir-row" data-select-country="${esc(row.code)}" data-view-after="map" data-status="${esc(row.status)}">`
-    + `<span class="dir-text"><span class="dir-name">${esc(row.name)}</span><span class="visually-hidden">, </span>`
+    + `<span class="dir-text"><span class="dir-name">${esc(row.name)}</span>${iso}<span class="visually-hidden">, </span>`
     + `<span class="dir-status">${esc(row.label)}</span>`
     + (row.drawn === false ? `<span class="visually-hidden">, </span><span class="dir-note">${NOT_DRAWN}</span>` : '')
     + `</span>${icon('chevron-right')}</button></li>`;
@@ -111,7 +130,7 @@ export function directoryHTML(groups) {
 
 /** Dek text (SPEC §13) from the reported data; null while the counts are not known. */
 export function directoryDek({rows, research}) {
-  if (!rows.length || rows.some(row => row.status === 'unavailable' && row.count === null)) return null;
+  if (!rows.length || rows.some(row => row.count === null && (row.status === 'unavailable' || row.status === 'pending'))) return null;
   const total = rows.length;
   const withRecords = rows.filter(row => row.status === 'published').length;
   const first = `${withRecords} of ${total} have a published episode.`;
@@ -120,6 +139,24 @@ export function directoryDek({rows, research}) {
   const logged = research.countries.filter(row => codes.has(row.code) && row.status === 'searched').length;
   const scope = logged === total ? `all ${total}` : `${logged} of ${total}`;
   return `${first} A first search was logged for ${scope}; searched is not reviewed, and no published episode does not mean no protests.`;
+}
+
+/** E-none for the directory search: actionable, and honest about how names are matched. */
+export function noMatchText(query) {
+  const q = String(query ?? '').trim();
+  return q ? `No country or territory name starts with '${q}'. Try another spelling, or browse A–Z.` : '';
+}
+
+/**
+ * patchHTML that never drops focus to <body>: when the focused control is replaced by one patchHTML cannot match
+ * (a Retry that became "Retrying…", or the loaded content), focus moves to `fallback()` (SPEC C-37, WCAG 2.4.3).
+ */
+export function patchKeepingFocus(el, html, cache, fallback) {
+  const doc = el.ownerDocument;
+  const had = el.contains(doc.activeElement);
+  const changed = patchHTML(el, html, cache);
+  if (changed && had && !el.contains(doc.activeElement)) fallback?.()?.focus({preventScroll: true});
+  return changed;
 }
 
 // ---- DOM (mountCountries) ----
@@ -137,23 +174,40 @@ export function mountCountries(ctx = {}) {
   let lastState = null;
 
   function skeleton() {
-    root.innerHTML = `<div class="dir-dek"></div>`
+    root.innerHTML = `<div class="dir-dek" tabindex="-1"></div>`
       + `<div class="dir-search"><label class="dir-search-label" for="dir-query">Find a country or territory</label>`
-      + `<input id="dir-query" class="dir-search-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" spellcheck="false"></div>`
-      + `<p class="dir-empty" role="status"></p><div class="dir-regions"></div>`;
-    parts = {dek: root.querySelector('.dir-dek'), input: root.querySelector('#dir-query'),
-      empty: root.querySelector('.dir-empty'), regions: root.querySelector('.dir-regions')};
+      + `<div class="dir-search-field">${icon('search').replace('class="icon"', 'class="icon dir-search-icon"')}`
+      + `<input id="dir-query" class="dir-search-input" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" spellcheck="false" aria-describedby="dir-search-hint">`
+      + `<button type="button" class="icon-btn dir-clear" data-dir-clear aria-label="Clear search" hidden>${icon('close')}</button></div>`
+      + `<p class="dir-search-hint" id="dir-search-hint">Common names work too, such as South Korea, UK or Ivory Coast.</p></div>`
+      + `<div class="dir-empty"><p class="dir-empty-text" role="status"></p>`
+      + `<p class="dir-empty-actions" hidden><button type="button" class="btn" data-dir-clear>Browse A–Z</button></p></div>`
+      + `<div class="dir-regions"></div>`;
+    parts = {dek: root.querySelector('.dir-dek'), input: root.querySelector('#dir-query'), clear: root.querySelector('.dir-clear'),
+      empty: root.querySelector('.dir-empty-text'), emptyActions: root.querySelector('.dir-empty-actions'), regions: root.querySelector('.dir-regions')};
     parts.input.value = query;
+    parts.clear.hidden = !query;
     parts.input.addEventListener('input', () => {
+      parts.clear.hidden = !parts.input.value;
       clearTimeout(timer);
       timer = setTimeout(() => { query = parts.input.value; if (lastState) draw(lastState); }, 120);
     });
     cache.delete(root);
   }
 
+  // Clear and "Browse A–Z" reset the search here; they carry no data-* hook app.js handles.
+  root.addEventListener('click', event => {
+    if (!event.target?.closest?.('[data-dir-clear]') || !parts) return;
+    clearTimeout(timer);
+    query = parts.input.value = '';
+    parts.clear.hidden = true;
+    if (lastState) draw(lastState);
+    parts.input.focus({preventScroll: true});
+  });
+
   function message(html) {
     parts = null;
-    patchHTML(root, html, cache);
+    patchKeepingFocus(root, html, cache, () => root.querySelector('[data-action="retry-data"]') ?? doc.getElementById('countries-title'));
   }
 
   function request(name, state) {
@@ -178,15 +232,21 @@ export function mountCountries(ctx = {}) {
     }
     if (!parts) skeleton();
     const researchStatus = load.lazy?.research;
+    // A retry keeps the directory but has no records yet: rows wait for them (never labelled from the ledger alone).
+    const eventsPending = !data.events && !errors.events && load.critical === 'loading';
     const rows = directoryRows({
       countries: data.countries,
       events: data.events,
       research: data.research ?? null,
       loadError: {events: Boolean(errors.events) || (!data.events && load.critical !== 'loading'), research: researchStatus === 'error'},
       mapCodes: data.mapCodes ?? null,
+      eventsPending,
     });
     let dek;
-    if (errors.events || !data.events) {
+    if (eventsPending) {
+      dek = `<p class="dir-dek-text" role="status">Loading published records…</p>`
+        + `<p class="dir-actions"><button type="button" class="btn btn--primary" aria-disabled="true" data-retry-pending>Retrying…</button></p>`;
+    } else if (errors.events || !data.events) {
       dek = `<p class="dir-dek-text">Coverage cannot be shown because published records did not load.</p>`
         + `<p class="dir-actions"><button type="button" class="btn btn--primary" data-action="retry-data">Retry</button></p>`;
     } else {
@@ -198,11 +258,12 @@ export function mountCountries(ctx = {}) {
       }
     }
     if (state.mode === 'example') dek += `<p class="dir-dek-text dir-dek-example">This directory shows reported data. Choosing a country returns you to it.</p>`;
-    patchHTML(parts.dek, dek, cache);
+    // Focus stays in the retry region: on its replacement control, else on the dek itself (tabindex="-1").
+    patchKeepingFocus(parts.dek, dek, cache, () => parts.dek.querySelector('[data-retry-pending], [data-action="retry-data"], [data-retry]') ?? parts.dek);
     const groups = regionGroups(rows, query);
-    const trimmed = query.trim();
-    const emptyText = groups.length || !trimmed ? '' : `No country or territory matches '${trimmed}'.`;
+    const emptyText = groups.length ? '' : noMatchText(query);
     if (parts.empty.textContent !== emptyText) parts.empty.textContent = emptyText;
+    parts.emptyActions.hidden = !emptyText;
     patchHTML(parts.regions, directoryHTML(groups), cache);
   }
 

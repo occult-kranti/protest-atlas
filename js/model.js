@@ -9,8 +9,8 @@ const DAY = 86_400_000;
 export const PAGE_SIZE = 12;
 export const STATUS_LABELS = {ongoing: 'Reported ongoing', planned: 'Planned', ended: 'Ended / suspended', 'needs-review': 'Needs review · current status unknown', unknown: 'Current status not established'};
 
-// Moved verbatim from app.js 3.1.
-export function dateLabel(value) { if (!value) return 'Not established'; const date = new Date(value); if (!Number.isFinite(date.getTime())) return 'Not established'; return new Intl.DateTimeFormat('en-GB', {day:'numeric',month:'short',year:'numeric', timeZone:'UTC'}).format(date); }
+// Frozen export from app.js 3.1, now through absoluteLabel ("Sep" under every ICU version).
+export function dateLabel(value) { if (!value) return 'Not established'; const time = new Date(value).getTime(); if (!Number.isFinite(time)) return 'Not established'; return absoluteLabel(isoDay(time)); }
 export function getDisplayStatus(event, now = Date.now()) {
   const start = Date.parse(event.start_date);
   if (Number.isFinite(start) && start > now) return 'planned';
@@ -24,6 +24,16 @@ const statusDay = value => absoluteLabel(isoDay(Date.parse(value)));   // "30 Se
 
 /** E5, shared by the list, the notice and the filter sheet's error state (C-37). */
 export const E5 = 'Published records could not be loaded, so coverage is unknown at the moment, not zero.';
+
+/** E4 by emptyBandNotice result (§6.4). */
+export const E4 = Object.freeze({
+  fresh: 'No episode in this snapshot has evidence dated within the last 72 hours. That is a gap in this dataset, not a sign that no protests happened.',
+  week: 'No episode in this snapshot has evidence dated in the last 7 days. That is a gap in this dataset, not a sign that no protests happened.',
+});
+
+/** Reported mode without contexts beside loaded records: city and outcome filters pause (MAJOR 12). */
+export const contextsPaused = state => state?.mode !== 'example'
+  && (Boolean(state?.load?.errors?.contexts) || (Boolean(state?.data?.events) && !state?.data?.contexts));
 
 /**
  * Status label (ST1–ST5). With an event, the dated forms:
@@ -61,7 +71,7 @@ export function searchableText(event) {
   const intensity = event.intensity ?? {};
   const turnout = intensity.turnout;
   const parts = [
-    event.title, event.summary, event.country_name, event.region, event.location?.label,
+    event.title, event.summary, ...countrySearchTerms(event.country, event.country_name), event.region, event.location?.label,
     ...(event.issues ?? []),
     ...(event.positions ?? []).flatMap(p => [p?.actor, p?.claim, p?.target]),
     ...(event.state_response ?? []).flatMap(r => [r?.action, r?.attribution]),
@@ -89,7 +99,6 @@ export function indexContexts(contexts) {
 }
 
 const namerCache = new WeakMap();
-/** code → name from countries.json (memoised per directory), else the code itself (C-37: names may be missing). */
 /**
  * Common English short names for formal ISO 3166 directory names, reviewed from Unicode CLDR display names.
  * Display only: public/countries.json keeps the ISO name, which stays visible where precision matters
@@ -123,8 +132,14 @@ export function countrySearchTerms(code, isoName) {
   return [...new Set([isoName, COUNTRY_SHORT_NAMES[code], ...(COUNTRY_ALIASES[code] ?? [])].filter(Boolean))];
 }
 
+/**
+ * code → display name (short common name, else the countries.json name; memoised per directory), else the code itself.
+ * Without a directory (countries.json failed, so data.countries is []) every record shows its code, as the
+ * countries-error notice says (C-37); short names are never mixed in.
+ */
+const codeOnly = code => code;
 export function countryNamer(countries) {
-  if (!Array.isArray(countries)) return code => COUNTRY_SHORT_NAMES[code] || code;
+  if (!Array.isArray(countries) || !countries.length) return codeOnly;
   if (!namerCache.has(countries)) {
     const names = new Map(countries.map(c => [c?.code, c?.name]));
     namerCache.set(countries, code => displayCountryName(code, names.get(code)) || code);
@@ -169,14 +184,15 @@ function filterEvents(state, filters, ignoreCountry) {
   const contexts = state?.mode === 'example' ? null : state?.data?.contexts ?? null;
   const index = indexContexts(contexts);
   const now = state?.now ?? Date.now();
-  return sortByObservation(selectEvents(state).filter(e => eventMatches(e, filters, {context: index.get(e.id) ?? null, now, ignoreCountry})));
+  const applied = contextsPaused(state) ? {...filters, city: '', outcome: ''} : filters;
+  return sortByObservation(selectEvents(state).filter(e => eventMatches(e, applied, {context: index.get(e.id) ?? null, now, ignoreCountry})));
 }
 
 // One memo per ignoreCountry flag, so the list and the map do not evict each other.
 const filterCache = new Map();
 /** Filtered and sorted events for the current state (memoised on the inputs that matter). */
 export function selectFiltered(state, {ignoreCountry = false} = {}) {
-  const key = [selectEvents(state), state?.filters, state?.now, state?.mode === 'example' ? null : state?.data?.contexts ?? null];
+  const key = [selectEvents(state), state?.filters, state?.now, state?.mode === 'example' ? null : state?.data?.contexts ?? null, contextsPaused(state)];
   const hit = filterCache.get(ignoreCountry);
   if (hit && hit.key.every((v, i) => v === key[i])) return hit.result;
   const result = filterEvents(state, state?.filters, ignoreCountry);
@@ -211,7 +227,7 @@ export function cityOptions(events, contextIndex, country = '') {
     for (const city of index.get(e.id)?.cities ?? []) {
       if (!city?.name) continue;
       const value = `${e.country}:${city.name}`;
-      if (!options.has(value)) options.set(value, {value, label: `${city.name} · ${e.country_name || e.country}`});
+      if (!options.has(value)) options.set(value, {value, label: `${city.name} · ${displayCountryName(e.country, e.country_name)}`});
     }
   }
   return [...options.values()].sort(byLabel);

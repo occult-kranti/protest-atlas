@@ -25,9 +25,12 @@ const A7 = 'An announcement is not evidence that the action will happen, how lar
 const A2_SUB = `Actions that a named organisation or institution has publicly announced for a future date. ${A7}`;
 const A4 = 'This list includes an announced action only after the article announcing it has been opened and read. Nothing meets that standard in this snapshot.';
 const A5_BLOCKED = day => `On ${day}, our search for announced and recent protest actions could not open news websites from the research environment. Search-result snippets were logged as leads, but a snippet is not a source, so none are listed here. An empty list does not mean nothing is planned.`;
+// When items exist but none is upcoming, A5's '…so none are listed here. An empty list…' would repeat NONE_UPCOMING.
+const A5_BLOCKED_LISTED = day => `On ${day}, our search for announced and recent protest actions could not open news websites from the research environment, so no new announcement could be added.`;
 const A5_FALLBACK = 'Our latest search did not find an announcement that met this standard. An empty list does not mean nothing is planned.';
 const A6 = "When items appear, each will show what was announced and by which organisation or institution, the country and city, the planned date and how precise it is, the source with its publisher and publication date, and when it was checked. Times, meeting points and routes are never listed. After the planned date passes, an item is marked 'occurrence not established' until a sourced report says what happened.";
 const ACTIONS_ERROR = 'The announced-actions list could not load. This is not the same as an empty list.';
+export const NONE_UPCOMING = 'No upcoming announced actions are listed. An empty list does not mean nothing is planned.';
 const R2 = "What we have built, what we are working on and what is blocked, stated plainly. There are no promised dates. 'Shipped' means available on this site now and checked after it was deployed. This page is about the atlas itself. Announced protest actions are listed separately under Ahead.";
 const NEW_TAB = '<span class="visually-hidden"> (opens in a new tab)</span>';
 
@@ -137,7 +140,7 @@ const ROADMAP_GLYPHS = {shipped: '✓', 'in-progress': '◑', next: '→', later
 // R3 (SPEC §18.2), in its own order.
 const ROADMAP_LEGEND = [
   ['shipped', 'available on this site now.'],
-  ['in-progress', 'being built; not available yet.'],
+  ['in-progress', 'built or being built; not yet confirmed on the deployed site.'],
   ['next', 'planned, and can start without outside help.'],
   ['later', 'only after the listed conditions are met.'],
   ['blocked', 'cannot proceed until the named blocker is resolved.'],
@@ -187,15 +190,28 @@ const dayTag = day => (ISO_DAY.test(day ?? '') ? `<time class="roadmap-date" dat
 const external = (href, label, className) => `<a class="${className}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}${icon('external')}${NEW_TAB}</a>`;
 const retryButton = attrs => `<p class="announce-empty-actions"><button type="button" class="btn btn--primary" ${attrs}>Retry</button></p>`;
 
-/** The Reports teaser (SPEC §6.5). '' while the critical load is pending. */
-export function aheadTeaserHTML({upcoming = null, load = null} = {}) {
+/** Items whose planned day or period is today or later and that are not postponed or cancelled (editorial §10.4). */
+export function upcomingCount(items, now) {
+  const groups = groupAnnouncements(items, now);
+  return groups.today.length + groups.upcoming.length;
+}
+
+/**
+ * The Reports teaser (SPEC §6.5). '' while the critical load is pending. Only upcoming and today's items are counted:
+ * a date-passed, postponed or cancelled item is never counted as upcoming.
+ */
+export function aheadTeaserHTML({upcoming = null, load = null, now = Date.now()} = {}) {
   if (load?.critical === 'loading') return '';
   const status = load?.errors?.upcoming;
   let first;
   if (status === 'absent') first = 'the list is not published in this snapshot.';
   else if (status === 'error' || !Array.isArray(upcoming?.items)) first = 'the list could not load.';
   else if (!upcoming.items.length) first = 'none are listed yet. An empty list does not mean nothing is planned.';
-  else first = `${upcoming.items.length} listed. An announcement is not evidence that the action will happen.`;
+  else {
+    const n = upcomingCount(upcoming.items, now);
+    first = n ? `${plural(n, 'upcoming action')} listed. An announcement is not evidence that the action will happen.`
+      : 'no upcoming action is listed. An empty list does not mean nothing is planned.';
+  }
   return `<aside class="ahead-teaser" aria-labelledby="ahead-teaser-title">`
     + `<h2 class="ahead-teaser-title" id="ahead-teaser-title">Ahead</h2>`
     + `<a class="ahead-teaser-link" href="#/ahead/actions"><span class="ahead-teaser-text"><strong>Announced protest actions:</strong> ${esc(first)}</span>${icon('chevron-right')}</a>`
@@ -261,6 +277,14 @@ function emptyActionsHTML(sweep) {
     + `</div>`;
 }
 
+/** Items exist, but none is upcoming or today: say so, with the latest sweep fact (A5), before any other item. */
+function noneUpcomingHTML(sweep) {
+  const day = ISO_DAY.test(sweep?.day ?? '') ? absoluteLabel(sweep.day) : '';
+  const fact = !day ? '' : sweep.blocked ? A5_BLOCKED_LISTED(day) : `Latest search for announcements: ${day}.`;
+  return `<div class="announce-none"><p class="announce-none-title">${esc(NONE_UPCOMING)}</p>`
+    + (fact ? `<p>${esc(fact)}</p>` : '') + `</div>`;
+}
+
 function safeSweep(events, upcoming) {
   try { return sweepFact({events, upcoming})?.announcements ?? null; } catch { return null; }
 }
@@ -281,11 +305,12 @@ export function actionsHTML({upcoming = null, events = null, load = null, now = 
   if (!items.length) return head + stamp + emptyActionsHTML(safeSweep(events, upcoming)) + specimenHTML();
   const groups = groupAnnouncements(items, now);
   const view = item => announcementItemHTML(announcementView(item, now, {countryName, eventTitle}));
+  const none = groups.today.length + groups.upcoming.length ? '' : noneUpcomingHTML(safeSweep(events, upcoming));
   const list = groups.list.length ? `<ol class="announce-list">${groups.list.map(view).join('')}</ol>` : '';
   const passed = groups.passed.length
     ? `<details class="announce-passed" data-key="passed"><summary>Planned dates that have passed (${groups.passed.length}) · occurrence not established</summary><ol class="announce-list announce-list--passed">${groups.passed.map(view).join('')}</ol></details>`
     : '';
-  return head + stamp + list + passed + specimenHTML();
+  return head + stamp + none + list + passed + specimenHTML();
 }
 
 /** One roadmap item (SPEC §12.3): title, pill, area, summary, Done when (+ shipped lines), Blocked by, Depends on, Status checked. */
@@ -301,7 +326,8 @@ function roadmapItemHTML(item, titles, now) {
   const roadmapLabel = text => `<span class="roadmap-label">${text}</span>`;
   return `<article class="roadmap-item" id="roadmap-item-${id}" data-status="${esc(item.status)}" tabindex="-1" aria-labelledby="roadmap-title-${id}">`
     + `<h4 class="roadmap-item-title" id="roadmap-title-${id}">${esc(item.title)}</h4>`
-    + `<p class="roadmap-meta">${statusPill(item.status)}<span class="roadmap-area">${esc(AREA_LABELS[item.area] ?? item.area ?? '')}</span></p>`
+    // The group heading carries the status glyph and label; each item repeats it for screen readers only (density on phones).
+    + `<p class="roadmap-meta"><span class="visually-hidden">Status: ${esc(ROADMAP_LABELS[item.status] ?? item.status)}. Area: </span><span class="roadmap-area">${esc(AREA_LABELS[item.area] ?? item.area ?? '')}</span></p>`
     + `<p class="roadmap-summary">${esc(item.summary)}</p>`
     + (shipped ? `<p class="roadmap-shipped">Shipped in ${esc(item.shipped_in)} · ${dayTag(item.shipped_on)}</p>` : '')
     + `<p class="roadmap-done">${roadmapLabel('Done when:')} ${esc(item.acceptance)}</p>`
@@ -342,6 +368,15 @@ export function roadmapHTML({roadmap = null, status = 'idle', now = Date.now()} 
 }
 
 // ---- DOM (mountAhead) ----
+
+/** patchHTML, but a replaced Retry hands focus to `fallback()` instead of <body> (C-37; WCAG 2.4.3). */
+function patchKeepingFocus(el, html, cache, fallback) {
+  const doc = el.ownerDocument;
+  const had = el.contains(doc.activeElement);
+  const changed = patchHTML(el, html, cache);
+  if (changed && had && !el.contains(doc.activeElement)) fallback()?.focus({preventScroll: true});
+  return changed;
+}
 
 /** Mounts #ahead-root: one section at a time from route.param, rendered on first visit; lazy roadmap; blocker landing. */
 export function mountAhead(ctx = {}) {
@@ -403,10 +438,11 @@ export function mountAhead(ctx = {}) {
       if (pendingTarget && !(onAhead && active === 'roadmap')) pendingTarget = null;
       const data = state.data ?? {};
       const titles = new Map((data.events?.events ?? []).map(e => [e.id, e.title]));
-      patchHTML(section('actions'), actionsHTML({
+      const actionsEl = section('actions');
+      patchKeepingFocus(actionsEl, actionsHTML({
         upcoming: data.upcoming, events: data.events, load: state.load, now: state.now,
         countryName: countryNamer(data.countries), eventTitle: id => titles.get(id) || '',
-      }), cache);
+      }), cache, () => actionsEl.querySelector('[data-action="retry-data"]') ?? doc.getElementById('ahead-actions-title'));
       if (active === 'roadmap' || sections.roadmap) {
         const status = state.load?.lazy?.roadmap ?? (data.roadmap ? 'ready' : 'idle');
         if (!data.roadmap && status === 'idle' && !roadmapRequested) {
@@ -414,7 +450,9 @@ export function mountAhead(ctx = {}) {
           Promise.resolve().then(() => ctx.actions?.loadLazy?.('roadmap')).catch(() => {});
         }
         if (status === 'error') { roadmapRequested = false; pendingTarget = null; }
-        patchHTML(section('roadmap'), roadmapHTML({roadmap: data.roadmap, status, now: state.now}), cache);
+        const roadmapEl = section('roadmap');
+        patchKeepingFocus(roadmapEl, roadmapHTML({roadmap: data.roadmap, status, now: state.now}), cache,
+          () => roadmapEl.querySelector('[data-retry="roadmap"]') ?? doc.getElementById('ahead-roadmap-title'));
       }
       sections.actions.hidden = active !== 'actions';
       if (sections.roadmap) sections.roadmap.hidden = active !== 'roadmap';

@@ -8,8 +8,14 @@
   .feed-stat--assembled, .feed-stat--loading { font-size: var(--fs-sm); line-height: 1.4; color: var(--text-muted); }
   .feed-stat-time, .feed-stat time { font-variant-numeric: tabular-nums; white-space: nowrap; }
   .feed-stat--assembled .feed-stat-time { color: var(--text-2); }
-  .feed-stat--scope { font: 600 var(--fs-md)/1.32 var(--font-sans); color: var(--text); text-wrap: pretty; }
-  @media (min-width: 600px) { .feed-stat--scope { letter-spacing: -.01em; } }   /* S2 on one line in the 720 column (§5) */
+  /* Phones: S1 repeats the chip stamp (and, once stale, the age the notice already states), so only S2 shows, at
+     14 px. The dates sheet and the footer keep "Snapshot assembled". */
+  .feed-stat--assembled { display: none; }
+  .feed-stat--scope { font: 600 var(--fs-sm)/1.4 var(--font-sans); color: var(--text); text-wrap: pretty; }
+  @media (min-width: 600px) {
+    .feed-stat--assembled { display: block; }
+    .feed-stat--scope { font-size: var(--fs-md); line-height: 1.32; letter-spacing: -.01em; }   /* S2 on one line in the 720 column (§5) */
+  }
   .feed-stat--scope strong { font-weight: 750; }
   .feed-stat--example { font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
 
@@ -94,17 +100,21 @@
 
   .result-summary { margin: 0; min-height: 1.45em; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
 
-  /* The -8 px offset aligns the first label with the title. The same gap and offset hold when a button is
-     refused (dashed box), so the row never moves; only a refused first button (example mode) drops the offset. */
-  .feed-actions { display: flex; flex-wrap: wrap; gap: 0 8px; margin: 0 0 0 -8px; }
-  .feed-actions .btn { padding-inline: 8px; font-size: var(--fs-sm); gap: 6px; }
+  /* Share and CSV: an enabled button has a solid resting outline, a refused one the dashed box (C-43), so the two
+     never read the other way round. Phones show the row under the list, so the first record reaches the first
+     viewport in every snapshot state (MAJOR 5); from 600 px it shares the summary row in the head. */
+  .feed-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+  .feed-actions .btn { padding-inline: 12px; font-size: var(--fs-sm); gap: 6px; }
+  .feed-actions .btn:not([aria-disabled="true"]) { border-color: var(--border-input); background: var(--bg-raised); }
   .feed-actions .btn .icon { width: 18px; height: 18px; }
-  .feed-actions .btn[aria-disabled="true"] { border-color: var(--border-input); }
-  .feed-actions:has(> :first-child[aria-disabled="true"]) { margin-inline-start: 0; }
+  .feed-actions--foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
+  .feed-head > .feed-actions { display: none; }
   @media (min-width: 600px) {
+    .feed-actions--foot { display: none; }
+    .feed-head > .feed-actions { display: flex; }
     /* The summary and the actions share a row (§5: the first card and the next one start higher). */
     .feed-head > .result-summary { grid-column: 1; }
-    .feed-head > .feed-actions { grid-column: 2; justify-self: end; margin: 0; }
+    .feed-head > .feed-actions { grid-column: 2; justify-self: end; margin: 4px 0; }
   }
 
   .feed-explainer { margin-bottom: -6px; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-2); }
@@ -170,9 +180,11 @@
   .filter-field select:disabled { color: var(--text-muted); border-style: dashed; cursor: not-allowed; }
   .filter-help { margin: 8px 0 0; font-size: var(--fs-sm); line-height: 1.45; color: var(--text-muted); max-width: 60ch; }
   .filter-note {
+    display: grid; gap: 8px; justify-items: start;
     margin: 16px 0 0; padding: 8px 12px; border-radius: var(--r-1);
     background: var(--warn-weak); color: var(--warn); font: 600 var(--fs-sm)/1.45 var(--font-sans);
   }
+  .filter-note > p { margin: 0; }
 
   /* Segmented window control: three 48 px segments; the radio is visually hidden, the label is the target. */
   .filter-segment-track {
@@ -254,9 +266,26 @@
     font-weight: 600;
   }
   .notice-line .icon { width: 18px; height: 18px; margin-top: 1px; }
-  .notice-line[data-kind="error"], .notice-line[data-kind="countries-error"] { background: var(--danger-weak); color: var(--danger); }
-  .notice-line-text { min-width: 0; text-wrap: pretty; }
+  .notice-line[data-kind="error"], .notice-line[data-kind="countries-error"], .notice-line[data-kind="contexts-error"] { background: var(--danger-weak); color: var(--danger); }
+  .notice-line-body { flex: 1 1 auto; min-width: 0; }
+  .notice-line-text { text-wrap: pretty; }
   .notice-date { white-space: nowrap; }
+  /* "Why?" ends the warn line: a 44 px target whose negative block margin keeps the line box one text line tall. */
+  .notice-why-btn {
+    display: inline-flex; align-items: center; gap: 2px; min-width: var(--tap); min-height: var(--tap);
+    margin: -12px 0 -12px 2px; padding: 0 6px; border: 0; border-radius: var(--r-1); background: none;
+    color: inherit; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: .2em;
+    vertical-align: baseline; cursor: pointer;
+  }
+  .notice-why-btn::after {
+    content: ""; width: .5em; height: .5em; margin-inline-start: 4px; border: solid currentColor; border-width: 0 2px 2px 0;
+    transform: translateY(-2px) rotate(45deg); transition: transform var(--dur-1) var(--ease-out);
+  }
+  .notice-why-btn[aria-expanded="true"]::after { transform: translateY(2px) rotate(-135deg); }
+  .notice-why { margin-top: 6px; font-weight: 500; }
+  .notice-why[hidden] { display: none; }
+  .notice-why-line { margin: 0; max-width: 75ch; }
+  .notice-why-line + .notice-why-line { margin-top: 6px; }
   @media (min-width: 1200px) {
     .notice-inner { display: flex; flex-wrap: wrap; align-items: center; column-gap: 16px; }
     .notice-pilot { flex: 0 1 auto; }

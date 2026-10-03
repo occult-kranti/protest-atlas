@@ -6,23 +6,29 @@ import {
   PAGE_SIZE, STATUS_LABELS, statusLabel, foldText, searchableText, queryTokens, indexContexts, eventMatches,
   sortByObservation, selectEvents, selectFiltered, activeFilterCount, availableYears, cityOptions, refinementOptions,
   statusOptions, datasetStats, snapshotState, evidenceAgeDays, sweepFact, groupByBand, emptyBandNotice, timeSnapshot, getDisplayStatus,
-  sweepLine, E5,
+  sweepLine, E5, E4, dateLabel, contextsPaused, countryNamer, displayCountryName,
 } from '../js/model.js';
 import {createStore, initialState} from '../js/store.js';
 import {VIEWS, ROUTE_ALIASES, VIEW_NAMES, parseRoute, formatRoute, createRouter} from '../js/router.js';
-import {CRITICAL, LAZY, SHAPES, DataError, fetchJSON, loadCritical, createLazyLoader} from '../js/data.js';
-import {createActions, exportAllowed, controlStates, FEEDBACK} from '../js/actions.js';
+import {CRITICAL, LAZY, SHAPES, DataError, fetchJSON, loadCritical, loadFile, createLazyLoader} from '../js/data.js';
+import {createActions, exportAllowed, controlStates, shareTitle, FEEDBACK} from '../js/actions.js';
 import {QUICK_CHIPS} from '../js/filters.js';
 import {statsHTML, summaryText, listHTML, moreHTML} from '../js/list.js';
 import {STAMP_ROWS, stampItems, chipModel, footerStampsHTML, refreshTimes} from '../js/stamps.js';
-import {PILOT_DISCLOSURE, noticeModel, mountNotice} from '../js/notice.js';
-import {FILTER_KEYS, droppedParams, shareURL, readViewState, encodeViewState} from '../explore.js';
-import {updateStamps} from '../freshness.js';
+import {PILOT_DISCLOSURE, CONTEXTS_ERROR, noticeModel, mountNotice} from '../js/notice.js';
+import {FILTER_KEYS, droppedParams, shareURL, readViewState, encodeViewState, csvForEvents, CSV_NOT_LOADED} from '../explore.js';
+import {updateStamps, observationBand, isoDay} from '../freshness.js';
 
 const root = new URL('../', import.meta.url);
-const load = async name => JSON.parse(await readFile(new URL(`public/${name}`, root)));
+// Walkthrough tests (literal counts, ids, dates and the 2, 5, 9 Oct and 1 Nov texts) read the frozen 2 Oct copies,
+// so a legitimate data refresh never turns them red (MAJOR 13). Tests on public/*.json check invariants only (below).
+const FIXTURES = 'tests/fixtures/snapshot-20261002/';
+const load = async name => JSON.parse(await readFile(new URL(`${FIXTURES}${name}`, root)));
+const loadLive = async name => JSON.parse(await readFile(new URL(`public/${name}`, root)));
 const [events, countries, contexts, upcoming, examples] = await Promise.all(
   ['events.json', 'countries.json', 'event-context.json', 'upcoming.json', 'examples.json'].map(load));
+const [liveEvents, liveCountries, liveContexts, liveUpcoming] = await Promise.all(
+  ['events.json', 'countries.json', 'event-context.json', 'upcoming.json'].map(loadLive));
 
 const T = iso => Date.parse(iso);
 const OCT2 = T('2026-10-02T23:00:00Z');
@@ -78,7 +84,7 @@ function harness(state = readyState(), {routes = realRoutes(), platform = {}} = 
   const store = createStore(state);
   const router = fakeRouter(store);
   const lazy = createLazyLoader({fetchImpl: fakeFetch(routes)});
-  const loader = {...lazy, critical: () => loadCritical({fetchImpl: fakeFetch(routes)})};
+  const loader = {...lazy, critical: () => loadCritical({fetchImpl: fakeFetch(routes)}), file: name => loadFile(name, {fetchImpl: fakeFetch(routes)})};
   const actions = createActions({store, router, loader, env: {defaultView: 'latest'}, platform: {
     location: () => ({origin: 'https://example.org', pathname: '/protest-atlas/'}),
     canShare: () => false,
@@ -685,18 +691,32 @@ test('list: S1/S2, result summaries, groups with S3 and S7, teaser slot and pagi
   assert.equal(listHTML(initialState({filters: EMPTY}), []).busy, true);
 });
 
-test('list on the 9 Oct clock: E4 + S7 at the top, first group 7 to 30 days, no zero (§16.2)', () => {
+const E4_WEEK = 'No episode in this snapshot has evidence dated in the last 7 days. That is a gap in this dataset, not a sign that no protests happened.';
+const E4_FRESH = 'No episode in this snapshot has evidence dated within the last 72 hours. That is a gap in this dataset, not a sign that no protests happened.';
+const S7_OCT2 = 'A search for newer reports on 2 Oct 2026 could not open news websites, so no records were added. Recent coverage is especially thin.';
+
+test('list on the 9 Oct clock: the first group leads (E4 + S7 sit behind the notice "Why?"), no zero (§16.2, MAJOR 5)', () => {
   const state = readyState({now: OCT9});
   const {html} = listHTML(state, selectFiltered(state));
-  assert.match(html, /<div class="feed-gap"><p class="feed-gap-line">No episode in this snapshot has evidence dated in the last 7 days\. That is a gap in this dataset, not a sign that no protests happened\.<\/p><p class="feed-gap-line">A search for newer reports on 2 Oct 2026/);
-  assert.match(html, /^<div class="feed-gap">.*?<h2 class="feed-group-title" id="feed-group-month">7 to 30 days ago/s);
+  assert.doesNotMatch(html, /feed-gap/, 'the stale state does not repeat E4/S7 above the list');
+  assert.match(html, /^<section class="feed-group" data-band="month" aria-labelledby="feed-group-month"><h2 class="feed-group-title" id="feed-group-month">7 to 30 days ago/);
   assert.doesNotMatch(html, /within 72 hours <span/);
   assert.doesNotMatch(html, /feed-group-note--end/);
   assert.doesNotMatch(html, /\(0\)/);
+  assert.deepEqual(noticeModel(state).lines.find(l => l.kind === 'snapshot').why, [E4_WEEK, S7_OCT2]);
   const week = readyState({now: T('2026-10-06T00:00:00Z')});
-  assert.match(listHTML(week, selectFiltered(week)).html, /No episode in this snapshot has evidence dated within the last 72 hours\./);
+  assert.doesNotMatch(listHTML(week, selectFiltered(week)).html, /feed-gap/);
+  assert.deepEqual(noticeModel(week).lines.find(l => l.kind === 'snapshot').why, [E4_FRESH, S7_OCT2]);
+  assert.deepEqual(noticeModel(readyState({now: T('2026-11-05T12:00:00Z')})).lines.find(l => l.kind === 'snapshot').why, [E4_WEEK, S7_OCT2]);
+  assert.equal(noticeModel(readyState()).lines.find(l => l.kind === 'snapshot'), undefined, 'no line and no Why? while current');
+  // The "Last 7 days" chip in the stale state: E1 is the first thing in the list, so its explanation is in view.
   const chip = withFilters({window: '7'}, {now: OCT9});
-  assert.match(listHTML(chip, selectFiltered(chip)).html, /No published episode matches these filters\./);
+  assert.match(listHTML(chip, selectFiltered(chip)).html, /^<div class="empty-state feed-empty"><h2 class="feed-empty-title">No published episode matches these filters\.<\/h2><p>That describes this atlas, not the world\./);
+  // A gap the notice cannot describe (no valid newest-evidence date) still gets its .feed-gap.
+  const future = {...events, events: events.events.map(e => ({...e, last_observed_at: '2027-01-01'}))};
+  const odd = readyState({data: {...readyState().data, events: future}});
+  assert.equal(noticeModel(odd).lines.find(l => l.kind === 'snapshot'), undefined);
+  assert.match(listHTML(odd, selectFiltered(odd)).html, new RegExp(`^<div class="feed-gap"><p class="feed-gap-line">${E4_WEEK.replace(/\./g, '\\.')}`));
 });
 
 test('quick chips carry no counts (C-10)', () => {
@@ -924,6 +944,12 @@ function miniDOM() {
     get siblings() { return this.parent ? this.parent.children : []; }
     get previousElementSibling() { const i = this.siblings.indexOf(this); return i > 0 ? this.siblings[i - 1] : null; }
     append(...nodes) { for (const n of nodes) { n.remove(); n.parent = this; this.children.push(n); } }
+    insertAdjacentHTML(position, html) {
+      assert.equal(position, 'beforeend');
+      const holder = new Node('DIV');
+      holder.innerHTML = html;
+      for (const child of [...holder.children]) this.append(child);
+    }
     prepend(node) { node.remove(); node.parent = this; this.children.unshift(node); }
     after(node) { node.remove(); node.parent = this.parent; this.siblings.splice(this.siblings.indexOf(this) + 1, 0, node); }
     remove() { if (this.parent) this.parent.children.splice(this.parent.children.indexOf(this), 1); this.parent = null; }
@@ -962,6 +988,9 @@ test('mountNotice patches in place: the pilot line and "What this means" are nev
     const span = line.querySelector('.notice-line-text');
     assert.equal(span.textContent, 'No evidence newer than 2 Oct 2026 (3 days ago) is in this snapshot. More recent protests are missing.');
     assert.equal(span.querySelector('.notice-date').textContent, '2 Oct 2026', 'the date sits in a nowrap span');
+    const why = line.querySelector('.notice-why');
+    assert.ok(line.querySelector('.notice-why-btn'), 'the warn line ends with "Why?"');
+    assert.equal(why.textContent, E4_FRESH + S7_OCT2, 'E4 and S7 sit behind "Why?" (MAJOR 5)');
     const writes = span.writes;
     notice.render(readyState({now: T('2026-10-05T06:00:00Z')}));   // same text: no write
     assert.equal(span.writes, writes);
@@ -972,6 +1001,8 @@ test('mountNotice patches in place: the pilot line and "What this means" are nev
     notice.render(readyState({now: T('2026-10-09T12:00:00Z'), ui: {...readyState().ui, droppedParams: ['status']}}));
     assert.equal(dom.root.querySelector('.notice-line[data-kind="snapshot"]'), line, 'S4 → S5 reuses the node');
     assert.match(span.textContent, /^This snapshot has nothing newer than/);
+    assert.equal(line.querySelector('.notice-why'), why, 'the Why? panel is patched, not replaced');
+    assert.equal(why.textContent, E4_WEEK + S7_OCT2);
     assert.ok(dom.root.querySelector('.notice-line[data-kind="dropped"]'));
     assert.equal(dom.root.querySelector('.notice-pilot'), pilot);
     assert.equal(dom.root.querySelector('.notice-more'), more);
@@ -984,6 +1015,169 @@ test('mountNotice patches in place: the pilot line and "What this means" are nev
   } finally {
     globalThis.document = saved;
   }
+});
+
+// ------------------------------------------------------------------- partial failure: contexts (MAJOR 12)
+
+/** Reported state after event-context.json failed: records loaded, contexts null, errors.contexts set. */
+const contextsDown = (filters = {}, over = {}) => readyState({filters: {...EMPTY, ...filters},
+  data: {...readyState().data, contexts: null}, load: {...readyState().load, errors: {build: 'absent', contexts: 'error'}}, ...over});
+
+test('contexts failure: city and outcome filters are paused, never matched against missing context (MAJOR 12)', () => {
+  assert.equal(contextsPaused(contextsDown()), true);
+  assert.equal(contextsPaused(readyState()), false);
+  assert.equal(contextsPaused(contextsDown({}, {mode: 'example'})), false, 'example mode has no contexts to miss');
+  const all = events.events.length;
+  for (const outcome of ['documented', 'not-established']) {
+    assert.equal(selectFiltered(contextsDown({outcome})).length, all, `outcome=${outcome} is paused, not applied`);
+  }
+  assert.equal(selectFiltered(contextsDown({country: 'FR', city: 'FR:Paris'})).length, events.events.filter(e => e.country === 'FR').length);
+  // With contexts loaded the same filters apply.
+  assert.ok(selectFiltered(withFilters({outcome: 'documented'})).length < all);
+  const empty = contextsDown({outcome: 'documented'});
+  assert.doesNotMatch(listHTML(empty, selectFiltered(empty)).html, /No published episode matches these filters/);
+});
+
+test('contexts failure: a notice line, paused chips in the sheet note, and "not loaded" CSV columns (MAJOR 12)', () => {
+  const model = noticeModel(contextsDown());
+  assert.deepEqual(model.lines.map(l => l.kind), ['pilot', 'contexts-error']);
+  assert.equal(model.lines[1].text, CONTEXTS_ERROR);
+  assert.match(CONTEXTS_ERROR, /unknown here, not absent/);
+  assert.equal(model.tone, 'warn');
+  const tz = events.events.find(e => e.id === 'tz-drivers-20260929');
+  const csv = csvForEvents([tz], null).split('\r\n')[1];
+  assert.equal((csv.match(new RegExp(`"${CSV_NOT_LOADED}"`, 'g')) ?? []).length, 4, 'cities, completion_basis, what_changed, whose_favour');
+  assert.doesNotMatch(csv, /End not established/);
+  const loaded = csvForEvents([tz], contexts).split('\r\n')[1];
+  assert.doesNotMatch(loaded, /not loaded/);
+  assert.ok(exportAllowed(contextsDown()).ok, 'records still export; the context columns say they did not load');
+});
+
+test('actions.retryContexts loads only event-context.json, then the paused filters apply (MAJOR 12)', async () => {
+  const routes = realRoutes();
+  const {store, actions} = harness(contextsDown({outcome: 'documented'}), {routes});
+  const before = selectFiltered(store.get()).length;
+  assert.equal(await actions.retryContexts(), true);
+  const state = store.get();
+  assert.equal(state.data.contexts, contexts);
+  assert.equal(state.load.errors.contexts, undefined);
+  assert.equal(state.load.errors.build, 'absent', 'other file states are untouched');
+  assert.ok(selectFiltered(state).length < before);
+  const failing = harness(contextsDown(), {routes: {...realRoutes(), [CRITICAL.contexts]: {status: 500}}});
+  assert.equal(await failing.actions.retryContexts(), false);
+  assert.equal(failing.store.get().load.errors.contexts, 'error');
+  assert.equal(failing.store.get().ui.feedback, FEEDBACK.contextsFailed);
+  assert.equal(await harness(readyState()).actions.retryContexts(), false, 'nothing to retry when contexts loaded');
+  await assert.rejects(loadFile('nope', {fetchImpl: fakeFetch({})}), e => e instanceof DataError && e.kind === 'absent');
+});
+
+test('share sheet title carries the view filters or the record title (MINOR 15)', async () => {
+  assert.equal(shareTitle(readyState()), 'Protest Atlas');
+  assert.equal(shareTitle(withFilters({country: 'TZ', window: '30', status: 'ended'})), 'Protest Atlas · Tanzania · Last 30 days · Ended / suspended');
+  const rec = readyState({route: {view: 'latest', param: null, record: 'tz-drivers-20260929'}});
+  assert.equal(shareTitle(rec, 'record'), `${events.events.find(e => e.id === 'tz-drivers-20260929').title} — Protest Atlas`);
+  let shared = null;
+  const {actions} = harness(withFilters({country: 'FR'}), {platform: {canShare: () => true, share: async data => { shared = data; }}});
+  assert.equal(await actions.share('view'), 'shared');
+  assert.deepEqual(shared, {url: 'https://example.org/protest-atlas/?country=FR', title: 'Protest Atlas · France'});
+});
+
+// --------------------------------------------------------------- country findability and names (MAJOR 8, 9)
+
+test('Reports search matches common country names and aliases; labels use short names (MAJOR 8, 9)', () => {
+  const ids = query => selectFiltered(withFilters({query})).map(e => e.id);
+  for (const [query, country] of [['South Korea', 'KR'], ['Korea', 'KR'], ['UK', 'GB'], ['Britain', 'GB'], ['USA', 'US'], ['United States', 'US'],
+    ['Iran', 'IR'], ['Tanzania', 'TZ'], ['Taiwan', 'TW'], ['Venezuela', 'VE']]) {
+    const hit = events.events.filter(e => e.country === country).map(e => e.id);
+    if (!hit.length) continue;
+    for (const id of hit) assert.ok(ids(query).includes(id), `${query} finds ${id}`);
+  }
+  assert.equal(dateLabel('2026-09-30'), '30 Sep 2026', 'dateLabel reads "Sep" through absoluteLabel (I-01)');
+  assert.equal(dateLabel('2026-09-30T23:10:00Z'), '30 Sep 2026');
+  assert.equal(dateLabel(''), 'Not established');
+  assert.equal(dateLabel('soon'), 'Not established');
+  const namer = countryNamer(countries);
+  assert.equal(namer('TZ'), 'Tanzania');
+  assert.equal(namer('KR'), 'South Korea');
+  assert.equal(namer('FR'), 'France');
+  assert.equal(displayCountryName('GB', 'United Kingdom of Great Britain and Northern Ireland'), 'United Kingdom');
+  // countries.json failed (data.countries is [] or absent): codes only, as the countries-error notice says (C-37).
+  for (const missing of [null, undefined, []]) {
+    assert.equal(countryNamer(missing)('TZ'), 'TZ');
+    assert.equal(countryNamer(missing)('FR'), 'FR');
+  }
+  const tzCity = cityOptions(events.events, indexContexts(contexts), 'TZ')[0];
+  if (tzCity) assert.match(tzCity.label, / · Tanzania$/);
+  assert.equal(SHAPES.countries([{code: 'FR'}]), false, 'a directory row without a name is a countries error (MINOR 23)');
+});
+
+// --------------------------------------------------------------------- invariants on public/*.json (MAJOR 13)
+// These hold for any valid snapshot: adding one valid record and its context must not fail them.
+
+const liveState = (over = {}) => readyState({data: {...readyState().data, events: liveEvents, countries: liveCountries, contexts: liveContexts, upcoming: liveUpcoming},
+  now: (() => { const t = Math.max(...liveEvents.events.map(e => Date.parse(e.last_observed_at)).filter(Number.isFinite)); return Math.max(t, Date.parse(liveEvents.generated_at)) + 15 * 60_000; })(), ...over});
+
+test('public data: scope numbers, sort order and grouping derive from the records', () => {
+  const state = liveState();
+  const list = liveEvents.events;
+  const codes = new Set(liveCountries.map(c => c.code));
+  const stats = datasetStats(liveEvents, liveCountries, state.now);
+  const newest = list.map(e => e.last_observed_at).filter(v => Number.isFinite(Date.parse(v))).sort((a, b) => Date.parse(b) - Date.parse(a))[0];
+  assert.deepEqual(stats, {
+    episodes: list.length,
+    countriesWithRecords: new Set(list.map(e => e.country).filter(c => codes.has(c))).size,
+    directoryTotal: liveCountries.length,
+    newestEvidence: newest,
+    fresh: list.filter(e => observationBand(e, state.now) === 'fresh').length,
+  });
+  const sorted = sortByObservation(list);
+  for (let i = 1; i < sorted.length; i += 1) {
+    const [a, b] = [Date.parse(sorted[i - 1].last_observed_at), Date.parse(sorted[i].last_observed_at)];
+    assert.ok(a > b || (a === b && list.indexOf(sorted[i - 1]) < list.indexOf(sorted[i])), `order at ${i}`);
+  }
+  const groups = groupByBand(sorted, state.now);
+  assert.equal(groups.reduce((n, g) => n + g.events.length, 0), list.length);
+  for (const g of groups) assert.ok(g.events.every(e => observationBand(e, state.now) === g.band) && g.events.length > 0);
+  assert.equal(statusOptions(state)[0].count, list.length);
+  assert.equal(selectFiltered(state).length, list.length);
+  assert.deepEqual(noticeModel(state).counts, {withRecords: stats.countriesWithRecords, total: stats.directoryTotal, gaps: stats.directoryTotal - stats.countriesWithRecords});
+  assert.equal(snapshotState(liveEvents, state.now), 'current');
+  assert.equal(chipModel(state).state, 'current');
+  assert.equal(summaryText(state, list.length, Math.min(PAGE_SIZE, list.length)), `Showing ${Math.min(PAGE_SIZE, list.length)} of ${list.length} published ${list.length === 1 ? 'record' : 'records'}`);
+  const {html} = listHTML(state, selectFiltered(state));
+  assert.equal((html.match(/class="feed-item"/g) ?? []).length, Math.min(PAGE_SIZE, list.length));
+});
+
+test('public data: the stale walkthrough holds a week after the newest evidence (§16.2, MAJOR 5)', () => {
+  const newestDay = Date.parse(datasetStats(liveEvents, liveCountries, Date.now()).newestEvidence.slice(0, 10));
+  const stale = liveState({now: newestDay + 7.5 * 86_400_000});
+  assert.equal(snapshotState(liveEvents, stale.now), 'stale');
+  const line = noticeModel(stale).lines.find(l => l.kind === 'snapshot');
+  assert.match(line.text, /^This snapshot has nothing newer than \d{1,2} [A-Z][a-z]{2} \d{4}, 7 days ago\./);
+  assert.equal(line.why[0], E4.week);
+  const {html} = listHTML(stale, selectFiltered(stale));
+  assert.doesNotMatch(html, /feed-gap|within 72 hours <span|\(0\)/);
+  assert.match(html, /^<section class="feed-group" data-band="month"/);
+  // sweepFact agrees with an independent parse of the notes.
+  const note = /A recent-activity search on (\d{1,2}) ([A-Z][a-z]{2}) (\d{4})/.exec(liveEvents.coverage_note ?? '');
+  const sweep = sweepFact({events: liveEvents, upcoming: liveUpcoming});
+  if (note) assert.equal(sweep.records.day, isoDay(Date.parse(`${note[1]} ${note[2]} ${note[3]} UTC`)));
+  else assert.equal(sweep.records, null);
+});
+
+test('public data: every record is findable by its country display name and the critical files load', async () => {
+  const state = liveState();
+  const namer = countryNamer(liveCountries);
+  for (const code of new Set(liveEvents.events.map(e => e.country))) {
+    const found = selectFiltered(liveState({filters: {...EMPTY, query: namer(code)}})).map(e => e.id);
+    for (const e of liveEvents.events.filter(x => x.country === code)) assert.ok(found.includes(e.id), `${namer(code)} finds ${e.id}`);
+  }
+  const live = await loadCritical({fetchImpl: fakeFetch({[CRITICAL.events]: {body: liveEvents}, [CRITICAL.countries]: {body: liveCountries},
+    [CRITICAL.contexts]: {body: liveContexts}, [CRITICAL.upcoming]: {body: liveUpcoming}, [CRITICAL.build]: {status: 404}})});
+  assert.equal(live.critical, 'ready');
+  assert.equal(live.data.events.events.length, liveEvents.events.length);
+  assert.equal(SHAPES.events(liveEvents) && SHAPES.countries(liveCountries) && SHAPES.contexts(liveContexts) && SHAPES.upcoming(liveUpcoming), true);
+  assert.ok(selectFiltered(state).length > 0);
 });
 
 // ----------------------------------------------------------------------------------------- hygiene

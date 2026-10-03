@@ -1,6 +1,7 @@
 // Search, quick chips, active chips and filter sheet controls (WP2). DOM-free when loaded.
 // Live apply, no draft state. #filters-body is built once per data or mode change, then patched in place (C-12).
-import {selectEvents, selectFiltered, statusOptions, activeFilterCount, availableYears, cityOptions, refinementOptions, indexContexts, countryNamer, STATUS_LABELS} from './model.js';
+import {selectEvents, selectFiltered, statusOptions, activeFilterCount, availableYears, cityOptions, refinementOptions, indexContexts, countryNamer,
+  displayCountryName, contextsPaused, STATUS_LABELS} from './model.js';
 import {esc, icon} from './html.js';
 
 export const QUICK_CHIPS = [{key: 'window', value: '7', label: 'Last 7 days'}, {key: 'window', value: '30', label: 'Last 30 days'},
@@ -9,7 +10,8 @@ export const QUICK_CHIPS = [{key: 'window', value: '7', label: 'Last 7 days'}, {
 const SEARCH_DEBOUNCE_MS = 120;
 const STATUS_ROWS = ['', 'ongoing', 'planned', 'needs-review', 'ended', 'unknown'];
 const WINDOWS = [{value: 'all', label: 'Any date'}, {value: '7', label: 'Last 7 days'}, {value: '30', label: 'Last 30 days'}];
-const CONTEXT_NOTE = 'City and outcome filters are unavailable because record context could not load.';
+const CONTEXT_NOTE = 'City and outcome filters are paused because record context could not load. They are not applied until it loads.';
+const PAUSED = ' (paused)';
 const checkIcon = cls => `<svg class="icon ${cls}" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>`;
 
 const cityName = value => String(value).split(':').slice(1).join(':');
@@ -20,6 +22,8 @@ const statusText = n => (n === 0 ? 'No records match' : n === 1 ? '1 record matc
 function activeChips(state) {
   const f = state.filters;
   const chips = [];
+  // MAJOR 12: kept, not applied.
+  const paused = contextsPaused(state) ? PAUSED : '';
   if (f.query) chips.push({key: 'query', label: `Search: ${f.query}`});
   if (f.country) chips.push({key: 'country', label: countryNamer(state.data.countries)(f.country)});
   if (f.region) chips.push({key: 'region', label: `Region: ${f.region}`});
@@ -27,14 +31,14 @@ function activeChips(state) {
   if (f.status) chips.push({key: 'status', label: `Status: ${STATUS_LABELS[f.status] ?? f.status}`});
   if (f.issue) chips.push({key: 'issue', label: `Issue: ${f.issue}`});
   if (f.year) chips.push({key: 'year', label: `Year: ${f.year}`});
-  if (f.city) chips.push({key: 'city', label: `City: ${cityName(f.city)}`});
-  if (f.outcome) chips.push({key: 'outcome', label: f.outcome === 'documented' ? 'Outcome documented' : 'Outcome not established'});
+  if (f.city) chips.push({key: 'city', label: `City: ${cityName(f.city)}${paused}`});
+  if (f.outcome) chips.push({key: 'outcome', label: `${f.outcome === 'documented' ? 'Outcome documented' : 'Outcome not established'}${paused}`});
   return chips;
 }
 
 function barHTML() {
   return `<div class="filter-search">
-  <label class="visually-hidden" for="query">Search published records</label>
+  <label class="visually-hidden" for="query">Search issues, places, actors in published records</label>
   <svg class="icon filter-search-icon" aria-hidden="true" focusable="false"><use href="#i-search"></use></svg>
   <input id="query" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" spellcheck="false" placeholder="Search issues, places, actors">
   <button type="button" class="icon-btn filter-clear" data-clear-filter="query" aria-label="Clear search" hidden>${icon('close')}</button>
@@ -48,13 +52,13 @@ ${QUICK_CHIPS.map(c => `<button type="button" class="chip quick-chip" data-set-f
 
 const option = (value, label) => `<option value="${esc(value)}">${esc(label)}</option>`;
 
-/** All countries and territories A–Z (or, after a directory failure, the countries present in the records). */
+/** Countries A–Z by display name (MAJOR 9); after a directory failure, those in the records. */
 function countryList(state, events) {
   const directory = state.data.countries ?? [];
   const list = directory.length
-    ? directory.map(c => ({code: c.code, name: c.name}))
-    : [...new Map(events.map(e => [e.country, {code: e.country, name: e.country_name || e.country}])).values()];
-  return list.sort((a, b) => a.name.localeCompare(b.name, 'en'));
+    ? directory.map(c => ({code: c.code, name: displayCountryName(c.code, c.name)}))
+    : [...new Map(events.map(e => [e.country, {code: e.country, name: displayCountryName(e.country, e.country_name)}])).values()];
+  return list.sort((a, b) => String(a.name ?? a.code).localeCompare(String(b.name ?? b.code), 'en'));
 }
 
 /**
@@ -103,7 +107,7 @@ ${STATUS_ROWS.map(s => `<label class="filter-row" data-status="${esc(s)}" hidden
 <div class="filter-field"><label for="outcome-filter">Outcome</label><select id="outcome-filter"${disabled}>${option('', 'Any')}${option('documented', 'Outcome documented')}${option('not-established', 'Outcome not established')}</select></div>
 <div class="filter-field"><label for="city-filter">City</label><select id="city-filter"${disabled}>${longOptions('city', state, events, contexts, full)}</select>
 <p class="filter-help">City points are approximate references, not protest sites.</p></div>
-${contextsFailed ? `<p class="filter-note" role="note">${esc(CONTEXT_NOTE)}</p>` : ''}</fieldset>
+${contextsFailed ? `<div class="filter-note" role="note"><p>${esc(CONTEXT_NOTE)}</p><button type="button" class="btn" data-action="retry-contexts">Retry</button></div>` : ''}</fieldset>
 <p class="filter-roadmap">Custom date ranges are a later item on the roadmap. <a href="#/ahead/roadmap" data-close-sheet>See Coming next</a></p>
 </form>`;
 }
@@ -115,10 +119,31 @@ ${contextsFailed ? `<p class="filter-note" role="note">${esc(CONTEXT_NOTE)}</p>`
 export function mountFilters(ctx) {
   const {store, actions} = ctx;
   const doc = globalThis.document;
+  const win = doc.defaultView ?? globalThis;
   const $ = id => doc.getElementById(id);
   const bar = $('filter-bar'), active = $('active-filters'), body = $('filters-body'), foot = $('filters-foot'), live = $('filters-status');
-  let bodyKey = null, cityKey = null, activeKey = null, timer = null, full = false;
+  let bodyKey = null, cityKey = null, activeKey = null, timer = null, full = false, countAtOpen = null;
   let input = null, clearBtn = null, countEl = null, footClear = null, footShow = null;
+  const coarse = () => Boolean(win.matchMedia?.('(pointer: coarse)').matches);
+  const reduced = () => Boolean(win.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+  const resultCount = () => {
+    const state = store.get();
+    const ready = state.mode === 'example' ? state.load.lazy.examples === 'ready' : Boolean(state.data.events) && !state.load.errors.events;
+    return ready ? selectFiltered(state).length : null;
+  };
+
+  // MAJOR 7: when #result-summary sits below mid-viewport (or after a search), scroll the filter bar to the header.
+  function reveal({force = false} = {}) {
+    const summary = $('result-summary');
+    if (!summary || !bar || !summary.getClientRects().length) return;
+    const top = summary.getBoundingClientRect().top;
+    const header = parseFloat(win.getComputedStyle?.(doc.documentElement).scrollPaddingTop) || 0;
+    if (!force && top <= win.innerHeight * 0.5) return;
+    const target = bar.getBoundingClientRect().top + win.scrollY - header;
+    if (Math.abs(target - win.scrollY) < 4 || (force && top >= header && top <= win.innerHeight * 0.5)) return;
+    win.scrollTo({top: Math.max(0, target), behavior: reduced() ? 'auto' : 'smooth'});
+  }
+  const revealAfterRender = options => win.requestAnimationFrame?.(() => win.requestAnimationFrame(() => reveal(options)));
 
   if (bar) {
     bar.innerHTML = barHTML();
@@ -135,7 +160,13 @@ export function mountFilters(ctx) {
       clearTimeout(timer);
       timer = setTimeout(commit, SEARCH_DEBOUNCE_MS);
     });
-    input.addEventListener('keydown', event => { if (event.key === 'Enter') commit(); });
+    // Enter commits, closes a touch keyboard and brings the results up (MAJOR 7).
+    input.addEventListener('keydown', event => {
+      if (event.key !== 'Enter' || event.isComposing) return;
+      commit();
+      if (coarse()) input.blur();
+      revealAfterRender({force: true});
+    });
     input.addEventListener('search', commit);
     // The clear button hides itself once the query is empty, so focus moves to the field first (WCAG 2.4.3).
     // app.js's delegated data-clear-filter handler then clears the filter.
@@ -154,7 +185,9 @@ export function mountFilters(ctx) {
     const key = chip.dataset.setFilter;
     const value = chip.dataset.value ?? '';
     const current = store.get().filters[key];
+    const before = resultCount();
     actions.setFilter(key, current === value ? (key === 'window' ? 'all' : '') : value);
+    if (bar?.contains(chip) && resultCount() !== before) revealAfterRender();
   };
   bar?.addEventListener('click', toggle);
   body?.addEventListener('click', toggle);
@@ -178,6 +211,7 @@ export function mountFilters(ctx) {
     footShow.className = 'btn btn--primary filter-foot-show';
     footShow.setAttribute('data-close-sheet', '');
     footShow.textContent = 'Close';
+    footShow.addEventListener('click', () => { if (countAtOpen !== null && resultCount() !== countAtOpen) revealAfterRender(); });
     const anchor = live && live.parentElement === foot ? live : null;
     foot.insertBefore(footClear, anchor);
     foot.insertBefore(footShow, anchor);
@@ -277,7 +311,7 @@ export function mountFilters(ctx) {
     }
     cityKey = [state.filters.country, true];
   }
-  $('filters-sheet')?.addEventListener('sheet:open', fillLongSelects);
+  $('filters-sheet')?.addEventListener('sheet:open', () => { countAtOpen = resultCount(); fillLongSelects(); });
 
   function patchFoot(state) {
     if (!footShow) return;

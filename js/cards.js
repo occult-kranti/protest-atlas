@@ -1,5 +1,5 @@
-// Record cards (WP3; SPEC §7, C-11, C-51). DOM-free. Both densities carry C1–C8.
-import {positionList, positionLineHTML, morePositions, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView,
+// Record cards (WP3; SPEC §7, C-11, C-51). DOM-free. Cards carry C1–C9; List is a scan row with status, C1, C4 targets and C8.
+import {positionList, positionLineHTML, morePositions, intensityFacets, intensitySummary, stateActionSummary, timeframe, evidenceLine, placeView,
   EXAMPLE_WATERMARK} from './record-facts.js';
 import {esc, sourceLinkKept, timeTag, bandTag, dateTag} from './html.js';
 import {getDisplayStatus, statusLabel} from './model.js';
@@ -34,12 +34,23 @@ function sidesHTML(event) {
     + (more ? `<p class="card-more">${more}</p>` : '');
 }
 
-/** C6: one line when nothing is described, else three fixed rows, verbatim. */
+/** C6: the one-line forms when two or more facets are not established, else three fixed rows; verbatim. */
 function intensityHTML(event) {
   const summary = intensitySummary(event);
   if (summary.allUnknown) return `<p class="facet-none">${esc(summary.line)}</p>`;
-  return `<ul class="facet-list">${summary.items.map(item =>
-    `<li class="facet-item"><span class="facet-name">${esc(item.label)}:</span> ${esc(item.text)}</li>`).join('')}</ul>`;
+  const facet = item => `<span class="facet-name">${esc(item.label)}:</span> ${esc(item.text)}`;
+  const unknown = intensityFacets(event).filter(f => !f.known).length;
+  if (unknown >= 2) return `<p class="facet-line">${summary.items.map(facet).join(SEP)}</p>`;
+  return `<ul class="facet-list">${summary.items.map(item => `<li class="facet-item">${facet(item)}</li>`).join('')}</ul>`;
+}
+
+/** List stance line: "{pill}: {target}" per position, recorded order, never grouped or counted; two, then C10. */
+function stanceLineHTML(event) {
+  const positions = positionList(event);
+  if (!positions.length) return '<p class="card-row-sides card-sides-none">No position is recorded in this record.</p>';
+  const more = morePositions(positions.length - 2);
+  return `<p class="card-row-sides">${positions.slice(0, 2).map(p => `<span class="card-row-side"><span class="card-row-stance">${esc(p.pill)}:</span> `
+    + `<span class="side-target">${esc(p.target)}</span></span>`).join(SEP)}${more ? `${SEP}<span class="card-more">${more}</span>` : ''}</p>`;
 }
 
 /** C7, verbatim. */
@@ -55,7 +66,7 @@ function evidenceHTML(event) {
   const line = evidenceLine(event);
   const published = line.published ? `published ${dateTag(line.published)}` : 'publication date not given';
   return `<p class="card-evidence">${line.publisher ? `${sourceLinkKept(line.source, line.publisher)}${SEP}` : ''}${published}${SEP}`
-    + `<span class="card-level">${esc(line.levelLabel)}</span>${SEP}<span class="card-links">${esc(line.linkLabel)}</span>${SEP}AI-assisted check</p>`;
+    + `<span class="card-level">${esc(line.levelLabel)}</span>${SEP}<span class="card-links">${esc(line.linkLabel)}</span>${SEP}${esc(line.checkLabel)}</p>`;
 }
 
 /** C9: the only element that may be clamped. */
@@ -78,21 +89,23 @@ export function renderCard(event, {context = null, mode = 'reported', now = Date
   const title = `<h3 class="card-title"><a class="card-link" href="#/record/${id}" data-open-record="${id}">${esc(event?.title)}</a></h3>`;
   const statusLine = `<p class="card-status">${statusHTML(status, event)}</p>`;
   const frame = body => `<article class="card" data-id="${id}" data-status="${esc(status)}" data-band="${esc(band)}"${ended} data-density="${row ? 'row' : 'card'}">${watermark}${body}</article>`;
-  const timing = timeframe(event, context, now);
 
   if (row) {
+    // MAJOR 6 scan row: status · evidence date · country, title, stance line, C8. Other facts are in the sheet.
+    // ST1 already reads "Reported ongoing · evidence dated {day}", so the row does not repeat that date.
+    const place = placeView(event, countryName);
+    const dated = status === 'ongoing' && statusLabel(status, event) !== statusLabel(status);
     return frame([
-      `<div class="card-meta">${statusLine}${whenHTML(event, now, band)}</div>`,
-      placeHTML(event, countryName),
+      `<p class="card-meta">${statusHTML(status, event)}`
+        + `${dated ? '' : `${SEP}<span class="card-row-when">Latest evidence ${dateTag(event?.last_observed_at)}</span>`}`
+        + `${place.country ? `${SEP}<strong class="card-row-country">${esc(place.country)}</strong>` : ''}</p>`,
       title,
-      issuesHTML(event),
-      sidesHTML(event),
-      `<p class="card-row-facts"><span class="card-row-label">Timeframe:</span> ${esc(timing.line)}${SEP}<span class="card-row-label">Intensity:</span> ${esc(intensitySummary(event).line)}</p>`,
-      `<p class="card-row-state"><span class="card-row-label">Police / state:</span> ${stateHTML(event)}</p>`,
+      stanceLineHTML(event),
       evidenceHTML(event),
     ].join(''));
   }
 
+  const timing = timeframe(event, context, now);
   return frame([
     statusLine,
     placeHTML(event, countryName),

@@ -1,5 +1,5 @@
 import {esc, plural, timeTag} from './html.js';
-import {getDisplayStatus, statusLabel, STATUS_LABELS} from './model.js';
+import {getDisplayStatus, statusLabel, STATUS_LABELS, displayCountryName} from './model.js';
 import {absoluteLabel, toTime} from '../freshness.js';
 import {contextFor} from '../history.js';
 
@@ -28,7 +28,7 @@ const directory = countries => new Map(list(countries).filter(c => c?.code).map(
 const results = n => (n === null ? 'results not recorded' : n ? plural(n, 'result') : 'no results');
 const button = (attrs, text, cls = 'btn') => `<button type="button" class="${cls}" ${attrs}>${esc(text)}</button>`;
 const actions = (...buttons) => `<div class="brief-actions">${buttons.join('')}</div>`;
-const lead = text => `<p class="brief-lead" role="status">${esc(text)}</p>`;
+const lead = (text, prefix = '') => `<p class="brief-lead" role="status">${prefix ? `<span class="visually-hidden">${esc(prefix)}: </span>` : ''}${esc(text)}</p>`;
 const WATERMARK = `<p class="brief-watermark">${esc(BRIEF_COPY.watermark)}</p>`;
 const BACK_TO_DATA = button('data-set-mode="reported"', 'Back to reported data');
 const RETRY_EXAMPLE = button('data-retry="examples"', 'Retry example');
@@ -42,7 +42,7 @@ export function overviewModel({mapEvents = [], countries = [], mode = 'reported'
   const events = list(mapEvents), names = directory(countries), latest = new Map();
   for (const e of newestFirst(events)) if (/^[A-Z]{2}$/.test(e?.country ?? '') && !latest.has(e.country)) latest.set(e.country, e.last_observed_at ?? null);
   return {count: events.length, countryCount: latest.size, directoryTotal: names.size, status, filtered: !!filtered, mode: mode === 'example' ? 'example' : 'reported',
-    recent: [...latest].slice(0, RECENT_LIMIT).map(([code, lastObserved]) => ({code, name: names.get(code)?.name || code, lastObserved}))};
+    recent: [...latest].slice(0, RECENT_LIMIT).map(([code, lastObserved]) => ({code, name: displayCountryName(code, names.get(code)?.name) || code, lastObserved}))};
 }
 
 export function renderOverview(model, {now} = {}) {
@@ -76,7 +76,8 @@ export function briefModel({code, mapEvents = [], allEvents = [], countries = []
   if (state === 'records' && !isExample) {
     for (const e of matching) for (const {name} of contextFor(contexts, e.id)?.cities ?? []) if (name) cities.set(`${code}:${name}`, name);
   }
-  return {code, name: country?.name || code, region: country?.region || '', mode: isExample ? 'example' : 'reported', state, filtered: !!filtered,
+  const isoName = country?.isoName || country?.name || code;   // map-view passes display names with isoName kept
+  return {code, name: displayCountryName(code, country?.name) || code, isoName, region: country?.region || '', mode: isExample ? 'example' : 'reported', state, filtered: !!filtered,
     matching: state === 'records' ? matching : [], publishedCount, hasEnded: state === 'records' && matching.some(e => e.status === 'ended'),
     cities: [...cities].map(([value, name]) => ({value, name})),
     ledger: {
@@ -103,7 +104,8 @@ export function renderBrief(m, {now, hasPolygon = true, lazy = {}, selectedCity 
   if (!m?.code) return '';
   const back = button('data-clear-filter="country"', 'Back to world', 'btn btn--quiet');
   const retry = (name, cls) => button(`data-retry="${name}"`, 'Retry', cls);
-  let html = `<p class="brief-eyebrow">Country brief${m.region ? ` · ${esc(m.region)}` : ''}</p><h2 id="country-panel-title" class="brief-title" tabindex="-1">${esc(m.name)}</h2>`;
+  let html = `<p class="brief-eyebrow">Country brief${m.region ? ` · ${esc(m.region)}` : ''}</p><h2 id="country-panel-title" class="brief-title" tabindex="-1">${esc(m.name)}</h2>`
+    + (m.isoName && m.isoName !== m.name ? `<p class="brief-iso">ISO name: ${esc(m.isoName)}</p>` : '');
   if (m.state === 'error') return html + lead(BRIEF_COPY.eventsError) + actions(button('data-action="retry-data"', 'Retry'), back);
   if (m.state === 'loading') return html + lead(BRIEF_COPY.loading) + actions(back);
   const records = m.state !== 'records' ? '' : '<h3 class="brief-subtitle">Records</h3><ul class="brief-records">' + m.matching.map(e => {
@@ -120,7 +122,7 @@ export function renderBrief(m, {now, hasPolygon = true, lazy = {}, selectedCity 
   }
 
   const research = lazy?.research ?? 'idle', {ledger: l} = m, retryInLead = !l.screen && research === 'error';
-  if (m.state === 'records') html += lead(countSentence(m.matching.length, m.filtered, m.hasEnded));
+  if (m.state === 'records') html += lead(countSentence(m.matching.length, m.filtered, m.hasEnded), m.name);
   else if (m.state === 'filtered-out') {
     html += lead(`${m.name} has ${plural(m.publishedCount, 'published episode')}, but none match your current filters.`)
       + actions(button('data-action="clear-except-country"', `Show all for ${m.name}`));

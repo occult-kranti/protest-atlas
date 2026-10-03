@@ -8,23 +8,31 @@ import {
   intensityFacets, intensitySummary, timeframe, evidenceLine, primarySource,
 } from '../js/record-facts.js';
 import {renderCard, renderCardSkeleton} from '../js/cards.js';
-import {RECORD_SECTIONS, renderRecord, patchRecordStatus, mountRecordChrome} from '../js/detail.js';
+import {RECORD_SECTIONS, CONTEXT_UNAVAILABLE, ILLUSTRATIVE_OUTCOME, renderRecord, patchRecordStatus, mountRecordChrome} from '../js/detail.js';
+import {countryNamer} from '../js/model.js';
 import {outcomeHTML, contextFor} from '../history.js';
 import * as history from '../history.js';
 import {bandTag} from '../js/html.js';
 import {BAND_BADGES, BAND_LABELS} from '../freshness.js';
 
-const load = async name => JSON.parse(await readFile(new URL(`../public/${name}`, import.meta.url)));
+// Literal expectations (ids, counts, dates, worked cases) read the frozen 2 Oct copies; the loops marked "every
+// record" also run over public/*.json, where they check invariants only, so a data refresh cannot fail them (MAJOR 13).
+const load = async (name, dir = 'tests/fixtures/snapshot-20261002') => JSON.parse(await readFile(new URL(`../${dir}/${name}`, import.meta.url)));
 const envelope = await load('events.json');
 const contexts = await load('event-context.json');
 const examples = await load('examples.json');
 const countries = await load('countries.json');
+const liveEnvelope = await load('events.json', 'public');
+const liveContexts = await load('event-context.json', 'public');
 const events = envelope.events;
+const liveEvents = liveEnvelope.events;
 const SNAPSHOT_2_OCT = envelope.generated_at === '2026-10-02T22:45:35Z';
 const NOW = Date.parse('2026-10-02T23:00:00Z');
 const NINE_OCT = Date.parse('2026-10-09T12:00:00Z');
-const names = new Map(countries.map(c => [c.code, c.name]));
-const countryName = code => names.get(code) ?? code;
+// The app's namer: short common names (MAJOR 9), the countries.json name otherwise.
+const countryName = countryNamer(countries);
+const liveNow = Math.max(...liveEvents.map(e => Date.parse(e.last_observed_at)).filter(Number.isFinite)) + 3_600_000;
+const liveCtx = event => contextFor(liveContexts, event.id) ?? null;
 const byId = prefix => {
   const event = events.find(e => e.id.startsWith(prefix));
   assert.ok(event, `fixture ${prefix} exists`);
@@ -152,7 +160,9 @@ test('intensitySummary: the C6 single line for exactly the computed set (33 in t
   const computed = events.filter(allUndescribed).map(e => e.id);
   const summarised = events.filter(e => intensitySummary(e).allUnknown).map(e => e.id);
   assert.deepEqual(summarised, computed);
-  if (SNAPSHOT_2_OCT) assert.equal(computed.length, 33);
+  assert.ok(SNAPSHOT_2_OCT, 'the fixture is the 2 Oct snapshot');
+  assert.equal(computed.length, 33);
+  assert.deepEqual(liveEvents.filter(e => intensitySummary(e).allUnknown).map(e => e.id), liveEvents.filter(allUndescribed).map(e => e.id), 'public data');
   assert.equal(intensitySummary(byId('kr-yoon')).line, 'Turnout, disruption and violence: not established in this record.');
   assert.equal(intensitySummary(byId('tz-drivers')).line,
     'Turnout: not established · Disruption: Passenger and freight transport halted, leaving travelers stranded. · Violence or harm: not established');
@@ -164,7 +174,8 @@ test('stateActionSummary: verbatim "{action} — {attribution}"; none is "Not es
   assert.equal(stateActionSummary(byId('tz-drivers')).text, "Government suspended points system and opened a review — The Chanzo's reporting");
   const none = events.filter(e => !stateActionSummary(e).present);
   assert.equal(none.length, events.filter(e => !e.state_response.length).length);
-  if (SNAPSHOT_2_OCT) assert.equal(none.length, 47);
+  assert.equal(none.length, 47);
+  assert.equal(liveEvents.filter(e => !stateActionSummary(e).present).length, liveEvents.filter(e => !e.state_response.length).length, 'public data');
 });
 
 test('timeframe: every editorial §8 template; unknown onset stays visible; never "Since"', () => {
@@ -218,11 +229,18 @@ test('worked cases read correctly on cards, in both densities (smoke 15)', () =>
       'Disruption: Disruption beyond the reported march not established.'],
     'as-noaa': ['Disruption: Peaceful confrontation and radio exchange; operational disruption not established.'],
   };
+  // List density names every target with its own stance, in recorded order, one entry per position (no grouping).
+  const rows = {
+    'kr-yoon': 'Against: Yoon’s presidency · Against: Yoon’s removal',
+    'ng-pengassan': 'For: Union rights and reinstatement · For: Company reorganisation',
+    'nz-wellington-treaty': 'Against: Treaty Principles Bill · For: Treaty Principles Bill',
+    'es-housing-2026': 'For: Tenant protection · Against: Proposed housing decrees',
+    'as-noaa': 'Against: Research potentially facilitating commercial seabed mining · For: Ocean-science research mission',
+  };
   for (const [prefix, expected] of Object.entries(lines)) {
-    for (const density of ['card', 'row']) {
-      const t = text(card(byId(prefix), {density}));
-      for (const line of expected) assert.ok(t.includes(line), `${prefix} (${density}) contains "${line}"`);
-    }
+    const t = text(card(byId(prefix)));
+    for (const line of expected) assert.ok(t.includes(line), `${prefix} (card) contains "${line}"`);
+    assert.equal(textOf(card(byId(prefix), {density: 'row'}), 'card-row-sides'), rows[prefix], `${prefix} (row)`);
   }
   const nzRecord = text(record(byId('nz-wellington-treaty')));
   assert.ok(nzRecord.includes("Each line is one actor's position toward a named target, as reported in the cited source."), 'D4-sub in the detail');
@@ -236,7 +254,7 @@ test('card anatomy: status leads the band, dated (smoke 16); facts rows; no chev
   assert.equal(textOf(html, 'band-text'), 'Within 72 h');
   assert.ok(text(html).includes('Timeframe 29 Sep – 30 Sep 2026 (2 days) · ended / suspended'));
   assert.ok(html.includes('<a class="card-link" href="#/record/tz-drivers-20260929" data-open-record="tz-drivers-20260929">'));
-  assert.equal(textOf(html, 'card-place'), 'Tanzania, United Republic of · Dar es Salaam and other cities');
+  assert.equal(textOf(html, 'card-place'), 'Tanzania · Dar es Salaam and other cities', 'short display name (MAJOR 9)');
   assert.ok(html.includes('<p class="card-outcome">'), 'C9 teaser when the outcome is documented');
   assert.ok(!/chevron|›/.test(html));
   const order = ['card-status', 'card-place', 'card-title', 'card-when', 'card-issues', 'card-facts', 'card-outcome', 'card-evidence'];
@@ -248,34 +266,69 @@ test('card anatomy: status leads the band, dated (smoke 16); facts rows; no chev
   assert.equal(textOf(card(byId('tz-drivers'), {countryName: c => c}), 'card-place'), 'TZ · Dar es Salaam and other cities', 'countries failure shows the code');
 });
 
-test('List density keeps C1–C8 (C-51) and drops only the outcome teaser', () => {
+test('List density is a scan row: status and latest evidence, country, title, one stance line, the C8 row (MAJOR 6)', () => {
   const html = card(byId('tz-drivers'), {density: 'row'});
   assert.ok(html.includes('data-density="row"'));
-  assert.ok(!html.includes('card-outcome'));
-  assert.ok(html.indexOf('class="status"') < html.indexOf('class="band"'));
-  assert.equal(textOf(html, 'card-row-state'), "Police / state: Government suspended points system and opened a review — The Chanzo's reporting");
-  assert.ok(text(html).includes('Timeframe: 29 Sep – 30 Sep 2026 (2 days) · ended / suspended · Intensity: Turnout: not established'));
+  assert.equal(textOf(html, 'card-meta'), 'Ended / suspended 30 Sep 2026 · Latest evidence 1 Oct 2026 · Tanzania');
+  assert.ok(html.indexOf('class="status"') < html.indexOf('class="card-row-when"'), 'status leads');
+  assert.equal(textOf(html, 'card-row-sides'), 'Against: 15-point licence system');
+  // 'Reported ongoing' already carries the evidence date in ST1, so the row does not repeat it.
+  const ongoing = card({...byId('es-housing-2026'), status: 'ongoing'}, {density: 'row'});
+  assert.equal(textOf(ongoing, 'card-meta'), 'Reported ongoing · evidence dated 2 Oct 2026 · Spain');
+  assert.ok(!ongoing.includes('card-row-when'));
+  const order = ['card-meta', 'card-title', 'card-row-sides', 'card-evidence'].map(cls => html.indexOf(`class="${cls}"`));
+  assert.deepEqual([...order].sort((a, b) => a - b), order);
+  assert.ok(order.every(i => i > 0));
+  for (const gone of ['card-outcome', 'card-issues', 'card-facts', 'card-row-facts', 'card-row-state']) assert.ok(!html.includes(gone), gone);
+  assert.match(text(html), /Daily News \(opens in a new tab\) · published 30 Sep 2026 · Corroborated · 2 links · AI-assisted check/);
+  const three = {...byId('tz-drivers'), positions: [1, 2, 3].map(n => ({actor: `A${n}`, stance: 'oppose', target: `T${n}`, source_ids: []}))};
+  assert.equal(textOf(card(three, {density: 'row'}), 'card-row-sides'), 'Against: T1 · Against: T2 · +1 more position recorded');
+  assert.equal(textOf(card({...byId('tz-drivers'), positions: [{stance: 'support'}]}, {density: 'row'}), 'card-row-sides'), 'For: target not established');
+  assert.ok(text(card({...byId('tz-drivers'), positions: []}, {density: 'row'})).includes('No position is recorded in this record.'));
 });
 
-test('every real card, both densities: evidence row, issues, timeframe and intensity lines (editorial check 10)', () => {
-  for (const event of events) {
+test('Cards collapse Intensity to the C6 line when two or more facets are not established (MAJOR 6)', () => {
+  const tz = card(byId('tz-drivers'));
+  assert.equal(textOf(tz, 'facet-line'), 'Turnout: not established · Disruption: Passenger and freight transport halted, leaving travelers stranded. · Violence or harm: not established');
+  assert.ok(!tz.includes('class="facet-list"'));
+  for (const event of [...events, ...liveEvents]) {
+    const unknown = intensityFacets(event).filter(f => !f.known).length;
+    const html = card(event, {now: liveNow});
+    assert.equal(html.includes('class="facet-none"'), unknown === 3, event.id);
+    assert.equal(html.includes('class="facet-line"'), unknown === 2, event.id);
+    assert.equal(html.includes('class="facet-list"'), unknown < 2, event.id);
+  }
+});
+
+test('every real card (2 Oct copy and public data), both densities: evidence row; cards carry issues, timeframe and intensity (editorial check 10)', () => {
+  for (const [event, context, now] of [...events.map(e => [e, ctx(e), NOW]), ...liveEvents.map(e => [e, liveCtx(e), liveNow])]) {
     for (const density of ['card', 'row']) {
-      const html = card(event, {density});
+      const html = renderCard(event, {context, now, countryName, density});
       const t = text(html);
       const label = `${event.id} (${density})`;
       assert.match(html, /<p class="card-evidence"><a class="source-link" href="https:[^"]+" target="_blank" rel="noopener noreferrer">/, label);
       assert.match(html, /<span class="source-nowrap">[^<\s]+<svg class="icon"/, `${label}: the icon never wraps alone`);
       assert.match(t, /(published \d{1,2} [A-Z][a-z]{2} \d{4}|publication date not given)/, label);
       assert.match(t, / · (Single source|Corroborated|Contested) · \d+ links? · AI-assisted check/, label);
+      if (density === 'row' && html.includes('data-status="ongoing"')) {
+        // ST1 carries the evidence date, so the row drops its "Latest evidence" span (no repeated date).
+        assert.match(t, /Reported ongoing · evidence dated \d{1,2} [A-Z][a-z]{2} \d{4}/, label);
+        assert.ok(!html.includes('class="card-row-when"'), `${label}: evidence date not repeated`);
+      } else {
+        assert.ok(t.includes('Latest evidence '), label);
+        assert.ok(html.indexOf('class="status"') < html.indexOf(density === 'row' ? 'class="card-row-when"' : 'class="band"'), `${label}: status leads`);
+      }
+      if (density === 'row') {
+        for (const p of positionList(event).slice(0, 2)) assert.ok(t.includes(`${p.pill}: ${p.target}`), `${label}: stance names its target`);
+        continue;
+      }
       assert.ok(html.includes('class="card-issues"'), label);
-      assert.ok(t.includes(timeframe(event, null, NOW).line), label);
+      assert.ok(t.includes(timeframe(event, null, now).line), label);
       const intensity = intensitySummary(event);
-      if (density === 'row') assert.ok(t.includes(`Intensity: ${intensity.line}`), label);
-      else if (intensity.allUnknown) assert.ok(t.includes(intensity.line), label);
+      if (intensity.allUnknown) assert.ok(t.includes(intensity.line), label);
       else for (const item of intensity.items) assert.ok(t.includes(`${item.label}: ${item.text}`), label);
       const state = stateActionSummary(event);
-      if (!state.present) assert.ok(t.includes('Police / state Not established in this record') || t.includes('Police / state: Not established in this record'), label);
-      assert.ok(t.includes('Latest evidence '), label);
+      if (!state.present) assert.ok(t.includes('Police / state Not established in this record'), label);
     }
   }
 });
@@ -319,16 +372,26 @@ test('9 Oct clock: stale bands and relative days, no "latest"/"new" band or stat
   }
 });
 
-test('example mode carries the C11 watermark on cards and the record', () => {
+test('example mode carries the C11 watermark on cards and the record, and never claims a source check (MINOR 4)', () => {
   const example = examples.events[0];
   for (const density of ['card', 'row']) {
     const html = renderCard(example, {mode: 'example', now: NOW, density});
     assert.ok(html.includes('<p class="card-watermark">Illustrative example • not a real event</p>'), density);
-    assert.ok(text(html).includes('Illustrative'), 'level label');
+    assert.ok(text(html).includes('Illustrative · 1 link · no source was checked'), `${density}: level label, no check claimed`);
+    assert.ok(!text(html).includes('AI-assisted check'), density);
   }
   assert.ok(!card(byId('tz-drivers')).includes('card-watermark'));
   const rec = renderRecord(example, {mode: 'example', now: NOW});
   assert.ok(text(rec).includes('Illustrative example • not a real event This record is fictional and is excluded from counts and export.'));
+  assert.ok(text(rec).includes('Illustrative example · no source was checked'), 'D1 for the fictional record');
+  assert.ok(!/AI-assisted source check|Source re-read/.test(text(rec)), 'no D1 check claim and no D9 re-read row');
+  // D7 for a record nobody researched: no research note and no "none established" fallbacks.
+  assert.ok(!/AI-assisted/.test(text(rec)), 'no AI-assisted research claim anywhere in the fictional record');
+  assert.ok(!/No sourced outcome established|Age alone does not establish/.test(text(rec)), 'no research-based fallbacks');
+  assert.ok(text(rec).includes(ILLUSTRATIVE_OUTCOME), 'illustrative D7 line');
+  assert.ok(rec.includes('id="rec-outcome-title"'), 'D7 heading id kept for the section nav');
+  assert.ok(!/AI-assisted/.test(text(renderRecord(example, {mode: 'example', now: NOW, contextsError: true}))));
+  assert.ok(text(record(byId('tz-drivers'))).includes('Source re-read (AI-assisted):'), 'reported records keep D9');
 });
 
 test('renderCardSkeleton is aria-hidden, static and sized by count', () => {
@@ -371,10 +434,29 @@ test('renderRecord: D1, title, every section id, tabs, sources and outcome strin
     'id="rec-intensity"', 'id="rec-state"', 'id="rec-outcome"', 'id="rec-timeline"', 'id="rec-sources"'].map(s => html.indexOf(s));
   assert.deepEqual([...order].sort((a, b) => a - b), order);
   assert.ok(html.indexOf('class="status rec-status"') < html.indexOf('class="band"'), 'status leads in the record meta');
+  // The short display name leads; the ISO 3166 name stays as secondary text where it differs (MAJOR 9).
+  assert.equal(textOf(html, 'rec-country-iso'), 'ISO 3166 name: Tanzania, United Republic of');
+  assert.ok(text(html).includes('Tanzania · Dar es Salaam and other cities'));
+  assert.ok(!record(byId('fr-schools')).includes('rec-country-iso'), 'no secondary line when the names agree');
+});
+
+test('contexts failure: the outcome section says the evidence could not load, with Retry, never "none" (MAJOR 12)', () => {
+  for (const prefix of ['tz-drivers', 'es-housing-2026', 'fr-schools']) {
+    const html = renderRecord(byId(prefix), {context: null, mode: 'reported', now: NOW, countryName, contextsError: true});
+    const outcome = text(html.slice(html.indexOf('id="rec-outcome"'), html.indexOf('id="rec-timeline"')));
+    assert.ok(outcome.includes(CONTEXT_UNAVAILABLE), prefix);
+    assert.ok(html.includes('data-action="retry-contexts"'), prefix);
+    assert.ok(!/No sourced outcome|Age alone|End not established|Ended \/ suspended episode/.test(outcome), `${prefix}: no false negative`);
+    assert.ok(html.includes('<h3 class="rec-h" id="rec-outcome-title" tabindex="-1">What changed — and for whom?</h3>'));
+  }
+  assert.ok(!renderRecord(examples.events[0], {mode: 'example', now: NOW, contextsError: true}).includes('retry-contexts'), 'not in example mode');
 });
 
 test('glance: four linked cells; positions use "As reported:" and long pills; claims unquoted', () => {
   const html = record(byId('es-housing-2026'));
+  // The Intensity cell uses the card's labelled rows when any facet is described (MINOR 20).
+  assert.match(html, /<span class="rec-glance-line"><span class="facet-name">Turnout:<\/span> Hundreds, as reported; no numeric range inferred\.<\/span>/);
+  assert.ok(record(byId('kr-yoon')).includes('<span class="rec-glance-value">Turnout, disruption and violence: not established in this record.</span>'));
   const cells = [...html.matchAll(/<a class="rec-glance-cell" href="#(rec-[a-z]+)" data-scroll-to="\1"><span class="rec-glance-label">([^<]+)<\/span>/g)].map(m => [m[1], m[2]]);
   assert.deepEqual(cells, [['rec-positions', 'For / against'], ['rec-intensity', 'Intensity'], ['rec-state', 'Police / state'], ['rec-timeline', 'Timeframe']]);
   assert.ok(html.includes('role="group" aria-labelledby="rec-glance-title"'));
@@ -467,8 +549,8 @@ test('escaping: <script> in title, summary, claim, action and attribution', () =
   assert.ok(!unsafe.includes('javascript:'));
 });
 
-test('every real event + context, and the example, renders in both densities and as a record', () => {
-  for (const event of [...events, ...examples.events]) {
+test('every real event + context (2 Oct copy and public data), and the example, renders in both densities and as a record', () => {
+  for (const event of [...events, ...liveEvents, ...examples.events]) {
     const mode = examples.events.includes(event) ? 'example' : 'reported';
     for (const density of ['card', 'row']) assert.doesNotThrow(() => renderCard(event, {context: ctx(event), mode, now: NOW, countryName, density}), event.id);
     assert.doesNotThrow(() => renderRecord(event, {context: ctx(event), mode, now: NOW, countryName}), event.id);

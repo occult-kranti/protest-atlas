@@ -2,6 +2,7 @@
 // lead-discovery audit. Pure helpers first; DOM work happens only inside mountAbout(). Safe to import in Node.
 import {REPO_URL, esc, icon, patchHTML} from './html.js';
 import {absoluteLabel, toTime} from '../freshness.js';
+import {displayCountryName} from './model.js';
 
 const RUN_URL = new RegExp(`^${REPO_URL.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}/actions/runs/\\d+$`);
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -82,6 +83,10 @@ export function researchScopeHTML({scope, status, eventsFailed = false}) {
 }
 
 const STAGES = {searched: 'First search logged', 'search-failed': 'Search failed'};
+/** The fourth column counts only what the first-search ledger logged; records cite their own articles (SPEC §14 item 6). */
+export const LEDGER_PAGES_HEADER = 'Pages opened in the first search';
+export const LEDGER_PAGES_NOTE = `${LEDGER_PAGES_HEADER} counts only the pages logged during that first search. Each published record lists every article it cites, including later reads. A dash means no page was logged.`;
+const NONE_LOGGED = '<span aria-hidden="true">—</span><span class="visually-hidden">None logged</span>';
 
 /** The country-by-country table, rendered on the first toggle only. Never includes candidate URLs. */
 export function ledgerTableHTML({research, events, countries}) {
@@ -90,7 +95,8 @@ export function ledgerTableHTML({research, events, countries}) {
   const entries = Array.isArray(research?.countries) ? research.countries : [];
   const ledger = new Map(entries.map(row => [row.code, row]));
   // A countries-only failure (C-37) still lists every ledger entry, by code.
-  const directory = Array.isArray(countries) && countries.length ? countries
+  const directory = Array.isArray(countries) && countries.length
+    ? countries.map(country => ({...country, name: displayCountryName(country.code, country.name)}))
     : entries.filter(row => typeof row?.code === 'string').map(row => ({code: row.code, name: row.code}));
   const rows = directory.slice().sort((a, b) => collator.compare(a.name ?? '', b.name ?? '') || String(a.code).localeCompare(String(b.code)));
   const start = ISO_DAY.test(research?.window_start ?? '') ? absoluteLabel(research.window_start) : 'not established';
@@ -100,11 +106,11 @@ export function ledgerTableHTML({research, events, countries}) {
     const count = counts.get(country.code) ?? 0;
     const pages = Array.isArray(entry?.reviewed_urls) ? entry.reviewed_urls.length : 0;
     return `<tr><th scope="row">${esc(country.name || country.code)}</th><td>${STAGES[entry?.status] ?? 'Not yet searched'}</td>`
-      + `<td class="ledger-num">${count ? count : 'None published'}</td><td class="ledger-num">${pages}</td></tr>`;
+      + `<td class="ledger-num">${count ? count : 'None published'}</td><td class="ledger-num">${pages ? pages : NONE_LOGGED}</td></tr>`;
   }).join('');
   return `<div class="ledger-wrap" tabindex="0" role="region" aria-labelledby="ledger-caption"><table class="ledger-table">`
-    + `<caption id="ledger-caption">First searches, ${esc(start)} to ${esc(end)}</caption>`
-    + `<thead><tr><th scope="col">Country or territory</th><th scope="col">Research stage</th><th scope="col">Published episodes</th><th scope="col">Source pages read</th></tr></thead>`
+    + `<caption><span id="ledger-caption">First searches, ${esc(start)} to ${esc(end)}</span><span class="ledger-caption-note">${esc(LEDGER_PAGES_NOTE)}</span></caption>`
+    + `<thead><tr><th scope="col">Country or territory</th><th scope="col">Research stage</th><th scope="col">Published episodes</th><th scope="col">${LEDGER_PAGES_HEADER}</th></tr></thead>`
     + `<tbody>${body}</tbody></table></div>`;
 }
 
@@ -119,6 +125,15 @@ export function discoveryHTML({view, status}) {
 }
 
 // ---- DOM (mountAbout) ----
+
+/** patchHTML, but a replaced Retry hands focus to `fallback()` instead of <body> (C-37; WCAG 2.4.3). */
+function patchKeepingFocus(el, html, cache, fallback) {
+  const doc = el.ownerDocument;
+  const had = el.contains(doc.activeElement);
+  const changed = patchHTML(el, html, cache);
+  if (changed && had && !el.contains(doc.activeElement)) fallback()?.focus({preventScroll: true});
+  return changed;
+}
 
 /** Mounts #research-scope and #about-discovery on first visit (C-21); the ledger table renders on first open. */
 export function mountAbout(ctx = {}) {
@@ -168,7 +183,10 @@ export function mountAbout(ctx = {}) {
         const eventsFailed = Boolean(load.errors?.events) || (load.critical === 'error' && !data.events);
         const ready = Array.isArray(data.research?.countries) && Array.isArray(data.events?.events);
         const scope = ready ? researchScope({research: data.research, contexts: data.contexts, events: data.events, countries: data.countries}) : null;
-        patchHTML(scopeEl, researchScopeHTML({scope, status: researchStatus, eventsFailed}), cache);
+        // The region itself (tabindex="-1") keeps focus while a Retry is replaced by its loading line or the counts.
+        if (!scopeEl.hasAttribute('tabindex')) scopeEl.setAttribute('tabindex', '-1');
+        patchKeepingFocus(scopeEl, researchScopeHTML({scope, status: researchStatus, eventsFailed}), cache,
+          () => scopeEl.querySelector('[data-retry], [data-action="retry-data"]') ?? scopeEl);
         const details = scopeEl.querySelector('details.ledger-details');
         if (details?.open) fillLedger(details);
       }

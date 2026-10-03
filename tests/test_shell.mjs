@@ -334,15 +334,20 @@ for (const file of [...ROOT_MODULES, 'review.js', ...JS_MODULES]) {
 const KB = 1024;
 const sizeOf = file => existsSync(join(ROOT, file)) ? gz(readFileSync(join(ROOT, file))) : 0;
 
+// Code and data are budgeted apart (MAJOR 13): a data refresh grows events.json, event-context.json and cities.json,
+// and must never fail a code-size gate. Code buckets hold only html, css, js and the static map geometry and vendor files;
+// data has its own generous guards (events.json at the §6.2 number, critical data, and the reported map data).
+const CRITICAL_DATA = ['public/events.json', 'public/countries.json', 'public/event-context.json', 'public/upcoming.json', 'public/build-info.json'];
+const MAP_CODE = ['vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js', 'public/world-110m.topo.json', 'public/world-map-codes.json',
+  'map.js', 'js/map-view.js', 'js/country-brief.js', 'css/map.css'];
 function budgets() {
   const html = gz(INDEX);
   const css = ['styles.css', ...CSS_DIR].reduce((n, f) => n + sizeOf(f), 0);
   const js = staticGraph('app.js').reduce((n, f) => n + sizeOf(f), 0);
-  const data = ['public/events.json', 'public/countries.json', 'public/event-context.json', 'public/upcoming.json', 'public/build-info.json']
-    .reduce((n, f) => n + sizeOf(f), 0);
-  const map = ['vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js', 'public/world-110m.topo.json', 'public/world-map-codes.json',
-    'public/cities.json', 'map.js', 'js/map-view.js', 'js/country-brief.js', 'css/map.css'].reduce((n, f) => n + sizeOf(f), 0);
-  return {html, css, js, data, critical: html + css + js + data, map};
+  const data = CRITICAL_DATA.reduce((n, f) => n + sizeOf(f), 0);
+  const map = MAP_CODE.reduce((n, f) => n + sizeOf(f), 0);
+  const mapData = sizeOf('public/cities.json');
+  return {html, css, js, data, code: html + css + js, critical: html + css + js + data, map, mapData};
 }
 const B = budgets();
 
@@ -354,29 +359,42 @@ const B = budgets();
 // sized, the 21-module static graph is frozen by C-48 (Ahead, Countries and About load eagerly, about 17 KB), and the
 // sources ship with their contract comments (about 14 KB of the JS). Shrinking needs a lazy-view split or a build-time
 // minifier (both open follow-ups), not a higher ceiling. html and events.json keep the §6.2 numbers.
+// Code ceilings use the same method on the integration measurements with the data taken out: ceil(1.1 × measured)
+// for critical code (177,248 − 61,471 B data → 125 KB), the map add-on without cities.json (161,124 − 3,225 B → 170 KB)
+// and map-first code (338,372 − 61,471 − 3,225 B → 294 KB). Data guards: events.json keeps the §6.2 120 KB; critical
+// data and cities.json get about 3× and 5× the 2 Oct snapshot (61,471 B and 3,225 B), so a refresh of a few hundred
+// records passes. Targets are the §6.2 numbers less their data share.
 const BUDGETS = {
   html: {label: 'index.html', target: 12, ceiling: 12},
   css: {label: 'styles.css + css/*.css', target: 16, ceiling: 28},
   js: {label: 'critical JS (static graph of app.js)', target: 40, ceiling: 91},
-  events: {label: 'events.json', target: 120, ceiling: 120},
-  critical: {label: 'critical total', target: 140, ceiling: 191},
-  map: {label: 'map add-on', target: 155, ceiling: 174},
-  mapFirst: {label: 'map-first critical', target: 295, ceiling: 364},
+  code: {label: 'critical code (html + css + js)', target: 68, ceiling: 125},
+  map: {label: 'map add-on code and geometry (no cities data)', target: 152, ceiling: 170},
+  mapFirst: {label: 'map-first code (critical code + map add-on)', target: 220, ceiling: 294},
+  events: {label: 'events.json (data)', target: 120, ceiling: 120},
+  data: {label: 'critical data files (data)', target: 180, ceiling: 180},
+  mapData: {label: 'cities.json (map data)', target: 16, ceiling: 16},
 };
-const MEASURED = {html: B.html, css: B.css, js: B.js, events: sizeOf('public/events.json'), critical: B.critical, map: B.map,
-  mapFirst: B.critical + B.map};
+const MEASURED = {html: B.html, css: B.css, js: B.js, code: B.code, map: B.map, mapFirst: B.code + B.map, events: sizeOf('public/events.json'),
+  data: B.data, mapData: B.mapData};
 
 test('budget report (gzip -9 bytes)', t => {
-  t.diagnostic(`html ${B.html}, css ${B.css} (styles.css ${sizeOf('styles.css')}), critical js ${B.js}, critical data ${B.data}, `
-    + `critical total ${B.critical}, map add-on ${B.map}, map-first ${B.critical + B.map}`);
+  t.diagnostic(`html ${B.html}, css ${B.css} (styles.css ${sizeOf('styles.css')}), critical js ${B.js}, critical code ${B.code}, `
+    + `critical data ${B.data}, critical total ${B.critical}, map add-on ${B.map} (+ cities ${B.mapData}), map-first code ${B.code + B.map}`);
   const over = Object.entries(BUDGETS).filter(([k, b]) => MEASURED[k] > b.target * KB).map(([k, b]) => `${b.label} ${MEASURED[k]} > ${b.target * KB}`);
   if (over.length) t.diagnostic(`over the tech §6.2 targets: ${over.join('; ')}`);
   for (const b of Object.values(BUDGETS)) assert.ok(b.ceiling >= b.target, `${b.label}: the ceiling never undercuts §6.2`);
 });
+
+test('code budgets ignore data: a larger events.json and event-context.json change no code bucket (MAJOR 13)', () => {
+  for (const key of ['html', 'css', 'js', 'code', 'map', 'mapFirst']) assert.ok(!/data/.test(BUDGETS[key].label) || key === 'map', key);
+  assert.ok(!MAP_CODE.some(f => CRITICAL_DATA.includes(f) || f === 'public/cities.json'));
+  assert.equal(B.code, B.html + B.css + B.js);
+});
 for (const [key, {label, target, ceiling}] of Object.entries(BUDGETS)) {
   const note = ceiling === target ? '' : ` (tech §6.2 target ${target} KB; integration budget, SPEC §23)`;
   test(`budget: ${label} <= ${ceiling} KB gzip${note}`, () => {
-    assert.ok(MEASURED[key] <= ceiling * KB, key === 'events' ? 'split an events index' : `${label} ${MEASURED[key]} > ${ceiling * KB}`);
+    assert.ok(MEASURED[key] <= ceiling * KB, ['events', 'data', 'mapData'].includes(key) ? `${label} ${MEASURED[key]} > ${ceiling * KB}: split an events index` : `${label} ${MEASURED[key]} > ${ceiling * KB}`);
   });
 }
 
