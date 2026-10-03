@@ -5,7 +5,7 @@ Written 3 Oct 2026 (about 01:10 UTC) and revised about 01:45 UTC after an indepe
 This file is a work plan. It is not a source. Every lead it mentions is an unverified search-snippet claim.
 
 **Pinned inputs.**
-- **Import commit:** `__IMPORT_SHA__`. It is the commit on `ccr-77796c82-ka7vhp` that added this handoff, `research/round4/LEADS.json`, `LEADS.md` and the v2 workflows. If this shows a placeholder instead of a 40-character SHA, resolve it with `git log -1 --format=%H origin/ccr-77796c82-ka7vhp -- research/round4/LEADS.json`.
+- **Import commit:** `6ae56cc3d0c7fbb24e4ec885e995a890d243701b`. It is the commit on `ccr-77796c82-ka7vhp` that added this handoff, `research/round4/LEADS.json`, `LEADS.md` and the v2 workflows. If this shows a placeholder instead of a 40-character SHA, resolve it with `git log -1 --format=%H origin/ccr-77796c82-ka7vhp -- research/round4/LEADS.json`.
 - **Lead checksums** (acceptance 12):
   ```
   8b1f4d43c189fe30fe2332cd1bc844271ccc0b57e4fb5eccc2df919c0d562815  research/round4/LEADS.json
@@ -92,7 +92,7 @@ main 6f71f16 ── 0f4854f … 11bdb7f ── 7f0b1d5 ── c1ca039 ── e63
    ```
 4. **Import the inputs.** `LEADS.json`, `LEADS.md` and the v2 workflows are not in `e633dfe`. They were committed on the UI branch in the import commit named at the top of this file. If `origin/main` already has `research/round4/LEADS.json`, skip this step and set `IMPORT=$BASE`.
    ```bash
-   IMPORT=__IMPORT_SHA__
+   IMPORT=6ae56cc3d0c7fbb24e4ec885e995a890d243701b
    git cat-file -e "$IMPORT^{commit}" 2>/dev/null || IMPORT=$(git log -1 --format=%H origin/ccr-77796c82-ka7vhp -- research/round4/LEADS.json)
    git checkout $IMPORT -- research/round4/LEADS.json research/round4/LEADS.md research/round4/workflows
    sha256sum research/round4/LEADS.json research/round4/LEADS.md   # must equal the checksums at the top of this file
@@ -438,11 +438,11 @@ Paste this into the new session. It is self-contained.
 ```text
 You are the data-refresh session for Protest Atlas (GitHub: occult-kranti/protest-atlas). Your only job is to refresh the published data with recent protest reporting and announced actions, under strict evidence rules. Another session is rebuilding the interface on branch ccr-77796c82-ka7vhp: never edit its files, merge it, or push to it.
 
-1. Read first. Run `git fetch origin main ccr-77796c82-ka7vhp`, then read `git show origin/ccr-77796c82-ka7vhp:docs/HANDOFF_DATA_REFRESH.md` in full (if that branch is gone: `git show __IMPORT_SHA__:docs/HANDOFF_DATA_REFRESH.md`) and follow it; where this prompt is less specific, the handoff wins. Then read research/round4/CONTRACT.md and research/round4/workflows/README.md.
+1. Read first. Run `git fetch origin main ccr-77796c82-ka7vhp`, then read `git show origin/ccr-77796c82-ka7vhp:docs/HANDOFF_DATA_REFRESH.md` in full (if that branch is gone: `git show 6ae56cc3d0c7fbb24e4ec885e995a890d243701b:docs/HANDOFF_DATA_REFRESH.md`) and follow it; where this prompt is less specific, the handoff wins. Then read research/round4/CONTRACT.md and research/round4/workflows/README.md.
 
 2. Check access before anything else (handoff §3). If news pages cannot be opened, stop, commit nothing, and tell me which hosts were denied and the proxy's stated reason so I can widen network access. Never disable TLS checks or unset proxy variables.
 
-3. Branch (handoff §2). Base it on commit e633dfe2bb7849cec1e2ca0e8ba2e1741a6c6c57; if origin/main already contains that commit, branch from origin/main. Use your assigned branch only if it fast-forwards to that base; otherwise create data/refresh-<YYYYMMDD>. Never use main or ccr-77796c82-ka7vhp, and never force-push. Import research/round4/LEADS.json, LEADS.md and research/round4/workflows/ from commit __IMPORT_SHA__, check their SHA-256 values against the handoff, and commit. Change only the paths it allows, stage by explicit path, and run its scope check before every push.
+3. Branch (handoff §2). Base it on commit e633dfe2bb7849cec1e2ca0e8ba2e1741a6c6c57; if origin/main already contains that commit, branch from origin/main. Use your assigned branch only if it fast-forwards to that base; otherwise create data/refresh-<YYYYMMDD>. Never use main or ccr-77796c82-ka7vhp, and never force-push. Import research/round4/LEADS.json, LEADS.md and research/round4/workflows/ from commit 6ae56cc3d0c7fbb24e4ec885e995a890d243701b, check their SHA-256 values against the handoff, and commit. Change only the paths it allows, stage by explicit path, and run its scope check before every push.
 
 4. Run the plan (handoff §4) with the Workflow tool: region-scan.js for all five regions (issue the five calls in one message), the gate review, then consolidate.js. Never replace these independently verified multi-agent runs with a single-agent sweep. Commit each region as it returns, following Step 3 exactly (apply-failed: commit only screening and lead-outcomes, then resume). If today is 3 Oct UTC, scan now with window_end 2026-10-02, then after 4 Oct 00:00 UTC top up every region with window_end 2026-10-03 before consolidating.
 

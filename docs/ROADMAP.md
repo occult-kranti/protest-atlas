@@ -120,3 +120,53 @@ The pilot needs a GitHub repository and Pages/Actions, ordinary source access, a
 ## Explicitly deferred
 
 No predictive unrest risk scoring, national approval percentages, private-person tracking, crowd identification, automatic mass scraping of restricted providers, or “real-time everywhere” promise. Notifications, user accounts and public submissions come only after moderation capacity and an actual user need are established.
+
+## Next tasks (3 Oct 2026)
+
+Added 3 Oct 2026 and revised the same day after an independent review of the handoff. The tasks are in dependency order and carry no dates. The roadmap items named below are in `public/roadmap.json` and SPEC §20 (`docs/design/SPEC.md`).
+
+1. **Data refresh in a session with news access.** Follow [HANDOFF_DATA_REFRESH.md](HANDOFF_DATA_REFRESH.md). Its §8 holds the paste-ready prompt.
+   - **Status:** blocked until a Claude Code session exists whose cloud environment can open news websites. On 2 Oct the sweep logged 167 searches and opened 0 pages.
+   - **Precondition:** the handoff, the leads and the v2 workflows are pushed to `ccr-77796c82-ka7vhp`. The import commit and the lead checksums are at the top of the handoff.
+   - **Inputs:** 192 unverified leads in `research/round4/LEADS.json` (21 P1, 48 P2, 123 P3) and the v2 workflows in `research/round4/workflows/`.
+   - **Method:** run on a data branch based on commit `e633dfe`, or on `origin/main` once `main` contains it. The work reaches `main` through a reviewed pull request.
+   - **Scope:** exactly the allowed paths in handoff §2.2:
+     - `research/round4/**`, except the lead files;
+     - the six data files that `merge_history.py` regenerates;
+     - the `WINDOW_END` constant and the coverage-note date in `merge_history.py`;
+     - narrow fixes to the four data validators or the merge logic, only when one blocks valid data, each with a new test file.
+   - **First run:** a start on 3 Oct UTC scans with window end 2 Oct, then tops up after 4 Oct 00:00 UTC with window end 3 Oct before consolidating (handoff §4 Step 2).
+   - **Done when:** the acceptance list in the handoff (§5) is met, the PR is merged and Pages has deployed.
+   - **Deadline:** the newest evidence day + 3, at 00:00 UTC. The Pages deploy of the merge must finish before it, and the PR states it. If review will miss it, top up before merging (handoff §5.11 and §6).
+2. **After that merge, update the roadmap items, following SPEC §22.4 only.**
+   - **Where:** the commit goes to the 4.0 branch, because `public/roadmap.json` is not on `main`. It becomes visible with the 4.0 release.
+   - **When:** after the merge, the Pages deploy and its post-deploy check, and a check on the live site. One commit then does two things:
+     - sets `status`, `shipped_in`, `shipped_on`, a `test` evidence entry, `last_reviewed` and `updated_at` for each item whose acceptance passes;
+     - updates RELEASE_EVIDENCE.
+   - **`add-reports-after-2-oct-2026` (BLK-1):** it ships only if its acceptance holds on the deployed site, including newest evidence under 72 hours at publication. A refresh that cannot move `WINDOW_END` past 2 Oct does not ship it.
+   - **`list-announced-actions` (BLK-2):** it also needs the 4.0 Ahead view live, so that date-passed handling can be verified. It cannot ship before task 4.
+   - **`records-current-within-72-hours` (BLK-4):** stays blocked. It needs 30 consecutive days of fresh evidence and a human editor.
+   - **`local-language-coverage` (BLK-5):** stays blocked on language reviewers. Once fetch access is proven, revise only its `blocked_by` text.
+   - **Items that fail:** an item whose acceptance fails keeps its status.
+   - **Live-site copy:** the "search could not open news websites" text comes from the data (SPEC §6.6). It changes by itself once a sweep has read pages, so do not hand-edit it.
+3. **Recurring daily sweep design**, once task 1 succeeds. HANDOFF_DATA_REFRESH.md §6 has the starting design: a daily run at about 05:45 UTC that searches through the previous UTC day, followed by a PR and a human merge the same day. It needs these changes:
+   - split the scan window from the acceptance window (or roll over to a new round directory);
+   - replace the hard-coded `window_start` default in `region-scan.js` with the round start or a required argument;
+   - screen a rotating subset of countries so each is covered weekly;
+   - add a lead cap (a priority filter, `lead_priorities`, already exists);
+   - generate leads from earlier runs and from the discovery artifact;
+   - build the high-repression and week/month announcement rules into the prompts;
+   - stop after two blocked preflights in a row;
+   - size the schedule from the per-region run durations recorded in the first data PR;
+   - record a newest-evidence-age metric for BLK-4.
+
+   It runs as a scheduled routine in the news-access environment. Publication stays human-reviewed.
+4. **4.0 interface release.** In progress on branch `ccr-77796c82-ka7vhp`. The work packages and integration steps are in SPEC §19 and §22.
+   - **Ownership until the data PR merges:** this branch commits no change to `research/round4/**`, the six public data JSON files, `scripts/merge_history.py` or the four data validators. An unavoidable change is pushed before the data session imports, or the data session is asked to re-import from the new SHA. Before every UI commit, run `git checkout -- public/events.json public/event-context.json public/coverage.json public/research-ledger.json public/cities.json public/upcoming.json` to discard local merge reruns.
+   - **Before the 4.0 PR, tests stop pinning live data:**
+     - Literal assertions, such as the `sweepFact` values, record counts and stamps in `tests/test_core.mjs`, read a frozen fixture copy, for example `tests/fixtures/snapshot-20261002/{events,upcoming,coverage}.json`.
+     - Tests on the real `public/*.json` assert only invariants: `sweepFact` parses to non-null, counts agree with each other, and the newest evidence is not after today.
+     - SPEC §6.6, §19 WP3 (the "33 records" count) and §22.2 (the "84 records" smoke check) are updated to match.
+   - After the data PR merges, this branch merges `main`. With the fixture rule in place, that merge needs no test edits.
+   - The release then reaches `main` through its own PR.
+   - The §22.4 checks run on the deployed site before any 4.0 roadmap item is marked shipped.
