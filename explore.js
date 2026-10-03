@@ -7,7 +7,7 @@ export function withinWindow(event, window, now = Date.now()) {
 export function readViewState(search) {
   const q = new URLSearchParams(search);
   const read = key => (q.get(key) || '').slice(0,200);
-  return {query:read('q'),country:/^[A-Z]{2}$/.test(read('country')) ? read('country') : '',region:read('region'),issue:read('issue'),status:['ongoing','planned','ended','needs-review','unknown'].includes(read('status')) ? read('status') : '',window:['7','30'].includes(read('window')) ? read('window') : 'all',year:['2024','2025','2026'].includes(read('year'))?read('year'):'',city:read('city'),outcome:['documented','not-established'].includes(read('outcome'))?read('outcome'):''};
+  return {query:read('q'),country:/^[A-Z]{2}$/.test(read('country')) ? read('country') : '',region:read('region'),issue:read('issue'),status:['ongoing','planned','ended','needs-review','unknown'].includes(read('status')) ? read('status') : '',window:['7','30'].includes(read('window')) ? read('window') : 'all',year:/^20\d{2}$/.test(read('year'))?read('year'):'',city:read('city'),outcome:['documented','not-established'].includes(read('outcome'))?read('outcome'):''};
 }
 export function encodeViewState(state) {
   const params = new URLSearchParams();
@@ -21,7 +21,42 @@ export function csvForEvents(events,contexts=null) {
   return rows.map(row=>row.map(cell).join(',')).join('\r\n');
 }
 
-// 4.0 additions (WP2 implements; signatures frozen by tech §4.6).
+// 4.0 additions (WP2). Pure; DOM-free. Signatures frozen by tech §4.6.
 export const FILTER_KEYS = ['query', 'country', 'region', 'issue', 'status', 'window', 'year', 'city', 'outcome'];
-export function droppedParams(search) { return []; }
-export function shareURL({origin, pathname, filters, route, defaultView, kind = 'view'}) { return ''; }
+
+// URL parameter name for each filter key (the codec writes `q` for `query`).
+const PARAM = {query: 'q', country: 'country', region: 'region', issue: 'issue', status: 'status', window: 'window', year: 'year', city: 'city', outcome: 'outcome'};
+
+/**
+ * URL parameter names that were present in `search` but rejected or normalised by readViewState
+ * (`?status=live&year=1999` → ['status', 'year']). Empty values and `window=all` are not drops.
+ * Unknown, non-filter parameters are ignored. Order follows FILTER_KEYS.
+ */
+export function droppedParams(search) {
+  const q = new URLSearchParams(search || '');
+  const state = readViewState(search || '');
+  const dropped = [];
+  for (const key of FILTER_KEYS) {
+    const name = PARAM[key];
+    if (!q.has(name)) continue;
+    const raw = q.get(name) || '';
+    if (!raw) continue;
+    if (key === 'window' && raw === 'all') continue;
+    if (state[key] !== raw) dropped.push(name);
+  }
+  return dropped;
+}
+
+/**
+ * Share link. View: origin + pathname + ?filters + #/view (the default view's hash is omitted).
+ * Record: origin + pathname + #/record/<id>, filters omitted.
+ */
+export function shareURL({origin, pathname, filters, route, defaultView, kind = 'view'}) {
+  const base = `${origin || ''}${pathname || '/'}`;
+  if (kind === 'record') return route?.record ? `${base}#/record/${route.record}` : base;
+  const q = encodeViewState({...readViewState(''), ...(filters || {})});
+  const view = route?.view || defaultView;
+  const param = route?.param || null;
+  const hash = view === defaultView && !param ? '' : `#/${view}${param ? `/${param}` : ''}`;
+  return `${base}${q ? `?${q}` : ''}${hash}`;
+}

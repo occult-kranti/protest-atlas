@@ -6,7 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from validate_data import ValidationError  # noqa: E402
-from validate_upcoming import validate_upcoming  # noqa: E402
+from validate_upcoming import validate_upcoming, validate_upcoming_repository  # noqa: E402
 
 NOW = datetime(2026, 10, 2, 22, 0, tzinfo=timezone.utc)
 COUNTRIES = {'FR': {'code': 'FR', 'name': 'France', 'region': 'Europe'}}
@@ -86,6 +86,24 @@ class UpcomingTests(unittest.TestCase):
         data['items'].append(copy.deepcopy(data['items'][0]))
         with self.assertRaisesRegex(ValidationError, 'duplicate'):
             self.check(data)
+
+    def test_empty_items_manifest_validates(self):
+        # The expected state this round: nothing met the evidence standard, and the note says so (SPEC §12.2).
+        data = manifest()
+        data['items'] = []
+        data['note'] = ('Announcements of planned collective actions. An announcement is not evidence that an action '
+                        'will occur. Latest search for announcements: 2026-10-02, 167 searches logged, 0 source pages '
+                        'could be opened; unread search results are leads, not sources, and are not published.')
+        self.assertEqual(self.check(data)['items'], [])
+        data['note'] = 'No announcements are listed.'
+        with self.assertRaisesRegex(ValidationError, 'does not establish occurrence'):
+            self.check(data)
+        del data['items']
+        with self.assertRaisesRegex(ValidationError, 'exactly'):
+            self.check(data)
+
+    def test_published_manifest_validates(self):
+        validate_upcoming_repository(Path(__file__).resolve().parents[1])
 
     def test_unknown_fields_and_countries_are_rejected(self):
         with self.assertRaisesRegex(ValidationError, 'exactly'):

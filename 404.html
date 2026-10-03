@@ -2,24 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex">
+  <meta name="color-scheme" content="light dark">
   <title>Page not found — Protest Atlas</title>
   <style>
-    body { margin: 0; padding: 32px 16px; background: #f6f4ee; color: #1a1c19; font: 16px/1.5 system-ui, sans-serif; }
-    main { max-width: 640px; margin: 0 auto; }
-    h1 { font: 700 28px/1.2 Georgia, serif; margin: 0 0 16px; }
-    a { color: inherit; }
-    .notice { background: #ebe6d6; padding: 12px 16px; font-size: 14px; }
-    @media (prefers-color-scheme: dark) { body { background: #121411; color: #efede6; } .notice { background: #242722; } }
+    /* Self-contained (served at any depth): literal colours from the 4.0 tokens, no external assets. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: #f6f4ee; color: #1a1c19; }
+    body { margin: 0; font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Liberation Sans", sans-serif; }
+    a { color: inherit; text-underline-offset: .2em; }
+    :focus-visible { outline: 3px solid #1a5fb4; outline-offset: 2px; }
+    .head { display: flex; align-items: center; min-height: 56px; padding: 6px max(16px, env(safe-area-inset-right), calc((100% - 608px) / 2)) 6px max(16px, env(safe-area-inset-left), calc((100% - 608px) / 2)); border-bottom: 1px solid #d8d4c8; }
+    .brand { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; }
+    .mark { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: #1a1c19; color: #fffdf8; font: 700 20px/1 Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif; }
+    .name { font: 700 18px/1.2 Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif; }
+    .notice { margin: 0; padding: 12px max(16px, env(safe-area-inset-right), calc((100% - 608px) / 2)) 12px max(16px, env(safe-area-inset-left), calc((100% - 608px) / 2)); background: #ece8dc; color: #1a1c19; font-size: 14px; line-height: 1.45; }
+    main { max-width: 640px; margin: 0 auto; padding: 32px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left)); }
+    h1 { margin: 0 0 8px; font: 600 28px/1.15 Charter, "Bitstream Charter", "Iowan Old Style", Georgia, serif; }
+    p { margin: 0 0 24px; color: #3f423c; }
+    ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    ul a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid #7a7d74; border-radius: 12px; background: #fffdf8; font-weight: 600; text-decoration: none; }
+    ul li:first-child a { background: #1a1c19; border-color: #1a1c19; color: #fffdf8; }
+    @media (min-width: 600px) { .notice { font-size: 15px; } h1 { font-size: 34px; } }
+    @media (prefers-color-scheme: dark) {
+      html { background: #121411; color: #efede6; }
+      :focus-visible { outline-color: #8ab4f8; }
+      .head { border-bottom-color: #363a33; }
+      .mark { background: #efede6; color: #121411; }
+      .notice { background: #23261f; color: #efede6; }
+      p { color: #cfccc3; }
+      ul a { border-color: #8d9188; background: #1b1d1a; }
+      ul li:first-child a { background: #efede6; border-color: #efede6; color: #121411; }
+    }
   </style>
 </head>
 <body>
+  <header class="head"><a class="brand" href="/protest-atlas/" data-path=""><span class="mark" aria-hidden="true">P</span><span class="name">Protest Atlas</span></a></header>
+  <p class="notice"><strong>AI-assisted reporting pilot.</strong> Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.</p>
   <main>
-    <p class="notice"><strong>AI-assisted reporting pilot.</strong> Source-checked news reports; no human editorial review. Sparse coverage, not a comprehensive live feed.</p>
     <h1>Page not found</h1>
     <p>This page is not part of the atlas.</p>
-    <p><a href="/protest-atlas/">Go to Protest Atlas</a></p>
+    <ul>
+      <li><a href="/protest-atlas/#/latest" data-path="#/latest">Reports</a></li>
+      <li><a href="/protest-atlas/#/map" data-path="#/map">Map</a></li>
+      <li><a href="/protest-atlas/#/ahead/roadmap" data-path="#/ahead/roadmap">Coming next</a></li>
+      <li><a href="/protest-atlas/#/countries" data-path="#/countries">Countries</a></li>
+      <li><a href="/protest-atlas/public/events.json" data-path="public/events.json">Published data</a></li>
+    </ul>
   </main>
+  <script>
+    (function () {
+      // GitHub Pages serves this page at any depth, so every link is rebuilt from the site root (tech §2.5, SPEC §15).
+      var seg = location.pathname.split('/')[1];
+      var home = location.hostname.endsWith('github.io') && seg ? '/' + seg + '/' : '/';
+      var aliases = {
+        'roadmap': '#/ahead/roadmap', 'roadmap.html': '#/ahead/roadmap', 'coming-next': '#/ahead/roadmap',
+        'ahead': '#/ahead', 'next': '#/ahead', 'map': '#/map', 'countries': '#/countries',
+        'about': '#/about', 'methodology': '#/about', 'reports': '#/latest'
+      };
+      var rest = location.pathname.slice(home.length).replace(/^\/+|\/+$/g, '').toLowerCase();
+      if (Object.prototype.hasOwnProperty.call(aliases, rest)) {
+        location.replace(home + location.search + aliases[rest]);
+        return;
+      }
+      var links = document.querySelectorAll('a[data-path]');
+      for (var i = 0; i < links.length; i++) links[i].setAttribute('href', home + links[i].getAttribute('data-path'));
+    })();
+  </script>
 </body>
 </html>

@@ -13,6 +13,7 @@ from validate_data import ROOT, ValidationError, validate_repository
 from validate_coverage import validate_repository_coverage
 from validate_history import validate_history_repository
 from validate_upcoming import validate_upcoming_repository
+from validate_roadmap import validate_roadmap_repository
 
 PUBLIC_FILES = (
     'index.html', '404.html', 'styles.css',
@@ -67,6 +68,8 @@ def build(root=ROOT):
     validate_repository_coverage(root)
     validate_history_repository(root)
     validate_upcoming_repository(root)
+    # Roadmap evidence resolves against this scripts' repository (evidence_root), never the build root.
+    validate_roadmap_repository(root)
     destination = root / '_site'
     if destination.is_symlink():
         raise ValidationError('_site: symlink output forbidden')

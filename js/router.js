@@ -1,5 +1,5 @@
-// Route parse/format plus history binding (WP2). Phase-0 stub; constants are final (tech §2.2, §4.6; SPEC C-24).
-// DOM-free when loaded: DOM work happens only inside createRouter().start()/go().
+// Route parse/format plus history binding (WP2). No imports (SPEC §19.0).
+// DOM-free when loaded: DOM work happens only inside createRouter().start()/go() and the handlers they bind.
 
 export const VIEWS = ['latest', 'map', 'ahead', 'countries', 'about'];
 export const RECORD_ID = /^[a-z0-9][a-z0-9-]{0,95}$/;
@@ -8,6 +8,216 @@ export const ROUTE_ALIASES = {'#atlas': {view: 'map'}, '#countries': {view: 'cou
   '#/reports': {view: 'latest'}, '#/coming-next': {view: 'ahead', param: 'roadmap'}};
 export const VIEW_NAMES = {latest: 'Reports', map: 'Map', ahead: 'Ahead', countries: 'Countries', about: 'About'};
 
-export function parseRoute(hash, defaultView = 'latest') { return null; }
-export function formatRoute({view, param = null, record = null}) { return ''; }
-export function createRouter({defaultView, onChange}) { return {start() {}, go() {}, current() { return null; }, closeRecord() {}}; }
+const AHEAD_PARAMS = ['actions', 'roadmap'];
+
+/**
+ * '#/map' → {view, param, record, alias, unknown}. Returns null for a hash that is not a route
+ * (#main, #after-map, #detail-source-2), so native anchors keep working.
+ * A record route carries `view: defaultView`; the router keeps the view underneath instead.
+ */
+export function parseRoute(hash, defaultView = 'latest') {
+  const h = typeof hash === 'string' ? hash : '';
+  const base = {view: defaultView, param: null, record: null, alias: false, unknown: false};
+  if (h === '' || h === '#' || h === '#/') return base;
+  if (Object.hasOwn(ROUTE_ALIASES, h)) {
+    const alias = ROUTE_ALIASES[h];
+    return {...base, view: alias.view, param: alias.param ?? null, alias: true};
+  }
+  if (!h.startsWith('#/')) return null;
+  const parts = h.slice(2).split('/');
+  if (parts.length > 1 && parts[parts.length - 1] === '') parts.pop();
+  const [view, param, ...rest] = parts;
+  if (view === 'record') {
+    return parts.length === 2 && RECORD_ID.test(param) ? {...base, record: param} : {...base, unknown: true};
+  }
+  if (!VIEWS.includes(view) || rest.length) return {...base, unknown: true};
+  if (param === undefined) return {...base, view};
+  if (view === 'ahead' && AHEAD_PARAMS.includes(param)) return {...base, view, param};
+  return {...base, unknown: true};
+}
+
+/** {view:'map'} → '#/map'; {view:'ahead', param:'roadmap'} → '#/ahead/roadmap'; {record} → '#/record/<id>'. */
+export function formatRoute({view, param = null, record = null} = {}) {
+  if (record) return `#/record/${record}`;
+  return param ? `#/${view}/${param}` : `#/${view}`;
+}
+
+const sameRoute = (a, b) => Boolean(a && b) && a.view === b.view && (a.param ?? null) === (b.param ?? null) && (a.record ?? null) === (b.record ?? null);
+const effectiveParam = route => (route.view === 'ahead' ? route.param || 'actions' : route.param || null);
+const sameView = (a, b) => Boolean(a && b) && a.view === b.view && effectiveParam(a) === effectiveParam(b);
+
+/**
+ * History binding (tech §2.3 + C-24 + C-35).
+ * → {start(), go(route, {replace, user}), current(), closeRecord(), afterRender(), refreshNav()}
+ * onChange(route, prev, meta) runs for every applied route; meta = {source: 'initial'|'user'|'pop'|'program', unknown, alias}.
+ */
+export function createRouter({defaultView = 'latest', onChange = () => {}} = {}) {
+  let current = null;
+  let pending = null;      // {scroll: number, focus: string[]} applied after the next render
+  let started = false;
+
+  const win = () => globalThis.window;
+  const doc = () => globalThis.document;
+
+  function titleTargets(next, prev) {
+    if (next.view === 'ahead') {
+      if (prev?.view === 'ahead') return next.param === 'roadmap' ? ['#ahead-roadmap-title', '#ahead-title'] : ['#ahead-actions-title', '#ahead-title'];
+      return next.param === 'roadmap' ? ['#ahead-roadmap-title', '#ahead-title'] : ['#ahead-title'];
+    }
+    return [`#${next.view}-title`];
+  }
+
+  function saveScroll() {
+    const w = win();
+    try { w.history.replaceState({...(w.history.state ?? {}), scrollY: w.scrollY}, ''); } catch { /* ignore */ }
+  }
+
+  function writeURL(route, {replace}) {
+    const w = win();
+    const url = `${w.location.pathname}${w.location.search}${formatRoute(route)}`;
+    if (replace) {
+      w.history.replaceState({...(w.history.state ?? {}), atlas: true}, '', url);
+    } else {
+      saveScroll();
+      w.history.pushState({atlas: true, pushed: true}, '', url);
+    }
+  }
+
+  /** aria-current="page" on the most specific displayed match inside each nav container (§3.3). */
+  function refreshNav() {
+    const d = doc();
+    if (!d || !current) return;
+    const groups = new Map();
+    for (const link of d.querySelectorAll('[data-nav]')) {
+      const key = link.closest('nav') || link.parentElement;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(link);
+    }
+    const param = effectiveParam(current);
+    for (const links of groups.values()) {
+      const scored = links.map(link => {
+        const [view, linkParam] = String(link.dataset.nav).split('/');
+        let score = 0;
+        if (view === current.view) score = linkParam ? (linkParam === param ? 2 : 0) : 1;
+        return {link, score, shown: link.getClientRects().length > 0};
+      });
+      const pool = scored.some(s => s.shown && s.score) ? scored.filter(s => s.shown) : scored;
+      const best = Math.max(0, ...pool.map(s => s.score));
+      const winner = best ? pool.find(s => s.score === best)?.link : null;
+      for (const {link} of scored) {
+        if (link === winner) link.setAttribute('aria-current', 'page');
+        else link.removeAttribute('aria-current');
+      }
+    }
+  }
+
+  function apply(next, meta) {
+    const prev = current;
+    current = Object.freeze({view: next.view, param: next.param ?? null, record: next.record ?? null});
+    const d = doc();
+    if (d) {
+      d.documentElement.dataset.view = current.view;
+      if (!sameView(prev, current) && !(meta.source === 'initial' && current.view === defaultView && !current.param)) {
+        d.title = `${VIEW_NAMES[current.view]} — Protest Atlas`;
+      }
+      refreshNav();
+    }
+    const viewChanged = !sameView(prev, current);
+    if (meta.source === 'initial' || !viewChanged) pending = null;
+    else if (meta.source === 'pop') pending = {scroll: Number(win()?.history.state?.scrollY) || 0, focus: titleTargets(current, prev)};
+    else pending = {scroll: 0, focus: titleTargets(current, prev)};
+    onChange(current, prev, meta);
+    d?.dispatchEvent(new CustomEvent('atlas:route', {detail: {route: current, prev}}));
+  }
+
+  function settle({scroll, focus}) {
+    const w = win(), d = doc();
+    if (!w || !d) return;
+    w.scrollTo({top: scroll, left: 0, behavior: 'instant'});
+    const target = focus.map(sel => d.querySelector(sel)).find(el => el && el.getClientRects().length);
+    target?.focus({preventScroll: true});
+  }
+
+  function fromLocation(source) {
+    const w = win();
+    const parsed = parseRoute(w.location.hash, defaultView);
+    if (!parsed) {
+      // Not a route (#main, #after-map): keep the current view, or the default one on first load.
+      if (!current) apply({view: defaultView}, {source});
+      return;
+    }
+    if (parsed.unknown) {
+      const fallback = current ? {view: current.view, param: current.param} : {view: defaultView};
+      w.history.replaceState(w.history.state, '', `${w.location.pathname}${w.location.search}${formatRoute(fallback)}`);
+      apply(fallback, {source, unknown: true});
+      return;
+    }
+    const next = parsed.record ? {view: current?.view ?? defaultView, param: current?.param ?? null, record: parsed.record} : parsed;
+    if (parsed.alias) w.history.replaceState(w.history.state, '', `${w.location.pathname}${w.location.search}${formatRoute(next)}`);
+    if (sameRoute(current, next)) return;
+    apply(next, {source, alias: parsed.alias});
+  }
+
+  return {
+    start() {
+      if (started) return;
+      started = true;
+      const w = win();
+      try { w.history.scrollRestoration = 'manual'; } catch { /* ignore */ }
+      if (!w.history.state?.atlas) {
+        try { w.history.replaceState({...(w.history.state ?? {}), atlas: true}, ''); } catch { /* ignore */ }
+      }
+      w.addEventListener('popstate', () => fromLocation('pop'));
+      w.addEventListener('hashchange', () => fromLocation('user'));
+      for (const query of ['(min-width: 900px)', '(min-width: 1200px)']) {
+        w.matchMedia?.(query)?.addEventListener?.('change', refreshNav);
+      }
+      fromLocation('initial');
+    },
+
+    /** Navigate. A record route keeps the view underneath. Re-selecting the shown view scrolls to the top. */
+    go(route, {replace = false, user = true} = {}) {
+      if (!route) return;
+      if (route.unknown) {
+        apply(current ?? {view: defaultView}, {source: 'program', unknown: true});
+        return;
+      }
+      const next = route.record
+        ? {view: current?.view ?? defaultView, param: current?.param ?? null, record: route.record}
+        : {view: route.view ?? defaultView, param: route.param ?? null, record: null};
+      const reselect = user && !next.record && !current?.record && sameView(current, next);
+      if (sameRoute(current, next)) {
+        if (reselect) settle({scroll: 0, focus: titleTargets(next, null)});
+        return;
+      }
+      writeURL(next, {replace});
+      apply(next, {source: user ? 'user' : 'program'});
+      if (reselect) pending = {scroll: 0, focus: titleTargets(next, null)};
+    },
+
+    current() { return current; },
+
+    /** Close the record: Back when the router pushed the entry, otherwise replace with the view underneath. */
+    closeRecord() {
+      if (!current?.record) return;
+      const w = win();
+      if (w.history.state?.pushed) {
+        w.history.back();
+        return;
+      }
+      const next = {view: current.view, param: current.param, record: null};
+      writeURL(next, {replace: true});
+      apply(next, {source: 'program'});
+    },
+
+    /** Run the pending scroll and focus once the new view has rendered (C-35). */
+    afterRender() {
+      if (!pending) return;
+      const job = pending;
+      pending = null;
+      settle(job);
+    },
+
+    refreshNav,
+  };
+}

@@ -10,9 +10,11 @@ on:
 permissions:
   contents: read
 
+# Pull requests cancel their own superseded runs; pushes to main queue instead, so a newer push never cancels
+# a build or deploy that is already running (tech §10.3).
 concurrency:
   group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   validate-build:
@@ -27,11 +29,11 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.12'
-      - name: Test editorial publication boundary
+      - name: Test editorial publication boundary, roadmap evidence and internal links
         run: python -m unittest discover -s tests -v
-      - name: Test map, filters, freshness and review decisions
+      - name: Test map, filters, freshness, pages and review decisions
         run: node --test tests/*.mjs
-      - name: Validate and build the publication allowlist
+      - name: Validate and build the publication allowlist (data, coverage, history, announcements, roadmap)
         run: python scripts/build.py
       - name: Configure Pages
         if: github.event_name != 'pull_request'
@@ -46,13 +48,91 @@ jobs:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     needs: validate-build
     runs-on: ubuntu-latest
+    # One deploy at a time; a newer push waits and never cancels a deploy in progress.
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy validated artifact
         id: deployment
         uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
+
+  # Post-deploy evidence, run on the GitHub runner (the build container cannot reach github.io): the live site must
+  # serve this commit's build stamp, and the shell and the Ahead data files must answer 200. Not a PR gate.
+  verify:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - name: Check the deployed build stamp and published files
+        env:
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+          EXPECTED_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          base="${PAGE_URL%/}"
+          if [ -z "$base" ]; then echo "::error::deploy job did not report a page URL"; exit 1; fi
+          echo "Checking $base for commit $EXPECTED_SHA"
+          deadline=$(( $(date +%s) + 600 ))
+          attempt=0
+          deployed=""
+          while :; do
+            attempt=$(( attempt + 1 ))
+            if body=$(curl -fsS --max-time 20 -H 'Cache-Control: no-cache' "$base/public/build-info.json?verify=$RUN_ID-$attempt"); then
+              deployed=$(printf '%s' "$body" | python3 -c 'import json, sys; print(json.load(sys.stdin).get("commit") or "")' || true)
+            else
+              deployed=""
+            fi
+            if [ "$deployed" = "$EXPECTED_SHA" ]; then
+              echo "Build stamp matches after $attempt attempt(s)."
+              break
+            fi
+            if [ "$(date +%s)" -ge "$deadline" ]; then
+              echo "::error::public/build-info.json reports commit '${deployed:-none}', expected $EXPECTED_SHA after 10 minutes"
+              exit 1
+            fi
+            echo "Attempt $attempt: build stamp reports '${deployed:-unavailable}'; retrying in 20 s"
+            sleep 20
+          done
+          failed=0
+          for path in "" "index.html" "public/upcoming.json" "public/roadmap.json" "public/events.json"; do
+            code=$(curl -sS -o /dev/null --max-time 20 -w '%{http_code}' "$base/$path?verify=$RUN_ID") || true
+            echo "$code /$path"
+            if [ "$code" != "200" ]; then echo "::error::/$path returned HTTP $code"; failed=1; fi
+          done
+          for path in public/upcoming.json public/roadmap.json; do
+            if ! curl -fsS --max-time 20 "$base/$path?verify=$RUN_ID" | python3 -c 'import json, sys; json.load(sys.stdin)'; then
+              echo "::error::/$path is not valid JSON"; failed=1
+            fi
+          done
+          code=$(curl -sS -o /tmp/missing.html --max-time 20 -w '%{http_code}' "$base/verify-missing-$RUN_ID/page") || true
+          if [ "$code" != "404" ] || ! grep -q 'noindex' /tmp/missing.html; then
+            echo "::error::an unknown path returned HTTP $code without the noindex 404 page"; failed=1
+          fi
+          {
+            echo "### Pages deployment check"
+            echo ""
+            echo "- Site: $base/"
+            echo "- Build stamp commit: \`$deployed\` (expected \`$EXPECTED_SHA\`)"
+            echo ""
+            echo '```'
+            for path in "index.html" "public/events.json"; do
+              echo "HEAD /$path"
+              curl -sSI --max-time 20 "$base/$path" | grep -iE '^(HTTP/|content-type|content-encoding|cache-control|etag|last-modified)' || true
+              echo ""
+            done
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $failed

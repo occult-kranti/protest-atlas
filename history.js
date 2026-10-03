@@ -1,4 +1,8 @@
-const escape = value => String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Historical context helpers and the record's outcome section (WP3). DOM-free; safe to import in Node.
+// Frozen for tests: contextFor, matchesHistory, completionKind, outcomeHTML and its pinned strings
+// ('Assessment / inference', 'protest causation is not established', 'End not established', #detail-source-N, escaping).
+import {esc, sourceRefs, dateTag} from './js/html.js';
+
 export const contextFor = (contexts,id) => contexts?.records?.find(row=>row.event_id===id);
 export function matchesHistory(event,context,filters) {
   const dates=[event.start_date,event.end_date,event.last_observed_at,...(event.timeline||[]).map(row=>row.date)].filter(Boolean);
@@ -10,17 +14,52 @@ export function completionKind(events=[]) {
   const ended=events.filter(e=>e.status==='ended').length;
   return !ended?'none':ended===events.length?'ended-only':'mixed';
 }
-export function outcomeHTML(event,context) {
-  const refs = ids=>ids.map(id=>{const n=event.sources.findIndex(s=>s.id===id);return n<0?'':`<a class="source-ref" href="#detail-source-${n+1}">Source ${n+1}</a>`;}).join('');
-  const cities=(context?.cities||[]).map(c=>`${escape(c.name)} ${refs(c.source_ids)}`).join(' · ');
-  return `<section class="detail-section outcome-section"><p class="eyebrow">RESULTS / FOLLOW THE CHANGE</p><h3>What changed—and for whom?</h3><p class="episode-scope">${escape(context?.episode_scope||'The recorded episode; the wider movement may continue.')}</p>${cities?`<p><strong>Reported cities:</strong> ${cities}</p>`:''}<div class="completion-note ${event.status==='ended'?'confirmed-ended':''}"><strong>${event.status==='ended'?'Ended / suspended episode':'End not established'}</strong><p>${escape(context?.status_basis?.text||'Age alone does not establish that this episode ended.')}</p>${refs(context?.status_basis?.source_ids||[])}</div>${context?.outcome_status==='documented'?context.outcomes.map(o=>`<article class="outcome-entry"><p class="outcome-date">${escape(o.date||'Date not established')}</p><h4>${escape(o.summary)}</h4><p class="outcome-causality">${o.causality==='reported-link'?'The source links this change to the action; causal certainty is limited.':'A subsequent change is documented; protest causation is not established.'}</p><ul>${o.favours.map(f=>`<li><strong>${escape(f.actor)} · ${escape(f.effect)}</strong><span class="assessment-label">${f.basis==='inference'?'Assessment / inference':'Explicit in source'}</span><p>${escape(f.note)}</p></li>`).join('')}</ul>${refs(o.source_ids)}</article>`).join(''):'<p class="outcome-unknown">No sourced outcome established in this snapshot. This does not mean nothing changed.</p>'}<p class="small-note">${escape(context?.research_note||'AI-assisted research. No independent human editorial sign-off.')}</p></section>`;
+
+const CAUSALITY = {
+  'reported-link': 'The source links this change to the action; causal certainty is limited.',
+  'not-established': 'A subsequent change is documented; protest causation is not established.',
+};
+const refsHTML = (event, ids) => {
+  const refs = sourceRefs(event, ids || []);
+  return refs ? `<p class="rec-refs">${refs}</p>` : '';
+};
+
+/** Cities that cite the same sources share one set of "Source N" links, in first-seen order. */
+function cityGroups(cities = []) {
+  const groups = new Map();
+  for (const city of cities || []) {
+    const ids = city?.source_ids || [];
+    const key = ids.join('\u0000');
+    if (!groups.has(key)) groups.set(key, {names: [], ids});
+    groups.get(key).names.push(city?.name ?? '');
+  }
+  return [...groups.values()];
 }
-export function renderResearchCoverage(ledger,contexts,events,countries) {
-  const el=document.getElementById('historical-coverage'); if(!el)return;
-  if(!ledger?.countries) {el.innerHTML='<p>Historical research ledger unavailable. Coverage cannot be inferred from the map.</p>';return;}
-  const screened=ledger.countries.filter(c=>c.status==='searched').length;
-  const failed=ledger.countries.filter(c=>c.status==='search-failed').length;
-  const published=new Set(events.map(e=>e.country)).size;
-  const cityCount=new Set((contexts?.records||[]).flatMap(row=>{const event=events.find(e=>e.id===row.event_id);return row.cities.map(c=>`${event?.country}:${c.name}`);})).size;
-  el.innerHTML=`<div class="research-heading"><div><p class="eyebrow">2024 → 2026 / RESEARCH SCOPE</p><h2>Every country gets a place.<br>Every claim needs evidence.</h2></div><p>${escape(ledger.note)}</p></div><dl class="history-counts"><div><dt>Initial country screens</dt><dd>${screened}<small> / ${countries.length}</small></dd></div><div><dt>Countries with records</dt><dd>${published}</dd></div><div><dt>Cities in sourced records</dt><dd>${cityCount}</dd></div><div><dt>Ended / suspended episodes</dt><dd>${events.filter(e=>e.status==='ended').length}</dd></div></dl><p class="research-limit">A screen is a logged search, not a completed country history. ${failed?`${failed} searches failed. `:''}No country is certified exhaustive. Black shadow marks a sourced ended episode, not a country where all protests are over.</p><details class="research-ledger"><summary>Inspect country-by-country research</summary><div class="ledger-table-wrap"><table><caption>Initial screening from 1 January 2024 through 2 October 2026</caption><thead><tr><th>Country / territory</th><th>Research stage</th><th>Records</th><th>Evidence inspected</th></tr></thead><tbody>${countries.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(c=>{const row=ledger.countries.find(r=>r.code===c.code);const count=events.filter(e=>e.country===c.code).length;return `<tr><th scope="row">${escape(c.name)}</th><td>${row?.status==='searched'?'Initial screen logged':row?.status==='search-failed'?'Search failed':'Not searched'}${count?' · source checks':''}</td><td>${count||'Not established'}</td><td>${row?.reviewed_urls?.length||0} source pages inspected${row?.candidate_urls?.[0]?` · <a href="${escape(row.candidate_urls[0])}" target="_blank" rel="noopener noreferrer">Candidate source ↗</a>`:''}<details><summary>Search record</summary><p>${escape(row?.query||'No query logged')}</p><p>${escape(row?.attempted_at||'')} · ${escape(row?.provider||'')}</p><p>${escape(row?.note||'Coverage not established.')}</p></details></td></tr>`;}).join('')}</tbody></table></div></details>`;
+
+function favourHTML(favour) {
+  return `<li class="outcome-favour"><p class="outcome-actor"><strong>${esc(favour.actor)} · ${esc(favour.effect)}</strong> <span class="assessment-label${favour.basis==='inference'?' assessment-label--inference':''}">${favour.basis==='inference'?'Assessment / inference':'Explicit in source'}</span></p><p class="outcome-note">${esc(favour.note)}</p></li>`;
+}
+
+function entryHTML(event, outcome) {
+  const date = outcome.date && Number.isFinite(Date.parse(outcome.date)) ? dateTag(outcome.date) : esc(outcome.date || 'Date not established');
+  return `<article class="outcome-entry"><p class="outcome-date">${date}</p><h4 class="outcome-summary">${esc(outcome.summary)}</h4><p class="outcome-causality">${CAUSALITY[outcome.causality] ?? CAUSALITY['not-established']}</p>${(outcome.favours||[]).length?`<ul class="outcome-favours">${outcome.favours.map(favourHTML).join('')}</ul>`:''}${refsHTML(event, outcome.source_ids)}</article>`;
+}
+
+/**
+ * D7 "What changed — and for whom?" (record sheet, inside section#rec-outcome).
+ * `scope: false` leaves the episode scope to the record overview ("Scope of this record:").
+ */
+export function outcomeHTML(event,context,{scope = true} = {}) {
+  const sources = {sources: event?.sources || []};
+  const cities=cityGroups(context?.cities).map(g=>`<span class="outcome-city">${g.names.map(esc).join(', ')} ${sourceRefs(sources,g.ids)}</span>`).join('<span class="outcome-sep" aria-hidden="true"> · </span>');
+  const ended = event?.status==='ended';
+  const documented = context?.outcome_status==='documented' && (context.outcomes||[]).length;
+  return `<div class="outcome-section">`
+    + `<h3 class="rec-h" id="rec-outcome-title">What changed — and for whom?</h3>`
+    + (scope || !context ? `<p class="episode-scope">${esc(context?.episode_scope||'The recorded episode; the wider movement may continue.')}</p>` : '')
+    + (cities ? `<p class="outcome-cities"><strong>Reported cities:</strong> ${cities}</p>` : '')
+    + `<div class="completion-note${ended?' confirmed-ended':''}"><p class="completion-title"><strong>${ended?'Ended / suspended episode':'End not established'}</strong></p><p>${esc(context?.status_basis?.text||'Age alone does not establish that this episode ended.')}</p>${refsHTML(sources, context?.status_basis?.source_ids)}</div>`
+    + (documented ? context.outcomes.map(o=>entryHTML(sources,o)).join('') : '<p class="outcome-unknown">No sourced outcome established in this snapshot. This does not mean nothing changed.</p>')
+    + `<p class="small-note">${esc(context?.research_note||'AI-assisted research. No independent human editorial sign-off.')}</p>`
+    + `</div>`;
 }

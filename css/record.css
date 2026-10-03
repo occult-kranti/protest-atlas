@@ -1,1 +1,650 @@
-@layer components {}
+@layer components {
+  /* ===================================================================== Record card (SPEC §7) */
+
+  .card {
+    --card-pad-x: var(--sp-4);
+    --card-pad-y: var(--sp-4);
+    container-type: inline-size;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    padding: var(--card-pad-y) var(--card-pad-x);
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: var(--r-2);
+    color: var(--text);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+    overflow-wrap: break-word;
+  }
+  .card :where(p, ul, ol, dl, dd, h3) { margin: 0; }
+  .card[data-ended="true"] {
+    border: 1.5px solid var(--border-strong);
+    box-shadow: 5px 5px 0 var(--ended-shadow);
+  }
+  .card:has(.card-link:focus-visible) {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Example watermark (C11): 45° stripes, white text; a full-bleed band at the top of the card. */
+  .card-watermark,
+  .rec-watermark {
+    padding: 6px var(--card-pad-x, var(--sp-4));
+    background: repeating-linear-gradient(45deg, var(--example-ink) 0 12px, var(--example-stripe) 12px 24px);
+    color: var(--on-example);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    line-height: 1.45;
+  }
+  .card .card-watermark {
+    margin: calc(-1 * var(--card-pad-y)) calc(-1 * var(--card-pad-x)) var(--sp-1);
+    border-radius: calc(var(--r-2) - 1px) calc(var(--r-2) - 1px) 0 0;
+  }
+  .card-watermark :focus-visible,
+  .rec-watermark :focus-visible { outline-color: var(--on-example); }
+
+  /* 1 · status leads; 4 · latest evidence + band */
+  .card-status { font-size: var(--fs-sm); }
+  .card-when { color: var(--text-2); }
+  .card-when .band,
+  .rec-when .band { vertical-align: 1px; }
+  .card :where(time),
+  .rec-body :where(time) { white-space: nowrap; }
+  .card-when time,
+  .rec-when time,
+  .rec-evidence time { font-variant-numeric: tabular-nums; }
+  .card-when time { color: var(--text); }
+
+  /* 2 · place (C1) */
+  .card-place { color: var(--text-2); }
+  .card-place strong { color: var(--text); font-weight: 650; }
+
+  /* 3 · title: the stretched link covers the card; no chevron */
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: clamp(18px, 2.5vw + 10px, 22px);
+    line-height: 1.25;
+    font-weight: 600;
+    text-wrap: pretty;
+  }
+  .card-link { color: inherit; text-decoration: none; }
+  .card-link::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+  .card-link:focus-visible { outline: none; }
+
+  /* 5 · issues (C3) */
+  .card-issues { color: var(--text-2); }
+
+  /* 6 · facts: 104 px label column when the card's container query width is 340 px or more (tablet and up);
+     below that the label sits above its value, which keeps verbatim text on fewer lines at phone width */
+  .card-facts {
+    display: grid;
+    gap: 10px;
+    margin-block-start: var(--sp-1);
+    padding-block-start: var(--sp-3);
+    border-block-start: 1px solid var(--border);
+  }
+  .card-fact { display: grid; gap: 2px; }
+  .card-fact dt,
+  .rec-glance-label,
+  .rec-glance-title {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  @container (min-width: 340px) {
+    .card-fact { grid-template-columns: 104px minmax(0, 1fr); column-gap: var(--sp-3); }
+    .card-fact dt { padding-block-start: 2px; }
+  }
+
+  /* For / against (C4, C10) and the hue-free stance pill (§7.3; no selector on data-stance) */
+  .card-sides { list-style: none; padding: 0; display: grid; gap: var(--sp-1); }
+  .card-more { margin-block-start: var(--sp-1); color: var(--text-muted); }
+  .side-pill {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-1);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: baseline;
+  }
+  .side-target { font-weight: 600; }
+  .side-actor { color: var(--text-2); }
+
+  /* Intensity (C6): three fixed rows, verbatim */
+  .facet-list { list-style: none; padding: 0; display: grid; gap: 2px; }
+  .facet-name { font-weight: 600; }
+
+  /* Police / state (C7) */
+  .card-attribution { color: var(--text-2); }
+
+  /* 7 · outcome teaser (C9): the only clamped element */
+  .card-outcome {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    color: var(--text-2);
+  }
+  .card-outcome-label { color: var(--text); font-weight: 600; }
+
+  /* 8 · evidence (C8): the publisher link sits above the stretched card link */
+  .card-evidence {
+    margin-block-start: var(--sp-1);
+    padding-block-start: var(--sp-3);
+    border-block-start: 1px solid var(--border);
+    color: var(--text-2);
+  }
+  .card-evidence .source-link {
+    position: relative;
+    z-index: 1;
+    padding: 14px 4px;
+    margin: -14px -4px;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .card-level { color: var(--text); font-weight: 600; }
+
+  .source-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  .source-link .icon,
+  .rec-disclosure .icon {
+    width: 14px;
+    height: 14px;
+    margin-inline-start: 3px;
+    vertical-align: -2px;
+  }
+
+  @media (min-width: 600px) {
+    .card { --card-pad-x: var(--sp-5); --card-pad-y: var(--sp-5); }
+  }
+  @media (hover: hover) and (pointer: fine) {
+    .card:not([data-ended="true"]):hover { border-color: var(--border-input); }
+    .card:hover .card-link { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .card-evidence .source-link:hover,
+    .source-ref:hover,
+    .facet-help:hover { text-decoration-thickness: 2px; }
+  }
+
+  /* ---------------------------------------------------------------- List density (§7.5) */
+  .card[data-density="row"] {
+    --card-pad-x: 0px;
+    --card-pad-y: var(--sp-3);
+    gap: 6px;
+    background: transparent;
+    border: 0;
+    border-block-end: 1px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .card[data-density="row"][data-ended="true"] {
+    border-inline-start: 4px solid var(--border-strong);
+    padding-inline-start: var(--sp-3);
+  }
+  .card[data-density="row"] .card-watermark { border-radius: 0; padding-inline: var(--sp-2); margin-inline: 0; }
+  .card[data-density="row"][data-ended="true"] .card-watermark { margin-inline-start: calc(-1 * var(--sp-3)); }
+  .card[data-density="row"] .card-title { font-size: 17px; line-height: 1.3; }
+  .card[data-density="row"] .card-sides { gap: var(--sp-1); }
+  .card-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-1) var(--sp-3); }
+  .card-row-facts,
+  .card-row-state { color: var(--text-2); }
+  .card-row-label { color: var(--text); font-weight: 600; }
+  .card[data-density="row"] .card-evidence { margin: 0; padding: 0; border: 0; }
+
+  /* ---------------------------------------------------------------- Skeleton (static: nothing pulses) */
+  .card-skeletons { display: grid; gap: var(--sp-3); }
+  .card-skeleton { gap: 10px; }
+  .card-skeleton-line {
+    display: block;
+    height: 12px;
+    width: 60%;
+    border-radius: var(--r-1);
+    background: var(--bg-sunken);
+  }
+  .card-skeleton-line--short { width: 35%; }
+  .card-skeleton-line--medium { width: 55%; }
+  .card-skeleton-line--long { width: 100%; }
+  .card-skeleton-line--title { height: 20px; width: 90%; }
+  .card-skeleton-line--title-2 { height: 20px; width: 55%; }
+
+  /* ===================================================================== Record sheet body (SPEC §8) */
+
+  .rec-body {
+    /* Containing block for .visually-hidden (position: absolute) text, so it never escapes the scrolling
+       .sheet-body and makes the dialog itself scrollable. */
+    position: relative;
+    container: rec / inline-size;
+    color: var(--text);
+    font-size: var(--fs-md);
+    line-height: var(--lh-body);
+    padding-block-end: var(--sp-6);
+    overflow-wrap: break-word;
+  }
+  .rec-body :where(p, ul, ol, dl, dd, h2, h3, h4) { margin: 0; }
+  /* Jump targets land below the sticky tabs even when the body's top padding offsets them (WCAG 2.4.11). */
+  .rec-body [id] { scroll-margin-top: var(--sp-5); }
+
+  .rec-example {
+    margin-block-end: var(--sp-4);
+    border: 1px solid var(--example-ink);
+    border-radius: var(--r-2);
+    overflow: hidden;
+  }
+  .rec-example .rec-watermark { padding-inline: var(--sp-3); }
+  .rec-example-note { padding: var(--sp-2) var(--sp-3); font-size: var(--fs-sm); }
+
+  /* D1, always */
+  .rec-disclosure {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    width: fit-content;
+    max-width: 100%;
+    margin-block: var(--sp-1) var(--sp-4);
+    padding: var(--sp-2) var(--sp-3);
+    background: var(--notice-bg);
+    border-radius: var(--r-1);
+    color: var(--text);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+  .rec-disclosure .icon { flex: none; width: 18px; height: 18px; margin: 1px 0 0; }
+
+  .rec-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--sp-1) var(--sp-3);
+    font-size: var(--fs-sm);
+  }
+  .rec-when { color: var(--text-2); }
+  .rec-when time { color: var(--text); }
+  .rec-place { margin-block-start: var(--sp-2); color: var(--text-2); font-size: var(--fs-sm); }
+  .rec-place strong { color: var(--text); font-weight: 650; }
+  .rec-title {
+    margin-block: var(--sp-1) var(--sp-3);
+    font-family: var(--font-serif);
+    font-size: var(--fs-2xl);
+    line-height: 1.15;
+    font-weight: 600;
+    text-wrap: pretty;
+  }
+  .rec-temporal {
+    margin-block-end: var(--sp-3);
+    padding: var(--sp-3);
+    border-radius: var(--r-1);
+    background: var(--warn-weak);
+    color: var(--warn);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+  }
+
+  /* Sections and headings (D3–D10) */
+  .rec-section {
+    padding-block-start: var(--sp-6);
+    margin-block-start: var(--sp-5);
+    border-block-start: 1px solid var(--border);
+  }
+  .rec-section--overview { padding-block-start: 0; margin-block-start: var(--sp-2); border: 0; }
+  .rec-h {
+    margin-block-end: var(--sp-2);
+    font-family: var(--font-sans);
+    font-size: var(--fs-lg);
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  .rec-h--sources { margin-block-start: var(--sp-6); }
+  .rec-section--overview > .rec-h {
+    margin-block-end: var(--sp-1);
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .rec-sub {
+    max-width: 62ch;
+    margin-block-end: var(--sp-4);
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
+  .rec-sub:focus { outline: none; }
+  .rec-sub:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+  /* D3 overview */
+  .rec-summary { font-size: var(--fs-md); line-height: var(--lh-body); }
+  .rec-issues { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; margin-block-start: var(--sp-3); }
+  .rec-issue {
+    padding: 2px var(--sp-2);
+    border-radius: var(--r-1);
+    background: var(--bg-sunken);
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+  }
+  .rec-scope { margin-block-start: var(--sp-4); color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .rec-scope strong { color: var(--text); }
+
+  /* D2 "At a glance": one column, 2×2 at 520 px and up */
+  .rec-glance { container-type: inline-size; margin-block-start: var(--sp-5); }
+  .rec-glance-title { margin-block-end: var(--sp-2); }
+  .rec-glance-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--r-2);
+    overflow: hidden;
+  }
+  @container (min-width: 520px) {
+    .rec-glance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .rec-glance-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 72px;
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--bg-raised);
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color var(--dur-1) var(--ease-out);
+  }
+  .rec-glance-cell:focus-visible { outline-offset: -3px; }
+  .rec-glance-value { display: grid; gap: 6px; font-size: var(--fs-sm); line-height: 1.45; }
+  .rec-glance-line { display: block; }
+  .rec-glance-sub,
+  .rec-glance-more { color: var(--text-2); }
+  @media (hover: hover) and (pointer: fine) {
+    .rec-glance-cell:hover { background: var(--accent-weak); }
+  }
+
+  /* D11 sticky section tabs (scroll-spy sets aria-current="true") */
+  .rec-tabs {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    margin-block-start: var(--sp-6);
+    background: var(--bg-raised);
+    border-block-end: 1px solid var(--border);
+    /* Full-bleed surface: covers the body's side padding and, when stuck, its top padding (up to the
+       24 px top margin), so scrolled text never shows around the tabs. */
+    box-shadow: 0 0 0 100vmax var(--bg-raised);
+    clip-path: inset(calc(-1 * var(--sp-6)) -100vmax 0);
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  .rec-tabs::-webkit-scrollbar { display: none; }
+  .rec-tabs-list { display: flex; width: max-content; min-width: 100%; list-style: none; margin: 0; padding: 0; }
+  .rec-tab {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    padding: 3px var(--sp-3) 0;
+    border-block-end: 3px solid transparent;
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .rec-tabs-list li:first-child .rec-tab { padding-inline-start: 0; }
+  .rec-tab[aria-current="true"] { color: var(--text); border-block-end-color: var(--accent); font-weight: 700; }
+  .rec-tab:focus-visible { outline-offset: -3px; }
+  @media (hover: hover) and (pointer: fine) {
+    .rec-tab:hover { color: var(--text); }
+  }
+  .rec-tabs + .rec-section { border-block-start: 0; margin-block-start: 0; }
+
+  /* Citations: every "Source N" is a 44 px target */
+  .rec-refs { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-1); margin-block: -6px -10px; }
+  .source-ref {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap);
+    padding-inline: 8px;
+    border-radius: var(--r-1);
+    color: var(--text);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    white-space: nowrap;
+  }
+  .rec-refs .source-ref:first-child { margin-inline-start: -8px; }
+
+  /* D4 positions: one column, recorded order */
+  .rec-positions { list-style: none; padding: 0; }
+  .rec-position { padding-block: var(--sp-4) var(--sp-2); border-block-start: 1px solid var(--border); }
+  .rec-position:first-child { padding-block-start: 0; border-block-start: 0; }
+  .rec-actor { margin-block-end: 6px; font-size: var(--fs-md); font-weight: 600; }
+  .rec-stance { margin-block-end: var(--sp-2); font-size: 17px; line-height: 1.4; }
+  .rec-stance .side-pill { margin-inline-end: 2px; }
+  .rec-claim { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .rec-claim-label { color: var(--text); font-weight: 600; }
+
+  /* D5 intensity: three rows, unknown in normal ink */
+  .rec-facets { border-block-start: 1px solid var(--border); }
+  .facet {
+    display: grid;
+    gap: var(--sp-1);
+    padding-block: var(--sp-3);
+    border-block-end: 1px solid var(--border);
+  }
+  .facet-label { font-size: var(--fs-sm); font-weight: 700; }
+  .facet-value { font-size: var(--fs-md); line-height: var(--lh-body); }
+  .facet-help {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    min-height: var(--tap);
+    padding-inline: 4px;
+    margin: -8px 0 -10px -4px;
+    color: var(--text);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    vertical-align: baseline;
+  }
+  .facet-note { display: block; margin-block-start: var(--sp-2); color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .rec-source-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 var(--sp-1);
+    min-height: var(--tap);
+    margin-block-start: var(--sp-2);
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+  }
+  @container rec (min-width: 520px) {
+    .facet { grid-template-columns: 160px minmax(0, 1fr); column-gap: var(--sp-4); }
+    .facet-label { padding-block-start: 2px; }
+  }
+
+  /* D6 police and state */
+  .rec-state-list { list-style: none; padding: 0; }
+  .rec-state-entry { padding-block-start: var(--sp-1); }
+  .rec-action { font-size: var(--fs-md); font-weight: 600; }
+  .rec-attribution { margin-block-start: 2px; color: var(--text-2); font-size: var(--fs-sm); }
+  .rec-empty {
+    padding: var(--sp-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
+
+  /* D7 outcome (history.js outcomeHTML; legacy class names) */
+  .outcome-section { display: grid; gap: var(--sp-3); }
+  .outcome-section > .rec-h { margin-block-end: 0; }
+  .episode-scope,
+  .outcome-cities { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .outcome-cities strong { color: var(--text); }
+  .outcome-city { color: var(--text); }
+  .outcome-cities .source-ref,
+  .rec-timeline-body .source-ref { margin-block: -12px; vertical-align: baseline; }
+  .outcome-sep { color: var(--text-muted); }
+  .completion-note {
+    padding: var(--sp-3) var(--sp-4);
+    border: 1px solid var(--border);
+    border-radius: var(--r-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
+  .completion-note.confirmed-ended {
+    border: 1.5px solid var(--border-strong);
+    box-shadow: 5px 5px 0 var(--ended-shadow);
+    margin-inline-end: 5px;
+  }
+  .completion-title { margin-block-end: var(--sp-1); font-size: var(--fs-md); }
+  .outcome-entry { padding-block-start: var(--sp-3); border-block-start: 1px solid var(--border); }
+  .outcome-date { color: var(--text-2); font-size: var(--fs-sm); font-variant-numeric: tabular-nums; }
+  .outcome-summary {
+    margin-block: 2px 6px;
+    font-size: var(--fs-md);
+    line-height: 1.45;
+    font-weight: 600;
+  }
+  .outcome-causality { margin-block-end: var(--sp-2); color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .outcome-favours { list-style: none; padding: 0; display: grid; gap: var(--sp-3); margin-block-end: var(--sp-1); }
+  .outcome-actor { font-size: var(--fs-sm); line-height: 1.6; }
+  .outcome-note { margin-block-start: 2px; color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .assessment-label {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-1);
+    color: var(--text-2);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    vertical-align: baseline;
+  }
+  .assessment-label--inference { border-style: dashed; }
+  .outcome-unknown {
+    padding: var(--sp-3) var(--sp-4);
+    border: 1px dashed var(--border-strong);
+    border-radius: var(--r-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
+  .small-note { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+
+  /* D8 timeline: 10 px ink marks, no connecting line; unknown onset is an open bracket */
+  .rec-timeframe { margin-block-end: var(--sp-3); font-weight: 600; }
+  .rec-timeline { list-style: none; padding: 0; display: grid; gap: var(--sp-2); }
+  .rec-timeline-item {
+    display: grid;
+    grid-template-columns: 10px minmax(0, 1fr);
+    column-gap: var(--sp-3);
+    align-items: start;
+  }
+  .rec-mark {
+    width: 10px;
+    height: 10px;
+    margin-block-start: 6px;
+    border-radius: 50%;
+    background: var(--text);
+  }
+  .rec-mark--open {
+    width: 7px;
+    height: 16px;
+    margin-block-start: 3px;
+    margin-inline-start: 2px;
+    border: 2px solid var(--text);
+    border-inline-end: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .rec-timeline-date { display: block; font-size: var(--fs-sm); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .rec-timeline-item--open .rec-timeline-text { font-style: italic; color: var(--text-2); }
+  .rec-timeline-body { line-height: 1.5; }
+  .rec-rule { margin-block-start: var(--sp-4); color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+
+  /* D9 evidence and D10 sources */
+  .rec-evidence { display: grid; gap: var(--sp-2); margin-block-end: var(--sp-3); }
+  .rec-evidence-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 6px; font-size: var(--fs-sm); line-height: 1.45; }
+  .rec-evidence-row dt { color: var(--text-2); }
+  .rec-evidence-row dd { color: var(--text); }
+  .rec-evidence-row .rec-evidence-note { flex-basis: 100%; margin-block-start: 2px; color: var(--text-2); }
+  .rec-verification-note { color: var(--text-2); font-size: var(--fs-sm); line-height: 1.45; }
+  .source-list {
+    display: grid;
+    gap: var(--sp-3);
+    margin-block-start: var(--sp-1);
+    padding-inline-start: var(--sp-5);
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+    line-height: 1.45;
+  }
+  .source-item { padding-inline-start: var(--sp-1); overflow-wrap: anywhere; }
+  .source-item:focus { outline: none; }
+  .source-item::marker { color: var(--text); font-weight: 700; font-variant-numeric: tabular-nums; }
+  /* Inline padding closes the gaps between wrapped lines, so the whole title is one hit area. */
+  .source-title .source-link { padding-block: 3px; color: var(--text); font-weight: 600; }
+  .source-caveat { margin-block-start: var(--sp-3); color: var(--text-2); font-size: var(--fs-sm); }
+  .rec-footer {
+    display: grid;
+    gap: var(--sp-1);
+    margin-block-start: var(--sp-6);
+    padding-block-start: var(--sp-4);
+    border-block-start: 1px solid var(--border);
+    color: var(--text-2);
+    font-size: var(--fs-sm);
+  }
+  .rec-id code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--fs-sm); color: var(--text); overflow-wrap: anywhere; }
+  .rec-correction .source-link { display: inline-flex; align-items: center; min-height: var(--tap); color: var(--text); font-weight: 600; }
+
+  @media (min-width: 600px) {
+    .rec-title { font-size: 30px; }
+  }
+
+  /* §17.10 short viewports: the record tabs scroll with the body */
+  @media (max-height: 500px) {
+    .rec-tabs { position: static; }
+  }
+
+  /* §17.10 forced colours: the ended shadow becomes a 3 px border; pills and marks keep a visible edge */
+  @media (forced-colors: active) {
+    .card[data-ended="true"],
+    .completion-note.confirmed-ended { box-shadow: none; border: 3px solid CanvasText; }
+    .card[data-density="row"][data-ended="true"] { border: 0; border-inline-start: 4px solid CanvasText; border-block-end: 1px solid CanvasText; }
+    .side-pill { border: 1px solid CanvasText; }
+    .assessment-label { border-color: CanvasText; }
+    .card-watermark,
+    .rec-watermark { border: 2px solid CanvasText; }
+    .rec-mark { forced-color-adjust: none; background: CanvasText; }
+    .rec-mark--open { background: transparent; border-color: CanvasText; }
+    .rec-tab[aria-current="true"] { border-block-end-color: Highlight; }
+    .card-skeleton-line { border: 1px solid CanvasText; }
+  }
+}

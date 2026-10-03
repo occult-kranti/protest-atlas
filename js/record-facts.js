@@ -1,17 +1,218 @@
-// Pure record derivations (WP3). Phase-0 stub; VERIFICATION_LABELS (C-14) and NOT_ESTABLISHED (§7.4) are final. DOM-free.
+// Pure record derivations (WP3): positions, intensity, police/state response, timeframe and evidence.
+// DOM-free and safe to import in Node. Every derivation shows recorded text verbatim; it never parses
+// numbers out of prose, never tallies stances and never turns an unknown into a zero (SPEC §7.4, §7.6).
+import {safeURL, hostOf, absoluteText} from './html.js';
+import {observationBand, toTime} from '../freshness.js';
 
 export const VERIFICATION_LABELS = {'single-source': 'Single source', corroborated: 'Corroborated', contested: 'Contested', illustrative: 'Illustrative'};
+
+/** Explainers shown beside the verification label in the record (SPEC §8.8, verbatim). */
+export const VERIFICATION_NOTES = {
+  'single-source': 'One newsroom or reporting chain, however many links. Two copies of one wire story count as one source.',
+  corroborated: 'The AI-assisted check found more than one independent source for key claims. This is not independent human verification.',
+  contested: 'Sources disagree on key claims; the record keeps both accounts.',
+};
+
 export const NOT_ESTABLISHED = {
   disruptionViolence: ['unknown', 'not established', 'not established by this record', 'disruption not established by this record', 'violence not established by this record'],
   turnout: ['not established', 'no reliable event-wide count established', 'no single verified numerical estimate adopted', 'no verified numerical estimate retained', 'reliable comparable count not established'],
 };
 
-export function positionView(p) { return {}; }
-export function positionSentence(position) { return ''; }
-export function positionList(event) { return []; }
-export function stateActionSummary(event) { return {}; }
-export function intensityFacets(event) { return []; }
-export function intensitySummary(event) { return {}; }
-export function timeframe(event, context, now) { return {}; }
-export function evidenceLine(event) { return {}; }
-export function primarySource(event) { return {}; }
+export const NOT_ESTABLISHED_TEXT = 'Not established in this record';
+export const ALL_INTENSITY_UNKNOWN = 'Turnout, disruption and violence: not established in this record.';
+
+const DAY = 86_400_000;
+const STANCES = ['support', 'oppose', 'mixed', 'unclear'];
+const PILL = {support: 'For', oppose: 'Against', mixed: 'Mixed', unclear: 'Unclear'};
+const PILL_LONG = {support: 'For', oppose: 'Against', mixed: 'Mixed position on', unclear: 'Position unclear on'};
+const text = value => (typeof value === 'string' ? value.trim() : '');
+const ids = value => (Array.isArray(value) ? value.filter(id => typeof id === 'string') : []);
+
+/** Exact allowlist comparison (editorial §6.2): trim, lower-case, drop one trailing period. */
+const normalise = value => text(value).toLowerCase().replace(/\.$/, '');
+
+// ---------------------------------------------------------------- positions
+
+/** One position as displayed: hue-free pill text, the named target and the actor, never a tally. */
+export function positionView(p) {
+  const stance = STANCES.includes(p?.stance) ? p.stance : 'unclear';
+  return {
+    stance,
+    pill: PILL[stance],
+    pillLong: PILL_LONG[stance],
+    target: text(p?.target) || 'target not established',
+    actor: text(p?.actor) || 'actor not established',
+    claim: text(p?.claim),
+    sourceIds: ids(p?.source_ids),
+  };
+}
+
+/** "Against · Yoon’s removal — Pro-Yoon demonstrators". */
+export function positionSentence(position) {
+  const view = positionView(position);
+  return `${view.pill} · ${view.target} — ${view.actor}`;
+}
+
+/** Every position in recorded order. No grouping, no counts. */
+export function positionList(event) {
+  return (Array.isArray(event?.positions) ? event.positions : []).map(positionView);
+}
+
+// ---------------------------------------------------------------- police and state response
+
+/** C7: "{action} — {attribution}" per entry, verbatim; none → "Not established in this record". */
+export function stateActionSummary(event) {
+  const items = (Array.isArray(event?.state_response) ? event.state_response : [])
+    .map(entry => ({action: text(entry?.action), attribution: text(entry?.attribution), sourceIds: ids(entry?.source_ids)}))
+    .filter(entry => entry.action);
+  return {
+    present: items.length > 0,
+    items,
+    text: items.length
+      ? items.map(entry => (entry.attribution ? `${entry.action} — ${entry.attribution}` : entry.action)).join('; ')
+      : NOT_ESTABLISHED_TEXT,
+  };
+}
+
+// ---------------------------------------------------------------- intensity
+
+const count = value => (Number.isFinite(value) && value > 0 ? value : null);
+const number = value => value.toLocaleString('en');
+
+function turnoutFacet(turnout) {
+  const min = count(turnout?.min);
+  const max = count(turnout?.max);
+  const qualifier = text(turnout?.qualifier);
+  if (min !== null || max !== null) {
+    const range = min !== null && max !== null
+      ? (min === max ? number(min) : `${number(Math.min(min, max))}–${number(Math.max(min, max))}`)
+      : min !== null ? `At least ${number(min)}` : `Up to ${number(max)}`;
+    return {text: qualifier ? `${range}. ${qualifier}` : range, known: true};
+  }
+  if (!qualifier || NOT_ESTABLISHED.turnout.includes(normalise(qualifier))) return {text: NOT_ESTABLISHED_TEXT, known: false};
+  return {text: qualifier, known: true};
+}
+
+function proseFacet(value) {
+  const recorded = text(value);
+  if (!recorded || NOT_ESTABLISHED.disruptionViolence.includes(normalise(recorded))) return {text: NOT_ESTABLISHED_TEXT, known: false};
+  return {text: recorded, known: true};
+}
+
+/** Three rows in fixed order: Turnout · Disruption · Violence or harm. Never reordered, hidden or combined. */
+export function intensityFacets(event) {
+  const intensity = event?.intensity ?? {};
+  const sourceIds = ids(intensity.source_ids);
+  return [
+    {key: 'turnout', label: 'Turnout', ...turnoutFacet(intensity.turnout), sourceIds},
+    {key: 'disruption', label: 'Disruption', ...proseFacet(intensity.disruption), sourceIds},
+    {key: 'violence', label: 'Violence or harm', ...proseFacet(intensity.violence), sourceIds},
+  ];
+}
+
+/** C6 for cards, the glance and the List density. */
+export function intensitySummary(event) {
+  const facets = intensityFacets(event);
+  const allUnknown = facets.every(facet => !facet.known);
+  const items = facets.map(facet => ({label: facet.label, text: facet.known ? facet.text : 'not established'}));
+  return {
+    allUnknown,
+    line: allUnknown ? ALL_INTENSITY_UNKNOWN : items.map(item => `${item.label}: ${item.text}`).join(' · '),
+    items,
+  };
+}
+
+// ---------------------------------------------------------------- timeframe
+
+const DAY_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+const day = value => (typeof value === 'string' && DAY_ONLY.test(value.slice(0, 10)) && Number.isFinite(toTime(value.slice(0, 10))) ? value.slice(0, 10) : null);
+const dayParts = value => absoluteText(value).split(' ');   // ['29', 'Sep', '2026']
+
+/** "29 Sep – 30 Sep 2026" within a year, "21 Dec 2025 – 4 Jan 2026" across years. */
+export function dayRange(from, to) {
+  const [d1, m1, y1] = dayParts(from);
+  const [, , y2] = dayParts(to);
+  return y1 === y2 ? `${d1} ${m1} – ${absoluteText(to)}` : `${absoluteText(from)} – ${absoluteText(to)}`;
+}
+
+/** Editorial §8 templates. Durations are inclusive and come from start and end only, never from the timeline. */
+export function timeframe(event, context = null, now = Date.now()) {
+  const onset = day(event?.start_date);
+  const end = day(event?.end_date);
+  const latestEvidence = day(event?.last_observed_at) ?? (typeof event?.last_observed_at === 'string' ? event.last_observed_at : null);
+  const band = observationBand(event, now);
+  let spanDays = null;
+  let line;
+  if (onset && end) {
+    const span = Math.round((toTime(end) - toTime(onset)) / DAY) + 1;
+    spanDays = span >= 1 ? span : null;
+    if (onset === end) line = `${absoluteText(onset)} (one day) · ended / suspended`;
+    else if (spanDays) line = `${dayRange(onset, end)} (${spanDays} days) · ended / suspended`;
+    else line = `${absoluteText(onset)} – ${absoluteText(end)} · ended / suspended`;
+  } else if (onset) {
+    line = `From ${absoluteText(onset)} · end not established`;
+  } else if (end) {
+    line = `Onset not established · ended ${absoluteText(end)}`;
+  } else {
+    const dates = [...new Set((Array.isArray(event?.timeline) ? event.timeline : []).map(entry => day(entry?.date)).filter(Boolean))].sort();
+    if (dates.length >= 2) line = `Dated evidence ${dayRange(dates[0], dates.at(-1))} · onset and end not established`;
+    else if (dates.length === 1) line = `Dated evidence ${absoluteText(dates[0])} only · onset and end not established`;
+    else line = 'Onset and end not established';
+  }
+  return {line, onset, end, latestEvidence, band, spanDays};
+}
+
+// ---------------------------------------------------------------- evidence
+
+const sourcesOf = event => (Array.isArray(event?.sources) ? event.sources : []);
+
+/** The first cited source with a safe URL (else the first source): drives C8 and the sheet's primary link. */
+function primary(event) {
+  const sources = sourcesOf(event);
+  return sources.find(source => safeURL(source?.url)) ?? sources[0] ?? null;
+}
+
+/** C8 parts. `text` is the evidence row without link markup. Source count is never a confidence score. */
+export function evidenceLine(event) {
+  const source = primary(event);
+  const url = safeURL(source?.url);
+  const publisher = text(source?.publisher) || hostOf(url) || 'Source not named';
+  const published = day(source?.published_at);
+  const level = event?.verification?.level;
+  const levelLabel = VERIFICATION_LABELS[level] ?? VERIFICATION_LABELS['single-source'];
+  const linkCount = sourcesOf(event).length;
+  const linkLabel = `${linkCount} ${linkCount === 1 ? 'link' : 'links'}`;
+  const publishedText = published ? `published ${absoluteText(published)}` : 'publication date not given';
+  return {
+    publisher, url, published, level: level in VERIFICATION_LABELS ? level : 'single-source', levelLabel,
+    levelNote: VERIFICATION_NOTES[level] ?? '', linkCount, linkLabel, publishedText, source,
+    text: `${publisher} · ${publishedText} · ${levelLabel} · ${linkLabel} · AI-assisted check`,
+  };
+}
+
+/** Sheet footer link (C-16). `label` is "Read {publisher}" up to 24 characters, else "Read the source". */
+export function primarySource(event) {
+  const source = primary(event);
+  const url = safeURL(source?.url);
+  const publisher = text(source?.publisher) || hostOf(url);
+  const label = publisher && publisher.length <= 24 ? `Read ${publisher}` : 'Read the source';
+  const named = label === 'Read the source' && publisher ? `Read the source: ${publisher}` : label;
+  return {url, publisher, label, ariaLabel: `${named} (opens in a new tab)`};
+}
+
+// ---------------------------------------------------------------- place
+
+const PRECISION_LABELS = {city: 'city-level', region: 'region-level', country: 'country-level', 'multi-location': 'several locations'};
+
+/**
+ * C1 parts. `country` comes from countryName(code) (the code itself when the directory failed to load);
+ * `label` is dropped when it only repeats the country name.
+ */
+export function placeView(event, countryName = code => code) {
+  let named = '';
+  try { named = text(countryName(event?.country)); } catch { named = ''; }
+  const country = named || text(event?.country) || text(event?.country_name);
+  const label = text(event?.location?.label);
+  const repeats = [country, text(event?.country_name)].some(name => name && name.toLowerCase() === label.toLowerCase());
+  return {country, label: repeats ? '' : label, precision: PRECISION_LABELS[event?.location?.precision] ?? ''};
+}

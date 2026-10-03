@@ -1,11 +1,20 @@
+// Coverage map (WP4, lazy). DOM-free at import. Geometry: TopoJSON + public/world-map-codes.json (no GeoJSON).
+// Fill is binary publication coverage; colours come only from css/map.css (this file writes data-* hooks).
 import {completionKind} from './history.js';
-/* Local D3 / Natural Earth map. Counts describe the index, never protest severity. */
-const WIDTH = 1000;
-const HEIGHT = 530;
-const COLORS = { ocean: '#f3f6f3', land: '#d9ded8', reported: '#c78d43', example: '#bcaed0', selected: '#174e4a', border: '#f5f5ee', grid: '#cbd4cd', outline: '#c4cec6' };
-let mapInstance = 0;
-const asset = (path) => new URL(path, import.meta.url).href;
-let dependencies;
+
+export const MAP_WIDTH = 1000, MAP_HEIGHT = 448, MAP_PADDING = 8;
+export const ZOOM_MIN = 1, ZOOM_MAX = 12, ZOOM_STEP = 1.6, FOCUS_FILL = 0.7;
+export const FIT_EXCLUDE = ['AQ'];
+// [lon, lat] viewing boxes for the region chips: screen framing, not data claims.
+export const REGION_VIEWS = {Africa: [[-19, -36], [53, 38]], Americas: [[-170, -56], [-30, 72]], Asia: [[25, -11], [150, 56]],
+  Europe: [[-25, 34], [45, 71]], Oceania: [[110, -48], [180, 0]]};
+export const MAP_ASSETS = Object.freeze({topology: 'public/world-110m.topo.json', codes: 'public/world-map-codes.json',
+  d3: 'vendor/d3.v7.9.0.min.js', topojson: 'vendor/topojson-client.v3.1.0.min.js'});
+export const MAP_HELP = 'Arrow keys move between countries with reports in view; Enter selects; the country filter and directory list every territory.';
+// CSS px kept constant at every zoom (divided by k · unitPx).
+const DOT = 3.5, HIT = 12, LABEL = 12, GAP = 4, SHADOW = 1.6, HATCH = 6, TILE = 8, ROW = 48;
+const W = MAP_WIDTH, H = MAP_HEIGHT;
+const finite = list => list.every(Number.isFinite);
 
 export function groupRecordsByCountry(events = []) {
   const groups = new Map();
@@ -21,215 +30,469 @@ export function countRecordsByCountry(events = []) {
   return Object.fromEntries([...groupRecordsByCountry(events)].map(([code, records]) => [code, records.length]));
 }
 
-function loadScript(path, globalName) {
-  if (globalThis[globalName]) return Promise.resolve(globalThis[globalName]);
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = asset(path);
-    script.async = true;
-    script.onload = () => globalThis[globalName] ? resolve(globalThis[globalName]) : reject(new Error(`Missing ${globalName} export`));
-    script.onerror = () => { script.remove(); reject(new Error(`Could not load local ${globalName}`)); };
-    document.head.append(script);
+/** properties.code = codes[f.id] ?? null (the 3 id-less areas stay null); input is not mutated. */
+export function attachCodes(features = [], codes = {}) {
+  const table = codes && typeof codes === 'object' ? codes : {};
+  return (features ?? []).map(f => {
+    const id = f?.id == null ? null : String(f.id);
+    const raw = id !== null && Object.hasOwn(table, id) ? table[id] : null;
+    return {...f, properties: {...f?.properties, code: /^[A-Z]{2}$/.test(raw ?? '') ? raw : null, name: f?.properties?.name ?? ''}};
   });
 }
 
-async function loadDependencies() {
-  if (!dependencies) {
-    dependencies = Promise.all([loadScript('vendor/d3.v7.9.0.min.js', 'd3'), loadScript('vendor/topojson-client.v3.1.0.min.js', 'topojson')]);
-    dependencies.catch(() => { dependencies = null; });
-  }
-  return dependencies;
+/** Projected rings → [{area, bounds}]; the antimeridian cut yields separate rings. */
+export function ringParts(rings = []) {
+  return (rings ?? []).filter(r => Array.isArray(r) && r.length > 2).map(ring => {
+    let area = 0;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) area += ring[j][0] * ring[i][1] - ring[i][0] * ring[j][1];
+    const xs = ring.map(p => p[0]), ys = ring.map(p => p[1]);
+    return {area: Math.abs(area) / 2, bounds: [[Math.min(...xs), Math.min(...ys)], [Math.max(...xs), Math.max(...ys)]]};
+  }).filter(p => finite([p.area, ...p.bounds.flat()]));
 }
 
-async function localJSON(path) {
-  const response = await fetch(asset(path));
+/** Largest cluster (tech §5.4): largest part + parts ≥ ratio × its area within max(w, h) of it; parts wider than maxPartWidth are ignored. */
+export function focusParts(parts, {ratio = 0.5, maxPartWidth = W / 2} = {}) {
+  const pool = (parts ?? []).filter(p => p?.area > 0 && Array.isArray(p.bounds) && finite(p.bounds.flat()) && p.bounds[1][0] - p.bounds[0][0] <= maxPartWidth);
+  if (!pool.length) return null;
+  const big = pool.reduce((a, b) => (b.area > a.area ? b : a));
+  const [[lx0, ly0], [lx1, ly1]] = big.bounds;
+  const reach = Math.max(lx1 - lx0, ly1 - ly0);
+  let [x0, y0, x1, y1] = [lx0, ly0, lx1, ly1];
+  for (const {area, bounds: [[a0, b0], [a1, b1]]} of pool) {
+    if (area < ratio * big.area || Math.max(0, a0 - lx1, lx0 - a1, b0 - ly1, ly0 - b1) > reach) continue;
+    x0 = Math.min(x0, a0); y0 = Math.min(y0, b0); x1 = Math.max(x1, a1); y1 = Math.max(y1, b1);
+  }
+  return [[x0, y0], [x1, y1]];
+}
+
+/** {k, x, y} fitting bounds at `fill`, k clamped to [min, max]; null on invalid bounds. */
+export function focusTransform(bounds, {width = W, height = H, fill = FOCUS_FILL, min = ZOOM_MIN, max = ZOOM_MAX} = {}) {
+  if (!Array.isArray(bounds) || bounds.length !== 2 || !finite(bounds.flat())) return null;
+  const [[x0, y0], [x1, y1]] = bounds;
+  const extent = Math.max(Math.max(0, x1 - x0) / width, Math.max(0, y1 - y0) / height);
+  const k = Math.min(max, Math.max(min, extent > 0 ? fill / extent : max));
+  return {k, x: width / 2 - k * (x0 + x1) / 2, y: height / 2 - k * (y0 + y1) / 2};
+}
+
+export function zoomButtonState({scale, min = ZOOM_MIN, max = ZOOM_MAX} = {}) {
+  const s = Number.isFinite(scale) ? scale : min;
+  return {zoomIn: s < max - 1e-3, zoomOut: s > min + 1e-3, reset: s > min + 1e-3};
+}
+
+/** Reading order: 48-unit bands from the top, then left to right. */
+export function readingOrder(items = []) {
+  return [...items].sort((a, b) => Math.floor(a.cy / ROW) - Math.floor(b.cy / ROW) || a.cx - b.cx || String(a.code).localeCompare(b.code));
+}
+
+/** Roving focus over [{code, cx, cy}]: ArrowLeft/Right/Up/Down by projected centre, Home/End by reading order. */
+export function nextInDirection(items, fromCode, key) {
+  const list = (items ?? []).filter(i => i?.code && Number.isFinite(i.cx) && Number.isFinite(i.cy));
+  if (!list.length) return null;
+  const ordered = readingOrder(list);
+  if (key === 'Home') return ordered[0].code;
+  if (key === 'End') return ordered.at(-1).code;
+  const from = list.find(i => i.code === fromCode);
+  const dir = {ArrowRight: [1, 0], ArrowLeft: [-1, 0], ArrowDown: [0, 1], ArrowUp: [0, -1]}[key];
+  if (!from) return ordered[0].code;
+  let best = null, bestScore = Infinity;
+  for (const item of dir ? list : []) {
+    const dx = item.cx - from.cx, dy = item.cy - from.cy, along = dx * dir[0] + dy * dir[1];
+    const score = along + 2 * Math.abs(dx * dir[1] - dy * dir[0]);
+    if (item !== from && along > 0 && (score < bestScore - 1e-9 || (score - bestScore <= 1e-9 && item.code < best.code))) [best, bestScore] = [item, score];
+  }
+  return best?.code ?? from.code;
+}
+
+/** d3.zoom filter (tech §5.3): 'page' lets one finger scroll the page; 'map' (Explore) also takes one finger and the wheel. */
+export function gestureFilter(event, mode = 'page') {
+  const type = event?.type;
+  if (type === 'dblclick') return false;
+  if (type === 'wheel') return mode === 'map' || !!event.ctrlKey;
+  if (type === 'touchstart') return mode === 'map' || (event.touches?.length ?? 0) > 1;
+  return !event?.ctrlKey && !event?.button;
+}
+
+/** Greedy label culling over [{id, x, y, r, w}] (px, priority order): right, then left, else no label. → Map(id → side|null) */
+export function placeLabels(items = [], {width = Infinity, height = Infinity, gap = GAP, lineHeight = 16, obstacles = []} = {}) {
+  const hit = (a, b) => a[0] < b[0] + b[2] && b[0] < a[0] + a[2] && a[1] < b[1] + b[3] && b[1] < a[1] + a[3];
+  const dots = items.map(i => [i.x - i.r - 1, i.y - i.r - 1, 2 * i.r + 2, 2 * i.r + 2]);
+  const placed = [...obstacles];
+  return new Map(items.map((i, n) => {
+    const y = i.y - lineHeight / 2;
+    for (const [side, x] of [['right', i.x + i.r + gap], ['left', i.x - i.r - gap - i.w]]) {
+      const box = [x, y, i.w, lineHeight];
+      if (x < 0 || y < 0 || x + i.w > width || y + lineHeight > height || placed.some(p => hit(p, box)) || dots.some((d, j) => j !== n && hit(d, box))) continue;
+      placed.push(box);
+      return [i.id, side];
+    }
+    return [i.id, null];
+  }));
+}
+
+// ---------------------------------------------------------------- runtime (DOM only inside functions)
+
+let instances = 0, dependencies = null, measurer = null;
+const assetURL = path => new URL(path, import.meta.url).href;
+
+function loadScript(path, name) {
+  if (globalThis[name]) return Promise.resolve(globalThis[name]);
+  return new Promise((resolve, reject) => {
+    const script = Object.assign(document.createElement('script'), {src: assetURL(path), async: true});
+    script.onload = () => (globalThis[name] ? resolve(globalThis[name]) : reject(new Error(`Missing ${name}`)));
+    script.onerror = () => { script.remove(); reject(new Error(`Could not load ${name}`)); };
+    document.head.append(script);
+  });
+}
+async function assetJSON(path) {
+  const response = await fetch(assetURL(path));
   if (!response.ok) throw new Error(`Map asset unavailable: ${path}`);
   return response.json();
 }
+function textWidth(text, font) {
+  try { measurer ??= document.createElement('canvas').getContext('2d'); measurer.font = font; return measurer.measureText(text).width; }
+  catch { return text.length * LABEL * 0.58; }
+}
 
-export async function createWorldMap({ container, tooltip, onSelect = () => {}, onSelectCity = () => {}, onHover = () => {} }) {
+/** Builds the map in `container`; on asset failure it resolves with data-map-state="unavailable" and a `maperror` event.
+ *  describe(code) supplies the tooltip and aria-label sentence (js/map-view.js shares it with the brief). */
+export async function createWorldMap({container, tooltip = null, onSelect = () => {}, onSelectCity = () => {}, onHover = () => {},
+  gestures = 'page', reducedMotion = () => false, labelObstacles = () => [], describe = () => ''} = {}) {
   if (!container) throw new Error('A map container is required');
-  container.replaceChildren();
-  let state = { events: [], countries: [], selectedCountry: '', mode: 'reported', loading: true, error: false };
-  let records = new Map();
-  let svg, viewport, countries, cityLayer, d3, projection, path, zoom, transform;
-  let features = [];
-  const emptyPattern = `map-no-records-${++mapInstance}`;
-  let hovered = null;
-  const status = document.createElement('p');
-  status.className = 'map-status';
-  status.setAttribute('role', 'status');
-  container.append(status);
-  container.dataset.mapState = 'loading';
-  status.textContent = 'Loading the world map…';
+  const n = ++instances, doc = container.ownerDocument;
+  let state = {events: [], countries: [], selectedCountry: '', mode: 'reported', loading: true, error: false, contexts: null, cityGeography: null, filtered: false};
+  let mode = gestures === 'map' ? 'map' : 'page', ready = false, destroyed = false;
+  let records = new Map(), names = new Map(), candidates = new Set(), cities = [];
+  const byCode = new Map(), frames = new Map(), centres = new Map(), drawn = new Set();
+  let d3, svg, zoomLayer, cityLayer, labelLayer, overlay, countries, zoom, shadow, effect, pattern, projection, observer;
+  let t = null, unit = 1, box = {width: 0, height: 0}, rover = null, lastSelected = null, focused = null, tipSource = null, font = '';
 
-  function dispatch(name, detail) { container.dispatchEvent(new CustomEvent(name, { detail })); }
-  function hideTooltip() {
-    hovered = null;
-    if (tooltip) { tooltip.hidden = true; tooltip.replaceChildren(); }
+  container.replaceChildren();
+  const help = Object.assign(doc.createElement('p'), {id: 'map-help', className: 'visually-hidden', textContent: MAP_HELP});
+  const status = Object.assign(doc.createElement('p'), {className: 'map-status', textContent: 'Loading the world map…'});
+  status.setAttribute('role', 'status');
+  container.append(help, status);
+  Object.assign(container.dataset, {mapState: 'loading', mode: 'reported', gestures: mode});
+  const dispatch = (name, detail) => container.dispatchEvent(new CustomEvent(name, {detail}));
+  const nameOf = (code, fallback) => names.get(code) || code || fallback;
+  const pointerHover = e => e?.pointerType === 'mouse' || e?.pointerType === 'pen';
+
+  // ---- tooltip: fine-pointer hover and keyboard focus; everything in it is also in the brief and directory
+  function hideTip() {
+    if (tipSource === null) return;
+    tipSource = null;
+    if (tooltip) { tooltip.hidden = true; tooltip.replaceChildren(); tooltip.removeAttribute('data-kind'); }
     onHover(null);
   }
-  function countryName(feature) {
-    return state.countries.find((country) => country.code === feature.properties.code)?.name || feature.properties.name;
-  }
-  function countText(feature) {
-    if (state.loading || state.error) return state.error ? 'Published coverage unavailable' : 'Published coverage loading';
-    const count = records.get(feature.properties.code)?.length ?? 0;
-    if (state.mode === 'example') return count ? `${count} illustrative ${count === 1 ? 'record' : 'records'} · not real events` : 'No illustrative records';
-    return count ? `${count} source-linked ${count === 1 ? 'record' : 'records'} in this view; ${(records.get(feature.properties.code)||[]).filter(e=>e.status==='ended').length} ended or suspended episodes` : 'No published records in this view';
-  }
-  function showTooltip(event, feature) {
-    hovered = feature;
-    const code = feature.properties.code;
-    const name = countryName(feature);
-    const label = countText(feature);
-    onHover({ code, name, count: records.get(code)?.length ?? 0, mode: state.mode });
+  function showTip(title, text, x, y, source, hover = null) {
+    tipSource = source;
+    if (hover) onHover(hover);
     if (!tooltip) return;
-    const title = document.createElement('strong');
-    title.textContent = name;
-    const description = document.createElement('span');
-    description.textContent = label;
-    const note = document.createElement('small');
-    note.textContent = code ? (state.mode === 'example' ? 'Select to explore the demonstration.' : 'Coverage is incomplete; absence does not establish no protests.') : 'Contextual map area; no separate ISO directory entry.';
-    tooltip.replaceChildren(title, description, note);
+    const parts = [Object.assign(doc.createElement('strong'), {textContent: title})];
+    if (text) parts.push(Object.assign(doc.createElement('span'), {textContent: text}));
+    tooltip.replaceChildren(...parts);
+    tooltip.dataset.kind = 'info';
     tooltip.hidden = false;
-    tooltip.style.pointerEvents = 'none';
-    if (event?.clientX != null) {
-      const box = (tooltip.offsetParent || container).getBoundingClientRect();
-      const maxX = Math.max(8, box.width - (tooltip.offsetWidth || 230) - 8);
-      const maxY = Math.max(8, box.height - (tooltip.offsetHeight || 90) - 8);
-      tooltip.style.left = `${Math.max(8, Math.min(maxX, event.clientX - box.left + 15))}px`;
-      tooltip.style.top = `${Math.max(8, Math.min(maxY, event.clientY - box.top + 15))}px`;
-    } else {
-      tooltip.style.left = '16px';
-      tooltip.style.top = '16px';
+    const frame = (tooltip.offsetParent || container).getBoundingClientRect();
+    const clamp = (v, size, room) => `${Math.max(8, Math.min(room - size - 8, v + 14))}px`;
+    tooltip.style.left = clamp(x - frame.left, tooltip.offsetWidth, frame.width);
+    tooltip.style.top = clamp(y - frame.top, tooltip.offsetHeight, frame.height);
+  }
+  function countryTip(event, feature, source) {
+    const code = feature.properties.code, title = nameOf(code, feature.properties.name);
+    let {clientX: x, clientY: y} = event ?? {};
+    if (x == null) {
+      // Keyboard focus: anchor under the framed cluster (mainland France, not the whole feature with French Guiana).
+      const frame = frames.get(code), rect = svg.node().getBoundingClientRect();
+      [x, y] = frame ? toScreen([(frame[0][0] + frame[1][0]) / 2, frame[1][1]]).map((v, i) => v + (i ? rect.top : rect.left)) : [rect.left, rect.top];
     }
+    showTip(title, describe(code), x, y, source, {code, name: title, count: records.get(code)?.length ?? 0, mode: state.mode});
   }
-  function choose(feature) {
-    const code = feature.properties.code;
-    if (code) { hideTooltip(); onSelect(code); }
+
+  // ---- geometry: unit = CSS px per viewBox unit (meet); the visible box includes the letterbox around 1000×448
+  function measure() {
+    const rect = svg?.node().getBoundingClientRect();
+    if (!rect?.width || !rect.height) return false;
+    box = rect;
+    unit = Math.min(rect.width / W, rect.height / H);
+    return true;
   }
-  function applyTransform(next) {
-    viewport.attr('transform', next);
-    transform = next;
-    scaleCities();
+  function view() {
+    const vw = box.width ? box.width / unit : W, vh = box.height ? box.height / unit : H;
+    return {x: (W - vw) / 2, y: (H - vh) / 2, width: vw, height: vh};
+  }
+  /** Map point → px from the svg box's top-left at the current zoom. */
+  function toScreen([x, y]) {
+    const v = view();
+    return [(t.x + t.k * x - v.x) * unit, (t.y + t.k * y - v.y) * unit];
+  }
+  function move(next) {
+    if (!svg) return;
+    const target = zoom.constrain()(d3.zoomIdentity.translate(next.x, next.y).scale(next.k), [[0, 0], [W, H]], [[0, 0], [W, H]]);
+    svg.interrupt().transition().duration(reducedMotion() ? 0 : 450).call(zoom.transform, target);
+  }
+  function scaleBy(factor) { if (ready) svg.interrupt().transition().duration(reducedMotion() ? 0 : 200).call(zoom.scaleBy, factor, [W / 2, H / 2]); }
+  function zoomed(next) {
+    t = next;
+    zoomLayer.attr('transform', next);
     svg.attr('data-zoom', next.k.toFixed(2));
-    hideTooltip();
-    dispatch('mapzoom', { scale: next.k, min: 1, max: 8 });
+    if (tipSource && tipSource !== 'focus') hideTip();
+    scaleMarks();
+    dispatch('mapzoom', {scale: next.k, min: ZOOM_MIN, max: ZOOM_MAX});
   }
-  function constrained(next) {
-    return zoom.constrain()(next, [[0, 0], [WIDTH, HEIGHT]], [[0, 0], [WIDTH, HEIGHT]]);
+  function scaleMarks() {
+    if (!svg || !t) return;
+    const s = 1 / (t.k * unit), v = view();
+    effect.attr('dx', SHADOW * s).attr('dy', SHADOW * s);
+    // Filter region = the visible area in zoom-layer units: no shadow is clipped and no surface is huge.
+    shadow.attr('x', (v.x - t.x) / t.k - 4 * s).attr('y', (v.y - t.y) / t.k - 4 * s).attr('width', v.width / t.k + 8 * s).attr('height', v.height / t.k + 8 * s);
+    pattern.attr('patternTransform', `scale(${HATCH * s / TILE})`);
+    scaleCities();
   }
-  function move(next) { if (svg) svg.interrupt().call(zoom.transform, constrained(next)); }
+
+  // ---- painting
+  function items() { return [...candidates].map(code => ({code, ...centres.get(code)})).filter(i => Number.isFinite(i.cx)); }
+  function setRover(code) {
+    rover = code;
+    for (const c of candidates) byCode.get(c).node.setAttribute('tabindex', c === rover ? '0' : '-1');
+  }
   function paint() {
-    if (!countries) return;
-    const unavailable = state.loading || state.error;
-    svg.attr('aria-label', `World map of ${state.mode === 'example' ? 'illustrative example records, not real events' : 'published source-linked records'}. Select a country to filter the index. Country directory provides every territory.`);
-    countries
-      .attr('fill', (feature) => feature.properties.code === state.selectedCountry ? COLORS.selected : (!unavailable && records.has(feature.properties.code) ? (state.mode === 'example' ? COLORS.example : COLORS.reported) : `url(#${emptyPattern})`))
-      .attr('data-completion', feature=>completionKind(records.get(feature.properties.code)||[]))
-      .attr('data-has-records', (feature) => !unavailable && records.has(feature.properties.code) ? 'true' : 'false')
-      .attr('data-selected', (feature) => feature.properties.code && feature.properties.code === state.selectedCountry ? 'true' : 'false')
-      .attr('tabindex', (feature) => !unavailable && feature.properties.code && (records.has(feature.properties.code) || feature.properties.code === state.selectedCountry) ? 0 : null)
-      .attr('role', (feature) => feature.properties.code ? 'button' : null)
-      .attr('aria-label', (feature) => `${countryName(feature)}. ${countText(feature)}.${feature.properties.code ? ' Select country.' : ' Contextual map area.'}`)
-      .attr('aria-pressed', (feature) => feature.properties.code ? String(feature.properties.code === state.selectedCountry) : null)
-      .style('cursor', (feature) => feature.properties.code ? 'pointer' : 'default');
+    records = state.loading || state.error ? new Map() : groupRecordsByCountry(state.events);
+    names = new Map((state.countries ?? []).filter(c => c?.code).map(c => [c.code, c.name]));
+    Object.assign(container.dataset, {mode: state.mode === 'example' ? 'example' : 'reported', mapState: state.error ? 'data-error' : state.loading ? 'data-loading' : 'ready'});
+    const selected = /^[A-Z]{2}$/.test(state.selectedCountry ?? '') ? state.selectedCountry : '';
+    candidates = new Set([...records.keys(), ...(state.error ? [] : [selected])].filter(code => drawn.has(code)));
+    if (selected !== lastSelected && candidates.has(selected)) rover = selected;
+    lastSelected = selected;
+    if (!candidates.has(rover)) rover = candidates.has(selected) ? selected : readingOrder(items())[0]?.code ?? null;
+    countries.each(function paintCountry({properties: {code, name}}) {
+      const list = records.get(code), candidate = candidates.has(code);
+      const attrs = {'data-has-records': String(!!list), 'data-selected': String(!!code && code === selected), 'data-completion': list ? completionKind(list) : 'none',
+        tabindex: candidate ? (code === rover ? '0' : '-1') : null, role: candidate ? 'button' : null,
+        'aria-label': candidate ? `${nameOf(code, name)}. ${describe(code)}`.trim() : null,
+        'aria-current': candidate && code === selected ? 'true' : null, 'aria-hidden': candidate ? null : 'true'};
+      for (const [key, value] of Object.entries(attrs)) value === null ? this.removeAttribute(key) : this.setAttribute(key, value);
+    });
+    overlay.selectAll('.map-selection-halo, .map-selection').remove();
+    const d = !state.error && byCode.get(selected)?.d;
+    // Selection outline (C-17) goes before any focus ring (C-40), which must stay the overlay's last paint.
+    for (const cls of d ? ['map-selection-halo', 'map-selection'] : []) overlay.insert('path', '.map-focus-halo').attr('class', cls).attr('d', d);
+    if (focused && !candidates.has(focused)) ring(null);
     paintCities();
-    countries.select('title').text((feature) => `${countryName(feature)} — ${countText(feature)}`);
-    if (state.error) status.textContent = 'Published data unavailable. The map cannot show record coverage. Use the country directory or retry loading.';
-    else if (state.loading) status.textContent = 'Loading published coverage…';
-    else status.textContent = '';
-    status.hidden = !status.textContent;
-    container.dataset.mapState = state.error ? 'data-error' : state.loading ? 'loading' : 'ready';
-    if (hovered) hideTooltip();
+    status.hidden = true;
+    hideTip();
+  }
+  function ring(code) {
+    focused = code;
+    overlay.selectAll('.map-focus-halo, .map-focus-ring').remove();
+    const d = byCode.get(code)?.d;
+    for (const cls of d ? ['map-focus-halo', 'map-focus-ring'] : []) overlay.append('path').attr('class', cls).attr('d', d);
+  }
+  /** Keeps the focused country on screen by panning at the current zoom (tech §5.5). */
+  function reveal(code) {
+    const c = centres.get(code);
+    if (!c || !t) return;
+    const [x, y] = toScreen([c.cx, c.cy]);
+    if (x < 24 || y < 24 || x > box.width - 24 || y > box.height - 24) move({k: t.k, x: W / 2 - t.k * c.cx, y: H / 2 - t.k * c.cy});
+  }
+  function choose(code) {
+    if (!code) return;
+    hideTip();
+    onSelect(code);
+  }
+
+  // ---- cities: approximate reference points, never protest sites
+  function paintCities() {
+    const places = new Map((state.loading || state.error ? [] : state.cityGeography?.places ?? []).map(p => [p.id, p]));
+    const contexts = new Map((state.contexts?.records ?? []).map(r => [r.event_id, r]));
+    const grouped = new Map();
+    for (const event of state.events ?? []) {
+      for (const {name} of contexts.get(event.id)?.cities ?? []) {
+        const id = `${event.country}:${name}`, place = places.get(id), xy = place && projection([place.lon, place.lat]);
+        if (!xy || !finite(xy)) continue;
+        if (!grouped.has(id)) grouped.set(id, {id, country: event.country, name, xy, events: []});
+        grouped.get(id).events.push(event);
+      }
+    }
+    cities = [...grouped.values()];
+    const groups = cityLayer.selectAll('g.city').data(cities, c => c.id).join(enter => {
+      const g = enter.append('g').attr('class', 'city');
+      g.append('circle').attr('class', 'city-hit')
+        .on('click', (e, c) => { e.stopPropagation(); hideTip(); onSelectCity(c.country, c.name); })
+        .on('pointerenter pointermove', (e, c) => { if (pointerHover(e)) showTip(c.name, 'City reference point (approximate). Not a protest site', e.clientX, e.clientY, 'pointer'); })
+        .on('pointerleave', hideTip);
+      g.append('circle').attr('class', 'city-point');
+      return g;
+    });
+    groups.attr('data-city', c => c.id).attr('data-country', c => c.country).attr('transform', c => `translate(${c.xy})`);
+    groups.select('.city-point').attr('data-city', c => c.id).attr('data-ended', c => String(c.events.some(e => e.status === 'ended')));
+    // Labels sit outside the zoom layer, above the selection and focus outlines, in viewBox units.
+    labelLayer.selectAll('text').data(cities, c => c.id).join(enter => enter.append('text').attr('class', 'city-label').attr('dy', '.35em'))
+      .attr('data-city', c => c.id).text(c => c.name);
+    scaleCities();
   }
   function scaleCities() {
-    if(!cityLayer)return;
-    const k=transform?.k||1;
-    cityLayer.selectAll('circle').attr('r',4.5/k);
-    cityLayer.selectAll('text').attr('y',-8/k).style('font-size',`${11/k}px`).attr('display',d=>state.selectedCountry===d.country||k>=3?null:'none');
+    if (!cityLayer || !t) return;
+    const s = 1 / (t.k * unit), selected = state.selectedCountry, visible = c => c.country === selected || t.k >= 3;
+    cityLayer.attr('data-visible', String(cities.some(visible)));
+    const groups = cityLayer.selectAll('g.city').attr('display', c => (visible(c) ? null : 'none'));
+    groups.select('.city-point').attr('r', DOT * s);
+    groups.select('.city-hit').attr('r', HIT * s);
+    const labels = labelLayer.selectAll('text');
+    if (!font && labels.node()) font = `600 ${LABEL}px ${getComputedStyle(labels.node()).fontFamily}`;
+    const rect = svg.node().getBoundingClientRect();
+    let obstacles = [];
+    try { obstacles = labelObstacles().filter(r => r?.width).map(r => [r.left - rect.left - 2, r.top - rect.top - 2, r.width + 4, r.height + 4]); } catch { /* none */ }
+    // Selected-country cities first, then busier cities.
+    const shown = cities.filter(visible).sort((a, b) => (b.country === selected) - (a.country === selected) || b.events.length - a.events.length || a.name.localeCompare(b.name));
+    const side = placeLabels(shown.map(c => ({id: c.id, x: toScreen(c.xy)[0], y: toScreen(c.xy)[1], r: DOT, w: textWidth(c.name, font || `600 ${LABEL}px sans-serif`)})),
+      {width: box.width || Infinity, height: box.height || Infinity, obstacles});
+    const u = 1 / unit, v = view();
+    labels.attr('font-size', LABEL * u).attr('stroke-width', 3 * u)
+      .attr('display', c => (visible(c) && side.get(c.id) ? null : 'none'))
+      .attr('text-anchor', c => (side.get(c.id) === 'left' ? 'end' : 'start'))
+      .attr('x', c => v.x + toScreen(c.xy)[0] * u + (side.get(c.id) === 'left' ? -1 : 1) * (DOT + GAP) * u)
+      .attr('y', c => v.y + toScreen(c.xy)[1] * u);
   }
-  function paintCities() {
-    if(!cityLayer)return;
-    const geography=new Map((state.cityGeography?.places||[]).map(c=>[c.id,c]));
-    const contexts=new Map((state.contexts?.records||[]).map(c=>[c.event_id,c]));
-    const grouped=new Map();
-    if(!state.loading&&!state.error)for(const event of state.events||[])for(const city of contexts.get(event.id)?.cities||[]){
-      const id=event.country+':'+city.name, place=geography.get(id);if(!place)continue;
-      if(!grouped.has(id))grouped.set(id,{...place,events:[]});grouped.get(id).events.push(event);
-    }
-    const select=(_,d)=>{hideTooltip();onSelectCity(d.country,d.name);};
-    const markers=cityLayer.selectAll('g').data([...grouped.values()],d=>d.id).join(enter=>{
-      const group=enter.append('g');
-      group.append('circle').attr('class','city-point').attr('role','button').attr('tabindex',0)
-        .on('click',select).on('keydown',(event,d)=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();select(event,d);}});
-      group.append('text').attr('class','city-label').attr('text-anchor','middle').attr('aria-hidden','true');
-      group.append('title');return group;
-    });
-    markers.attr('transform',d=>`translate(${projection([d.lon,d.lat])})`);
-    markers.select('circle').attr('data-city',d=>d.id).attr('data-ended',d=>String(d.events.some(e=>e.status==='ended')))
-      .attr('aria-label',d=>`${d.name}, ${d.country}. ${d.events.length} records; ${d.events.filter(e=>e.status==='ended').length} ended or suspended. Generalized city point, not a protest site. Select city.`);
-    markers.select('text').text(d=>d.name);
-    markers.select('title').text(d=>`${d.name}: ${d.events.length} source-linked records; ${d.events.filter(e=>e.status==='ended').length} ended or suspended. City reference point, not protest site.`);
-    scaleCities();
+  function frame(bounds, options) {
+    const next = ready && focusTransform(bounds, options);
+    if (next) move(next);
+    return !!next;
   }
+  function boundsOf(points, pad = 0) {
+    const xs = points.map(p => p[0]), ys = points.map(p => p[1]);
+    return points.length ? [[Math.min(...xs) - pad, Math.min(...ys) - pad], [Math.max(...xs) + pad, Math.max(...ys) + pad]] : null;
+  }
+
   const api = {
-    update(next = {}) { state = { ...state, ...next }; records = groupRecordsByCountry(state.events); paint(); },
-    reset() { if (d3 && svg) move(d3.zoomIdentity); },
-    zoomIn() { if (svg) svg.interrupt().call(zoom.scaleBy, 1.6, [WIDTH / 2, HEIGHT / 2]); },
-    zoomOut() { if (svg) svg.interrupt().call(zoom.scaleBy, 1 / 1.6, [WIDTH / 2, HEIGHT / 2]); },
-    hasCountry(code) { return !!svg && features.some((entry) => entry.properties.code === code); },
-    focusCountry(code) {
-      if (!svg) return false;
-      const feature = features.find((entry) => entry.properties.code === code);
-      if (!feature) return false;
-      const [[x0, y0], [x1, y1]] = path.bounds(feature);
-      const scale = Math.max(1, Math.min(6, 0.72 / Math.max((x1 - x0) / WIDTH, (y1 - y0) / HEIGHT)));
-      if (![x0, y0, x1, y1, scale].every(Number.isFinite)) return false;
-      move(d3.zoomIdentity.translate(WIDTH / 2, HEIGHT / 2).scale(scale).translate(-(x0 + x1) / 2, -(y0 + y1) / 2));
-      return true;
+    get ready() { return ready; },
+    update(next = {}) { state = {...state, ...next}; if (ready) paint(); },
+    reset() { frame([[0, 0], [W, H]], {fill: 1}); },
+    zoomIn() { scaleBy(ZOOM_STEP); },
+    zoomOut() { scaleBy(1 / ZOOM_STEP); },
+    hasCountry: code => ready && byCode.has(code),
+    isDrawn: code => ready && drawn.has(code),
+    focusCountry: code => frame(frames.get(code)),
+    /** Frames a territory's city reference points when it has no polygon at this scale. */
+    focusCities: code => frame(boundsOf(cities.filter(c => c.country === code).map(c => c.xy), 6), {max: 6}),
+    focusRegion(name) {
+      if (!ready || !Object.hasOwn(REGION_VIEWS, name)) return false;
+      const [[lon0, lat0], [lon1, lat1]] = REGION_VIEWS[name], points = [];
+      for (let i = 0; i <= 8; i++) {
+        const lon = lon0 + (lon1 - lon0) * i / 8, lat = lat0 + (lat1 - lat0) * i / 8;
+        points.push(...[[lon, lat0], [lon, lat1], [lon0, lat], [lon1, lat]].map(projection).filter(p => p && finite(p)));
+      }
+      return frame(boundsOf(points), {fill: 1});
+    },
+    setGestures(next) {
+      mode = next === 'map' ? 'map' : 'page';
+      container.dataset.gestures = mode;
+      svg?.style('touch-action', mode === 'map' ? 'none' : 'pan-y');
+      dispatch('mapgestures', {mode});
+    },
+    getGestures: () => mode,
+    getZoom: () => ({scale: t?.k ?? ZOOM_MIN, min: ZOOM_MIN, max: ZOOM_MAX}),
+    destroy() {
+      destroyed = true;
+      ready = false;
+      observer?.disconnect();
+      svg?.interrupt();
+      hideTip();
+      container.replaceChildren();
     },
   };
 
   try {
-    const [libraries, geo, topology] = await Promise.all([loadDependencies(), localJSON('public/world-countries.geo.json'), localJSON('public/world-110m.topo.json')]);
-    [d3] = libraries;
-    const [, topojson] = libraries;
-    if (geo.type !== 'FeatureCollection' || !Array.isArray(geo.features) || !geo.features.length) throw new Error('Invalid map geometry');
-    features = geo.features;
-    projection = d3.geoEqualEarth().fitExtent([[22, 22], [WIDTH - 22, HEIGHT - 22]], { type: 'Sphere' });
-    path = d3.geoPath(projection);
-    svg = d3.select(container).append('svg').attr('class', 'world-map-svg').attr('viewBox', `0 0 ${WIDTH} ${HEIGHT}`).attr('role', 'group').attr('preserveAspectRatio', 'xMidYMid meet').style('display', 'block').style('width', '100%').style('height', '100%').style('touch-action', 'none');
-    svg.append('title').text('Protest Atlas — published coverage by country');
-    svg.append('desc').text('Equal Earth projection using Natural Earth country boundaries. Color represents source-linked record coverage, not the number or intensity of protests. Drag to pan; use zoom controls. Country and territory filters provide a keyboard alternative.');
-    const pattern = svg.append('defs').append('pattern').attr('id', emptyPattern).attr('class', 'map-no-records-pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', 7).attr('height', 7);
-    pattern.append('rect').attr('width', 7).attr('height', 7).attr('fill', COLORS.land);
-    pattern.append('path').attr('d', 'M-1,1L1,-1M0,7L7,0M6,8L8,6').attr('stroke', '#cdd4cd').attr('stroke-width', 0.45);
-    svg.append('rect').attr('width', WIDTH).attr('height', HEIGHT).attr('fill', COLORS.ocean);
-    viewport = svg.append('g');
-    viewport.append('path').datum({ type: 'Sphere' }).attr('class', 'map-sphere').attr('d', path).attr('fill', '#eaf0e9').attr('stroke', COLORS.outline).attr('stroke-width', 0.8).attr('vector-effect', 'non-scaling-stroke');
-    viewport.append('path').datum(d3.geoGraticule10()).attr('class', 'map-graticule').attr('d', path).attr('fill', 'none').attr('stroke', COLORS.grid).attr('stroke-width', 0.45).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none').attr('aria-hidden', 'true');
-    countries = viewport.append('g').attr('class', 'map-countries').selectAll('path').data(features).join('path').attr('class', 'map-country').attr('data-country', (feature) => feature.properties.code ?? '').attr('d', path).attr('stroke', COLORS.border).attr('stroke-width', 0.65).attr('vector-effect', 'non-scaling-stroke')
-      .on('click', (_, feature) => choose(feature))
-      .on('pointerenter', showTooltip).on('pointermove', showTooltip).on('pointerleave', hideTooltip)
-      .on('focus', (_, feature) => showTooltip(null, feature)).on('blur', hideTooltip)
-      .on('keydown', (event, feature) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); choose(feature); } else if (event.key === 'Escape') hideTooltip(); });
-    countries.append('title');
-    viewport.append('path').datum(topojson.mesh(topology, topology.objects.countries, (a, b) => a !== b)).attr('class', 'map-borders').attr('d', path).attr('fill', 'none').attr('stroke', COLORS.border).attr('stroke-width', 0.7).attr('vector-effect', 'non-scaling-stroke').attr('pointer-events', 'none').attr('aria-hidden', 'true');
-    cityLayer=viewport.append('g').attr('class','map-city-points');
-    zoom = d3.zoom().extent([[0, 0], [WIDTH, HEIGHT]]).translateExtent([[0, 0], [WIDTH, HEIGHT]]).scaleExtent([1, 8]).filter((event) => !event.ctrlKey && !event.button && event.type !== 'wheel').on('zoom', (event) => applyTransform(event.transform));
+    if (!dependencies) (dependencies = Promise.all([loadScript(MAP_ASSETS.d3, 'd3'), loadScript(MAP_ASSETS.topojson, 'topojson')])).catch(() => { dependencies = null; });
+    const [[lib, topojson], topology, codes] = await Promise.all([dependencies, assetJSON(MAP_ASSETS.topology), assetJSON(MAP_ASSETS.codes)]);
+    if (destroyed) return api;
+    d3 = lib;
+    if (!topology?.objects?.countries || typeof codes?.codes !== 'object') throw new Error('Invalid map geometry');
+    const features = attachCodes(topojson.feature(topology, topology.objects.countries).features, codes.codes);
+    // Land fit without Antarctica; AQ lies wholly below the fit, so clipping to the viewBox leaves it empty.
+    projection = d3.geoEqualEarth().fitExtent([[MAP_PADDING, MAP_PADDING], [W - MAP_PADDING, H - MAP_PADDING]],
+      {type: 'FeatureCollection', features: features.filter(f => !FIT_EXCLUDE.includes(f.properties.code))}).clipExtent([[0, 0], [W, H]]);
+    const path = d3.geoPath(projection);
+    svg = d3.select(container).append('svg').attr('class', 'world-map-svg').attr('viewBox', `0 0 ${W} ${H}`).attr('preserveAspectRatio', 'xMidYMid meet')
+      .attr('role', 'group').attr('aria-labelledby', doc.getElementById('map-title') ? 'map-title' : null).attr('aria-describedby', 'map-help')
+      .style('touch-action', mode === 'map' ? 'none' : 'pan-y');
+    const defs = svg.append('defs');
+    pattern = defs.append('pattern').attr('id', `map-no-records-${n}`).attr('class', 'map-no-records-pattern').attr('patternUnits', 'userSpaceOnUse').attr('width', TILE).attr('height', TILE);
+    pattern.append('rect').attr('width', TILE).attr('height', TILE);
+    pattern.append('path').attr('d', 'M-2,2L2,-2M0,8L8,0M6,10L10,6');
+    shadow = defs.append('filter').attr('id', `map-shadow-${n}`).attr('class', 'map-shadow-def').attr('filterUnits', 'userSpaceOnUse').attr('color-interpolation-filters', 'sRGB');
+    effect = shadow.append('feDropShadow').attr('stdDeviation', 0);
+    container.style.setProperty('--map-gap-fill', `url(#map-no-records-${n})`);
+    container.style.setProperty('--map-shadow-filter', `url(#map-shadow-${n})`);
+
+    zoomLayer = svg.append('g').attr('class', 'map-zoom-layer');
+    zoomLayer.append('path').datum(d3.geoGraticule10()).attr('class', 'map-graticule').attr('d', path).attr('aria-hidden', 'true');
+    const countryLayer = zoomLayer.append('g').attr('class', 'map-countries');
+    countries = countryLayer.selectAll('path').data(features).join('path').attr('class', 'map-country')
+      .attr('data-country', f => f.properties.code ?? '').attr('d', path).attr('data-drawn', function isDrawn() { return String(this.hasAttribute('d')); });
+    countries.each(function index(feature) {
+      const code = feature.properties.code, d = this.getAttribute('d');
+      if (!code) return;
+      byCode.set(code, {feature, node: this, d});
+      if (!d) return;
+      drawn.add(code);
+      const rings = [];
+      d3.geoPath(projection, {moveTo(x, y) { rings.push([[x, y]]); }, lineTo(x, y) { rings.at(-1).push([x, y]); }, closePath() {}, arc() {}})(feature);
+      const cluster = focusParts(ringParts(rings));
+      if (cluster) {
+        frames.set(code, cluster);
+        centres.set(code, {cx: (cluster[0][0] + cluster[1][0]) / 2, cy: (cluster[0][1] + cluster[1][1]) / 2});
+      }
+    });
+    zoomLayer.append('path').datum(topojson.mesh(topology, topology.objects.countries, (a, b) => a !== b)).attr('class', 'map-borders').attr('d', path).attr('aria-hidden', 'true');
+    cityLayer = zoomLayer.append('g').attr('class', 'map-city-points').attr('aria-hidden', 'true');
+    overlay = zoomLayer.append('g').attr('class', 'map-overlay').attr('aria-hidden', 'true');  // the zoom layer's last child (C-40)
+    labelLayer = svg.append('g').attr('class', 'map-labels').attr('aria-hidden', 'true');
+
+    countries.on('click', (e, f) => choose(f.properties.code))
+      .on('pointerenter pointermove', (e, f) => { if (pointerHover(e)) countryTip(e, f, 'pointer'); })
+      .on('pointerleave', () => { if (tipSource === 'pointer') hideTip(); });
+    // Focus and key listeners sit on the container <div>: Blink makes an SVG element with focus listeners focusable.
+    const country = e => (countryLayer.node().contains(e.target) ? e.target.getAttribute('data-country') : null);
+    container.addEventListener('focusin', e => {
+      const code = country(e);
+      if (!candidates.has(code)) return;
+      setRover(code);
+      ring(code);
+      reveal(code);
+      countryTip(null, byCode.get(code).feature, 'focus');
+    });
+    container.addEventListener('focusout', e => { if (country(e)) { ring(null); if (tipSource === 'focus') hideTip(); } });
+    container.addEventListener('keydown', e => {
+      const code = country(e);
+      if (!code) return;
+      if (/^(Arrow(Left|Right|Up|Down)|Home|End)$/.test(e.key)) {
+        e.preventDefault();
+        const next = nextInDirection(items(), code, e.key);
+        if (next !== code && byCode.has(next)) { setRover(next); byCode.get(next).node.focus({preventScroll: true}); }
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        choose(code);
+      } else if (e.key === 'Escape') hideTip();
+    });
+
+    zoom = d3.zoom().extent([[0, 0], [W, H]]).translateExtent([[0, 0], [W, H]]).scaleExtent([ZOOM_MIN, ZOOM_MAX])
+      .filter(e => gestureFilter(e, mode)).on('zoom', e => zoomed(e.transform));
     svg.call(zoom).on('dblclick.zoom', null);
-    transform = d3.zoomIdentity;
+    measure();
+    if (typeof ResizeObserver === 'function') (observer = new ResizeObserver(() => measure() && scaleMarks())).observe(svg.node());
+    ready = true;
+    zoomed(d3.zoomIdentity);
     paint();
-    dispatch('mapready', { mappedCountries: features.filter((feature) => feature.properties.code).length, featureCount: features.length });
+    dispatch('mapready', {mappedCountries: drawn.size, featureCount: features.length});
   } catch (error) {
+    observer?.disconnect();
     svg?.remove();
     svg = null;
+    ready = false;
     status.hidden = false;
-    status.textContent = 'The world map could not be loaded. The published list and country directory remain available.';
+    status.textContent = '';
     container.dataset.mapState = 'unavailable';
-    dispatch('maperror', { message: error.message });
+    dispatch('maperror', {message: error?.message ?? String(error)});
   }
   return api;
 }

@@ -1,5 +1,5 @@
 // Shared DOM-free HTML string helpers. Pure; safe to import in Node.
-import {absoluteLabel, relativeLabel} from '../freshness.js';
+import {absoluteLabel, relativeLabel, BAND_BADGES, BAND_LABELS} from '../freshness.js';
 
 export const REPO_URL = 'https://github.com/occult-kranti/protest-atlas';
 const ENTITIES = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'};
@@ -55,4 +55,26 @@ export function timeText(value, now, format = 'both') {
 export function timeTag(value, now, format = 'both', className = 'stamp-time') {
   if (!value || !Number.isFinite(Date.parse(value))) return `<span class="${esc(className)}">Not established</span>`;
   return `<time class="${esc(className)}" datetime="${esc(value)}" data-rel="${esc(value)}" data-format="${esc(format)}">${esc(timeText(value, now, format))}</time>`;
+}
+
+/**
+ * Neutral, text-only observation-band badge (C-05, C-51; WP3 addition). The short F-label is visible and
+ * aria-hidden; the long label is visually hidden text, never an aria-label on a <span>.
+ */
+export function bandTag(band) {
+  const key = Object.hasOwn(BAND_BADGES, band) ? band : 'unknown';
+  return `<span class="band" data-band="${key}"><span class="band-text" aria-hidden="true">${esc(BAND_BADGES[key])}</span><span class="visually-hidden">${esc(BAND_LABELS[key])}</span></span>`;
+}
+
+/**
+ * absoluteLabel() with the copy deck's month abbreviations: newer ICU data writes September as "Sept";
+ * the deck (and js/model.js statusLabel) write "Sep". WP3 addition.
+ */
+export const absoluteText = value => absoluteLabel(value).replace(/\bSept\b/, 'Sep');
+
+/** <time> with the absolute label only, for days or timestamps (no data-rel, so refreshTimes leaves it alone). WP3 addition. */
+export function dateTag(value, className = '') {
+  const cls = className ? ` class="${esc(className)}"` : '';
+  if (!value || !Number.isFinite(Date.parse(value))) return `<span${cls}>Not established</span>`;
+  return `<time${cls} datetime="${esc(value)}">${esc(absoluteText(value))}</time>`;
 }
