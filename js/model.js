@@ -60,7 +60,7 @@ const textOf = value => {
   return [];
 };
 
-const searchCache = new WeakMap();
+const searchCache = new WeakMap(), NON_WORD = /[^\p{L}\p{N}]+/gu;
 /**
  * Folded search text: title, summary, country, region, location, issues, positions (actor, claim, target),
  * state response (action, attribution) and the intensity texts (turnout qualifier, disruption, violence).
@@ -78,14 +78,14 @@ export function searchableText(event) {
     ...(turnout && typeof turnout === 'object' ? [turnout.qualifier] : textOf(turnout)),
     ...textOf(intensity.disruption), ...textOf(intensity.violence),
   ];
-  const text = foldText(parts.filter(v => v != null && v !== '').join(' '));
+  const text = ` ${foldText(parts.filter(v => v != null && v !== '').join(' ')).replace(NON_WORD, ' ')}`;
   searchCache.set(event, text);
   return text;
 }
 
-/** Folded, whitespace-split tokens (at most 8); every token must match (AND). */
+/** Folded word tokens (at most 8); each must start a word of the record (AND): "usa" is not in "Jerusalem". */
 export function queryTokens(query) {
-  return foldText(query).split(/\s+/).filter(Boolean).slice(0, 8);
+  return foldText(query).split(NON_WORD).filter(Boolean).slice(0, 8);
 }
 
 const contextIndexCache = new WeakMap();
@@ -117,7 +117,7 @@ export const COUNTRY_SHORT_NAMES = Object.freeze({
 export const COUNTRY_ALIASES = Object.freeze({
   AE: ['UAE'], BA: ['Bosnia'], CD: ['DRC', 'Congo-Kinshasa', 'Zaire'], CG: ['Congo-Brazzaville'],
   CI: ['Ivory Coast', "Cote d'Ivoire"], CV: ['Cape Verde'], CZ: ['Czech Republic'], FK: ['Falklands', 'Malvinas'],
-  GB: ['UK', 'Britain', 'Great Britain', 'England', 'Scotland', 'Wales', 'Northern Ireland'],
+  GB: ['UK', 'Britain', 'Great Britain'],
   KP: ['DPRK'], KR: ['Korea'], MK: ['Macedonia'], MM: ['Burma'], NL: ['Holland'],
   PS: ['Palestinian territories', 'Gaza', 'West Bank'], SZ: ['Swaziland'], TL: ['East Timor'],
   TR: ['Turkey', 'Turkiye'], US: ['USA', 'US', 'America'], VA: ['Vatican'],
@@ -152,7 +152,7 @@ export function eventMatches(event, filters, {context = null, now = Date.now(), 
   const f = filters ?? {};
   if (f.query) {
     const text = searchableText(event);
-    if (!queryTokens(f.query).every(token => text.includes(token))) return false;
+    if (!queryTokens(f.query).every(token => text.includes(` ${token}`))) return false;
   }
   if (!ignoreCountry && f.country && event.country !== f.country) return false;
   if (f.status && getDisplayStatus(event, now) !== f.status) return false;

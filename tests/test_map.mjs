@@ -8,9 +8,11 @@ import {
   groupRecordsByCountry, countRecordsByCountry, attachCodes, ringParts, focusParts, focusTransform, zoomButtonState,
   readingOrder, nextInDirection, gestureFilter, placeLabels,
 } from '../map.js';
-import {overviewModel, renderOverview, briefModel, renderBrief, searchSentence, countSentence, RECENT_LIMIT} from '../js/country-brief.js';
-import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, describeCountry, displayCountries, directChild, MAP_COPY, REGIONS} from '../js/map-view.js';
+import {overviewModel, renderOverview, briefModel, renderBrief, searchSentence, countSentence, RECENT_LIMIT, BRIEF_COPY} from '../js/country-brief.js';
+import {legendHTML, selectionBarHTML, regionChipsHTML, controlsHTML, hasNonPlaceFilters, describeCountry, displayCountries, directChild, MAP_COPY, REGIONS,
+  pressedRegion} from '../js/map-view.js';
 import {displayCountryName} from '../js/model.js';
+import {CONTEXTS_ERROR} from '../js/notice.js';
 
 const root = new URL('../', import.meta.url);
 const text = path => readFile(new URL(path, root), 'utf8');
@@ -456,6 +458,43 @@ test('legend variants: events error, example, example loading and error, unavail
   assert.ok(exampleError.includes('Illustrative example unavailable') && exampleError.includes('data-set-mode="reported">Back to reported data</button>'));
   for (const gone of [M[1], M[2], M[3], M[4]]) assert.ok(!exampleError.includes(gone), gone);
   assert.deepEqual(legendText(legendHTML({unavailable: true})), [M[6], M[7]]);
+});
+
+test('legend: no city row when no city points are drawn (contexts or cities failed, example mode)', () => {
+  const cityRow = html => html.includes('data-kind="city"') || html.includes(M[5]);
+  assert.ok(cityRow(legendHTML({})), 'drawn by default');
+  const noContexts = legendHTML({cities: false});
+  assert.ok(!cityRow(noContexts));
+  assert.deepEqual(legendText(noContexts).slice(1), M.filter((_, i) => i !== 5), 'only the city row goes');
+  assert.ok(!cityRow(legendHTML({cities: false, citiesError: true})) && legendHTML({cities: false, citiesError: true}).includes(MAP_COPY.citiesError));
+  for (const example of ['ready', 'loading', 'error']) assert.ok(!cityRow(legendHTML({mode: 'example', example})), `example ${example}`);
+  assert.ok(!legendHTML({mode: 'example', example: 'error'}).includes('legend-list'), 'no empty list');
+});
+
+test('brief: reported cities that could not load are said to be unknown, not left out', () => {
+  const failed = brief('FR', {contexts: null, contextsError: true});
+  assert.equal(failed.model.citiesError, true);
+  assert.deepEqual(failed.model.cities, []);
+  assert.ok(failed.html.includes('<p class="brief-note">Reported cities could not load, so they are unknown here, not absent.</p>'));
+  assert.ok(!failed.html.includes('brief-cities') && !failed.html.includes(BRIEF_COPY.cityNote));
+  assert.match(CONTEXTS_ERROR, /cities could not load, so they are unknown here, not absent/, 'the same wording as the contexts-error notice');
+  const ok = brief('FR');
+  assert.equal(ok.model.citiesError, false);
+  assert.ok(!ok.html.includes(BRIEF_COPY.citiesError) && ok.html.includes('data-select-city="FR:Paris"'));
+  // Only a records brief lists cities, so only it carries the line; the example never does.
+  assert.equal(brief('IS', {contexts: null, contextsError: true}).model.citiesError, false);
+  assert.equal(briefModel({code: 'FR', mapEvents: events, allEvents: events, countries, mode: 'example', contextsError: true}).citiesError, false);
+});
+
+test('region chips: "World" is never pressed while a country is selected; a region is only when it holds that country', () => {
+  assert.equal(pressedRegion('World', '', countries), 'World');
+  assert.equal(pressedRegion('World', 'FR', countries), null, '#reset-map with ?country=FR');
+  assert.equal(pressedRegion('Europe', 'FR', countries), 'Europe');
+  assert.equal(pressedRegion('Asia', 'FR', countries), null);
+  assert.equal(pressedRegion('Asia', '', countries), 'Asia');
+  assert.equal(pressedRegion(null, 'FR', countries), null);
+  assert.equal(pressedRegion('Europe', 'FR', []), null, 'no directory: no claim');
+  assert.ok(!regionChipsHTML(pressedRegion('World', 'FR', countries)).includes('aria-pressed="true"'));
 });
 
 test('selection bar, region chips and controls', () => {

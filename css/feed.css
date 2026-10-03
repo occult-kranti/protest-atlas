@@ -73,9 +73,11 @@
   .active-clear { min-height: var(--tap); }
 
   /* ---- .feed-head (§6.3) ----------------------------------------------------------------------------- */
+  /* Phones: 4 px above and below the rule (and 6 px notice-line padding), so the first card title clears the tab bar
+     at 360 × 780 on the stale and archive clocks (smoke 17). */
   .feed-head {
     display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 0 12px;
-    margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--border-strong);
+    margin-top: 4px; padding-top: 4px; border-top: 1px solid var(--border-strong);
   }
   .feed-head h1 { margin: 0; font: 700 var(--fs-xl)/1.2 var(--font-sans); letter-spacing: -.01em; }
   .feed-head > :not(h1, .feed-density) { grid-column: 1 / -1; }
@@ -110,6 +112,7 @@
   .feed-actions--foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); }
   .feed-head > .feed-actions { display: none; }
   @media (min-width: 600px) {
+    .feed-head { margin-top: 8px; padding-top: 6px; }
     .feed-actions--foot { display: none; }
     .feed-head > .feed-actions { display: flex; }
     /* The summary and the actions share a row (§5: the first card and the next one start higher). */
@@ -261,7 +264,7 @@
   .notice-more > summary { width: fit-content; min-height: var(--tap); padding-block: 10px; font-weight: 600; cursor: pointer; }
   .notice-more > p { margin: 0 0 4px; max-width: 75ch; color: var(--text-2); }
   .notice-line {
-    display: flex; align-items: flex-start; gap: 8px; margin: 8px 0 0; padding: 8px 12px;
+    display: flex; align-items: flex-start; gap: 8px; margin: 8px 0 0; padding: 6px 12px;
     border-radius: var(--r-1); background: var(--warn-weak); color: var(--warn);
     font-weight: 600;
   }
@@ -286,6 +289,7 @@
   .notice-why[hidden] { display: none; }
   .notice-why-line { margin: 0; max-width: 75ch; }
   .notice-why-line + .notice-why-line { margin-top: 6px; }
+  @media (min-width: 600px) { .notice-line { padding-block: 8px; } }
   @media (min-width: 1200px) {
     .notice-inner { display: flex; flex-wrap: wrap; align-items: center; column-gap: 16px; }
     .notice-pilot { flex: 0 1 auto; }

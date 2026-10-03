@@ -129,11 +129,12 @@ function timelineHTML(event, timing) {
 
 // ---------------------------------------------------------------- D9, D10 evidence and sources
 
-function sourcesHTML(event, now) {
+// Illustrative: nothing was checked, so no re-read row and no "opened" dates.
+function sourcesHTML(event, now, illustrative) {
   const evidence = evidenceLine(event);
   const sources = Array.isArray(event?.sources) ? event.sources : [];
   const note = VERIFICATION_NOTES[evidence.level];
-  const reread = evidence.level === 'illustrative' ? ''
+  const reread = illustrative ? ''
     : `<div class="rec-evidence-row"><dt>Source re-read (AI-assisted):</dt><dd>${timeTag(event?.last_verified, now)}</dd></div>`;
   const verification = `<dl class="rec-evidence">`
     + `<div class="rec-evidence-row"><dt>Verification:</dt><dd><strong>${esc(evidence.levelLabel)}</strong></dd>${note ? `<dd class="rec-evidence-note">${esc(note)}</dd>` : ''}</div>`
@@ -145,7 +146,7 @@ function sourcesHTML(event, now) {
       const publisher = (typeof source?.publisher === 'string' && source.publisher.trim()) || hostOf(source?.url);
       return `<li id="detail-source-${i + 1}" class="source-item" tabindex="-1"><span class="source-title">${sourceLinkKept(source, source?.title)}</span>`
         + `${publisher ? ` — ${esc(publisher)}` : ''}\u00a0· ${source?.published_at ? `published ${dateTag(source.published_at)}` : 'published date not given'}`
-        + `${source?.accessed_at ? `\u00a0· opened ${dateTag(source.accessed_at)}` : ''}</li>`;
+        + `${source?.accessed_at && !illustrative ? `\u00a0· opened ${dateTag(source.accessed_at)}` : ''}</li>`;
     }).join('')}</ol>`
     : '';
   const footer = `<div class="rec-footer"><p class="rec-id">Record ID: <code>${esc(event?.id)}</code></p>`
@@ -199,7 +200,7 @@ export function renderRecord(event, {context = null, mode = 'reported', now = Da
     stateHTML(event),
     `<section id="rec-outcome" class="rec-section" aria-labelledby="rec-outcome-title">${outcome}</section>`,
     timelineHTML(event, timing),
-    sourcesHTML(event, now),
+    sourcesHTML(event, now, illustrative),
   ].join('')}</div>`;
 }
 

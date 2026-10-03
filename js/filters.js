@@ -160,11 +160,11 @@ export function mountFilters(ctx) {
       clearTimeout(timer);
       timer = setTimeout(commit, SEARCH_DEBOUNCE_MS);
     });
-    // Enter commits, closes a touch keyboard and brings the results up (MAJOR 7).
+    // Enter commits, closes a touch keyboard (focus to the heading, not <body>: 2.4.3) and brings the results up (MAJOR 7).
     input.addEventListener('keydown', event => {
       if (event.key !== 'Enter' || event.isComposing) return;
       commit();
-      if (coarse()) input.blur();
+      if (coarse()) $('latest-title')?.focus({preventScroll: true});
       revealAfterRender({force: true});
     });
     input.addEventListener('search', commit);

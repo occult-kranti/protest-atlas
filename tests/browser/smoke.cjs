@@ -67,7 +67,7 @@ const SHORT_VPS = ['640x410', '844x390', '720x450', '320x256'];
 const OWNERS = {
   1: 'all', 2: 'WP2 (+WP1 notice/header)', 3: 'WP2 router', 4: 'WP2 + WP3 + WP1 sheets', 5: 'WP2', 6: 'WP4', 7: 'all (WP1 primitives)',
   8: 'WP5', 9: 'WP2 + WP3 + WP4', 10: 'WP1', 11: 'WP1', 12: 'all', 13: 'WP2', 14: 'all', 15: 'WP3', 16: 'WP3', 17: 'WP2 + WP3',
-  18: 'WP2 + WP4', 19: 'WP2 + WP4 + WP5', 20: 'WP2 + WP5', 21: 'WP3 + WP5 + WP1 sheets', 22: 'WP2', 23: 'WP3', 24: 'WP2',
+  18: 'WP2 + WP4', 19: 'WP2 + WP4 + WP5', 20: 'WP2 + WP5', 21: 'WP3 + WP5 + WP1 sheets', 22: 'WP2', 23: 'WP3', 24: 'WP2', 25: 'WP4',
 };
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -703,6 +703,17 @@ CHECKS[6] = async f => {
   const after = await fr.page.evaluate(() => document.activeElement?.getAttribute('data-country'));
   f.ok(before && after && after !== before, `ArrowRight moves focus (${before} → ${after})`);
   f.ok(geo.length === 0, 'no request for world-countries.geo.json');
+  // #reset-map only moves the view: France stays selected, so no region chip claims "World" until "Back to world".
+  const chips = () => fr.page.evaluate(() => ({pressed: [...document.querySelectorAll('#map-regions [aria-pressed="true"]')].map(c => c.dataset.value),
+    country: new URL(location.href).searchParams.get('country'), selbar: !document.querySelector('#map-selbar')?.hidden}));
+  await fr.page.click('#reset-map');
+  await fr.page.waitForTimeout(900);
+  const reset = await chips();
+  f.ok(reset.country === 'FR' && reset.selbar && reset.pressed.length === 0, `World zoom with FR selected: no pressed region chip ${JSON.stringify(reset)}`);
+  await fr.page.click('#map-selbar [data-clear-filter="country"]');
+  await fr.page.waitForTimeout(900);
+  const world = await chips();
+  f.ok(!world.country && world.pressed.join() === 'World', `Back to world presses World ${JSON.stringify(world)}`);
   await fr.close();
   // Integration (WP4 request): a touch tap selects without drawing the keyboard focus ring (C-40 is keyboard only).
   const touch = await open('390', {hash: '#/map'});
@@ -854,10 +865,13 @@ CHECKS[9] = async f => {
   await page.click('.card-link');
   await page.waitForTimeout(500);
   f.ok(/Illustrative example • not a real event/.test(await page.textContent('#record-sheet')), 'record watermark');
+  const sources = await page.evaluate(() => document.querySelector('#record-body .source-list')?.textContent ?? '');
+  f.ok(sources && !/opened/.test(sources), `the fictional source has no "opened" date (${sources.trim().slice(0, 120)})`);
   await page.keyboard.press('Escape');
   await page.click('#tab-bar a[data-nav="map"]');
   await page.waitForSelector('.map-watermark', {timeout: 8000}).catch(() => {});
   f.ok(await page.isVisible('.map-watermark'), 'map watermark');
+  f.ok(!(await page.$('#map-legend .legend-swatch[data-kind="city"]')), 'example legend: no city row (the example draws no city points)');
   // The banner's own button hides with the banner: focus goes to the view title, never <body> (MAJOR 4).
   await page.focus('#example-banner [data-set-mode="reported"]');
   await page.keyboard.press('Enter');
@@ -1108,8 +1122,9 @@ CHECKS[16] = async f => {
 };
 
 // 17. First viewport. Hard requirements: the first card top above the tab bar at 390×844 and 360×780 on the current,
-// stale (newest + 7.5 days) and archive (newest + 34.5 days) clocks, and the first title fully visible at 390×844 on the
-// current clock (MAJOR 5: the stale state is the primary layout for most of the site's deployed life).
+// stale (newest + 7.5 days) and archive (newest + 34.5 days) clocks, and the first card title fully visible (its bottom
+// at or above the tab bar) at both sizes on the stale and archive clocks and at 390×844 on the current clock (MAJOR 5:
+// the stale state is the primary layout for most of the site's deployed life).
 CHECKS[17] = async f => {
   for (const clock of [STALE_CLOCK, ARCHIVE_CLOCK]) {
     for (const vp of ['390', '360']) {
@@ -1120,6 +1135,7 @@ CHECKS[17] = async f => {
         return {cardTop: c?.top, titleBottom: t?.bottom, limit: innerHeight - tabH, state: document.querySelector('#stamp-chip')?.dataset.state};
       });
       f.ok(r.cardTop !== undefined && r.cardTop < r.limit, `${clock} ${vp}: first .card top ${Math.round(r.cardTop)} ≥ ${Math.round(r.limit)} (${r.state})`);
+      f.ok(r.titleBottom !== undefined && r.titleBottom <= r.limit, `${clock} ${vp}: first .card-title bottom ${Math.round(r.titleBottom)} > ${Math.round(r.limit)} (${r.state})`);
       f.note(`${clock} ${vp}: first card top ${Math.round(r.cardTop)}, title bottom ${Math.round(r.titleBottom)} (limit ${Math.round(r.limit)})`);
       await shot(s.page, `first-viewport-${vp}-${clock.slice(0, 10)}`);
       await s.close();
@@ -1342,7 +1358,7 @@ CHECKS[24] = async f => {
       return {active: document.activeElement?.id || document.activeElement?.tagName, summary: document.querySelector('#result-summary').getBoundingClientRect().top,
         card: document.querySelector('#event-list .card')?.getBoundingClientRect().top, half: innerHeight / 2, limit: innerHeight - tabH};
     });
-    f.ok(r.active !== 'query', `${vp}: Enter blurs #query on touch (active ${r.active})`);
+    f.ok(r.active === 'latest-title', `${vp}: Enter on touch moves focus from #query to #latest-title, not <body> (active ${r.active})`);
     if (spain) f.ok(r.summary <= r.half && r.card < r.limit, `${vp}: after search the summary (${Math.round(r.summary)}) is in the upper half and the first result (${Math.round(r.card)}) in view`);
     await shot(page, `search-${vp}`);
     await close();
@@ -1362,6 +1378,25 @@ CHECKS[24] = async f => {
   const ids = await k.page.$$eval('#event-list .card', cs => cs.map(c => c.dataset.id));
   f.ok(kr.every(id => ids.includes(id)), `"South Korea" finds ${kr.join(', ')} (${ids.slice(0, 4)})`);
   await k.close();
+};
+
+// 25. event-context.json failure on the map: no city points, so no city legend row, and the brief says the cities
+// could not load instead of leaving them out (MAJOR 12).
+CHECKS[25] = async f => {
+  const {page, close, errors} = await open('390', {hash: '#/map', search: '?country=FR', block: [{pattern: 'public/event-context.json', status: 500}]});
+  await page.waitForSelector('#world-map svg .map-country', {timeout: 8000}).catch(() => {});
+  await page.waitForTimeout(1200);
+  const r = await page.evaluate(() => ({cityRow: Boolean(document.querySelector('#map-legend .legend-swatch[data-kind="city"]')),
+    dots: document.querySelectorAll('#world-map .city-point').length, brief: document.querySelector('#country-panel')?.textContent ?? ''}));
+  f.ok(r.dots === 0 && !r.cityRow, `no city points and no city legend row (${r.dots} points)`);
+  f.ok(r.brief.includes('Reported cities could not load, so they are unknown here, not absent.'), 'the FR brief says the cities could not load');
+  f.ok(errors.length === 0, `errors ${errors}`);
+  await close();
+  const ok = await open('390', {hash: '#/map'});
+  await ok.page.waitForSelector('#world-map svg .map-country', {timeout: 8000}).catch(() => {});
+  await ok.page.waitForTimeout(800);
+  f.ok(Boolean(await ok.page.$('#map-legend .legend-swatch[data-kind="city"]')), 'with contexts loaded the legend keeps the city row');
+  await ok.close();
 };
 
 // ---------------------------------------------------------------------------------------------------------------

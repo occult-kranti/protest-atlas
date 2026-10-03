@@ -385,6 +385,11 @@ test('example mode carries the C11 watermark on cards and the record, and never 
   assert.ok(text(rec).includes('Illustrative example • not a real event This record is fictional and is excluded from counts and export.'));
   assert.ok(text(rec).includes('Illustrative example · no source was checked'), 'D1 for the fictional record');
   assert.ok(!/AI-assisted source check|Source re-read/.test(text(rec)), 'no D1 check claim and no D9 re-read row');
+  // Nobody opened the fictional source, so its line has no "opened {date}" even though the file carries accessed_at.
+  assert.ok(example.sources.some(s => s.accessed_at), 'the example source carries accessed_at');
+  const sourceList = rec.match(/<ol class="source-list">[\s\S]*?<\/ol>/)?.[0] ?? '';
+  assert.ok(sourceList && !/opened/.test(text(sourceList)), 'no "opened" date on the illustrative source');
+  assert.match(text(record(byId('tz-drivers'))), /· opened \d{1,2} [A-Z][a-z]{2} \d{4}/, 'reported records keep the opened date');
   // D7 for a record nobody researched: no research note and no "none established" fallbacks.
   assert.ok(!/AI-assisted/.test(text(rec)), 'no AI-assisted research claim anywhere in the fictional record');
   assert.ok(!/No sourced outcome established|Age alone does not establish/.test(text(rec)), 'no research-based fallbacks');

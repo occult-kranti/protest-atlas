@@ -6,7 +6,7 @@ import {
   PAGE_SIZE, STATUS_LABELS, statusLabel, foldText, searchableText, queryTokens, indexContexts, eventMatches,
   sortByObservation, selectEvents, selectFiltered, activeFilterCount, availableYears, cityOptions, refinementOptions,
   statusOptions, datasetStats, snapshotState, evidenceAgeDays, sweepFact, groupByBand, emptyBandNotice, timeSnapshot, getDisplayStatus,
-  sweepLine, E5, E4, dateLabel, contextsPaused, countryNamer, displayCountryName,
+  sweepLine, E5, E4, dateLabel, contextsPaused, countryNamer, displayCountryName, COUNTRY_ALIASES,
 } from '../js/model.js';
 import {createStore, initialState} from '../js/store.js';
 import {VIEWS, ROUTE_ALIASES, VIEW_NAMES, parseRoute, formatRoute, createRouter} from '../js/router.js';
@@ -1163,6 +1163,27 @@ test('public data: the stale walkthrough holds a week after the newest evidence 
   const sweep = sweepFact({events: liveEvents, upcoming: liveUpcoming});
   if (note) assert.equal(sweep.records.day, isoDay(Date.parse(`${note[1]} ${note[2]} ${note[3]} UTC`)));
   else assert.equal(sweep.records, null);
+});
+
+test('search: aliases are whole country names, and every query word must start a word of the record', () => {
+  // Sub-national names are not GB aliases: an England-only record is not found by "Scotland" or "Wales".
+  assert.deepEqual(COUNTRY_ALIASES.GB, ['UK', 'Britain', 'Great Britain']);
+  const match = (event, query) => eventMatches(event, {...EMPTY, query}, {now: OCT2});
+  const gb = {title: 'Doctors strike', summary: '', country: 'GB', country_name: 'United Kingdom of Great Britain and Northern Ireland', location: {label: 'England'}};
+  for (const q of ['Scotland', 'Wales']) assert.equal(match(gb, q), false, q);
+  for (const q of ['England', 'UK', 'Britain', 'great brit', 'united kingdom']) assert.equal(match(gb, q), true, q);
+  const il = {title: 'Rally in Jerusalem', summary: 'Accusations of graft', country: 'IL', country_name: 'Israel'};
+  assert.equal(match(il, 'USA'), false, '"usa" inside Jerusalem or accusations is not a hit');
+  assert.equal(match(il, 'jeru'), true, 'a word prefix still matches while typing');
+  assert.equal(match({...il, summary: 'Greenpeace USA joined'}, 'usa'), true);
+  assert.equal(match({...il, country: 'US', country_name: 'United States of America'}, 'USA'), true, 'the US alias');
+  // Punctuation separates words on both sides.
+  assert.deepEqual(queryTokens("Côte d'Ivoire, USA"), ['cote', 'd', 'ivoire', 'usa']);
+  assert.equal(match({...il, country: 'CI', country_name: "Côte d'Ivoire"}, "cote d'ivoire"), true);
+  assert.equal(match({...il, country: 'CI', country_name: "Côte d'Ivoire"}, 'ivoire'), true);
+  const gbIds = events.events.filter(e => e.country === 'GB').map(e => e.id);
+  const ids = query => selectFiltered(withFilters({query})).map(e => e.id);
+  for (const id of gbIds) assert.ok(ids('UK').includes(id) && !ids('Scotland').includes(id), id);
 });
 
 test('public data: every record is findable by its country display name and the critical files load', async () => {

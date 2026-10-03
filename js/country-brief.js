@@ -18,6 +18,7 @@ export const BRIEF_COPY = Object.freeze({
   ledgerLoading: 'Checking the search log…',
   ended: 'Includes a sourced ended or suspended episode.',
   cityNote: 'City dots are approximate reference points, not protest sites.',
+  citiesError: 'Reported cities could not load, so they are unknown here, not absent.',   // event-context.json failed (notice.CONTEXTS_ERROR)
 });
 
 const dayText = v => (typeof v === 'string' && Number.isFinite(toTime(v)) ? absoluteLabel(v.slice(0, 10)) : '');
@@ -64,7 +65,7 @@ export function renderOverview(model, {now} = {}) {
 
 // state: records | filtered-out | no-record | error | loading | example-loading | example-error. No leads (C-19).
 export function briefModel({code, mapEvents = [], allEvents = [], countries = [], coverage = null, research = null, mode = 'reported',
-  example = 'ready', contexts = null, filtered = false, error = false, loading = false} = {}) {
+  example = 'ready', contexts = null, contextsError = false, filtered = false, error = false, loading = false} = {}) {
   const country = directory(countries).get(code), isExample = mode === 'example';
   const matching = newestFirst(list(mapEvents).filter(e => e?.country === code));
   const publishedCount = list(allEvents).filter(e => e?.country === code).length;
@@ -79,7 +80,7 @@ export function briefModel({code, mapEvents = [], allEvents = [], countries = []
   const isoName = country?.isoName || country?.name || code;   // map-view passes display names with isoName kept
   return {code, name: displayCountryName(code, country?.name) || code, isoName, region: country?.region || '', mode: isExample ? 'example' : 'reported', state, filtered: !!filtered,
     matching: state === 'records' ? matching : [], publishedCount, hasEnded: state === 'records' && matching.some(e => e.status === 'ended'),
-    cities: [...cities].map(([value, name]) => ({value, name})),
+    cities: [...cities].map(([value, name]) => ({value, name})), citiesError: state === 'records' && !isExample && !!contextsError,
     ledger: {
       coverage: entry ? (entry.status === 'limited-source-check' ? 'Limited source check' : 'Not reviewed') : null,
       languages: entry ? list(entry.languages).filter(Boolean) : null,
@@ -151,7 +152,7 @@ export function renderBrief(m, {now, hasPolygon = true, lazy = {}, selectedCity 
       return `<button type="button" class="chip brief-city" data-focus-key="city:${esc(c.value)}" ${on ? 'data-clear-filter="city"' : `data-select-city="${esc(c.value)}"`} aria-pressed="${on}">`
         + `<svg class="icon chip-check" aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>${esc(c.name)}</button>`;
     }).join('') + `</div><p class="brief-note">${esc(BRIEF_COPY.cityNote)}</p></div>`;
-  }
+  } else if (m.citiesError) html += `<p class="brief-note">${esc(BRIEF_COPY.citiesError)}</p>`;
   const show = m.publishedCount ? button(`data-select-country="${esc(m.code)}" data-view-after="latest"`, `Show ${m.name} in Reports`, 'btn btn--primary') : '';
   return html + records + actions(show, back);
 }

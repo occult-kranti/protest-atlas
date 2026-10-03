@@ -1,7 +1,7 @@
 import {createWorldMap, zoomButtonState, REGION_VIEWS} from '../map.js';
 import {overviewModel, briefModel, renderOverview, renderBrief, countSentence, BRIEF_COPY} from './country-brief.js';
 import {esc, icon, plural} from './html.js';
-import {selectFiltered, selectEvents, displayCountryName} from './model.js';
+import {selectFiltered, selectEvents, displayCountryName, contextsPaused} from './model.js';
 
 export const REGIONS = ['World', ...Object.keys(REGION_VIEWS)];
 export const MAP_COPY = Object.freeze({
@@ -40,8 +40,9 @@ export function describeCountry(list, {mode = 'reported', example = 'ready', err
   return list?.length ? countSentence(list.length, filtered, list.some(e => e.status === 'ended')) : MAP_COPY.gap;
 }
 
+// `cities`: city dots can be drawn (event-context.json and cities.json loaded); the example draws none.
 export function legendHTML({mode = 'reported', example = 'ready', eventsError = false, unavailable = false, window = 'all', citiesError = false, coarse = false,
-  explore = false} = {}) {
+  explore = false, cities = true} = {}) {
   const note = (kind, text) => `<p class="legend-note" data-kind="${kind}">${text}</p>`;
   const tail = note('small', `${esc(MAP_COPY.smallLead)}<a href="#/countries">${esc(MAP_COPY.smallLink)}</a>`) + note('footnote', esc(MAP_COPY.footnote));
   if (unavailable) return tail;
@@ -51,8 +52,8 @@ export function legendHTML({mode = 'reported', example = 'ready', eventsError = 
   const isExample = mode === 'example';
   if (eventsError && !isExample) return status(BRIEF_COPY.eventsError, 'data-action="retry-data"', 'Retry');
   const item = (kind, text) => `<li><i class="legend-swatch" data-kind="${kind}" aria-hidden="true"></i><span>${esc(text)}</span></li>`;
-  const city = item('city', MAP_COPY.city);
-  if (isExample && example === 'error') return status(BRIEF_COPY.exampleError, 'data-set-mode="reported"', 'Back to reported data') + `<ul class="legend-list">${city}</ul>${tail}`;
+  const city = cities && !isExample ? item('city', MAP_COPY.city) : '';
+  if (isExample && example === 'error') return status(BRIEF_COPY.exampleError, 'data-set-mode="reported"', 'Back to reported data') + tail;
   const first = !isExample ? item('reported', MAP_COPY.reported) : item('example', example === 'loading' ? BRIEF_COPY.exampleLoading : MAP_COPY.example);
   return `${head}<ul class="legend-list">${first}${item('gap', MAP_COPY.gap)}${item('selected', MAP_COPY.selected)}${item('ended', MAP_COPY.ended)}${city}</ul>${tail}`
     + (window === '7' || window === '30' ? note('window', esc(windowNote(window))) : '') + (citiesError ? note('cities', esc(MAP_COPY.citiesError)) : '');
@@ -66,6 +67,11 @@ export function selectionBarHTML({name = '', state = 'records', count = 0, publi
   return `<p class="map-selbar-text"><strong class="map-selbar-name">${esc(name)}</strong>${detail ? ` · <span>${esc(detail)}</span>` : ''}</p>`
     + '<div class="map-selbar-actions"><a class="btn btn--quiet map-selbar-brief" href="#country-panel" data-scroll-to="country-panel">See brief</a>'
     + '<button type="button" class="btn map-selbar-clear" data-clear-filter="country">Back to world</button></div>';
+}
+
+/** The pressed region chip: the zoom target, unless the selected country lies outside it (so never "World" with a country). */
+export function pressedRegion(region, code = '', countries = []) {
+  return !code || region === countries?.find?.(c => c?.code === code)?.region ? region : null;
 }
 
 export function regionChipsHTML(pressed = 'World') {
@@ -121,7 +127,8 @@ export function mountMap({actions = {}, env = {}} = {}) {
 
   function setRegion(next) {
     region = next;
-    for (const chip of regions.querySelectorAll('[data-value]')) chip.setAttribute('aria-pressed', String(chip.dataset.value === region));
+    const pressed = pressedRegion(region, latest?.filters?.country, latest?.data?.countries);
+    for (const chip of regions.querySelectorAll('[data-value]')) chip.setAttribute('aria-pressed', String(chip.dataset.value === pressed));
   }
   function setDisabled(button, disabled) {
     if (button.disabled === disabled) return;
@@ -135,8 +142,8 @@ export function mountMap({actions = {}, env = {}} = {}) {
     setDisabled(zoomOut, !ok || !s.zoomOut);
     setDisabled(reset, !ok || !s.reset);
     setDisabled(exploreButton, !ok);
-    if (region === 'World' && s.zoomOut) setRegion(null);
-    else if (region === null && ok && !s.zoomOut) setRegion('World');
+    // Every call re-applies the chips, so a selection made or cleared while the view stays put updates them too.
+    setRegion(region === 'World' && s.zoomOut ? null : region === null && ok && !s.zoomOut ? 'World' : region);
   }
   // Focus returns by signature within one scope, else to the panel title; keepLead keeps the role="status" node.
   function setHTML(el, html, key, scope = '', keepLead = false) {
@@ -266,7 +273,10 @@ export function mountMap({actions = {}, env = {}} = {}) {
     if (isExample && !watermark) stage.append(Object.assign(doc.createElement('p'), {className: 'map-watermark', textContent: BRIEF_COPY.watermark}));
     else if (!isExample) watermark?.remove();
 
-    legendArgs = {mode: state.mode, example, eventsError: error, unavailable, window: filters.window, citiesError: lazy.cities === 'error', coarse: !!coarse?.matches};
+    // No city dots without event-context.json or cities.json: no legend row (and no "names stay in records" note without contexts).
+    const contextsError = contextsPaused(state), citiesError = !contextsError && lazy.cities === 'error';
+    legendArgs = {mode: state.mode, example, eventsError: error, unavailable, window: filters.window, citiesError, coarse: !!coarse?.matches,
+      cities: !contextsError && !citiesError};
     paintLegend();
 
     let brief = null;
@@ -275,7 +285,7 @@ export function mountMap({actions = {}, env = {}} = {}) {
       setHTML(panel, renderOverview(overviewModel({mapEvents, countries, mode: state.mode, filtered, status}), {now}), 'panel', 'world', true);
     } else {
       brief = briefModel({code, mapEvents: off ? [] : selectFiltered(state), allEvents: off ? [] : selectEvents(state), countries, mode: state.mode, example,
-        coverage: data.coverage ?? null, research: data.research ?? null, contexts: data.contexts ?? null, filtered: filtered || !!filters.city, error, loading});
+        coverage: data.coverage ?? null, research: data.research ?? null, contexts: data.contexts ?? null, contextsError, filtered: filtered || !!filters.city, error, loading});
       setHTML(panel, renderBrief(brief, {now, hasPolygon: !map?.ready || map.hasCountry(code), selectedCity: filters.city ?? '',
         lazy: {coverage: lazy.coverage, research: lazy.research}}), 'panel', code, true);
     }
