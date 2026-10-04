@@ -11,6 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 ID = re.compile(r"^[a-z0-9][a-z0-9-]{0,95}$")
 STANCES = {"support", "oppose", "mixed", "unclear"}
 PRECISIONS = {"city", "region", "country", "multi-location"}
+# Kind of episode (4.1 SPEC §5.1, §6.1). Every public record carries a kind and the basis it rests on; nothing is ever
+# derived from a title, id, issue, summary or intensity text. 'contract-default' is the round-3 research contract
+# ("sourced collective-action episode"); any other event kind needs a source re-read with event-local source ids.
+KINDS = ('collective-action', 'protest', 'strike', 'civil-unrest')
+KIND_METHODS = ('contract-default', 'source-reread')          # + 'illustrative' only when illustrative=True
 
 
 class ValidationError(ValueError):
@@ -98,7 +103,7 @@ def validate_countries(countries):
 def validate_event(event, countries, now, path, illustrative=False):
     obj(event, ('id', 'title', 'country', 'country_name', 'region', 'location', 'issues',
                 'start_date', 'start_date_precision', 'end_date', 'status', 'last_verified', 'last_observed_at', 'summary', 'positions',
-                'intensity', 'state_response', 'sources', 'verification', 'timeline'), path)
+                'intensity', 'state_response', 'sources', 'verification', 'timeline', 'kind', 'kind_basis'), path)
     identifier(event['id'], path + '.id')
     for field in ('title', 'country_name', 'region', 'summary'):
         text(event[field], path + '.' + field)
@@ -195,6 +200,26 @@ def validate_event(event, countries, now, path, illustrative=False):
         array(item['source_ids'], p + '.source_ids')
         if not illustrative or item['source_ids']:
             refs(item['source_ids'], source_ids, p)
+    validate_kind(event, source_ids, path, illustrative)
+
+
+def validate_kind(event, source_ids, path, illustrative=False):
+    """4.1 §6.1: `kind` is one of KINDS and `kind_basis` says how it was set. The pipeline default is legal only for
+    collective-action and cites nothing; a re-read kind must cite event-local sources; examples may be illustrative."""
+    require(isinstance(event['kind'], str) and event['kind'] in KINDS, path, 'unsupported kind')
+    obj(event['kind_basis'], ('method', 'text', 'source_ids'), path + '.kind_basis')
+    basis = event['kind_basis']
+    methods = KIND_METHODS + (('illustrative',) if illustrative else ())
+    require(isinstance(basis['method'], str) and basis['method'] in methods, path, 'unsupported kind_basis.method')
+    text(basis['text'], path + '.kind_basis.text', 600)
+    array(basis['source_ids'], path + '.kind_basis.source_ids')
+    if basis['method'] == 'contract-default':
+        require(event['kind'] == 'collective-action', path, 'contract-default basis is legal only for collective-action')
+        require(basis['source_ids'] == [], path, 'contract-default basis cites no source')
+    elif basis['method'] == 'source-reread':
+        refs(basis['source_ids'], source_ids, path + '.kind_basis')      # non-empty, event-local, no duplicates
+    else:
+        require(basis['source_ids'] == [], path, 'illustrative basis cites no source')
 
 
 def validate_envelope(data, countries, now=None, illustrative=False):

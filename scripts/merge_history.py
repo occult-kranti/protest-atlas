@@ -15,6 +15,23 @@ def read(path): return json.loads(path.read_text())
 def write(path,data): path.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
 def normalize(value): return re.sub(r'[^a-z0-9]','',unicodedata.normalize('NFKD',value).encode('ascii','ignore').decode().lower())
 
+# 4.1 SPEC §6.2: every record states its kind. Research rounds 3 and 4 recorded "sourced collective-action episodes"
+# without distinguishing a protest from a strike, so the pipeline default is that term with the contract as its basis.
+# A different kind is never guessed here; it arrives in an update with a source-reread kind_basis.
+KIND_DEFAULT_BASIS={'method':'contract-default',
+  'text':'Researched as a sourced collective-action episode under the round-3 research contract; protest and industrial action were not distinguished at research time.',
+  'source_ids':[]}
+
+def apply_kind_defaults(events):
+    """Add kind='collective-action' with the contract-default basis to every episode that has no kind. Returns the count added."""
+    added=0
+    for e in events:
+        if 'kind' not in e:
+            e['kind']='collective-action';e['kind_basis']=dict(KIND_DEFAULT_BASIS);added+=1
+        elif 'kind_basis' not in e:
+            raise ValueError('Episode carries a kind without a kind_basis: '+e['id'])
+    return added
+
 def assemble(root=ROOT):
     research=root/'research/round3'
     now=datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00','Z')
@@ -49,6 +66,7 @@ def assemble(root=ROOT):
     if len({e['id'] for e in events})!=len(events):raise ValueError('Duplicate episode IDs')
     for e in events:
         e['country_name']=catalog[e['country']]['name'];e['region']=catalog[e['country']]['region']
+    apply_kind_defaults(events)
     events.sort(key=lambda e:(e['last_observed_at'] or '',e['id']),reverse=True)
     write(root/'public/events.json',{'schema_version':1,'generated_at':now,'last_editorial_review':now,'coverage_note':f"Research snapshot, 1 Jan 2024–2 Oct 2026: {len(events)} sourced episodes across {len(set(e['country'] for e in events))} countries and territories. {sweep_sentence(root/'research/round4')}AI-assisted, no independent human editorial sign-off. Missing records and unknown status are coverage limits, not evidence that no protests occurred.",'events':events})
     write(root/'public/event-context.json',{'schema_version':1,'window_start':'2024-01-01','window_end':WINDOW_END,'records':contexts})
@@ -93,6 +111,10 @@ def apply_round4(research,events,contexts,languages):
             if update.get('status',event['status'])!=event['status']:
                 if not update.get('status_basis'):raise ValueError('Round 4 status change needs status_basis: '+event['id'])
                 event['status']=update['status'];contexts_by_id[event['id']]['status_basis']=update['status_basis']
+            if 'kind' in update:
+                # 4.1 §6.2: a kind is re-typed only from a re-read of the cited source, never from wording.
+                if (update.get('kind_basis') or {}).get('method')!='source-reread':raise ValueError('Kind change needs a source-reread kind_basis: '+event['id'])
+                event['kind']=update['kind'];event['kind_basis']=update['kind_basis']
             event['last_verified']=max(s['accessed_at'] for s in event['sources'])
         fresh=part(region,'events',[]);fresh_contexts=part(region,'context',[])
         if {e['id'] for e in fresh}!={c['event_id'] for c in fresh_contexts}:raise ValueError('Round 4 events and contexts disagree: '+region)
