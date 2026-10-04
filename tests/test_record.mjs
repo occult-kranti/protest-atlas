@@ -637,7 +637,9 @@ test('record.css: components layer only, tokens only, no data-stance or id selec
   for (const media of medias) assert.ok(allowed.includes(media), media);
   assert.match(body, /@media \(max-height: 500px\) \{\s*\.rec-tabs \{ position: static; \}/);
   assert.match(body, /@media \(forced-colors: active\) \{[\s\S]*\.card\[data-ended="true"\][\s\S]*border: 3px solid CanvasText/);
-  assert.match(body, /\.side-pill \{ border: 1px solid CanvasText; \}/);
+  // 4.1 §7.6: the .side-pill primitive (and its forced-colours border) lives in styles.css as `.side-pill, .kind`; test_shell asserts it.
+  assert.doesNotMatch(body, /(^|[,{}])\s*\.side-pill\s*\{/m, 'record.css keeps only the .rec-stance spacing for the pill');
+  assert.match(body, /\.rec-stance \.side-pill \{ margin-inline-end: 2px; \}/);
   assert.match(body, /\.source-ref \{[^}]*min-height: var\(--tap\)/);
   // §8.1 geometry: the tabs stick at the scrollport edge (above .sheet-body's 16 px top padding), so the 52 px
   // scroll-padding clears them on every data-scroll-to jump and reverse-Tab focus.

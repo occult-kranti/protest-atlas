@@ -22,6 +22,42 @@ export function getDisplayStatus(event, now = Date.now()) {
 const validDay = value => typeof value === 'string' && Number.isFinite(Date.parse(value));
 const statusDay = value => absoluteLabel(isoDay(Date.parse(value)));   // "30 Sep 2026", the UTC day
 
+// ---- Kind of record (4.1 SPEC §5.1; frozen names). Same lists as validate_data.KINDS and validate_conflicts.CONFLICT_KINDS. ----
+export const EVENT_KINDS = Object.freeze(['collective-action', 'protest', 'strike', 'civil-unrest']);
+export const CONFLICT_KINDS = Object.freeze(['armed-conflict-intrastate', 'armed-conflict-interstate', 'non-state-conflict', 'one-sided-violence']);
+/** K5 badge text. */
+export const KIND_LABELS = Object.freeze({
+  'collective-action': 'Collective action', protest: 'Protest', strike: 'Strike', 'civil-unrest': 'Civil unrest, as reported',
+  'armed-conflict-intrastate': 'Armed conflict · intrastate', 'armed-conflict-interstate': 'Armed conflict · interstate',
+  'non-state-conflict': 'Non-state conflict', 'one-sided-violence': 'One-sided violence',
+});
+/** K2 filter option text. */
+export const KIND_FILTER_LABELS = Object.freeze({
+  'collective-action': 'Collective action (protest or strike)', protest: 'Protest / demonstration', strike: 'Strike / industrial action',
+  'civil-unrest': 'Civil unrest, as reported', 'armed-conflict-intrastate': 'Armed conflict, intrastate',
+  'armed-conflict-interstate': 'Armed conflict, interstate', 'non-state-conflict': 'Non-state conflict', 'one-sided-violence': 'One-sided violence',
+});
+/** The record's stated kind, or null when it states none; never derived from titles or tags. */
+export function kindOf(record) {
+  const kind = record?.kind;
+  return EVENT_KINDS.includes(kind) || CONFLICT_KINDS.includes(kind) ? kind : null;
+}
+/** 'all' without a kind filter; 'conflicts' for a conflict kind; 'events' otherwise. */
+export function kindScope(filters) {
+  const kind = filters?.kind;
+  if (!kind) return 'all';
+  return CONFLICT_KINDS.includes(kind) ? 'conflicts' : 'events';
+}
+/** Kinds stated by the records in view (events and, when loaded, conflicts); example mode sees only the illustrative record. */
+export function kindsPresent(state) {
+  const kinds = new Set();
+  for (const event of selectEvents(state)) { const kind = kindOf(event); if (kind) kinds.add(kind); }
+  if (state?.mode !== 'example') for (const record of state?.data?.conflicts?.records ?? []) { const kind = kindOf(record); if (kind) kinds.add(kind); }
+  return kinds;
+}
+/** The badge and the Kind filter appear only once the data hold more than one kind (R14). */
+export const showKindBadges = state => kindsPresent(state).size >= 2;
+
 /** E5, shared by the list, the notice and the filter sheet's error state (C-37). */
 export const E5 = 'Published records could not be loaded, so coverage is unknown at the moment, not zero.';
 

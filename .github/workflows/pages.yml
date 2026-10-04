@@ -73,8 +73,9 @@ jobs:
 
   # Post-deploy evidence, run on the GitHub runner (the build container cannot reach github.io): the live site must
   # serve this commit's build stamp, the shell and the required data files must answer 200, and every JSON file it
-  # fetches (roadmap, events, and upcoming when published) must parse. public/upcoming.json is
-  # optional in build.py (OPTIONAL_FILES) and the UI has an "absent" state, so a 404 there is reported, not a failure.
+  # fetches (roadmap, events, and upcoming and conflicts when published) must parse. public/upcoming.json and
+  # public/conflicts.json are optional in build.py (OPTIONAL_FILES) and the UI has an "absent" state for each, so a 404
+  # there is reported, not a failure.
   # Not a PR gate.
   verify:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
@@ -128,6 +129,13 @@ jobs:
             200) json_paths="$json_paths public/upcoming.json" ;;
             404) echo "::notice::public/upcoming.json is not published in this build; the Ahead view shows its absent state" ;;
             *) echo "::error::/public/upcoming.json returned HTTP $code"; failed=1 ;;
+          esac
+          code=$(curl -sS -o /dev/null --max-time 20 -w '%{http_code}' "$base/public/conflicts.json?verify=$RUN_ID") || true
+          echo "$code /public/conflicts.json (optional)"
+          case "$code" in
+            200) json_paths="$json_paths public/conflicts.json" ;;
+            404) echo "::notice::public/conflicts.json is not published in this build; the map legend and Kind filter show the absent state" ;;
+            *) echo "::error::/public/conflicts.json returned HTTP $code"; failed=1 ;;
           esac
           for path in $json_paths; do
             if ! curl -fsS --max-time 20 "$base/$path?verify=$RUN_ID" | python3 -c 'import json, sys; json.load(sys.stdin)'; then

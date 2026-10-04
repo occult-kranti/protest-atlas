@@ -1,5 +1,6 @@
 // Bootstrap and controller (WP2): store, router, loaders, component mounting, delegated actions, 60 s tick.
-// The static imports below are the final module graph (SPEC §19.0, C-48). The map is reached only through import().
+// The static imports below are the final module graph (SPEC §19.0, C-48 as amended by C-53): the map, the Ahead,
+// Countries and About views and the conflict record sheet are reached only through import().
 import {readViewState, encodeViewState, droppedParams} from './explore.js';
 import './freshness.js';
 import {esc, icon} from './js/html.js';
@@ -15,15 +16,21 @@ import {mountNotice} from './js/notice.js';
 import {initSheets, openSheet, closeSheet, isOpen, initChromeMetrics, sheetScroller} from './js/sheet.js';
 import {primarySource} from './js/record-facts.js';
 import {renderRecord, patchRecordStatus, mountRecordChrome} from './js/detail.js';
-import {mountAhead} from './js/ahead.js';
-import {mountCountries} from './js/countries.js';
-import {mountAbout} from './js/about.js';
 
 export {getDisplayStatus, dateLabel} from './js/model.js';
 
 const TICK_MS = 60_000;
 const FEEDBACK_MS = 4_000;
 const URL_DEBOUNCE_MS = 250;
+// Lazy modules (4.1 §8.1, C-53): literal specifiers keep the import map's ?v= key; a retry re-imports with ?retry=n like the map.
+const LAZY = {
+  ahead: () => import('./js/ahead.js'), countries: () => import('./js/countries.js'), about: () => import('./js/about.js'),
+  conflict: () => import('./js/conflict-detail.js'),
+};
+const LAZY_PATHS = {ahead: './js/ahead.js', countries: './js/countries.js', about: './js/about.js', conflict: './js/conflict-detail.js'};
+const VIEW_MOUNTS = {ahead: ['ahead-root', 'mountAhead'], countries: ['countries-root', 'mountCountries'], about: ['research-scope', 'mountAbout']};
+const loadingHTML = text => `<p class="view-loading" role="status">${text}</p>`;
+const errorHTML = (text, attrs) => `<p class="view-error" role="status">${text}</p><button type="button" class="btn" ${attrs}>Retry</button>`;
 const E6 = 'The map could not load. Every country and territory is still available in the list and the A–Z directory.';
 const M7 = 'Small territories are not drawn at this scale. <a href="#/countries">Use the country list</a>';
 const M8 = 'Colour shows what this atlas has published. It does not show how many protests there were, how large they were or how severe.';
@@ -67,9 +74,53 @@ async function boot() {
 
   // ---- components ---------------------------------------------------------------------------------
   const components = [mountNotice(ctx), mountStamps(ctx), mountFilters(ctx), mountList(ctx)];
-  const firstVisit = {ahead: mountAhead, countries: mountCountries, about: mountAbout};   // C-21
   const mounted = new Map();
   let map = null;
+
+  // ---- lazy modules (C-53): one cached import each; a failed import is forgotten so Retry re-imports with ?retry=n ----
+  const modules = new Map();
+  const loaded = new Map();
+  const attempts = {};
+  function loadModule(name) {
+    if (!modules.has(name)) {
+      const n = attempts[name] = (attempts[name] ?? 0) + 1;
+      const base = import.meta.resolve?.(LAZY_PATHS[name]) ?? LAZY_PATHS[name];
+      modules.set(name, (n === 1 ? LAZY[name]() : import(`${base}${base.includes('?') ? '&' : '?'}retry=${n}`))
+        .then(module => { loaded.set(name, module); return module; }, error => { modules.delete(name); throw error; }));
+    }
+    return modules.get(name);
+  }
+  // Ahead, Countries and About mount on first visit (C-21) after one import(); the view root shows loading or failure meanwhile.
+  const pending = new Set();
+  function mountView(view) {
+    if (mounted.has(view) || pending.has(view)) return;
+    const [rootId, mountName] = VIEW_MOUNTS[view];
+    const root = $(rootId);
+    const mount = module => {
+      root?.replaceChildren();
+      const component = module[mountName](ctx);
+      mounted.set(view, component);
+      component.render(store.get(), null);
+      if (view === 'about') actions.loadLazy('discovery');
+      if (store.get().route.view === view) router.resettleFocus();   // the section title the route wanted now exists
+    };
+    if (loaded.has(view)) { mount(loaded.get(view)); return; }
+    pending.add(view);
+    if (root) root.innerHTML = loadingHTML('Loading this section…');
+    loadModule(view).then(module => { pending.delete(view); mount(module); }, () => {
+      pending.delete(view);
+      if (root) root.innerHTML = errorHTML('This section could not load.', `data-action="retry-view" data-view="${view}"`);
+    });
+  }
+  // Prefetch on intent: hovering, focusing or touching a nav link starts the import without mounting.
+  for (const nav of [$('primary-nav'), $('tab-bar')]) {
+    for (const type of ['pointerover', 'focusin', 'touchstart']) {
+      nav?.addEventListener(type, event => {
+        const view = event.target?.closest?.('[data-nav]')?.dataset.nav.split('/')[0];
+        if (VIEW_MOUNTS[view] && !mounted.has(view) && !modules.has(view)) loadModule(view).catch(() => {});
+      }, {passive: true});
+    }
+  }
   let mapPhase = 'idle';   // idle | loading | ready | failed
   let mapAttempt = 0;
 
@@ -197,6 +248,9 @@ async function boot() {
     const ready = state.mode === 'example' ? state.load.lazy.examples === 'ready' : state.load.critical !== 'loading' && !state.load.errors.events;
     if (!ready) return;
     const event = selectEvents(state).find(e => e.id === id);
+    // A UCDP conflict record (data.conflicts, once WP-B loads the dataset) renders through the lazy js/conflict-detail.js.
+    const conflict = event ? null : state.data.conflicts?.records?.find?.(r => r.id === id);
+    if (conflict) { syncConflictRecord(state, conflict); return; }
     if (!event) {
       if (shown) closeSheet(recordSheet, 'route');
       openId = null;
@@ -245,6 +299,24 @@ async function boot() {
     if (prev && (state.now !== prev.now || state.filters !== prev.filters || state.data !== prev.data)) {
       patchRecordStatus(recordBody, event, state.now);
       fillChrome(state, event, index, filtered.length);
+    }
+  }
+
+  /** Conflict record sheet (§7.2, Phase-0 skeleton): loading and failure states here, the body from the lazy module. */
+  async function syncConflictRecord(state, record) {
+    const id = record.id;
+    if (openId === id && isOpen(recordSheet)) return;
+    recordBody.innerHTML = loadingHTML('Loading this record…');
+    if (eyebrow) eyebrow.textContent = 'Conflict record · UCDP data';
+    if (mini) mini.textContent = record.ucdp?.conflict_name ?? '';
+    for (const el of [prevBtn, nextBtn, sourceLink]) if (el) el.hidden = true;
+    if (!isOpen(recordSheet)) openSheet(recordSheet, {trigger: triggerFor(id), focus: '#detail-title', returnFocus: recordReturnFocus(id)});
+    openId = id;
+    try {
+      const module = await loadModule('conflict');
+      if (openId === id) recordBody.innerHTML = module.renderConflictRecord(record, {envelope: state.data.conflicts, now: state.now, countryName: countryNamer(state.data.countries)});
+    } catch {
+      if (openId === id) recordBody.innerHTML = errorHTML('This record could not load.', 'data-action="retry-record"');
     }
   }
 
@@ -334,12 +406,7 @@ async function boot() {
     components.forEach(renderSafely);
     const view = state.route.view;
     mounted.forEach(renderSafely);
-    if (firstVisit[view] && !mounted.has(view)) {
-      const component = firstVisit[view](ctx);
-      mounted.set(view, component);
-      component.render(state, null);
-      if (view === 'about') actions.loadLazy('discovery');
-    }
+    if (VIEW_MOUNTS[view] && !mounted.has(view)) mountView(view);
     if (view === 'map' && mapPhase === 'idle') loadMap();
     if (map) map.render(state, prev);
     syncDisabled(state);
@@ -385,6 +452,12 @@ async function boot() {
         actions.dismissFeedback();
         if (shareTrigger?.isConnected) shareTrigger.focus({preventScroll: true});
         return true;
+      case 'retry-view':   // like the map: after two failed imports, reload when online so a stuck module entry cannot persist
+        if (!VIEW_MOUNTS[el.dataset.view]) return false;
+        if ((attempts[el.dataset.view] ?? 0) >= 2 && globalThis.navigator?.onLine !== false) location.reload();
+        else { mountView(el.dataset.view); focusTitleIfLost(el); }
+        return true;
+      case 'retry-record': openId = null; syncRecord(store.get(), null); return true;
       case 'retry-map':
         if (map) return false;   // map-view.js owns it once loaded
         // A failed static dependency (map.js, country-brief.js) stays failed in the module map until a reload,

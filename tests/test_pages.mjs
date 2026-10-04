@@ -12,6 +12,7 @@ import {
 } from '../js/about.js';
 import {displayCountryName} from '../js/model.js';
 import {absoluteLabel, relativeLabel} from '../freshness.js';
+import * as teaser from '../js/teaser.js';
 
 const read = async path => JSON.parse(await readFile(new URL(`../${path}`, import.meta.url), 'utf8'));
 // Two data sets (tests/fixtures/snapshot-20261002/README.md):
@@ -612,6 +613,14 @@ test('discoveryView on the published file reads its date, count and schedule fro
   assert.equal(view.date, live.discovery.last_success_at);
   assert.equal(view.count, live.discovery.candidate_count);
   assert.equal(view.summary, `GDELT artifact created ${absoluteLabel(live.discovery.last_success_at)} · ${view.countText}`);
+});
+
+test('js/teaser.js exports equal the re-exports of ahead.js and about.js (C-53)', () => {
+  assert.deepEqual(Object.keys(teaser).sort(), ['RUN_URL', 'aheadTeaserHTML', 'discoveryView', 'groupAnnouncements', 'upcomingCount']);
+  assert.equal(aheadTeaserHTML, teaser.aheadTeaserHTML);
+  assert.equal(groupAnnouncements, teaser.groupAnnouncements);
+  assert.equal(upcomingCount, teaser.upcomingCount);
+  assert.equal(discoveryView, teaser.discoveryView);
 });
 
 test('mount functions are inert without a DOM', () => {

@@ -2,6 +2,7 @@ import {createWorldMap, zoomButtonState, REGION_VIEWS} from '../map.js';
 import {overviewModel, briefModel, renderOverview, renderBrief, countSentence, BRIEF_COPY} from './country-brief.js';
 import {esc, icon, plural} from './html.js';
 import {selectFiltered, selectEvents, displayCountryName, contextsPaused} from './model.js';
+import {CONFLICT_COPY} from './conflicts.js';   // 4.1 C-53 edge: WP-C renders EC1/EC2 from it; the legend is 4.0 until then
 
 export const REGIONS = ['World', ...Object.keys(REGION_VIEWS)];
 export const MAP_COPY = Object.freeze({

@@ -124,7 +124,10 @@ const VERBATIM_MIN = 24;   // a shorter text node is exempt only when it equals 
 
 const BANNED = ['live', 'live now', 'happening now', 'right now', 'breaking', 'real-time', 'active protests', 'current protests',
   'ongoing now', 'hotspots?', 'trending', 'most active', 'escalating', 'unrest index', 'severity', 'danger', 'risk level',
-  'top countries', 'top issues', 'sides', 'vs', 'as of', 'synced', 'join', 'attend', 'rsvp', 'remind me', 'add to calendar', 'live desk'];
+  'top countries', 'top issues', 'sides', 'vs', 'as of', 'synced', 'join', 'attend', 'rsvp', 'remind me', 'add to calendar', 'live desk',
+  // 4.1 SPEC §4.7 (same list as tests/test_shell.mjs; bare "war" stays allowed for the UCDP intensity label)
+  'hot', 'cold', 'heat', 'heatmap', 'heat map', 'war map', 'warm', 'cool', 'temperature', 'thermal', 'flare-up', 'flaring', 'surge',
+  'spike', 'uptick', 'intensifying', 'de-escalating'];
 const BANNED_SOURCES = [...BANNED.map(w => `(?<![\\w-])${w.replace(/ /g, '\\s+')}(?![\\w-])`), '\\btracking\\s+\\d+\\s+protests\\b', '\\b\\d+\\s+protests\\s+worldwide\\b'];
 const ALLOWLIST = ['Sparse coverage, not a comprehensive live feed.', 'Sparse coverage; not a live feed.'];
 const STANCE_TOTAL = '\\b\\d+\\s+(for|against|support|supports|oppose|opposes)\\b';
@@ -805,6 +808,8 @@ CHECKS[7] = async f => {
 // 8. Ahead and roadmap.
 CHECKS[8] = async f => {
   const {page, close} = await open('390', {hash: '#/ahead'});
+  // 4.1 C-53: the Ahead module loads on first visit, so wait for its first section rather than asserting synchronously.
+  await page.waitForSelector('#ahead-root .ahead-section', {timeout: 8000}).catch(() => {});
   await page.waitForTimeout(500);
   const text = (await page.textContent('#view-ahead')).replace(/\s+/g, ' ');
   if (!(EVENTS && readJSON('public/upcoming.json').items?.length)) {

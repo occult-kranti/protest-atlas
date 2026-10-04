@@ -153,6 +153,8 @@ class BuiltSiteLinkTests(unittest.TestCase):
             if script not in self.files:
                 continue
             for path in PUBLIC_JSON.findall((self.site / script).read_text(encoding='utf-8')):
+                if path in OPTIONAL_FILES and not (REPOSITORY / path).exists():
+                    continue   # optional data with a designed absent state (upcoming.json, conflicts.json; 4.1 §6.8)
                 with self.subTest(script=script, path=path):
                     self.assertIn(path, self.files, f'{script} names {path}, which is not published')
 
@@ -228,6 +230,11 @@ class WorkflowPinTests(unittest.TestCase):
         json_required = {path for path in re.findall(r'"([^"]+)"', required.group(1)) if path.endswith('.json')}
         self.assertIn('public/events.json', json_required)
         self.assertLessEqual(json_required, set(parsed.group(1).split()))
+        # Optional files (build.OPTIONAL_FILES) are reported as a notice on 404, never required (4.1 §6.8).
+        for optional in ('public/upcoming.json', 'public/conflicts.json'):
+            self.assertIn(optional, OPTIONAL_FILES)
+            self.assertNotIn(optional, json_required)
+            self.assertRegex(workflow, rf'404\) echo "::notice::{re.escape(optional)} is not published in this build')
 
 
 if __name__ == '__main__':

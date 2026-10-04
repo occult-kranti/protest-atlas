@@ -1,8 +1,10 @@
 // Shell contract tests (WP1): DOM ids, import map and versioning, modulepreload == static graph, Node import safety,
 // payload budgets, CSS layering, tokens, banned vocabulary in static copy, 404 self-containment and the sheet API.
-// SPEC §4.6, §15, §17, §18.1, §19.0, §19 WP1; tech §4.1, §4.7, §4.9, §6.2, §10.1, §11.1. Offline; Node only.
+// SPEC §4.6, §15, §17, §18.1, §19.0, §19 WP1; tech §4.1, §4.7, §4.9, §6.2, §10.1, §11.1; 4.1 SPEC §3.2, §4.7, §8.1,
+// §10 steps 3–6 (lazy views, CSS measured as served, tokens, banned words, frozen tests). Offline; Node only.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFileSync, readdirSync, existsSync} from 'node:fs';
 import {gzipSync} from 'node:zlib';
 import {dirname, join, normalize, relative} from 'node:path';
@@ -233,11 +235,17 @@ test('the sprite defines every icon symbol on a 24 px stroke grid, and every <us
 });
 
 // ---------------------------------------------------------------------------------------------------------------
-// Import map, versioning, modulepreload == static graph (tech §10.1, §11.1; SPEC §19.0 C-48)
-const STATIC_GRAPH_21 = `app.js explore.js freshness.js history.js js/html.js js/model.js js/store.js js/router.js js/data.js js/actions.js
-  js/filters.js js/list.js js/stamps.js js/notice.js js/sheet.js js/record-facts.js js/cards.js js/detail.js js/ahead.js
-  js/countries.js js/about.js`.split(/\s+/);
-const LAZY = ['map.js', 'js/map-view.js', 'js/country-brief.js'];
+// Import map, versioning, modulepreload == static graph (tech §10.1, §11.1; SPEC §19.0 C-48 as amended by C-53)
+const STATIC_GRAPH_20 = `app.js explore.js freshness.js history.js js/html.js js/model.js js/store.js js/router.js js/data.js js/actions.js
+  js/filters.js js/list.js js/stamps.js js/notice.js js/sheet.js js/record-facts.js js/cards.js js/detail.js js/teaser.js
+  js/conflicts.js`.split(/\s+/);
+// Reached only through import() in app.js (the entries) or through an entry's static imports (map.js, country-brief.js).
+const LAZY_ENTRIES = ['js/map-view.js', 'js/ahead.js', 'js/countries.js', 'js/about.js', 'js/conflict-detail.js'];
+const LAZY = ['map.js', 'js/map-view.js', 'js/country-brief.js', 'js/ahead.js', 'js/countries.js', 'js/about.js', 'js/conflict-detail.js'];
+const VERSION = '4.1';
+// Frozen regression contracts (4.1 SPEC §0.1, D11): byte-identical to fcd35a7.
+const FROZEN_TESTS = {'tests/test_explorer.mjs': '3c4040349b1e6adbba815f5799ca34b02eced5de17a8f39f9ceaf78f460b9b9f',
+  'tests/test_freshness.mjs': '3646ed5b9eb2201b8c00c4c70d86943f5706b965ba5270da0e426dd6986f272a'};
 const SPECIFIER = /^\s*(?:import|export)\b[^;'"()`]*?['"](\.{1,2}\/[^'"]+)['"]/gm;
 
 function staticImports(file) {
@@ -286,7 +294,7 @@ test('stylesheets, entry script and modulepreloads share the import-map version'
   const entry = tagsOf(INDEX_TOKENS, 'script').filter(s => s.attrs.type === 'module');
   assert.deepEqual(entry.map(s => s.attrs.src), [`app.js?v=${version}`]);
   for (const l of links.filter(x => x.attrs.rel === 'modulepreload')) assert.match(l.attrs.href, new RegExp(`^\\./.+\\.js\\?v=${version.replace('.', '\\.')}$`));
-  assert.equal(version, '4.0');
+  assert.equal(version, VERSION);
 });
 
 test('no JS import specifier carries ?v=', () => {
@@ -296,15 +304,30 @@ test('no JS import specifier carries ?v=', () => {
   }
 });
 
-test('modulepreload equals the static import graph of app.js, which is the frozen 21-module set', () => {
+test('modulepreload equals the static import graph of app.js, which is the 20-module set of C-53', () => {
   const graph = staticGraph('app.js');
-  assert.deepEqual(graph, [...STATIC_GRAPH_21].sort(), 'static graph (SPEC §19.0)');
+  assert.deepEqual(graph, [...STATIC_GRAPH_20].sort(), 'static graph (SPEC §19.0, C-53)');
   const preload = tagsOf(INDEX_TOKENS, 'link').filter(l => l.attrs.rel === 'modulepreload').map(l => l.attrs.href.replace(/^\.\//, '').split('?')[0]);
   assert.equal(new Set(preload).size, preload.length, 'no duplicate modulepreload');
   assert.deepEqual([...preload].sort(), graph);
   for (const lazy of LAZY) assert.ok(!graph.includes(lazy), `${lazy} stays lazy`);
-  assert.match(read('app.js'), /\bimport\(/, 'app.js uses a dynamic import()');
-  assert.ok(read('app.js').includes('./js/map-view.js'), 'map-view is reached through import()');
+  const app = read('app.js');
+  assert.match(app, /\bimport\(/, 'app.js uses a dynamic import()');
+  for (const entry of LAZY_ENTRIES) assert.ok(app.includes(`'./${entry}'`), `${entry} is named by its literal specifier in app.js (the ?v= key resolves through the import map)`);
+  for (const entry of LAZY_ENTRIES.filter(e => e !== 'js/map-view.js')) {
+    assert.match(app, new RegExp(`import\\(\\s*['"]\\./${entry.replace(/[./]/g, '\\$&')}['"]\\s*\\)`), `${entry} is reached through a literal import() in app.js`);
+  }
+  // Every module in the import map is either static or reachable from a lazy entry; nothing is orphaned or preloaded twice.
+  const reachable = new Set([...graph, ...LAZY_ENTRIES.flatMap(staticGraph)]);
+  assert.deepEqual([...reachable].sort(), [...ROOT_MODULES, ...JS_MODULES].sort());
+  assert.deepEqual([...new Set(LAZY_ENTRIES.flatMap(staticGraph))].filter(f => !graph.includes(f)).sort(), [...LAZY].sort(), 'the lazy set is exactly the 7 modules of §8.1 step 5');
+  assert.ok(Object.keys(importMap()).includes('./js/conflict-detail.js') && !preload.includes('js/conflict-detail.js'), 'conflict-detail is in the import map (cache key) and never preloaded');
+});
+
+test('the frozen regression contracts are byte-identical to fcd35a7 (4.1 D11)', () => {
+  for (const [file, sha] of Object.entries(FROZEN_TESTS)) {
+    assert.equal(createHash('sha256').update(readFileSync(join(ROOT, file))).digest('hex'), sha, `${file} is frozen`);
+  }
 });
 
 test('the static graph has no cycle', () => {
@@ -337,12 +360,17 @@ const sizeOf = file => existsSync(join(ROOT, file)) ? gz(readFileSync(join(ROOT,
 // Code and data are budgeted apart (MAJOR 13): a data refresh grows events.json, event-context.json and cities.json,
 // and must never fail a code-size gate. Code buckets hold only html, css, js and the static map geometry and vendor files;
 // data has its own generous guards (events.json at the §6.2 number, critical data, and the reported map data).
-const CRITICAL_DATA = ['public/events.json', 'public/countries.json', 'public/event-context.json', 'public/upcoming.json', 'public/build-info.json'];
+const CRITICAL_DATA = ['public/events.json', 'public/countries.json', 'public/event-context.json', 'public/upcoming.json', 'public/build-info.json',
+  'public/conflicts.json'];   // absent counts as 0 B (4.1 R16, R29)
 const MAP_CODE = ['vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js', 'public/world-110m.topo.json', 'public/world-map-codes.json',
   'map.js', 'js/map-view.js', 'js/country-brief.js', 'css/map.css'];
+// CSS is measured as the build serves it: comments stripped and blank lines collapsed (4.1 §8.1 step 6; parity test below).
+const CSS_COMMENT = /\/\*[\s\S]*?\*\//g;
+const CSS_BLANK_LINES = /\n[ \t]*(?=\n)/g;
+const stripComments = css => css.replace(CSS_COMMENT, '').replace(CSS_BLANK_LINES, '');
 function budgets() {
   const html = gz(INDEX);
-  const css = ['styles.css', ...CSS_DIR].reduce((n, f) => n + sizeOf(f), 0);
+  const css = ['styles.css', ...CSS_DIR].reduce((n, f) => n + gz(stripComments(read(f))), 0);
   const js = staticGraph('app.js').reduce((n, f) => n + sizeOf(f), 0);
   const data = CRITICAL_DATA.reduce((n, f) => n + sizeOf(f), 0);
   const map = MAP_CODE.reduce((n, f) => n + sizeOf(f), 0);
@@ -353,6 +381,8 @@ const B = budgets();
 
 // `target` is the tech §6.2 table. `ceiling` is what CI enforces: the integration budget (SPEC §23 "Integration addendum",
 // docs/design/INTEGRATION_NOTES.md §4). Method: gzip -9 per file, summed; source files as served (no build step minifies).
+// 4.1 (4 Oct 2026): CSS is measured comment-stripped, as build.py serves it; the lazy-view split (C-53) took Ahead, Countries
+// and About out of the critical graph. Ceilings are unchanged; the headroom they created is allocated in 4.1 SPEC §8.2.
 // Ceiling = ceil(1.1 × size measured after the integration cuts), in KB of 1,024 B. Measured 3 Oct 2026: css 25,627 B,
 // critical JS 84,091 B, critical total 177,248 B (61,471 B of it data), map add-on 161,124 B (138 KB of it vendor d3,
 // topojson and map data), map-first 338,372 B. Why §6.2 is not met: SPEC rev 2 scope (C-34–C-52) landed after §6.2 was
@@ -374,9 +404,10 @@ const BUDGETS = {
   events: {label: 'events.json (data)', target: 120, ceiling: 120},
   data: {label: 'critical data files (data)', target: 180, ceiling: 180},
   mapData: {label: 'cities.json (map data)', target: 16, ceiling: 16},
+  conflicts: {label: 'conflicts.json (data)', target: 24, ceiling: 24},
 };
 const MEASURED = {html: B.html, css: B.css, js: B.js, code: B.code, map: B.map, mapFirst: B.code + B.map, events: sizeOf('public/events.json'),
-  data: B.data, mapData: B.mapData};
+  data: B.data, mapData: B.mapData, conflicts: sizeOf('public/conflicts.json')};
 
 test('budget report (gzip -9 bytes)', t => {
   t.diagnostic(`html ${B.html}, css ${B.css} (styles.css ${sizeOf('styles.css')}), critical js ${B.js}, critical code ${B.code}, `
@@ -394,13 +425,22 @@ test('code budgets ignore data: a larger events.json and event-context.json chan
 for (const [key, {label, target, ceiling}] of Object.entries(BUDGETS)) {
   const note = ceiling === target ? '' : ` (tech §6.2 target ${target} KB; integration budget, SPEC §23)`;
   test(`budget: ${label} <= ${ceiling} KB gzip${note}`, () => {
-    assert.ok(MEASURED[key] <= ceiling * KB, ['events', 'data', 'mapData'].includes(key) ? `${label} ${MEASURED[key]} > ${ceiling * KB}: split an events index` : `${label} ${MEASURED[key]} > ${ceiling * KB}`);
+    assert.ok(MEASURED[key] <= ceiling * KB, ['events', 'data', 'mapData', 'conflicts'].includes(key) ? `${label} ${MEASURED[key]} > ${ceiling * KB}: split an events index` : `${label} ${MEASURED[key]} > ${ceiling * KB}`);
   });
 }
 
 // ---------------------------------------------------------------------------------------------------------------
 // CSS contract (tech §4.9; SPEC §17)
-const stripComments = css => css.replace(/\/\*[\s\S]*?\*\//g, '');
+test('the CSS stripper agrees with scripts/build.py (same regex literals; the served CSS is what the budget measures)', () => {
+  const build = read('scripts/build.py');
+  const py = source => source.replace(/\\\//g, '/');   // the JS literal escapes "/"; Python's r'' does not
+  assert.ok(build.includes(`CSS_COMMENT = re.compile(r'${py(CSS_COMMENT.source)}')`), 'comment regex parity');
+  assert.ok(build.includes(`CSS_BLANK_LINES = re.compile(r'${py(CSS_BLANK_LINES.source)}')`), 'blank-line regex parity');
+  assert.match(build, /def strip_css_comments\(text\)/);
+  for (const file of ['styles.css', ...CSS_DIR]) assert.ok(!stripComments(read(file)).includes('/*'), `${file} strips clean`);
+  assert.equal(stripComments('a { /* x */ }\n\n/* y */\n\nb { }\n'), 'a {  }\nb { }\n');
+});
+
 function topLevel(css) {
   // Splits a stylesheet into top-level statements: {head, body} for blocks and {head} for @-statements.
   const out = [];
@@ -471,16 +511,31 @@ const TOKENS = `--bg --bg-raised --bg-sunken --notice-bg --text --text-2 --text-
   --status-ended --status-review --status-unknown --band-fresh --band-week --band-month --band-older --stance-support --stance-oppose
   --stance-other --example --example-ink --example-stripe --on-example --ended-shadow --map-ocean --map-land --map-hatch --map-reported
   --map-example --map-selected --map-selected-halo --map-border --map-grid --map-city --map-city-ended --map-shadow --map-focus
+  --map-evidence-fresh --map-evidence-week --map-evidence-month --map-evidence-older --map-conflict-ink --map-conflict-casing
+  --map-kind-collective --map-kind-unrest --map-kind-unrest-ink --map-kind-armed --map-kind-armed-ink --map-kind-several --map-kind-several-ink
   --font-serif --font-sans --fs-xs --fs-sm --fs-md --fs-lg --fs-xl --fs-2xl --fs-3xl --lh-tight --lh-body --sp-1 --sp-2 --sp-3 --sp-4
   --sp-5 --sp-6 --sp-7 --sp-8 --tap --header-h --tabbar-h --gutter --r-1 --r-2 --r-3 --r-pill --shadow-1 --shadow-2 --ease-out --dur-1
   --dur-2 --z-controls --z-sticky --z-header --z-tabbar --z-toast`.split(/\s+/);
 const LEGACY = {'--canvas': '#f5f3eb', '--surface': '#fffef9', '--ink': '#202a28', '--muted': '#59635d', '--line': '#d3d5c9', '--ochre': '#926018',
   '--ochre-light': '#efe5cd', '--green': '#315b49', '--green-light': '#e5eee5', '--error': '#893d30', '--serif': 'var(--font-serif)',
   '--sans': 'var(--font-sans)', '--radius': '3px', '--space': '24px'};
+// 4.1 SPEC §3.2 (shading ramp, conflict inks) and the README §0.2 amendment (kind families, ENCODING §2.2–§2.3), both modes.
+const SHADING = {
+  light: {'--map-evidence-fresh': '#6e4514', '--map-evidence-week': '#935f1f', '--map-evidence-month': '#b4772a', '--map-evidence-older': '#c89a52',
+    '--map-conflict-ink': 'var(--text)', '--map-conflict-casing': 'var(--map-selected-halo)', '--map-kind-collective': 'var(--map-reported)',
+    '--map-kind-unrest': '#4c83de', '--map-kind-unrest-ink': '#003586', '--map-kind-armed': '#7b3660', '--map-kind-armed-ink': '#d285b1',
+    '--map-kind-several': '#6f6f6f', '--map-kind-several-ink': '#262626'},
+  dark: {'--map-evidence-fresh': '#e6c48f', '--map-evidence-week': '#d4a45c', '--map-evidence-month': '#bd8236', '--map-evidence-older': '#8f5f22',
+    '--map-conflict-ink': 'var(--text)', '--map-conflict-casing': 'var(--map-selected-halo)', '--map-kind-collective': 'var(--map-reported)',
+    '--map-kind-unrest': '#5991ed', '--map-kind-unrest-ink': '#084095', '--map-kind-armed': '#a9628b', '--map-kind-armed-ink': '#571740',
+    '--map-kind-several': '#9e9e9e', '--map-kind-several-ink': '#4f4f4f'},
+};
 const LIGHT = {'--bg': '#f6f4ee', '--bg-raised': '#fffdf8', '--text': '#1a1c19', '--text-muted': '#5f625b', '--border-input': '#7a7d74',
-  '--focus-ring': '#1a5fb4', '--map-reported': '#b4772a', '--map-selected-halo': '#fffdf8', '--example-ink': '#5f4796', '--example-stripe': '#6b54a3'};
+  '--focus-ring': '#1a5fb4', '--map-reported': '#b4772a', '--map-selected-halo': '#fffdf8', '--example-ink': '#5f4796', '--example-stripe': '#6b54a3',
+  ...SHADING.light};
 const DARK = {'--bg': '#121411', '--bg-raised': '#1b1d1a', '--text': '#efede6', '--text-muted': '#a3a69d', '--border-input': '#8d9188',
-  '--focus-ring': '#8ab4f8', '--map-reported': '#bd8236', '--map-selected-halo': '#0e1311', '--ended-shadow': '#c9c6bc', '--map-shadow': '#d8d4c8'};
+  '--focus-ring': '#8ab4f8', '--map-reported': '#bd8236', '--map-selected-halo': '#0e1311', '--ended-shadow': '#c9c6bc', '--map-shadow': '#d8d4c8',
+  ...SHADING.dark};
 const declared = (block, name) => block.match(new RegExp(`(?:^|[\\s;{])${name}\\s*:\\s*([^;]+);`))?.[1].trim();
 
 test('every frozen token is defined, light and dark values match SPEC §17.1, legacy aliases keep 3.1 values', () => {
@@ -497,6 +552,20 @@ test('every frozen token is defined, light and dark values match SPEC §17.1, le
     assert.equal(declared(forcedDark, name), value, `forced dark ${name}`);
   }
   assert.match(tokens, /prefers-reduced-motion: reduce\)\s*\{\s*:root\s*\{\s*--dur-1: 0ms; --dur-2: 0ms;/);
+  // The month step is the coverage colour in both modes (4.1 R2), and no 4.1 token is red or two-poled.
+  assert.equal(SHADING.light['--map-evidence-month'], LIGHT['--map-reported']);
+  assert.equal(SHADING.dark['--map-evidence-month'], DARK['--map-reported']);
+});
+
+test('4.1 §7.6: the pill primitive lives in styles.css, with no colour rule on a kind', () => {
+  const css = stripComments(STYLES);
+  assert.match(css, /\.side-pill, \.kind \{[^}]*border: 1px solid var\(--border-strong\);[^}]*color: var\(--text\);/);
+  assert.match(css, /@media \(forced-colors: active\) \{[^@]*\.side-pill, \.kind \{ border: 1px solid CanvasText; \}/);
+  assert.doesNotMatch(css, /\.kind\[data-kind[^{]*\{[^}]*(color|background)/, 'kind is never a hue off the map');
+  for (const file of CSS_DIR) assert.doesNotMatch(stripComments(read(file)), /\.kind\[data-kind[^{]*\{[^}]*(color|background)/, file);
+  assert.doesNotMatch(stripComments(read('css/record.css')), /(^|[,{}])\s*\.side-pill\s*\{/m, 'record.css keeps only the .rec-stance spacing');
+  assert.match(css, /\.view-loading, \.view-error \{/);
+  assert.doesNotMatch(stripComments(read('css/map.css')), /transition[^;{}]*\bfill\b/, 'no transition names fill (4.1 §3.4)');
 });
 
 test('review.html keeps its 3.1 classes styled through styles.css (C-44)', () => {
@@ -544,7 +613,10 @@ test('shell rules required by SPEC §17.5, §17.8, §17.10 are present', () => {
 // Banned vocabulary in static text and attributes (SPEC §18.1)
 const BANNED = ['live', 'live now', 'happening now', 'right now', 'breaking', 'real-time', 'active protests', 'current protests',
   'ongoing now', 'hotspots?', 'trending', 'most active', 'escalating', 'unrest index', 'severity', 'danger', 'risk level',
-  'top countries', 'top issues', 'sides', 'vs', 'as of', 'synced', 'join', 'attend', 'rsvp', 'remind me', 'add to calendar', 'live desk'];
+  'top countries', 'top issues', 'sides', 'vs', 'as of', 'synced', 'join', 'attend', 'rsvp', 'remind me', 'add to calendar', 'live desk',
+  // 4.1 SPEC §4.7: nothing reads as a thermal, danger or trend score. Bare "war" stays allowed (the UCDP intensity label).
+  'hot', 'cold', 'heat', 'heatmap', 'heat map', 'war map', 'warm', 'cool', 'temperature', 'thermal', 'flare-up', 'flaring', 'surge',
+  'spike', 'uptick', 'intensifying', 'de-escalating'];
 const BANNED_RE = [...BANNED.map(w => new RegExp(`(?<![\\w-])${w.replace(/ /g, '\\s+')}(?![\\w-])`, 'i')),
   /\btracking\s+\d+\s+protests\b/i, /\b\d+\s+protests\s+worldwide\b/i];
 const ALLOW = [H1.slice(H1.indexOf('Sparse coverage')), P2.slice(P2.indexOf('Sparse coverage'))];
@@ -581,6 +653,9 @@ test('static text and attributes of index.html and 404.html carry no banned voca
   assert.equal(bannedHits('<p>Updated 2 Oct</p>').length, 1);
   assert.equal(bannedHits(`<p>${H1}</p>`).length, 0, 'H1 is allowlisted');
   assert.equal(bannedHits('<p>Delivered to the city</p>').length, 0, 'whole words only');
+  // 4.1 §4.7 self-tests: whole words and phrases hit; substrings and bare "war" do not.
+  for (const hit of ['<p>Heat map of protests</p>', '<p>A war map</p>', '<p>Hot and cold countries</p>', '<p>a surge in reports</p>']) assert.ok(bannedHits(hit).length >= 1, hit);
+  for (const miss of ['<p>Heathrow</p>', '<p>theatre</p>', '<p>UCDP intensity: war</p>', '<p>warmth</p>', '<p>school</p>']) assert.equal(bannedHits(miss).length, 0, miss);
 });
 
 // ---------------------------------------------------------------------------------------------------------------

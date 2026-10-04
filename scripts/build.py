@@ -14,6 +14,7 @@ from validate_coverage import validate_repository_coverage
 from validate_history import validate_history_repository
 from validate_upcoming import validate_upcoming_repository
 from validate_roadmap import validate_roadmap_repository
+from validate_conflicts import validate_conflicts_repository
 
 PUBLIC_FILES = (
     'index.html', '404.html', 'styles.css',
@@ -24,18 +25,61 @@ PUBLIC_FILES = (
     'js/record-facts.js', 'js/cards.js', 'js/detail.js',
     'js/map-view.js', 'js/country-brief.js',
     'js/ahead.js', 'js/countries.js', 'js/about.js',
+    'js/teaser.js', 'js/conflicts.js', 'js/conflict-detail.js',
     'review.html', 'review.css', 'review.js',
     'public/events.json', 'public/countries.json', 'public/examples.json', 'public/event-context.json',
     'public/research-ledger.json', 'public/cities.json', 'public/coverage.json', 'public/discovery-status.json',
-    'public/upcoming.json', 'public/roadmap.json',
+    'public/upcoming.json', 'public/roadmap.json', 'public/conflicts.json',
     'public/world-110m.topo.json', 'public/world-map-codes.json', 'public/world-map-metadata.json',
     'vendor/d3.v7.9.0.min.js', 'vendor/topojson-client.v3.1.0.min.js',
     'vendor/NATURAL_EARTH_LICENSE.md', 'vendor/D3_LICENSE', 'vendor/TOPOJSON_CLIENT_LICENSE', 'vendor/WORLD_ATLAS_LICENSE',
 )
 PUBLIC_COPIES = {name: name for name in PUBLIC_FILES} | {'tests/layout-preview.html': 'checks.html'}
-OPTIONAL_FILES = {'public/examples.json', 'public/upcoming.json'}
+OPTIONAL_FILES = {'public/examples.json', 'public/upcoming.json', 'public/conflicts.json'}
 # Generated at build time. Describes the deployment only; never an observation, source check or review time.
 GENERATED_FILES = ('public/build-info.json',)
+
+# CSS is served comment-stripped and blank-line collapsed (4.1 SPEC §8.1 step 6, C-58); JS is served as written.
+# tests/test_shell.mjs measures CSS the same way and asserts that its regex literals equal these two.
+CSS_COMMENT = re.compile(r'/\*[\s\S]*?\*/')
+CSS_BLANK_LINES = re.compile(r'\n[ \t]*(?=\n)')
+
+
+def strip_css_comments(text):
+    """Pure. Refuses a stylesheet in which `/*` occurs inside a quoted string or a url(...) on the same line, so a future
+    `content: "/*"` cannot be mangled silently; otherwise removes every comment and collapses the blank lines it leaves."""
+    for number, line in enumerate(text.split('\n'), 1):
+        quote = None
+        in_url = False
+        i = 0
+        while i < len(line):
+            c = line[i]
+            if quote:
+                if c == '\\':
+                    i += 1
+                elif c == quote:
+                    quote = None
+                elif line.startswith('/*', i):
+                    raise ValidationError(f'css line {number}: a comment opener inside a quoted string cannot be stripped safely')
+            elif in_url:
+                if c in ('"', "'"):
+                    quote = c
+                elif c == ')':
+                    in_url = False
+                elif line.startswith('/*', i):
+                    raise ValidationError(f'css line {number}: a comment opener inside url(...) cannot be stripped safely')
+            elif c in ('"', "'"):
+                quote = c
+            elif line.startswith('url(', i):
+                in_url = True
+                i += 3
+            elif line.startswith('/*', i):
+                end = line.find('*/', i + 2)
+                if end < 0:
+                    break   # the comment continues on later lines; nothing after it on this line is CSS
+                i = end + 1
+            i += 1
+    return CSS_BLANK_LINES.sub('', CSS_COMMENT.sub('', text))
 
 
 def build_info(root):
@@ -68,6 +112,8 @@ def build(root=ROOT):
     validate_repository_coverage(root)
     validate_history_repository(root)
     validate_upcoming_repository(root)
+    # Optional conflict context dataset: None when absent (the designed empty state), validated when present.
+    validate_conflicts_repository(root)
     # Roadmap evidence resolves against this scripts' repository (evidence_root), never the build root.
     validate_roadmap_repository(root)
     destination = root / '_site'
@@ -81,7 +127,10 @@ def build(root=ROOT):
                 continue
             target = staging / output_name
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(source, target)
+            if name.endswith('.css'):
+                target.write_text(strip_css_comments(source.read_text(encoding='utf-8')), encoding='utf-8')
+            else:
+                shutil.copyfile(source, target)
         (staging / '.nojekyll').write_text('', encoding='utf-8')
         (staging / 'public').mkdir(exist_ok=True)
         (staging / GENERATED_FILES[0]).write_text(json.dumps(build_info(root), indent=2) + '\n', encoding='utf-8')

@@ -99,27 +99,9 @@
     .card-fact dt { padding-block-start: 2px; }
   }
 
-  /* For / against (C4, C10) and the hue-free stance pill (§7.3; no selector on data-stance) */
+  /* For / against (C4, C10). The hue-free stance pill (.side-pill, §7.3) is a styles.css primitive since 4.1 (§7.6). */
   .card-sides { list-style: none; padding: 0; display: grid; gap: var(--sp-1); }
   .card-more { margin-block-start: var(--sp-1); color: var(--text-muted); }
-  .side-pill {
-    display: inline-flex;
-    align-items: center;
-    height: 22px;
-    padding: 0 6px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--r-1);
-    background: transparent;
-    color: var(--text);
-    font-family: var(--font-sans);
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: .06em;
-    text-transform: uppercase;
-    white-space: nowrap;
-    vertical-align: baseline;
-  }
   .side-target { font-weight: 600; }
   .side-actor { color: var(--text-2); }
 
@@ -639,12 +621,11 @@
     .rec-tabs { position: static; }
   }
 
-  /* §17.10 forced colours: the ended shadow becomes a 3 px border; pills, marks, tabs and glance keep edges */
+  /* §17.10 forced colours: the ended shadow becomes a 3 px border; marks, tabs and glance keep edges (the pill border is in styles.css) */
   @media (forced-colors: active) {
     .card[data-ended="true"],
     .completion-note.confirmed-ended { box-shadow: none; border: 3px solid CanvasText; }
     .card[data-density="row"][data-ended="true"] { border: 0; border-inline-start: 4px solid CanvasText; border-block-end: 1px solid CanvasText; }
-    .side-pill { border: 1px solid CanvasText; }
     .assessment-label { border-color: CanvasText; }
     .card-watermark,
     .rec-watermark { border: 2px solid CanvasText; }

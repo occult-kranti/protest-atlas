@@ -59,6 +59,7 @@ const sameView = (a, b) => Boolean(a && b) && a.view === b.view && effectivePara
 export function createRouter({defaultView = 'latest', onChange = () => {}, beforePush = () => {}} = {}) {
   let current = null;
   let pending = null;      // {scroll: number, focus: string[]} applied after the next render
+  let lastFocus = null;    // the focus list of the last settled job, for a lazily mounted view's late section titles (C-53)
   let started = false;
   let activeKey = null;    // key of the entry on screen
   let lastY = 0;           // scrollY at the last scroll event: an entry left by a fragment jump is stored pre-jump
@@ -159,6 +160,7 @@ export function createRouter({defaultView = 'latest', onChange = () => {}, befor
     const w = win(), d = doc();
     if (!w || !d) return;
     w.scrollTo({top: scroll, left: 0, behavior: 'instant'});
+    lastFocus = focus;
     const target = focus.map(sel => d.querySelector(sel)).find(el => el && el.getClientRects().length);
     target?.focus({preventScroll: true});
   }
@@ -246,6 +248,19 @@ export function createRouter({defaultView = 'latest', onChange = () => {}, befor
       const job = pending;
       pending = null;
       settle(job);
+    },
+
+    /**
+     * A lazily imported view (4.1 C-53) rendered its section titles after the route settled on the static view title:
+     * move focus to the most specific title, unless the reader or a sheet has already moved it elsewhere. No scroll.
+     */
+    resettleFocus() {
+      const d = doc();
+      if (!d || !lastFocus || lastFocus.length < 2) return;
+      const active = d.activeElement;
+      if (active && active !== d.body && active !== d.querySelector(lastFocus.at(-1))) return;
+      const target = lastFocus.map(sel => d.querySelector(sel)).find(el => el && el.getClientRects().length);
+      if (target && target !== active) target.focus({preventScroll: true});
     },
 
     refreshNav,

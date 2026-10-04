@@ -1,6 +1,6 @@
 // Snapshot chip, dates sheet rows, footer stamps and time refresh (WP2). DOM-free when loaded.
 // Every stamp names its own subject; stamps are never merged into one "updated" time (editorial §4).
-import {discoveryView} from './about.js';
+import {discoveryView} from './teaser.js';
 import {snapshotState, evidenceAgeDays, sweepFact, sweepLine, snapshotAgeText} from './model.js';
 import {esc, plural, timeTag, timeText, REPO_URL} from './html.js';
 import {absoluteLabel, updateStamps} from '../freshness.js';

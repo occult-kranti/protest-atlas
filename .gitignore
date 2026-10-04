@@ -9,3 +9,6 @@ data/review-queues/
 .env.*
 !.env.example
 *.log
+research/round5/downloads/*.csv
+research/round5/downloads/*.zip
+research/round5/downloads/*.pdf

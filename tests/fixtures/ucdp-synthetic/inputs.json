@@ -1,0 +1,20 @@
+{
+  "note": "SYNTHETIC TEST INPUTS. Fictional conflicts, parties and figures in real-country shells; never publish. The data session writes a real manifest with the files it downloaded, their versions, URLs, licence text and citations as read on the UCDP pages.",
+  "files": [
+    {"path": "ged-annual.csv", "role": "ged", "dataset": "UCDP Georeferenced Event Dataset (GED) Global version", "version": "26.1", "provisional": false,
+     "covers_through": "2025-12-31", "url": "https://ucdp.uu.se/downloads/index.html#ged_global", "downloaded_at": "2026-10-10T08:00:00Z",
+     "licence": "SYNTHETIC PLACEHOLDER: copy the licence line from the UCDP download page", "citation": "SYNTHETIC PLACEHOLDER: copy the citation UCDP requests", "doi": null},
+    {"path": "ged-candidate-26-0-7.csv", "role": "ged", "dataset": "UCDP Candidate Events Dataset", "version": "26.0.7", "provisional": true,
+     "covers_through": "2026-07-31", "url": "https://ucdp.uu.se/downloads/index.html#candidate", "downloaded_at": "2026-10-10T08:05:00Z",
+     "licence": "SYNTHETIC PLACEHOLDER", "citation": "SYNTHETIC PLACEHOLDER", "doi": null},
+    {"path": "ged-candidate-26-0-8.csv", "role": "ged", "dataset": "UCDP Candidate Events Dataset", "version": "26.0.8", "provisional": true,
+     "covers_through": "2026-08-31", "url": "https://ucdp.uu.se/downloads/index.html#candidate", "downloaded_at": "2026-10-10T08:06:00Z",
+     "licence": "SYNTHETIC PLACEHOLDER", "citation": "SYNTHETIC PLACEHOLDER", "doi": null},
+    {"path": "acd.csv", "role": "acd", "dataset": "UCDP/PRIO Armed Conflict Dataset", "version": "26.1", "provisional": false,
+     "covers_through": "2025-12-31", "url": "https://ucdp.uu.se/downloads/index.html#armedconflict", "downloaded_at": "2026-10-10T08:10:00Z",
+     "licence": "SYNTHETIC PLACEHOLDER", "citation": "SYNTHETIC PLACEHOLDER", "doi": null},
+    {"path": "brd.csv", "role": "brd", "dataset": "UCDP Battle-Related Deaths Dataset (conflict-level)", "version": "26.1", "provisional": false,
+     "covers_through": "2025-12-31", "url": "https://ucdp.uu.se/downloads/index.html#battlerelated", "downloaded_at": "2026-10-10T08:12:00Z",
+     "licence": "SYNTHETIC PLACEHOLDER", "citation": "SYNTHETIC PLACEHOLDER", "doi": null}
+  ]
+}

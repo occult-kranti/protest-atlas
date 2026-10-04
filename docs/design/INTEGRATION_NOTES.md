@@ -171,6 +171,8 @@ Method: test_shell's own. Each file is gzipped with `-9` and the sizes are summe
 
 Budget = ceil(1.10 × measured KB), recorded with its justification in `tests/test_shell.mjs` and in SPEC §23. The §6.2 targets stay in the same table, and each run prints a diagnostic of how far over them every bucket is.
 
+**After Phase 0, 4.1 (4 Oct 2026; bytes, same method; CSS now measured as served, comment-stripped).** Before 4.1 at `fcd35a7`: critical JS 92,586 (21 modules), CSS 27,351 as written, `index.html` 6,119. After the lazy-view split alone (step 3, computed by removing the step-4 stubs from the Phase-0 tree): critical JS **76,016** (19 modules; headroom 17,168). After Phase 0 (kind pipeline, split, stubs, CSS stripping, tokens): critical JS **78,883** (20 modules; headroom 14,301 ≈ 14.0 KB), CSS **23,023** served (27,997 as written; headroom 5,649 ≈ 5.5 KB), `index.html` 6,141, map add-on 160,278, `events.json` 38,865 with `kind`/`kind_basis`. Ceilings unchanged. The per-lane consumption of the §8.2 caps is in SPEC §23 "4.1 addendum".
+
 Why the cuts are small:
 - The coverage passes found almost no dead code (§3).
 - The overage has three causes:

@@ -67,6 +67,22 @@
     --map-city-ended: #1a1c19;
     --map-shadow: #0d0f0d;
     --map-focus: var(--focus-ring);
+    /* 4.1: opt-in shading by date of newest evidence (one hue, four lightness steps; month = the coverage colour) */
+    --map-evidence-fresh: #6e4514;
+    --map-evidence-week: #935f1f;
+    --map-evidence-month: #b4772a;
+    --map-evidence-older: #c89a52;
+    /* 4.1: UCDP conflict overlay texture, ink dot on a casing ring */
+    --map-conflict-ink: var(--text);
+    --map-conflict-casing: var(--map-selected-halo);
+    /* 4.1 Kind mode (README §0.2 amendment): three validated families, their tone-on-tone texture inks, the neutral for "Several kinds" */
+    --map-kind-collective: var(--map-reported);
+    --map-kind-unrest: #4c83de;
+    --map-kind-unrest-ink: #003586;
+    --map-kind-armed: #7b3660;
+    --map-kind-armed-ink: #d285b1;
+    --map-kind-several: #6f6f6f;
+    --map-kind-several-ink: #262626;
     --backdrop: rgb(0 0 0 / .45);
     --backdrop-drawer: rgb(0 0 0 / .30);
     --shadow-1: 0 1px 0 rgb(0 0 0 / .06);
@@ -120,6 +136,10 @@
       --map-ocean: #0e1311; --map-land: #2b312e; --map-hatch: #3f4844; --map-reported: #bd8236; --map-selected: #efede6;
       --map-selected-halo: #0e1311; --map-border: #48504c; --map-grid: #1f2622; --map-city: #efede6; --map-city-ended: #efede6;
       --map-shadow: #d8d4c8;
+      --map-evidence-fresh: #e6c48f; --map-evidence-week: #d4a45c; --map-evidence-month: #bd8236; --map-evidence-older: #8f5f22;
+      --map-conflict-ink: var(--text); --map-conflict-casing: var(--map-selected-halo);
+      --map-kind-collective: var(--map-reported); --map-kind-unrest: #5991ed; --map-kind-unrest-ink: #084095; --map-kind-armed: #a9628b;
+      --map-kind-armed-ink: #571740; --map-kind-several: #9e9e9e; --map-kind-several-ink: #4f4f4f;
       --shadow-2: 0 -12px 40px rgb(0 0 0 / .6);
     }
   }
@@ -134,6 +154,10 @@
     --map-ocean: #0e1311; --map-land: #2b312e; --map-hatch: #3f4844; --map-reported: #bd8236; --map-selected: #efede6;
     --map-selected-halo: #0e1311; --map-border: #48504c; --map-grid: #1f2622; --map-city: #efede6; --map-city-ended: #efede6;
     --map-shadow: #d8d4c8;
+    --map-evidence-fresh: #e6c48f; --map-evidence-week: #d4a45c; --map-evidence-month: #bd8236; --map-evidence-older: #8f5f22;
+    --map-conflict-ink: var(--text); --map-conflict-casing: var(--map-selected-halo);
+    --map-kind-collective: var(--map-reported); --map-kind-unrest: #5991ed; --map-kind-unrest-ink: #084095; --map-kind-armed: #a9628b;
+    --map-kind-armed-ink: #571740; --map-kind-several: #9e9e9e; --map-kind-several-ink: #4f4f4f;
     --shadow-2: 0 -12px 40px rgb(0 0 0 / .6);
   }
   :root[data-color-scheme="light"] { color-scheme: light; }
@@ -262,6 +286,26 @@
     background: linear-gradient(135deg, transparent calc(50% - .9px), currentColor calc(50% - .9px) calc(50% + .9px), transparent calc(50% + .9px));
   }
 
+  /* Hue-free outlined pill: the stance pill (SPEC §7.3; no selector on data-stance) and the 4.1 kind badge (no selector on data-kind) */
+  .side-pill, .kind {
+    display: inline-flex;
+    align-items: center;
+    height: 22px;
+    padding: 0 6px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-1);
+    background: transparent;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: baseline;
+  }
+
   .eyebrow { font: 700 var(--fs-xs)/1.3 var(--font-sans); letter-spacing: .06em; text-transform: uppercase; color: var(--text-muted); }
 
   .empty-state { padding: 20px; border: 1px dashed var(--border-strong); border-radius: var(--r-2); }
@@ -269,6 +313,8 @@
   .empty-state > p { margin: 0 0 12px; color: var(--text-2); max-width: 62ch; }
   .empty-state > p:last-child { margin-bottom: 0; }
   .empty-state-actions { display: flex; flex-wrap: wrap; gap: 8px 12px; margin-top: 16px; }
+  /* 4.1 lazy views (C-53): one line while a section's module loads, and the failure line before its Retry */
+  .view-loading, .view-error { margin: 20px 0 12px; color: var(--text-2); }
 
   .skip-link, .skip-map {
     display: inline-flex; align-items: center; min-height: var(--tap); padding: 0 16px;
@@ -289,6 +335,7 @@
   @media (forced-colors: active) {
     .chip[aria-pressed="true"] { border: 2px solid CanvasText; }
     .badge, .band { border: 1px solid CanvasText; }
+    .side-pill, .kind { border: 1px solid CanvasText; }
     .status::before { forced-color-adjust: none; border-color: CanvasText; background-color: transparent; box-shadow: none; }
     .status[data-status="ongoing"]::before, .status[data-status="ended"]::before { background: CanvasText; }
     .status[data-status="needs-review"]::before {

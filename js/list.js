@@ -1,7 +1,8 @@
 // Feed stats, result summary, grouped and paginated list (WP2). DOM-free when loaded.
-// The first two imports are mandatory static edges (SPEC §19.0).
+// The first three imports are mandatory static edges (SPEC §19.0, C-53): cards, the static teaser and the conflict rows.
 import {renderCard, renderCardSkeleton} from './cards.js';
-import {aheadTeaserHTML} from './ahead.js';
+import {aheadTeaserHTML} from './teaser.js';
+import {renderConflictRow} from './conflicts.js';
 import {selectEvents, selectFiltered, groupByBand, emptyBandNotice, sweepFact, sweepLine, datasetStats, activeFilterCount, indexContexts,
   snapshotAgeText, snapshotState, countryNamer, E4, E5, STATUS_LABELS, PAGE_SIZE} from './model.js';
 import {esc} from './html.js';

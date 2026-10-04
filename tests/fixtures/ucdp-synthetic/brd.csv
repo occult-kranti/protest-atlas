@@ -1,0 +1,6 @@
+conflict_id,dyad_id,location_inc,side_a,side_a_id,side_a_2nd,side_b,side_b_id,side_b_2nd,territory_name,year,bd_best,bd_low,bd_high,type_of_conflict,battle_location,gwno_a,gwno_a_2nd,gwno_b,gwno_b_2nd,gwno_loc,gwno_battle,region,version
+9000001,9100001,France,Government of France (SYNTHETIC),9200001,,Synthetic Front A,9200002,,,2024,41,34,54,3,France,220,,,,220,220,1,26.1
+9000001,9100001,France,Government of France (SYNTHETIC),9200001,,Synthetic Front A,9200002,,,2025,48,43,68,3,France,220,,,,220,220,1,26.1
+9000002,9100002,"Belgium, Netherlands",Government of Belgium (SYNTHETIC),9200003,,Government of Netherlands (SYNTHETIC),9200004,,Synthetic territory,2024,5,5,6,2,Belgium,211,,210,,"211, 210","211",1,26.1
+9000002,9100002,"Belgium, Netherlands",Government of Belgium (SYNTHETIC),9200003,,Government of Netherlands (SYNTHETIC),9200004,,Synthetic territory,2025,23,21,28,2,Belgium,211,,210,,"211, 210","211, 210",1,26.1
+9000003,9100003,Portugal,Government of Portugal (SYNTHETIC),9200005,,Synthetic Movement C,9200006,,,2024,26,25,30,4,Portugal,235,,,,235,235,1,26.1

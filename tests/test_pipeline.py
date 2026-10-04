@@ -10,7 +10,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
-from build import GENERATED_FILES, OPTIONAL_FILES, PUBLIC_COPIES, build
+from build import GENERATED_FILES, OPTIONAL_FILES, PUBLIC_COPIES, build, strip_css_comments
 from discover_gdelt import normalize, write_candidates
 from merge_history import KIND_DEFAULT_BASIS, apply_kind_defaults, write as write_json
 import apply_kind_defaults as apply_kind_defaults_script
@@ -307,6 +307,59 @@ class PublishingTests(unittest.TestCase):
             info = json.loads((output / 'public/build-info.json').read_text())
             self.assertEqual(set(info), {'schema_version', 'built_at', 'commit', 'workflow_run_id', 'note'})
             self.assertIn('does not change', info['note'])
+
+    def test_build_strips_css_comments(self):
+        # 4.1 §8.1 step 6: CSS is served comment-stripped and blank-line collapsed; JS is served as written; the guard refuses
+        # a comment opener inside a quoted string or url(...) on the same line.
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for name in PUBLIC_COPIES:
+                if name in OPTIONAL_FILES and not (REPOSITORY / name).exists():
+                    continue
+                target = root / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(REPOSITORY / name, target)
+            output = build(root)
+            sheets = [name for name in PUBLIC_COPIES if name.endswith('.css')]
+            self.assertTrue(sheets)
+            for name in sheets:
+                built = (output / PUBLIC_COPIES[name]).read_text(encoding='utf-8')
+                source = (root / name).read_text(encoding='utf-8')
+                self.assertNotIn('/*', built, name)
+                self.assertEqual(built, strip_css_comments(source), name)
+                if '/*' in source:
+                    self.assertNotEqual(built, source, f'{name}: the source keeps its contract comments')
+            self.assertTrue(any('/*' in (root / name).read_text(encoding='utf-8') for name in sheets), 'at least one sheet carries comments')
+            self.assertEqual((output / 'app.js').read_bytes(), (root / 'app.js').read_bytes(), 'JS is served as written')
+        self.assertEqual(strip_css_comments('a { /* x */ color: var(--text); }\n\n/* b\nc */\n\nd { }\n'), 'a {  color: var(--text); }\nd { }\n')
+        self.assertEqual(strip_css_comments('e { content: "a*/b"; } /* "quoted" */ f { background: url("x.png") }'),
+                         'e { content: "a*/b"; }  f { background: url("x.png") }')
+        for bad in ('a::before { content: "/*"; }', "b::after { content: '/*'; }", 'c { background: url(/*x*/); }', 'd { background: url("/*") }'):
+            with self.subTest(css=bad):
+                with self.assertRaisesRegex(ValidationError, 'cannot be stripped safely'):
+                    strip_css_comments(bad)
+
+    def test_build_with_and_without_conflicts_file(self):
+        # public/conflicts.json is optional (4.1 §6.5): absent, the build publishes the absent state and no such file; present,
+        # the Phase-0 stub validator refuses, so nothing reaches the site before the schema checks land (WP-D).
+        self.assertIn('public/conflicts.json', OPTIONAL_FILES)
+        self.assertIn('public/conflicts.json', PUBLIC_COPIES)
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            for name in PUBLIC_COPIES:
+                if name in OPTIONAL_FILES and not (REPOSITORY / name).exists():
+                    continue
+                target = root / name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(REPOSITORY / name, target)
+            if (root / 'public/conflicts.json').exists():
+                (root / 'public/conflicts.json').unlink()
+            output = build(root)
+            self.assertFalse((output / 'public/conflicts.json').exists())
+            (root / 'public/conflicts.json').write_text('{"schema_version": 1, "records": []}', encoding='utf-8')
+            with self.assertRaisesRegex(ValidationError, 'Phase 0'):
+                build(root)
+            self.assertFalse((output / 'public/conflicts.json').exists(), 'a refused file is never published')
 
     def test_build_rejects_symlink_source(self):
         with tempfile.TemporaryDirectory() as tmp:

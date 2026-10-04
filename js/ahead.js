@@ -1,8 +1,12 @@
-// Ahead view (WP5; SPEC §12): announced protest actions and the site roadmap, plus the Reports teaser (§6.5).
-// Pure helpers first; DOM work happens only inside mountAhead(). Safe to import in Node.
+// Ahead view (WP5; SPEC §12): announced protest actions and the site roadmap. Lazy since 4.1 (C-53): app.js reaches
+// it through import() on first visit; the Reports teaser and the announcement grouping live in the static js/teaser.js
+// and are re-exported here. Pure helpers first; DOM work happens only inside mountAhead(). Safe to import in Node.
 import {REPO_URL, esc, icon, plural, safeURL, sourceLink, timeTag, dayParts, patchHTML} from './html.js';
 import {sweepFact, countryNamer} from './model.js';
 import {ANNOUNCEMENT_LABELS, absoluteLabel, announcementState, countdownLabel, toTime, isoDay} from '../freshness.js';
+import {groupAnnouncements, upcomingCount, aheadTeaserHTML} from './teaser.js';
+
+export {groupAnnouncements, upcomingCount, aheadTeaserHTML};
 
 const DAY = 86_400_000;
 const RECORD_ID = /^[a-z0-9][a-z0-9-]{0,95}$/;
@@ -40,29 +44,6 @@ export const PERIOD_NOW_LABEL = 'Planned period includes today · occurrence not
 // ---- Announcements ----
 
 const startOf = item => toTime(item?.planned_start);
-const byStart = (a, b) => (startOf(a) - startOf(b)) || String(a?.country ?? '').localeCompare(String(b?.country ?? ''))
-  || String(a?.id ?? '').localeCompare(String(b?.id ?? ''));
-const byStartDesc = (a, b) => (startOf(b) - startOf(a)) || String(a?.id ?? '').localeCompare(String(b?.id ?? ''));
-
-// Postponed or cancelled items keep their label, but leave the main list once their planned period is over.
-const periodPassed = (item, now) => announcementState({...item, status: 'announced'}, now) === 'date-passed';
-
-/** Groups by announcementState. `list` is the main display order (editorial §10.4); passed items go only to `passed`. */
-export function groupAnnouncements(items, now) {
-  const groups = {today: [], upcoming: [], postponed: [], cancelled: [], passed: [], unknown: [], list: []};
-  for (const item of Array.isArray(items) ? items : []) {
-    const state = announcementState(item, now);
-    if (state === 'scheduled-now') groups.today.push(item);
-    else if (state === 'upcoming') groups.upcoming.push(item);
-    else if (state === 'date-passed') groups.passed.push(item);
-    else if (state === 'postponed' || state === 'cancelled') (periodPassed(item, now) ? groups.passed : groups[state]).push(item);
-    else groups.unknown.push(item);
-  }
-  for (const key of ['today', 'upcoming', 'postponed', 'cancelled', 'unknown']) groups[key].sort(byStart);
-  groups.passed.sort(byStartDesc);
-  groups.list = [...groups.today, ...[...groups.upcoming, ...groups.postponed, ...groups.cancelled].sort(byStart), ...groups.unknown];
-  return groups;
-}
 
 // Day, short month and year come from absoluteLabel's fixed month names ("Sep"), so every date on the site agrees.
 const fmt = options => value => new Intl.DateTimeFormat('en-GB', {...options, timeZone: 'UTC'}).format(value);
@@ -189,35 +170,6 @@ const statusPill = status => `<span class="roadmap-status" data-status="${esc(st
 const dayTag = day => (ISO_DAY.test(day ?? '') ? `<time class="roadmap-date" datetime="${esc(day)}">${esc(absoluteLabel(day))}</time>` : 'not established');
 const external = (href, label, className) => `<a class="${className}" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${label}${icon('external')}${NEW_TAB}</a>`;
 const retryButton = attrs => `<p class="announce-empty-actions"><button type="button" class="btn btn--primary" ${attrs}>Retry</button></p>`;
-
-/** Items whose planned day or period is today or later and that are not postponed or cancelled (editorial §10.4). */
-export function upcomingCount(items, now) {
-  const groups = groupAnnouncements(items, now);
-  return groups.today.length + groups.upcoming.length;
-}
-
-/**
- * The Reports teaser (SPEC §6.5). '' while the critical load is pending. Only upcoming and today's items are counted:
- * a date-passed, postponed or cancelled item is never counted as upcoming.
- */
-export function aheadTeaserHTML({upcoming = null, load = null, now = Date.now()} = {}) {
-  if (load?.critical === 'loading') return '';
-  const status = load?.errors?.upcoming;
-  let first;
-  if (status === 'absent') first = 'the list is not published in this snapshot.';
-  else if (status === 'error' || !Array.isArray(upcoming?.items)) first = 'the list could not load.';
-  else if (!upcoming.items.length) first = 'none are listed yet. An empty list does not mean nothing is planned.';
-  else {
-    const n = upcomingCount(upcoming.items, now);
-    first = n ? `${plural(n, 'upcoming action')} listed. An announcement is not evidence that the action will happen.`
-      : 'no upcoming action is listed. An empty list does not mean nothing is planned.';
-  }
-  return `<aside class="ahead-teaser" aria-labelledby="ahead-teaser-title">`
-    + `<h2 class="ahead-teaser-title" id="ahead-teaser-title">Ahead</h2>`
-    + `<a class="ahead-teaser-link" href="#/ahead/actions"><span class="ahead-teaser-text"><strong>Announced protest actions:</strong> ${esc(first)}</span>${icon('chevron-right')}</a>`
-    + `<a class="ahead-teaser-link" href="#/ahead/roadmap"><span class="ahead-teaser-text"><strong>Coming next to Protest Atlas:</strong> what we are building, what is blocked and what we will not build.</span>${icon('chevron-right')}</a>`
-    + `</aside>`;
-}
 
 const label = text => `<span class="announce-label">${text}</span>`;
 

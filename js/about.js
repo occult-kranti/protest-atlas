@@ -1,10 +1,14 @@
 // About view data (WP5; SPEC §14): research scope, the lazy country-by-country ledger table and the
-// lead-discovery audit. Pure helpers first; DOM work happens only inside mountAbout(). Safe to import in Node.
+// lead-discovery audit. Lazy since 4.1 (C-53): app.js reaches it through import() on first visit; discoveryView lives
+// in the static js/teaser.js (the dates sheet needs it) and is re-exported here.
+// Pure helpers first; DOM work happens only inside mountAbout(). Safe to import in Node.
 import {REPO_URL, esc, icon, patchHTML} from './html.js';
-import {absoluteLabel, toTime} from '../freshness.js';
+import {absoluteLabel} from '../freshness.js';
 import {displayCountryName} from './model.js';
+import {discoveryView} from './teaser.js';
 
-const RUN_URL = new RegExp(`^${REPO_URL.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&')}/actions/runs/\\d+$`);
+export {discoveryView};
+
 const ISO_DAY = /^\d{4}-\d{2}-\d{2}$/;
 const NEW_TAB = '<span class="visually-hidden"> (opens in a new tab)</span>';
 const LIMIT = 'A logged search is not a completed country history. No country is certified exhaustive. Regional totals reflect where we looked, so they cannot be compared or ranked.';
@@ -40,25 +44,6 @@ export function researchScope({research, contexts, events, countries} = {}) {
     episodes: list.length,
     windowStart: ISO_DAY.test(research?.window_start ?? '') ? research.window_start : null,
     windowEnd: ISO_DAY.test(research?.window_end ?? '') ? research.window_end : null,
-  };
-}
-
-/** Lead-discovery audit (C-03); null when invalid. runUrl only for this repository's Actions runs. */
-export function discoveryView(discovery) {
-  if (!discovery || typeof discovery !== 'object') return null;
-  const date = discovery.last_success_at;
-  const count = discovery.candidate_count;
-  if (!Number.isFinite(toTime(date)) || !Number.isInteger(count) || count < 0) return null;
-  const hours = Number.isInteger(discovery.scheduled_interval_hours) && discovery.scheduled_interval_hours > 0
-    ? discovery.scheduled_interval_hours : null;
-  const runUrl = typeof discovery.workflow_run_url === 'string' && RUN_URL.test(discovery.workflow_run_url)
-    ? discovery.workflow_run_url : null;
-  const dateText = absoluteLabel(date);
-  const countText = `${count} unverified ${count === 1 ? 'lead' : 'leads'}`;
-  return {
-    date, dateText, count, countText, runUrl, intervalHours: hours,
-    intervalText: hours ? `Scheduled every ${hours === 1 ? 'hour' : `${hours} hours`}; a schedule is not evidence that runs succeed.` : null,
-    summary: `GDELT artifact created ${dateText} · ${countText}`,
   };
 }
 
