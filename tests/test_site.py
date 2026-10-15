@@ -122,6 +122,22 @@ class BuiltSiteLinkTests(unittest.TestCase):
                         continue
                     self.assert_published(page, value)
 
+    def test_connected_research_links_survive_build_without_changing_app_routes(self):
+        source = (self.site / 'index.html').read_text(encoding='utf-8')
+        refs = [value for tag, attr, value in parse(self.site / 'index.html').refs
+                if tag == 'a' and attr == 'href']
+        for url in (
+            'https://occult-kranti.github.io/india-corporate-intelligence/global-workbench/',
+            'https://occult-kranti.github.io/india-corporate-intelligence/',
+        ):
+            with self.subTest(url=url):
+                self.assertEqual(refs.count(url), 3, 'links appear in Reports, About and the footer')
+        for route in ('#/latest', '#/map', '#/ahead', '#/countries', '#/about'):
+            self.assertIn(route, refs)
+        self.assertIn('Each keeps its own scope, evidence dates and review status.', source)
+        self.assertIn('AI-assisted reporting pilot.', source)
+        self.assertIn('no human editorial review', source)
+
     def test_import_map_targets_and_modulepreloads_resolve(self):
         collector = parse(self.site / 'index.html')
         self.assertEqual(len(collector.importmaps), 1, 'index.html has exactly one import map')

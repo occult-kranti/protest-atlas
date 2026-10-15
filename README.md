@@ -7,6 +7,7 @@ A public, source-led index of protest reporting, demands, counterpositions, time
 4.0 adds an **Ahead** view (announced protest actions, kept apart from reports) and **Coming next** (this site's own roadmap), plus dated update stamps that each name what they measure. Staleness is counted from the newest evidence, never from a build or deploy. **The data refresh is blocked:** the 2 Oct recent-activity search logged 167 searches but could not open a single news page, so nothing newer was published and the announced-actions list is empty. It waits for a session with news access; see [HANDOFF_DATA_REFRESH.md](docs/HANDOFF_DATA_REFRESH.md). See also the [historical research audit](docs/HISTORICAL_RESEARCH.md).
 
 - [Website](https://occult-kranti.github.io/protest-atlas/) (release 3 until the 4.0 deploy) · [Local editor workspace](https://occult-kranti.github.io/protest-atlas/review.html)
+- [Connected research: Global Evidence Workbench](https://occult-kranti.github.io/india-corporate-intelligence/global-workbench/) · [India Corporate Intelligence Atlas](https://occult-kranti.github.io/india-corporate-intelligence/). These are linked research tools; each keeps its own scope, evidence dates and review status.
 - [Repository](https://github.com/occult-kranti/protest-atlas)
 - [Roadmap and delivery tracker](docs/ROADMAP.md) · [Change log](CHANGELOG.md)
 - [4.0 design record](docs/design/README.md): binding [SPEC](docs/design/SPEC.md), [integration notes](docs/design/INTEGRATION_NOTES.md), [editorial guidance](docs/design/EDITORIAL_GUIDANCE.md)
